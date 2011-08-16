@@ -68,6 +68,7 @@ public:
             {
                 for(int k=0;k<M;k++) if(sink[k]) if(links[j][k])
                 {
+                    cout << "try " << j << " " << k << endl;
                     sink[k] = 0;
                     bool good = true;
 
@@ -90,7 +91,6 @@ public:
                     }
                     if(good)
                     {
-                        cout << j << " " << k << endl;
                         links[j][k] = 0;
                         ret[j] += toc(k);
                         break;
