@@ -55,7 +55,7 @@ class TheContest
 public:
     vector <string> getSchedule(int N, int M_) 
     {
-        vector<string> ret;
+        vector<string> ret(N);
         M = M_;
         for(int i=0;i<N;i++)
             for(int j=0;j<M;j++)
