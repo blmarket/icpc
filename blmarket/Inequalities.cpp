@@ -25,11 +25,11 @@ bool check(const string &a, int b)
     sscanf(a.c_str()+2, "%s %d", tmp, &tmp2);
     string tt = tmp;
 
-    if(tt == "<=") return b <= tmp2;
-    if(tt == "<") return b < tmp2;
-    if(tt == "=") return b == tmp2;
-    if(tt == ">") return b > tmp2;
-    if(tt == ">=") return b >= tmp2;
+    if(tt == "<=") return b <= tmp2*2;
+    if(tt == "<") return b < tmp2*2;
+    if(tt == "=") return b == tmp2*2;
+    if(tt == ">") return b > tmp2*2;
+    if(tt == ">=") return b >= tmp2*2;
 
     return false;
 }
@@ -40,7 +40,7 @@ public:
     int maximumSubset(vector <string> inequalities) 
     {		
         int maxcnt = 0;
-        for(int i=-1;i<=1001;i++)
+        for(int i=-1;i<=2001;i++)
         {
             int cnt = 0;
             for(int j=0;j<size(inequalities);j++)
