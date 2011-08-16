@@ -88,6 +88,7 @@ public:
                         memset(check, 0, sizeof(check));
                         if(tryflow(l) == false)
                         {
+                            cout << "flow fail = " << l << endl;
                             good=false;
                             break;
                         }
