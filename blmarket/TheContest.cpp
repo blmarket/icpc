@@ -90,6 +90,7 @@ public:
                     }
                     if(good)
                     {
+                        cout << j << " " << k << endl;
                         links[j][k] = 0;
                         ret[j] += toc(k);
                         break;
