@@ -91,6 +91,8 @@ public:
                             break;
                         }
                     }
+
+                    cout << "result = " << good << endl;
                     if(good)
                     {
                         links[j][k] = 0;
