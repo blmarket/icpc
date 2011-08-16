@@ -83,7 +83,7 @@ public:
                     }
                     cout << endl;
 
-                    for(int l=j+1;j<N;j++)
+                    for(int l=j+1;l<N;l++)
                     {
                         memset(check, 0, sizeof(check));
                         if(tryflow(l) == false)
