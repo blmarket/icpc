@@ -22,7 +22,7 @@ bool check(const string &a, int b)
 {
     char tmp[1024];
     int tmp2;
-    sscanf(a.c_str()+2, "%s %d", tmp, tmp2);
+    sscanf(a.c_str()+2, "%s %d", tmp, &tmp2);
     string tt = tmp;
 
     if(tt == "<=") return b <= tmp2;
