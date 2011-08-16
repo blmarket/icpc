@@ -68,17 +68,19 @@ public:
             {
                 for(int k=0;k<M;k++) if(sink[k]) if(links[j][k])
                 {
-                    cout << "try " << j << " " << k << endl;
                     sink[k] = 0;
                     bool good = true;
 
+                    cout << "tryflow" << endl;
                     for(int l=0;l<M;l++)
                     {
                         if(sink[l] == 0)
                             visit[l] = -1;
                         else
                             visit[l] = 0;
+                        cout << visit[l] << " ";
                     }
+                    cout << endl;
 
                     for(int l=j+1;j<N;j++)
                     {
