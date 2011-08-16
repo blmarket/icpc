@@ -32,6 +32,7 @@ bool tryflow(int a)
     for(int i=0;i<M;i++) if(links[a][i])
     {
         if(visit[i] == -1) continue;
+        cout << a << " moving " << i << endl;
         if(visit[i] == 0 || tryflow(visit[i]))
         {
             visit[i] = a;
