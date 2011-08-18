@@ -31,7 +31,8 @@ void go(int a,int sz)
     if(size(V) - a > unused) return;
     if(a == size(V))
     {
-        ret++;
+        if(unused == 0)
+            ret++;
         return;
     }
 
