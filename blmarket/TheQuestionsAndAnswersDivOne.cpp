@@ -24,27 +24,26 @@ vector<bool> V;
 int used[10];
 bool flag[10];
 int unused = 0;
+int ret = 0;
 
-int go(int a,int sz)
+void go(int a,int sz)
 {
-    if(size(V) - a > unused) return 0;
+    if(size(V) - a > unused) return;
     if(a == size(V))
     {
-        for(int i=0;i<sz;i++) if(used[i] == 0) return 0;
-        return 1;
+        ret++;
+        return;
     }
 
-    int ret = 0;
     for(int i=0;i<sz;i++) if(used[i] == 0 || flag[i] == V[a])
     {
         if(used[i] == 0) unused--;
         used[i]++;
         flag[i] = V[a];
-        ret += go(a+1,sz);
+        go(a+1,sz);
         used[i]--;
         if(used[i] == 0) unused++;
     }
-    return ret;
 }
 
 class TheQuestionsAndAnswersDivOne 
@@ -52,10 +51,12 @@ class TheQuestionsAndAnswersDivOne
 public:
     int find(int questions, vector <string> answers) 
     {
+        ret=0;
         V.clear();
         for(int i=0;i<size(answers);i++) V.pb(answers[i] == "Yes");
         unused = size(V);
-        return go(0, questions);
+        go(0, questions);
+        return ret;
     }
 
     
