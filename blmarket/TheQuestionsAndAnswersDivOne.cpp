@@ -20,11 +20,36 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+vector<bool> V;
+int used[10];
+bool flag[10];
+
+int go(int a,int sz)
+{
+    if(a == size(V))
+    {
+        for(int i=0;i<sz;i++) if(used[i] == 0) return 0;
+        return 1;
+    }
+
+    int ret = 0;
+    for(int i=0;i<sz;i++) if(used[i] == 0 || flag[i] == V[a])
+    {
+        used[i]++;
+        flag[i] = V[a];
+        ret += go(a+1,sz);
+    }
+    return ret;
+}
+
 class TheQuestionsAndAnswersDivOne 
 {
 public:
     int find(int questions, vector <string> answers) 
-    {		
+    {
+        V.clear();
+        for(int i=0;i<size(answers);i++) V.pb(answers[i] == "Yes");
+        return go(0, questions);
     }
 
     
