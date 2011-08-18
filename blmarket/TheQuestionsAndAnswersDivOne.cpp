@@ -38,6 +38,7 @@ int go(int a,int sz)
         used[i]++;
         flag[i] = V[a];
         ret += go(a+1,sz);
+        used[i]--;
     }
     return ret;
 }
