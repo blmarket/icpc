@@ -54,7 +54,7 @@ public:
     {
         V.clear();
         for(int i=0;i<size(answers);i++) V.pb(answers[i] == "Yes");
-        unused = questions;
+        unused = size(V);
         return go(0, questions);
     }
 
