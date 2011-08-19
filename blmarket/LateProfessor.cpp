@@ -45,7 +45,7 @@ public:
 
         cout << accum << " " << endl;
 
-        return (double)accum / (worstArrival - bestArrival);
+        return 1.0 - (double)accum / (worstArrival - bestArrival);
     }
 
     
