@@ -33,6 +33,7 @@ public:
             int next = cur + waitTime;
             if(next > bestArrival)
             {
+                cout << min(next, worstArrival) << " - " << max(cur-lateTime, bestArrival) << endl;
                 accum += min(next, worstArrival) - max(cur - lateTime, bestArrival);
             }
             cur = next + walkTime;
