@@ -35,7 +35,7 @@ public:
             if(bestArrival == worstArrival)
             {
                 if(cur - lateTime <= bestArrival && next >= bestArrival)
-                    return 1;
+                    return 0;
             }
 
             if(next > bestArrival)
@@ -50,7 +50,7 @@ public:
             cur = next + walkTime;
         }
 
-        if(bestArrival == worstArrival) return 0;
+        if(bestArrival == worstArrival) return 1;
 
         cout << accum << " " << endl;
 
