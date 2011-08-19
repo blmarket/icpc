@@ -31,6 +31,13 @@ public:
         while(cur < worstArrival + lateTime)
         {
             int next = cur + waitTime;
+
+            if(bestArrival == worstArrival)
+            {
+                if(cur - lateTime <= bestArrival && next >= bestArrival)
+                    return 1;
+            }
+
             if(next > bestArrival)
             {
                 cout 
@@ -42,6 +49,8 @@ public:
             }
             cur = next + walkTime;
         }
+
+        if(bestArrival == worstArrival) return 0;
 
         cout << accum << " " << endl;
 
