@@ -39,6 +39,8 @@ public:
             next = cur + walkTime;
         }
 
+        cout << accum << " " << endl;
+
         return (double)accum / (worstArrival - bestArrival);
     }
 
