@@ -27,12 +27,13 @@ public:
     {
         int accum = 0;
         int cur = 0;
-        while(cur < worstArrival)
+
+        while(cur < worstArrival + lateTime)
         {
             int next = cur + waitTime;
             if(next > bestArrival)
             {
-                accum += min(next, worstArrival) - max(cur, bestArrival);
+                accum += min(next, worstArrival) - max(cur - lateTime, bestArrival);
             }
             cur = next + walkTime;
         }
