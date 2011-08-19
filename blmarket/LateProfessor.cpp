@@ -24,7 +24,22 @@ class LateProfessor
 {
 public:
     double getProbability(int waitTime, int walkTime, int lateTime, int bestArrival, int worstArrival) 
-    {		
+    {
+        int accum = 0;
+        int cur = 0;
+        while(cur < worstArrival)
+        {
+            int next = cur + waitTime;
+            if(next > bestArrival)
+            {
+                accum += min(next, worstArrival) - max(cur, bestArrival);
+            }
+            cur = next;
+
+            next = cur + walkTime;
+        }
+
+        return (double)accum / (worstArrival - bestArrival);
     }
 
     
