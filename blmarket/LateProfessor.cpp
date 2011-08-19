@@ -34,9 +34,7 @@ public:
             {
                 accum += min(next, worstArrival) - max(cur, bestArrival);
             }
-            cur = next;
-
-            next = cur + walkTime;
+            cur = next + walkTime;
         }
 
         cout << accum << " " << endl;
@@ -66,6 +64,6 @@ public:
 int main()
 {
     LateProfessor ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
