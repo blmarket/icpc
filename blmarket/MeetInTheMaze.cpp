@@ -85,7 +85,7 @@ void bfs2(const PII &start)
 
         if(maze[x][y] == 'L')
         {
-//            cout << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
+            cout << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
             distsum += dist3[x][y];
             totalvisit++;
         }
