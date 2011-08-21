@@ -27,6 +27,8 @@ vector<PII> rs, fs;
 int dist1[52][52];
 int dist2[52][52];
 int dist3[52][52];
+long long distsum = 0;
+long long dec = 0;
 
 const int dx[] = { -1,0,0,1};
 const int dy[] = {0,-1,1,0};
@@ -68,7 +70,7 @@ void bfs2(const PII &start)
     dist3[start.first][start.second] = dist1[start.first][start.second];
 
     priority_queue<pair<PII,int> > Q;
-    Q.push(mp(start, dist3[start.first][start.second]));
+    Q.push(mp(start, -dist3[start.first][start.second]));
 
     while(!Q.empty())
     {
@@ -82,6 +84,7 @@ void bfs2(const PII &start)
         if(maze[x][y] == 'L')
         {
             cout << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
+            distsum += dist3[x][y];
         }
 
         for(int i=0;i<4;i++)
@@ -118,8 +121,13 @@ public:
                     rs.pb(mp(i,j));
                 else if(maze[i][j] == 'F')
                     fs.pb(mp(i,j));
+                else if(maze[i][j] == 'L')
+                    dec++;
             }
         }
+
+        dec *= size(rs);
+        dec *= size(fs);
 
         for(int i=0;i<size(rs);i++)
         {
@@ -133,7 +141,14 @@ public:
                 bfs2(fs[j]);
             }
         }
-        return "";
+
+        if(dec == 0) return "";
+        LL gc == __gcd(dec, distsum);
+        dec /= gc;
+        distsum /= gc;
+        ostringstream ost;
+        ost << distsum << "/" << dec;
+        return ost.str();
     }
 
     
