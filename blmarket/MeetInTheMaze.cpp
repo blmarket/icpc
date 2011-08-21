@@ -29,7 +29,7 @@ int dist1[52][52];
 int dist2[52][52];
 int dist3[52][52];
 long long distsum = 0;
-long long dec = 0;
+long long denomi = 0;
 
 const int dx[] = { -1,0,0,1};
 const int dy[] = {0,-1,1,0};
@@ -123,12 +123,12 @@ public:
                 else if(maze[i][j] == 'F')
                     fs.pb(mp(i,j));
                 else if(maze[i][j] == 'L')
-                    dec++;
+                    denomi++;
             }
         }
 
-        dec *= size(rs);
-        dec *= size(fs);
+        denomi *= size(rs);
+        denomi *= size(fs);
 
         for(int i=0;i<size(rs);i++)
         {
@@ -143,12 +143,12 @@ public:
             }
         }
 
-        if(dec == 0) return "";
-        LL gc == __gcd(dec, distsum);
-        dec /= gc;
+        if(denomi == 0) return "";
+        LL gc == __gcd(denomi, distsum);
+        denomi /= gc;
         distsum /= gc;
         ostringstream ost;
-        ost << distsum << "/" << dec;
+        ost << distsum << "/" << denomi;
         return ost.str();
     }
 
