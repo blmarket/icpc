@@ -67,6 +67,7 @@ void bfs(const PII &start, int dis[][52])
 
 void bfs2(const PII &start)
 {
+    int totalvisit = 0;
     bfs(start, dist2);
     dist3[start.first][start.second] = dist1[start.first][start.second];
 
@@ -127,9 +128,6 @@ public:
             }
         }
 
-        denomi *= size(rs);
-        denomi *= size(fs);
-
         for(int i=0;i<size(rs);i++)
         {
             memset(dist1, -1, sizeof(dist1));
@@ -143,6 +141,8 @@ public:
             }
         }
 
+        denomi *= size(rs);
+        denomi *= size(fs);
         if(denomi == 0) return "";
         LL gc = __gcd(denomi, distsum);
         denomi /= gc;
