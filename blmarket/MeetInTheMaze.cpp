@@ -131,6 +131,7 @@ public:
                     cout << dist[j][k] << " ";
                 cout << endl;
             }
+
             for(int j=0;j<size(fs);j++)
             {
                 memset(dist2, -1, sizeof(dist2));
