@@ -44,8 +44,6 @@ void bfs(const PII &start, int dist[][52])
     queue<PII> Q;
     Q.push(start);
 
-    cout << " hi " << endl;
-
     while(!Q.empty())
     {
         int x = Q.front().first;
