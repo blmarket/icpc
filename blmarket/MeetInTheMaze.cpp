@@ -85,7 +85,7 @@ void bfs2(const PII &start)
 
         if(maze[x][y] == 'L')
         {
-            cout << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
+            cout << x << "," << y << ": " << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
             distsum += dist3[x][y];
             totalvisit++;
         }
@@ -107,7 +107,10 @@ void bfs2(const PII &start)
     }
 
     if(totalvisit != denomi)
+    {
+        cout << "fail" << start.first << " " << start.second << endl;
         denomi = 0;
+    }
 }
 
 class MeetInTheMaze 
