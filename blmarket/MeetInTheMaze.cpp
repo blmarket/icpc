@@ -60,6 +60,14 @@ void bfs(const PII &start, int dis[][52])
             Q.push(mp(nx,ny));
         }
     }
+
+    for(int j=0;j<n;j++)
+    {
+        for(int k=0;k<m;k++)
+            cout << dist1[j][k] << " ";
+        cout << endl;
+    }
+
 }
 
 void bfs2(const PII &start)
@@ -124,13 +132,6 @@ public:
         for(int i=0;i<size(rs);i++)
         {
             bfs(rs[i], dist1);
-
-            for(int j=0;j<n;j++)
-            {
-                for(int k=0;k<m;k++)
-                    cout << dist1[j][k] << " ";
-                cout << endl;
-            }
 
             for(int j=0;j<size(fs);j++)
             {
