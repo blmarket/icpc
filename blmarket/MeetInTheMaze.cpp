@@ -102,7 +102,7 @@ void bfs2(const PII &start)
 
             if(dist3[nx][ny] == -1 || dist3[nx][ny] > tmp)
             {
-                dist3[nx][ny] = tmp;
+                dist3[nx][ny] = tmp ;
                 Q.push(mp(mp(nx,ny), tmp));
             }
         }
