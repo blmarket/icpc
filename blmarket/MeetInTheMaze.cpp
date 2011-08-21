@@ -83,6 +83,8 @@ void bfs2(const PII &start)
 
         if(dist3[pos.first][pos.second] != dis) continue;
 
+        cout << x << " " << y << " " << dis << endl;
+
         if(maze[x][y] == 'L')
         {
             cout << x << "," << y << ": " << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
