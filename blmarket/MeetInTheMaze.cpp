@@ -115,6 +115,8 @@ public:
             }
         }
 
+        cout << "p1" << endl;
+
         for(int i=0;i<size(rs);i++)
         {
             bfs(rs[i], dist);
