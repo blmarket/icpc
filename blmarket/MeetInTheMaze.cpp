@@ -36,10 +36,10 @@ bool check(int x,int y)
     return x>=0 && y>=0 && x<n && y<m && maze[x][y] != '#';
 }
 
-void bfs(const PII &start, int dist[][52])
+void bfs(const PII &start, int dis[][52])
 {
-    memset(dist, -1, sizeof(dist));
-    dist[start.first][start.second] = 0;
+    memset(dis, -1, sizeof(dis));
+    dis[start.first][start.second] = 0;
 
     queue<PII> Q;
     Q.push(start);
@@ -54,9 +54,9 @@ void bfs(const PII &start, int dist[][52])
         {
             int nx = x + dx[i], ny = y + dy[i];
             if(check(nx,ny) == false) continue;
-            if(dist[nx][ny] != -1) continue;
+            if(dis[nx][ny] != -1) continue;
 
-            dist[nx][ny] = dist[x][y] + 1;
+            dis[nx][ny] = dis[x][y] + 1;
             Q.push(mp(nx,ny));
         }
     }
@@ -78,6 +78,11 @@ void bfs2(const PII &start)
         Q.pop();
 
         if(dist3[pos.first][pos.second] != dis) continue;
+
+        if(maze[x][y] == 'L')
+        {
+            cout << dist[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
+        }
 
         for(int i=0;i<4;i++)
         {
@@ -119,6 +124,12 @@ public:
         for(int i=0;i<size(rs);i++)
         {
             bfs(rs[i], dist);
+            for(int j=0;j<n;j++)
+            {
+                for(int k=0;k<n;k++)
+                    cout << dist[j][k] << " ";
+                cout << endl;
+            }
             for(int j=0;j<size(fs);j++)
             {
                 memset(dist2, -1, sizeof(dist2));
@@ -126,6 +137,7 @@ public:
                 bfs2(fs[j]);
             }
         }
+        return "";
     }
 
     
@@ -232,6 +244,6 @@ public:
 int main()
 {
     MeetInTheMaze ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
