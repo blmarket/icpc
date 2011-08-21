@@ -263,6 +263,6 @@ public:
 int main()
 {
     MeetInTheMaze ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
