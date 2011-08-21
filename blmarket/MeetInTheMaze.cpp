@@ -127,7 +127,7 @@ public:
 
             for(int j=0;j<n;j++)
             {
-                for(int k=0;k<n;k++)
+                for(int k=0;k<m;k++)
                     cout << dist1[j][k] << " ";
                 cout << endl;
             }
