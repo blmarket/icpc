@@ -98,7 +98,7 @@ void bfs2(const PII &start)
             int ny = y + dy[i];
 
             if(check(nx,ny) == false) continue;
-            int tmp = min(dist[nx][ny] + dist2[nx][ny], dist3[x][y] + 1);
+            int tmp = min(dist1[nx][ny] + dist2[nx][ny], dist3[x][y] + 1);
 
             if(dist3[nx][ny] == -1 || dist3[nx][ny] > tmp)
             {
