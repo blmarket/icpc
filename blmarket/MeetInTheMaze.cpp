@@ -131,12 +131,12 @@ public:
 
         for(int i=0;i<size(rs);i++)
         {
-            bfs(rs[i], dist);
+            bfs(rs[i], dist1);
 
             for(int j=0;j<n;j++)
             {
                 for(int k=0;k<n;k++)
-                    cout << dist[j][k] << " ";
+                    cout << dist1[j][k] << " ";
                 cout << endl;
             }
 
