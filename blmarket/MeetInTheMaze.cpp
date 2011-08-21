@@ -33,7 +33,7 @@ const int dy[] = {0,-1,1,0};
 
 bool check(int x,int y)
 {
-    return x>=0 && y>=0 && x<n && y<m;
+    return x>=0 && y>=0 && x<n && y<m && maze[x][y] != '#';
 }
 
 void bfs(const PII &start, int dist[][52])
@@ -83,7 +83,14 @@ void bfs2(const PII &start)
             int nx = x + dx[i];
             int ny = y + dy[i];
 
+            if(check(nx,ny) == false) continue;
+            int tmp = min(dist[nx][ny] + dist2[nx][ny], dist3[x][y] + 1);
 
+            if(dist3[nx][ny] == -1 || dist3[nx][ny] > tmp)
+            {
+                dist3[nx][ny] = tmp;
+                Q.push(mp(mp(nx,ny), -tmp));
+            }
         }
     }
 }
