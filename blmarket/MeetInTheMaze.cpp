@@ -87,6 +87,7 @@ void bfs2(const PII &start)
         {
 //            cout << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
             distsum += dist3[x][y];
+            totalvisit++;
         }
 
         for(int i=0;i<4;i++)
@@ -104,6 +105,9 @@ void bfs2(const PII &start)
             }
         }
     }
+
+    if(totalvisit != denomi)
+        denomi = 0;
 }
 
 class MeetInTheMaze 
