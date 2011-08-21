@@ -38,15 +38,14 @@ bool check(int x,int y)
 
 void bfs(const PII &start, int dis[][52])
 {
-    memset(dis, -1, sizeof(dis));
-    dis[start.first][start.second] = 0;
-
     for(int j=0;j<n;j++)
     {
         for(int k=0;k<m;k++)
             cout << dist1[j][k] << " ";
         cout << endl;
     }
+
+    dis[start.first][start.second] = 0;
 
     queue<PII> Q;
     Q.push(start);
@@ -131,6 +130,7 @@ public:
 
         for(int i=0;i<size(rs);i++)
         {
+            memset(dist1, -1, sizeof(dist1));
             bfs(rs[i], dist1);
 
             for(int j=0;j<size(fs);j++)
