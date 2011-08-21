@@ -50,6 +50,7 @@ void bfs(const PII &start, int dist[][52])
     {
         int x = Q.front().first;
         int y = Q.front().second;
+        Q.pop();
 
         for(int i=0;i<4;i++)
         {
