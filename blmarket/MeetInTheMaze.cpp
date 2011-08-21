@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<string> maze;
 int n,m;
 vector<PII> rs, fs;
-int dist[52][52];
+int dist1[52][52];
 int dist2[52][52];
 int dist3[52][52];
 
