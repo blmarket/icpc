@@ -20,11 +20,84 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+vector<string> maze;
+int n,m;
+vector<PII> rs, fs;
+int dist[52][52];
+int dist2[52][52];
+int dist3[52][52];
+
+const int dx[] = { -1,0,0,1};
+const int dy[] = {0,-1,1,0};
+
+bool check(int x,int y)
+{
+    return x>=0 && y>=0 && x<n && y<m;
+}
+
+void bfs2(const pII &start)
+{
+    int x = start.first;
+    int y = start.second;
+
+    dist3[x][y] 
+}
+
+void bfs(const PII &start)
+{
+    memset(dist, -1, sizeof(dist));
+    dist[start.first][start.second] = 0;
+
+    queue<PII> Q;
+    Q.push(start);
+
+    while(!Q.empty())
+    {
+        int x = Q.front().first;
+        int y = Q.front().second;
+
+        for(int i=0;i<4;i++)
+        {
+            int nx = x + dx[i], ny = y + dy[i];
+            if(check(nx,ny) == false) continue;
+            if(dist[nx][ny] != -1) continue;
+
+            dist[nx][ny] = dist[x][y] + 1;
+            Q.push(mp(nx,ny));
+        }
+    }
+}
+
 class MeetInTheMaze 
 {
 public:
-    string getExpected(vector <string> maze) 
-    {		
+    string getExpected(vector <string> maze_) 
+    {
+        maze = maze_;
+        n = size(maze); m = size(maze[0]);
+        rs.clear(); fs.clear();
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(maze[i][j] == 'R')
+                    rs.pb(mp(i,j));
+                else if(maze[i][j] == 'F')
+                    fs.pb(mp(i,j));
+            }
+        }
+
+        for(int i=0;i<size(rs);i++)
+        {
+            bfs(rs[i]);
+            for(int j=0;j<size(fs);j++)
+            {
+                memset(dist2, -1, sizeof(dist2));
+                memset(dist3, -1, sizeof(dist3));
+                bfs2(fs[j]);
+            }
+        }
     }
 
     
