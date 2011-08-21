@@ -144,7 +144,7 @@ public:
         }
 
         if(denomi == 0) return "";
-        LL gc == __gcd(denomi, distsum);
+        LL gc = __gcd(denomi, distsum);
         denomi /= gc;
         distsum /= gc;
         ostringstream ost;
