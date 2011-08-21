@@ -71,9 +71,9 @@ void bfs2(const PII &start)
 
     while(!Q.empty())
     {
-        PII pos = Q.front().first;
+        PII pos = Q.top().first;
         int x = pos.first, y = pos.second;
-        int dis = -Q.front().second;
+        int dis = -Q.top().second;
         Q.pop();
 
         if(dist3[pos.first][pos.second] != dis) continue;
