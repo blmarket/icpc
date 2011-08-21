@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -35,15 +36,13 @@ bool check(int x,int y)
     return x>=0 && y>=0 && x<n && y<m;
 }
 
-void bfs2(const pII &start)
+void bfs2(const PII &start)
 {
     int x = start.first;
     int y = start.second;
-
-    dist3[x][y] 
 }
 
-void bfs(const PII &start)
+void bfs(const PII &start, int dist[][52])
 {
     memset(dist, -1, sizeof(dist));
     dist[start.first][start.second] = 0;
@@ -90,7 +89,7 @@ public:
 
         for(int i=0;i<size(rs);i++)
         {
-            bfs(rs[i]);
+            bfs(rs[i], dist);
             for(int j=0;j<size(fs);j++)
             {
                 memset(dist2, -1, sizeof(dist2));
