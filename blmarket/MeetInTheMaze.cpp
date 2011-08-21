@@ -36,12 +36,6 @@ bool check(int x,int y)
     return x>=0 && y>=0 && x<n && y<m;
 }
 
-void bfs2(const PII &start)
-{
-    int x = start.first;
-    int y = start.second;
-}
-
 void bfs(const PII &start, int dist[][52])
 {
     memset(dist, -1, sizeof(dist));
@@ -63,6 +57,33 @@ void bfs(const PII &start, int dist[][52])
 
             dist[nx][ny] = dist[x][y] + 1;
             Q.push(mp(nx,ny));
+        }
+    }
+}
+
+void bfs2(const PII &start)
+{
+    bfs(start, dist2);
+    dist3[start.first][start.second] = dist[start.first][start.second];
+
+    priority_queue<pair<PII,int> > Q;
+    Q.push(mp(start, dist[start.first][start.second]));
+
+    while(!Q.empty())
+    {
+        PII pos = Q.front().first;
+        int x = pos.first, y = pos.second;
+        int dis = -Q.front().second;
+        Q.pop();
+
+        if(dist3[pos.first][pos.second] != dis) continue;
+
+        for(int i=0;i<4;i++)
+        {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+
         }
     }
 }
