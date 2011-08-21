@@ -38,13 +38,6 @@ bool check(int x,int y)
 
 void bfs(const PII &start, int dis[][52])
 {
-    for(int j=0;j<n;j++)
-    {
-        for(int k=0;k<m;k++)
-            cout << dist1[j][k] << " ";
-        cout << endl;
-    }
-
     dis[start.first][start.second] = 0;
 
     queue<PII> Q;
