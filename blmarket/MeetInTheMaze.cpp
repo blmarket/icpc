@@ -57,16 +57,8 @@ void bfs(const PII &start, int dis[][52])
             if(dis[nx][ny] != -1) continue;
 
             dis[nx][ny] = dis[x][y] + 1;
-            cout << nx << " " << ny << " = " << dis[x][y]+1 << endl;
             Q.push(mp(nx,ny));
         }
-    }
-
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<m;j++)
-            cout << dis[i][j] << " ";
-        cout << endl;
     }
 }
 
