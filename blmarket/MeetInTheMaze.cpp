@@ -71,14 +71,14 @@ void bfs2(const PII &start)
     bfs(start, dist2);
     dist3[start.first][start.second] = dist1[start.first][start.second];
 
-    priority_queue<pair<PII,int> > Q;
-    Q.push(mp(start, dist3[start.first][start.second]));
+    priority_queue<pair<int,PII> > Q;
+    Q.push(mp(-dist3[start.first][start.second],start));
 
     while(!Q.empty())
     {
-        PII pos = Q.top().first;
+        PII pos = Q.top().second;
         int x = pos.first, y = pos.second;
-        int dis = Q.top().second;
+        int dis = -Q.top().first;
         Q.pop();
 
         if(dist3[pos.first][pos.second] != dis) continue;
@@ -102,8 +102,8 @@ void bfs2(const PII &start)
 
             if(dist3[nx][ny] == -1 || dist3[nx][ny] > tmp)
             {
-                dist3[nx][ny] = tmp ;
-                Q.push(mp(mp(nx,ny), tmp));
+                dist3[nx][ny] = tmp;
+                Q.push(mp(-tmp, mp(nx,ny)));
             }
         }
     }
