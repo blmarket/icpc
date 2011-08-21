@@ -73,10 +73,10 @@ void bfs(const PII &start, int dis[][52])
 void bfs2(const PII &start)
 {
     bfs(start, dist2);
-    dist3[start.first][start.second] = dist[start.first][start.second];
+    dist3[start.first][start.second] = dist1[start.first][start.second];
 
     priority_queue<pair<PII,int> > Q;
-    Q.push(mp(start, dist[start.first][start.second]));
+    Q.push(mp(start, dist3[start.first][start.second]));
 
     while(!Q.empty())
     {
@@ -89,7 +89,7 @@ void bfs2(const PII &start)
 
         if(maze[x][y] == 'L')
         {
-            cout << dist[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
+            cout << dist1[x][y] << " " << dist2[x][y] << " " << dist3[x][y] << endl;
         }
 
         for(int i=0;i<4;i++)
