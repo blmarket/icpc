@@ -41,6 +41,13 @@ void bfs(const PII &start, int dis[][52])
     memset(dis, -1, sizeof(dis));
     dis[start.first][start.second] = 0;
 
+    for(int j=0;j<n;j++)
+    {
+        for(int k=0;k<m;k++)
+            cout << dist1[j][k] << " ";
+        cout << endl;
+    }
+
     queue<PII> Q;
     Q.push(start);
 
@@ -59,13 +66,6 @@ void bfs(const PII &start, int dis[][52])
             dis[nx][ny] = dis[x][y] + 1;
             Q.push(mp(nx,ny));
         }
-    }
-
-    for(int j=0;j<n;j++)
-    {
-        for(int k=0;k<m;k++)
-            cout << dist1[j][k] << " ";
-        cout << endl;
     }
 
 }
