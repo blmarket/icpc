@@ -1,0 +1,1 @@
+g++ $@ && git add $@ && git commit -m "--Empty Message--" && ./a.out
