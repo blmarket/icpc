@@ -22,6 +22,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 inline void setmax(int &a, int b) { if(a < b) a = b; }
+inline void setmin(int &a, int b) { if(b != -1) if(a == -1 || a > b) a = b; }
 
 vector<int> points;
 vector<vector<int> > V;
@@ -40,7 +41,6 @@ public:
         sum = 0; 
         for(int i=0;i<size(points);i++) sum += points[i];
 
-        if(w == 1) return (sum+1)/2;
         V.clear();
         V.resize(size(points));
 
@@ -55,13 +55,16 @@ public:
                 }
             }
             sort(V[i].begin(),V[i].end());
+            for(int j=0;j<size(V[i]);j++)
+                cout << V[i][j] << " ";
+            cout << endl;
         }
 
         int ret = -1;
 
         int cur[2] = {0,0};
         int next[2];
-        for(int i=10001;i>=0;i--)
+        for(int i=10001;i>=-1;i--)
         {
             next[0] = 0;
             next[1] = -1;
@@ -69,7 +72,13 @@ public:
             {
                 memcpy(cur, next, sizeof(cur));
                 next[0] = -1; next[1] = -1;
-                int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
+                int idx;
+                if(i == -1)
+                    idx = size(V[j]) - 2;
+                else
+                    idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
+                if(idx < 0) idx = 0;
+
                 if(idx == V[j].size()) 
                 {
                     cur[0] = -1;
@@ -82,8 +91,18 @@ public:
 
                 if(idx+1 == V[j].size()) continue;
                 int tmp2 = - V[j][idx+1];
-                setmax(next[tmp2%2], cur[0]>=0?cur[0] + tmp2:-1);
-                setmax(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
+
+
+                if(i == -1)
+                {
+                    setmin(next[tmp2%2], cur[0]>=0?cur[0] + tmp2:-1);
+                    setmin(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
+                }
+                else
+                {
+                    setmax(next[tmp2%2], cur[0]>=0?cur[0] + tmp2:-1);
+                    setmax(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
+                }
             }
 
             memcpy(cur, next, sizeof(cur));
