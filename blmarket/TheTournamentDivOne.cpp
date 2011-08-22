@@ -61,7 +61,7 @@ public:
 
         int cur[2] = {0,0};
         int next[2];
-        for(int i=1;i>=0;i--)
+        for(int i=10001;i>=0;i--)
         {
             next[0] = 0;
             next[1] = -1;
@@ -69,9 +69,7 @@ public:
             {
                 memcpy(cur, next, sizeof(cur));
                 next[0] = -1; next[1] = -1;
-                cerr << cur[0] << " " << cur[1] << endl;
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
-                cerr << i << " " << j << " " << idx << " = " << V[j][idx] << endl;
                 if(idx == V[j].size()) 
                 {
                     cur[0] = -1;
@@ -79,10 +77,8 @@ public:
                 }
 
                 int tmp = -V[j][idx];
-                cerr << "cur[1] = " << cur[1] << endl;
                 next[tmp%2] = cur[0] >= 0 ? (cur[0] + tmp) : -1;
                 next[(tmp+1)%2] = cur[1] >= 0 ? (cur[1] + tmp) : -1;
-                cerr << "next[0] = " << next[0] << endl;
 
                 if(idx+1 == V[j].size()) continue;
                 int tmp2 = - V[j][idx+1];
@@ -91,12 +87,10 @@ public:
             }
 
             memcpy(cur, next, sizeof(cur));
-            cerr << cur[0] << " " << cur[1] << endl;
             if(cur[0] < i * 2) continue;
 
             int tmp = cur[0] + (sum - d * cur[0]) / w;
 
-            cerr << "tmp = " << tmp << endl;
 
             if(ret < 0 || ret > tmp) ret = tmp;
         }
