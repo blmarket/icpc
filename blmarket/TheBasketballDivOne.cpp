@@ -27,8 +27,6 @@ int n,m;
 
 void go(int a,int b)
 {
-    cout << a << " " << b << endl;
-
     if(a >= n)
     {
         vector<int> V(cur, cur+n);
