@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -19,6 +20,8 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+inline void setmax(int &a, int b) { if(a < b) a = b; }
 
 vector<int> points;
 vector<vector<int> > V;
@@ -48,12 +51,37 @@ public:
             {
                 if((tmp % w) == 0)
                 {
-                    V[i].pb(j);
+                    V[i].pb(-j);
                     cout << j << " ";
                 }
             }
             cout << endl;
         }
+
+        int cur[2] = {0,0};
+        int next[2];
+        for(int i=10001;i>=0;i--)
+        {
+            for(int j=0;j<size(V);j++)
+            {
+                next[0] = 0; next[1] = 0;
+                int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
+                if(idx == V[j].size()) continue;
+                int tmp = - V[j][idx];
+                next[tmp%2] = cur[0] + tmp;
+                next[(tmp+1)%2] = cur[1] + tmp;
+                if(idx+1 == V[j].size()) continue;
+                int tmp2 = - V[j][idx+1];
+                setmax(next[tmp2%2], cur[0] + tmp2);
+                setmax(next[(tmp2+1)%2], cur[1] + tmp2);
+                memcpy(cur, next, sizeof(cur));
+            }
+
+            if(cur[0] < i * 2) continue;
+            cout << cur[0] + (sum - d * cur[0]) / w << endl;
+        }
+
+        return -1;
     }
 
     
