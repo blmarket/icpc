@@ -34,9 +34,6 @@ void go(int a,int b)
         if(V[0] == m)
         {
             S.insert(V);
-            for(int i=0;i<size(V);i++)
-                cout << V[i] << " ";
-            cout << endl;
         }
         return;
     }
