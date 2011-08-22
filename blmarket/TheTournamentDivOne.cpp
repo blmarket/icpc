@@ -91,7 +91,7 @@ public:
 
             cout << cur[0] << endl;
 
-            int tmp = cur[0] + (sum - d * cur[0]) / w;
+            int tmp = cur[0]/2 + (sum - d * cur[0]) / w;
 
 
             if(ret < 0 || ret > tmp) ret = tmp;
