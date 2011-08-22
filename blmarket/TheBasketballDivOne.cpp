@@ -57,6 +57,7 @@ public:
         n = n_; m = m_;
         memset(cur, 0, sizeof(cur));
         go(0,0);
+        cout << "hello?" << endl;
         return S.size();
     }
 
