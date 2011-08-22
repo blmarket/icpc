@@ -31,11 +31,13 @@ void go(int a,int b)
     {
         vector<int> V(cur, cur+n);
         sort(V.rbegin(), V.rend());
-        for(int i=0;i<size(V);i++)
-            cout << V[i] << " ";
-        cout << endl;
         if(V[0] == m)
+        {
             S.insert(V);
+            for(int i=0;i<size(V);i++)
+                cout << V[i] << " ";
+            cout << endl;
+        }
         return;
     }
     if(b >= n) 
