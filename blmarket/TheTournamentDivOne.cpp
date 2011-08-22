@@ -89,6 +89,8 @@ public:
             memcpy(cur, next, sizeof(cur));
             if(cur[0] < i * 2) continue;
 
+            cout << cur[0] << endl;
+
             int tmp = cur[0] + (sum - d * cur[0]) / w;
 
 
