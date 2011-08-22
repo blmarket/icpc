@@ -63,7 +63,8 @@ public:
         int next[2];
         for(int i=1;i>=0;i--)
         {
-            memset(next, 0, sizeof(next));
+            next[0] = 0;
+            next[1] = -1;
             for(int j=0;j<size(V);j++)
             {
                 memcpy(cur, next, sizeof(cur));
@@ -78,13 +79,13 @@ public:
                 }
 
                 int tmp = -V[j][idx];
-                next[tmp%2] = cur[0] + tmp;
-                next[(tmp+1)%2] = cur[1] + tmp;
+                next[tmp%2] = cur[0] >= 0 ? (cur[0] + tmp) : -1;
+                next[(tmp+1)%2] = cur[1] >= 0 ? (cur[1] + tmp) : -1;
 
                 if(idx+1 == V[j].size()) continue;
                 int tmp2 = - V[j][idx+1];
-                setmax(next[tmp2%2], cur[0] + tmp2);
-                setmax(next[(tmp2+1)%2], cur[1] + tmp2);
+                setmax(next[tmp2%2], cur[0]>=0?cur[0] + tmp2:-1);
+                setmax(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
             }
 
             cerr << cur[0] << " " << cur[1] << endl;
