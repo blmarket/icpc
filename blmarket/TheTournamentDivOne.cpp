@@ -62,12 +62,13 @@ public:
 
         int ret = -1;
 
-        int vsum = 0;
         int vmax = 0;
+        int vsum;
 
         while(true)
         {
             vmax = 0;
+            vsum = 0;
             for(int i=0;i<size(V);i++)
             {
                 if(V[i].back() > V[vmax].back())
