@@ -58,6 +58,8 @@ public:
             cout << endl;
         }
 
+        int ret = -1;
+
         int cur[2] = {0,0};
         int next[2];
         for(int i=10001;i>=0;i--)
@@ -80,10 +82,13 @@ public:
 
             if(cur[0] < i * 2) continue;
             cout << cur[0] << " " << cur[1] << endl;
-            cout << cur[0] + (sum - d * cur[0]) / w << endl;
+
+            int tmp = cur[0] + (sum - d * cur[0]) / w;
+
+            if(ret < 0 || ret > tmp) ret = tmp;
         }
 
-        return -1;
+        return ret;
     }
 
     
