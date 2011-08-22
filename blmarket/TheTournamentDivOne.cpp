@@ -58,6 +58,7 @@ public:
             for(int j=0;j<size(V[i]);j++)
                 cout << V[i][j] << " ";
             cout << endl;
+            if(V[i].size() == 0) return -1;
         }
 
         int ret = -1;
