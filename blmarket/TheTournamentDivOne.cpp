@@ -106,7 +106,7 @@ public:
             }
 
             memcpy(cur, next, sizeof(cur));
-            if(cur[0] < i * 2) continue;
+            if(cur[0] < i * 2 || cur[0] < 0) continue;
 
             cout << cur[0] << endl;
 
