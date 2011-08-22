@@ -28,7 +28,7 @@ int n,m;
 void go(int a,int b)
 {
     cout << a << " " << b << endl;
-    if(a == n)
+    if(a >= n)
     {
         vector<int> V(cur, cur+n);
         sort(V.rbegin(), V.rend());
@@ -37,7 +37,7 @@ void go(int a,int b)
         return;
     }
     if(b >= n) go(a+1,a+2);
-    if(a == b) go(a,b+1);
+    if(a >= b) go(a,b+1);
 
     cur[a] += 2;
     go(a,b+1);
