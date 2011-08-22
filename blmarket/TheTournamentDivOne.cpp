@@ -70,9 +70,9 @@ public:
             {
                 next[0] = 0; next[1] = 0;
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
+                cout << i << " " << j << " " << idx << endl;
                 if(idx == V[j].size()) 
                 {
-                    cout << i << " " << j << " " << idx << endl;
                     cur[0] = -1;
                     break;
                 }
