@@ -69,7 +69,11 @@ public:
             {
                 next[0] = 0; next[1] = 0;
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
-                if(idx == V[j].size()) continue;
+                if(idx == V[j].size()) 
+                {
+                    cur[0] = -1;
+                    break;
+                }
                 int tmp = - V[j][idx];
                 next[tmp%2] = cur[0] + tmp;
                 next[(tmp+1)%2] = cur[1] + tmp;
