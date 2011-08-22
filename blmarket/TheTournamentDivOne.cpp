@@ -51,10 +51,10 @@ public:
             {
                 if((tmp % w) == 0)
                 {
-                    V[i].pb(-j);
+                    V[i].pb(j);
                 }
             }
-            sort(V[i].begin(),V[i].end());
+            sort(V[i].begin(), V[i].end());
             for(int j=0;j<size(V[i]);j++)
                 cout << V[i][j] << " ";
             cout << endl;
@@ -62,58 +62,27 @@ public:
 
         int ret = -1;
 
-        int cur[2] = {0,0};
-        int next[2];
-        for(int i=10001;i>=-1;i--)
+        int vsum = 0;
+        int vmax = 0;
+
+        while(true)
         {
-            next[0] = 0;
-            next[1] = -1;
-            for(int j=0;j<size(V);j++)
+            vmax = 0;
+            for(int i=0;i<size(V);i++)
             {
-                memcpy(cur, next, sizeof(cur));
-                next[0] = -1; next[1] = -1;
-                int idx;
-                if(i == -1)
-                    idx = size(V[j]) - 2;
-                else
-                    idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
-                if(idx < 0) idx = 0;
-
-                if(idx == V[j].size()) 
-                {
-                    cur[0] = -1;
-                    break;
-                }
-
-                int tmp = -V[j][idx];
-                next[tmp%2] = cur[0] >= 0 ? (cur[0] + tmp) : -1;
-                next[(tmp+1)%2] = cur[1] >= 0 ? (cur[1] + tmp) : -1;
-
-                if(idx+1 == V[j].size()) continue;
-                int tmp2 = - V[j][idx+1];
-
-
-                if(i == -1)
-                {
-                    setmin(next[tmp2%2], cur[0]>=0?cur[0] + tmp2:-1);
-                    setmin(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
-                }
-                else
-                {
-                    setmax(next[tmp2%2], cur[0]>=0?cur[0] + tmp2:-1);
-                    setmax(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
-                }
+                if(V[i].back() > V[vmax].back())
+                    vmax = i;
+                vsum += V[i].back();
             }
 
-            memcpy(cur, next, sizeof(cur));
-            if(cur[0] < i * 2 || cur[0] < 0) continue;
+            if((vsum % 2) == 0 && vsum >= V[vmax].back() * 2)
+            {
+                int tmp = (sum - vsum * d) / w + vsum;
+                if(ret < 0 || ret > tmp) ret = tmp;
+            }
 
-            cout << cur[0] << endl;
-
-            int tmp = cur[0]/2 + (sum - d * cur[0]) / w;
-
-
-            if(ret < 0 || ret > tmp) ret = tmp;
+            if(V[vmax].size() == 1) break;
+            V[vmax].pop_back();
         }
 
         return ret;
@@ -139,6 +108,6 @@ public:
 int main()
 {
     TheTournamentDivOne ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
