@@ -68,7 +68,7 @@ public:
             for(int j=0;j<size(V);j++)
             {
                 memcpy(cur, next, sizeof(cur));
-                next[0] = 0; next[1] = 0;
+                next[0] = -1; next[1] = -1;
                 cerr << cur[0] << " " << cur[1] << endl;
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
                 cerr << i << " " << j << " " << idx << " = " << V[j][idx] << endl;
