@@ -69,6 +69,7 @@ public:
             for(int j=0;j<size(V);j++)
             {
                 next[0] = 0; next[1] = 0;
+                cout << cur[0] << " " << cur[1] << endl;
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
                 cerr << i << " " << j << " " << idx << " = " << V[j][idx] << endl;
                 if(idx == V[j].size()) 
