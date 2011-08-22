@@ -71,6 +71,7 @@ public:
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
                 if(idx == V[j].size()) 
                 {
+                    cout << j << " " << idx << endl;
                     cur[0] = -1;
                     break;
                 }
