@@ -62,6 +62,7 @@ public:
         int next[2];
         for(int i=10001;i>=0;i--)
         {
+            memset(cur, 0, sizeof(cur));
             for(int j=0;j<size(V);j++)
             {
                 next[0] = 0; next[1] = 0;
