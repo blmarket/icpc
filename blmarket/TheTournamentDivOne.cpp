@@ -63,9 +63,10 @@ public:
         int next[2];
         for(int i=1;i>=0;i--)
         {
-            memset(cur, 0, sizeof(cur));
+            memset(next, 0, sizeof(next));
             for(int j=0;j<size(V);j++)
             {
+                memcpy(cur, next, sizeof(cur));
                 next[0] = 0; next[1] = 0;
                 cerr << cur[0] << " " << cur[1] << endl;
                 int idx = lower_bound(V[j].begin(), V[j].end(), -i) - V[j].begin();
@@ -75,14 +76,15 @@ public:
                     cur[0] = -1;
                     break;
                 }
-                int tmp = - V[j][idx];
+
+                int tmp = -V[j][idx];
                 next[tmp%2] = cur[0] + tmp;
                 next[(tmp+1)%2] = cur[1] + tmp;
+
                 if(idx+1 == V[j].size()) continue;
                 int tmp2 = - V[j][idx+1];
                 setmax(next[tmp2%2], cur[0] + tmp2);
                 setmax(next[(tmp2+1)%2], cur[1] + tmp2);
-                memcpy(cur, next, sizeof(cur));
             }
 
             cerr << cur[0] << " " << cur[1] << endl;
