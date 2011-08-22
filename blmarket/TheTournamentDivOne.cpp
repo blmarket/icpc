@@ -79,7 +79,7 @@ public:
             if((vsum % 2) == 0 && vsum >= V[vmax].back() * 2)
             {
                 cout << vsum << " " << V[vmax].back() << endl;
-                int tmp = (sum - vsum * d) / w + vsum;
+                int tmp = (sum - vsum * d) / w + vsum / 2;
                 if(ret < 0 || ret > tmp) ret = tmp;
             }
 
