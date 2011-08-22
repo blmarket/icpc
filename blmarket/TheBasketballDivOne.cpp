@@ -28,6 +28,7 @@ int n,m;
 void go(int a,int b)
 {
     cout << a << " " << b << endl;
+
     if(a >= n)
     {
         vector<int> V(cur, cur+n);
@@ -36,8 +37,11 @@ void go(int a,int b)
             S.insert(V);
         return;
     }
-    if(b >= n) go(a+1,a+2);
-    if(a >= b) go(a,b+1);
+    if(b >= n) 
+    {
+        return go(a+1,a+2);
+    }
+    if(a >= b) return go(a,b+1);
 
     cur[a] += 2;
     go(a,b+1);
