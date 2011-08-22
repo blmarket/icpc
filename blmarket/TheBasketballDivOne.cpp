@@ -36,7 +36,7 @@ void go(int a,int b)
             S.insert(V);
         return;
     }
-    if(b == n) go(a+1,a+2);
+    if(b >= n) go(a+1,a+2);
     if(a == b) go(a,b+1);
 
     cur[a] += 2;
