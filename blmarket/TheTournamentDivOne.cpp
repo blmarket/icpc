@@ -82,6 +82,7 @@ public:
                 cerr << "cur[1] = " << cur[1] << endl;
                 next[tmp%2] = cur[0] >= 0 ? (cur[0] + tmp) : -1;
                 next[(tmp+1)%2] = cur[1] >= 0 ? (cur[1] + tmp) : -1;
+                cerr << "next[0] = " << next[0] << endl;
 
                 if(idx+1 == V[j].size()) continue;
                 int tmp2 = - V[j][idx+1];
