@@ -44,7 +44,7 @@ public:
         for(int i=0;i<size(points);i++)
         {
             int tmp = points[i];
-            for(int j=0;;j++, tmp -= d)
+            for(int j=0;tmp >= 0;j++, tmp -= d)
             {
                 if((tmp % w) == 0)
                 {
