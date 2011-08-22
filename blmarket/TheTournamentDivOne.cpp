@@ -55,6 +55,7 @@ public:
                     cout << j << " ";
                 }
             }
+            sort(V[i].begin(),V[i].end());
             cout << endl;
         }
 
