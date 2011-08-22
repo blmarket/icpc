@@ -90,6 +90,7 @@ public:
                 setmax(next[(tmp2+1)%2], cur[1]>=0?cur[1] + tmp2:-1);
             }
 
+            memcpy(cur, next, sizeof(cur));
             cerr << cur[0] << " " << cur[1] << endl;
             if(cur[0] < i * 2) continue;
 
