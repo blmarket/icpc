@@ -52,11 +52,9 @@ public:
                 if((tmp % w) == 0)
                 {
                     V[i].pb(-j);
-                    cout << j << " ";
                 }
             }
             sort(V[i].begin(),V[i].end());
-            cout << endl;
         }
 
         int ret = -1;
