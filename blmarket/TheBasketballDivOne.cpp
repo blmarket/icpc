@@ -64,6 +64,7 @@ public:
     {		
         n = n_; m = m_;
         memset(cur, 0, sizeof(cur));
+        S.clear();
         go(0,0);
         return S.size();
     }
@@ -88,6 +89,6 @@ public:
 int main()
 {
     TheBasketballDivOne ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
