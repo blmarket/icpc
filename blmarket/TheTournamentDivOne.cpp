@@ -63,7 +63,7 @@ public:
 
         int cur[2] = {0,0};
         int next[2];
-        for(int i=10;i>=0;i--)
+        for(int i=1;i>=0;i--)
         {
             memset(cur, 0, sizeof(cur));
             for(int j=0;j<size(V);j++)
