@@ -36,7 +36,6 @@ int check(int h1,int h2,int pos,int dist)
         if(i+1 < size(height))
             now += dista[i];
     }
-    cout << ret << endl;
     return ret;
 }
 
