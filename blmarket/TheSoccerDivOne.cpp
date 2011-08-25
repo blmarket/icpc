@@ -53,7 +53,6 @@ public:
                 {
                     int l = 4-j-k; // num of lose
                     if(a+l-j < 0 || a+l-j >= 205) continue;
-                    if(b < k) continue;
                     int newscore = points[i] + j * 3 + k;
 
                     for(int m=0; m<=min(b,k); m++)
@@ -62,7 +61,7 @@ public:
                         if(idx < 0 || idx >=15) continue;
                         if(a == 105 && b == 0)
                         {
-                            cerr << "Checking " << a+l-j << " " << idx << " " << k << endl;
+                            cerr << "Checking " << a+l-j << " " << idx << " " << k << " " << m << endl;
                         }
                         int tmp = dp[i-1][a+l-j][idx] + (newscore > myp ? 1 : 0);
 
