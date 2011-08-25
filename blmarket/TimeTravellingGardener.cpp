@@ -30,6 +30,7 @@ int ccw(PII a, PII b, PII c)
 {
     double y = (double)(b.second - a.second) / (b.first - a.first) * (c.first - a.first) + a.second;
     if(y < -1e-6) return -1;
+    cout << y << " " << c.second << endl;
     if(y > c.second + 1e-6) return -1;
     if(fabs(y-c.second) < 1e-6) return 0;
     return 1;
@@ -53,7 +54,6 @@ int check(const PII &a, const PII &b)
 
     c.second = 0;
     if(ccw(a,b,c) < 0) return 1;
-    cerr << ret << endl;
     return ret;
 }
 
