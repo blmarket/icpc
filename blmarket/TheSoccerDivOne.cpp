@@ -61,8 +61,8 @@ public:
                         if(tmp < r)
                         {
                             r = tmp;
-                            f1 = a+l-j;
-                            f2 = m;
+                            f1 = j;
+                            f2 = l;
                             f3 = newscore;
                         }
                     }
