@@ -25,23 +25,35 @@ inline void setmax(int &a,int b) { if(a<b) a=b; }
 vector<int> dista;
 vector<int> height;
 
-int check(int h1,int h2,int pos,int dist)
+int ccw(PII a, PII b, PII c)
+{
+    int x1 = b.first - a.first;
+    int x2 = c.first - a.first;
+    int y1 = b.second - a.second;
+    int y2 = c.second - a.second;
+
+    return x1*y2 - x2*y1;
+}
+
+int check(const PII &a, const PII &b)
 {
     int ret = 0;
-    int now = 0;
+    PII c;
 
-    if( (h2-h1)*(-pos) + h1*dist < 0) return 1;
+    if(ccw(a,b,mp(0,0)) < 0) return 1;
 
     for(int i=0;i<size(height);i++)
     {
-        long long tmp = (h2 - h1) * (now - pos) - (height[i] - h1) * dist;
-        if(tmp == 0) ret++;
+        c.second = height[i];
+        if(ccw(a,b,c) == 0) ret++;
+
         if(i+1 < size(height))
-            now += dista[i];
+            c.first += dista[i];
     }
 
+    c.second = 0;
+    if(ccw(a,b,c) < 0) return 1;
     cerr << ret << endl;
-    if( (h2 - h1) * (now - pos) + h1 * dist < 0) return 1;
     return ret;
 }
 
@@ -62,7 +74,7 @@ public:
             for(int j=i+1;j<n;j++)
             {
                 int h2 = height[j];
-                setmax(ret, check(h1,h2,pos,dist));
+                setmax(ret, check(mp(pos, h1), mp(pos+dist, h2)));
                 dist += dista[j];
             }
             pos += dista[i];
