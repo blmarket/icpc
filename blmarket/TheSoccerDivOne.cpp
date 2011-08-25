@@ -62,6 +62,11 @@ public:
                     //int &prev = dp[i-1][a+j-l];
                 }
             }
+
+            if(r < 1000)
+            {
+                cerr << i << " " << a << " " << b << " = " << r << endl;
+            }
         }
 
         return dp[size(points)-1][0][0]+1;
