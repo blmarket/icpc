@@ -30,6 +30,10 @@ public:
         sort(points.rbegin(), points.rend());
 
         for(int i=0;i<size(points);i++)
+            cerr << points[i] << ", ";
+        cerr << endl;
+
+        for(int i=0;i<size(points);i++)
         {
             if(points[i] > myp) continue;
             int wincount = 1 + i;
