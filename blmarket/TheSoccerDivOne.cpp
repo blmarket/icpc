@@ -43,7 +43,7 @@ public:
         {
             int &r = dp[i][a][b];
             r = 1000;
-            int f1,f2;
+            int f1,f2,f3;
 
             for(int j=0;j<=4;j++)
             {
@@ -58,16 +58,12 @@ public:
                         if(m < 0 || m >= 15)  continue;
                         int tmp = dp[i-1][a+l-j][m] + (newscore > myp ? 1 : 0);
 
-                        if(i == 2 && a == BASE && b == 0)
-                        {
-                            cout << "newscore = " << newscore << " " << tmp << endl;
-                        }
-
                         if(tmp < r)
                         {
                             r = tmp;
                             f1 = a+l-j;
                             f2 = m;
+                            f3 = newscore;
                         }
                     }
                 }
@@ -75,7 +71,7 @@ public:
 
             if(r < 1000)
             {
-                cerr << i << " " << a << " " << b << " = " << r << " from : " << f1 << " " << f2 << endl;
+                cerr << i << " " << a << " " << b << " = " << r << " from : " << f1 << " " << f2 << " " << f3 << endl;
             }
         }
 
