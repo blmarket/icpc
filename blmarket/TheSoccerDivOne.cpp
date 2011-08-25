@@ -50,7 +50,7 @@ public:
                 {
                     int l = 4-j-k; // num of lose
                     if(a+l-j < 0 || a+l-j >= 205) continue;
-                    int newscore = points[i] + j * 3 + k;
+                    int newscore = points[i] + l * 3 + k;
 
                     for(int m=b-k;m<=b+k;m+=2)
                     {
