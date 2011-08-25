@@ -54,7 +54,7 @@ public:
 
                     for(int m=b-k;m<=b+k;m+=2)
                     {
-                        if(m < 0 || m >= 15) continue;
+                        if(m < 0 || m >= 15)  continue;
                         int &prev = dp[i-1][a-l+j][m];
 
                         setmin(r, prev + (newscore > myp ? 1 : 0));
