@@ -25,6 +25,30 @@ class TheSoccerDivTwo
 public:
     int find(vector <int> points) 
     {		
+        int myp = points[0] + 3;
+        swap(points[0], points.back()); points.pop_back();
+        sort(points.rbegin(), points.rend());
+
+        for(int i=0;i<size(points);i++)
+        {
+            if(points[i] > myp) continue;
+            int wincount = 1 + i;
+            int drawcount = 0, losecount = 0;
+            for(int j=i;j<size(points);j++)
+            {
+                if(points[i] + 3 > myp)
+                    losecount++;
+                else
+                    drawcount++;
+            }
+            if(losecount > wincount) continue;
+            if((drawcount % 2) == 1)
+            {
+                if(losecount + 1 > wincount) continue;
+            }
+            return i+1;
+        }
+        return size(points) + 1;
     }
 
     
