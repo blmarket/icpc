@@ -58,6 +58,11 @@ public:
                         if(m < 0 || m >= 15)  continue;
                         int tmp = dp[i-1][a+l-j][m] + (newscore > myp ? 1 : 0);
 
+                        if(i == 2 && a == BASE && b == 0)
+                        {
+                            cout << "newscore = " << newscore << endl;
+                        }
+
                         if(tmp < r)
                         {
                             r = tmp;
