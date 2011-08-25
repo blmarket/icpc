@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -27,12 +28,10 @@ vector<int> height;
 
 int ccw(PII a, PII b, PII c)
 {
-    int x1 = b.first - a.first;
-    int x2 = c.first - a.first;
-    int y1 = b.second - a.second;
-    int y2 = c.second - a.second;
-
-    return x1*y2 - x2*y1;
+    double y = (double)(b.second - a.second) / (b.first - a.first) * (c.first - a.first) + a.second;
+    if(y < -1e-6) return -1;
+    if(fabs(y-c.second) < 1e-6) return 0;
+    return 1;
 }
 
 int check(const PII &a, const PII &b)
@@ -52,7 +51,7 @@ int check(const PII &a, const PII &b)
     }
 
     c.second = 0;
-    if(ccw(a,b,c) > 0) return 1;
+    if(ccw(a,b,c) < 0) return 1;
     cerr << ret << endl;
     return ret;
 }
