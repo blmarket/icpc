@@ -40,8 +40,8 @@ int check(int h1,int h2,int pos,int dist)
             now += dista[i];
     }
 
-    if( (h2 - h1) * (now - pos) - (height.back() - h1) * dist >0) return 1;
     cerr << ret << endl;
+    if( (h2 - h1) * (now - pos) - (height.back() - h1) * dist < 0) return 1;
     return ret;
 }
 
