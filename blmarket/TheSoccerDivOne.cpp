@@ -63,12 +63,10 @@ public:
                 }
             }
 
-            /*
             if(r < 1000)
             {
                 cerr << i << " " << a << " " << b << " = " << r << endl;
             }
-            */
         }
 
         return dp[size(points)-1][BASE][0]+1;
