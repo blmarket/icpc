@@ -58,7 +58,11 @@ public:
 
                     for(int m=0; m<=min(b,k); m++)
                     {
-                        int idx = b + k - 2 * m;
+                        int idx = b + k - m*2;
+                        if(a == 105 && b == 0)
+                        {
+                            cerr << "Checking " << a+l-j << " " << idx << " " << k << endl;
+                        }
                         int tmp = dp[i-1][a+l-j][idx] + (newscore > myp ? 1 : 0);
 
                         if(tmp < r)
@@ -72,7 +76,7 @@ public:
                 }
             }
 
-            if(r < 1000 && a == 105 && b == 0)
+            if(r < 1000 && a == 105 && (b == 0 || b == 4))
             {
                 cerr << i << " " << a << " " << b << " = " << r << " from : " << f1 << " " << f2 << " " << f3 << endl;
             }
@@ -91,7 +95,7 @@ public:
 	void test_case_0() { int Arr0[] = {5, 17}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1; verify_case(0, Arg1, find(Arg0)); }
 	void test_case_1() { int Arr0[] = {5, 18, 21, 19}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 4; verify_case(1, Arg1, find(Arg0)); }
 	void test_case_2() { int Arr0[] = {11, 23, 18}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1; verify_case(2, Arg1, find(Arg0)); }
-	void test_case_3() { int Arr0[] = {4, 16, 16, 16, 16,16,16,16,16,16,16,16}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 2; verify_case(3, Arg1, find(Arg0)); }
+	void test_case_3() { int Arr0[] = {8, 16, 16, 16, 16,16,16,16,16,16,16,16}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 2; verify_case(3, Arg1, find(Arg0)); }
 
 
 // END CUT HERE
@@ -102,6 +106,6 @@ public:
 int main()
 {
     TheSoccerDivOne ___test; 
-    ___test.run_test(2);
+    ___test.run_test(3);
 } 
 // END CUT HERE
