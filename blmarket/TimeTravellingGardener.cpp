@@ -31,7 +31,7 @@ int check(int h1,int h2,int pos,int dist)
     int now = 0;
     for(int i=0;i<size(height);i++)
     {
-        long long tmp = (h2-h1) * (now - pos) + h1 - height[i] * dist;
+        long long tmp = (h2 - h1) * (now - pos) - (height[i] - h1) * dist;
         if(tmp == 0) ret++;
         if(i+1 < size(height))
             now += dista[i];
