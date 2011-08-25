@@ -69,7 +69,7 @@ public:
             }
         }
 
-        return dp[size(points)-1][0][0]+1;
+        return dp[size(points)-1][BASE][0]+1;
     }
 
     
