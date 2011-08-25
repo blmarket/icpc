@@ -49,7 +49,7 @@ public:
 
             for(int j=0;j<=4;j++)
             {
-                for(int k=0;j+k<=4;k++) if(b+k<15)// num of draw
+                for(int k=0;j+k<=4;k++) // num of draw
                 {
                     int l = 4-j-k; // num of lose
                     if(a+l-j < 0 || a+l-j >= 205) continue;
@@ -59,6 +59,7 @@ public:
                     for(int m=0; m<=min(b,k); m++)
                     {
                         int idx = b + k - m*2;
+                        if(idx < 0 || idx >=15) continue;
                         if(a == 105 && b == 0)
                         {
                             cerr << "Checking " << a+l-j << " " << idx << " " << k << endl;
