@@ -20,11 +20,51 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+inline void setmin(int &a,int b) { if(a>b) a=b; }
+
+vector<int> points;
+int myp;
+int dp[55][205][15];
+
+const int BASE = 101;
+
 class TheSoccerDivOne 
 {
 public:
-    int find(vector <int> points) 
+    int find(vector <int> points_) 
     {		
+        points = points_;
+        myp = points[0] + 12;
+
+        for(int i=0;i<205;i++) for(int j=0;j<15;j++) dp[0][i][j] = 1000;
+        dp[0][BASE+4][0] = 0;
+
+        for(int i=1;i<size(points);i++) for(int a=0;a<205;a++) for(int b=0;b<15;b++)
+        {
+            int &r = dp[i][a][b];
+            r = 1000;
+
+            for(int j=0;j<4;j++) if(a+j<205)// num of wins.
+            {
+                for(int k=0;j+k<4;k++) if(b+k<105)// num of draw
+                {
+                    int l = 4-j-k; // num of lose
+                    if(a+j-l<0) continue;
+                    int newscore = points[i] + j * 3 + k;
+
+                    for(int m=b-k;m<=b+k;m+=2)
+                    {
+                        if(m < 0 || m >= 15) continue;
+                        int &prev = dp[i-1][a+j-l][m];
+
+                        setmin(r, prev + (newscore > points[0] ? 1 : 0));
+                    }
+                    //int &prev = dp[i-1][a+j-l];
+                }
+            }
+        }
+
+        return dp[size(points)-1][0][0]+1;
     }
 
     
