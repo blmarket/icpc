@@ -30,7 +30,6 @@ int ccw(PII a, PII b, PII c)
 {
     double y = (double)(b.second - a.second) / (b.first - a.first) * (c.first - a.first) + a.second;
     if(y < -1e-6) return -1;
-    cout << y << " " << c.second << endl;
     if(y > c.second + 1e-6) return -1;
     if(fabs(y-c.second) < 1e-6) return 0;
     return 1;
@@ -41,11 +40,10 @@ int check(const PII &a, const PII &b)
     int ret = 0;
     PII c;
 
-    if(ccw(a,b,mp(0,0)) < 0) return 1;
-
     for(int i=0;i<size(height);i++)
     {
         c.second = height[i];
+        if(ccw(a,b,c) < 0) return 1;
         if(ccw(a,b,c) == 0) ret++;
 
         if(i+1 < size(height))
@@ -53,7 +51,6 @@ int check(const PII &a, const PII &b)
     }
 
     c.second = 0;
-    if(ccw(a,b,c) < 0) return 1;
     return ret;
 }
 
