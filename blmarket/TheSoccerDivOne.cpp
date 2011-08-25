@@ -60,7 +60,7 @@ public:
 
                         if(i == 2 && a == BASE && b == 0)
                         {
-                            cout << "newscore = " << newscore << endl;
+                            cout << "newscore = " << newscore << " " << tmp << endl;
                         }
 
                         if(tmp < r)
