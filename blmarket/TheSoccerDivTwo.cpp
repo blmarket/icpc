@@ -44,6 +44,8 @@ public:
                     losecount++;
                 else if(points[j] + 3 > myp)
                     drawcount++;
+                else
+                    wincount++;
             }
             cerr << i << " : " << wincount << " " << losecount << " " << drawcount << endl;
             if(losecount > wincount) continue;
