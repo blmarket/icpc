@@ -29,6 +29,9 @@ int check(int h1,int h2,int pos,int dist)
 {
     int ret = 0;
     int now = 0;
+
+    if( (h2-h1)*(-pos) +h1*dist < 0) return 1;
+
     for(int i=0;i<size(height);i++)
     {
         long long tmp = (h2 - h1) * (now - pos) - (height[i] - h1) * dist;
@@ -36,6 +39,8 @@ int check(int h1,int h2,int pos,int dist)
         if(i+1 < size(height))
             now += dista[i];
     }
+
+    if( (h2 - h1) * (now - pos) - (height.back() - h1) * dist >0) return 1;
     cerr << ret << endl;
     return ret;
 }
