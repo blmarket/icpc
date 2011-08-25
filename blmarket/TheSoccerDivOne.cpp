@@ -49,13 +49,13 @@ public:
                 for(int k=0;j+k<=4;k++) if(b+k<105)// num of draw
                 {
                     int l = 4-j-k; // num of lose
-                    if(a-l+j < 0 || a-l+j >= 205) continue;
+                    if(a+l-j < 0 || a+l-j >= 205) continue;
                     int newscore = points[i] + j * 3 + k;
 
                     for(int m=b-k;m<=b+k;m+=2)
                     {
                         if(m < 0 || m >= 15)  continue;
-                        int &prev = dp[i-1][a-l+j][m];
+                        int &prev = dp[i-1][a+l-j][m];
 
                         setmin(r, prev + (newscore > myp ? 1 : 0));
                     }
