@@ -44,12 +44,12 @@ public:
             int &r = dp[i][a][b];
             r = 1000;
 
-            for(int j=0;j<4;j++) if(a+j<205)// num of wins.
+            for(int j=0;j<4;j++)
             {
                 for(int k=0;j+k<4;k++) if(b+k<105)// num of draw
                 {
                     int l = 4-j-k; // num of lose
-                    if(a+j-l<0) continue;
+                    if(a+l-j < 0 || a+l-j >= 205) continue;
                     int newscore = points[i] + j * 3 + k;
 
                     for(int m=b-k;m<=b+k;m+=2)
