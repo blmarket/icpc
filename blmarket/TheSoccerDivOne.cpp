@@ -59,7 +59,7 @@ public:
                     for(int m=0; m<=min(b,k); m++)
                     {
                         int idx = b + k - 2 * m;
-                        int tmp = dp[i-1][a+l-j][m] + (newscore > myp ? 1 : 0);
+                        int tmp = dp[i-1][a+l-j][idx] + (newscore > myp ? 1 : 0);
 
                         if(tmp < r)
                         {
@@ -72,7 +72,7 @@ public:
                 }
             }
 
-            if(r < 1000 && i+2 > size(points))
+            if(r < 1000 && a == 105 && b == 0)
             {
                 cerr << i << " " << a << " " << b << " = " << r << " from : " << f1 << " " << f2 << " " << f3 << endl;
             }
