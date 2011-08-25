@@ -52,7 +52,6 @@ int check(const PII &a, const PII &b)
 
     c.second = 0;
     if(ccw(a,b,c) < 0) return 1;
-    cerr << ret << endl;
     return ret;
 }
 
