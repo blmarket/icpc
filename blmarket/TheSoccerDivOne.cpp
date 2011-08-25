@@ -47,10 +47,11 @@ public:
 
             for(int j=0;j<=4;j++)
             {
-                for(int k=0;j+k<=4;k++) if(b+k<105)// num of draw
+                for(int k=0;j+k<=4;k++) if(b+k<15)// num of draw
                 {
                     int l = 4-j-k; // num of lose
                     if(a+l-j < 0 || a+l-j >= 205) continue;
+                    if(b < k) continue;
                     int newscore = points[i] + j * 3 + k;
 
                     for(int m=b-k;m<=b+k;m+=2)
