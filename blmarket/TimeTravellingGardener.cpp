@@ -36,6 +36,7 @@ int check(int h1,int h2,int pos,int dist)
         if(i+1 < size(height))
             now += dista[i];
     }
+    cerr << ret << endl;
     return ret;
 }
 
@@ -88,6 +89,6 @@ public:
 int main()
 {
     TimeTravellingGardener ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
