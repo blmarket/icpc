@@ -40,11 +40,12 @@ public:
             int drawcount = 0, losecount = 0;
             for(int j=i;j<size(points);j++)
             {
-                if(points[i] + 3 > myp)
+                if(points[j] + 1 > myp)
                     losecount++;
-                else
+                else if(points[j] + 3 > myp)
                     drawcount++;
             }
+            cerr << i << " : " << wincount << " " << losecount << " " << drawcount << endl;
             if(losecount > wincount) continue;
             if((drawcount % 2) == 1)
             {
