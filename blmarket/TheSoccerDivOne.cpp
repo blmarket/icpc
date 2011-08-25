@@ -56,9 +56,9 @@ public:
                     if(b < k) continue;
                     int newscore = points[i] + j * 3 + k;
 
-                    for(int m=b-k;m<=b+k;m+=2)
+                    for(int m=0; m<=min(b,k); m++)
                     {
-                        if(m < 0 || m >= 15)  continue;
+                        int idx = b + k - 2 * m;
                         int tmp = dp[i-1][a+l-j][m] + (newscore > myp ? 1 : 0);
 
                         if(tmp < r)
