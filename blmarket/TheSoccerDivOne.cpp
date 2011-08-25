@@ -65,7 +65,7 @@ public:
 
             if(r < 1000)
             {
-                //cerr << i << " " << a << " " << b << " = " << r << endl;
+                cerr << i << " " << a << " " << b << " = " << r << endl;
             }
         }
 
@@ -92,6 +92,6 @@ public:
 int main()
 {
     TheSoccerDivOne ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0);
 } 
 // END CUT HERE
