@@ -41,6 +41,8 @@ public:
 
         for(int i=1;i<size(points);i++) for(int a=0;a<205;a++) for(int b=0;b<15;b++)
         {
+            int elasp = size(points) - i + 1;
+            if(abs(a - BASE) > elasp * 4) continue;
             int &r = dp[i][a][b];
             r = 1000;
             int f1,f2,f3;
@@ -70,7 +72,7 @@ public:
                 }
             }
 
-            if(r < 1000)
+            if(r < 1000 && i+2 > size(points))
             {
                 cerr << i << " " << a << " " << b << " = " << r << " from : " << f1 << " " << f2 << " " << f3 << endl;
             }
