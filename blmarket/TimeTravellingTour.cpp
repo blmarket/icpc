@@ -41,7 +41,7 @@ LL go(int pos,int s,int e)
 
     for(int i=0;i<N;i++) if(mindist[pos][i] != -1)
     {
-        for(int j=s+1;j<=e;j++)
+        for(int j=s+1;j<e;j++)
         {
             long long tmp = mindist[pos][i] + go(i, s, j) + go(i, j, e);
             if(pos == 1 && s == 1 && e == 3)
