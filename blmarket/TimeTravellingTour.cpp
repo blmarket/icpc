@@ -84,6 +84,7 @@ public:
                     }
                 }
         cerr << go(0,0,3) << endl;
+        cerr << " " << go(1,0,1) << " " << go(1,1,3) << endl;
         cerr << go(0,3,4) << endl;
 
         return go(0, 0, size(cities));
