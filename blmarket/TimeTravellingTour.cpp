@@ -47,7 +47,6 @@ LL go(int pos,int s,int e)
             if(pos == 1 && s == 1 && e == 3)
             {
                 cerr << i << " " << j << " = " << mindist[pos][i] << endl;
-                cerr << pos << " " << i << endl;
             }
             if(r == -1 || r > tmp)
                 r = tmp;
@@ -63,10 +62,10 @@ public:
     {		
         memset(memo, -1, sizeof(memo));
         N = N_;
-        for(int i=0;i<N;i++)
-            mindist[i][i]=0;
         cities = cities_;
         memset(mindist, -1, sizeof(mindist));
+        for(int i=0;i<N;i++)
+            mindist[i][i]=0;
         string rr;
         for(int i=0;i<size(roads);i++) rr += roads[i];
         istringstream sin(rr);
