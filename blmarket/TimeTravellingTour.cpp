@@ -43,6 +43,7 @@ LL go(int pos,int s,int e)
     {
         for(int j=s+1;j<=e;j++)
         {
+            cerr << "split " << i << " " << s << " " << j << " - " << i << " " << j << " " << e << endl;
             long long tmp = mindist[s][i] + go(i, s, j) + go(i, j, e);
             if(r == -1 || r > tmp)
                 r = tmp;
