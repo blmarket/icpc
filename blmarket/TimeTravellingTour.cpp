@@ -34,15 +34,19 @@ LL go(int pos,int s,int e)
 {
     if(s==e) return 0;
     int tt = cities[s];
+    if(s+1 == e) return mindist[pos][tt];
     if(mindist[pos][tt] == -1) return -1;
     LL &r = memo[pos][s][e];
     if(r != -1) return r;
 
     for(int i=0;i<N;i++) if(mindist[s][i] != -1)
     {
-        long long tmp = mindist[s][i] + mindist[i][tt] + go(i, s+1, e);
-        if(r == -1 || r > tmp)
-            r = tmp;
+        for(int j=s+1;j<=e;j++)
+        {
+            long long tmp = mindist[s][i] + go(i, s, j) + go(i, j, e);
+            if(r == -1 || r > tmp)
+                r = tmp;
+        }
     }
     return r;
 }
@@ -103,6 +107,6 @@ public:
 int main()
 {
     TimeTravellingTour ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
