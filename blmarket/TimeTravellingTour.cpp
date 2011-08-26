@@ -47,6 +47,7 @@ LL go(int pos,int s,int e)
             if(pos == 1 && s == 1 && e == 3)
             {
                 cerr << i << " " << j << " = " << mindist[pos][i] << endl;
+                cerr << pos << " " << i << endl;
             }
             if(r == -1 || r > tmp)
                 r = tmp;
