@@ -83,6 +83,8 @@ public:
                         mindist[i][j] = mindist[i][k] + mindist[k][j];
                     }
                 }
+        cerr << go(0,0,3) << endl;
+        cerr << go(0,3,4) << endl;
 
         return go(0, 0, size(cities));
     }
