@@ -83,6 +83,7 @@ public:
                         mindist[i][j] = mindist[i][k] + mindist[k][j];
                     }
                 }
+
         cerr << go(1,1,3) << endl;
         cerr << go(1,1,2) << " " << go(1,2,3) << endl;
         return -1;
