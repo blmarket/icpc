@@ -29,22 +29,28 @@ int N;
 vector<int> cities;
 
 long long memo[55][55][55];
+int cnt = 0;
 
 LL go(int pos,int s,int e)
 {
     if(s==e) return 0;
     int tt = cities[s];
     if(s+1 == e) return mindist[pos][tt];
-    if(mindist[pos][tt] == -1) return -1;
     LL &r = memo[pos][s][e];
     if(r != -1) return r;
+
+    cnt++;
+    if((cnt%100) == 0)
+    {
+        cerr << cnt << "nodes reached" << endl;
+    }
 
     for(int i=0;i<N;i++) if(mindist[pos][i] != -1)
     {
         for(int j=s+1;j<e;j++)
         {
             long long tmp = mindist[pos][i] + go(i, s, j) + go(i, j, e);
-            if(r == -1 || r > tmp)
+            if(r < 0 || r > tmp)
                 r = tmp;
         }
     }
@@ -84,6 +90,14 @@ public:
                     }
                 }
 
+        for(int i=0;i<size(cities);i++)
+        {
+            if(mindist[0][cities[i]] == -1)
+            {
+                cerr << "fail to move " << i << " " << cities[i] << endl;
+                return -1;
+            }
+        }
 
         return go(0, 0, size(cities));
     }
