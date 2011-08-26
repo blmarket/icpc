@@ -39,12 +39,11 @@ LL go(int pos,int s,int e)
     LL &r = memo[pos][s][e];
     if(r != -1) return r;
 
-    for(int i=0;i<N;i++) if(mindist[s][i] != -1)
+    for(int i=0;i<N;i++) if(mindist[pos][i] != -1)
     {
         for(int j=s+1;j<=e;j++)
         {
-            cerr << "split " << i << " " << s << " " << j << " - " << i << " " << j << " " << e << endl;
-            long long tmp = mindist[s][i] + go(i, s, j) + go(i, j, e);
+            long long tmp = mindist[pos][i] + go(i, s, j) + go(i, j, e);
             if(r == -1 || r > tmp)
                 r = tmp;
         }
