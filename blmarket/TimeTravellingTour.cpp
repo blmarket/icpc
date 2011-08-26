@@ -48,6 +48,7 @@ LL go(int pos,int s,int e)
                 r = tmp;
         }
     }
+    cerr << pos << " " << s << " " << e << " = " << r << endl;
     return r;
 }
 
