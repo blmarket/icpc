@@ -86,6 +86,7 @@ public:
             LL tt = -Q.top().first;
             int pos = Q.top().second.first;
             int lt = Q.top().second.second;
+            Q.pop();
 
             for(int i=0;i<size(sun);i++)
             {
