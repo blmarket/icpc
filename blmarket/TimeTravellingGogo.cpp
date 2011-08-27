@@ -128,7 +128,8 @@ public:
                         }
                         tmp += mindist[pos][j];
                         llt += mindist[pos][j];
-                        check_update(Q, mp(j, llt), tmp);
+                        if(check_update(Q, mp(j, llt), tmp))
+                            cout << "... moves to " << j << " " << llt << " " << tmp << endl;
                     }
                 }
             }
