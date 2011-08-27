@@ -30,12 +30,13 @@ LL mst;
 
 map<pair<int,int>, LL> memo;
 
-void check_update(priority_queue<pair<LL, PII> > &Q, PII key, LL tot)
+bool check_update(priority_queue<pair<LL, PII> > &Q, PII key, LL tot)
 {
     if(memo.count(key) != 0)
-        return;
+        return false;
     memo[key] = tot;
     Q.push(mp(-tot, key));
+    return true;
 }
 
 class TimeTravellingGogo 
@@ -111,7 +112,8 @@ public:
                     if(targettime < lt)
                     {
                         LL tmp = tt + mst + (lt - targettime) + mindist[pos][j];
-                        check_update(Q, mp(j, sun[i].second), tmp);
+                        if(check_update(Q, mp(j, sun[i].second), tmp))
+                            cout << "... moves to " << j << " " << sun[i].second << endl;
                         tmp = tt + mst + (lt - sun[i].first) + mindist[pos][j];
                         check_update(Q, mp(j, sun[i].first + mindist[pos][j]), tmp);
                     }
