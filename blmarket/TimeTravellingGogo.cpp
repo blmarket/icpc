@@ -26,12 +26,41 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<PII> sun;
 long long mindist[22][22];
 int N;
+LL mst;
+
+map<pair<int,int>, LL> memo;
+
+LL go(int pos, int t)
+{
+    if(memo.count(mp(pos,t)))
+        return memo[mp(pos,t)];
+    LL &r = memo[mp(pos,t)];
+    r = -1;
+
+    for(int i=0;i<size(sun);i++)
+    {
+        int tdiff = sun[i].second - sun[i].first;
+        for(int j=0;j<N;j++)
+        {
+            if(mindist[pos][j] > tdiff)
+                continue;
+            int targettime = sun[i].second - mindist[pos][j];
+            if(targettime < t)
+            {
+                LL tmp = go(i, sun[i].second);
+                if(tmp == -1) continue;
+                tmp += mst + (t - targettime);
+            }
+        }
+    }
+}
 
 class TimeTravellingGogo 
 {
 public:
     long long determineTime(int N_, vector <int> sunnyStart, vector <int> sunnyEnd, vector <string> roads, int machineStartTime) 
     {		
+        mst = machineStartTime;
         N = N_;
 
         sun.clear();
