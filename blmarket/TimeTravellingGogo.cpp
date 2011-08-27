@@ -28,60 +28,24 @@ long long mindist[22][22];
 int N;
 LL mst;
 
-struct linked
-{
-    PII key;
-    LL data;
-    linked *next;
-};
-
-linked *hash[500000];
-
 map<pair<int,int>, LL> memo;
-
-int hvalue(const PII &a)
-{
-    return ((a.first*3171+645233) ^ (a.second)) % 500000;
-}
 
 bool check_update(priority_queue<pair<LL, PII> > &Q, PII key, LL tot)
 {
-    int hv = hvalue(key);
-
-    if(hash[hv] == NULL)
+    if(memo.count(key) == 0)
     {
-        hash[hv] = new linked();
-        hash[hv]->key = key;
-        hash[hv]->data = tot;
+        memo[key] = tot;
         Q.push(mp(-tot, key));
         return true;
     }
-
-    linked *tt = hash[hv];
-    while(true)
+    LL &tt = memo[key];
+    if(tt > tot)
     {
-        if(tt->key == key)
-        {
-            if(tt->data > tot)
-            {
-                tt->data = tot;
-                Q.push(mp(-tot, key));
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        if(tt->next == NULL)
-        {
-            tt->next = new linked();
-            tt->next->key = key;
-            tt->next->data = tot;
-            Q.push(mp(-tot,key));
-            return true;
-        }
+        tt = tot;
+        Q.push(mp(-tot, key));
+        return true;
     }
+    return false;
 }
 
 class TimeTravellingGogo 
@@ -123,11 +87,11 @@ public:
 
         if(mindist[0][N-1] == -1) return -1;
 
-        memset(hash, 0, sizeof(hash));
+        memo.clear();
+        memo[mp(0,0)] = 0;
 
         priority_queue<pair<LL, PII> > Q;
-
-        check_update(Q, mp(0,0), 0);
+        Q.push(mp(0, mp(0,0)));
 
         LL ret = -1;
 
@@ -146,6 +110,7 @@ public:
             {
                 if(ret < 0 || ret > tt)
                     ret = tt;
+                break;
             }
 
             for(int i=0;i<size(sun);i++)
