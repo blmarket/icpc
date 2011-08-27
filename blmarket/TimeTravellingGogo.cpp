@@ -28,24 +28,28 @@ long long mindist[22][22];
 int N;
 LL mst;
 
-map<pair<int,int>, LL> memo;
+map<int, LL> memo[22];
+
+//map<pair<int,int>, LL> memo;
 
 bool check_update(priority_queue<pair<LL, PII> > &Q, PII key, LL tot)
 {
-    if(memo.count(key) == 0)
+    int node = key.first;
+    foreach(it, memo[node])
     {
-        memo[key] = tot;
-        Q.push(mp(-tot, key));
-        return true;
+        if(it->first > key.second)
+        {
+            memo[node][key.second] = tot;
+            Q.push(mp(-tot, key));
+            return true;
+        }
+
+        if(tot >= it->second + (key.second - it->first))
+            return false;
     }
-    LL &tt = memo[key];
-    if(tt > tot)
-    {
-        tt = tot;
-        Q.push(mp(-tot, key));
-        return true;
-    }
-    return false;
+    memo[node][key.second] = tot;
+    Q.push(mp(-tot, key));
+    return true;
 }
 
 class TimeTravellingGogo 
@@ -87,11 +91,9 @@ public:
 
         if(mindist[0][N-1] == -1) return -1;
 
-        memo.clear();
-        memo[mp(0,0)] = 0;
 
         priority_queue<pair<LL, PII> > Q;
-        Q.push(mp(0, mp(0,0)));
+        check_update(Q, mp(0,0), 0);
 
         LL ret = -1;
 
@@ -102,7 +104,7 @@ public:
             int lt = Q.top().second.second;
             Q.pop();
 
-            if(memo[mp(pos,lt)] != tt) continue;
+            if(memo[pos][lt] != tt) continue;
 
             cout << pos << " " << lt << " " << tt << endl;
 
