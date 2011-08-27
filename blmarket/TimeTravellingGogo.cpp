@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdio>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -17,14 +19,51 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+vector<PII> sun;
+long long mindist[22][22];
+int N;
 
 class TimeTravellingGogo 
 {
 public:
-    long long determineTime(int N, vector <int> sunnyStart, vector <int> sunnyEnd, vector <string> roads, int machineStartTime) 
+    long long determineTime(int N_, vector <int> sunnyStart, vector <int> sunnyEnd, vector <string> roads, int machineStartTime) 
     {		
+        N = N_;
+
+        sun.clear();
+        for(int i=0;i<size(sunnyStart);i++)
+            sun.pb(mp(sunnyStart[i], sunnyEnd[i]));
+
+        string rr;
+        for(int i=0;i<size(roads);i++) rr += roads[i];
+
+        memset(mindist, -1, sizeof(mindist));
+        for(int i=0;i<N;i++)
+            mindist[i][i] = 0;
+
+        istringstream sin(rr);
+        string tmp;
+        while(sin >> tmp)
+        {
+            int a,b,c;
+            sscanf(tmp.c_str(),"%d,%d,%d",&a,&b,&c);
+            if(mindist[a][b] == -1 || mindist[a][b] > c)
+                mindist[a][b] = mindist[b][a] = c;
+        }
+
+        for(int k=0;k<N;k++)
+            for(int i=0;i<N;i++) if(mindist[i][k] != -1)
+                for(int j=0;j<N;j++) if(mindist[k][j] != -1)
+                {
+                    if(mindist[i][j] == -1 || mindist[i][j] > mindist[i][k] + mindist[k][j])
+                        mindist[i][j] = mindist[i][k] + mindist[k][j];
+                }
+
+        return -1;
     }
 
     
