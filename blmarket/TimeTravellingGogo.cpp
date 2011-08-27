@@ -104,7 +104,7 @@ public:
 
             if(memo[mp(pos,lt)] != tt) continue;
 
-            cout << pos << " " << lt << " " << tt << endl;
+            //cout << pos << " " << lt << " " << tt << endl;
 
             if(pos == N-1)
             {
@@ -124,10 +124,10 @@ public:
                     {
                         LL tmp = tt + mst + (lt - targettime) + mindist[pos][j];
                         if(check_update(Q, mp(j, sun[i].second), tmp))
-                            cout << "... rmoves to " << j << " " << sun[i].second << " " << tmp << endl;
+                            ;//cout << "... rmoves to " << j << " " << sun[i].second << " " << tmp << endl;
                         tmp = tt + mst + (lt - sun[i].first) + mindist[pos][j];
                         if(check_update(Q, mp(j, sun[i].first + mindist[pos][j]), tmp))
-                            cout << "... rmoves to " << j << " " << sun[i].first + mindist[pos][j] << " " << tmp << endl;
+                            ;//cout << "... rmoves to " << j << " " << sun[i].first + mindist[pos][j] << " " << tmp << endl;
                     }
                     else
                     {
@@ -141,7 +141,7 @@ public:
                         tmp += mindist[pos][j];
                         llt += mindist[pos][j];
                         if(check_update(Q, mp(j, llt), tmp))
-                            cout << "... moves to " << j << " " << llt << " " << tmp << endl;
+                            ;//cout << "... moves to " << j << " " << llt << " " << tmp << endl;
                     }
                 }
             }
