@@ -104,7 +104,7 @@ public:
 
             if(memo[mp(pos,lt)] != tt) continue;
 
-            //cout << pos << " " << lt << " " << tt << endl;
+            cout << pos << " " << lt << " " << tt << endl;
 
             if(pos == N-1)
             {
