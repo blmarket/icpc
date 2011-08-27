@@ -112,6 +112,8 @@ public:
                     {
                         LL tmp = tt + mst + (lt - targettime) + mindist[pos][j];
                         check_update(Q, mp(j, sun[i].second), tmp);
+                        tmp = tt + mst + (lt - sun[i].first) + mindist[pos][j];
+                        check_update(Q, mp(j, sun[i].first + mindist[pos][j]), tmp);
                     }
                     else
                     {
