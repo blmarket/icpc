@@ -30,29 +30,12 @@ LL mst;
 
 map<pair<int,int>, LL> memo;
 
-LL go(int pos, int t)
+void check_update(priority_queue<pair<LL, PII> > &Q, PII key, LL tot)
 {
-    if(memo.count(mp(pos,t)))
-        return memo[mp(pos,t)];
-    LL &r = memo[mp(pos,t)];
-    r = -1;
-
-    for(int i=0;i<size(sun);i++)
-    {
-        int tdiff = sun[i].second - sun[i].first;
-        for(int j=0;j<N;j++)
-        {
-            if(mindist[pos][j] > tdiff)
-                continue;
-            int targettime = sun[i].second - mindist[pos][j];
-            if(targettime < t)
-            {
-                LL tmp = go(i, sun[i].second);
-                if(tmp == -1) continue;
-                tmp += mst + (t - targettime);
-            }
-        }
-    }
+    if(memo.count(key) != 0)
+        return;
+    memo[key] = tot;
+    Q.push(mp(-tot, key));
 }
 
 class TimeTravellingGogo 
@@ -92,7 +75,47 @@ public:
                         mindist[i][j] = mindist[i][k] + mindist[k][j];
                 }
 
-        return -1;
+        memo.clear();
+        memo[mp(0,0)] = 0;
+
+        priority_queue<pair<LL, PII> > Q;
+        Q.push(mp(0, mp(0,0)));
+
+        while(Q.empty() == false)
+        {
+            LL tt = -Q.top().first;
+            int pos = Q.top().second.first;
+            int lt = Q.top().second.second;
+
+            for(int i=0;i<size(sun);i++)
+            {
+                int tdiff = sun[i].second - sun[i].first;
+                for(int j=0;j<N;j++)
+                {
+                    if(mindist[pos][j] > tdiff)
+                        continue;
+                    int targettime = sun[i].second - mindist[pos][j];
+                    if(targettime < lt)
+                    {
+                        LL tmp = tt + mst + (lt - targettime) + mindist[pos][j];
+                        check_update(Q, mp(j, sun[i].second), tmp);
+                    }
+                    else
+                    {
+                        LL tmp = tt;
+                        int llt = lt;
+                        if(llt < sun[i].first)
+                        {
+                            tmp += (sun[i].first - llt);
+                            llt = sun[i].first;
+                        }
+                        tmp += mindist[pos][j];
+                        llt += mindist[pos][j];
+                        check_update(Q, mp(j, llt), tmp);
+                    }
+                }
+            }
+        }
     }
 
     
