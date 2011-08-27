@@ -75,6 +75,10 @@ public:
                         mindist[i][j] = mindist[i][k] + mindist[k][j];
                 }
 
+        for(int i=0;i<N;i++)
+            cout << mindist[0][i] << " ";
+        cout << endl;
+
         memo.clear();
         memo[mp(0,0)] = 0;
 
@@ -89,6 +93,7 @@ public:
             int pos = Q.top().second.first;
             int lt = Q.top().second.second;
             Q.pop();
+
             if(pos == N-1)
             {
                 if(ret < 0 || ret > tt)
