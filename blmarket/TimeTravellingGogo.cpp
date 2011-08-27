@@ -75,9 +75,7 @@ public:
                         mindist[i][j] = mindist[i][k] + mindist[k][j];
                 }
 
-        for(int i=0;i<N;i++)
-            cout << mindist[0][i] << " ";
-        cout << endl;
+        if(mindist[0][N-1] == -1) return -1;
 
         memo.clear();
         memo[mp(0,0)] = 0;
@@ -105,7 +103,7 @@ public:
                 int tdiff = sun[i].second - sun[i].first;
                 for(int j=0;j<N;j++)
                 {
-                    if(mindist[pos][j] > tdiff)
+                    if(mindist[pos][j] == -1 || mindist[pos][j] > tdiff)
                         continue;
                     int targettime = sun[i].second - mindist[pos][j];
                     if(targettime < lt)
