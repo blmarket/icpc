@@ -115,7 +115,8 @@ public:
                         if(check_update(Q, mp(j, sun[i].second), tmp))
                             cout << "... moves to " << j << " " << sun[i].second << " " << tmp << endl;
                         tmp = tt + mst + (lt - sun[i].first) + mindist[pos][j];
-                        check_update(Q, mp(j, sun[i].first + mindist[pos][j]), tmp);
+                        if(check_update(Q, mp(j, sun[i].first + mindist[pos][j]), tmp))
+                            cout << "... moves to " << j << " " << sun[i].first + mindist[pos][j] << " " << tmp << endl;
                     }
                     else
                     {
