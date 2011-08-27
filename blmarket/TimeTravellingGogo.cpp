@@ -81,12 +81,19 @@ public:
         priority_queue<pair<LL, PII> > Q;
         Q.push(mp(0, mp(0,0)));
 
+        LL ret = -1;
+
         while(Q.empty() == false)
         {
             LL tt = -Q.top().first;
             int pos = Q.top().second.first;
             int lt = Q.top().second.second;
             Q.pop();
+            if(pos == N-1)
+            {
+                if(ret < 0 || ret > tt)
+                    ret = tt;
+            }
 
             for(int i=0;i<size(sun);i++)
             {
@@ -117,6 +124,7 @@ public:
                 }
             }
         }
+        return ret;
     }
 
     
