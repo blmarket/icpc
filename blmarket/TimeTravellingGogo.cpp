@@ -92,6 +92,8 @@ public:
             int lt = Q.top().second.second;
             Q.pop();
 
+            cout << pos << " " << lt << " " << tt << endl;
+
             if(pos == N-1)
             {
                 if(ret < 0 || ret > tt)
