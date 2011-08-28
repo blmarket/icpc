@@ -49,7 +49,7 @@ public:
             if(M >= i && M <= p2)
             {
                 int npos = p2 - (M - i);
-                cerr << "npos = " << npos << endl;
+                //cerr << "npos = " << npos << endl;
                 if(movable(npos, L) == false) return "Draw";
             }
         }
@@ -78,6 +78,6 @@ public:
 int main()
 {
     StonesGame ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
