@@ -44,8 +44,13 @@ public:
                 for(int k=0;k<m;k++)
                 {
                     if(maxpick[j][k] < i) continue;
-                    if(j+1 >= n || k+1 >= m) return i;
+                    if(j+1 >= n || k+1 >= m) 
+                    {
+                        if(maxpick[j][k] == i) return i;
+                    }
                     if(maxpick[j][k+1] < i || maxpick[j+1][k] < i || maxpick[j+1][k+1] < i) return i;
+                    maxpick[j][k+1] = i+1;
+                    maxpick[j+1][k] = i+1;
                     maxpick[j+1][k+1] = i+1;
                 }
             }
