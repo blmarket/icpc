@@ -64,6 +64,7 @@ public:
                     d1 = abs(d1);
                     d2 = abs(d2);
                     if(d1 > d2) swap(d1,d2);
+                    d1--;
                     score[cur][k] += ((d2*(d2+1))/2) - ((d1*(d1+1))/2);
                 }
             }
