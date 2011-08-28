@@ -48,6 +48,7 @@ public:
             if(M >= i && M <= p2)
             {
                 int npos = p2 - (M - i);
+                cerr << "npos = " << npos << endl;
                 if(movable(npos, L) == false) return "Draw";
             }
         }
