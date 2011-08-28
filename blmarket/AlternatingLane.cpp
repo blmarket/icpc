@@ -18,6 +18,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
@@ -49,8 +50,8 @@ public:
             {
                 score[cur][k] = accum;
 
-                int d2 = k - low[i-1];
-                int d1 = k - high[i-1];
+                LL d2 = k - low[i-1];
+                LL d1 = k - high[i-1];
 
                 if(d1 < 0 && d2 > 0)
                 {
