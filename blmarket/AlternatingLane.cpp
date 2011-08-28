@@ -31,6 +31,7 @@ public:
         if(size(low) == 1) return 0;
         memset(score, 0, sizeof(score));
 
+        double ret;
         for(int i=1;i<size(low);i++)
         {
             int prev = (i+1)%2;
@@ -46,15 +47,16 @@ public:
                 }
             }
 
+            ret = 0;
             for(int k=low[i];k<=high[i];k++)
             {
                 score[cur][k] /= high[i-1] - low[i-1] + 1;
+                ret += score[cur][k];
                 cerr << score[cur][k] << " ";
             }
-            cerr << endl;
         }
 
-        return 0;
+        return ret / (high.back() - low.back() + 1);
     }
 
     
@@ -77,6 +79,6 @@ public:
 int main()
 {
     AlternatingLane ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
