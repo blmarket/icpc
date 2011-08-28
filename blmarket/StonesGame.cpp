@@ -20,11 +20,38 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int N,K;
+
+bool movable(int a,int b)
+{
+    if(a>b) swap(a,b);
+    int dist = b-a;
+    if(dist+1 > K) return false;
+    if((dist+1) % 2 != (K % 2)) return false;
+    int KK = (K - (dist+1)) / 2;
+    if(a - KK < 1 || b + KK > N) return false;
+    return true;
+}
+
 class StonesGame 
 {
 public:
-    string winner(int N, int M, int K, int L) 
+    string winner(int N_, int M, int K_, int L) 
     {		
+        N = N_;
+        K = K_;
+        if(K == 1) return "Draw";
+        if(movable(M,L)) return "Romeo";
+        for(int i=1;i<=N;i++)
+        {
+            int p2 = i + K - 1;
+            if(M >= i && M <= p2)
+            {
+                int npos = p2 - (M - i);
+                if(movable(npos, L) == false) return "Draw";
+            }
+        }
+        return "Strangelet";
     }
 
     
