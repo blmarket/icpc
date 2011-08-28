@@ -48,6 +48,13 @@ public:
                     maxpick[j+1][k+1] = i+1;
                 }
             }
+
+            for(int j=0;j<n;j++)
+            {
+                for(int k=0;k<m;k++)
+                    cout << maxpick[j][k] << " ";
+                cout << endl;
+            }
         }
         return 50;
     }
