@@ -18,10 +18,12 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
 int maxpick[55][55];
+LL mask[55];
 
 class Painting 
 {
@@ -32,39 +34,53 @@ public:
         int m = size(picture[0]);
 
         memset(maxpick, 0, sizeof(maxpick));
+        memset(mask, 0, sizeof(mask));
 
         for(int i=0;i<n;i++)
             for(int j=0;j<m;j++)
-                if(picture[i][j] == 'B') maxpick[i][j] = 1;
+            {
+                if(picture[i][j] == 'B') 
+                {
+                    mask[i] |= (1LL << j);
+                }
+            }
 
-        for(int i=1;i<50;i++)
+        for(int i=50;i>=2;i--)
         {
+            bool bigfail = false;
             for(int j=0;j<n;j++)
             {
                 for(int k=0;k<m;k++)
                 {
-                    if(maxpick[j][k] < i) continue;
-                    if(j+1 >= n || k+1 >= m) 
+                    if(picture[j][k] == 'B')
                     {
-                        if(maxpick[j][k] == i) return i;
-                        else continue;
-                    }
-                    if(maxpick[j][k+1] < i || maxpick[j+1][k] < i || maxpick[j+1][k+1] < i) return i;
-                    maxpick[j][k] = i+1;
-                    maxpick[j][k+1] = i+1;
-                    maxpick[j+1][k] = i+1;
-                    maxpick[j+1][k+1] = i+1;
-                }
-            }
+                        if(j+i<=n && k+i<=m)
+                        {
+                            bool fail=false;
+                            LL tmask = (1LL << i) - 1;
+                            for(int a=0;a<i;a++) 
+                            {
+                                LL tmp = (mask[j+a] >> k) & tmask;
+                                if(tmp != tmask)
+                                {
+                                    fail=true;break;
+                                }
+                            }
+                            if(!fail)
+                            {
+                                for(int a=0;a<i;a++)
+                                    for(int b=0;b<i;b++)
+                                        maxpick[j+a][k+b] = i;
+                            }
+                        }
 
-            for(int j=0;j<n;j++)
-            {
-                for(int k=0;k<m;k++)
-                    cout << maxpick[j][k] << " ";
-                cout << endl;
+                        if(maxpick[j][k] != i) { bigfail = true; break; }
+                    }
+                }
+                if(bigfail) break;
             }
+            if(!bigfail) return i;
         }
-        return 50;
     }
 
     
