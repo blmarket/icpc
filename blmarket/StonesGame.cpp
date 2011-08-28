@@ -45,6 +45,7 @@ public:
         for(int i=1;i<=N;i++)
         {
             int p2 = i + K - 1;
+            if(p2 > N) break;
             if(M >= i && M <= p2)
             {
                 int npos = p2 - (M - i);
