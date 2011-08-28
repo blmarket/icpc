@@ -54,16 +54,16 @@ public:
 
                 if(d1 < 0 && d2 > 0)
                 {
-                    score[cur][k] += (d2*(d2+1)/2);
+                    score[cur][k] += ((d2*(d2+1))/2);
                     d1*=-1;
-                    score[cur][k] += (d1*(d1+1)/2);
+                    score[cur][k] += ((d1*(d1+1))/2);
                 }
                 else
                 {
                     d1 = abs(d1);
                     d2 = abs(d2);
                     if(d1 > d2) swap(d1,d2);
-                    score[cur][k] += (d2*(d2+1)/2) - (d1*(d1+1)/2);
+                    score[cur][k] += ((d2*(d2+1))/2) - ((d1*(d1+1))/2);
                 }
             }
 
