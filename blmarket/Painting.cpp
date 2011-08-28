@@ -50,6 +50,7 @@ public:
                         else continue;
                     }
                     if(maxpick[j][k+1] < i || maxpick[j+1][k] < i || maxpick[j+1][k+1] < i) return i;
+                    maxpick[j][k] = i+1;
                     maxpick[j][k+1] = i+1;
                     maxpick[j+1][k] = i+1;
                     maxpick[j+1][k+1] = i+1;
