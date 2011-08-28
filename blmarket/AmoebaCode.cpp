@@ -31,12 +31,10 @@ public:
     {
         memset(state[0], -1, sizeof(state[0]));
         pow = 1;
-        for(int i=0;i<K;i++) pow *= K;
-        cerr << pow << endl;
+        for(int i=0;i<K-1;i++) pow *= K;
 
         for(int i=0;i<size(code);i++)
         {
-            cerr << i << endl;
             int cur = (i%2);
             int next = !cur;
             memset(state[next], 0, sizeof(state[0]));
