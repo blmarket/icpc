@@ -37,7 +37,7 @@ public:
         {
             int cur = (i%2);
             int next = !cur;
-            memset(state[next], -1, sizeof(state[0]));
+            memset(state[next], 0, sizeof(state[0]));
             for(int j=1;j<=K;j++) if(code[i] == '0' || code[i]-'0' == j)
             {
                 cerr << "processing " << j << endl;
