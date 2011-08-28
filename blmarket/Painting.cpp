@@ -81,6 +81,7 @@ public:
             }
             if(!bigfail) return i;
         }
+        return 1;
     }
 
     
