@@ -39,11 +39,31 @@ public:
 
             memset(score[cur], 0 ,sizeof(score[0]));
 
+            double accum = 0;
             for(int j=low[i-1];j<=high[i-1];j++)
             {
-                for(int k=low[i];k<=high[i];k++)
+                accum += score[prev][j];
+            }
+
+            for(int k=low[i];k<=high[i];k++)
+            {
+                score[cur][k] = accum;
+
+                int d2 = k - low[i-1];
+                int d1 = k - high[i-1];
+
+                if(d1 < 0 && d2 > 0)
                 {
-                    score[cur][k] += score[prev][j] + abs(j-k);
+                    score[cur][k] += (d2*(d2+1)/2);
+                    d1*=-1;
+                    score[cur][k] += (d1*(d1+1)/2);
+                }
+                else
+                {
+                    d1 = abs(d1);
+                    d2 = abs(d2);
+                    if(d1 > d2) swap(d1,d2);
+                    score[cur][k] += (d2*(d2+1)/2) - (d1*(d1+1)/2);
                 }
             }
 
