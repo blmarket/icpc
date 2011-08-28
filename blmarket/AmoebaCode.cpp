@@ -50,17 +50,18 @@ public:
                     int ptr = (k*K+(j-1))%pow;
                     int &nstate = state[next][(k * K + (j-1)) % pow];
                     if(nstate > cstate) continue;
-                    nstate = cstate;
                     for(int l=0;l<K;l++)
                     {
                         int dgt = (tmp % K) + 1;
+                        cerr << dgt << " " << j << endl;
                         if(dgt == j)
                         {
-                            nstate = max(nstate, min(cstate, l+1));
+                            cstate = min(cstate, l+1);
                         }
                         tmp /= K;
                     }
 
+                    nstate = max(nstate, cstate);
                     cerr << next << "," << ptr << " = " << nstate << endl;
                 }
             }
