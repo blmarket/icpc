@@ -39,11 +39,12 @@ public:
 
         for(int i=1;i<50;i++)
         {
-            for(int j=0;j+1<n;j++)
+            for(int j=0;j<n;j++)
             {
-                for(int k=0;k+1<m;k++)
+                for(int k=0;k<m;k++)
                 {
                     if(maxpick[j][k] < i) continue;
+                    if(j+1 >= n || k+1 >= m) return i;
                     if(maxpick[j][k+1] < i || maxpick[j+1][k] < i || maxpick[j+1][k+1] < i) return i;
                     maxpick[j+1][k+1] = i+1;
                 }
