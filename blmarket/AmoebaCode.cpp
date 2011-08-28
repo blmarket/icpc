@@ -40,6 +40,7 @@ public:
             memset(state[next], -1, sizeof(state[0]));
             for(int j=1;j<=K;j++) if(code[i] == '0' || code[i]-'0' == j)
             {
+                cerr << "processing " << j << endl;
                 for(int k=0;k<pow;k++)
                 {
                     int tmp = k;
@@ -57,7 +58,7 @@ public:
                         tmp /= K;
                     }
 
-                    cout << next << "," << ptr << " = " << nstate << endl;
+                    cerr << next << "," << ptr << " = " << nstate << endl;
                 }
             }
         }
