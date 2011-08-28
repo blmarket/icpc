@@ -52,7 +52,7 @@ public:
                     int ptr = (k*K+(j-1))%pow;
                     int &nstate = state[next][(k * K + (j-1)) % pow];
                     if(nstate > cstate) continue;
-                    for(int l=0;l<K;l++)
+                    for(int l=0;l<cstate;l++)
                     {
                         int dgt = (tmp % K) + 1;
                         if(dgt == j)
