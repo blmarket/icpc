@@ -47,6 +47,7 @@ public:
                     if(j+1 >= n || k+1 >= m) 
                     {
                         if(maxpick[j][k] == i) return i;
+                        else continue;
                     }
                     if(maxpick[j][k+1] < i || maxpick[j+1][k] < i || maxpick[j+1][k+1] < i) return i;
                     maxpick[j][k+1] = i+1;
