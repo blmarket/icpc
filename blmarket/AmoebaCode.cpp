@@ -67,9 +67,9 @@ public:
         }
 
         int cur = size(code) % 2;
-        int ret = K+1;
+        int ret = 1;
         for(int i=0;i<pow;i++)
-            ret = min(ret, state[cur][i]);
+            ret = max(ret, state[cur][i]);
         return ret;
     }
 
