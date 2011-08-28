@@ -53,7 +53,6 @@ public:
                     for(int l=0;l<K;l++)
                     {
                         int dgt = (tmp % K) + 1;
-                        cerr << dgt << " " << j << endl;
                         if(dgt == j)
                         {
                             cstate = min(cstate, l+1);
