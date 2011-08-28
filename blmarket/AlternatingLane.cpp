@@ -60,6 +60,7 @@ public:
                 }
                 else
                 {
+                    cerr << d1 << " " << d2 << endl;
                     d1 = abs(d1);
                     d2 = abs(d2);
                     if(d1 > d2) swap(d1,d2);
