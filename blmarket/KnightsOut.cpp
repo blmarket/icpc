@@ -73,7 +73,8 @@ public:
             {
                 memset(data,0, sizeof(data));
                 V.clear();
-                pick(i,j);
+                pick(i+2,j+1);
+                pick(i+1,j+2);
                 if(resolve())
                 {
                     V.pb(mp(i,j));
