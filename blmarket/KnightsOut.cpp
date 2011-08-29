@@ -77,7 +77,8 @@ public:
                 pick(i+1,j+2);
                 if(resolve())
                 {
-                    V.pb(mp(i,j));
+                    V.pb(mp(i+2,j+1));
+                    V.pb(mp(i+1,j+2));
                     sort(V.begin(),V.end());
                     for(int i=0;i<size(V);i++)
                     {
