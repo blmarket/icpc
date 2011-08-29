@@ -64,6 +64,8 @@ class KnightsOut
 public:
     int count(int N_, int M_) 
     {
+        N = N_;
+        M = M_;
         memset(data,0, sizeof(data));
 
         for(int i=0;i<N;i++)
