@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,52 +22,25 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-LL mask[32];
-
 const int dx[] = {-2,-2,-1,-1,1,1,2,2};
 const int dy[] = {-1,1,-2,2,-2,2,-1,1};
+
+int N,M;
 
 class KnightsOut 
 {
 public:
-    int count(int N, int M) 
-    {		
+    int count(int N_, int M_) 
+    {
+        bool data[N][M];
+        memset(data,0, sizeof(data));
+
         for(int i=0;i<N;i++)
         {
             for(int j=0;j<M;j++)
             {
-                LL tmp = 1LL << (i*M + j);
-                for(int k=0;k<8;k++)
-                {
-                    int nx = i + dx[k];
-                    int ny = j + dy[k];
-                    if(nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
-                    tmp |= 1LL << (nx * M + ny);
-                }
-                mask[i*M+j] = tmp;
             }
         }
-
-        int nodes = N*M;
-        int ret = 0;
-        for(int i=0;i<(1<<nodes);i++)
-        {
-            LL tmp = 0;
-            for(int j=0;j<nodes;j++) if(i & (1<<j))
-            {
-                tmp ^= mask[j];
-            }
-
-            if(tmp == (1<<nodes)-1)
-            {
-                ret++;
-                for(int j=0;j<nodes;j++) if(i & (1<<j))
-                    cerr << "(" << j/M << "," << (j%M) << ") ";
-                cerr << endl;
-            }
-        }
-
-        return ret;
     }
 
     
