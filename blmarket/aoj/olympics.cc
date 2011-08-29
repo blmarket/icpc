@@ -164,7 +164,7 @@ void process(void)
 
         if(check21(myt, VV))
             printf("1 ");
-        if(check22(myt, VV))
+        else if(check22(myt, VV))
             printf("2 ");
         else
         {
