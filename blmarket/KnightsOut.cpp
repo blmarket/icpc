@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include <cstring>
 #include <queue>
 #include <set>
@@ -26,19 +27,63 @@ const int dx[] = {-2,-2,-1,-1,1,1,2,2};
 const int dy[] = {-1,1,-2,2,-2,2,-1,1};
 
 int N,M;
+bool data[151][151];
+vector<PII> V;
+
+bool pick(int a,int b)
+{
+    data[a][b] ^= 1;
+    for(int i=0;i<8;i++)
+    {
+        int nx = a + dx[i];
+        int ny = b + dy[i];
+        if(nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
+        data[nx][ny] ^= 1;
+    }
+}
+
+bool resolve()
+{
+    for(int i=0;i<N;i++)
+    {
+        for(int j=0;j<M;j++)
+        {
+            if(data[i][j])
+            {
+                if(i+2 >= N || j+1 >= M) return false;
+                V.pb(mp(i+2,j+1));
+                pick(i+2,j+1);
+            }
+        }
+    }
+    return true;
+}
 
 class KnightsOut 
 {
 public:
     int count(int N_, int M_) 
     {
-        bool data[N][M];
         memset(data,0, sizeof(data));
 
         for(int i=0;i<N;i++)
         {
             for(int j=0;j<M;j++)
             {
+                V.clear();
+                pick(i+2,j+1);
+                pick(i+1,j+2);
+                if(resolve())
+                {
+                    V.pb(mp(i+2,j+1));
+                    V.pb(mp(i+1,j+2));
+                    sort(V.begin(),V.end());
+                    for(int i=0;i<size(V);i++)
+                    {
+                        printf("%d,%d ",V[i].first, V[i].second);
+                    }
+                    printf("\n");
+                }
             }
         }
     }
