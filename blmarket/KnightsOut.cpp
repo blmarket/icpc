@@ -73,12 +73,10 @@ public:
             for(int j=0;j<M;j++)
             {
                 V.clear();
-                pick(i+2,j+1);
-                pick(i+1,j+2);
+                pick(i,j);
                 if(resolve())
                 {
-                    V.pb(mp(i+2,j+1));
-                    V.pb(mp(i+1,j+2));
+                    V.pb(mp(i,j));
                     sort(V.begin(),V.end());
                     for(int i=0;i<size(V);i++)
                     {
