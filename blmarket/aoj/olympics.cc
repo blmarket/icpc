@@ -151,6 +151,7 @@ void process(void)
             }
         }
     }
+    printf("\n");
 
     for(int i=0;i<N;i++)
     {
