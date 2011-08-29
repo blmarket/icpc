@@ -66,12 +66,12 @@ public:
     {
         N = N_;
         M = M_;
-        memset(data,0, sizeof(data));
 
         for(int i=0;i<N;i++)
         {
             for(int j=0;j<M;j++)
             {
+                memset(data,0, sizeof(data));
                 V.clear();
                 pick(i,j);
                 if(resolve())
