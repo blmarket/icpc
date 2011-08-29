@@ -12,6 +12,13 @@ template<typename T> int size(const T &a) { return a.size(); }
 struct team
 {
     int a[3];
+
+    bool operator<(const team &oth) const
+    {
+        if(a[0] != oth.a[0]) return a[0] < oth.a[0];
+        if(a[1] != oth.a[1]) return a[1] < oth.a[1];
+        return a[2] < oth.a[2];
+    }
 };
 
 int N,K;
@@ -36,6 +43,66 @@ bool check2(int myp, const vector<int> &VV)
     for(int i=1;i<size(VV);i++)
         elasp += min(K, myp - VV[i]);
     return elasp >= K;
+}
+
+bool check21(const team &myt, const vector<team> &VV)
+{
+    int silver = K, bronze = K;
+    if(myt < VV[0]) return false;
+    for(int i=0;i<size(VV);i++)
+    {
+        if(VV[i].a[0] == myt.a[0])
+        {
+            int e1 = myt.a[1] - VV[i].a[1];
+            int e2 = myt.a[2] - VV[i].a[2];
+
+            if(e2 < 0)
+            {
+                e1--;
+                e2 = K+1;
+            }
+
+            e1 = min(e1, silver);
+            e2 = min(e2, bronze);
+
+            silver -= e1;
+            bronze -= e2;
+        }
+        else
+        {
+            if(silver + bronze <= K) return true;
+            if(silver < K) { bronze -= (K - silver); silver = 0; }
+            else { silver -= K; }
+        }
+    }
+
+    if(silver + bronze > 0) return false;
+    return true;
+}
+
+bool check22(const team &myt, const vector<team> &VV)
+{
+    int bronze = K;
+    if(myt < VV[1]) return false;
+
+    for(int i=1;i<size(VV);i++)
+    {
+        if(VV[i].a[0] == myt.a[0] && VV[i].a[1] == myt.a[1])
+        {
+            int e2 = myt.a[2] - VV[i].a[2];
+
+            e2 = min(e2, bronze);
+
+            bronze -= e2;
+        }
+        else
+        {
+            if(bronze <= K) return true;
+            bronze -= K;
+        }
+    }
+
+    return bronze == 0;
 }
 
 void process(void)
@@ -84,6 +151,35 @@ void process(void)
             }
         }
     }
+
+    for(int i=0;i<N;i++)
+    {
+        vector<team> VV = V;
+        swap(VV[i], VV.back());
+        team myt = VV.back();
+        myt.a[0] += K;
+        VV.pop_back();
+        sort(VV.rbegin(), VV.rend());
+
+        if(check21(myt, VV))
+            printf("1 ");
+        if(check22(myt, VV))
+            printf("2 ");
+        else
+        {
+            team t2; t2.a[0]=t2.a[1]=t2.a[2] = 0;
+            VV.pb(t2);
+            for(int j=2;j<size(VV);j++)
+            {
+                if((myt < VV[j]) == false)
+                {
+                    printf("%d ",j+1);
+                    break;
+                }
+            }
+        }
+    }
+
     printf("\n");
 }
 
