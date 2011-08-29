@@ -61,7 +61,7 @@ public:
             {
                 ret++;
                 for(int j=0;j<nodes;j++) if(i & (1<<j))
-                    cerr << j << " ";
+                    cerr << "(" << j/M << "," << (j%M) << ") ";
                 cerr << endl;
             }
         }
