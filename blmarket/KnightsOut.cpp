@@ -48,7 +48,7 @@ bool resolve(int a,int b)
     {
         for(int j=0;j<M;j++)
         {
-            if(i == a && j == b) continue;
+            if(i+2 == a && j+1 == b) continue;
             if(data[i][j])
             {
                 if(i+2 >= N || j+1 >= M) return false;
