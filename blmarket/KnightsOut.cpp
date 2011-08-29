@@ -42,12 +42,13 @@ bool pick(int a,int b)
     }
 }
 
-bool resolve()
+bool resolve(int a,int b)
 {
     for(int i=0;i<N;i++)
     {
         for(int j=0;j<M;j++)
         {
+            if(i == a && j == b) continue;
             if(data[i][j])
             {
                 if(i+2 >= N || j+1 >= M) return false;
@@ -73,12 +74,10 @@ public:
             {
                 memset(data,0, sizeof(data));
                 V.clear();
-                pick(i+2,j+1);
-                pick(i+1,j+2);
-                if(resolve())
+                pick(i,j);
+                V.pb(mp(i,j));
+                if(resolve(i,j))
                 {
-                    V.pb(mp(i+2,j+1));
-                    V.pb(mp(i+1,j+2));
                     sort(V.begin(),V.end());
                     for(int i=0;i<size(V);i++)
                     {
