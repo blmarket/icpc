@@ -49,7 +49,7 @@ public:
                 tmp.pb(it->second);
             sort(tmp.rbegin(), tmp.rend());
 
-            ret[i] = calc(tmp);
+            ret.pb(calc(tmp));
         }
 
         sort(ret.begin(), ret.end());
