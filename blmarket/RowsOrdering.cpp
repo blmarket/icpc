@@ -29,7 +29,6 @@ LL calc(const vector<int> &arr)
     for(int i=0;i<size(arr);i++)
         ret += i * arr[i];
 
-    cout << "ret = " << ret << endl;
     return ret;
 }
 
@@ -52,6 +51,8 @@ public:
 
             ret[i] = calc(tmp);
         }
+
+        cout << size(ret) << endl;
 
         sort(ret.begin(), ret.end());
         LL rr = size(rows);
