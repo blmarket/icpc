@@ -38,7 +38,7 @@ public:
     int order(vector <string> rows) 
     {		
         vector<LL> ret;
-        for(int i=0;i<size(rows[0]);i++)
+        for(int i=0;i<rows[0].size();i++)
         {
             map<char, int> M;
             for(int j=0;j<size(rows);j++)
@@ -51,8 +51,6 @@ public:
 
             ret[i] = calc(tmp);
         }
-
-        cout << size(ret) << endl;
 
         sort(ret.begin(), ret.end());
         LL rr = size(rows);
