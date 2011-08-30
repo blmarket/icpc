@@ -28,6 +28,8 @@ LL calc(const vector<int> &arr)
     LL ret = 0;
     for(int i=0;i<size(arr);i++)
         ret += i * arr[i];
+
+    cout << "ret = " << ret << endl;
     return ret;
 }
 
@@ -47,8 +49,6 @@ public:
             foreach(it, M)
                 tmp.pb(it->second);
             sort(tmp.rbegin(), tmp.rend());
-
-            cout << size(tmp) << endl;
 
             ret[i] = calc(tmp);
         }
