@@ -56,6 +56,7 @@ public:
         LL rr = size(rows);
         for(int i=0;i<size(ret);i++)
         {
+            cerr << ret[i] << endl;
             rr = ((rr * 50) + ret[i]) % MOD;
         }
         return rr;
