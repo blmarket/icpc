@@ -39,6 +39,7 @@ public:
         vector<LL> ret;
         for(int i=0;i<size(rows[0]);i++)
         {
+            cout << "hello?" << endl;
             map<char, int> M;
             for(int j=0;j<size(rows);j++)
                 M[rows[j][i]] += 1;
