@@ -53,12 +53,13 @@ public:
         }
 
         sort(ret.begin(), ret.end());
-        LL rr = size(rows);
+        LL rr = 0;
         for(int i=0;i<size(ret);i++)
         {
             cerr << ret[i] << endl;
             rr = ((rr * 50) + ret[i]) % MOD;
         }
+        rr = (rr + size(rows)) % MOD;
         return rr;
     }
 
