@@ -45,64 +45,52 @@ bool check2(int myp, const vector<int> &VV)
     return elasp >= K;
 }
 
-bool check21(const team &myt, const vector<team> &VV)
+bool check2x(const team &myt, const vector<team> &VV, int idx, int silver, int bronze)
 {
-    int silver = K, bronze = K;
-    if(myt < VV[0]) return false;
-    for(int i=0;i<size(VV);i++)
-    {
-        if(VV[i].a[0] == myt.a[0])
-        {
-            int e1 = myt.a[1] - VV[i].a[1];
-            int e2 = myt.a[2] - VV[i].a[2];
+    if(myt < VV[idx]) return false;
 
-            if(e2 < 0)
+    if(silver == 0 && bronze == 0) return true;
+
+    if(idx == size(VV))
+    {
+        return false;
+    }
+
+    if(VV[idx].a[0] == myt.a[0])
+    {
+        int e1 = myt.a[1] - VV[idx].a[1];
+        int e2 = myt.a[2] - VV[idx].a[2];
+
+        if(e1 == 0)
+        {
+            e2 = min(e2, bronze);
+            return check2x(myt, VV, idx+1, silver, bronze - e2);
+        }
+        else
+        {
+            if(silver < e1)
             {
-                e1--;
-                e2 = K+1;
+                return check2x(myt, VV, idx+1, 0, bronze - min(bronze, K - silver));
             }
 
-            e1 = min(e1, silver);
-            e2 = min(e2, bronze);
+            e2 = min(e2, min(bronze, K-e1));
 
-            silver -= e1;
-            bronze -= e2;
-        }
-        else
-        {
-            if(silver + bronze <= K) return true;
-            if(silver < K) { bronze -= (K - silver); silver = 0; }
-            else { silver -= K; }
+            if(check2x(myt, VV, idx+1, silver - e1, bronze - e2)) return true;
+
+            if(bronze != 0)
+            {
+                e1--;
+                e2 = min(bronze, K - e1);
+                return check2x(myt, VV, idx+1, silver - e1, bronze - e2);
+            }
+            return false;
         }
     }
-
-    if(silver + bronze > 0) return false;
-    return true;
-}
-
-bool check22(const team &myt, const vector<team> &VV)
-{
-    int bronze = K;
-    if(myt < VV[1]) return false;
-
-    for(int i=1;i<size(VV);i++)
+    else
     {
-        if(VV[i].a[0] == myt.a[0] && VV[i].a[1] == myt.a[1])
-        {
-            int e2 = myt.a[2] - VV[i].a[2];
-
-            e2 = min(e2, bronze);
-
-            bronze -= e2;
-        }
-        else
-        {
-            if(bronze <= K) return true;
-            bronze -= K;
-        }
+        return check2x(myt, VV, idx+1, 0, bronze - min(bronze, K - silver));
     }
-
-    return bronze == 0;
+    return false;
 }
 
 void process(void)
@@ -162,9 +150,9 @@ void process(void)
         VV.pop_back();
         sort(VV.rbegin(), VV.rend());
 
-        if(check21(myt, VV))
+        if(check2x(myt, VV, 0, K, K))
             printf("1 ");
-        else if(check22(myt, VV))
+        else if(check2x(myt, VV, 1, 0, K))
             printf("2 ");
         else
         {
