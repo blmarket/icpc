@@ -44,7 +44,10 @@ public:
         }
 
         for(int i=0;i<size(links);i++)
+        {
+            cout << links[i].first << " " << links[i].second << endl;
             if(links[i].second == links[i].first + 1) return -1;
+        }
 
         return (double)m/k;
     }
