@@ -38,7 +38,7 @@ public:
             for(int j=i+k;j<size(preference);j+=k)
             {
                 int tmp = n[0];
-                n[0] = n[1];
+                n[0] = max(n[0], n[1]);
                 n[1] = tmp + preference[j-k] + preference[j];
             }
             ret += max(n[0], n[1]);
