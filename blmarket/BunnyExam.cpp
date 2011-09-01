@@ -27,6 +27,7 @@ class BunnyExam
 public:
     double getExpected(int m, int k, vector <int> linkage) 
     {		
+        links.clear();
         if(m > 1 && k == 1) return -1;
         for(int i=0;i<size(linkage);i+=2)
         {
