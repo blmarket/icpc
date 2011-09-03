@@ -66,6 +66,12 @@ int main(void)
         leftlen = min(l2, p2) - max(l1,p1) + 1;
         cout << l1 << " " << l2 << " " << r1 << " " << r2 << " " << leftlen << endl;
 
+        if(l2 == r1)
+        {
+            if(l2 >= p1 && l2 <= p2 && l2 >= v1 && l2 <= v2)
+                retcnt--;
+        }
+
         if(leftlen > 0)
         {
             rightlen = min(r2,v2) - max(r1,v1) + 1;
