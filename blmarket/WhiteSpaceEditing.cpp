@@ -61,7 +61,7 @@ public:
         sort(ls.begin(), ls.end());
         ls.erase(unique(ls.begin(), ls.end()), ls.end());
 
-        return go(0, size(lines), 0);
+        return go(0, size(lines), 0) + size(lines) - 1;
     }
 
     
