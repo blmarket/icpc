@@ -38,7 +38,14 @@ int go(int s,int e,int cur)
             int tmp2 = tmp + go(s,j,k) + go(j,e,k);
 
             if(ret < 0 || ret > tmp2)
+            {
+                if(s == 0 && e == 3)
+                {
+                    cout << ls[k] << " = " << tmp2 << endl;
+                }
+
                 ret = tmp2;
+            }
         }
     }
     return ret;
