@@ -81,6 +81,6 @@ public:
 int main()
 {
     WhiteSpaceEditing ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
