@@ -39,11 +39,6 @@ int go(int s,int e,int cur)
 
             if(ret < 0 || ret > tmp2)
             {
-                if(s == 0 && e == 3)
-                {
-                    cout << ls[k] << " = " << tmp2 << endl;
-                }
-
                 ret = tmp2;
             }
         }
@@ -86,6 +81,6 @@ public:
 int main()
 {
     WhiteSpaceEditing ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
