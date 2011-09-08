@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -22,14 +23,18 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 VI lines, ls;
 
+int memo[55][55][55];
+
 int go(int s,int e,int cur)
 {
+    int &ret = memo[s][e][cur];
+    if(ret != -1) return ret;
+
     if(s+1 == e)
     {
-        return abs(lines[s] - ls[cur]);
+        return ret = abs(lines[s] - ls[cur]);
     }
 
-    int ret = -1;
     for(int j=s+1;j<e;j++)
     {
         for(int k=0;k<size(ls);k++)
@@ -51,6 +56,7 @@ class WhiteSpaceEditing
 public:
     int getMinimum(vector <int> lines_) 
     {
+        memset(memo, -1, sizeof(memo));
         lines = ls = lines_;
         ls.pb(0);
         sort(ls.begin(), ls.end());
@@ -81,6 +87,6 @@ public:
 int main()
 {
     WhiteSpaceEditing ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
