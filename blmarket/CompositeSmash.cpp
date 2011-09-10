@@ -56,6 +56,22 @@ public:
             }
         }
 
+        if(size(M) > 1) return "No";
+
+        int div = M.begin()->first;
+        int tmp1 = M.begin()->second;
+        int tmp2 = 0;
+        while((N % div) == 0)
+        {
+            tmp2++;
+            N /= div;
+        }
+
+        if(tmp2 < tmp1) return "No";
+        if(tmp1 == 1) return "Yes";
+        if(N != 1) return "No";
+        if(tmp1 == tmp2) return "Yes";
+        if(tmp1 == 2) return "Yes";
         return "No";
     }
 
