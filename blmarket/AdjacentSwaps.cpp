@@ -68,11 +68,11 @@ long long go(int left, int right)
             long long tmp1, tmp2;
             tmp1 = go(left, i+1);
             tmp2 = go(i+1, right);
-            cerr << left << " " << right << " ==> " << i << " " << tmp1 << " " << tmp2 << endl;
+            //cerr << left << " " << right << " ==> " << i << " " << tmp1 << " " << tmp2 << endl;
 
             ret += tmp1 * combi(n-2, i-left) * tmp2;
             ret %= MOD;
-            cerr << ret << endl;
+            //cerr << ret << endl;
 
             p[idx1]++;
             p[idx2]--;
