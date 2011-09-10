@@ -19,12 +19,22 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 
-const long long MOD = 10000007;
+const long long MOD = 1000000007LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> p;
 long long memo[55][55];
+
+long long combi(int a, int b)
+{
+    long long ret = 1;
+    for(int i=0;i<b;i++)
+    {
+        ret *= (a-i);
+        ret /= (i+1);
+    }
+}
 
 long long go(int left, int right)
 {
@@ -34,6 +44,8 @@ long long go(int left, int right)
     if(ret != -1) return ret;
 
     ret = 0;
+
+    int n = right - left;
 
     for(int i=left;i+1<right;i++)
     {
@@ -51,8 +63,12 @@ long long go(int left, int right)
             p[idx1]--;
             p[idx2]++;
 
-            cerr << go(left, i+1) << endl;
-            cerr << go(i+1, right) << endl;
+            long long tmp1, tmp2;
+            tmp1 = go(left, i+1);
+            tmp2 = go(i+1, right);
+
+            ret += tmp1 * combi(n-1, i-left) * tmp2;
+            ret %= MOD;
 
             p[idx1]++;
             p[idx2]--;
