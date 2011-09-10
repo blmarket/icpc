@@ -51,8 +51,8 @@ long long go(int left, int right)
             p[idx1]--;
             p[idx2]++;
 
-            go(left, i+1);
-            go(i+1, right);
+            cerr << go(left, i+1) << endl;
+            cerr << go(i+1, right) << endl;
 
             p[idx1]++;
             p[idx2]--;
