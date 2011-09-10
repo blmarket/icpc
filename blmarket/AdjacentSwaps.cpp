@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -18,18 +19,56 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 
+const long long MOD = 10000007;
+
 template<typename T> int size(const T &a) { return a.size(); }
+
+vector<int> p;
+long long memo[55][55];
+
+long long go(int left, int right)
+{
+    if(left+1 == right) return 1;
+    long long &ret = memo[left][right];
+
+    if(ret != -1) return ret;
+
+    ret = 0;
+
+    for(int i=left;i+1<right;i++)
+    {
+        bool fail=false;
+        int idx1, idx2;
+
+        for(int j=left;j<=i;j++)
+            if(p[j] > i+1) { fail = true; break; } else if(p[j] == i+1) { idx1 = j; }
+        for(int j=i+1;j<right;j++)
+            if(p[j] < i) { fail = true; break; } else if(p[j] == i) { idx2 = j; }
+
+        if(!fail)
+        {
+            p[idx1]--;
+            p[idx2]++;
+
+            go(left, i+1);
+            go(i+1, right);
+
+            p[idx1]++;
+            p[idx2]--;
+        }
+    }
+
+    return ret;
+}
 
 class AdjacentSwaps 
 {
 public:
-    int theCount(vector <int> p) 
+    int theCount(vector <int> p_) 
     {		
-        for(int i=0;i<size(p);i++)
-        {
-            cout << abs(p[i] - i) << " ";
-        }
-        return -1;
+        memset(memo, -1, sizeof(memo));
+        p = p_;
+        return go(0, size(p));
     }
 
     
