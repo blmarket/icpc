@@ -47,6 +47,7 @@ long long go(int left, int right)
 
         if(!fail)
         {
+            cerr << left << " " << right << " ==> " << i << endl;
             p[idx1]--;
             p[idx2]++;
 
