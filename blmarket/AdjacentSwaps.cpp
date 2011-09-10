@@ -51,12 +51,14 @@ long long go(int left, int right)
     for(int i=left;i+1<right;i++)
     {
         bool fail=false;
-        int idx1, idx2;
+        int idx1 = -1, idx2 = -1;
 
         for(int j=left;j<=i;j++)
             if(p[j] > i+1) { fail = true; break; } else if(p[j] == i+1) { idx1 = j; }
         for(int j=i+1;j<right;j++)
             if(p[j] < i) { fail = true; break; } else if(p[j] == i) { idx2 = j; }
+
+        if(idx1 == -1) continue;
 
         if(!fail)
         {
