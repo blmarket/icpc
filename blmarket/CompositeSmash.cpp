@@ -48,9 +48,12 @@ public:
                 tmp /= primes[i];
                 cnt++;
             }
-            if(cnt) M[primes[i]] = cnt;
 
-            cout << primes[i] << " = " << cnt << endl;
+            if(cnt) 
+            {
+                M[primes[i]] = cnt;
+                cout << primes[i] << " = " << cnt << endl;
+            }
         }
 
         return "No";
