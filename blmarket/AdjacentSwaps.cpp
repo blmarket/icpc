@@ -34,6 +34,7 @@ long long combi(int a, int b)
         ret *= (a-i);
         ret /= (i+1);
     }
+    return ret;
 }
 
 long long go(int left, int right)
@@ -67,7 +68,6 @@ long long go(int left, int right)
             tmp2 = go(i+1, right);
             cerr << left << " " << right << " ==> " << i << " " << tmp1 << " " << tmp2 << endl;
 
-            cerr << combi(n-1, i-left) << endl;
             ret += tmp1 * combi(n-1, i-left) * tmp2;
             ret %= MOD;
             cerr << ret << endl;
