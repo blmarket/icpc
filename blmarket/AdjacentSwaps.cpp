@@ -59,13 +59,13 @@ long long go(int left, int right)
 
         if(!fail)
         {
-            cerr << left << " " << right << " ==> " << i << endl;
             p[idx1]--;
             p[idx2]++;
 
             long long tmp1, tmp2;
             tmp1 = go(left, i+1);
             tmp2 = go(i+1, right);
+            cerr << left << " " << right << " ==> " << i << " " << tmp1 << " " << tmp2 << endl;
 
             ret += tmp1 * combi(n-1, i-left) * tmp2;
             ret %= MOD;
