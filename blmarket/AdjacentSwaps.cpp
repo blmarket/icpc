@@ -113,6 +113,6 @@ public:
 int main()
 {
     AdjacentSwaps ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
