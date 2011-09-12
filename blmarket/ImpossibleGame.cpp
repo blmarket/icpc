@@ -112,6 +112,7 @@ public:
             diff[i] = 0;
             for(int j=0;j<4;j++)
                 diff[i] = (diff[i] * 31) + arr[j];
+            cout << diff[i] << endl;
         }
 
         long long ret = 0;
