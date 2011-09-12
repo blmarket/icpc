@@ -45,7 +45,7 @@ std::string debug(int a)
 {
     ostringstream ost;
     for(int i=0;i<4;i++)
-        ost << (a%31), a /= 31;
+        ost << (a%31) << ",", a /= 31;
     return ost.str();
 }
 
