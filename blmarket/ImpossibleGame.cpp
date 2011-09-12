@@ -75,7 +75,7 @@ void get_group(int a)
 
     if(group[a] == tarj[a])
     {
-        while(group[stack.back()] == group[a])
+        while(group[stack.back()] != group[a])
         {
             cout << debug(stack.back()) << " ";
             group[stack.back()] = group[a];
