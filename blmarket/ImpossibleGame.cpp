@@ -95,7 +95,6 @@ public:
     long long getMinimum(int K, vector <string> before, vector <string> after) 
     {
         cn = size(before);
-        cout << size(before) << endl;
         for(int i=0;i<size(before);i++)
         {
             int arr[4];
