@@ -52,7 +52,6 @@ std::string debug(int a)
 
 int get_group(int a)
 {
-    cout << a << " " << debug(a) << endl;
     group[a] = tarj[a] = ++gn;
     stack.pb(a);
 
@@ -61,7 +60,6 @@ int get_group(int a)
         int aa=a;
         if(move(aa,i))
         {
-            cout << a << " move " << aa << " " << diff[i] << endl;
             if(group[aa] == 0)
             {
                 get_group(aa);
