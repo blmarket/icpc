@@ -50,7 +50,7 @@ std::string debug(int a)
     return ost.str();
 }
 
-void get_group(int a)
+int get_group(int a)
 {
     cout << a << " " << debug(a) << endl;
     group[a] = tarj[a] = ++gn;
@@ -85,6 +85,8 @@ void get_group(int a)
         cout << debug(stack.back()) << endl;
         stack.pop_back();
     }
+
+    return group[a];
 }
 
 class ImpossibleGame 
