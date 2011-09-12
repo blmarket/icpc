@@ -24,10 +24,36 @@ long long cnt[31*31*31*31];
 int group[31*31*31*31];
 int tarj[31*31*31*31];
 int gn;
+int K;
 vector<int> stack;
 
 int check[100][4], diff[100];
 int cn = 0;
+
+long long combi(int a, int b)
+{
+    long long ret = 1;
+    for(int i=0;i<b;i++)
+    {
+        ret *= (a-i);
+        ret /= (b+1);
+    }
+    return ret;
+}
+
+long long getsize(int idx)
+{
+    long long ret = 1;
+    int kk = K;
+    while(idx)
+    {
+        int tmp = (idx % 31);
+        ret *= combi(kk, tmp);
+        kk -= tmp;
+        idx /= 31;
+    }
+    return ret;
+}
 
 bool move(int &now, int k)
 {
@@ -50,7 +76,7 @@ std::string debug(int a)
     return ost.str();
 }
 
-int get_group(int a)
+long long get_group(int a)
 {
     cout << "get_group(" << a << endl;
     group[a] = tarj[a] = ++gn;
@@ -75,14 +101,19 @@ int get_group(int a)
 
     if(group[a] == tarj[a])
     {
+        long long cc = 0;
         while(group[stack.back()] != group[a])
         {
+            cc += getsize(stack.back());
             cout << debug(stack.back()) << " ";
             group[stack.back()] = -group[a];
             stack.pop_back();
         }
-        cout << debug(stack.back()) << endl;
+        cc += getsize(stack.back());
+        cout << debug(stack.back()) << " = " << cc << endl;
+
         stack.pop_back();
+        cnt[group[a]] = cc;
         group[a] = -group[a];
     }
 }
@@ -90,8 +121,9 @@ int get_group(int a)
 class ImpossibleGame 
 {
 public:
-    long long getMinimum(int K, vector <string> before, vector <string> after) 
+    long long getMinimum(int K_, vector <string> before, vector <string> after) 
     {
+        K = K_;
         cn = size(before);
         for(int i=0;i<size(before);i++)
         {
