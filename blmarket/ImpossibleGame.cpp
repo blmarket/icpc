@@ -85,8 +85,6 @@ int get_group(int a)
         stack.pop_back();
         group[a] = -group[a];
     }
-
-    return group[a];
 }
 
 class ImpossibleGame 
