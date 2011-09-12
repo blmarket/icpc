@@ -43,12 +43,12 @@ long long combi(int a, int b)
 
 long long getsize(int idx)
 {
-    cout << "getsize " << idx << endl;
     long long ret = 1;
     int kk = K;
     while(idx)
     {
         int tmp = (idx % 31);
+        cout << ret << endl;
         ret *= combi(kk, tmp);
         kk -= tmp;
         idx /= 31;
