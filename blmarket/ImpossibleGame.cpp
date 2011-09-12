@@ -48,11 +48,11 @@ long long getsize(int idx)
     while(idx)
     {
         int tmp = (idx % 31);
-        cout << ret << endl;
         ret *= combi(kk, tmp);
         kk -= tmp;
         idx /= 31;
     }
+    cout << ret << endl;
     return ret;
 }
 
