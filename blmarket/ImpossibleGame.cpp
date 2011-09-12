@@ -66,7 +66,7 @@ int get_group(int a)
                 get_group(aa);
                 tarj[a] = min(tarj[a], tarj[aa]);
             }
-            else
+            else if(group[aa] > 0)
             {
                 tarj[a] = min(tarj[a], group[aa]);
             }
@@ -75,15 +75,15 @@ int get_group(int a)
 
     if(group[a] == tarj[a])
     {
-
         while(group[stack.back()] != group[a])
         {
             cout << debug(stack.back()) << " ";
-            group[stack.back()] = group[a];
+            group[stack.back()] = -group[a];
             stack.pop_back();
         }
         cout << debug(stack.back()) << endl;
         stack.pop_back();
+        group[a] = -group[a];
     }
 
     return group[a];
