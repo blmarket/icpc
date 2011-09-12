@@ -55,6 +55,7 @@ std::string debug(int a)
 
 void get_group(int a)
 {
+    cout << a << endl;
     group[a] = tarj[a] = ++gn;
     stack.pb(a);
 
