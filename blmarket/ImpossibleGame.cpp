@@ -20,36 +20,29 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+bool visit[31*31*31*31];
 long long cnt[31*31*31*31];
+long long childs[31*31*31*31];
 int group[31*31*31*31];
 int tarj[31*31*31*31];
 int gn;
 int K;
+long long ret = 0;
+long long combi[33][33];
 vector<int> stack;
 
 int check[100][4], diff[100];
 int cn = 0;
 
-long long combi(int a, int b)
-{
-    long long ret = 1;
-    for(int i=0;i<b;i++)
-    {
-        ret *= (a-i);
-        ret /= (b+1);
-    }
-    return ret;
-}
-
 long long getsize(int idx)
 {
     long long ret = 1;
+
     int kk = K;
     while(idx)
     {
         int tmp = (idx % 31);
-        ret *= combi(kk, tmp);
-        cout << kk << " " << tmp << " " << combi(kk,tmp) << " = " << ret << endl;
+        ret *= combi[kk][tmp];
         kk -= tmp;
         idx /= 31;
     }
@@ -77,9 +70,9 @@ std::string debug(int a)
     return ost.str();
 }
 
-void get_group(int a)
+bool get_group(int a)
 {
-    cout << "get_group(" << a << endl;
+//    cout << "get_group(" << a << endl;
     group[a] = tarj[a] = ++gn;
     stack.pb(a);
 
@@ -102,21 +95,46 @@ void get_group(int a)
 
     if(group[a] == tarj[a])
     {
+        vector<int> V;
         long long cc = 0;
         while(group[stack.back()] != group[a])
         {
             cc += getsize(stack.back());
-            cout << debug(stack.back()) << " ";
+//            cout << debug(stack.back()) << " ";
             group[stack.back()] = -group[a];
+            V.pb(stack.back());
             stack.pop_back();
         }
         cc += getsize(stack.back());
-        cout << debug(stack.back()) << " = " << cc << endl;
-
+//        cout << debug(stack.back()) << " = " << cc << endl;
+        cout << cc << endl;
+        V.pb(stack.back());
         stack.pop_back();
-        cnt[group[a]] = cc;
         group[a] = -group[a];
+
+        long long maxchild = 0;
+        for(int i=0;i<size(V);i++)
+        {
+            for(int j=0;j<cn;j++)
+            {
+                int aa = V[i];
+                if(move(aa,j) && group[aa] != group[a])
+                {
+//                    cout << a << " has child " << aa << " " << childs[-group[aa]] << endl;
+                    maxchild = max(maxchild, childs[-group[aa]]);
+                }
+            }
+        }
+
+//        cout << maxchild << endl;
+        cnt[-group[a]] = cc;
+        childs[-group[a]] = cc + maxchild;
+
+        ret = max(ret, cc + maxchild);
+
+        return true;
     }
+    return false;
 }
 
 class ImpossibleGame 
@@ -124,6 +142,14 @@ class ImpossibleGame
 public:
     long long getMinimum(int K_, vector <string> before, vector <string> after) 
     {
+        combi[0][0]=1;
+        for(int i=1;i<=30;i++)
+        {
+            combi[i][0] = combi[i][i] = 1;
+            for(int j=1;j<i;j++)
+                combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
+        }
+
         K = K_;
         cn = size(before);
         for(int i=0;i<size(before);i++)
@@ -146,7 +172,6 @@ public:
                 diff[i] = (diff[i] * 31) + arr[j];
         }
 
-        long long ret = 0;
         for(int i=0;i<=K;i++)
         {
             for(int j=0;j+i<=K;j++)
@@ -192,6 +217,6 @@ public:
 int main()
 {
     ImpossibleGame ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
