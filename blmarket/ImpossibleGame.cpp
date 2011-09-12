@@ -77,7 +77,7 @@ std::string debug(int a)
     return ost.str();
 }
 
-long long get_group(int a)
+void get_group(int a)
 {
     cout << "get_group(" << a << endl;
     group[a] = tarj[a] = ++gn;
@@ -154,7 +154,9 @@ public:
                 for(int k=0;i+j+k <= K;k++)
                 {
                     int l = K - (i+j+k);
-                    get_group(i+j*31+k*31*31+l*31*31*31);
+                    int node = i+j*31+k*31*31+l*31*31*31;
+                    if(group[node] == 0)
+                        get_group(node);
                 }
             }
         }
