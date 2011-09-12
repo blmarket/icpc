@@ -43,13 +43,9 @@ bool move(int &now, int k)
 
 std::string debug(int a)
 {
-    int arr[4];
-    for(int i=0;i<4;i++)
-        arr[i] = (a%31), a/=31;
-
     ostringstream ost;
     for(int i=0;i<4;i++)
-        ost << arr[3-i] << ",";
+        ost << (a%31), a /= 31;
     return ost.str();
 }
 
