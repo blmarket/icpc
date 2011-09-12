@@ -31,10 +31,11 @@ int cn = 0;
 
 bool move(int &now, int k)
 {
+    int tmp = now;
     for(int i=0;i<4;i++)
     {
-        if( (now % 31) < check[k][i] ) return false;
-        now /= 31;
+        if( (tmp % 31) < check[k][i] ) return false;
+        tmp /= 31;
     }
 
     now += diff[k];
