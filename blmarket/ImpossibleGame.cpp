@@ -95,6 +95,7 @@ public:
     long long getMinimum(int K, vector <string> before, vector <string> after) 
     {
         cn = size(before);
+        cout << size(before) << endl;
         for(int i=0;i<size(before);i++)
         {
             int arr[4];
@@ -109,6 +110,7 @@ public:
                 check[i][j] = cnt;
                 arr[3-j] = cnt2 - cnt;
             }
+
             diff[i] = 0;
             for(int j=0;j<4;j++)
                 diff[i] = (diff[i] * 31) + arr[j];
