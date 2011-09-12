@@ -43,6 +43,7 @@ long long combi(int a, int b)
 
 long long getsize(int idx)
 {
+    cout << "getsize " << idx << endl;
     long long ret = 1;
     int kk = K;
     while(idx)
