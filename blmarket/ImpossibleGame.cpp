@@ -60,6 +60,7 @@ void get_group(int a)
         int aa=a;
         if(move(aa,i))
         {
+            cout << "move " << aa << endl;
             if(group[aa] == 0)
             {
                 get_group(aa);
