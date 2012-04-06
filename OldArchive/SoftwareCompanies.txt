@@ -1,0 +1,116 @@
+PROBLEM STATEMENT
+
+	There are several companies on the market, with each company processing some data in order to produce
+	 data in a new company-specific format. 
+	When a company gets a unit of input data, it produces a unit of new data. Unfortunately, each company
+	 can process only some limited amount of data, and each company can accept only some specific data
+	  formats. Of course, running each company costs the owner some money.
+
+
+
+	The information about the companies will be given to you in a vector <string> names, 
+	a vector <string> process, a vector <int> cost and a vector <int> 
+	amount. names[i] is the name of the i-th company. process[i] is a 
+	single-space delimited list of companies which can process the data produced by the i-th company. 
+	cost[i] is the cost of running the i-th company, and amount[i] is the 
+	maximal amount of data that the i-th company can process.
+
+
+	Also you will be given two companies - company1 and 
+	company2. The company company1 has an infinite amount of unprocessed data 
+	in its supply which can be processed. 
+	Your goal is to convert as much data as possible to the new format of company2,
+	spending the least amount of money as possible. 
+	You are to select the companies you want to run, since only running companies 
+	can process the data. Return the names of those companies as a vector <string>, sorted 
+	in lexicographical order. If more than one answer is possible, return the lexicographically smallest one. 
+	If there is no way company2 can process any data at all, return an empty 
+	vector <string>.
+
+
+
+DEFINITION
+Class:SoftwareCompanies
+Method:produceData
+Parameters:vector <string>, vector <string>, vector <int>, vector <int>, string, string
+Returns:vector <string>
+Method signature:vector <string> produceData(vector <string> names, vector <string> process, vector <int> cost, vector <int> amount, string company1, string company2)
+
+
+NOTES
+-String A is lexicographically smaller than string B if it contains a smaller letter at the first position they differ or if A is a prefix of B. List A is lexicographically smaller than list B if it contains a lexicographically smaller string at the first position they differ or if it is a prefix of list B.
+
+
+CONSTRAINTS
+-names will contain between 2 and 12 elements, inclusive.
+-Each element of names will contain between 1 and 50 lowercase letters ('a'-'z'), inclusive.
+-All elements of names will be distinct.
+-amount, cost, process and names will all contain same number of elements.
+-Each element of process will contain between 0 and 50 characters, inclusive.
+-Each element of process will contain a single-space separated names of companies without any leading or trailing spaces.
+-Each element of process will contain no duplicate names.
+-Each element of process will list only companies presented in names.
+-Element i of process will not contain the i-th company in names.
+-Each element of cost will be between 0 and 1000000, inclusive.
+-Each element of amount will be between 1 and 1000000, inclusive.
+-company1 and company2 will both be present in names.
+-company1 and company2 will be distinct.
+
+
+EXAMPLES
+
+0)
+{"topcoder", "doodle", "nasa", "ninny", "idm", "noname", "kintel"}
+{"doodle nasa noname", "idm ninny noname", "idm ninny noname", "kintel", "kintel", "", ""}
+{1, 2, 7, 4, 6, 1, 2}
+{50, 10, 11, 9, 14, 11, 23}
+"topcoder"
+"kintel"
+
+Returns: {"doodle", "idm", "kintel", "nasa", "ninny", "topcoder" }
+
+topcoder has an unlimited amount of data. We take 21 units of topcoder data, with 10 units going to doodle and 11 to nasa. When doodle processes all 10 units, all 10 units of the output go to idm, and, after being processed by idm, those 10 units continue to kintel. 11 units of data processed by nasa are split between ninny (9 units) and idm (2 units). Both those companies give their output to kintel, which has enough power to process all 21 units of data it gets. Therefore the optimal strategy is to run all the companies except "noname". 
+
+1)
+{"b", "bz", "ba", "d", "z", "ca", "y", "a", "x"}
+{"bz ba z ca", "ba", "d", "", "ca", "d", "a", "x", ""}
+{5, 5, 5, 10, 6, 6, 3, 0, 3}
+{10, 7, 10, 9, 6, 9, 23, 13, 11}
+"b"
+"d"
+
+Returns: {"a", "b", "ba", "d" }
+
+2)
+{"b", "bz", "ba", "d", "z", "ca", "y", "a", "x"}
+{"bz ba z ca", "ba", "d", "", "ca", "d", "a", "x", ""}
+{5, 5, 5, 10, 6, 6, 3, 1, 3}
+{10, 7, 10, 9, 6, 9, 23, 13, 11}
+"b"
+"d"
+
+Returns: {"b", "ba", "d" }
+
+3)
+{"coma", "comb", "comc", "comd"}
+{"comb", "coma", "comd", "comc"}
+{10, 54, 18, 93}
+{10, 10, 10, 10}
+"comb"
+"comc"
+
+Returns: { }
+
+
+
+4)
+{"c", "b", "a"}
+{"b", "c", ""}
+{1, 1, 0}
+{1, 1, 22}
+"c"
+"b"
+
+Returns: {"a", "b", "c" }
+
+

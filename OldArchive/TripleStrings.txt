@@ -1,0 +1,86 @@
+PROBLEM STATEMENT
+You have three strings A, B, C. Initially, A is equal to a string init, and B and C are empty. Each character of init is either lowercase 'o' or lowercase 'x'.
+Your task in this problem is to transform A from init into goal by applying the following operations to the strings.
+
+If A is not an empty string, remove the leftmost character from A, and add it to the end of B.
+If A is not an empty string, remove the leftmost character from A, and add it to the end of C.
+If B is not an empty string, remove the leftmost character from B, and add it to the end of A.
+If C is not an empty string, remove the leftmost character from C, and add it to the end of A.
+
+You can apply the operations in any order and each operation can be used an arbitrary number of times. Return the minimal number of operations required to finish the task. The constraints guarantee that this is always possible.
+
+
+DEFINITION
+Class:TripleStrings
+Method:getMinimumOperations
+Parameters:string, string
+Returns:int
+Method signature:int getMinimumOperations(string init, string goal)
+
+
+CONSTRAINTS
+-init will contain between 1 and 50 characters, inclusive.
+-init and goal will contain the same number of characters.
+-Each character of init and goal will be either lowercase 'o' or lowercase 'x'.
+-The number of 'o' characters in init will be equal to the number of 'o' characters in goal.
+
+
+EXAMPLES
+
+0)
+"ooxxox"
+"xoxoxo"
+
+Returns: 6
+
+One of the optimal solutions is as follows:
+
+initial:         A=ooxxox B=  C=
+use operation 1: A=oxxox  B=o C=
+use operation 2: A=xxox   B=o C=o
+use operation 2: A=xox    B=o C=ox
+use operation 4: A=xoxo   B=o C=x
+use operation 4: A=xoxox  B=o C=
+use operation 3: A=xoxoxo B=  C=
+
+
+
+1)
+"oooxxoo"
+"oooxxoo"
+
+Returns: 0
+
+init and goal are the same, so no operation is required.
+
+2)
+"ox"
+"xo"
+
+Returns: 2
+
+
+
+3)
+"ooxxooxx"
+"xxoxoxoo"
+
+Returns: 12
+
+
+
+4)
+"oxxoxxoooxooooxxxoo"
+"oxooooxxxooooxoxxxo"
+
+Returns: 16
+
+
+
+5)
+"xxxoxoxxooxooxoxooo"
+"oxxooxxooxxoxoxooxo"
+
+Returns: 36
+
+

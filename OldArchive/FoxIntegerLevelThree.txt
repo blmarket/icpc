@@ -1,0 +1,67 @@
+PROBLEM STATEMENT
+Fox Jiro likes to ponder integers. Today he thought about the following things. 
+
+First, he defines a function s(n) for positive integers n. s(n) indicates the sum of all digits of n in base 10. For example, s(58) = 5+8 = 13.
+
+Next, he defines another function d(n) for positive integers n. d(n) applies function s for n repeatedly until the result has only one digit. For example, consider d(58). First, we calculate s(58) and get 13. 13 has two digits, so we calculate s(13) and get 4. So, d(58) = 4.
+
+He says an integer x is representable if and only if there is at least one positive integer y such that y * d(y) = x. You are given a long long min, a long long max. Return the number of representable integers between min and max, inclusive.
+
+DEFINITION
+Class:FoxIntegerLevelThree
+Method:count
+Parameters:long long, long long
+Returns:long long
+Method signature:long long count(long long min, long long max)
+
+
+CONSTRAINTS
+-min will be between 1 and 10,000,000,000 (10^10), inclusive.
+-max will be between min and 10,000,000,000 (10^10), inclusive.
+
+
+EXAMPLES
+
+0)
+10
+16
+
+Returns: 2
+
+The representable numbers are 10 (= 10 * d(10)) and 16 (= 4 * d(4)).
+
+1)
+123
+123
+
+Returns: 0
+
+123 is not representable.
+
+2)
+160
+160
+
+Returns: 1
+
+160 can be represented by two ways:
+
+160 = 40 * d(40)
+160 = 32 * d(32)
+
+
+3)
+47
+58
+
+Returns: 4
+
+
+
+4)
+123456789
+9876543210
+
+Returns: 2618024258
+
+

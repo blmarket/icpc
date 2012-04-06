@@ -1,0 +1,65 @@
+PROBLEM STATEMENT
+
+You are playing the funny game "Guess the number" with a friend. In this game, one of the
+players chooses a positive integer and the other has to guess it by using the clues that are
+revealed. The i-th clue is either "Y" or "N" indicating whether the hidden number is a multiple
+of i or not, respectively. For instance, if the clues so far are "YYNYY" it means that the number
+is a multiple of 1, 2, 4 and 5, but it is not a multiple of 3.
+
+Note that some sequences of clues are invalid. For instance, the sequence "NYYY" is invalid because
+all integers are multiples of 1, and therefore the starting element cannot be an "N". Also, a sequence
+like "YNNY" is invalid because the answer cannot be a multiple of 4, but not a multiple of 2.
+
+You will be given an int n. Return the number of valid sequences of n clues
+for this game, modulo 1000000007.
+
+
+DEFINITION
+Class:GuessTheNumberGame
+Method:possibleClues
+Parameters:int
+Returns:int
+Method signature:int possibleClues(int n)
+
+
+NOTES
+-Returning the answer modulo 1000000007 means returning the remainder of dividing the answer by 1000000007.
+
+
+CONSTRAINTS
+-n will be between 1 and 1000000 (10^6), inclusive.
+
+
+EXAMPLES
+
+0)
+5
+
+Returns: 12
+
+The possible clues are:
+
+YNNNN	YNNNY	YNYNN	YNYNY	YYNNN	YYNNY
+YYNYN	YYNYY	YYYNN	YYYNY	YYYYN	YYYYY
+
+
+1)
+16
+
+Returns: 240
+
+
+
+2)
+1
+
+Returns: 1
+
+
+
+3)
+1000000
+
+Returns: 677298706
+
+

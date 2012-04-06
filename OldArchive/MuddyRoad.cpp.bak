@@ -1,0 +1,49 @@
+#include <iostream>
+#include <queue>
+#include <set>
+#include <map>
+#include <vector>
+
+#define mp make_pair
+#define pb push_back
+#define sqr(x) ((x)*(x))
+#define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+
+using namespace std;
+
+typedef vector<int> VI;
+typedef vector<VI> VVI;
+typedef vector<string> VS;
+typedef pair<int,int> PII;
+
+template<typename T> int size(const T &a) { return a.size(); } 
+
+double prob[104][2]={0}, score[104][2]={0};
+
+class MuddyRoad 
+{
+public:
+    double getExpectedValue(vector <int> road) 
+    {
+        for(int i=2;i<size(road);i++)
+        {
+            double p1 = (double)road[i-1] / 100;
+            double p2 = (double)road[i-2] / 100;
+
+            prob[i-1][0] = (1-p2);
+            prob[i-1][1] = p2;
+
+            double t1 = min(score[i-2][0], score[i-2][1]);
+
+            score[i][0] = (1 - p1) * (prob[i-1][0] * min(score[i-1][0], t1) + (prob[i-1][1] * min(score[i-1][1], t1 + 1)));
+            score[i][1] = p1 * (prob[i-1][0] * min(score[i-1][0]+1, t1) + (prob[i-1][1] * min(score[i-1][1]+1, t1+1)));
+            cout << score[i][0] << " " << score[i][1] << endl;
+
+            if(i == size(road)-1)
+            {
+                return p1 * score[i][1] + (1-p1) * score[i][0];
+            }
+        }
+        return 0;
+    }
+};

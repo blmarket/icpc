@@ -1,0 +1,85 @@
+PROBLEM STATEMENT
+You are creating a simple one-player computer game. 
+The player must first choose and enter a string of length k, 
+where each character is 'A', 'B', 'C' or 'D'. 
+Each possible string of length k maps to a color, 
+and these mappings will be predetermined by you. 
+To win the game, the player must perform a series of transformations on the string 
+until it is different from the original, but maps to the same color. 
+Only the following two transformations are allowed at each step:
+
+	Swap two adjacent characters. 
+	Replace an occurrence of before[i] in the string with after[i], for some index i. 
+
+You want to create an "Impossible Mode", in which the player can never win. 
+Return the minimum number of colors required to make the game impossible. 
+
+
+DEFINITION
+Class:ImpossibleGame
+Method:getMinimum
+Parameters:int, vector <string>, vector <string>
+Returns:long long
+Method signature:long long getMinimum(int k, vector <string> before, vector <string> after)
+
+
+CONSTRAINTS
+-k will be between 1 and 30, inclusive. 
+-before will contain between 1 and 50 elements, inclusive. 
+-before and after will contain the same number of elements. 
+-Each element of before will contain between 1 and k characters, inclusive. 
+-For each index i, before[i] and after[i] will contain the same number of characters. 
+-Each character in before and after will be 'A', 'B', 'C' or 'D'. 
+
+
+EXAMPLES
+
+0)
+1
+{ "A" }
+
+{ "B" }
+
+
+Returns: 2
+
+If "A" and "B" are assigned the same color, 
+the player can win by starting with "A" and replacing it with "B". 
+So at least two colors are needed. 
+
+Two colors are enough to make the game impossible. 
+For example, you can assign red to "A" and "C", and blue to "B" and "D". 
+
+
+1)
+2
+{ "A", "A", "D" }
+
+{ "B", "C", "D" }
+
+
+Returns: 5
+
+
+
+2)
+2
+{ "B", "C", "D" }
+
+{ "C", "D", "B" }
+
+
+Returns: 9
+
+
+
+3)
+6
+{ "AABBC", "AAAADA", "AAACA", "CABAA", "AAAAAA", "BAAAA" }
+
+{ "AACCB", "DAAABC", "AAAAD", "ABCBA", "AABAAA", "AACAA" }
+
+
+Returns: 499
+
+

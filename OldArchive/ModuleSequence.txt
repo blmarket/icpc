@@ -1,0 +1,92 @@
+PROBLEM STATEMENT
+
+
+
+You are given four long longs K, N, A and
+B. Generate an integer list X of length B-A+1 using the following recursive definition:
+
+
+        X[0]=(K*A) MOD N
+	(note that K*A may overflow a 64-bit integer variable)
+
+        X[i]=(X[i-1]+K) MOD N
+
+
+Given another two long longs lower and upper,
+return the number of elements in the list which are between lower and upper, inclusive.
+
+
+
+
+DEFINITION
+Class:ModuleSequence
+Method:countElements
+Parameters:long long, long long, long long, long long, long long, long long
+Returns:long long
+Method signature:long long countElements(long long K, long long N, long long A, long long B, long long lower, long long upper)
+
+
+CONSTRAINTS
+-K will be between 0 and 10,000,000,000, inclusive.
+-N will be between 1 and 10,000,000,000, inclusive.
+-A will be between 0 and 10,000,000,000, inclusive.
+-B will be between A and 10,000,000,000, inclusive.
+-lower will be between 0 and N-1, inclusive.
+-upper will be between lower and N-1, inclusive.
+
+
+EXAMPLES
+
+0)
+2
+7
+1
+5
+2
+5
+
+Returns: 3
+
+The generated list is: 2, 4, 6, 1, 3.
+
+1)
+9
+1
+0
+7
+0
+0
+
+Returns: 8
+
+2)
+20
+12
+21
+30
+1
+11
+
+Returns: 6
+
+Note that K, A and B may be greater than N.
+
+3)
+30
+89
+112
+200
+80
+88
+
+Returns: 9
+
+4)
+890
+1000
+1000
+10000
+456
+980
+
+Returns: 4770

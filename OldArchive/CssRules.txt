@@ -1,0 +1,122 @@
+PROBLEM STATEMENT
+
+In this problem we will use the terms XHTML and CSS. They do not match the real-world XHTML and CSS standards exactly. Read the problem statement to clarify the meanings of these terms in the problem context.
+
+
+You are given a vector <string> xhtml. Concatenate elements of xhtml to get a single string formatted as tags. We use BNF to describe tags formally.
+
+
+	tags ::= tag | tag tags
+
+
+	tagContent ::= EMPTY | tags
+
+
+	tag ::= <TAG id='ID' style='color:COLOR'>tagContent</TAG>
+
+
+Where 
+
+
+EMPTY means an empty string, 
+
+
+TAG is one of the strings "b", "u", "i", which are called tag names.
+
+
+ID means unique non-empty tag identifier containing only lowercase letters,
+
+
+COLOR is one of the following seven standard colors: "black", "blue", "gray", "green",
+            "red", "white", "yellow".
+
+
+The tags in tagContent are called strict descendants of the surrounding tag.
+
+
+We will say that each tag is assigned the specified color. For example, if tags = "<b id='x' style='color:white'><u id='y' style='color:red'></u><u id='z' style='color:red'></u>", then the tag with id='x' is assigned the color white, and the tags with id='y' and id='z' are assigned the color red.
+
+
+You decided to extract the information about assigned colors to CSS rules. Each CSS rule looks like "selector {color:COLOR;}" and assigns a specific color to one or more tags. In this problem we will accept only two types of selectors:
+
+
+"#id" ? means that CSS rule will be applied to the tag with the given id (example, "#x").
+
+
+"#id tagName" ? means that CSS rule will be applied to all tags with the specified tag name which are the strict descendants of the tag with the given id (example, "#x u"). 
+
+
+CSS rules are applied in the order they are given, and it is possible for some later rules to override earlier rules for certain tags.
+
+
+Return the minimal number of CSS rules you need to assign the proper color to each tag.
+
+
+
+DEFINITION
+Class:CssRules
+Method:getMinimalCssRuleCount
+Parameters:vector <string>
+Returns:int
+Method signature:int getMinimalCssRuleCount(vector <string> xthml)
+
+
+CONSTRAINTS
+-xhtml will contain between 1 and 50 elements, inclusive.
+-Each element of xhtml will contain between 1 and 50 characters, inclusive.
+-The concatenation of all elements of xhtml will satisfy the grammar given in the problem statement and conditions given after it.
+
+
+EXAMPLES
+
+0)
+{"<b id='x' style='color:red'>"}
+
+Returns: 1
+
+Use only the rule "#x {color:red;}".
+
+
+1)
+{"<b id='x' style='color:red'>","<b id='y' style='color:red'>",
+ "<b id='z' style='color:red'>",""}
+
+
+Returns: 2
+
+Use two rules "#x {color:red;}" and "#x b {color:red;}".
+
+2)
+{"<b id='x' style='color:red'>",
+"<b id='y' style='color:red'>",
+"<b id='w' style='color:red'>",
+"",
+"",
+"<u id='z' style='color:red'>",
+"</u>",
+""}
+
+Returns: 3
+
+
+
+3)
+{"<b id='x' style='color:red'>",
+"<i id='y' style='color:black'>",
+"<u id='w' style='color:white'>",
+"</u>",
+"",
+"<u id='z' style='color:yellow'>",
+"</u>",
+""}
+
+Returns: 4
+
+
+
+4)
+{"<b id='x' style='col", "or:red'>", "<b id=", "'xx' style='color", ":red'>"}
+
+Returns: 2
+
+

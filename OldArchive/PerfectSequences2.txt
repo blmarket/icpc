@@ -1,0 +1,68 @@
+PROBLEM STATEMENT
+A perfect sequence is a sequence such that all of its elements are integers and the product of all of them is equal to their sum. For example {1,2,3} is a perfect sequence because 1+2+3 = 1*2*3, {-1,1,-1,1,6} is a perfect sequence as well, but {4,5,6} is not a perfect sequence because 4*5*6 is not equal to 4+5+6.
+
+You are given a vector <int> seq. In one move you can choose one element of seq and increase or decrease it by 1. Return the minimum number of moves required to transform seq into a perfect sequence.
+
+DEFINITION
+Class:PerfectSequences2
+Method:minimumMoves
+Parameters:vector <int>
+Returns:long long
+Method signature:long long minimumMoves(vector <int> seq)
+
+
+CONSTRAINTS
+-seq will contain between 1 and 50 elements, inclusive.
+-Each element of seq will be between -1,000,000,000 and 1,000,000,000, inclusive.
+
+
+EXAMPLES
+
+0)
+{-1000000000}
+
+Returns: 0
+
+Any sequence consisting of 1 integer is perfect, so no additional moves are needed.
+
+1)
+{-1,1}
+
+Returns: 2
+
+There are 2 perfect sequences containing two elements: {0,0} and {2,2}. In order to obtain {0,0} from {-1,1} you need 2 moves, in order to obtain {2,2} you need 4 moves.
+
+2)
+{4,3}
+
+Returns: 3
+
+This time it is better to obtain {2,2}.
+
+3)
+{17,95,-79}
+
+Returns: 33
+
+Here the best solution is to transform seq into {0,95,-95}.
+
+4)
+{10,9,8}
+
+Returns: 21
+
+Decrease each element by 7 to obtain {3,2,1}.
+
+5)
+{-2,-29,-13}
+
+Returns: 38
+
+
+
+6)
+{-7,-31,2,-14}
+
+Returns: 48
+
+

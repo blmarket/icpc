@@ -1,0 +1,61 @@
+PROBLEM STATEMENT
+Ash and Elsh love to play a game called Pick-And-Delete.
+
+Initially, Ash must choose a sequence of N positive integers. Then, Elsh will tell him another sequence S, also containing N positive integers.
+
+The game consists of N rounds, numbered 0 through N-1. In the i-th round, Ash must pick a number not greater than S[i] from his sequence, and delete it from his sequence. If in any round he cannot pick any number satisfying the rule, he loses the game. So, he wins the game if after N rounds his sequence becomes empty.
+
+You are given Elsh's sequence S as a vector <string>. Concatenate the elements of S to get a space-separated sequence of N integers. Return the number of different sequences that Ash can choose initially so that he will win the game after playing optimally. Two sequences are different if they have different integers in at least one position.
+
+Since the result might be large, return the result modulo 1,000,000,007.
+
+DEFINITION
+Class:PickAndDelete
+Method:count
+Parameters:vector <string>
+Returns:int
+Method signature:int count(vector <string> S)
+
+
+CONSTRAINTS
+-S will contain between 1 and 50 elements, inclusive.
+-Each element of S will contain between 1 and 50 characters, inclusive.
+-The concatenation of elements of S will be a space-separated sequence of positive integers, with no extra leading or trailing spaces.
+-S will contain between 1 and 200 integers, inclusive.
+-Each integer in S will be between 1 and 1,000,000,000, inclusive, with no leading zeroes.
+
+
+EXAMPLES
+
+0)
+{"1 2"}
+
+Returns: 3
+
+The winning sequences are:
+
+(1, 1)
+(1, 2)
+(2, 1)
+
+
+1)
+{"2 2 2 2 2 2 2 2 2"}
+
+Returns: 512
+
+Each integer in a winning sequence can be either 1 or 2, resulting in 2^9 sequences.
+
+2)
+{"5", " 1 ", "2"}
+
+Returns: 34
+
+
+
+3)
+{"3 ", "14159 265", "3589 7", " 932"}
+
+Returns: 353127147
+
+Remember to first concatenate the elements of S. In this case, the sequence S is (3, 14159, 2653589, 7, 932).

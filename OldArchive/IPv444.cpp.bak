@@ -1,0 +1,198 @@
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+#include <queue>
+#include <set>
+#include <map>
+#include <vector>
+
+#define mp make_pair
+#define pb push_back
+#define sqr(x) ((x)*(x))
+#define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+
+using namespace std;
+
+typedef vector<int> VI;
+typedef vector<VI> VVI;
+typedef vector<string> VS;
+typedef pair<int,int> PII;
+typedef long long LL;
+
+template<typename T> int size(const T &a) { return a.size(); } 
+
+struct req
+{
+    union
+    {
+        struct
+        {
+            short a,b,c,d;
+        };
+        struct
+        {
+            short aa[4];
+        };
+    };
+
+    bool operator<(const req &a) const
+    {
+        return false;
+    }
+
+    bool operator==(const req &a) const
+    {
+        for(int i=0;i<4;i++)
+            if(aa[i] !=  a.aa[i]) return false;
+        return true;
+    }
+};
+
+ostream& operator<< (ostream &a, const req &b)
+{
+    return a << b.a << "." << b.b << "." << b.c << "." << b.d;
+}
+
+short aa(const char *ptr)
+{
+    if(ptr[0] == '*') return -1;
+    return atoi(ptr);
+}
+
+void parse(const string &in, req &out)
+{
+    char buff[1024];
+    strcpy(buff, in.c_str());
+    char *ptr = strtok(buff, ".");
+    out.a = aa(ptr);
+    ptr = strtok(NULL, ".");
+    out.b = aa(ptr);
+    ptr = strtok(NULL, ".");
+    out.c = aa(ptr);
+    ptr = strtok(NULL, ".");
+    out.d = aa(ptr);
+}
+
+vector<req> uncount;
+
+bool ang(const req &a, const req &b, req &c)
+{
+    for(int i=0;i<4;i++)
+    {
+        if(a.aa[i] == b.aa[i])
+        {
+            c.aa[i] = a.aa[i];
+            continue;
+        }
+        if(a.aa[i] != -1 && b.aa[i] != -1) return false;
+        c.aa[i] = a.aa[i] + b.aa[i] + 1;
+    }
+    return true;
+}
+
+LL simcnt(const req &a)
+{
+    LL cnt1 = 1;
+    for(int i=0;i<4;i++) if(a.aa[i] == -1) cnt1 *= 1000;
+    return cnt1;
+}
+
+LL count(const req &a)
+{
+    LL cnt1 = simcnt(a);
+
+    vector<req> VV[2];
+    int mul = -1;
+
+    for(int i=0;i<size(uncount);i++)
+    {
+        req tmp;
+        if(ang(a, uncount[i], tmp))
+        {
+            VV[0].pb(tmp);
+            cnt1 += mul * simcnt(tmp);
+        }
+    }
+
+    for(int i=0;i<10;i++)
+    {
+        mul *= -1;
+        vector<req> &cur = VV[i%2];
+        vector<req> &next = VV[(i+1)%2];
+        next.clear();
+
+        if(size(cur) == 0) break;
+
+        cout << cur.size() << endl;
+        for(int j=0;j<size(cur);j++)
+            cout << cur[j] << " ";
+        cout << endl;
+
+        for(int j=0;j<size(cur);j++)
+        {
+            for(int k=j+1;k<size(cur);k++)
+            {
+                req tmp;
+                if(ang(cur[j], cur[k], tmp))
+                {
+                    LL cc = simcnt(tmp);
+
+                    if(cc == 1)
+                    {
+                        bool fail = false;
+                        for(int l=0;l<size(next);l++)
+                        {
+                            if(next[l] == tmp) { fail=true; break; }
+                        }
+                        if(fail) continue;
+                    }
+
+                    cnt1 += mul * cc;
+                    next.pb(tmp);
+                }
+            }
+        }
+    }
+    cout << endl;
+
+    return cnt1;
+}
+
+class IPv444 
+{
+public:
+    long long getMaximumMoney(vector <string> request, vector <int> price) 
+    {		
+        vector<pair<int, req> > V;
+        for(int i=0;i<size(price);i++)
+        {
+            req tmp;
+            parse(request[i], tmp);
+            V.pb(mp(price[i], tmp));
+        }
+
+        sort(V.rbegin(), V.rend());
+
+        LL ret = 0;
+
+        for(int i=0;i<size(V);i++)
+        {
+            LL cnt = count(V[i].second);
+
+            if(cnt == 0) continue;
+
+            ret += V[i].first * cnt;
+
+            uncount.pb(V[i].second);
+        }
+
+        return ret;
+    }
+};
+
+
+// Powered by FileEdit
+
+
+// Powered by FileEdit

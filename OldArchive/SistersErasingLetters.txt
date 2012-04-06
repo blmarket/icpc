@@ -1,0 +1,60 @@
+PROBLEM STATEMENT
+Camomile and her twin sister Romashka are playing a game.  At the beginning of the game, they are given a word.  Then, starting with Camomile, they take alternate turns, and on each turn, the player erases one letter from the word.  That letter must be at a position greater than or equal to the position of the letter erased on the previous turn (on the first turn, the player can erase any letter).  Letter positions are numbered consecutively from left to right and are renumbered from scratch after each turn.  For example, if the word is "topcoder" and a player erases the letter 'c', the word would become "topoder", and on the next turn, the other player could only erase the letters 'r', 'e', 'd' or the second 'o'.
+
+When a player erases the last letter, the game ends.  If the word at the end of the game is lexicographically greater than the word at the beginning, Camomile wins.  Otherwise, Romashka wins.  You are given a string word, which is the word given at the beginning of the game.  Assuming that Romashka and Camomile both play optimally, return "Romashka" if Romashka will win or "Camomile" if Camomile will win (all quotes for clarity).
+
+DEFINITION
+Class:SistersErasingLetters
+Method:whoWins
+Parameters:string
+Returns:string
+Method signature:string whoWins(string word)
+
+
+NOTES
+-A string X is defined as smaller than a string Y if and only if X is a prefix of Y or X has a smaller character than Y at the first position where they differ.
+
+
+CONSTRAINTS
+-word will contain between 1 and 50 characters, inclusive.
+-Each character in word will be a lowercase letter ('a'-'z').
+
+
+EXAMPLES
+
+0)
+"topcoder"
+
+Returns: "Camomile"
+
+1. Camomile starts by erasing the letter 'c', leaving "topoder".
+2. It doesn't matter what Romashka erases on her turn.  The possible outcomes of this turn are "topder", "topoer", "topodr" and "topode".  In the last outcome, Romashka deletes the last letter and ends the game, but loses.
+3. If Romashka doesn't end the game, then Camomile will end it by erasing the last letter.  The possible outcomes are "topde", "topoe" and "topod", all of which are lexicographically greater than "topcoder".
+
+1)
+"program"
+
+Returns: "Romashka"
+
+Camomile can't win here.
+
+2)
+"abcd"
+
+Returns: "Camomile"
+
+Here, Camomile can only win if she starts by erasing the letter 'a'.
+
+3)
+"abc"
+
+Returns: "Romashka"
+
+Note that the empty string is lexicographically smaller than any other string.
+
+4)
+"easyproblemroundfivetopcoderopentwothousandeleven"
+
+Returns: "Camomile"
+
+
