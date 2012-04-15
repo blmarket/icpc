@@ -177,6 +177,8 @@ void process(void)
     if((y-1)*2+1 <= d) ret++;
     if((h-2-x)*2+1 <= d) ret++;
     if((w-2-y)*2+1 <= d) ret++;
+
+    cout << ret << endl;
     
     x=x*2+1;
     y=y*2+1;
