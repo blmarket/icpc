@@ -43,7 +43,7 @@ int gcd(int a,int b)
 
 int move(int &xx, int &yy, int &dx, int &dy)
 {
-    cout << xx << " " << yy << " " << dx << " " << dy << " " << endl;
+    //cout << xx << " " << yy << " " << dx << " " << dy << " " << endl;
     int gg = gcd(dx,dy);
     if(gg != 1)
     {
@@ -92,7 +92,7 @@ int move(int &xx, int &yy, int &dx, int &dy)
     dy /= ay;
     for(int i=0;i<size(moves);i++)
     {
-        cout << "m" << xx << " " << yy << " " << dx << " " << dy << " " << moves[i] << endl;
+        //cout << "m" << xx << " " << yy << " " << dx << " " << dy << " " << moves[i] << endl;
         if(moves[i])
         {
             if((xx % 2 == 0) && data[(xx + dx) /2][(yy + (dy-1)/2) / 2] == '#')
@@ -207,22 +207,16 @@ void process(void)
 
             int xx = x, yy = y;
             int ddx = dx, ddy = -dy;
-            cout << ret << endl;
             ret += tmove(xx,yy,ddx,ddy);
-            cout << ret << endl;
             xx=x,yy=y;
             ddx = dx, ddy = dy;
             ret += tmove(xx,yy,ddx,ddy);
-            cout << ret << endl;
             xx=x,yy=y;
             ddx = -dx, ddy = dy;
             ret += tmove(xx,yy,ddx,ddy);
-            cout << ret << endl;
             xx=x,yy=y;
             ddx = -dx, ddy = -dy;
             ret += tmove(xx,yy,ddx,ddy);
-            cout << ret << endl;
-            return;
         }
     }
     cout << ret << endl;
