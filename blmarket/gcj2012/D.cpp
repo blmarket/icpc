@@ -95,7 +95,7 @@ int move(int &xx, int &yy, int &dx, int &dy)
         cout << "m" << xx << " " << yy << " " << dx << " " << dy << " " << moves[i] << endl;
         if(moves[i])
         {
-            if((xx % 2 == 0) && data[(xx + dx) /2][(yy - dy) /2] == '#')
+            if((xx % 2 == 0) && data[(xx + dx) /2][(yy + (dy-1)/2) / 2] == '#')
             {
                 dx = -dx;
             }
@@ -103,7 +103,7 @@ int move(int &xx, int &yy, int &dx, int &dy)
         }
         else
         {
-            if((yy % 2 == 0) && data[(xx - dx) /2][(yy + dy) /2] == '#')
+            if((yy % 2 == 0) && data[(xx + (dx-1)/2) / 2][(yy + dy) /2] == '#')
             {
                 dy = -dy;
             }
