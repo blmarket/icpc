@@ -181,9 +181,9 @@ void process(void)
     x=x*2+1;
     y=y*2+1;
 
-    for(int i=2;i<=50;i++)
+    for(int i=1;i<=50;i++)
     {
-        for(int j=3;j<=50;j++)
+        for(int j=1;j<=50;j++)
         {
             if(i*i+j*j > d*d) break;
 
