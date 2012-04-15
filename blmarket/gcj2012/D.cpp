@@ -92,7 +92,7 @@ int move(int &xx, int &yy, int &dx, int &dy)
     dy /= ay;
     for(int i=0;i<size(moves);i++)
     {
-        //cout << "m" << xx << " " << yy << " " << dx << " " << dy << " " << moves[i] << endl;
+        cout << "m" << xx << " " << yy << " " << dx << " " << dy << " " << moves[i] << endl;
         if(moves[i])
         {
             if((xx % 2 == 0) && data[(xx + dx) /2][(yy - dy) /2] == '#')
