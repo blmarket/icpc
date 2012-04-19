@@ -16,6 +16,8 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
+#define MULTI 3
+
 using namespace std;
 
 typedef vector<int> VI;
@@ -27,8 +29,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 class ForkSolver {
 public:
+    ForkSolver() : nchilds(0) { }
+
     vector<pair<pid_t,int> > outfds;
     void _solve(int dataId);
+    int nchilds;
 } solver;
 
 void solve(int dataId)
@@ -80,6 +85,16 @@ int main(void)
 void ForkSolver::_solve(int dataId)
 {
     int pipefd[2];
+
+    while(nchilds >= MULTI)
+    {
+        int status = 0;
+        int ret = waitpid(-1, &status, 0);
+        if(ret == -1)
+            perror("waitpid");
+        else
+            nchilds--;
+    }
 
     pipe(pipefd);
     pid_t pid = fork();
