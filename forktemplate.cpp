@@ -28,13 +28,13 @@ template<typename T> int size(const T &a) { return a.size(); }
 class ForkSolver {
 public:
     vector<pair<pid_t,int> > outfds;
-    void solve(int dataId);
+    void _solve(int dataId);
 } solver;
 
 void solve(int dataId)
 {
     // do solve data here
-    cerr << 0 << endl;
+    cout << dataId << endl;
     printf("0\n",dataId);
 }
 
@@ -51,19 +51,16 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process(i);
-        solver.solve(i);
+        solver._solve(i);
     }
     for(int i=1;i<=N;i++)
     {
-        cerr << i << " " << solver.outfds[i].first << "," << solver.outfds[i].second << endl;
         int status;
         char buffer[8192];
         waitpid(solver.outfds[i].first, &status, 0);
-        cerr << "status = " << status << endl;
         ssize_t sz;
         while(sz = read(solver.outfds[i].second, buffer, sizeof(buffer)))
         {
-            cerr << "Read " << sz << endl;
             ssize_t iter = 0, outsz;
 
             while(iter != sz)
@@ -80,7 +77,7 @@ int main(void)
     }
 }
 
-void ForkSolver::solve(int dataId)
+void ForkSolver::_solve(int dataId)
 {
     int pipefd[2];
 
