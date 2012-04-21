@@ -46,7 +46,6 @@ int go(int s,int e)
         nums[s][e] = max(nums[s][e], -go(s+2,e));
     }
 
-    cout << s << " " << e << " = " << nums[s][e] << endl;
     return nums[s][e];
 }
 
