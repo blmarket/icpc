@@ -1,4 +1,4 @@
-g++ $1 && git add $1 && git commit -m "--Empty Message--" && \
+g++ $1 && git add $1 && git commit -m "--Empty Message--" > /dev/null
 if [ ! -n "$2" ]; then
     ./a
 else
