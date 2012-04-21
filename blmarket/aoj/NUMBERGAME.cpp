@@ -25,8 +25,45 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int nums[55][55];
+bool chks[55][55];
+int n;
+
+int go(int s,int e)
+{
+    if(chks[s][e]) return nums[s][e];
+
+    chks[s][e] = true;
+    nums[s][e] = nums[s][s+1] - go(s+1,e);
+    int tmp;
+
+    tmp = nums[e-1][e] - go(s,e-1);
+    nums[s][e] = max(nums[s][e], nums[e-1][e] - go(s,e-1));
+
+    if(e-s >= 2)
+    {
+        nums[s][e] = max(nums[s][e], nums[e-2][e-1] + nums[e-1][e] - go(s,e-2));
+        nums[s][e] = max(nums[s][e], nums[s][s+1] + nums[s+1][s+2] - go(s+2,e));
+    }
+
+    return nums[s][e];
+}
+
 void process(int dataId)
 {
+    memset(chks, 0, sizeof(chks));
+    for(int i=0;i<55;i++)
+    {
+        chks[i][i] = true;
+        nums[i][i] = 0;
+    }
+    cin >> n;
+    for(int i=0;i<n;i++)
+    {
+        chks[i][i+1] = true;
+        cin >> nums[i][i+1];
+    }
+    cout << go(0,n) << endl;
 }
 
 int main(void)
