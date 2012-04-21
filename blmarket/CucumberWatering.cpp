@@ -57,7 +57,7 @@ long long go2(int pos, long long mask)
     cout << endl;
 
     long long ret = 0;
-    for(int i=0;i<size(idxs);i++)
+    for(int i=0;i+1<size(idxs);i++)
     {
         int p1 = xs[idxs[i]];
         int p2 = xs[idxs[i+1]];
