@@ -35,15 +35,19 @@ int go(int s,int e)
 
     chks[s][e] = true;
     nums[s][e] = nums[s][s+1] - go(s+1,e);
+    cout << s << " " << e << " = " << nums[s][e] << endl;
     int tmp;
 
     tmp = nums[e-1][e] - go(s,e-1);
     nums[s][e] = max(nums[s][e], nums[e-1][e] - go(s,e-1));
+    cout << s << " " << e << " = " << nums[s][e] << endl;
 
     if(e-s >= 2)
     {
         nums[s][e] = max(nums[s][e], -go(s,e-2));
+        cout << s << " " << e << " = " << nums[s][e] << endl;
         nums[s][e] = max(nums[s][e], -go(s+2,e));
+        cout << s << " " << e << " = " << nums[s][e] << endl;
     }
 
     return nums[s][e];
