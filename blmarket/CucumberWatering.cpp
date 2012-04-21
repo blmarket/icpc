@@ -36,6 +36,8 @@ long long go2(int pos, long long mask)
             last = i;
         if(last != -1)
             near[i] = xs[i] - xs[last];
+        else
+            near[i] = -1;
     }
 
     last = -1;
