@@ -50,6 +50,10 @@ long long go2(int pos, long long mask)
         }
     }
 
+    cout << "nears : ";
+    for(int i=0;i<n;i++) cout << near[i] << " ";
+    cout << endl;
+
     long long ret = 0;
     for(int i=0;i<size(idxs);i++)
     {
