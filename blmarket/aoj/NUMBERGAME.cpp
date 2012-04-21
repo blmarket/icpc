@@ -42,8 +42,8 @@ int go(int s,int e)
 
     if(e-s >= 2)
     {
-        nums[s][e] = max(nums[s][e], nums[e-2][e-1] + nums[e-1][e] - go(s,e-2));
-        nums[s][e] = max(nums[s][e], nums[s][s+1] + nums[s+1][s+2] - go(s+2,e));
+        nums[s][e] = max(nums[s][e], -go(s,e-2));
+        nums[s][e] = max(nums[s][e], -go(s+2,e));
     }
 
     return nums[s][e];
