@@ -70,7 +70,7 @@ long long go(int pos, long long mask, int life)
     cout << pos << " " << mask << " " << life << endl;
     if(pos == n) return go2(0, mask);
     long long ret = - 1;
-    if(n-1-pos == life) return go(pos+1, (mask << 1) | 1, life-1);
+    if(n-pos == life) return go(pos+1, (mask << 1) | 1, life-1);
     ret = go(pos+1, mask<<1, life);
     if(life) ret = min(ret, go(pos+1, (mask<<1) | 1, life-1));
     return ret;
