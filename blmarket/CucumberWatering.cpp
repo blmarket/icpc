@@ -67,6 +67,7 @@ long long go2(int pos, long long mask)
 
 long long go(int pos, long long mask, int life)
 {
+    cout << pos << " " << mask << " " << life << endl;
     if(pos == n) return go2(0, mask);
     long long ret = - 1;
     if(n-1-pos == life) return go(pos+1, (mask << 1) | 1, life-1);
