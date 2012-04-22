@@ -61,17 +61,19 @@ long long solve(int prev, int life)
             if(p1 > p2) swap(p1,p2);
             if(p2 <= xs[prev]) continue;
             if(p1 >= xs[i]) continue;
-            cout << "::::" << p1 << " " << p2 << endl;
             if(p2 >= xs[i])
             {
+                cout << "::::" << p1 << " " << p2 << " = " << xs[i] - p1 << endl;
                 tmp += xs[i] - p1;
                 continue;
             }
             if(p1 <= xs[prev])
             {
+                cout << "::::" << p1 << " " << p2 << " = " << p2 - xs[prev] << endl;
                 tmp += p2 - xs[prev];
                 continue;
             }
+            cout << "::::" << p1 << " " << p2 << endl;
             int c1 = p2 - p1;
             int c2 = (p1 - xs[prev]) + (xs[i] - p2);
             cout << "::::" << c1 << " " << c2 << endl;
