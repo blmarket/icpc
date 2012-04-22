@@ -107,7 +107,9 @@ public:
             if(K >= size(xs)) return 0;
             if(K == 0) K = 1;
 
-            solve(-1,K);
+            memo.clear();
+
+            return solve(-1,K);
 	}
 	
 // BEGIN CUT HERE
