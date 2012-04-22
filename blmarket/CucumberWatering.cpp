@@ -74,6 +74,7 @@ long long solve(int prev, int life)
             int c2 = (p1 - xs[prev]) + (xs[i] - p2);
             tmp += min(c1,c2);
         }
+        cout << "::" << prev << " " << life << " " << i << " = " << tmp << endl;
         if(ret < 0 || ret > tmp) ret = tmp;
     }
 
