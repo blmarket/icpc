@@ -53,6 +53,7 @@ long long solve(int prev, int life)
     for(int i=prev+1;i<=size(xs) - life;i++)
     {
         long long tmp = solve(i, life-1);
+        cout << "::" << prev << " " << life << " " << i << " = " << tmp << endl;
         for(int j=0;j+1<size(x);j++)
         {
             int p1 = x[j];
@@ -72,9 +73,9 @@ long long solve(int prev, int life)
             }
             int c1 = p2 - p1;
             int c2 = (p1 - xs[prev]) + (xs[i] - p2);
+            cout << "::::" << c1 << " " << c2 << endl;
             tmp += min(c1,c2);
         }
-        cout << "::" << prev << " " << life << " " << i << " = " << tmp << endl;
         if(ret < 0 || ret > tmp) ret = tmp;
     }
 
