@@ -59,9 +59,9 @@ long long solve(int prev, int life)
             int p1 = x[j];
             int p2 = x[j+1];
             if(p1 > p2) swap(p1,p2);
-            cout << "::::" << p1 << " " << p2 << endl;
             if(p2 <= xs[prev]) continue;
             if(p1 >= xs[i]) continue;
+            cout << "::::" << p1 << " " << p2 << endl;
             if(p2 >= xs[i])
             {
                 tmp += xs[i] - p1;
