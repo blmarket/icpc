@@ -63,14 +63,14 @@ long long solve(int prev, int life)
             if(p1 >= xs[i]) continue;
             if(p2 >= xs[i])
             {
-                cout << "::::" << p1 << " " << p2 << " =a " << xs[i] - p1 << endl;
-                tmp += xs[i] - p1;
+                //cout << "::::" << p1 << " " << p2 << " =a " << xs[i] - p1 << endl;
+                tmp += min(xs[i] - p1, p1 - xs[prev]);
                 continue;
             }
             if(p1 <= xs[prev])
             {
-                cout << "::::" << p1 << " " << p2 << " =b " << p2 - xs[prev] << endl;
-                tmp += p2 - xs[prev];
+                //cout << "::::" << p1 << " " << p2 << " =b " << p2 - xs[prev] << endl;
+                tmp += min(p2 - xs[prev], xs[i] - p2);
                 continue;
             }
             cout << "::::" << p1 << " " << p2 << endl;
