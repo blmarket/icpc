@@ -20,88 +20,76 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-vector<int> x;
-vector<int> xs;
-vector<int> idxs;
-vector<int> move;
-int n;
+typedef map<pair<int,int>, long long> memo_t;
+memo_t memo;
+vector<int> xs,x;
 
-long long go2(int pos, long long mask)
+long long solve(int prev, int life)
 {
-    int near[55];
-    int last = -1;
-    for(int i=0;i<n;i++)
-    {
-        if(mask & (1LL << i))
-            last = i;
-        if(last != -1)
-            near[i] = xs[i] - xs[last];
-        else
-            near[i] = -1;
-    }
+    memo_t::iterator iter = memo.find(mp(prev, life));
+    if(iter != memo.end()) return iter->second;
 
-    last = -1;
-    for(int i=n-1;i>=0;i--)
+    if(life == 0)
     {
-        if(mask & (1LL << i))
-            last = i;
-        if(last != -1)
+        long long ret = 0;
+        for(int i=0;i+1<size(x);i++)
         {
-            int tmp = xs[last] - xs[i];
-            if(near[i] == -1 || near[i] > tmp) near[i] = tmp;
+            int p1 = x[i];
+            int p2 = x[i+1];
+            if(p1 > p2) swap(p1, p2);
+            if(p2 <= xs[prev]) continue;
+            if(p1 >= xs[prev]) 
+            {
+                ret += p2-p1;
+                continue;
+            }
+            ret += p2 - xs[prev];
         }
+        return ret;
     }
 
-    long long ret = 0;
-    for(int i=0;i+1<size(idxs);i++)
+    long long ret = -1;
+    for(int i=prev+1;i<=size(xs) - life;i++)
     {
-        int p1 = xs[idxs[i]];
-        int p2 = xs[idxs[i+1]];
-        int dist = abs(p2-p1);
-        if(dist > near[idxs[i]] + near[idxs[i+1]])
+        long long tmp = solve(i, life-1);
+        for(int j=0;j+1<size(x);j++)
         {
-            dist = near[idxs[i]] + near[idxs[i+1]];
+            int p1 = x[j];
+            int p2 = x[j+1];
+            if(p1 > p2) swap(p1,p2);
+            if(p2 <= xs[prev]) continue;
+            if(p1 >= xs[i]) continue;
+            if(p2 >= xs[i])
+            {
+                tmp += xs[i] - p1;
+                continue;
+            }
+            if(p1 <= xs[prev])
+            {
+                tmp += p2 - xs[prev];
+                continue;
+            }
+            int c1 = p2 - p1;
+            int c2 = (p1 - xs[prev]) + (xs[i] - p2);
+            tmp += min(c1,c2);
         }
-        ret += dist;
+        if(ret < 0 || ret > tmp) ret = tmp;
     }
-    return ret;
-}
-
-long long go(int pos, long long mask, int life)
-{
-    if(pos == n) return go2(0, mask);
-    long long ret = - 1;
-    if(n-pos == life) return go(pos+1, (mask << 1) | 1, life-1);
-    ret = go(pos+1, mask<<1, life);
-    if(life) ret = min(ret, go(pos+1, (mask<<1) | 1, life-1));
-    return ret;
+    return memo[mp(prev,life)] = ret;
 }
 
 class CucumberWatering 
 {
 public:
-	long long theMin(vector <int> _x, int K) 
+	long long theMin(vector <int> x_, int K) 
 	{
-            x = _x;
-            n = size(x);
-            if(K > size(x)) K = size(x);
-            xs = x;
+            x = xs = x_;
             sort(xs.begin(), xs.end());
-            for(int i=0;i<size(x);i++)
-            {
-                for(int j=0;j<size(xs);j++)
-                    if(x[i] == xs[j]) { idxs.pb(j); break; }
-            }
 
-            if(K < 2)
-            {
-                long long ret = 0;
-                for(int i=0;i+1<size(x);i++)
-                    ret += abs(x[i+1] - x[i]);
-                return ret;
-            }
+            if(K >= size(xs)) return 0;
+            if(K == 0) K = 1;
 
-            return go(0, 0, K);
+            solve(-1,K);
 	}
 	
 // BEGIN CUT HERE
