@@ -59,8 +59,16 @@ long long solve(int prev, int life)
             int p1 = x[j];
             int p2 = x[j+1];
             if(p1 > p2) swap(p1,p2);
-            if(p2 <= xs[prev]) continue;
+
             if(p1 >= xs[i]) continue;
+            if(prev == -1)
+            {
+                p2 = min(p2, xs[i]);
+                tmp += p2-p1;
+                continue;
+            }
+
+            if(p2 <= xs[prev]) continue;
             if(p2 >= xs[i])
             {
                 if(p1 < xs[prev]) p1 = xs[prev];
