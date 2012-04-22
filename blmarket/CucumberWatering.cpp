@@ -45,7 +45,8 @@ long long solve(int prev, int life)
             }
             ret += p2 - xs[prev];
         }
-        return ret;
+        cout << prev << " " << life << " = " << ret << endl;
+        return memo[mp(prev, life)] = ret;
     }
 
     long long ret = -1;
