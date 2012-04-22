@@ -75,6 +75,8 @@ long long solve(int prev, int life)
         }
         if(ret < 0 || ret > tmp) ret = tmp;
     }
+
+    cout << prev << " " << life << " = " << ret << endl;
     return memo[mp(prev,life)] = ret;
 }
 
