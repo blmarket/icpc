@@ -79,7 +79,12 @@ public:
             int t = V[i].first;
             if(t != pt)
             {
-                for(int j=0;j<n;j++) if(commit[j]) alive[i] = false;
+                for(int j=0;j<n;j++) 
+                {
+                    if(commit[j]) alive[i] = false;
+                    cout << alive[j] << " ";
+                }
+                cout << endl;
                 commit = vector<bool>(n, false);
             }
             pt = t;
