@@ -80,9 +80,9 @@ int count(int k, string F)
     string left = getleft(k-1, 50);
     string right = getright(k-1, 50);
 
-    string s1 = a + left;
+    string s1 = a + left + b + left + c;
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
-    string s2 = right + b + left;
+    string s2 = right + b + left + c;
     ret += fuck(s2, F, max(0, size(right) - size(F) + 1), size(right) + size(b));
     string s3 = right + c;
     ret += fuck(s3, F, max(0, size(right) - size(F) + 1), size(right));
