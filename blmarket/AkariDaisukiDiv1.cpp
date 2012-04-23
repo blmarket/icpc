@@ -54,6 +54,7 @@ int fuck(const string &base, const string &t, int s, int e)
     int ret = 0;
     for(int i=s;i<e;i++)
     {
+        if(i + size(t) >= size(base)) break;
         if(base.substr(i, size(t)) == t) ret++;
     }
     return ret;
