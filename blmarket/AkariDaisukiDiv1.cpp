@@ -76,8 +76,8 @@ int count(int k, string F)
     ret *= 2;
     ret %= mod;
 
-    string left = getleft(k-1, size(F) - 1);
-    string right = getright(k-1, size(F) - 1);
+    string left = getleft(k-1, 50);
+    string right = getright(k-1, 50);
 
     string s1 = a + left;
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
