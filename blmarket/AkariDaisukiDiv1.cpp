@@ -37,15 +37,15 @@ string getleft_(int k, int len)
     return tmp;
 }
 
+bool flag1 = false;
 string getleft(int k, int len)
 {
     static string tmp;
-    static bool flag = false;
-    if(flag) return tmp;
+    if(flag1) return tmp;
     string ret = getleft_(k, len);
     if(ret == tmp)
     {
-        flag = true;
+        flag1 = true;
         tmp = ret;
     }
     return ret;
@@ -65,15 +65,15 @@ string getright_(int k, int len)
     return tmp;
 }
 
+bool flag2 = false;
 string getright(int k, int len)
 {
     static string tmp;
-    static bool flag = false;
-    if(flag) return tmp;
+    if(flag2) return tmp;
     string ret = getright_(k, len);
     if(ret == tmp)
     {
-        flag = true;
+        flag2 = true;
         tmp = ret;
     }
     return ret;
