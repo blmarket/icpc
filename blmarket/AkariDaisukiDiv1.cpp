@@ -48,6 +48,7 @@ string getleft(int k, int len)
         flag = true;
         tmp = ret;
     }
+    return ret;
 }
 
 string getright_(int k, int len)
@@ -75,6 +76,7 @@ string getright(int k, int len)
         flag = true;
         tmp = ret;
     }
+    return ret;
 }
 
 int fuck(const string &base, const string &t, int s, int e)
