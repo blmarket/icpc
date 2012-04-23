@@ -25,6 +25,7 @@ const int mod = 1000000007;
 
 string getleft(int k, int len)
 {
+    if(len <= 0) return "";
     if(k == 0) return S;
     string tmp = a + getleft(k-1, len-size(a));
     if(size(tmp) >= len) return tmp;
@@ -38,6 +39,7 @@ string getleft(int k, int len)
 
 string getright(int k, int len)
 {
+    if(len <= 0) return "";
     if(k == 0) return S;
     string tmp = getright(k-1, len - size(c)) + c;
     if(size(tmp) >= len) return tmp;
@@ -82,6 +84,7 @@ int count(int k, int prevcount)
     string right = getright(k-1, 50);
 
     string s1 = a + left + b + left + c;
+    cout << s1 << endl;
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
     string s2 = a + right + b + left + c;
     ret += fuck(s2, F, max(0, size(a) + size(right) - size(F) + 1), size(a) + size(right) + size(b));
