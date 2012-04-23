@@ -61,6 +61,7 @@ int fuck(const string &base, const string &t, int s, int e)
 
 int count(int k, string F)
 {
+    cout << k << " " << F << endl;
     if(k == 0)
     {
         int ret = 0;
