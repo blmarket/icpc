@@ -84,10 +84,13 @@ int count(int k, string F)
     string s1 = a + left + b + left + c;
     cout << s1 << endl;
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
+    cout << ret << endl;
     string s2 = right + b + left + c;
     ret += fuck(s2, F, max(0, size(right) - size(F) + 1), size(right) + size(b));
+    cout << ret << endl;
     string s3 = right + c;
     ret += fuck(s3, F, max(0, size(right) - size(F) + 1), size(right));
+    cout << ret << endl;
     ret %= mod;
 
     return ret;
