@@ -81,7 +81,7 @@ public:
             {
                 for(int j=0;j<n;j++) 
                 {
-                    if(commit[j]) alive[i] = false;
+                    if(commit[j]) alive[j] = false;
                     cout << alive[j] << " ";
                 }
                 cout << endl;
