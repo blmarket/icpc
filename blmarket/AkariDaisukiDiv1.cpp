@@ -96,8 +96,9 @@ int count(int k, string F)
 class AkariDaisukiDiv1 
 {
 public:
-	int countF(string Waai, string Akari, string Daisuki, string S, string F, int k) 
+	int countF(string Waai, string Akari, string Daisuki, string S_, string F, int k) 
 	{
+            S = S_;
             a = Waai;
             b = Akari;
             c = Daisuki;
