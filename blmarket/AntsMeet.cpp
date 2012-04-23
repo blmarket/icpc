@@ -92,7 +92,7 @@ public:
             commit[p1]=commit[p2]=true;
         }
         int ret = 0;
-        for(int i=0;i<n;i++) ret += alive[i];
+        for(int i=0;i<n;i++) ret += (alive[i] - commit[i]);
         return ret;
     }
 	
