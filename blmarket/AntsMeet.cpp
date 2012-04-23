@@ -82,9 +82,7 @@ public:
                 for(int j=0;j<n;j++) 
                 {
                     if(commit[j]) alive[j] = false;
-                    cout << alive[j] << " ";
                 }
-                cout << endl;
                 commit = vector<bool>(n, false);
             }
             pt = t;
@@ -93,7 +91,6 @@ public:
             int p2 = V[i].second.second;
             if(alive[p1] == false || alive[p2] == false) continue;
 
-            cout << p1 << " " << p2 << endl;
             commit[p1]=commit[p2]=true;
         }
         int ret = 0;
