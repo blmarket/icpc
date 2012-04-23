@@ -87,6 +87,8 @@ public:
             int p1 = V[i].second.first;
             int p2 = V[i].second.second;
             if(alive[p1] == false || alive[p2] == false) continue;
+
+            cout << p1 << " " << p2 << endl;
             commit[p1]=commit[p2]=true;
         }
         int ret = 0;
