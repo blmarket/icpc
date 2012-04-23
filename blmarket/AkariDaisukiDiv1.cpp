@@ -87,10 +87,8 @@ int count(int k, int prevcount)
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
     string s2 = right + b + left + c;
     ret += fuck(s2, F, max(0, size(right) - size(F) + 1), size(right) + size(b));
-    cout << ret << endl;
     string s3 = right + c;
     ret += fuck(s3, F, max(0, size(right) - size(F) + 1), size(right));
-    cout << ret << endl;
     ret %= mod;
 
     return ret;
@@ -139,6 +137,6 @@ public:
 // BEGIN CUT HERE 
 int main() {
 	AkariDaisukiDiv1 ___test;
-	___test.run_test(0);
+	___test.run_test(-1);
 }
 // END CUT HERE
