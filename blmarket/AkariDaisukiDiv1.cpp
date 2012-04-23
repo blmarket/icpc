@@ -82,16 +82,11 @@ int count(int k, int prevcount)
     string right = getright(k-1, 50);
 
     string s1 = a + left + b + left + c;
-    cout << s1 << endl;
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
-    cout << ret << endl;
     string s2 = a + right + b + left + c;
-    cout << s2 << endl;
     ret += fuck(s2, F, max(0, size(a) + size(right) - size(F) + 1), size(a) + size(right) + size(b));
-    cout << ret << endl;
     string s3 = a + right + b + right + c;
     ret += fuck(s3, F, max(0, size(a) + size(right) + size(b) + size(right) - size(F) + 1), size(a) + size(b) + 2*size(right));
-    cout << ret << endl;
     ret %= mod;
 
     return ret;
