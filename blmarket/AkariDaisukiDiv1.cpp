@@ -20,7 +20,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-string a,b,c,S;
+string a,b,c,S,F;
 const int mod = 1000000007;
 
 string getleft(int k, int len)
@@ -60,7 +60,7 @@ int fuck(const string &base, const string &t, int s, int e)
     return ret;
 }
 
-int count(int k, string F)
+int count(int k)
 {
     //cout << k << " " << F << endl;
     if(k == 0)
@@ -74,7 +74,7 @@ int count(int k, string F)
         return ret;
     }
 
-    int ret = count(k-1, F);
+    int ret = count(k-1);
     ret *= 2;
     ret %= mod;
 
@@ -100,14 +100,15 @@ int count(int k, string F)
 class AkariDaisukiDiv1 
 {
 public:
-	int countF(string Waai, string Akari, string Daisuki, string S_, string F, int k) 
+	int countF(string Waai, string Akari, string Daisuki, string S_, string F_, int k) 
 	{
             S = S_;
             a = Waai;
             b = Akari;
             c = Daisuki;
+            F = F_;
 
-            return count(k, F);
+            return count(k);
 	}
 	
 // BEGIN CUT HERE
