@@ -60,7 +60,7 @@ int fuck(const string &base, const string &t, int s, int e)
     return ret;
 }
 
-int count(int k)
+int count(int k, int prevcount)
 {
     //cout << k << " " << F << endl;
     if(k == 0)
@@ -74,7 +74,7 @@ int count(int k)
         return ret;
     }
 
-    int ret = count(k-1);
+    int ret = prevcount;
     ret *= 2;
     ret %= mod;
 
@@ -108,7 +108,13 @@ public:
             c = Daisuki;
             F = F_;
 
-            return count(k);
+            int ret, prev = -1;
+            for(int i=0;i<=k;i++)
+            {
+                ret = count(i, prev);
+                prev = ret;
+            }
+            return ret;
 	}
 	
 // BEGIN CUT HERE
