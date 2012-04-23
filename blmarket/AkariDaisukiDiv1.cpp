@@ -23,25 +23,38 @@ template<typename T> int size(const T &a) { return a.size(); }
 string a,b,c,S,F;
 const int mod = 1000000007;
 
-string getleft(int k, int len)
+string getleft_(int k, int len)
 {
     if(len <= 0) return "";
     if(k == 0) return S;
-    string tmp = a + getleft(k-1, len-size(a));
+    string tmp = a + getleft_(k-1, len-size(a));
     if(size(tmp) >= len) return tmp;
     tmp += b;
     if(size(tmp) >= len) return tmp;
-    tmp += getleft(k-1, len - size(tmp));
+    tmp += getleft_(k-1, len - size(tmp));
     if(size(tmp) >= len) return tmp;
     tmp += c;
     return tmp;
 }
 
-string getright(int k, int len)
+string getleft(int k, int len)
+{
+    static string tmp;
+    static bool flag = false;
+    if(flag) return tmp;
+    string ret = getleft_(k, len);
+    if(ret == tmp)
+    {
+        flag = true;
+        tmp = ret;
+    }
+}
+
+string getright_(int k, int len)
 {
     if(len <= 0) return "";
     if(k == 0) return S;
-    string tmp = getright(k-1, len - size(c)) + c;
+    string tmp = getright_(k-1, len - size(c)) + c;
     if(size(tmp) >= len) return tmp;
     tmp = b + tmp;
     if(size(tmp) >= len) return tmp;
@@ -49,6 +62,19 @@ string getright(int k, int len)
     if(size(tmp) >= len) return tmp;
     tmp = a + tmp;
     return tmp;
+}
+
+string getright(int k, int len)
+{
+    static string tmp;
+    static bool flag = false;
+    if(flag) return tmp;
+    string ret = getright_(k, len);
+    if(ret == tmp)
+    {
+        flag = true;
+        tmp = ret;
+    }
 }
 
 int fuck(const string &base, const string &t, int s, int e)
