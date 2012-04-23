@@ -57,6 +57,7 @@ void process()
             ret += area;
         }
     }
+    if(ret < 0) ret = -ret;
     printf("%.12lf\n", ret/2);
 }
 
