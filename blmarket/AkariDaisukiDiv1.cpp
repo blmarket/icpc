@@ -86,6 +86,7 @@ int count(int k, string F)
     ret += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
     cout << ret << endl;
     string s2 = right + b + left + c;
+    cout << s2 << endl;
     ret += fuck(s2, F, max(0, size(right) - size(F) + 1), size(right) + size(b));
     cout << ret << endl;
     string s3 = right + c;
