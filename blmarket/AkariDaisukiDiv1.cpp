@@ -108,6 +108,8 @@ public:
             int ret = -1, prev = -1;
             for(int i=0;i<=k;i++)
             {
+                if((i%10000) == 0)
+                    cout << i << endl;
                 ret = count(i, prev);
                 prev = ret;
             }
