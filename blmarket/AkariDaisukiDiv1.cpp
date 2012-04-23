@@ -98,6 +98,8 @@ public:
             a = Waai;
             b = Akari;
             c = Daisuki;
+
+            return count(k, F);
 	}
 	
 // BEGIN CUT HERE
