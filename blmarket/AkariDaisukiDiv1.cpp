@@ -109,9 +109,6 @@ int count(int k, int prevcount)
     ret *= 2;
     ret %= mod;
 
-    string left = getleft(k-1, 50);
-    string right = getright(k-1, 50);
-
     int more = 0;
 
     if(flag1 && flag2)
@@ -120,6 +117,9 @@ int count(int k, int prevcount)
     }
     else
     {
+        string left = getleft(k-1, 50);
+        string right = getright(k-1, 50);
+
         string s1 = a + left + b + left + c;
         more += fuck(s1, F, max(0, size(a)-size(F)+1), size(a));
         string s2 = right + b + left + c;
