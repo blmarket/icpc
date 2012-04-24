@@ -10,10 +10,10 @@ int data[105][2];
 
 int px,py,x,y;
 
-double getr(double x, double px, int tx)
+double getr(double x, double px, double tx)
 {
-    int a = x - px;
-    int b = tx - px;
+    double a = x - px;
+    double b = tx - px;
     return (double)b / a;
 }
 
