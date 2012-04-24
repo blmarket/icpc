@@ -76,7 +76,7 @@ void process()
             cout << "::" << xx1 << " " << yy1 << " - " << rr(xx2,xx1,tt1) << "," << ty1 << endl;
             if(yy1 >= y1)
             {
-                ret += (double)(ty1 + min(yy1, (double)y2)) * dxx * tt1;
+                ret += (double)(min(ty1, (double)y2) + min(yy1, (double)y2)) * dxx * tt1;
                 cout << ret << endl;
             }
 
@@ -88,7 +88,7 @@ void process()
             cout << "::::" << xx2 << " " << yy2 << endl;
             if(yy2 >= y1)
             {
-                ret += (double)(ty2 + min(yy2, (double)y2)) * dxx * (1 - tt2);
+                ret += (double)(min(ty2,(double)y2) + min(yy2, (double)y2)) * dxx * (1 - tt2);
             }
         }
         else
