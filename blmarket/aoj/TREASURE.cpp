@@ -56,7 +56,7 @@ void process()
         double yy2 = rr(y,py,t2);
         double dxx = xx2 - xx1;
 
-        cout << xx1 << " " << yy1 << " " << xx2 << " " << yy2 << endl;
+        cout << xx1 << " " << yy1 + y1 << " " << xx2 << " " << yy2 + y1 << endl;
 
         if(py != y)
         {
