@@ -53,7 +53,7 @@ void ygo(int n, long long s, long long e)
     e -= boom[n-1];
     if(s == 0)
     {
-        cout << "+";
+        cout << "-";
         s = 1;
     }
     s--;e--;
