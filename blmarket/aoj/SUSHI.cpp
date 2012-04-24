@@ -46,7 +46,6 @@ void process(int dataId)
         {
             dp[i] = max(dp[i], dp[i-data[j][0]] + data[j][1]);
         }
-        cout << i << endl;
     }
 
     int md = 0;
