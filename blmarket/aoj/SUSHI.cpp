@@ -63,8 +63,6 @@ void process(int dataId)
         }
     }
 
-    cout << "best = " << data[md][0] << " " << data[md][1] << endl;
-
     int nc = (m - 5001 + data[md][0]) / data[md][0];
     int ret = nc * data[md][1];
     m -= nc * data[md][0];
