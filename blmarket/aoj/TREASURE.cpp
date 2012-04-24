@@ -26,10 +26,12 @@ void process()
 {
     scanf("%d %d %d %d %d",&x1,&y1,&x2,&y2,&n);
     double ret = 0;
+    y2 -= y1;
 
     for(int i=0;i<n;i++)
     {
         scanf("%d %d",&data[i][0], &data[i][1]);
+        data[i][1] -= y1;
     }
     data[n][0] = data[0][0];
     data[n][1] = data[0][1];
