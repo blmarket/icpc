@@ -61,14 +61,12 @@ void process()
         if(py != y)
         {
             double tt1 = getr(yy2,yy1,y1), tt2 = getr(yy2,yy1,y2);
-            cout << tt1 << " " << tt2 << endl;
-            if(tt1 > tt2) swap(tt1, tt2);
-            if(tt1 >= 1) continue;
-            if(tt2 <= 0) continue;
 
+            if(tt1 > tt2) swap(tt1, tt2);
             if(tt1 < 0) tt1 = 0;
+            if(tt1 > 1) tt1 = 1;
+            if(tt2 < 0) tt2 = 0;
             if(tt2 > 1) tt2 = 1;
-            if(tt1 > tt2) continue;
 
             double ty1 = rr(yy2, yy1, tt1);
             cout << "::" << xx1 << " " << yy1 << " - " << rr(xx2,xx1,tt1) << "," << ty1 << endl;
