@@ -35,6 +35,7 @@ void process()
     }
     data[n][0] = data[0][0];
     data[n][1] = data[0][1];
+    y1 = 0;
 
     px = data[0][0];
     py = data[0][1];
