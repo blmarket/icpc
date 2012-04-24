@@ -41,6 +41,7 @@ void process()
     {
         if(px == x) continue;
         double t1 = getr(x,px,x1), t2 = getr(x,px,x2);
+        cout << t1 << " " << t2 << endl;
         if(t1 > t2) swap(t1,t2);
         if(t1 >= 1) continue;
         if(t2 <= 0) continue;
