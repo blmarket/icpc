@@ -57,7 +57,7 @@ void process(int dataId)
     int md = 0;
     for(int i=1;i<n;i++)
     {
-        if(data[i][0] * data[md][1] > data[md][0] * data[i][1])
+        if(data[i][0] * data[md][1] < data[md][0] * data[i][1])
         {
             md = i;
         }
