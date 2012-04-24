@@ -115,6 +115,7 @@ void process(int dataId)
     long long p,l;
 
     cin >> n >> p >> l;
+    p--;
     go(n,p,p + l);
     cout << endl;
 }
