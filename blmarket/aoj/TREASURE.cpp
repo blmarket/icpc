@@ -41,6 +41,8 @@ void process()
     py = data[0][1];
     for(int i=1;i<=n;i++,px=x,py=y)
     {
+        x = data[i][0];
+        y = data[i][1];
         if(px == x) continue;
         cout << px << " " << py << " - " << x << " " << y << endl;
         double t1 = getr(x,px,x1), t2 = getr(x,px,x2);
