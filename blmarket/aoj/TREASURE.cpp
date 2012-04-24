@@ -82,6 +82,7 @@ void process()
             }
 
             double ty2 = rr(yy2,yy1, tt2);
+            cout << ":::" << rr(xx2,xx1,tt1) << "," << ty1+y1 << " - " << rr(xx2,xx1,tt2) << "," << ty2+y1 << endl;
             ret += (double)(min(ty1, (double)y2) + min(ty2, (double)y2)) * dxx * (tt2 - tt1);
             cout << ret << " b" << endl;
 
