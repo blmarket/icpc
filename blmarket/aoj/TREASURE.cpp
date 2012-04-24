@@ -32,7 +32,6 @@ void process()
     for(int i=0;i<n;i++)
     {
         scanf("%d %d",&data[i][0], &data[i][1]);
-        data[i][1] -= y1;
     }
     data[n][0] = data[0][0];
     data[n][1] = data[0][1];
@@ -59,7 +58,7 @@ void process()
         double yy2 = rr(y,py,t2);
         double dxx = xx2 - xx1;
 
-        cout << xx1 << " " << yy1 + y1 << " " << xx2 << " " << yy2 + y1 << endl;
+        cout << xx1 << " " << yy1 << " " << xx2 << " " << yy2 << endl;
 
         if(py != y)
         {
@@ -74,17 +73,17 @@ void process()
             if(tt1 > tt2) continue;
 
             double ty1 = rr(yy2, yy1, tt1);
-            cout << "::" << xx1 << " " << yy1+y1 << " - " << rr(xx2,xx1,tt1) << "," << ty1+y1 << endl;
+            cout << "::" << xx1 << " " << yy1 << " - " << rr(xx2,xx1,tt1) << "," << ty1 << endl;
             if(yy1 >= y1)
             {
                 ret += (double)(ty1 + min(yy1, (double)y2)) * dxx * tt1;
             }
 
             double ty2 = rr(yy2,yy1, tt2);
-            cout << ":::" << rr(xx2,xx1,tt1) << "," << ty1+y1 << " - " << rr(xx2,xx1,tt2) << "," << ty2+y1 << endl;
+            cout << ":::" << rr(xx2,xx1,tt1) << "," << ty1 << " - " << rr(xx2,xx1,tt2) << "," << ty2 << endl;
             ret += (double)(min(ty1, (double)y2) + min(ty2, (double)y2)) * dxx * (tt2 - tt1);
 
-            cout << "::::" << xx2 << " " << yy2 + y1 << endl;
+            cout << "::::" << xx2 << " " << yy2 << endl;
             if(yy2 >= y1)
             {
                 ret += (double)(ty2 + min(yy2, (double)y2)) * dxx * (1 - tt2);
