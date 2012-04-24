@@ -44,9 +44,7 @@ void process()
         x = data[i][0];
         y = data[i][1];
         if(px == x) continue;
-        cout << px << " " << py << " - " << x << " " << y << endl;
         double t1 = getr(x,px,x1), t2 = getr(x,px,x2);
-        cout << t1 << " " << t2 << endl;
         if(t1 > t2) swap(t1,t2);
         if(t1 >= 1) continue;
         if(t2 <= 0) continue;
