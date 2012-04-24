@@ -37,7 +37,6 @@ void process()
             if(t1 > t2) swap(t1,t2);
             if(t1 >= 1) continue;
             if(t2 <= 0) continue;
-            cout << t1 << " " << t2 << endl;
             if(py != y)
             {
                 double tt1 = getr(y,py,y1), tt2 = getr(y,py,y2);
