@@ -91,7 +91,7 @@ void process()
             ret += (double)((min(y2, py) - y1) * 2) * (x - px) * (t2 - t1);
         }
 
-        cout << ret << endl;
+        printf("%.12lf\n",ret);
     }
     if(ret < 0) ret = -ret;
     printf("%.12lf\n", ret/2);
