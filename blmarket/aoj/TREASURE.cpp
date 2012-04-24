@@ -1,3 +1,4 @@
+#include <iostream>
 #include <algorithm>
 #include <cstdio>
 
@@ -52,6 +53,8 @@ void process()
             if(t1 < 0) t1 = 0;
             if(t2 > 1) t2 = 1;
             if(t1 > t2) continue;
+
+            cout << rr(x,px,t1) << " " << rr(y,py,t1) << " - " << rr(x,px,t2) << " " << rr(y,py,t2) << endl;
 
             double area = (rr(y, py, t1) + rr(y, py, t2)) * (x-px) * (t2-t1);
             ret += area;
