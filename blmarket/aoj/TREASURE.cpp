@@ -42,6 +42,7 @@ void process()
     for(int i=1;i<=n;i++,px=x,py=y)
     {
         if(px == x) continue;
+        cout << px << " " << py << " - " << x << " " << y << endl;
         double t1 = getr(x,px,x1), t2 = getr(x,px,x2);
         cout << t1 << " " << t2 << endl;
         if(t1 > t2) swap(t1,t2);
