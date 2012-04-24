@@ -63,7 +63,7 @@ void process()
 
         if(py != y)
         {
-            double tt1 = getr(yy2,yy1,y1), tt2 = getr(yy2,yy1,y2);
+            double tt1 = getr(yy2,yy1,0), tt2 = getr(yy2,yy1,y2);
             cout << tt1 << " " << tt2 << endl;
             if(tt1 > tt2) swap(tt1, tt2);
             if(tt1 >= 1) continue;
