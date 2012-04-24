@@ -89,8 +89,9 @@ void process()
         {
             if(py <= y1) continue;
             ret += (double)((min(y2, py) - y1) * 2) * (x - px) * (t2 - t1);
-            continue;
         }
+
+        cout << ret << endl;
     }
     if(ret < 0) ret = -ret;
     printf("%.12lf\n", ret/2);
