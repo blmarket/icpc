@@ -48,6 +48,12 @@ void process(int dataId)
         }
     }
 
+    if(m <= 5000)
+    {
+        cout << dp[m] << endl;
+        return;
+    }
+
     int md = 0;
     for(int i=1;i<n;i++)
     {
@@ -57,11 +63,7 @@ void process(int dataId)
         }
     }
 
-    if(m <= 5000)
-    {
-        cout << dp[m] << endl;
-        return;
-    }
+    cout << "best = " << data[md][0] << " " << data[md][1] << endl;
 
     int nc = (m - 5001 + data[md][0]) / data[md][0];
     int ret = nc * data[md][1];
