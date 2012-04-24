@@ -55,6 +55,8 @@ void process()
         double yy2 = rr(y,py,t2);
         double dxx = xx2 - xx1;
 
+        cout << xx1 << " " << yy1 << " " << xx2 << " " << yy2 << endl;
+
         if(py != y)
         {
             double tt1 = getr(yy2,yy1,y1), tt2 = getr(yy2,yy1,y2);
