@@ -36,7 +36,7 @@ void process()
     data[n][0] = data[0][0];
     data[n][1] = data[0][1];
     y1 = 0;
-    cout << y2 << endl;
+    //cout << y2 << endl;
 
     px = data[0][0];
     py = data[0][1];
@@ -60,7 +60,7 @@ void process()
         double yy2 = rr(y,py,t2);
         double dxx = xx2 - xx1;
 
-        cout << xx1 << " " << yy1 << " - " << xx2 << " " << yy2 << endl;
+        //cout << xx1 << " " << yy1 << " - " << xx2 << " " << yy2 << endl;
 
         if(py != y)
         {
@@ -73,19 +73,19 @@ void process()
             if(tt2 > 1) tt2 = 1;
 
             double ty1 = rr(yy2, yy1, tt1);
-            cout << "::" << xx1 << " " << yy1 << " - " << rr(xx2,xx1,tt1) << "," << ty1 << endl;
+            //cout << "::" << xx1 << " " << yy1 << " - " << rr(xx2,xx1,tt1) << "," << ty1 << endl;
             if(yy1 >= y1)
             {
                 ret += (double)(min(ty1, (double)y2) + min(yy1, (double)y2)) * dxx * tt1;
-                cout << ret << endl;
+                //cout << ret << endl;
             }
 
             double ty2 = rr(yy2,yy1, tt2);
-            cout << ":::" << rr(xx2,xx1,tt1) << "," << ty1 << " - " << rr(xx2,xx1,tt2) << "," << ty2 << endl;
+            //cout << ":::" << rr(xx2,xx1,tt1) << "," << ty1 << " - " << rr(xx2,xx1,tt2) << "," << ty2 << endl;
             ret += (double)(min(ty1, (double)y2) + min(ty2, (double)y2)) * dxx * (tt2 - tt1);
-            cout << ret << endl;
+            //cout << ret << endl;
 
-            cout << "::::" << xx2 << " " << yy2 << endl;
+            //cout << "::::" << xx2 << " " << yy2 << endl;
             if(yy2 >= y1)
             {
                 ret += (double)(min(ty2,(double)y2) + min(yy2, (double)y2)) * dxx * (1 - tt2);
@@ -97,7 +97,7 @@ void process()
             ret += (double)((min(y2, py) - y1) * 2) * (x - px) * (t2 - t1);
         }
 
-        printf("%.12lf\n",ret);
+        //printf("%.12lf\n",ret);
     }
     if(ret < 0) ret = -ret;
     printf("%.12lf\n", ret/2);
