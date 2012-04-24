@@ -40,6 +40,7 @@ void process()
     {
         x = data[i][0];
         y = data[i][1];
+        cout << px << " " << py << " - " << x << " " << y << endl;
         if(px == x) continue;
         double t1 = getr(x,px,x1), t2 = getr(x,px,x2);
         if(t1 > t2) swap(t1,t2);
