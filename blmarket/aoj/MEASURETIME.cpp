@@ -53,7 +53,7 @@ int go(tree *t, int a)
         {
             return go(t->right, a);
         }
-        cout << "making right" << endl;
+        cout << "making right " << a << endl;
         t->right = new tree(a);
         return 0;
     }
