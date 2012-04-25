@@ -72,6 +72,7 @@ void process(int dataId)
             continue;
         }
         ret += go(root, tmp);
+        cout << ret << endl;
     }
     cout << ret << endl;
 }
