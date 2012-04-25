@@ -56,7 +56,7 @@ void process(int dataId)
                 j++;
             }
             cnts[left - l] *= j;
-            left++;
+            left += primes[i];
         }
     }
 
