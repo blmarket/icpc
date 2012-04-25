@@ -81,8 +81,8 @@ void process(int dataId)
             ret += size(tmp2)+1;
         }
 
-        dict[tmp2] += 1;
-        updatedict(tmp2);
+        //dict[tmp2] += 1;
+        //updatedict(tmp2);
     }
 
     cout << ret-1 << endl;
