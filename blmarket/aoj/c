@@ -1,11 +1,1 @@
-#!/bin/bash
-set -e
-g++ $1 -o a.exe
-git add $1 
-set +e
-git commit -m "--Empty Message--" > /dev/null
-if [ ! -n "$2" ]; then
-    ./a.exe
-else
-    ./a.exe < $2
-fi
+../../scripts/c
