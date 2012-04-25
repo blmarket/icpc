@@ -38,7 +38,7 @@ int n;
 void process(int dataId)
 {
     scanf("%d",&n);
-    tree *root = NULL;
+    auto_ptr<tree> root;
     for(int i=0;i<n;i++)
     {
         int tmp;
