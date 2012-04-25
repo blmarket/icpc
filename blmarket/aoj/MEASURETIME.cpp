@@ -44,9 +44,13 @@ int n;
 
 int go(tree *t, int a)
 {
+    t->n += 1;
     if(t->key <= a)
     {
-        if(t->right) return go(t->right, a);
+        if(t->right) 
+        {
+            return go(t->right, a);
+        }
         t->right = new tree(a);
         return 0;
     }
@@ -76,7 +80,6 @@ void process(int dataId)
         ret += tmp;
     }
     cout << ret << endl;
-    cout << endl;
 }
 
 int main(void)
