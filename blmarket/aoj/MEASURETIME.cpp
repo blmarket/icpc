@@ -44,6 +44,7 @@ int n;
 
 int go(tree *t, int a)
 {
+    cout << "::" << t->n << " " << t->key << endl;
     t->n += 1;
     if(t->key <= a)
     {
