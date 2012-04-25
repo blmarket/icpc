@@ -46,6 +46,8 @@ void updatedict(string tmp)
 
 void process(int dataId)
 {
+    mapper.clear();
+    dict.clear();
     scanf("%d %d",&n, &m);
     char tmp[1024];
     for(int i=0;i<n;i++)
