@@ -62,7 +62,7 @@ int go(tree *t, int a)
     ret++;
     if(t->left) 
     {   
-        ret += go(t->left, n);
+        ret += go(t->left, a);
     }
     else
     {
