@@ -44,16 +44,13 @@ int n;
 
 int go(tree *t, int a)
 {
-    cout << "::" << t->n << " " << t->key << " " << a << endl;
     t->n += 1;
     if(t->key <= a)
     {
-        cout << "going right" << endl;
         if(t->right) 
         {
             return go(t->right, a);
         }
-        cout << "making right " << a << endl;
         t->right = new tree(a);
         return 0;
     }
@@ -86,11 +83,10 @@ void process(int dataId)
             continue;
         }
         tmp = go(root, tmp);
-        cout << tmp << endl;
+        //cout << tmp << endl;
         ret += tmp;
     }
     cout << ret << endl;
-    cout << endl;
 }
 
 int main(void)
