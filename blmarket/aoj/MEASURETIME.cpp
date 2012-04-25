@@ -30,20 +30,50 @@ struct tree
 {
     int n;
     int key;
-    auto_ptr<tree> left, right;
+    tree *left, *right;
+
+    tree(int key) 
+    { 
+        n = 1;
+        this->key = key;
+        left = right = NULL;
+    }
 };
 
 int n;
 
+int go(tree *t, int a)
+{
+    if(t->key <= a)
+    {
+        if(t->right) return go(t->right, a);
+        t->right = new tree(a);
+        return 0;
+    }
+    int ret = 0;
+    if(t->right) ret = t->right->n;
+    ret++;
+    if(t->left) ret += go(t->left, n);
+    return ret;
+}
+
 void process(int dataId)
 {
     scanf("%d",&n);
-    auto_ptr<tree> root;
+    tree *root = NULL;
+    long long ret = 0;
     for(int i=0;i<n;i++)
     {
         int tmp;
         scanf("%d", &tmp);
+        if(root == NULL)
+        {
+            root = new tree(tmp);
+            continue;
+        }
+        ret += go(root, tmp);
     }
+    cout << ret << endl;
 }
 
 int main(void)
