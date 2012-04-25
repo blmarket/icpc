@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <list>
 #include <cstdlib>
 #include <cstring>
@@ -25,12 +26,19 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+struct tree
+{
+    int n;
+    int key;
+    auto_ptr<tree> left, right;
+};
+
 int n;
-multiset<int> S;
 
 void process(int dataId)
 {
     scanf("%d",&n);
+    tree *root = NULL;
     for(int i=0;i<n;i++)
     {
         int tmp;
