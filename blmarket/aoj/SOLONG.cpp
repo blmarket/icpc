@@ -68,12 +68,14 @@ void process(int dataId)
             if(mapper[tmp2.substr(0,j+1)] == tmp2)
             {
                 done = true;
+                cout << tmp2 << " " << j+1+1 << endl;
                 ret += j+1+1+1;
                 break;
             }
         }
         if(!done)
         {
+            cout << tmp2 << " " << size(tmp2)+1 << endl;
             ret += size(tmp2)+1;
         }
 
