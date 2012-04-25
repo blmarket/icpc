@@ -48,6 +48,7 @@ int go(tree *t, int a)
     t->n += 1;
     if(t->key <= a)
     {
+        cout << "going right" << endl;
         if(t->right) 
         {
             return go(t->right, a);
