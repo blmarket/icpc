@@ -25,8 +25,17 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int n;
+multiset<int> S;
+
 void process(int dataId)
 {
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        int tmp;
+        scanf("%d", &tmp);
+    }
 }
 
 int main(void)
