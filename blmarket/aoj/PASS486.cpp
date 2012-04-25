@@ -48,6 +48,7 @@ void precalc(void)
 
 int main(void)
 {
+    precalc();
     int N;
     cin >> N;
     for(int i=1;i<=N;i++)
