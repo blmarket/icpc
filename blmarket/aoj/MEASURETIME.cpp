@@ -68,6 +68,12 @@ int go(tree *t, int a)
     return ret;
 }
 
+void deltree(tree *t)
+{
+    if(t->left) deltree(t->left);
+    if(t->right) deltree(t->right);
+}
+
 void process(int dataId)
 {
     scanf("%d",&n);
@@ -87,6 +93,8 @@ void process(int dataId)
         ret += tmp;
     }
     cout << ret << endl;
+    deltree(root);
+    delete root;
 }
 
 int main(void)
