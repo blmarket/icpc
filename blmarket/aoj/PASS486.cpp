@@ -63,7 +63,6 @@ void process(int dataId)
     int ret = 0;
     for(int i=0;i<nn;i++)
     {
-        cout << i+l << ":" << cnts[i] << " ";
         if(cnts[i] == n) ret++;
     }
     cout << endl;
