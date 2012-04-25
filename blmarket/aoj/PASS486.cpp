@@ -66,7 +66,6 @@ void process(int dataId)
     {
         if(cnts[i] == n) ret++;
     }
-    cout << endl;
     cout << ret << endl;
 }
 
@@ -83,7 +82,6 @@ void precalc(void)
         }
         if(!fail) primes.pb(i);
     }
-    cout << size(primes) << endl;
 }
 
 int main(void)
