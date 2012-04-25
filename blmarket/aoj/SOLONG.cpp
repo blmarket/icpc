@@ -29,8 +29,9 @@ int n,m;
 map<string, string> mapper;
 map<string, int> dict;
 
-void updatedict(string tmp, int tmp2)
+void updatedict(string tmp)
 {
+    int tmp2 = dict[tmp];
     string tmp3 = tmp;
     while(tmp3 != "")
     {
@@ -53,7 +54,7 @@ void process(int dataId)
         scanf(" %s %d",tmp, &tmp2);
         dict[tmp] = tmp2;
 
-        updatedict(tmp, tmp2);
+        updatedict(tmp);
     }
 
     int ret = 0;
