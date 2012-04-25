@@ -27,8 +27,43 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> primes;
 
+int nn;
+int nums[1000005];
+int cnts[1000005];
+
 void process(int dataId)
 {
+    int n,l,h;
+    cin >> n >> l >> h;
+    nn = h-l+1;
+    for(int i=0;i<nn;i++)
+    {
+        nums[i] = i+l;
+        cnts[i] = 1;
+    }
+
+    for(int i=0;i<size(primes);i++)
+    {
+        int left = (l / primes[i]) * primes[i];
+        if(left < l) left += primes[i];
+        while(left <= h)
+        {
+            int tmp = left;
+            int j = 0;
+            while((tmp % primes[i]) == 0)
+            {
+                tmp /= primes[i];
+                j++;
+            }
+            cnts[left - l] *= j;
+            left++;
+        }
+    }
+
+    int ret = 0;
+    for(int i=0;i<nn;i++)
+        if(cnts[i] == n) ret++;
+    cout << ret << endl;
 }
 
 void precalc(void)
