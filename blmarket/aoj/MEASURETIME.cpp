@@ -71,10 +71,12 @@ void process(int dataId)
             root = new tree(tmp);
             continue;
         }
-        ret += go(root, tmp);
-        cout << ret << endl;
+        tmp = go(root, tmp);
+        cout << tmp << endl;
+        ret += tmp;
     }
     cout << ret << endl;
+    cout << endl;
 }
 
 int main(void)
