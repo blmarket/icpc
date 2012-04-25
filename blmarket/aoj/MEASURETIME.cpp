@@ -80,6 +80,7 @@ void process(int dataId)
         ret += tmp;
     }
     cout << ret << endl;
+    cout << endl;
 }
 
 int main(void)
