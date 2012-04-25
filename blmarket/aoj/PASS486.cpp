@@ -46,6 +46,7 @@ void process(int dataId)
     {
         int left = (l / primes[i]) * primes[i];
         if(left < l) left += primes[i];
+        cout << left << endl;
         while(left <= h)
         {
             int tmp = left;
