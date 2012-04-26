@@ -60,7 +60,7 @@ void process(int dataId)
         {
             PII tt = mp(s1 + V[j].first, s2 + V[j].second);
             cout << t << " vs " << tt << endl;
-            if(comp(t,tt))
+            if(comp(t,tt) == false)
             {
                 swap(V[i], V[j]);
                 t=tt;
