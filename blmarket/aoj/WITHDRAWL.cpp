@@ -46,6 +46,15 @@ void process(int dataId)
         V.pb(mp(t1,t2));
     }
     sort(V.begin(), V.end(), comp);
+
+    int s1=0, s2=0;
+    for(int i=0;i<k;i++)
+    {
+        s1 += V[i].first;
+        s2 += V[i].second;
+    }
+    double ret = (double)s1 / s2;
+    printf("%.12lf\n",ret);
 }
 
 int main(void)
