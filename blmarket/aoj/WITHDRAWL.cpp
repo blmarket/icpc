@@ -65,6 +65,11 @@ void process(int dataId)
         s1 = t.first;
         s2 = t.second;
     }
+    for(int i=0;i<k;i++)
+    {
+        cout << V[i].first << "," << V[i].second << " ";
+    }
+    cout << endl;
     double ret = (double)s1 / s2;
     printf("%.12lf\n",ret);
 }
