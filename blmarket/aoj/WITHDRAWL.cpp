@@ -59,13 +59,17 @@ void process(int dataId)
                 tmp = cc;
         }
     }
+    double ret = 1;
     foreach(it, memo)
     {
         foreach(jt, it->second)
         {
-            cout << it->first << "," << jt->first << " = " << jt->second << endl;
+            if(jt->first < k) continue;
+            double tmp = (double)(jt->second) / it->first; 
+            if(tmp < ret) ret = tmp;
         }
     }
+    printf("%.12lf\n",ret);
 }
 
 int main(void)
