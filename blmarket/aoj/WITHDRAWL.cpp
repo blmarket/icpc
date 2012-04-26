@@ -59,7 +59,7 @@ void process(int dataId)
         for(int j=i+1;j<n;j++)
         {
             PII tt = mp(s1 + V[j].first, s2 + V[j].second);
-            cout << t << " vs " << tt << endl;
+            //cout << t << " vs " << tt << endl;
             if(comp(t,tt) == false)
             {
                 swap(V[i], V[j]);
@@ -70,11 +70,6 @@ void process(int dataId)
         s1 = t.first;
         s2 = t.second;
     }
-    for(int i=0;i<k;i++)
-    {
-        cout << V[i] << " ";
-    }
-    cout << endl;
     double ret = (double)s1 / s2;
     printf("%.12lf\n",ret);
 }
