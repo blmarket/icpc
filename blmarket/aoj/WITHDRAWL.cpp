@@ -25,51 +25,27 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-map<int, map<int, int> > memo;
+bool comp(const PII &a, const PII &b)
+{
+    if(a.first * b.second == a.second * b.first)
+    {
+        return a.second < b.second;
+    }
+    return a.first * b.second < a.second * b.first;
+}
 
 void process(int dataId)
 {
     int n,k;
     cin >> n >> k;
-    memo.clear();
-    memo[0][0]=0;
+    vector<pair<int,int> > V;
     for(int i=0;i<n;i++)
     {
-        vector<int> a,b,c;
-        a=b=c=vector<int>();
-
         int t1,t2;
         cin >> t1 >> t2;
-
-        foreach(it, memo)
-        {
-            foreach(jt, it->second)
-            {
-                a.pb(it->first + t2);
-                b.pb(jt->first + 1);
-                c.pb(jt->second + t1);
-            }
-        }
-
-        for(int j=0;j<size(a);j++)
-        {
-            int aa=a[j], bb=b[j], cc=c[j];
-            int &tmp = memo[aa][bb];
-            if(tmp == 0 || tmp > cc)
-                tmp = cc;
-        }
+        V.pb(mp(t1,t2));
     }
-    double ret = 1;
-    foreach(it, memo)
-    {
-        foreach(jt, it->second)
-        {
-            if(jt->first < k) continue;
-            double tmp = (double)(jt->second) / it->first; 
-            if(tmp < ret) ret = tmp;
-        }
-    }
-    printf("%.12lf\n",ret);
+    sort(V.begin(), V.end(), comp);
 }
 
 int main(void)
