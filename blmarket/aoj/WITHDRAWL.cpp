@@ -46,6 +46,11 @@ void process(int dataId)
         V.pb(mp(t1,t2));
     }
     sort(V.begin(), V.end(), comp);
+    for(int i=0;i<n;i++)
+    {
+        cout << V[i].first << "," << V[i].second << " ";
+    }
+    cout << endl;
 
     int s1=0, s2=0;
     for(int i=0;i<k;i++)
