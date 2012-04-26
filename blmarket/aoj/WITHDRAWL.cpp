@@ -34,6 +34,10 @@ bool comp(const PII &a, const PII &b)
     return a.first * b.second < a.second * b.first;
 }
 
+ostream& operator<<(ostream &ost, const PII &a) {
+    return ost << a.first << "," << a.second;
+}
+
 void process(int dataId)
 {
     int n,k;
@@ -67,7 +71,7 @@ void process(int dataId)
     }
     for(int i=0;i<k;i++)
     {
-        cout << V[i].first << "," << V[i].second << " ";
+        cout << V[i] << " ";
     }
     cout << endl;
     double ret = (double)s1 / s2;
