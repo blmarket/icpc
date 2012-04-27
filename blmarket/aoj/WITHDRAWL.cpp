@@ -40,7 +40,7 @@ void process(int dataId)
         scanf("%d %d",&a,&b);
         int elasp = n-i;
         elasp = max(0, k - elasp);
-        for(int j=elasp;j<k;j++)
+        for(int j=k-1;j>=elasp;j--)
         {
             foreach(it, memo[j])
             {
