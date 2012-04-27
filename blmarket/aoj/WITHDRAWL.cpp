@@ -44,17 +44,10 @@ void process(int dataId)
         {
             foreach(it, memo[j])
             {
-                int &tmp = memo[j+1][it->first + b];
-                if(tmp == 0 || tmp > it->second + a)
+                int &tmp = memo[j+1][it->first + a];
+                if(tmp < it->second + b)
                 {
-                    tmp = it->second + a;
-                    for(map<int,int>::iterator jt = memo[j+1].begin(); jt->first < it->first+b;)
-                    {
-                        long long t1 = (long long)jt->first * tmp;
-                        long long t2 = (long long)(it->first + b) * jt->second;
-                        if(t2 > t1) memo[j+1].erase(jt++);
-                        else ++jt;
-                    }
+                    tmp = it->second + b;
                 }
             }
         }
@@ -63,7 +56,7 @@ void process(int dataId)
     double rate = 1;
     foreach(it, memo[k])
     {
-        double tmp = (double)it->second / it->first;
+        double tmp = (double)it->first / it->second;
         if(rate > tmp) rate = tmp;
     }
     printf("%.12lf\n",rate);
