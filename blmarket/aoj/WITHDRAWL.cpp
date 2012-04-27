@@ -48,6 +48,13 @@ void process(int dataId)
                 if(tmp == 0 || tmp > it->second + a)
                 {
                     tmp = it->second + a;
+                    for(map<int,int>::iterator jt = memo[j+1].begin(); jt->first < it->first+b;)
+                    {
+                        long long t1 = (long long)jt->first * tmp;
+                        long long t2 = (long long)(it->first + b) * jt->second;
+                        if(t2 > t1) memo[j+1].erase(jt++);
+                        else ++jt;
+                    }
                 }
             }
         }
