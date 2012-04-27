@@ -47,6 +47,7 @@ void process(int dataId)
                 int &tmp = memo[j+1][it->first + b];
                 if(tmp == 0 || tmp > it->second + a)
                 {
+                    cout << j+1 << " " << it->first+b << " = " << a << endl;
                     tmp = it->second + a;
                 }
             }
