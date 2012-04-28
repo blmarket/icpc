@@ -56,7 +56,7 @@ void process(int dataId)
             foreach(it, memo[j])
             {
                 map<int,int>::iterator jt = memo[j+1].lower_bound(it->first + a);
-                if(jt != memo[j+1].end() && (it->first+a)*jt->second > jt->first * (it->second + b))
+                if(jt != memo[j+1].end() && (it->first+a)*jt->second < jt->first * (it->second + b))
                     continue;
                 cout << j+1 << " " << it->first+a << " = " << it->second+b << endl;
                 memo[j+1][it->first + a] = it->second + b;
