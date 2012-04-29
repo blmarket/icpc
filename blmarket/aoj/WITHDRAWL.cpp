@@ -46,7 +46,7 @@ void process(int dataId)
         s2 += data[i].first;
     }
 
-    while(n > k)
+    while(size(data) > k)
     {
         long long t1 = s1 - data.back().second;
         long long t2 = s2 - data.back().first;
