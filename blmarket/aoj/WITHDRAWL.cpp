@@ -38,38 +38,38 @@ void process(int dataId)
     data.resize(n);
     memo[0][0]=0;
 
+    long long s1=0,s2=0;
     for(int i=0;i<n;i++)
     {
         scanf("%d %d",&data[i].second, &data[i].first);
+        s1 += data[i].second;
+        s2 += data[i].first;
     }
-    sort(data.rbegin(), data.rend());
 
-
-    for(int i=0;i<n;i++)
+    while(n > k)
     {
-        int a = data[i].second;
-        int b = data[i].first;
-        int elasp = n-i;
-        elasp = max(0, k - elasp);
-        for(int j=k-1;j>=elasp;j--)
+        long long t1 = s1 - data.back().second;
+        long long t2 = s2 - data.back().first;
+
+        for(int i=0;i<size(data)-1;i++)
         {
-            foreach(it, memo[j])
+            long long tt1 = s1 - data[i].second;
+            long long tt2 = s2 - data[i].first;
+
+            if(t1*tt2 > tt1 * t2)
             {
-                map<int,int>::iterator jt = memo[j+1].lower_bound(it->first + a);
-                if(jt != memo[j+1].end() && (it->first+a)*jt->second < jt->first * (it->second + b))
-                    continue;
-                cout << j+1 << " " << it->first+a << " = " << it->second+b << endl;
-                memo[j+1][it->first + a] = it->second + b;
+                t1 = tt1;
+                t2 = tt2;
+                swap(data[i], data.back());
             }
         }
+        data.pop_back();
+        s1 = t1;
+        s2 = t2;
     }
 
-    double rate = 1;
-    foreach(it, memo[k])
-    {
-        double tmp = (double)it->first / it->second;
-        if(rate > tmp) rate = tmp;
-    }
+    double rate = (double)s1 / s2;
+
     printf("%.12lf\n",rate);
 }
 
