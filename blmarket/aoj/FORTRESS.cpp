@@ -40,7 +40,7 @@ void process(int dataId)
     memset(way, 0, sizeof(way));
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++) if(i != j) if(r[i] > r[j])
+        for(int j=0;j<n;j++) if(r[i] > r[j])
         {
             int xd = x[i] - x[j];
             int yd = y[i] - y[j];
@@ -48,7 +48,9 @@ void process(int dataId)
             {
                 way[i][j] = 1;
             }
+            cout << way[i][j] << " ";
         }
+        cout << endl;
     }
 
     while(true)
