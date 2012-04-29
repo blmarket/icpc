@@ -53,14 +53,6 @@ void process(int dataId)
 
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++)
-            cout << way[i][j] << " ";
-        cout << endl;
-    }
-
-
-    for(int i=0;i<n;i++)
-    {
         for(int j=0;j<n;j++) if(way[i][j])
         {
             for(int k=0;k<n;k++)
@@ -71,13 +63,6 @@ void process(int dataId)
                 }
             }
         }
-    }
-
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-            cout << way[i][j] << " ";
-        cout << endl;
     }
 
     for(int i=0;i<n;i++)
@@ -100,17 +85,10 @@ void process(int dataId)
         }
     }
 
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-            cout << way[i][j] << " ";
-        cout << endl;
-    }
-
     int ret = 0;
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++)
+        for(int j=0;j<n;j++) if(i != j)
         {
             ret = max(ret, way[i][j]);
         }
