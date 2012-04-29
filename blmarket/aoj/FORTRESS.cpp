@@ -76,6 +76,13 @@ void process(int dataId)
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<n;j++)
+            cout << way[i][j] << " ";
+        cout << endl;
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
         {
             if(way[j][i]) way[i][j] = 1;
         }
