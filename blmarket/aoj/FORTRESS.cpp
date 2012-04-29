@@ -48,29 +48,29 @@ void process(int dataId)
             {
                 way[i][j] = 1;
             }
-            cout << way[i][j] << " ";
         }
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+            cout << way[i][j] << " ";
         cout << endl;
     }
 
-    while(true)
+
+    for(int i=0;i<n;i++)
     {
-        bool redo = false;
-        for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++) if(way[i][j])
         {
-            for(int j=0;j<n;j++) if(way[i][j])
+            for(int k=0;k<n;k++)
             {
-                for(int k=0;k<n;k++)
+                if(way[i][k] && way[k][j])
                 {
-                    if(way[i][k] && way[k][j])
-                    {
-                        way[i][j] = 0;
-                        redo = true;
-                    }
+                    way[i][j] = 0;
                 }
             }
         }
-        if(!redo) break;
     }
 
     for(int i=0;i<n;i++)
