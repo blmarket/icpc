@@ -56,6 +56,7 @@ public:
 
 int main(void)
 {
+    precalc();
     int N;
     cin >> N;
     solver.outfds.resize(N+1);
