@@ -16,7 +16,7 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
-#define MULTI 1
+#define MULTI 3
 
 using namespace std;
 
