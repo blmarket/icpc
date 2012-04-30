@@ -89,7 +89,7 @@ void solve(int dataId)
     sort(meet.begin(), meet.end());
     for(int i=0;i<size(meet);i++)
     {
-        cout << meet[i].first << " : " << meet[i].second.first << " " << meet[i].second.second;
+        cout << meet[i].first << " : " << meet[i].second.first << " " << meet[i].second.second << endl;
     }
 }
 
