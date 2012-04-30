@@ -30,13 +30,18 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 struct frac {
-    frac(int a,int b)
+    frac(int a,int b, bool f, int c, int d)
     {
         up = a;
         down = b;
+        flag = f;
+        pa = c;
+        pb = d;
     }
 
     int up, down;
+    bool flag;
+    int pa, pb;
 
     bool operator<(const frac &rhs) const
     {
@@ -46,14 +51,14 @@ struct frac {
 
 ostream& operator<<(ostream& ost, const frac &rhs)
 {
-    return ost << (double)rhs.up / rhs.down;
+    return ost << (double)rhs.up / rhs.down << " : " << rhs.flag << " " << rhs.pa << "-" << rhs.pb;
 }
 
 int n;
 int spd[55], pos[55];
-bool links[55][55];
+vector<int> links[55];
 
-vector<pair<frac, PII> > meet;
+vector<frac> meet;
 
 void addcol(int a,int b) // faster, slower
 {
@@ -61,12 +66,12 @@ void addcol(int a,int b) // faster, slower
     if(pos[a] <= pos[b] - 5)
     {
         int dist = pos[b]-5-pos[a];
-        meet.pb(mp(frac(dist, dspd), mp(a,b)));
+        meet.pb(frac(dist, dspd, false, a ,b));
     }
     if(pos[a] < pos[b] + 5)
     {
         int dist = pos[b] + 5 - pos[a];
-        meet.pb(mp(frac(dist, dspd), mp(a,b)));
+        meet.pb(frac(dist, dspd, true, a ,b));
     }
 }
 
@@ -76,9 +81,10 @@ void solve(int dataId)
     {
         for(int j=i+1;j<n;j++) 
         {
-            if(abs(pos[i] - pos[j]) < 5)
+            if(abs(pos[i] - pos[j]) < 5) // already overlapping
             {
-                links[i][j] = links[j][i] = true;
+                links[i].pb(j);
+                links[j].pb(i);
             }
             if(spd[i] != spd[j])
             {
@@ -91,7 +97,7 @@ void solve(int dataId)
     sort(meet.begin(), meet.end());
     for(int i=0;i<size(meet);i++)
     {
-        cout << meet[i].first << " : " << meet[i].second.first << " " << meet[i].second.second << endl;
+        cout << meet[i] << endl;
     }
 }
 
