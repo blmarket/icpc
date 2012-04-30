@@ -67,17 +67,13 @@ void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
 {
     if(pos == m)
     {
-        for(int i=0;i<m;i++)
-        {
-            cout << ((nmask&(1<<i))!=0?1:0);
-        }
-        cout << " = " << cnt << endl;
         ret[nmask] += cnt;
         return;
     }
     if(chk(mask, pos)) return iterate(pos+1, mask, cnt, nmask, ret);
     if(chk(nmask, pos)) return;
     set(nmask, pos);
+    cout << bitout(nmask) << endl;
     if(chk(nmask, pos-1) == false)
     {
         set(nmask, pos-1);
