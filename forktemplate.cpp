@@ -27,15 +27,6 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-class ForkSolver {
-public:
-    ForkSolver() : nchilds(0) { }
-
-    vector<pair<pid_t,int> > outfds;
-    void _solve(int dataId);
-    int nchilds;
-} solver;
-
 void solve(int dataId)
 {
     // do solve data here
@@ -47,6 +38,15 @@ void process(int dataId)
 {
     // do read data here
 }
+
+class ForkSolver {
+public:
+    ForkSolver() : nchilds(0) { }
+
+    vector<pair<pid_t,int> > outfds;
+    void _solve(int dataId);
+    int nchilds;
+} solver;
 
 int main(void)
 {
