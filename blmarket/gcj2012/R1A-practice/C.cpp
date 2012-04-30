@@ -27,22 +27,82 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-long long mul = 1;
+struct frac {
+    frac(int a,int b)
+    {
+        up = a;
+        down = b;
+    }
+
+    int up, down;
+
+    bool operator<(const frac &rhs) const
+    {
+        return (long long)up * rhs.down < (long long)down * rhs.up;
+    }
+};
+
+ostream& operator<<(ostream& ost, const frac &rhs)
+{
+    return ost << (double)rhs.up / rhs.down;
+}
+
+int n;
+int spd[55], pos[55];
+bool links[55][55];
+
+vector<pair<frac, PII> > meet;
+
+void addcol(int a,int b) // faster, slower
+{
+    int dspd = spd[a] - spd[b];
+    if(pos[a] <= pos[b] - 5)
+    {
+        int dist = pos[b]-5-pos[a];
+        meet.pb(mp(frac(dist, dspd), mp(a,b)));
+    }
+    if(pos[a] < pos[b] + 5)
+    {
+        int dist = pos[b] + 5 - pos[a];
+        meet.pb(mp(frac(dist, dspd), mp(a,b)));
+    }
+}
 
 void solve(int dataId)
 {
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++) 
+        {
+            if(abs(pos[i] - pos[j]) < 5)
+            {
+                links[i][j] = links[j][i] = true;
+            }
+            if(spd[i] != spd[j])
+            {
+                if(spd[i] > spd[j]) addcol(i,j);
+                else addcol(j,i);
+            }
+        }
+    }
+    
+    sort(meet.begin(), meet.end());
+    for(int i=0;i<size(meet);i++)
+    {
+        cout << meet[i].first << " : " << meet[i].second.first << " " << meet[i].second.second;
+    }
 }
 
 void process(int dataId)
 {
-}
-
-void precalc(void)
-{
-    mul = 1;
-    for(int i=2;i<=1000;i++) {
-        mul = mul * i / __gcd(mul, (long long)i );
-        cerr << mul << endl;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        char a;
+        int b,c;
+        scanf(" %c %d %d",&a,&b,&c);
+        spd[i] = b;
+        pos[i] = c;
     }
 }
 
@@ -57,7 +117,6 @@ public:
 
 int main(void)
 {
-    precalc();
     int N;
     cin >> N;
     solver.outfds.resize(N+1);
