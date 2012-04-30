@@ -121,7 +121,6 @@ void process(int dataId)
         cin >> str;
         int nmask = mmm(str);
 
-        cout << i << endl;
         foreach(it, cur)
         {
             iterate(0, it->first, it->second, nmask, next);
