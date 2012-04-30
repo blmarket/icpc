@@ -43,7 +43,6 @@ void solve(int dataId)
         {
             if(b[i] <= score)
             {
-                cout << "eat " << a[i] << " " << b[i] << endl;
                 ng++;
                 score += 2 - mark[i];
                 mark[i] = 2;
@@ -59,7 +58,6 @@ void solve(int dataId)
             printf("Too Bad\n");
             return;
         }
-        cout << "sco " << a[candi] << " " << b[candi] << endl;
         ng++; score++;
         mark[candi] = 1;
 begin:;
