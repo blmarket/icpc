@@ -83,6 +83,7 @@ void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
     if(chk(nmask, pos+1) == false)
     {
         set(nmask, pos+1);
+        cout << "hehe" << bitout(nmask) << endl;
         iterate(pos+1, mask, cnt, nmask, ret);
         set(nmask, pos+1);
     }
