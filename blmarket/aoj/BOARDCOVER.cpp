@@ -56,7 +56,7 @@ void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
     {
         for(int i=0;i<m;i++)
         {
-            cout << (nmask&(1<<i))!=0?1:0;
+            cout << ((nmask&(1<<i))!=0?1:0);
         }
         cout << " = " << cnt << endl;
         ret[nmask] += cnt;
