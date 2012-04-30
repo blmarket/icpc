@@ -51,6 +51,7 @@ void solve(int dataId)
             if(candi == -1 || b[candi] < b[i])
                 candi = i;
         }
+        cout << candi << endl;
         if(candi == -1)
         {
             printf("Too Bad\n");
