@@ -79,7 +79,6 @@ void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
     }
     if(chk(mask, pos+1) == false)
     {
-        set(mask, pos+1);
         if(chk(nmask, pos))
         {
             set(nmask, pos);
@@ -92,7 +91,6 @@ void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
             iterate(pos+2, mask, cnt, nmask, ret);
             set(nmask, pos+1);
         }
-        set(mask, pos+1);
     }
     set(nmask, pos);
 }
