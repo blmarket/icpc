@@ -32,7 +32,7 @@ double prob[100005];
 
 void solve(int dataId)
 {
-    double ret = n;
+    double ret = 1 + n;
     double tot = 1;
     for(int i=0;i<m;i++)
     {
