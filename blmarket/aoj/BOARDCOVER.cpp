@@ -50,6 +50,19 @@ void set(int &mask, int pos)
     mask ^= (1<<pos);
 }
 
+struct bitout
+{
+    bitout(int a) { data = a; }
+    int data;
+};
+
+ostream& operator<<(ostream &ost, const bitout &a)
+{
+    for(int i=0;i<m;i++)
+        ost << ((a.data & (1<<i))!=0?1:0);
+    return ost;
+}
+
 void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
 {
     if(pos == m)
