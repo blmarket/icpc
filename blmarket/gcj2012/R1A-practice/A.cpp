@@ -82,7 +82,7 @@ int main(void)
 
             while(iter != sz)
             {
-                outsz = write(0, buffer + iter, sz - iter);
+                outsz = write(1, buffer + iter, sz - iter);
                 if(outsz == -1)
                 {
                     perror("write");
