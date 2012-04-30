@@ -41,8 +41,8 @@ void precalc(void)
 {
     for(int i=2;i<=1000;i++) {
         mul = mul * i / __gcd(mul, (long long)i );
+        cerr << mul << endl;
     }
-    cerr << mul << endl;
 }
 
 class ForkSolver {
