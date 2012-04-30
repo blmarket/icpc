@@ -50,6 +50,7 @@ void solve(int dataId)
                 goto begin;
             }
             if(a[i] > score) continue;
+            if(mark[i] >= 1) continue;
             if(candi == -1 || b[candi] < b[i])
                 candi = i;
         }
