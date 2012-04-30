@@ -37,6 +37,7 @@ void solve(int dataId)
     int ng = 0;
     while(score < n*2)
     {
+        cout << ng << " " << score << endl;
         int candi = -1;
         for(int i=0;i<n;i++)
         {
