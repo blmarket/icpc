@@ -41,6 +41,7 @@ void solve(int dataId)
         int candi = -1;
         for(int i=0;i<n;i++)
         {
+            cout << "b[i] = " << b[i] << endl;
             if(b[i] <= score)
             {
                 ng++;
