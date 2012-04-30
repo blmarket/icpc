@@ -69,6 +69,7 @@ int main(void)
         process(i);
         solver._solve(i);
     }
+    cout << "iterating..." << endl;
     for(int i=1;i<=N;i++)
     {
         int status;
@@ -78,8 +79,6 @@ int main(void)
         while(sz = read(solver.outfds[i].second, buffer, sizeof(buffer)))
         {
             ssize_t iter = 0, outsz;
-            cerr << "read " << sz << " bytes" << endl;
-            cerr.flush();
 
             while(iter != sz)
             {
