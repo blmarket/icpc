@@ -297,6 +297,7 @@ void ForkSolver::_solve(int dataId)
         if(close(pipefd[0]) == -1) perror("close");
         if(dup2(pipefd[1], 1) == -1) perror("dup2");
         if(close(pipefd[1]) == -1) perror("close");
+        printf("Case #%d: ", dataId);
         solve(dataId);
         fprintf(stderr, "%d\n", dataId);
         exit(0); // force exit
