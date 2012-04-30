@@ -78,7 +78,8 @@ int main(void)
         while(sz = read(solver.outfds[i].second, buffer, sizeof(buffer)))
         {
             ssize_t iter = 0, outsz;
-            cout << "read " << sz << " bytes" << endl;
+            cerr << "read " << sz << " bytes" << endl;
+            cerr.flush();
 
             while(iter != sz)
             {
