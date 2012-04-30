@@ -123,9 +123,9 @@ void ForkSolver::_solve(int dataId)
     }
     else
     {
-        close(pipefd[0]);
-        dup2(pipefd[1], 0);
-        close(pipefd[1]);
+        if(close(pipefd[0]) == -1) perror("close");
+        if(dup2(pipefd[1], 0) == -1) perror("dup2");
+        if(close(pipefd[1]) == -1) perror("close");
         solve(dataId);
         exit(0); // force exit
     }
