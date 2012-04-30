@@ -26,6 +26,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
@@ -45,7 +46,11 @@ struct frac {
 
     bool operator<(const frac &rhs) const
     {
-        return (long long)up * rhs.down < (long long)down * rhs.up;
+        long long my = (LL)up * rhs.down;
+        long long opp = (LL)down * rhs.up;
+
+        if(my != opp) return my < opp;
+        return flag > rhs.flag;
     }
 };
 
@@ -56,7 +61,8 @@ ostream& operator<<(ostream& ost, const frac &rhs)
 
 int n;
 int spd[55], pos[55];
-vector<int> links[55];
+char lane[55];
+set<int> links[55];
 
 vector<frac> meet;
 
@@ -75,6 +81,49 @@ void addcol(int a,int b) // faster, slower
     }
 }
 
+double out(const frac &rhs)
+{
+    return (double)rhs.up / rhs.down;
+}
+
+bool go(int a)
+{
+    int oth = -3;
+    if(lane[a] == -3) oth = -2;
+    foreach(it, links[a])
+    {
+        int b = *it;
+        if(lane[b] == -1)
+        {
+            lane[b] = oth;
+            if(go(b) == false) return false;
+        }
+        if(lane[b] != oth) return false;
+    }
+    return true;
+}
+
+bool check(int a)
+{
+    for(int i=0;i<n;i++) if(lane[i] < 0) lane[i] = -1;
+    lane[a] = -2;
+    return go(a);
+}
+
+bool populate(int a)
+{
+    char oth = 'L';
+    if(lane[a] == 'L') oth = 'R';
+    foreach(it, links[a])
+    {
+        if(lane[*it] == oth) continue;
+        if(lane[*it] > 0) return false;
+        lane[*it] = oth;
+        if(populate(*it) == false) return false;
+    }
+    return true;
+}
+
 void solve(int dataId)
 {
     for(int i=0;i<n;i++)
@@ -83,8 +132,8 @@ void solve(int dataId)
         {
             if(abs(pos[i] - pos[j]) < 5) // already overlapping
             {
-                links[i].pb(j);
-                links[j].pb(i);
+                links[i].insert(j);
+                links[j].insert(i);
             }
             if(spd[i] != spd[j])
             {
@@ -93,11 +142,68 @@ void solve(int dataId)
             }
         }
     }
+
+    for(int i=0;i<n;i++)
+        if(links[i].size() == 0) lane[i] = -1;
     
     sort(meet.begin(), meet.end());
     for(int i=0;i<size(meet);i++)
     {
-        cout << meet[i] << endl;
+        if(meet[i].flag) // removing exist flag.
+        {
+            int a = meet[i].pa, b = meet[i].pb;
+            links[a].erase(b);
+            links[b].erase(a);
+
+            if(links[a].size() == 0) lane[a] = -1;
+            if(links[b].size() == 0) lane[b] = -1;
+        }
+        else
+        {
+            int a = meet[i].pa, b = meet[i].pb;
+            links[a].insert(b);
+            links[b].insert(a);
+            if(lane[a] > 0)
+            {
+                if(lane[b] > 0)
+                {
+                    if(lane[a] == lane[b])
+                    {
+                        printf("%.12lf\n", out(meet[i]));
+                        return;
+                    }
+                }
+                else
+                {
+                    if(lane[a] == 'R') lane[b] = 'L'; else lane[b] = 'R';
+                    if(populate(b) == false)
+                    {
+                        printf("%.12lf\n", out(meet[i]));
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                if(lane[b] > 0)
+                {
+                    if(lane[b] == 'R') lane[a] = 'L'; else lane[a] = 'R';
+                    if(populate(a) == false)
+                    {
+                        printf("%.12lf\n", out(meet[i]));
+                        return;
+                    }
+                }
+                else
+                {
+                    if(check(a) == false)
+                    {
+                        printf("%.12lf\n", out(meet[i]));
+                        return;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -109,6 +215,7 @@ void process(int dataId)
         char a;
         int b,c;
         scanf(" %c %d %d",&a,&b,&c);
+        lane[i] = a;
         spd[i] = b;
         pos[i] = c;
     }
