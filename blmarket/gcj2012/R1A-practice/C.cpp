@@ -149,10 +149,10 @@ void solve(int dataId)
     sort(meet.begin(), meet.end());
     for(int i=0;i<size(meet);i++)
     {
-        cout << meet[i] << endl;
+        int a = meet[i].pa, b = meet[i].pb;
+        cout << meet[i] << " " << lane[a] << " n " << lane[b] << endl;
         if(meet[i].flag) // removing exist flag.
         {
-            int a = meet[i].pa, b = meet[i].pb;
             links[a].erase(b);
             links[b].erase(a);
 
@@ -161,7 +161,6 @@ void solve(int dataId)
         }
         else
         {
-            int a = meet[i].pa, b = meet[i].pb;
             links[a].insert(b);
             links[b].insert(a);
             if(lane[a] > 0)
