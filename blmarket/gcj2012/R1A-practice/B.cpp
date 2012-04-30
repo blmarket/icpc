@@ -40,7 +40,7 @@ void solve(int dataId)
         cout << ng << " " << score << endl;
 begin:
         int candi = -1;
-        for(int i=0;i<n;i++)
+        for(int i=0;i<n;i++) if(mark[i] < 2)
         {
             if(b[i] <= score)
             {
