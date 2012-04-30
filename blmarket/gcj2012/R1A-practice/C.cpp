@@ -205,6 +205,7 @@ void solve(int dataId)
             }
         }
     }
+    printf("Possible\n");
 }
 
 void process(int dataId)
