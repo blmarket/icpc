@@ -69,7 +69,6 @@ int main(void)
         process(i);
         solver._solve(i);
     }
-    cout << "iterating..." << endl;
     for(int i=1;i<=N;i++)
     {
         int status;
