@@ -38,7 +38,6 @@ void solve(int dataId)
     while(score < n*2)
     {
         cout << ng << " " << score << endl;
-begin:
         int candi = -1;
         for(int i=0;i<n;i++) if(mark[i] < 2)
         {
@@ -61,6 +60,7 @@ begin:
         }
         ng++; score++;
         mark[candi] = 1;
+begin:;
     }
     printf("%d\n", ng);
 }
@@ -150,6 +150,7 @@ void ForkSolver::_solve(int dataId)
         if(close(pipefd[0]) == -1) perror("close");
         if(dup2(pipefd[1], 1) == -1) perror("dup2");
         if(close(pipefd[1]) == -1) perror("close");
+        printf("Case #%d: ", dataId);
         solve(dataId);
         fprintf(stderr, "%d\n", dataId);
         exit(0); // force exit
