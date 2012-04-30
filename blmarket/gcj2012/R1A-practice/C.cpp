@@ -39,6 +39,7 @@ void process(int dataId)
 
 void precalc(void)
 {
+    mul = 1;
     for(int i=2;i<=1000;i++) {
         mul = mul * i / __gcd(mul, (long long)i );
         cerr << mul << endl;
