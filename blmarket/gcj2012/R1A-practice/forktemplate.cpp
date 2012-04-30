@@ -16,7 +16,7 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
-#define MULTI 3
+#define MULTI 2
 
 using namespace std;
 
@@ -29,14 +29,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 void solve(int dataId)
 {
-    // do solve data here
-    cout << dataId << endl;
-    printf("0\n",dataId);
 }
 
 void process(int dataId)
 {
-    // do read data here
 }
 
 class ForkSolver {
@@ -70,7 +66,7 @@ int main(void)
 
             while(iter != sz)
             {
-                outsz = write(0, buffer + iter, sz - iter);
+                outsz = write(1, buffer + iter, sz - iter);
                 if(outsz == -1)
                 {
                     perror("write");
@@ -111,10 +107,11 @@ void ForkSolver::_solve(int dataId)
     }
     else
     {
-        close(pipefd[0]);
-        dup2(pipefd[1], 0);
-        close(pipefd[1]);
+        if(close(pipefd[0]) == -1) perror("close");
+        if(dup2(pipefd[1], 1) == -1) perror("dup2");
+        if(close(pipefd[1]) == -1) perror("close");
         solve(dataId);
+        fprintf(stderr, "%d\n", dataId);
         exit(0); // force exit
     }
 }
