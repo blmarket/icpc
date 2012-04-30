@@ -54,6 +54,11 @@ void iterate(int pos, int mask, int cnt, int nmask, map<int,int> &ret)
 {
     if(pos == m)
     {
+        for(int i=0;i<m;i++)
+        {
+            cout << (nmask&(1<<i))!=0?1:0;
+        }
+        cout << " = " << cnt << endl;
         ret[nmask] += cnt;
         return;
     }
@@ -111,11 +116,6 @@ void process(int dataId)
         cout << i << endl;
         foreach(it, cur)
         {
-            for(int j=0;j<m;j++)
-            {
-                cout << (it->first & (1<<j))!=0?1:0; 
-            }
-            cout << " = " << it->second << endl;
             iterate(0, it->first, it->second, nmask, next);
         }
     }
