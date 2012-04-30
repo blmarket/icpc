@@ -150,7 +150,7 @@ void solve(int dataId)
     for(int i=0;i<size(meet);i++)
     {
         int a = meet[i].pa, b = meet[i].pb;
-        cout << meet[i] << " " << lane[a] << " n " << lane[b] << endl;
+        cout << meet[i] << " " << (int)lane[a] << " n " << (int)lane[b] << endl;
         if(meet[i].flag) // removing exist flag.
         {
             links[a].erase(b);
