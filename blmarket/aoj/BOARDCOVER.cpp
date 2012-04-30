@@ -108,8 +108,14 @@ void process(int dataId)
         cin >> str;
         int nmask = mmm(str);
 
+        cout << i << endl;
         foreach(it, cur)
         {
+            for(int j=0;j<m;j++)
+            {
+                cout << (it->first & (1<<j))!=0?1:0; 
+            }
+            cout << " = " << it->second << endl;
             iterate(0, it->first, it->second, nmask, next);
         }
     }
