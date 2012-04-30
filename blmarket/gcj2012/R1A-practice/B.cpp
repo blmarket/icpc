@@ -38,16 +38,16 @@ void solve(int dataId)
     while(score < n*2)
     {
         cout << ng << " " << score << endl;
+begin:
         int candi = -1;
         for(int i=0;i<n;i++)
         {
-            cout << "b[i] = " << b[i] << endl;
             if(b[i] <= score)
             {
                 ng++;
                 score += 2 - mark[i];
                 mark[i] = 2;
-                break;
+                goto begin;
             }
             if(a[i] > score) continue;
             if(candi == -1 || b[candi] < b[i])
