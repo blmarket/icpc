@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <list>
 #include <cstdlib>
@@ -29,7 +30,7 @@ bool comp(const PII &a, const PII &b)
 {
     if(a.first * b.second == a.second * b.first)
     {
-        return a.second > b.second;
+        return a.second < b.second;
     }
     return a.first * b.second < a.second * b.first;
 }
