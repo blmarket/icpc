@@ -106,7 +106,7 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
-    cout << a << " = " << cur.pa << " " << cur.pb << " " << cur.flag;
+    cout << a << " = " << cur.pa << " " << cur.pb << " " << cur.flag << endl;
     links[cur.pa].insert(cur.pb);
     links[cur.pb].insert(cur.pa);
 
