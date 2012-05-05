@@ -38,7 +38,6 @@ int main(void)
 {
     int N;
     cin >> N;
-    solver.outfds.resize(N+1);
     for(int i=1;i<=N;i++)
     {
         process(i);
