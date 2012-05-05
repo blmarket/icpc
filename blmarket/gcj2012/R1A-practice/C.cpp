@@ -95,7 +95,7 @@ int go(int a, long long state)
                 setbit(mask, i);
             }
         }
-        cout << a << " mask = " << mask << endl;
+        cerr << a << " mask = " << mask << endl;
         masks.pb(mask);
     }
     else
@@ -108,7 +108,7 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
-    cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
+    cerr << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
 
     if(cur.flag == false)
     {
@@ -131,12 +131,12 @@ int go(int a, long long state)
             if(i == j) continue;
             if(i) setbit(state, cur.pa); else zerobit(state, cur.pa);
             if(j) setbit(state, cur.pb); else zerobit(state, cur.pb);
-            cout << "try " << i << " " << j << " " << state << endl;
+            cerr << "try " << i << " " << j << " " << state << endl;
             int tmp = go(a+1, state);
             if(ret < tmp) ret = tmp;
         }
     }
-    cout << "try ends" << endl;
+    cerr << "try ends" << endl;
 
     if(cur.flag)
     {
