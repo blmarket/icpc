@@ -95,7 +95,7 @@ int go(int a, long long state)
                 setbit(mask, i);
             }
         }
-        cerr << a << " mask = " << mask << endl;
+        //cerr << a << " mask = " << mask << endl;
         masks.pb(mask);
     }
     else
@@ -108,7 +108,7 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
-    cerr << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
+    //cerr << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
 
     if(cur.flag == false)
     {
@@ -131,12 +131,12 @@ int go(int a, long long state)
             if(i == j) continue;
             if(i) setbit(state, cur.pa); else zerobit(state, cur.pa);
             if(j) setbit(state, cur.pb); else zerobit(state, cur.pb);
-            cerr << "try " << i << " " << j << " " << state << endl;
+            //cerr << "try " << i << " " << j << " " << state << endl;
             int tmp = go(a+1, state);
             if(ret < tmp) ret = tmp;
         }
     }
-    cerr << "try ends" << endl;
+    //cerr << "try ends" << endl;
 
     if(cur.flag)
     {
@@ -207,5 +207,6 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process(i);
+        cerr << i << endl;
     }
 }
