@@ -164,7 +164,6 @@ void process(int dataId)
         }
         links[i].clear();
     }
-    cout << state << endl;
 
     set<int> links[55];
 
@@ -183,6 +182,8 @@ void process(int dataId)
         }
     }
     sort(moves.begin(), moves.end());
+
+    cout << links[0].size() << " " << links[1].size() << " " << links[2].size() << endl;
     int tmp = go(0, state);
     printf("Case #%d: ", dataId);
     if(tmp == moves.size())
