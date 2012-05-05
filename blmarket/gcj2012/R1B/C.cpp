@@ -53,6 +53,7 @@ void process(int dataId)
         int sum = 0;
         for(int j=0;j<n;j++) if(i & (1<<j))
             sum += data[j];
+        cout << sum << endl;
         if(memo.count(sum) != 0)
         {
             out(memo[sum]);
