@@ -42,7 +42,7 @@ void move(int &x, int &y, int &hole)
     {
         case 0:
         case 1:
-            y++;
+            y--;
             hole = 5-hole;
             return;
         case 2:
@@ -52,7 +52,7 @@ void move(int &x, int &y, int &hole)
             return;
         case 4:
         case 5:
-            y--;
+            y++;
             hole = 5-hole;
         case 6:
         case 7:
