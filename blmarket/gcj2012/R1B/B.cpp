@@ -91,6 +91,7 @@ void process(int dataId)
     for(int i=0;i<n;i++)
         for(int j=0;j<m;j++) if(reach[i][j] == 0) 
         {
+            cout << "initial move : " << i << "," << j << endl;
             Q.push(mp(i,j));
         }
 
