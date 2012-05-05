@@ -15,6 +15,7 @@
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+#define abs(x) ((x)<0?-(x):(x))
 
 using namespace std;
 
@@ -47,10 +48,11 @@ bool btrack(int pos)
         {
             back[np][it->first + data[np]] = mp(pos, it->first);
         }
-        if(it->first - data[np] == 0) return true;
-        if(it->first - data[np] >= -sums[np])
+        long long oth = abs(it->first - data[np]);
+        if(oth == 0) return true;
+        if(oth <= sums[np])
         {
-            back[np][it->first - data[np]] = mp(pos, it->first);
+            back[np][oth] = mp(pos, it->first);
         }
     }
     return btrack(pos-1);
