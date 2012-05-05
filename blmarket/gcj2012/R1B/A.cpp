@@ -49,6 +49,9 @@ bool check(int a, double rate)
         double need = (myp - sorted[i]);
         otl += need;
     }
+
+    cout << a << " " << rate << " " << myp << " " << otl << " " << sum << endl;
+
     return otl < sum;
 }
 
