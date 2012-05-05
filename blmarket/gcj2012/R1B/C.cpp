@@ -64,7 +64,7 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
     sort(ret.begin(), ret.end());
     for(int i=0;i+1<size(ret);i++)
     {
-        if(ret[i].first == ret[i+1].first)
+        if(ret[i].first == ret[i+1].first && sz <= 24)
         {
             long long sum = 0;
             for(int j=0;j<48;j++)
