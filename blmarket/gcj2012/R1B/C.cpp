@@ -48,12 +48,12 @@ void process(int dataId)
         scanf("%d",&data[i]);
     }
     printf("\n");
-    for(int i=1;i<(1LL<n);i++)
+    int tt = (1<<n);
+    for(int i=1;i<tt;i++)
     {
         int sum = 0;
         for(int j=0;j<n;j++) if(i & (1<<j))
             sum += data[j];
-        cout << sum << endl;
         if(memo.count(sum) != 0)
         {
             out(memo[sum]);
