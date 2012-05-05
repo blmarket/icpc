@@ -160,7 +160,7 @@ void process(int dataId)
         }
     }
     sort(moves.begin(), moves.end());
-    go(0, state);
+    cout << go(0, state) << endl;
 }
 
 int main(void)
