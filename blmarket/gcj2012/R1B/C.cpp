@@ -39,9 +39,9 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
         for(int i=1;i<(1<<sz);i++)
         {
             long long sum = 0;
-            for(int j=0;j<sz;j++) if((1<<j) & i)
+            for(int j=0;j<sz;j++) if((1LL<<j) & i)
                 sum += data[s + j];
-            ret.pb(mp(sum, i << s));
+            ret.pb(mp(sum, (long long)i << s));
         }
         return false;
     }
@@ -51,7 +51,6 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
     if(perm(p2, (s+e)/2, e)) return true;
 
     ret.clear();
-
     for(int i=0;i<size(p2);i++) ret.pb(p2[i]);
     for(int i=0;i<size(p1);i++)
     {
@@ -70,7 +69,7 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
             long long sum = 0;
             for(int j=0;j<48;j++)
             {
-                if((1<<j) & ret[i].second)
+                if((1LL<<j) & ret[i].second)
                 {
                     cout << data[j] << " ";
                     sum += data[j];
@@ -80,7 +79,7 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
             sum = 0;
             for(int j=0;j<48;j++)
             {
-                if((1<<j) & ret[i+1].second)
+                if((1LL<<j) & ret[i+1].second)
                 {
                     cout << data[j] << " ";
                     sum += data[j];
