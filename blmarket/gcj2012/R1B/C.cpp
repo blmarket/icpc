@@ -33,7 +33,7 @@ vector<long long> data;
 bool perm(vector<pair<long long, pair<long long, long long> > > &ret, int s, int e)
 {
     int sz = e - s;
-    if(sz < 1)
+    if(sz == 1)
     {
         ret.clear();
         ret.pb(mp(data[s], mp(1LL<<s,0)));
