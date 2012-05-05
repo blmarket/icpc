@@ -81,6 +81,7 @@ void process(int dataId)
     for(int i=0;i<n;i++)
     {
         printf("%.12lf ", go(data[i]));
+        break;
     }
     printf("\n");
 }
