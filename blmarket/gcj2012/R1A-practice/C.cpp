@@ -92,7 +92,6 @@ int go(int a, long long state)
         {
             if(links[i].size())
             {
-                cout << "here " << i << endl;
                 setbit(mask, i);
             }
         }
@@ -167,8 +166,6 @@ void process(int dataId)
         }
         links[i].clear();
     }
-
-    set<int> links[55];
 
     for(int i=0;i<n;i++)
     {
