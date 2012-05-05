@@ -133,7 +133,7 @@ int main(void)
     cin >> N;
     for(int i=1;i<=N;i++)
     {
-        printf("Case #%d: ",i);
+        printf("Case #%d: \n",i);
         process(i);
         cerr << i << endl;
     }
