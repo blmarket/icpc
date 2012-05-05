@@ -82,6 +82,8 @@ bool perm(vector<pair<long long, pair<long long, long long> > > &ret, int s, int
         }
     }
 
+    cout << sz << " " << ret.size() << endl;
+
     return false;
 }
 
