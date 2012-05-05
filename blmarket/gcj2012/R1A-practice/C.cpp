@@ -99,6 +99,7 @@ int go(int a, long long state)
     {
         mask = masks[a];
     }
+    cout << mask << endl;
     state = state & mask;
 
     if(memo[a].count(state) != 0)
@@ -183,7 +184,6 @@ void process(int dataId)
     }
     sort(moves.begin(), moves.end());
 
-    cout << links[0].size() << " " << links[1].size() << " " << links[2].size() << endl;
     int tmp = go(0, state);
     printf("Case #%d: ", dataId);
     if(tmp == moves.size())
