@@ -107,7 +107,7 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
-    //cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
+    cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
 
     if(cur.flag)
     {
@@ -191,7 +191,6 @@ void process(int dataId)
     }
     else
     {
-        cout << moves[tmp].up << " " << moves[tmp].down << endl;
         double ret = moves[tmp].up;
         ret /= moves[tmp].down;
         printf("%.12lf\n", ret);
