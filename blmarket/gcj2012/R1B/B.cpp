@@ -48,6 +48,9 @@ int check(int curtime, int tc, int tf)
 
     int tgt = tc - 50;
     int elasp = (curh - tgt);
+
+    cout << "wait " << elasp << endl;
+
     if(tgt - tf >= 20)
         return curtime + elasp + 10;
     return curtime + elasp + 100;
@@ -88,7 +91,10 @@ void process(int dataId)
     }
 
     for(int i=0;i<n;i++)
-        for(int j=0;j<m;j++) if(reach[i][j] == 0) Q.push(mp(i,j));
+        for(int j=0;j<m;j++) if(reach[i][j] == 0) 
+        {
+            Q.push(mp(i,j));
+        }
 
     while(!Q.empty())
     {
