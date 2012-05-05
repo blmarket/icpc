@@ -42,6 +42,7 @@ void out(int mask)
 void process(int dataId)
 {
     scanf("%d",&n);
+    memo.clear();
     data.resize(n);
     for(int i=0;i<n;i++)
     {
