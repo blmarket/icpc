@@ -82,6 +82,7 @@ void crash(int a,int b)
 map<long long, int> memo[2505];
 int go(int a, long long state)
 {
+    cout << a << " " << state << endl;
     if(a == moves.size())
         return moves.size();
 
