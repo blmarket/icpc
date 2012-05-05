@@ -76,7 +76,7 @@ void process(int dataId)
 
     back[n][0] = mp(-1,-1);
 
-    btrack(n);
+    cout << btrack(n) << endl;
 }
 
 int main(void)
