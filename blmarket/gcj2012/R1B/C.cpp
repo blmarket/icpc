@@ -72,6 +72,7 @@ template<typename T> bool perm(vector<long long> &ret, const T &begin, const T &
             return true;
         }
     }
+    cout << sz << " failed" << endl;
     return false;
 }
 
