@@ -53,6 +53,7 @@ bool btrack(int pos)
             back[np][it->first - data[np]] = mp(pos, it->first);
         }
     }
+    return btrack(pos-1);
 }
 
 void process(int dataId)
