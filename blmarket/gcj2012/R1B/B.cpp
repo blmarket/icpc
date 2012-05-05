@@ -80,7 +80,7 @@ void process(int dataId)
             int ny = y + dy[i];
             if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
 
-            if(reach[nx][ny] != 0 && ceil[nx][ny] >= 50 + h)
+            if(reach[nx][ny] != 0 && ceil[nx][ny] >= 50 + h && ceil[nx][ny] >= 50 + floo[nx][ny])
             {
                 reach[nx][ny] = 0;
                 Q.push(mp(nx,ny));
