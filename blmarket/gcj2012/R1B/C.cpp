@@ -49,7 +49,6 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
     vector<pair<long long, long long> > p1,p2;
     if(perm(p1, s, (s+e)/2)) return true;
     if(perm(p2, (s+e)/2, e)) return true;
-    cout << p1.size() << " " << p2.size() << endl;
 
     ret.clear();
     for(int i=0;i<size(p2);i++) ret.pb(p2[i]);
@@ -62,10 +61,12 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
         }
     }
 
+    if(sz == 48) return false;
+
     sort(ret.begin(), ret.end());
     for(int i=0;i+1<size(ret);i++)
     {
-        if(ret[i].first == ret[i+1].first && sz > 24)
+        if(ret[i].first == ret[i+1].first)
         {
             long long sum = 0;
             for(int j=0;j<48;j++)
@@ -90,7 +91,6 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
             return true;
         }
     }
-    cout << sz << " failed" << endl;
     return false;
 }
 
@@ -108,7 +108,12 @@ void process(int dataId)
     // i think 48 bits are enough...
     // 48, 24, 12, 6, 3
     vector<pair<long long, long long> > p1;
-    perm(p1, 0, 48);
+
+    while(true)
+    {
+        if(perm(p1, 0, 48)) return;
+        random_shuffle(data.begin(), data.end());
+    }
 }
 
 int main(void)
