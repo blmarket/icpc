@@ -74,6 +74,8 @@ void process(int dataId)
         int y = Q.front().second;
         Q.pop();
 
+        cout << x << " " << y << endl;
+
         for(int i=0;i<4;i++)
         {
             int nx = x + dx[i];
