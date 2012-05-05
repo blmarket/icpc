@@ -24,23 +24,24 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
+typedef unsigned int UI;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int n;
 vector<long long> data;
 
-bool perm(vector<pair<long long, pair<long long, long long> > > &ret, int s, int e)
+bool perm(vector<pair<long long, pair<UI,UI> > > &ret, int s, int e)
 {
     int sz = e - s;
     if(sz == 1)
     {
         ret.clear();
-        ret.pb(mp(data[s], mp(1LL<<s,0)));
+        ret.pb(mp(data[s], mp(1<<s,0)));
         return false;
     }
 
-    vector<pair<long long, pair<long long, long long> > > p1,p2;
+    vector<pair<long long, pair<UI,UI> > > p1,p2;
     if(perm(p1, s, (s+e)/2)) return true;
     if(perm(p2, (s+e)/2, e)) return true;
 
@@ -49,7 +50,7 @@ bool perm(vector<pair<long long, pair<long long, long long> > > &ret, int s, int
 
     for(int i=0;i<size(p1);i++)
     {
-        pair<LL, pair<LL, LL> > key = mp(p1[i].first, mp(-1,-1));
+        pair<LL, pair<UI, UI> > key = mp(p1[i].first, mp(0,0));
         int j = lower_bound(p2.begin(), p2.end(), key) - p2.begin();
         if(p2[j].first == p1[i].first)
         {
@@ -98,7 +99,7 @@ void process(int dataId)
     }
 
     printf("\n");
-    vector<pair<long long, pair<long long, long long> > > p1;
+    vector<pair<long long, pair<UI,UI> > > p1;
     while(true)
     {
         if(perm(p1, 0, 32)) return;
