@@ -43,7 +43,7 @@ int check(int curtime, int lc, int lf, int tc, int tf)
 
     if(high - low >= 50) // you can move right now
     {
-        cout << curh << " " << lc << " " << lf << " " << tc << " " << tf << " move now" << endl;
+        cout << curh << " " << lc << "/" << lf << " " << tc << "/" << tf << " move now" << endl;
         if(curh - lf >= 20) return curtime+10;
         return curtime + 100;
     }
@@ -52,7 +52,7 @@ int check(int curtime, int lc, int lf, int tc, int tf)
     if(tgt < tf) return -1;
     int elasp = (curh - tgt);
 
-    cout << curh << " " << lc << " " << lf << " " << tc << " " << tf << " wait " << elasp << endl;
+    cout << curh << " " << lc << "/" << lf << " " << tc << "/" << tf << " wait " << elasp << endl;
 
     if(tgt - lf >= 20)
         return curtime + elasp + 10;
