@@ -15,10 +15,8 @@ int main(void)
 
     for(int j=0;j<N;j++)
     {
-        cerr << "turn " << j << " " << N << endl;
         for(int i=0;i<8;i++)
             if(scanf("%d", &tile[i]) == 0) return 0;
-        cerr << "turn " << j << " " << N << endl;
         string ret = inst.placeTile(tile);
         printf("%s\n",ret.c_str());
         fflush(stdout);
