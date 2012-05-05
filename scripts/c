@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
-g++ $1 -o a.exe
+if [ ! -n "$1" ]; then
+    make
+else
+    g++ $1 -o a.exe
+fi
 git add $1 
 set +e
 git commit -m "--Empty Message--" > /dev/null
