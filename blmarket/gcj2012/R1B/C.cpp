@@ -27,43 +27,56 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int n;
-vector<int> data;
-map<int, long long> memo;
+vector<long long> data;
+vector<long long> sums;
+map<long long, pair<int, long long> > back[505];
 
-void out(int mask)
+bool btrack(int pos)
 {
-    for(int i=0;i<n;i++) if( mask & (1<<i))
+    if(pos == 0)
     {
-        printf("%d ", data[i]);
+        return false;
     }
-    printf("\n");
+
+    int np = pos-1;
+    foreach(it, back[pos])
+    {
+        back[np][it->first] = mp(pos, it->first);
+        if(it->first + data[np] == 0) return true;
+        if(it->first + data[np] <= sums[np])
+        {
+            back[np][it->first + data[np]] = mp(pos, it->first);
+        }
+        if(it->first - data[np] == 0) return true;
+        if(it->first - data[np] >= -sums[np])
+        {
+            back[np][it->first - data[np]] = mp(pos, it->first);
+        }
+    }
 }
 
 void process(int dataId)
 {
-    scanf("%d",&n);
-    memo.clear();
+    cin >> n;
+    for(int i=0;i<=n;i++)
+        back[i].clear();
     data.resize(n);
     for(int i=0;i<n;i++)
     {
-        scanf("%d",&data[i]);
+        cin >> data[i];
     }
     printf("\n");
-    int tt = (1<<n);
-    for(int i=1;i<tt;i++)
-    {
-        int sum = 0;
-        for(int j=0;j<n;j++) if(i & (1<<j))
-            sum += data[j];
-        if(memo.count(sum) != 0)
-        {
-            out(memo[sum]);
-            out(i);
-            return;
-        }
-        memo[sum] = i;
-    }
-    printf("Impossible\n");
+    sort(data.begin(), data.end());
+
+    sums.resize(n);
+    sums[0] = 0;
+
+    for(int i=1;i<n;i++)
+        sums[i] = sums[i-1] + data[i-1];
+
+    back[n][0] = mp(-1,-1);
+
+    btrack(n);
 }
 
 int main(void)
