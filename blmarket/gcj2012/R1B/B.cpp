@@ -34,7 +34,7 @@ int reach[105][105];
 const int dx[] = {-1,0,0,1};
 const int dy[] = {0,-1,1,0};
 
-int check(int curtime, int tc, int tf)
+int check(int curtime, int lf, int tc, int tf)
 {
     if(tc < tf+50) return -1;
     int curh = h - curtime * 10;
@@ -42,7 +42,7 @@ int check(int curtime, int tc, int tf)
 
     if(tc - low >= 50) // you can move right now
     {
-        if(curh - tf >= 20) return curtime+10;
+        if(curh - lf >= 20) return curtime+10;
         return curtime + 100;
     }
 
@@ -51,7 +51,7 @@ int check(int curtime, int tc, int tf)
 
     cout << "wait " << elasp << endl;
 
-    if(tgt - tf >= 20)
+    if(tgt - lf >= 20)
         return curtime + elasp + 10;
     return curtime + elasp + 100;
 }
@@ -107,7 +107,7 @@ void process(int dataId)
             int nx = x + dx[i];
             int ny = y + dy[i];
             if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
-            int tmp = check(reach[x][y], ceil[nx][ny], floo[nx][ny]);
+            int tmp = check(reach[x][y], floo[x][y], ceil[nx][ny], floo[nx][ny]);
             if(reach[nx][ny] == -1 || reach[nx][ny] > tmp)
             {
                 reach[nx][ny] = tmp;
