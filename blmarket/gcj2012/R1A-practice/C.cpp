@@ -95,6 +95,7 @@ int go(int a, long long state)
                 setbit(mask, i);
             }
         }
+        cout << a << " mask = " << mask << endl;
         masks.pb(mask);
     }
     else
