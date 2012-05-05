@@ -55,6 +55,7 @@ vector<long long> masks;
 void crash(int a,int b)
 {
     int relspd = spd[a] - spd[b];
+    cout << "relspd = " << relspd << endl;
     if(pos[a] <= pos[b]-5)
     {
         int elaspdist = pos[b]-5-pos[a];
