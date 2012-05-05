@@ -49,8 +49,6 @@ int check(int curtime, int lf, int tc, int tf)
     int tgt = tc - 50;
     int elasp = (curh - tgt);
 
-    cout << "wait " << elasp << endl;
-
     if(tgt - lf >= 20)
         return curtime + elasp + 10;
     return curtime + elasp + 100;
