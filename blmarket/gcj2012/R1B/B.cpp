@@ -96,7 +96,6 @@ void process(int dataId)
     for(int i=0;i<n;i++)
         for(int j=0;j<m;j++) if(reach[i][j] == 0) 
         {
-            cout << "initial move : " << i << "," << j << endl;
             Q.push(mp(i,j));
         }
 
@@ -114,6 +113,7 @@ void process(int dataId)
             int tmp = check(reach[x][y], ceil[x][y], floo[x][y], ceil[nx][ny], floo[nx][ny]);
             if(reach[nx][ny] == -1 || reach[nx][ny] > tmp)
             {
+                cout << x << " " << y << " -> " << nx << " " << ny << " = " << tmp << endl;
                 reach[nx][ny] = tmp;
                 Q.push(mp(nx,ny));
             }
