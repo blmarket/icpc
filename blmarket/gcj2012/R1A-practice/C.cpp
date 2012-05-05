@@ -82,7 +82,6 @@ void crash(int a,int b)
 map<long long, int> memo[2505];
 int go(int a, long long state)
 {
-    cout << a << " " << state << endl;
     if(a == moves.size())
         return moves.size();
 
@@ -106,6 +105,7 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
+    cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << state << endl;
     links[cur.pa].insert(cur.pb);
     links[cur.pb].insert(cur.pa);
 
