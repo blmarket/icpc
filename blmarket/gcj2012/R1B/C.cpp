@@ -30,67 +30,58 @@ template<typename T> int size(const T &a) { return a.size(); }
 int n;
 vector<long long> data;
 
-bool perm(vector<pair<long long, long long> > &ret, int s, int e)
+bool perm(vector<pair<long long, pair<long long, long long> > > &ret, int s, int e)
 {
     int sz = e - s;
-    if(sz < 4)
+    if(sz < 1)
     {
         ret.clear();
-        for(int i=1;i<(1<<sz);i++)
-        {
-            long long sum = 0;
-            for(int j=0;j<sz;j++) if((1LL<<j) & i)
-                sum += data[s + j];
-            ret.pb(mp(sum, (long long)i << s));
-        }
-        return false;
+        ret.pb(mp(data[s], mp(1LL<<s,0)));
     }
 
-    vector<pair<long long, long long> > p1,p2;
+    vector<pair<long long, pair<long long, long long> > > p1,p2;
     if(perm(p1, s, (s+e)/2)) return true;
     if(perm(p2, (s+e)/2, e)) return true;
 
-    if(sz == 48) return false;
+    sort(p1.begin(), p1.end());
+    sort(p2.begin(), p2.end());
 
-    ret.clear();
-    for(int i=0;i<size(p2);i++) ret.pb(p2[i]);
     for(int i=0;i<size(p1);i++)
     {
-        ret.pb(p1[i]);
-        for(int j=0;j<size(p2);j++)
+        pair<LL, pair<LL, LL> > key = mp(p1[i].first, mp(-1,-1));
+        int j = lower_bound(p2.begin(), p2.end(), key) - p2.begin();
+        if(p2[j].first == p1[i].first)
         {
-            ret.pb(mp(p1[i].first + p2[j].first, p1[i].second | p2[j].second));
-        }
-    }
-
-    sort(ret.begin(), ret.end());
-    for(int i=0;i+1<size(ret);i++)
-    {
-        if(ret[i].first == ret[i+1].first)
-        {
-            long long sum = 0;
-            for(int j=0;j<48;j++)
-            {
-                if((1LL<<j) & ret[i].second)
-                {
-                    cout << data[j] << " ";
-                    sum += data[j];
-                }
-            }
-            cout << endl << sum << endl;
-            sum = 0;
-            for(int j=0;j<48;j++)
-            {
-                if((1LL<<j) & ret[i+1].second)
-                {
-                    cout << data[j] << " ";
-                    sum += data[j];
-                }
-            }
-            cout << endl << sum << endl;
+            cout << "write here" << endl;
             return true;
         }
     }
+
+    ret.clear();
+    for(int i=0;i<size(p2);i++)
+        ret.pb(p2[i]);
+    for(int i=0;i<size(p1);i++)
+    {
+        ret.pb(p1[i]);
+        LL k1 = p1[i].second.first;
+        LL k2 = p1[i].second.second;
+        for(int j=0;j<size(p2);j++)
+        {
+            LL k3 = p2[j].second.first;
+            LL k4 = p2[j].second.second;
+
+            ret.pb(mp(p1[i].first + p2[j].first, mp(k1|k3, k2|k4)));
+            if(p1[i].first > p2[j].first)
+            {
+                ret.pb(mp(p1[i].first - p2[j].first, mp(k1|k4, k2|k3)));
+            }
+            else
+            {
+                ret.pb(mp(p2[j].first - p1[i].first, mp(k2|k3, k1|k4)));
+            }
+        }
+    }
+
     return false;
 }
 
@@ -104,14 +95,10 @@ void process(int dataId)
     }
 
     printf("\n");
-
-    // i think 48 bits are enough...
-    // 48, 24, 12, 6, 3
-    vector<pair<long long, long long> > p1;
-
+    vector<pair<long long, pair<long long, long long> > > p1;
     while(true)
     {
-        if(perm(p1, 0, 48)) return;
+        if(perm(p1, 0, 32)) return;
         random_shuffle(data.begin(), data.end());
     }
 }
