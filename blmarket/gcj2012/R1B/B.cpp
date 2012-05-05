@@ -115,6 +115,8 @@ void process(int dataId)
             }
         }
     }
+
+    printf("%.12lf\n", (double)reach[n-1][m-1]/10);
 }
 
 int main(void)
