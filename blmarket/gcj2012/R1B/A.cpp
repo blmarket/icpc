@@ -36,8 +36,6 @@ bool check(int a, double rate)
     double myp = rate * sum + a;
     bool meet = false;
 
-    cout << a << " " << rate << " " << myp << endl;
-
     double otl = 0;
     for(int i=0;i<n;i++)
     {
@@ -51,7 +49,7 @@ bool check(int a, double rate)
         double need = (myp - sorted[i]);
         otl += need;
     }
-    return otl < 1;
+    return otl < sum;
 }
 
 double go(int a)
