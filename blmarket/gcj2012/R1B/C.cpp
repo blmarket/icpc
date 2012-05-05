@@ -59,10 +59,11 @@ bool perm(vector<pair<long long, pair<UI,UI> > > &ret, int s, int e)
     sort(p1.begin(), p1.end());
     sort(p2.begin(), p2.end());
 
+    int j = 0;
     for(int i=0;i<size(p1);i++)
     {
-        pair<LL, pair<UI, UI> > key = mp(p1[i].first, mp(0,0));
-        int j = lower_bound(p2.begin(), p2.end(), key) - p2.begin();
+        while(j < size(p2) && p2[j].first < p1[i].first) j++;
+        if(j == size(p2)) break;
         if(p2[j].first == p1[i].first)
         {
             out(p1[i].second.first);
@@ -73,6 +74,12 @@ bool perm(vector<pair<long long, pair<UI,UI> > > &ret, int s, int e)
             printf("\n");
             return true;
         }
+    }
+
+    if(sz == 32)
+    {
+        cerr << "we fail" << endl;
+        return false;
     }
 
     ret.clear();
