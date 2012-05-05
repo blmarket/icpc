@@ -88,6 +88,7 @@ int go(int a, long long state)
     long long mask = 0;
     if(masks.size() <= a)
     {
+        cout << "here" << endl;
         for(int i=0;i<n;i++)
         {
             if(links[i].size())
@@ -99,7 +100,6 @@ int go(int a, long long state)
     {
         mask = masks[a];
     }
-    cout << mask << endl;
     state = state & mask;
 
     if(memo[a].count(state) != 0)
