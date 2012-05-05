@@ -50,6 +50,8 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
     if(perm(p1, s, (s+e)/2)) return true;
     if(perm(p2, (s+e)/2, e)) return true;
 
+    if(sz == 48) return false;
+
     ret.clear();
     for(int i=0;i<size(p2);i++) ret.pb(p2[i]);
     for(int i=0;i<size(p1);i++)
@@ -60,10 +62,6 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
             ret.pb(mp(p1[i].first + p2[j].first, p1[i].second | p2[j].second));
         }
     }
-
-    cerr << sz << " " << ret.size() << endl;
-
-    if(sz == 48) return false;
 
     sort(ret.begin(), ret.end());
     for(int i=0;i+1<size(ret);i++)
@@ -113,7 +111,7 @@ void process(int dataId)
 
     while(true)
     {
-        //if(perm(p1, 0, 48)) return;
+        if(perm(p1, 0, 48)) return;
         random_shuffle(data.begin(), data.end());
     }
 }
