@@ -110,7 +110,7 @@ int go(int a, long long state)
     asdf &cur = moves[a];
     cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
 
-    if(cur.flag)
+    if(cur.flag == false)
     {
         links[cur.pa].insert(cur.pb);
         links[cur.pb].insert(cur.pa);
@@ -138,7 +138,7 @@ int go(int a, long long state)
     }
     cout << "try ends" << endl;
 
-    if(cur.flag == false)
+    if(cur.flag)
     {
         links[cur.pa].insert(cur.pb);
         links[cur.pb].insert(cur.pa);
