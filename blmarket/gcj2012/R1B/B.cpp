@@ -34,19 +34,21 @@ int reach[105][105];
 const int dx[] = {-1,0,0,1};
 const int dy[] = {0,-1,1,0};
 
-int check(int curtime, int lf, int tc, int tf)
+int check(int curtime, int lc, int lf, int tc, int tf)
 {
     if(tc < tf+50) return -1;
     int curh = h - curtime * 10;
+    int high = min(lc, tc);
     int low = max(curh, tf);
 
-    if(tc - low >= 50) // you can move right now
+    if(high - low >= 50) // you can move right now
     {
         if(curh - lf >= 20) return curtime+10;
         return curtime + 100;
     }
 
-    int tgt = tc - 50;
+    int tgt = high - 50;
+    if(tgt < tf) return -1;
     int elasp = (curh - tgt);
 
     if(tgt - lf >= 20)
@@ -80,7 +82,10 @@ void process(int dataId)
             int ny = y + dy[i];
             if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
 
-            if(reach[nx][ny] != 0 && ceil[nx][ny] >= 50 + h && ceil[nx][ny] >= 50 + floo[nx][ny])
+            int high = min(ceil[x][y], ceil[nx][ny]);
+            int low = max(max(h, floo[nx][ny]), floo[x][y]);
+
+            if(reach[nx][ny] != 0 && high >= low + 50)
             {
                 reach[nx][ny] = 0;
                 Q.push(mp(nx,ny));
@@ -106,7 +111,7 @@ void process(int dataId)
             int nx = x + dx[i];
             int ny = y + dy[i];
             if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
-            int tmp = check(reach[x][y], floo[x][y], ceil[nx][ny], floo[nx][ny]);
+            int tmp = check(reach[x][y], ceil[x][y], floo[x][y], ceil[nx][ny], floo[nx][ny]);
             if(reach[nx][ny] == -1 || reach[nx][ny] > tmp)
             {
                 reach[nx][ny] = tmp;
