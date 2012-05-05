@@ -114,7 +114,7 @@ void process(int dataId)
             if(tmp == -1) continue;
             if(reach[nx][ny] == -1 || reach[nx][ny] > tmp)
             {
-                cout << x << " " << y << " -> " << nx << " " << ny << " = " << tmp << endl;
+                //cout << x << " " << y << " -> " << nx << " " << ny << " = " << tmp << endl;
                 reach[nx][ny] = tmp;
                 Q.push(mp(nx,ny));
             }
