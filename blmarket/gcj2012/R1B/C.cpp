@@ -49,6 +49,7 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
     vector<pair<long long, long long> > p1,p2;
     if(perm(p1, s, (s+e)/2)) return true;
     if(perm(p2, (s+e)/2, e)) return true;
+    cout << p1.size() << " " << p2.size() << endl;
 
     ret.clear();
     for(int i=0;i<size(p2);i++) ret.pb(p2[i]);
