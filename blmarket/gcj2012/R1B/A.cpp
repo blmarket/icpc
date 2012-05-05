@@ -50,8 +50,6 @@ bool check(int a, double rate)
         otl += need;
     }
 
-    cout << a << " " << rate << " " << myp << " " << otl << " " << sum << endl;
-
     return otl > sum;
 }
 
@@ -84,7 +82,6 @@ void process(int dataId)
     for(int i=0;i<n;i++)
     {
         printf("%.12lf ", go(data[i]));
-        break;
     }
     printf("\n");
 }
