@@ -78,6 +78,7 @@ public:
 
         move(x,y,hole);
 
+        cerr << x << " " << y << endl;
         ostringstream ost;
         ost << x << " " << y << " 0";
         return ost.str();
