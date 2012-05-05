@@ -36,6 +36,8 @@ bool check(int a, double rate)
     double myp = rate * sum + a;
     bool meet = false;
 
+    cout << a << " " << rate << " " << myp << endl;
+
     double otl = 0;
     for(int i=0;i<n;i++)
     {
