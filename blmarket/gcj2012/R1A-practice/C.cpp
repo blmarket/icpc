@@ -117,6 +117,10 @@ int go(int a, long long state)
         {
             if(getbit(mask, cur.pb) && getbit(state, cur.pb) != j) continue;
             if(i == j) continue;
+            if(i) setbit(state, cur.pa); else zerobit(state, cur.pa);
+            if(j) setbit(state, cur.pb); else zerobit(state, cur.pb);
+            int tmp = go(a+1, state);
+            if(ret < tmp) ret = tmp;
         }
     }
 
