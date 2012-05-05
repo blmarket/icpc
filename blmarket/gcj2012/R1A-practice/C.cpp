@@ -105,9 +105,18 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
-    cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << state << endl;
-    links[cur.pa].insert(cur.pb);
-    links[cur.pb].insert(cur.pa);
+    cout << a << " " << cur.pa << " " << cur.pb << " " << cur.flag << " " << state << endl;
+
+    if(cur.flag)
+    {
+        links[cur.pa].insert(cur.pb);
+        links[cur.pb].insert(cur.pa);
+    }
+    else
+    {
+        links[cur.pa].erase(cur.pb);
+        links[cur.pb].erase(cur.pa);
+    }
 
     int ret = a;
     for(int i=0;i<=1;i++)
@@ -124,8 +133,16 @@ int go(int a, long long state)
         }
     }
 
-    links[cur.pa].erase(cur.pb);
-    links[cur.pb].erase(cur.pa);
+    if(cur.flag == false)
+    {
+        links[cur.pa].insert(cur.pb);
+        links[cur.pb].insert(cur.pa);
+    }
+    else
+    {
+        links[cur.pa].erase(cur.pb);
+        links[cur.pb].erase(cur.pa);
+    }
 
     return memo[a][state] = ret;
 }
