@@ -113,7 +113,7 @@ void process(int dataId)
 
     while(true)
     {
-        if(perm(p1, 0, 48)) return;
+        //if(perm(p1, 0, 48)) return;
         random_shuffle(data.begin(), data.end());
     }
 }
