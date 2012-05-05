@@ -50,7 +50,7 @@ bool check(int a, double rate)
         otl += need;
     }
 
-    cout << a << " " << rate << " " << myp << " " << otl << " " << sum << endl;
+    //cout << a << " " << rate << " " << myp << " " << otl << " " << sum << endl;
 
     return otl > (1. - rate) * sum;
 }
