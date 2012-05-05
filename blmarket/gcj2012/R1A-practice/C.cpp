@@ -164,7 +164,18 @@ void process(int dataId)
         }
     }
     sort(moves.begin(), moves.end());
-    cout << go(0, state) << endl;
+    int tmp = go(0, state);
+    printf("Case #%d: ", dataId);
+    if(tmp == moves.size())
+    {
+        printf("Possible\n");
+    }
+    else
+    {
+        double ret = moves[tmp].up;
+        ret /= moves[tmp].down;
+        printf("%.12lf\n", ret);
+    }
 }
 
 int main(void)
