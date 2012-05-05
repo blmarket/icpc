@@ -11,6 +11,7 @@
 #include <set>
 #include <map>
 #include <vector>
+#include <algorithm>
 
 #define mp make_pair
 #define pb push_back
@@ -26,53 +27,51 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-bool comp(const PII &a, const PII &b)
-{
-    if(a.first * b.second == a.second * b.first)
-    {
-        return a.second < b.second;
-    }
-    return a.first * b.second < a.second * b.first;
-}
-
-ostream& operator<<(ostream &ost, const PII &a) {
-    return ost << a.first << "," << a.second;
-}
+vector<PII> data;
+map<int,int> memo[1002];
 
 void process(int dataId)
 {
+    for(int i=0;i<1002;i++)
+        memo[i].clear();
     int n,k;
-    cin >> n >> k;
-    vector<pair<int,int> > V;
+    scanf("%d %d",&n,&k);
+    data.resize(n);
+    memo[0][0]=0;
+
+    long long s1=0,s2=0;
     for(int i=0;i<n;i++)
     {
-        int t1,t2;
-        cin >> t1 >> t2;
-        V.pb(mp(t1,t2));
+        scanf("%d %d",&data[i].second, &data[i].first);
+        s1 += data[i].second;
+        s2 += data[i].first;
     }
-    sort(V.begin(), V.end(), comp);
 
-    int s1=V[0].first, s2=V[0].second;
-    for(int i=1;i<k;i++)
+    while(size(data) > k)
     {
-        PII t = mp(s1 + V[i].first, s2 + V[i].second);
+        long long t1 = s1 - data.back().second;
+        long long t2 = s2 - data.back().first;
 
-        for(int j=i+1;j<n;j++)
+        for(int i=0;i<size(data)-1;i++)
         {
-            PII tt = mp(s1 + V[j].first, s2 + V[j].second);
-            //cout << t << " vs " << tt << endl;
-            if(comp(t,tt) == false)
+            long long tt1 = s1 - data[i].second;
+            long long tt2 = s2 - data[i].first;
+
+            if(t1*tt2 > tt1 * t2)
             {
-                swap(V[i], V[j]);
-                t=tt;
+                t1 = tt1;
+                t2 = tt2;
+                swap(data[i], data.back());
             }
         }
-
-        s1 = t.first;
-        s2 = t.second;
+        data.pop_back();
+        s1 = t1;
+        s2 = t2;
     }
-    double ret = (double)s1 / s2;
-    printf("%.12lf\n",ret);
+
+    double rate = (double)s1 / s2;
+
+    printf("%.12lf\n",rate);
 }
 
 int main(void)

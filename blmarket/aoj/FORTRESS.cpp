@@ -40,7 +40,7 @@ void process(int dataId)
     memset(way, 0, sizeof(way));
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++) if(i != j) if(r[i] > r[j])
+        for(int j=0;j<n;j++) if(r[i] > r[j])
         {
             int xd = x[i] - x[j];
             int yd = y[i] - y[j];
@@ -51,24 +51,18 @@ void process(int dataId)
         }
     }
 
-    while(true)
+    for(int i=0;i<n;i++)
     {
-        bool redo = false;
-        for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++) if(way[i][j])
         {
-            for(int j=0;j<n;j++) if(way[i][j])
+            for(int k=0;k<n;k++)
             {
-                for(int k=0;k<n;k++)
+                if(way[i][k] && way[k][j])
                 {
-                    if(way[i][k] && way[k][j])
-                    {
-                        way[i][j] = 0;
-                        redo = true;
-                    }
+                    way[i][j] = 0;
                 }
             }
         }
-        if(!redo) break;
     }
 
     for(int i=0;i<n;i++)
@@ -76,9 +70,7 @@ void process(int dataId)
         for(int j=0;j<n;j++)
         {
             if(way[j][i]) way[i][j] = 1;
-            cout << way[i][j] << " ";
         }
-        cout << endl;
     }
 
     for(int k=0;k<n;k++)
@@ -96,7 +88,7 @@ void process(int dataId)
     int ret = 0;
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++)
+        for(int j=0;j<n;j++) if(i != j)
         {
             ret = max(ret, way[i][j]);
         }
