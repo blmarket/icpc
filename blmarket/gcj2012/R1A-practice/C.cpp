@@ -134,7 +134,7 @@ int go(int a, long long state)
 
 void process(int dataId)
 {
-    scanf("%d",&n);
+    scanf(" %d",&n);
     moves.clear();
     masks.clear();
     for(int i=0;i<2500;i++)
@@ -142,8 +142,7 @@ void process(int dataId)
     long long state = 0;
     for(int i=0;i<n;i++)
     {
-        scanf("%c %d %d",&lane[i],&spd[i],&pos[i]);
-        printf("%c %d %d\n", lane[i], spd[i], pos[i]);
+        scanf(" %c %d %d",&lane[i],&spd[i],&pos[i]);
         if(lane[i] == 'R')
         {
             setbit(state, i);
