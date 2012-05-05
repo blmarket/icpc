@@ -37,6 +37,7 @@ bool perm(vector<pair<long long, pair<long long, long long> > > &ret, int s, int
     {
         ret.clear();
         ret.pb(mp(data[s], mp(1LL<<s,0)));
+        return false;
     }
 
     vector<pair<long long, pair<long long, long long> > > p1,p2;
