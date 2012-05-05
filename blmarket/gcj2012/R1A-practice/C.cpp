@@ -164,6 +164,7 @@ void process(int dataId)
         }
         links[i].clear();
     }
+    cout << state << endl;
 
     set<int> links[55];
 
