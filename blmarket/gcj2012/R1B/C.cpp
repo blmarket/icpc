@@ -29,57 +29,67 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 vector<long long> data;
-vector<long long> sums;
-map<long long, pair<int, long long> > back[505];
 
-bool btrack(int pos)
+template<typename T> bool perm(vector<long long> &ret, const T &begin, const T &end)
 {
-    if(pos == 0)
+    int sz = end - begin;
+    cout << end-begin << endl;
+    if(end - begin < 4)
     {
+        int sz = end - begin;
+        ret.clear();
+        for(int i=1;i<(1<<sz);i++)
+        {
+            long long sum = 0;
+            for(int j=0;j<sz;j++) if((1<<j) & i)
+                sum += *(begin + j);
+            ret.pb(sum);
+        }
         return false;
     }
 
-    int np = pos-1;
-    foreach(it, back[pos])
+    vector<long long> p1,p2;
+    T mid = begin + sz/2;
+    if(perm(p1, begin, mid)) return true;
+    if(perm(p2, mid, end)) return true;
+
+    ret.clear();
+    for(int i=0;i<size(p2);i++) ret.pb(p2[i]);
+    for(int i=0;i<size(p1);i++)
     {
-        back[np][it->first] = mp(pos, it->first);
-        if(it->first + data[np] == 0) return true;
-        if(it->first + data[np] <= sums[np])
+        ret.pb(p1[i]);
+        for(int j=0;j<size(p2);j++)
         {
-            back[np][it->first + data[np]] = mp(pos, it->first);
-        }
-        long long oth = abs(it->first - data[np]);
-        if(oth == 0) return true;
-        if(oth <= sums[np])
-        {
-            back[np][oth] = mp(pos, it->first);
+            ret.pb(p1[i] + p2[j]);
         }
     }
-    return btrack(pos-1);
+    sort(ret.begin(), ret.end());
+    for(int i=0;i+1<size(ret);i++)
+    {
+        if(ret[i] == ret[i+1])
+        {
+            cout << "write here" << endl;
+            return true;
+        }
+    }
+    return false;
 }
 
 void process(int dataId)
 {
     cin >> n;
-    for(int i=0;i<=n;i++)
-        back[i].clear();
     data.resize(n);
     for(int i=0;i<n;i++)
     {
         cin >> data[i];
     }
+
     printf("\n");
-    sort(data.begin(), data.end());
 
-    sums.resize(n);
-    sums[0] = 0;
-
-    for(int i=1;i<n;i++)
-        sums[i] = sums[i-1] + data[i-1];
-
-    back[n][0] = mp(-1,-1);
-
-    cout << btrack(n) << endl;
+    // i think 48 bits are enough...
+    // 48, 24, 12, 6, 3
+    vector<long long> p1;
+    perm(p1, &data[0], &data[48]);
 }
 
 int main(void)
