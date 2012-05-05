@@ -31,6 +31,17 @@ template<typename T> int size(const T &a) { return a.size(); }
 int n;
 vector<long long> data;
 
+void out(UI mask)
+{
+    for(int i=0;i<32;i++)
+    {
+        if(mask & (1<<i))
+        {
+            cout << data[i] << " ";
+        }
+    }
+}
+
 bool perm(vector<pair<long long, pair<UI,UI> > > &ret, int s, int e)
 {
     int sz = e - s;
@@ -54,7 +65,12 @@ bool perm(vector<pair<long long, pair<UI,UI> > > &ret, int s, int e)
         int j = lower_bound(p2.begin(), p2.end(), key) - p2.begin();
         if(p2[j].first == p1[i].first)
         {
-            cout << "write here" << endl;
+            out(p1[i].second.first);
+            out(p2[j].second.second);
+            printf("\n");
+            out(p1[i].second.second);
+            out(p2[j].second.first);
+            printf("\n");
             return true;
         }
     }
@@ -84,7 +100,7 @@ bool perm(vector<pair<long long, pair<UI,UI> > > &ret, int s, int e)
         }
     }
 
-    cout << sz << " " << ret.size() << endl;
+    cerr << sz << " " << ret.size() << endl;
 
     return false;
 }
