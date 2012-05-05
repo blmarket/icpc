@@ -82,7 +82,6 @@ void crash(int a,int b)
 map<long long, int> memo[2505];
 int go(int a, long long state)
 {
-    cout << "::" << a << " " << state << endl;
     if(a == moves.size())
         return moves.size();
 
@@ -106,7 +105,6 @@ int go(int a, long long state)
         return memo[a][state];
 
     asdf &cur = moves[a];
-    cout << a << " = " << cur.pa << " " << cur.pb << " " << cur.flag << endl;
     links[cur.pa].insert(cur.pb);
     links[cur.pb].insert(cur.pa);
 
@@ -118,7 +116,6 @@ int go(int a, long long state)
         {
             if(getbit(mask, cur.pb) && getbit(state, cur.pb) != j) continue;
             if(i == j) continue;
-            cout << i << " " << j << endl;
             if(i) setbit(state, cur.pa); else zerobit(state, cur.pa);
             if(j) setbit(state, cur.pb); else zerobit(state, cur.pb);
             int tmp = go(a+1, state);
