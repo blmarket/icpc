@@ -61,6 +61,8 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
         }
     }
 
+    cerr << sz << " " << ret.size() << endl;
+
     if(sz == 48) return false;
 
     sort(ret.begin(), ret.end());
