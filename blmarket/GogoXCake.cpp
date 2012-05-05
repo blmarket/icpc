@@ -46,6 +46,7 @@ public:
                         {
                             for(int b=0;b<size(cutter[0]);b++)
                             {
+                                if(x + a >= size(cake) || y+b >= size(cake[0])) return "NO";
                                 if(cutter[a][b] == '.')
                                 {
                                     if(cake[x+a][y+b] != '.') return "NO";
