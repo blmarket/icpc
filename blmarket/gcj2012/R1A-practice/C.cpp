@@ -55,7 +55,6 @@ vector<long long> masks;
 void crash(int a,int b)
 {
     int relspd = spd[a] - spd[b];
-    cout << "relspd = " << relspd << endl;
     if(pos[a] <= pos[b]-5)
     {
         int elaspdist = pos[b]-5-pos[a];
@@ -144,6 +143,7 @@ void process(int dataId)
     for(int i=0;i<n;i++)
     {
         scanf("%c %d %d",&lane[i],&spd[i],&pos[i]);
+        printf("%c %d %d\n", lane[i], spd[i], pos[i]);
         if(lane[i] == 'R')
         {
             setbit(state, i);
