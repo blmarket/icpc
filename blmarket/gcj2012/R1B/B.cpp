@@ -39,20 +39,21 @@ int check(int curtime, int lc, int lf, int tc, int tf)
     if(tc < tf+50) return -1;
     int curh = h - curtime;
     int high = min(lc, tc);
-    int low = max(curh, tf);
+    int low = max(max(curh, tf), lf);
 
     if(high - low >= 50) // you can move right now
     {
-        cout << curh << " " << lc << "/" << lf << " " << tc << "/" << tf << " move now" << endl;
+        cerr << curh << " " << lc << "/" << lf << " " << tc << "/" << tf << " move now" << endl;
         if(curh - lf >= 20) return curtime+10;
         return curtime + 100;
     }
 
     int tgt = high - 50;
+    if(tgt < lf) return -1;
     if(tgt < tf) return -1;
     int elasp = (curh - tgt);
 
-    cout << curh << " " << lc << "/" << lf << " " << tc << "/" << tf << " wait " << elasp << endl;
+    cerr << curh << " " << lc << "/" << lf << " " << tc << "/" << tf << " wait " << elasp << endl;
 
     if(tgt - lf >= 20)
         return curtime + elasp + 10;
@@ -133,7 +134,7 @@ int main(void)
     cin >> N;
     for(int i=1;i<=N;i++)
     {
-        printf("Case #%d: \n",i);
+        printf("Case #%d: ",i);
         process(i);
         cerr << i << endl;
     }
