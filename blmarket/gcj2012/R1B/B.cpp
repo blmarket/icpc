@@ -37,7 +37,7 @@ const int dy[] = {0,-1,1,0};
 int check(int curtime, int lc, int lf, int tc, int tf)
 {
     if(tc < tf+50) return -1;
-    int curh = h - curtime * 10;
+    int curh = h - curtime;
     int high = min(lc, tc);
     int low = max(curh, tf);
 
