@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,7 +22,44 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
-int pos = N;
+int x,y;
+int hole = 0;
+
+void convert(int tile[])
+{
+    int ret[8];
+    for(int i=0;i<8;i+=2)
+    {
+        ret[tile[i]] = tile[i+1];
+        ret[tile[i+1]] = tile[i];
+    }
+    memcpy(tile, ret, sizeof(ret));
+}
+
+void move(int &x, int &y, int &hole)
+{
+    switch(hole)
+    {
+        case 0:
+        case 1:
+            x++;
+            hole = 5-hole;
+            return;
+        case 2:
+        case 3:
+            y++;
+            hole = 9-hole;
+            return;
+        case 4:
+        case 5:
+            x--;
+            hole = 5-hole;
+        case 6:
+        case 7:
+            y--;
+            hole = 9-hole;
+    }
+}
 
 class TwistedGame
 {
@@ -29,14 +67,19 @@ public:
     int init(int N_, int firstTile[])
     {
         N = N_;
+        x=N, y =N;
+        hole = 0;
         return 0;
     }
 
     string placeTile(int tile[])
     {
-        pos++;
+        convert(tile);
+
+        move(x,y,hole);
+
         ostringstream ost;
-        ost << pos << " " << N << " 0";
+        ost << x << " " << y << " 0";
         return ost.str();
     }
 };
