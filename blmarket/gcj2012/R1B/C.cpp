@@ -67,11 +67,21 @@ bool perm(vector<pair<long long, long long> > &ret, int s, int e)
     {
         if(ret[i].first == ret[i+1].first)
         {
-            cout << "write here" << endl;
+            for(int j=0;j<48;j++)
+            {
+                if((1<<j) & ret[i].second)
+                    cout << data[j] << " ";
+            }
+            cout << endl;
+            for(int j=0;j<48;j++)
+            {
+                if((1<<j) & ret[i+1].second)
+                    cout << data[j] << " ";
+            }
+            cout << endl;
             return true;
         }
     }
-    cout << sz << " failed" << endl;
     return false;
 }
 
