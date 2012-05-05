@@ -111,6 +111,7 @@ void process(int dataId)
             int ny = y + dy[i];
             if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
             int tmp = check(reach[x][y], ceil[x][y], floo[x][y], ceil[nx][ny], floo[nx][ny]);
+            if(tmp == -1) continue;
             if(reach[nx][ny] == -1 || reach[nx][ny] > tmp)
             {
                 cout << x << " " << y << " -> " << nx << " " << ny << " = " << tmp << endl;
