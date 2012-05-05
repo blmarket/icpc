@@ -91,9 +91,11 @@ int go(int a, long long state)
         for(int i=0;i<n;i++)
         {
             if(links[i].size())
+            {
+                cout << "here " << i << endl;
                 setbit(mask, i);
+            }
         }
-        cout << mask << endl;
         masks.pb(mask);
     }
     else
