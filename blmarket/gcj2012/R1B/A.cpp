@@ -52,7 +52,7 @@ bool check(int a, double rate)
 
     cout << a << " " << rate << " " << myp << " " << otl << " " << sum << endl;
 
-    return otl < sum;
+    return otl > sum;
 }
 
 double go(int a)
