@@ -84,7 +84,9 @@ void process(int dataId)
         {
             long long diff = arr[i+1].first - arr[i].first;
             if(diff > numRange / 2) continue;
-            arr2.pb(mp(diff, mp(arr[i+1].second.first | arr[i].second.second, arr[i+1].second.second | arr[i].second.first)));
+            arr[i+1].second.first |= arr[i].second.second;
+            arr[i+1].second.second |= arr[i].second.first;
+            arr2.pb(mp(diff, mp(arr[i+1].second.first, arr[i+1].second.second)));
             if(diff == 0)
             {
                 out(arr2.back().second.first);
