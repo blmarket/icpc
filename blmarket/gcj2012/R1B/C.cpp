@@ -77,7 +77,7 @@ void process(int dataId)
 
     while(true)
     {
-        cerr << "iterating " << numRange << " " << arr[0].second.first.count() << endl;
+        cerr << "iterating " << numRange << " " << arr.size() << " " << arr[0].second.first.count() << endl;
         arr2.clear();
 
         for(int i=0;i+1<size(arr);i++)
