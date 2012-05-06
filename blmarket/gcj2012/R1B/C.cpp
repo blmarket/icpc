@@ -39,11 +39,16 @@ template<typename T> bool comp(const T &a, const T &b)
 
 void out(const bitset<505> &a)
 {
+    long long sum = 0;
     for(int i=0;i<size(data);i++)
     {
-        if(a[i]) cout << data[i] << " ";
+        if(a[i]) 
+        {
+            cout << data[i] << " ";
+            sum += data[i];
+        }
     }
-    cout << endl;
+    cout << endl << "sum = " << sum << endl;
 }
 
 void process(int dataId)
