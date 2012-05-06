@@ -37,6 +37,15 @@ template<typename T> bool comp(const T &a, const T &b)
     return a.first < b.first;
 }
 
+void out(const bitset<505> &a)
+{
+    for(int i=0;i<size(data);i++)
+    {
+        if(a[i]) cout << a[i] << " ";
+    }
+    cout << endl;
+}
+
 void process(int dataId)
 {
     cin >> n;
@@ -70,12 +79,13 @@ void process(int dataId)
         {
             long long diff = arr[i+1].first - arr[i].first;
             if(diff > numRange / 2) continue;
+            arr2.pb(mp(diff, mp(arr[i+1].second.first | arr[i].second.second, arr[i+1].second.second | arr[i].second.first)));
             if(diff == 0)
             {
-                cout << "write here" << endl;
+                out(arr2.back().second.first);
+                out(arr2.back().second.second);
                 return;
             }
-            arr2.pb(mp(diff, mp(arr[i+1].second.first | arr[i].second.second, arr[i+1].second.second | arr[i].second.first)));
         }
 
         arr.swap(arr2);
