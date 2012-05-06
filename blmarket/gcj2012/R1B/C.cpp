@@ -63,8 +63,20 @@ void process(int dataId)
 
     while(true)
     {
+        cerr << "iterating " << numRange << endl;
         arr2.clear();
 
+        for(int i=0;i+1<size(arr);i++)
+        {
+            long long diff = arr[i+1].first - arr[i].first;
+            if(diff > numRange / 2) continue;
+            if(diff == 0)
+            {
+                cout << "write here" << endl;
+                return;
+            }
+            arr2.pb(mp(diff, mp(arr[i+1].second.first | arr[i].second.second, arr[i+1].second.second | arr[i].second.first)));
+        }
 
         arr.swap(arr2);
         sort(arr.begin(), arr.end(), comp<vec_t::value_type>);
