@@ -93,6 +93,7 @@ void process(int dataId)
                 out(arr2.back().second.second);
                 return;
             }
+            i++;
         }
 
         arr.swap(arr2);
