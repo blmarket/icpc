@@ -41,7 +41,7 @@ void out(const bitset<505> &a)
 {
     for(int i=0;i<size(data);i++)
     {
-        if(a[i]) cout << a[i] << " ";
+        if(a[i]) cout << data[i] << " ";
     }
     cout << endl;
 }
