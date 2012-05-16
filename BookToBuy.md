@@ -1,0 +1,1 @@
+* [스크럼과 XP](http://www.yes24.com/24/goods/3385532?scode=032&OzSrank=1)
