@@ -8,4 +8,5 @@
 
 문제 유형 요약 : 
   * TDD 기반의 컴포넌트 개발 Competition
+
 주어진 skeleton을 가지고, 미리 준비된 Test case들을 만족하는 프로그램을 작성하시오. 
