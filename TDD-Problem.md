@@ -59,7 +59,7 @@ TestCase를 통과한 갯수를 기능 점수로, 성능을 측정하기 위해 
 
 ### Life game builder
 
-라이프 게임[http://en.wikipedia.org/wiki/Conway's_Game_of_Life]에서 빈 게임판이 주어졌을 때, 다음에 주어진 행동들을 통해 원하는 형태의 게임판을 만들어내는 프로그램을 작성하시오.
+라이프 게임[http://en.wikipedia.org/wiki/Conway's_Game_of_Life] 에서 빈 게임판이 주어졌을 때, 다음에 주어진 행동들을 통해 원하는 형태의 게임판을 만들어내는 프로그램을 작성하시오.
 
  * 1의 비용을 사용해서 판의 특정 지점에 있는 cell의 상태를 바꿀 수 있다. (비어있는 경우 채우고, 차 있는 경우 비운다)
  * 0의 비용을 사용해서 전체 판을 한 턴 진행한다. 각 cell에 대해 주변 8개의 cell 중에 차 있는 cell의 갯수가
