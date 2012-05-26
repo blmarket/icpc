@@ -83,7 +83,6 @@ void go(int x,int y)
     r2 = reach;
 
 here:
-    cout << "HERE?" << " " << reach.size() << endl;
     if(reach.size() == 1)
     {
         cout << "Lucky" << endl;
@@ -102,7 +101,7 @@ here:
     {
         bool flag = false;
         nex = apply(reach, 0, flag);
-        if(flag)
+        if(flag && reach != nex) 
         {
             reach = nex;
             goto here;
