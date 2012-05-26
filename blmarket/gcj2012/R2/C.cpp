@@ -48,6 +48,7 @@ int nearest(int s,int e,int m)
     int a = 0, b = high;
     while(a <= b)
     {
+        cout << a << " " << b << endl;
         int mid = (a+b+1)/2;
         if(ccw(dx1, dy1, dx2, mid - ret[s]))
         {
