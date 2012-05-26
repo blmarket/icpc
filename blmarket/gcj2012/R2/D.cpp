@@ -88,7 +88,8 @@ void go(int x,int y)
                         cerr << it->first.first << " " << it->first.second << endl;
                         reach.erase(it++);
                     }
-                    it->second = 0;
+                    if(it != reach.end())
+                        it->second = 0;
                 }
                 done = true;
                 break;
