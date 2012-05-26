@@ -59,7 +59,7 @@ int nearest(int s,int e,int m)
         }
     }
     cerr << "set " << m << " = " << a << endl;
-    return a-5;
+    return a;
 }
 
 bool between(int s,int e);
