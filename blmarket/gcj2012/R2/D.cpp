@@ -83,6 +83,7 @@ void go(int x,int y)
     r2 = reach;
 
 here:
+    cout << "HERE?" << " " << reach.size() << endl;
     if(reach.size() == 1)
     {
         cout << "Lucky" << endl;
