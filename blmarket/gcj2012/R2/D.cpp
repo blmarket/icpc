@@ -83,10 +83,10 @@ void go(int x,int y)
                 cerr << "GOTIT" << endl;
                 foreach(it, reach)
                 {
-                    cerr << it->first.first << " " << it->first.second << endl;
+                    cerr << it->first.first << " x " << it->first.second << endl;
                     while(it != reach.end() && it->second == 0)
                     {
-                        cerr << it->first.first << " " << it->first.second << endl;
+                        cerr << it->first.first << " v " << it->first.second << endl;
                         reach.erase(it++);
                     }
                     if(it != reach.end())
