@@ -33,7 +33,7 @@ set<PII> fails;
 bool tryit(int a, int b)
 {
     if(fails.count(mp(a,b))) return false;
-    int dist = V[b].first - V[a].first;
+    int dist = min(V[b].second, V[b].first - V[a].first);
     if(V[b].first + dist >= D) return true;
     for(int i=b+1;i<n;i++)
     {
