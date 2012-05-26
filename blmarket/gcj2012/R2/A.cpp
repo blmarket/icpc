@@ -53,6 +53,11 @@ void process(int dataId)
         scanf("%d %d",&V[i].first, &V[i].second);
     }
     scanf("%d", &D);
+    if(V[0].first * 2 >= D)
+    {
+        cout << "YES" << endl;
+        return;
+    }
     for(int i=1;i<n;i++)
     {
         if(V[i].first <= V[0].first * 2)
