@@ -101,6 +101,12 @@ here:
         reach = nex;
     }
 
+    if(reach.size() == 1)
+    {
+        cout << "Lucky" << endl;
+        return;
+    }
+
     while(true)
     {
         bool flag = false;
@@ -113,6 +119,12 @@ here:
         nex = apply(reach, 2, flag);
         if(nex == reach) break;
         reach = nex;
+    }
+
+    if(reach.size() == 1)
+    {
+        cout << "Lucky" << endl;
+        return;
     }
 
     cout << "Unlucky" << endl;
