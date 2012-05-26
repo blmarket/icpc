@@ -37,7 +37,6 @@ map<PII, int> reach, r2, nex;
 
 map<PII, int> apply(map<PII, int> now, int move, bool &flag)
 {
-    cout << "APPLY" << endl;
     map<PII, int> ret;
     bool fail = false;
     foreach(it, now)
@@ -51,6 +50,8 @@ map<PII, int> apply(map<PII, int> now, int move, bool &flag)
         }
         ret[npos] = 0;
     }
+    flag = true;
+    return ret;
 }
 
 void go(int x,int y)
