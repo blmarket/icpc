@@ -58,25 +58,44 @@ int nearest(int s,int e,int m)
             b = mid - 1;
         }
     }
-    cout << "set " << m << " = " << a << endl;
+    cerr << "set " << m << " = " << a << endl;
     return a;
+}
+
+bool between(int s,int e);
+
+bool leap(int s, int e, int m)
+{
+    if(V[m] > e) return false;
+    if(V[m] == e)
+    {
+        ret[m] = nearest(s,e,m);
+        return between(m, e);
+    }
+    if(leap(s,e,V[m]) == false) return false;
+    ret[m] = nearest(V[m], e, m);
+    return between(m, V[m]);
 }
 
 bool between(int s,int e)
 {
-    cout << "btw " << s << " " << e << endl;
+    cerr << "btw " << s << " " << e << endl;
     if(e <= s+1) return true;
+    return leap(s,e,s+1);
+    /*
     if(V[s+1] > e) return false;
     if(V[s+1] == e)
     {
         ret[s+1] = nearest(s,e,s+1);
         return between(s+1,e);
     }
+    leap(s, e, V[s+1]);
     ret[V[s+1]] = nearest(s,e,V[s+1]); // check for V[s+1] first
     ret[s+1] = nearest(V[s+1],e,s+1);
     if(between(s+1, V[s+1]) == false) return false;
     if(V[V[s+1]] > e) return false;
     return between(V[s+1],e);
+    */
 }
 
 void process(int dataId)
