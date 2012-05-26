@@ -114,7 +114,7 @@ void process(int dataId)
         ret[V[pos]] = high;
         if(between(pos, V[pos]) == false)
         {
-            cout << "impossible" << endl;
+            cout << "Impossible" << endl;
             return;
         }
         pos = V[pos];
