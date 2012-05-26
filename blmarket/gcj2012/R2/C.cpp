@@ -58,19 +58,23 @@ int nearest(int s,int e,int m)
             b = mid - 1;
         }
     }
+    cout << "set " << m << " = " << a << endl;
     return a;
 }
 
 bool between(int s,int e)
 {
+    cout << "btw " << s << " " << e << endl;
     if(e <= s+1) return true;
+    if(V[s+1] > e) return false;
     if(V[s+1] == e)
     {
         ret[s+1] = nearest(s,e,s+1);
         return between(s+1,e);
     }
-    ret[V[s+1]] = nearest(s,e,V[s+1]);
+    ret[V[s+1]] = nearest(s,e,V[s+1]); // check for V[s+1] first
     if(between(s+1, V[s+1]) == false) return false;
+    if(V[V[s+1]] > e) return false;
     return between(V[s+1],e);
 }
 
@@ -78,6 +82,7 @@ void process(int dataId)
 {
     scanf("%d",&n);
     V.resize(n+1);
+    ret.resize(n+1);
     for(int i=1;i<=n-1;i++)
     {
         scanf("%d",&V[i]);
