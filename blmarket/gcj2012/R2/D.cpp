@@ -83,6 +83,10 @@ void go(int x,int y)
     r2 = reach;
 
 here:
+    cout << "HERE : " << reach.size() << endl;
+    foreach(it, reach)
+        cout << it->first.first << "," << it->first.second << " ";
+    cout << endl;
     if(reach.size() == 1)
     {
         cout << "Lucky" << endl;
