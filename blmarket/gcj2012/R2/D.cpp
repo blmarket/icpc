@@ -65,7 +65,6 @@ void go(int x,int y)
         bool done = false;
         for(int i=0;i<3;i++)
         {
-            cerr << "Applying " << i << endl;
             bool fail = false;
             foreach(it, reach)
             {
@@ -80,7 +79,6 @@ void go(int x,int y)
 
             if(fail == false)
             {
-                cerr << "GOTIT" << endl;
                 map<PII, int>::iterator it, jt;
                 for(it = reach.begin(); it != reach.end();)
                 {
