@@ -96,6 +96,7 @@ void go(int x,int y)
                         ++it;
                     }
                 }
+                cout << "RESULT REACH SIZE : " << size(reach) << endl;
                 done = true;
                 break;
             }
