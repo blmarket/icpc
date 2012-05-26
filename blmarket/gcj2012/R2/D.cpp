@@ -81,18 +81,22 @@ void go(int x,int y)
             if(fail == false)
             {
                 cerr << "GOTIT" << endl;
-                foreach(it, reach)
+                map<PII, int>::iterator it, jt;
+                for(it = reach.begin(); it != reach.end();)
                 {
                     cerr << it->first.first << " x " << it->first.second << endl;
-                    while(it != reach.end() && it->second == 0)
+                    if(it->second == 0)
                     {
                         cerr << it->first.first << " v " << it->first.second << endl;
-                        map<PII, int>::iterator jt = it;
+                        jt = it;
                         ++it;
                         reach.erase(jt);
                     }
-                    if(it != reach.end())
+                    else
+                    {
                         it->second = 0;
+                        ++it;
+                    }
                 }
                 done = true;
                 break;
