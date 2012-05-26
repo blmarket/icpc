@@ -84,6 +84,7 @@ void go(int x,int y)
                 map<PII, int>::iterator it, jt;
                 for(it = reach.begin(); it != reach.end();)
                 {
+                    cout << it->second << " ";
                     if(it->second == 0)
                     {
                         jt = it;
