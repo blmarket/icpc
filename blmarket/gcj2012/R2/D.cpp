@@ -39,7 +39,7 @@ void go(int x,int y)
 {
     reach.clear();
     PII pos = mp(x,y);
-    reach[pos] = 1;
+    reach[pos] = 0;
     queue<PII> Q;
     Q.push(pos);
     while(!Q.empty())
@@ -53,13 +53,50 @@ void go(int x,int y)
             if(data[nx][ny] == '#') continue;
             PII npos = mp(nx,ny);
             if(reach.count(npos)) continue;
-            reach[npos] = 1;
+            reach[npos] = 0;
             Q.push(npos);
         }
     }
 
     cout << reach.size() << " ";
-    cout << endl;
+
+    while(reach.size() > 1)
+    {
+        bool done = false;
+        for(int i=0;i<3;i++)
+        {
+            bool fail = false;
+            foreach(it, reach)
+            {
+                PII npos = mp(it->first.first + dx[i], it->first.second + dy[i]);
+                if(reach.count(npos) == 0)
+                {
+                    fail = true;
+                    break;
+                }
+            }
+
+            if(fail == false)
+            {
+                foreach(it, reach)
+                {
+                    while(it != reach.end() && it->second == 0)
+                    {
+                        reach.erase(it++);
+                    }
+                    it->second = 0;
+                }
+                done = true;
+                break;
+            }
+        }
+        if(done == false)
+        {
+            cout << "Unlucky" << endl;
+            return;
+        }
+    }
+    cout << "Lucky" << endl;
 }
 
 void process(int dataId)
