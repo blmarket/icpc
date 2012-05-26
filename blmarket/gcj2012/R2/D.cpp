@@ -85,6 +85,7 @@ void go(int x,int y)
                 {
                     while(it != reach.end() && it->second == 0)
                     {
+                        cerr << it->first.first << " " << it->first.second << endl;
                         reach.erase(it++);
                     }
                     it->second = 0;
