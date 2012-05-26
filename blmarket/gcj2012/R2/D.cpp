@@ -87,11 +87,9 @@ void go(int x,int y)
                     while(it != reach.end() && it->second == 0)
                     {
                         cerr << it->first.first << " v " << it->first.second << endl;
-                        reach.erase(it++);
-                        if(it == reach.end())
-                        {
-                            cout << "I GOT HERE" << endl;
-                        }
+                        map<PII, int>::iterator jt = it;
+                        ++it;
+                        reach.erase(jt);
                     }
                     if(it != reach.end())
                         it->second = 0;
