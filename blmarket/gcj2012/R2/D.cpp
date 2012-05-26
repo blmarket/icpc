@@ -68,6 +68,7 @@ void go(int x,int y)
             bool fail = false;
             foreach(it, reach)
             {
+                cout << it->first.first << " " << it->first.second << " ";
                 PII npos = mp(it->first.first + dx[i], it->first.second + dy[i]);
                 if(data[npos.first][npos.second] == '#') npos = it->first;
                 if(reach.count(npos) == 0)
@@ -76,6 +77,7 @@ void go(int x,int y)
                     break;
                 }
             }
+            cout << endl;
 
             if(fail == false)
             {
