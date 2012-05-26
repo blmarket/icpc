@@ -28,18 +28,21 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n, D;
 vector<PII> V;
-set<PII> fails;
+vector<int> fails;
 
 bool tryit(int a, int b)
 {
-    if(fails.count(mp(a,b))) return false;
+    if(fails[b] != -1)
+    {
+        if(fails[b] <= a) return false;
+    }
     int dist = min(V[b].second, V[b].first - V[a].first);
     if(V[b].first + dist >= D) return true;
     for(int i=b+1;i<n;i++)
     {
         if(V[i].first <= V[b].first + dist && tryit(b,i)) return true;
     }
-    fails.insert(mp(a,b));
+    fails[b] = a;
     return false;
 }
 
@@ -47,6 +50,9 @@ void process(int dataId)
 {
     scanf("%d",&n);
     fails.clear();
+    fails.resize(n);
+    for(int i=0;i<n;i++)
+        fails[i] = -1;
     V.resize(n);
     for(int i=0;i<n;i++)
     {
