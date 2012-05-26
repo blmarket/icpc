@@ -91,6 +91,7 @@ void go(int x,int y)
                     }
                     if(it != reach.end())
                         it->second = 0;
+                    cerr << "hello?" << endl;
                 }
                 done = true;
                 break;
