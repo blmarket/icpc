@@ -70,6 +70,7 @@ void go(int x,int y)
             foreach(it, reach)
             {
                 PII npos = mp(it->first.first + dx[i], it->first.second + dy[i]);
+                if(data[npos.first][npos.second] == '#') npos = it->first;
                 if(reach.count(npos) == 0)
                 {
                     fail = true;
