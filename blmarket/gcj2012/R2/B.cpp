@@ -57,6 +57,11 @@ void process(int dataId)
         {
             y = 0;
             x = maxx + V[i+1].first;
+            if(x > X)
+            {
+                cout << "I fail" << endl;
+                return;
+            }
         }
     }
 
