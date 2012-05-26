@@ -88,11 +88,11 @@ void go(int x,int y)
                     {
                         cerr << it->first.first << " v " << it->first.second << endl;
                         reach.erase(it++);
+                        cerr << it->first.first << " v " << it->first.second << endl;
                     }
                     if(it != reach.end())
                         it->second = 0;
                 }
-                cerr << "hello?" << endl;
                 done = true;
                 break;
             }
