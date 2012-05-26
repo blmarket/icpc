@@ -73,6 +73,7 @@ bool between(int s,int e)
         return between(s+1,e);
     }
     ret[V[s+1]] = nearest(s,e,V[s+1]); // check for V[s+1] first
+    ret[s+1] = nearest(V[s+1],e,s+1);
     if(between(s+1, V[s+1]) == false) return false;
     if(V[V[s+1]] > e) return false;
     return between(V[s+1],e);
