@@ -81,18 +81,18 @@ void go(int x,int y)
     r2 = reach;
 
 here:
+    if(reach.size() == 1)
+    {
+        cout << "Lucky" << endl;
+        return;
+    }
+
     while(true)
     {
         bool flag = false;
         nex = apply(reach, 1, flag);
         if(nex == reach) break;
         reach = nex;
-    }
-
-    if(reach.size() == 1)
-    {
-        cout << "Lucky" << endl;
-        return;
     }
 
     while(true)
