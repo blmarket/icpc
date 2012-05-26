@@ -30,10 +30,27 @@ int n,m;
 vector<string> data;
 int caves[10][2];
 
-const int dx[] = {0,0,1};
-const int dy[] = {-1,1,0};
+const int dx[] = {1,0,0};
+const int dy[] = {0,-1,1};
 
-map<PII, int> reach;
+map<PII, int> reach, r2, nex;
+
+map<PII, int> apply(map<PII, int> now, int move, bool &flag)
+{
+    map<PII, int> ret;
+    bool fail = false;
+    foreach(it, now)
+    {
+        PII npos = mp(it->first.first + dx[move], it->first.second + dy[move]);
+        if(data[npos.first][npos.second] == '#') npos = it->first;
+        if(r2.count(npos) == 0)
+        {
+            flag = false;
+            return map<PII, int>();
+        }
+        ret[npos] = 0;
+    }
+}
 
 void go(int x,int y)
 {
@@ -58,57 +75,41 @@ void go(int x,int y)
         }
     }
 
+    // it's sn
     cout << reach.size() << " ";
 
-    while(reach.size() > 1)
-    {
-        bool done = false;
-        for(int i=0;i<3;i++)
-        {
-            bool fail = false;
-            foreach(it, reach)
-            {
-                cout << it->first.first << " " << it->first.second << " ";
-                PII npos = mp(it->first.first + dx[i], it->first.second + dy[i]);
-                if(data[npos.first][npos.second] == '#') npos = it->first;
-                if(reach.count(npos) == 0)
-                {
-                    fail = true;
-                    break;
-                }
-                reach[npos] += 1;
-            }
-            cout << endl;
+    r2 = reach;
 
-            if(fail == false)
-            {
-                map<PII, int>::iterator it, jt;
-                for(it = reach.begin(); it != reach.end();)
-                {
-                    if(it->second == 0)
-                    {
-                        jt = it;
-                        ++it;
-                        reach.erase(jt);
-                    }
-                    else
-                    {
-                        it->second = 0;
-                        ++it;
-                    }
-                }
-                cout << "RESULT REACH SIZE : " << size(reach) << endl;
-                done = true;
-                break;
-            }
-        }
-        if(done == false)
-        {
-            cout << "Unlucky" << endl;
-            return;
-        }
+here:
+    while(true)
+    {
+        bool flag = false;
+        nex = apply(reach, 1, flag);
+        if(nex == reach) break;
+        reach = nex;
     }
-    cout << "Lucky" << endl;
+
+    if(reach.size() == 1)
+    {
+        cout << "Lucky" << endl;
+        return;
+    }
+
+    while(true)
+    {
+        bool flag = false;
+        nex = apply(reach, 0, flag);
+        if(flag)
+        {
+            reach = nex;
+            goto here;
+        }
+        nex = apply(reach, 2, flag);
+        if(nex == reach) break;
+        reach = nex;
+    }
+
+    cout << "Unlucky" << endl;
 }
 
 void process(int dataId)
