@@ -84,10 +84,8 @@ void go(int x,int y)
                 map<PII, int>::iterator it, jt;
                 for(it = reach.begin(); it != reach.end();)
                 {
-                    cerr << it->first.first << " x " << it->first.second << endl;
                     if(it->second == 0)
                     {
-                        cerr << it->first.first << " v " << it->first.second << endl;
                         jt = it;
                         ++it;
                         reach.erase(jt);
