@@ -88,7 +88,10 @@ void go(int x,int y)
                     {
                         cerr << it->first.first << " v " << it->first.second << endl;
                         reach.erase(it++);
-                        if(it == reach.end()) break;
+                        if(it == reach.end())
+                        {
+                            cout << "I GOT HERE" << endl;
+                        }
                     }
                     if(it != reach.end())
                         it->second = 0;
