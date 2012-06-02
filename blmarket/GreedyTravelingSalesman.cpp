@@ -23,17 +23,19 @@ template<typename T> int size(const T &a) { return a.size(); }
 int move[33][33];
 int n;
 
-map<pair<bool, pair<int,int> >, int> memo;
+map<pair<bool, pair<int,long long> >, int> memo;
 
-int go(bool flag, int pos, int mask)
+int go(bool flag, int pos, long long mask)
 {
-    if(mask + 1 == (1<<n)) return 0;
+    if(pos < 0) cout << "error" << endl;
+    //cout << flag << " " << pos << " " << mask << endl;
+    if(mask + 1 == (1LL<<n)) return 0;
     pair<bool, pair<int,int> > key = mp(flag, mp(pos, mask));
     if(memo.count(key)) return memo[key];
     int ret = 0;
     int mincost = 10000;
     int md = -1;
-    for(int i=0;i<n;i++) if(((1<<i) & mask) == 0)
+    for(int i=0;i<n;i++) if(((1LL<<i) & mask) == 0)
     {
         if(mincost > move[pos][i])
         {
@@ -41,7 +43,7 @@ int go(bool flag, int pos, int mask)
             md = i;
         }
     }
-    ret = mincost + go(flag, md, mask | (1<<md));
+    ret = mincost + go(flag, md, mask | (1LL<<md));
     if(flag) return ret;
 
     int mincost2 = 10000;
@@ -59,16 +61,16 @@ int go(bool flag, int pos, int mask)
         }
     }
 
-    int ret2 = mincost2 + go(true, md2, mask | (1<<md2));
+    int ret2 = mincost2 + go(true, md2, mask | (1LL<<md2));
     if(ret < ret2) ret = ret2;
 
     if(md2 > md)
     {
-        ret2 = mincost2 + go(true, md, mask | (1<<md));
+        ret2 = mincost2 + go(true, md, mask | (1LL<<md));
     }
     else
     {
-        ret2 = mincost2-1 + go(true, md, mask | (1<<md));
+        ret2 = mincost2-1 + go(true, md, mask | (1LL<<md));
     }
     if(ret < ret2) ret = ret2;
     return memo[key] = ret;
@@ -94,7 +96,6 @@ public:
                     idx++;
                 }
             }
-
 
             return go(false, 0, 1);
 	}
