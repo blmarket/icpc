@@ -61,6 +61,7 @@ int go(bool flag, int pos, int mask)
     }
 
     int ret2 = mincost2 + go(true, md2, mask | (1<<md2));
+    cout << "chk " << ret << " " << ret2 << endl;
     return memo[key] = max(ret, ret2);
 }
 
@@ -74,7 +75,7 @@ public:
             for(int i=0;i<n;i++)
             {
                 int idx = 0;
-                for(int j=0;j<n;j++) if(i != j)
+                for(int j=0;j<n;j++)
                 {
                     thousands[i][idx] -= '0';
                     hundreds[i][idx] -= '0';
