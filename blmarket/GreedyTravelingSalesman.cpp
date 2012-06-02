@@ -27,7 +27,6 @@ map<pair<bool, pair<int,int> >, int> memo;
 
 int go(bool flag, int pos, int mask)
 {
-    cout << flag << " " << pos << " " << mask << endl;
     if(mask + 1 == (1<<n)) return 0;
     pair<bool, pair<int,int> > key = mp(flag, mp(pos, mask));
     if(memo.count(key)) return memo[key];
@@ -61,8 +60,18 @@ int go(bool flag, int pos, int mask)
     }
 
     int ret2 = mincost2 + go(true, md2, mask | (1<<md2));
-    cout << "chk " << ret << " " << ret2 << endl;
-    return memo[key] = max(ret, ret2);
+    if(ret < ret2) ret = ret2;
+
+    if(md2 > md)
+    {
+        ret2 = mincost2 + go(true, md, mask | (1<<md));
+    }
+    else
+    {
+        ret2 = mincost2-1 + go(true, md, mask | (1<<md));
+    }
+    if(ret < ret2) ret = ret2;
+    return memo[key] = ret;
 }
 
 class GreedyTravelingSalesman 
