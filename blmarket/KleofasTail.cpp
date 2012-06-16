@@ -48,6 +48,8 @@ public:
             if(low < A) low = A;
             if(high > B) high = B;
 
+            cout << low << " " << high << endl;
+
             if(high >= low) ret += (high-low+1);
 
             K <<= 1;
