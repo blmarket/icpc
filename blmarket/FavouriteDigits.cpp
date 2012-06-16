@@ -25,8 +25,7 @@ set<pair<pair<int,bool>, pair<int,int> > > S;
 
 bool go(string &str, int pos, bool flag, int c1, int c2)
 {
-    cout << str << " " << pos << " " << flag << " " << c1 << " " << c2 << endl;
-    if(c1 == 0 && c2 == 0) return true;
+    if(c1 <= 0 && c2 <= 0) return true;
     if(pos == size(str)) return false;
     pair<pair<int, bool>, PII> key = mp(mp(pos, flag), mp(c1,c2));
     if(S.count(key)) return false;
