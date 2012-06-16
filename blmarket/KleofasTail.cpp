@@ -34,7 +34,7 @@ public:
             return ret + countGoodSequences(K*2, A, B);
         }
 
-        return ret + countGoodSequences(K*2,A,B) + countGoodSequences(K*2+1, A,B);
+        return ret + countGoodSequences(K*2,A,B) + countGoodSequences(K+1, A,B);
     }
 
     
