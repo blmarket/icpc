@@ -90,10 +90,10 @@ public:
             {
                 if(d1 == 0)
                 {
+                    cout << d2 << " " << c2 << endl;
                     if(c2 == 0)
                         d2 = 1, c2 = 1;
                     str = string(d2+'0', 1);
-                    cout << "hehe : " << str << endl;
                     c2--;
                 }
                 else
