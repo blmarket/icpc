@@ -83,6 +83,7 @@ public:
             } 
             else 
             {
+                cout << d1 << " " << c1 << endl;
                 str = "1" + string(d1+'0', c1) + string(d2+'0', c2);
             } 
         }
