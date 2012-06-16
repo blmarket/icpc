@@ -33,6 +33,13 @@ public:
         while((mask & K) != K) mask = (mask<<1)|1;
         long long ret = 0;
         long long mm = 0;
+
+        if((K%2)==0)
+        {
+            if(K >= A && K <= B) ret=1;
+            K += 1;
+        }
+
         while(K < B) {
             long long low = K;
             long long high = K + mm;
