@@ -28,22 +28,26 @@ class KleofasTail
 public:
     long long countGoodSequences(long long K, long long A, long long B) 
     {
-        pair<LL, pair<LL, LL> > key = mp(K, mp(A,B));
-        if(K > B) return 0;
-
-        if(memo.count(key)) return memo[key];
+        if(K == 0) return B-A+1;
+        long long mask = 1LL;
+        while((mask & K) != K) mask = (mask<<1)|1;
         long long ret = 0;
+        long long mm = 0;
+        while(K < B) {
+            long long low = K;
+            long long high = K + mm;
 
-        if(K >= A) ret++;
+            if(low < A) low = A;
+            if(high > B) high = B;
 
-        if(K == 0) return memo[key] = countGoodSequences(1, A, B) + ret;
+            if(high >= low) ret += (high-low+1);
 
-        if((K%2) == 1)
-        {
-            return memo[key] = ret + countGoodSequences(K*2, A, B);
+            K <<= 1;
+            mask <<= 1;
+            mm = (mm<<1)|1;
         }
 
-        return memo[key] = ret + countGoodSequences(K*2,A,B) + countGoodSequences(K+1, A,B);
+        return ret;
     }
 
     
