@@ -40,10 +40,10 @@ public:
 
         if((K%2) == 1)
         {
-            return memo[key] = ret + countGoodSequences(K, (A+1)/2, (B+1)/2);
+            return memo[key] = ret + countGoodSequences(K*2, A, B);
         }
 
-        return memo[key] = ret + countGoodSequences(K, A/2 ,B/2) + countGoodSequences(K+1, A,B);
+        return memo[key] = ret + countGoodSequences(K*2,A,B) + countGoodSequences(K+1, A,B);
     }
 
     
