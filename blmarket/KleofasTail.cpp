@@ -41,7 +41,7 @@ public:
             K += 1;
         }
 
-        while(K < B) {
+        while(K <= B) {
             long long low = K;
             long long high = K + mm;
 
