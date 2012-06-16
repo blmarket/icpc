@@ -93,6 +93,8 @@ public:
             else 
             {
                 str = "1" + str;
+                if(d1 == 1) c1--;
+                if(d2 == 1) c2--;
                 go(str, 1, true, c1, c2);
             } 
         }
