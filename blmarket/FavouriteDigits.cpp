@@ -88,7 +88,18 @@ public:
             cout << "make one" << endl;
             if(size(str) < c1+c2)
             {
-                str = string(d1+'0', c1) + string(d2+'0', c2);
+                if(d1 == 0)
+                {
+                    if(c2 == 0)
+                        d2 = 1, c2 = 1;
+                    str = string(d2+'0', 1);
+                    c2--;
+                }
+                else
+                {
+                    str = "";
+                }
+                str += string(d1+'0', c1) + string(d2+'0', c2);
             } 
             else 
             {
