@@ -104,6 +104,6 @@ public:
 int main()
 {
     FavouriteDigits ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
