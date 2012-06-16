@@ -17,24 +17,33 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+map<pair<LL, pair<LL, LL> >, LL> memo;
 
 class KleofasTail 
 {
 public:
     long long countGoodSequences(long long K, long long A, long long B) 
-    {		
+    {
+        pair<LL, pair<LL, LL> > key = mp(K, mp(A,B));
         if(K > B) return 0;
+
+        if(memo.count(key)) return memo[key];
         long long ret = 0;
 
         if(K >= A) ret++;
+
+        if(K == 0) return memo[key] = countGoodSequences(1, A, B) + ret;
+
         if((K%2) == 1)
         {
-            return ret + countGoodSequences(K*2, A, B);
+            return memo[key] = ret + countGoodSequences(K, (A+1)/2, (B+1)/2);
         }
 
-        return ret + countGoodSequences(K*2,A,B) + countGoodSequences(K+1, A,B);
+        return memo[key] = ret + countGoodSequences(K, A/2 ,B/2) + countGoodSequences(K+1, A,B);
     }
 
     
