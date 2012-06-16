@@ -88,6 +88,7 @@ public:
             cout << "make one" << endl;
             if(size(str) < c1+c2)
             {
+                cout << d1 << endl;
                 if(d1 == 0)
                 {
                     if(c2 == 0)
