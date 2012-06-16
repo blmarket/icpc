@@ -47,9 +47,9 @@ class FleaCircus
 public:
     int countArrangements(vector <string> afterFourClicks) 
     {		
+        vector<int> V;
         for(int i=1;i<=10;i++)
         {
-            vector<int> V;
             V.pb(0);
 
             perm4(V);
