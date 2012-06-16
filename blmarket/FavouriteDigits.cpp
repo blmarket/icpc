@@ -73,13 +73,23 @@ public:
         if(go(str, 0, false, c1, c2))
         {
             cout << str << endl;
-            return 0;
         }
         else
         {
             cout << "make one" << endl;
-            return 0;
+            if(size(str) < c1+c2)
+            {
+                str = string(d1+'0', c1) + string(d2+'0', c2);
+            } 
+            else 
+            {
+                str = "1" + string(d1+'0', c1) + string(d2+'0', c2);
+            } 
         }
+
+        istringstream sin(str);
+        sin >> N;
+        return N;
     }
 
     
