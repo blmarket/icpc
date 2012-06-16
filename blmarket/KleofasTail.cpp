@@ -36,6 +36,7 @@ public:
 
         if((K%2)==0)
         {
+            cout << K << endl;
             if(K >= A && K <= B) ret=1;
             K += 1;
         }
