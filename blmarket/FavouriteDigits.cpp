@@ -25,8 +25,17 @@ set<pair<pair<int,bool>, pair<int,int> > > S;
 
 bool go(string &str, int pos, bool flag, int c1, int c2)
 {
-    if(c1 <= 0 && c2 <= 0) return true;
-    if(pos == size(str)) return false;
+    if(c1 <= 0 && c2 <= 0) 
+    {
+        if(pos == size(str))
+            return true;
+        str[pos] = '0';
+        return go(str, pos+1, flag, 0,0);
+    }
+    if(pos == size(str)) 
+    {
+        return false;
+    }
     pair<pair<int, bool>, PII> key = mp(mp(pos, flag), mp(c1,c2));
     if(S.count(key)) return false;
     S.insert(key);
@@ -83,8 +92,8 @@ public:
             } 
             else 
             {
-                cout << d1 << " " << c1 << endl;
-                str = "1" + string(d1+'0', c1) + string(d2+'0', c2);
+                str = "1" + str;
+                go(str, 1, true, c1, c2);
             } 
         }
 
