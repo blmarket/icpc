@@ -95,6 +95,7 @@ public:
                 tmp %= mod;
 
                 ret += tmp;
+                ret %= mod;
             }
         }
         /// three blocks
