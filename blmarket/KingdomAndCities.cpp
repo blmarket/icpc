@@ -127,6 +127,8 @@ public:
             }
         }
 
+        cout << ret << endl;
+
         // 1 link.
         K++;
         cout << N << " " << K << endl;
