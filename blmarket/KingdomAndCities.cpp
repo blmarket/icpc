@@ -129,7 +129,7 @@ public:
         cout << N << " " << K << endl;
         for(int i=0;i<=N-1;i++) {
             for(int j=0;j<=K;j++) {
-                cout << b[i+1][j] << endl;
+                cout << i+1 << " " << j << endl;
                 long long tmp = ((((b[i+1][j] * combi[N][i+1]) % mod) * b[N-1-i][K-j]) % mod);
                 // 0 links, 1 links
                 tmp *= (i+1) * (N-1-i) * 2;
