@@ -59,6 +59,8 @@ public:
             }
         }
 
+        a[0][0] = b[0][0] = a[1][0] = b[1][0] = 1;
+
         if(M == 0) return b[N][K];
         if(M == 1) {
             if(K < 2) return 0;
@@ -129,8 +131,6 @@ public:
         cout << N << " " << K << endl;
         for(int i=0;i<=N-1;i++) {
             for(int j=0;j<=K;j++) {
-                cout << b[i+1][j] << endl;
-                cout << combi[N][i+1] << endl;
                 long long tmp = ((((b[i+1][j] * combi[N][i+1]) % mod) * b[N-1-i][K-j]) % mod);
                 // 0 links, 1 links
                 tmp *= (i+1) * (N-1-i) * 2;
