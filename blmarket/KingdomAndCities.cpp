@@ -129,7 +129,7 @@ public:
         // 1 link.
         K++;
         cout << N << " " << K << endl;
-        ret += ((((b[N][K] * combi[N][2]) % mod) * combi[N][2]) % mod);
+        ret += ((((b[N][K] * N) % mod) * N) % mod);
         cout << ret << endl;
         for(int i=0;i<=N-1;i++) {
             for(int j=0;j<=K;j++) {
