@@ -40,13 +40,13 @@ public:
 
         if(N < 2) return 0;
 
-        for(int i=2;i<=N;i++) {
+        for(int i=1;i<=N;i++) {
             for(int j=0;j<=K;j++) {
                 a[i][j] = combi[combi[i][2]][j];
             }
         }
 
-        for(int i=2;i<=N;i++) {
+        for(int i=1;i<=N;i++) {
             for(int j=0;j<=K;j++) {
                 b[i][j] = a[i][j];
                 for(int k=1;k<i;k++) {
@@ -129,7 +129,6 @@ public:
         cout << N << " " << K << endl;
         for(int i=0;i<=N-1;i++) {
             for(int j=0;j<=K;j++) {
-                cout << i+1 << " " << j << endl;
                 long long tmp = ((((b[i+1][j] * combi[N][i+1]) % mod) * b[N-1-i][K-j]) % mod);
                 // 0 links, 1 links
                 tmp *= (i+1) * (N-1-i) * 2;
