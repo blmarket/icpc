@@ -29,18 +29,17 @@ int go(int row, int cnt, int mask) {
     if(cnt < 0) return -2;
 
     if(row == n) {
-        if(cnt == 0 && mask == 0) return 1;
+        if(cnt == 0 && mask == 0) return 0;
         return -2; // infeasible solution.
     }
 
     if(memo[row][cnt][mask] != -1) return memo[row][cnt][mask];
 
-    vector<int> avail_mask;
+    vector<PII> avail_mask;
 
     int cnt3 = 0;
     for(int i=0;i<m;i++) if(b[row] & (1<<i)) cnt3++;
 
-    int ret = 0;
     for(int i=0;i<(1<<m);i++) if((b[row] & i) == i) {
         int cnt2 = 0;
         for(int j=0;j<m;j++) if(i & (1<<j)) cnt2++;
@@ -49,18 +48,35 @@ int go(int row, int cnt, int mask) {
         int tmp = go(row+1, cnt - cnt2, mask ^ i);
         if(tmp == -2) continue;
 
-        ret += tmp;
         if(row == 0) {
             for(int j=0;j<m;j++) cout << ((i>>j)&1);
             cout << " = " << tmp << endl;
         }
-        avail_mask.pb(i);
+        avail_mask.pb(mp(i, tmp));
     }
-
-    cout << row << " " << cnt << " " << mask << " = " << size(avail_mask) << endl;
 
     if(size(avail_mask) == 0)
         return memo[row][cnt][mask] = -2;
+
+    int ret = -2;
+    for(int i=0;i<(1<<m);i++) if((b[row] & i) == i) {
+        int tmp3 = 0;
+        for(int j=0;j<size(avail_mask);j++) {
+            int tmp = i & (~avail_mask[j].first);
+            int tmp2 = 0;
+            while(tmp) {
+                tmp2 += (1 & tmp);
+                tmp >>= 1;
+            } 
+            tmp2 += avail_mask[j].second;
+            if(tmp3 < tmp2) {
+                tmp3 = tmp2;
+            }
+        }
+        if(ret < 0 || ret > tmp3) ret = tmp3;
+    }
+
+    cout << row << " " << cnt << " " << mask << " = " << ret << endl;
 
     return memo[row][cnt][mask] = ret;
 }
