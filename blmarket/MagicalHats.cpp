@@ -37,10 +37,15 @@ int go(int row, int cnt, int mask) {
     if(memo[row][cnt][mask] != -1) return memo[row][cnt][mask];
 
     vector<int> avail_mask;
+
+    int cnt3 = 0;
+    for(int i=0;i<m;i++) if(b[row] & (1<<i)) cnt3++;
+
     for(int i=0;i<(1<<m);i++) if((b[row] & i) == i) {
         int cnt2 = 0;
         for(int j=0;j<m;j++) if(i & (1<<j)) cnt2++;
 
+        if(((cnt2+cnt3)%2) != 0) continue;
         if(go(row+1, cnt - cnt2, mask ^ i) == -2) continue;
 
         if(row == 0) {
