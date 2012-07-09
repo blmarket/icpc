@@ -56,6 +56,8 @@ int go(int row, int cnt, int mask) {
         avail_mask.pb(i);
     }
 
+    cout << row << " " << cnt << " " << mask << " = " << size(avail_mask) << endl;
+
     if(size(avail_mask) == 0)
         return memo[row][cnt][mask] == -2;
 
