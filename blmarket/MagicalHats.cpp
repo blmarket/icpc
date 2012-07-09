@@ -45,11 +45,12 @@ int go(int row, int cnt, int mask) {
         for(int j=0;j<m;j++) if(i & (1<<j)) cnt2++;
 
         if(((cnt2+cnt3)%2) != 0) continue;
-        if(go(row+1, cnt - cnt2, mask ^ i) == -2) continue;
+        int tmp = go(row+1, cnt - cnt2, mask ^ i);
+        if(tmp == -2) continue;
 
         if(row == 0) {
             for(int j=0;j<m;j++) cout << ((i>>j)&1);
-            cout << endl;
+            cout << " = " << tmp << endl;
         }
 
         avail_mask.pb(i);
