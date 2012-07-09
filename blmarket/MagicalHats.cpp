@@ -108,6 +108,7 @@ public:
         }
 
         int ret = go(0, size(coins), mask);
+        cout << ret << endl;
         sort(coins.begin(), coins.end());
         if(ret >= numGuesses) return 0;
         ret = numGuesses - ret;
