@@ -26,7 +26,6 @@ int n,m;
 int memo[13][13][9000];
 
 int go(int row, int cnt, int mask) {
-    cout << row << " " << cnt << " " << mask << endl;
     if(cnt < 0) return -2;
 
     if(row == n) {
@@ -56,6 +55,8 @@ int go(int row, int cnt, int mask) {
 
         avail_mask.pb(i);
     }
+
+    cout << row << " " << cnt << " " << mask << " = " << 0 << endl;
 
     return memo[row][cnt][mask] = 0;
 }
