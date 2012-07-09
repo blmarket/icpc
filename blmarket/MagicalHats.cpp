@@ -30,7 +30,6 @@ int go(int row, int cnt, int mask) {
 
     if(row == n) {
         if(cnt == 0 && mask == 0) return 0;
-        cout << row << " " << cnt << " " << mask << " = " << -2 << endl;
         return -2; // infeasible solution.
     }
 
@@ -57,7 +56,8 @@ int go(int row, int cnt, int mask) {
         avail_mask.pb(i);
     }
 
-    cout << row << " " << cnt << " " << mask << " = " << 0 << endl;
+    if(size(avail_mask) == 0)
+        return memo[row][cnt][mask] == -2;
 
     return memo[row][cnt][mask] = 0;
 }
