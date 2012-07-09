@@ -43,6 +43,11 @@ int go(int row, int cnt, int mask) {
 
         if(go(row+1, cnt - cnt2, mask ^ i) == -2) continue;
 
+        if(row == 0) {
+            for(int j=0;j<m;j++) cout << ((i>>j)&1);
+            cout << endl;
+        }
+
         avail_mask.pb(i);
     }
 
