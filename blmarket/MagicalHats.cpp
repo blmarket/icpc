@@ -26,7 +26,7 @@ int n,m;
 int memo[13][13][9000];
 
 int go(int row, int cnt, int mask) {
-    cout << row << " " << cnt << " " << mask;
+    cout << row << " " << cnt << " " << mask << endl;
     if(cnt < 0) return -2;
 
     if(row == n) {
