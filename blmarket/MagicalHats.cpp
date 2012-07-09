@@ -29,6 +29,7 @@ int go(int row, int cnt, int mask) {
     if(cnt < 0) return -2;
 
     if(row == n) {
+        cout << row << " " << cnt << " " << mask << " = " << 0 << endl;
         if(cnt == 0 && mask == 0) return 0;
         return -2; // infeasible solution.
     }
