@@ -50,7 +50,7 @@ int go(int row, int cnt, int mask) {
 
         if(row == 0) {
             for(int j=0;j<m;j++) cout << ((i>>j)&1);
-            cout << " = " << tmp << endl;
+            cout << " : " << tmp << endl;
         }
         avail_mask.pb(mp(i, tmp));
     }
