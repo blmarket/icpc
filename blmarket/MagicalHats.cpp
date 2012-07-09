@@ -23,7 +23,6 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> b;
 int n,m;
-
 int memo[13][13][9000];
 
 int go(int row, int cnt, int mask) {
@@ -64,6 +63,7 @@ class MagicalHats
 public:
     int findMaximumReward(vector <string> board, vector <int> coins, int numGuesses) 
     {
+        b.clear();
         memset(memo, -1, sizeof(memo));
         n = size(board); m = size(board[0]);
         for(int i=0;i<size(board);i++) {
