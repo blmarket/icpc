@@ -29,7 +29,7 @@ int go(int row, int cnt, int mask) {
     if(cnt < 0) return -2;
 
     if(row == n) {
-        if(cnt == 0 && mask == 0) return 0;
+        if(cnt == 0 && mask == 0) return 1;
         return -2; // infeasible solution.
     }
 
@@ -40,6 +40,7 @@ int go(int row, int cnt, int mask) {
     int cnt3 = 0;
     for(int i=0;i<m;i++) if(b[row] & (1<<i)) cnt3++;
 
+    int ret = 0;
     for(int i=0;i<(1<<m);i++) if((b[row] & i) == i) {
         int cnt2 = 0;
         for(int j=0;j<m;j++) if(i & (1<<j)) cnt2++;
@@ -48,20 +49,20 @@ int go(int row, int cnt, int mask) {
         int tmp = go(row+1, cnt - cnt2, mask ^ i);
         if(tmp == -2) continue;
 
+        ret += tmp;
         if(row == 0) {
             for(int j=0;j<m;j++) cout << ((i>>j)&1);
             cout << " = " << tmp << endl;
         }
-
         avail_mask.pb(i);
     }
 
     cout << row << " " << cnt << " " << mask << " = " << size(avail_mask) << endl;
 
     if(size(avail_mask) == 0)
-        return memo[row][cnt][mask] == -2;
+        return memo[row][cnt][mask] = -2;
 
-    return memo[row][cnt][mask] = 0;
+    return memo[row][cnt][mask] = ret;
 }
 
 class MagicalHats 
