@@ -39,7 +39,6 @@ int go(int life, int used, int res)
         for(int j=0;j<size(avail_mask);j++) {
             int tmp2 = avail_mask[j];
             if((tmp2 & used) != res) continue;
-            cout << bit(tmp2) << endl;
             c[(tmp2 >> i)&1]++;
         }
         if(c[0] == 0) {
