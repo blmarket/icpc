@@ -19,6 +19,7 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+template<typename T> string bit(T a) { string ret; while(a) { ret += ('0' + (a&1)); a>>=1; } return ret; }
 
 vector<PII> hs;
 int row, col;
@@ -32,7 +33,7 @@ int go(int life, int used, int res)
     for(int i=0;i<size(avail_mask);i++) {
         int tmp = avail_mask[i];
         if((tmp & used) == res) {
-            cout << tmp << endl;
+            cout << bit(tmp) << endl;
         }
     }
     return -2;
