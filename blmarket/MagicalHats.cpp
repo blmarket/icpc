@@ -22,6 +22,21 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<PII> hs;
 int row, col;
+vector<int> avail_mask;
+
+int go(int life, int used, int res)
+{
+    if(life == 0) return 0;
+    int ret = 0;
+    int n = size(hs);
+    for(int i=0;i<size(avail_mask);i++) {
+        int tmp = avail_mask[i];
+        if((tmp & used) == res) {
+            cout << tmp << endl;
+        }
+    }
+    return -2;
+}
 
 class MagicalHats 
 {
@@ -39,8 +54,7 @@ public:
         }
 
         int n  = size(hs);
-
-        vector<int> avail_mask;
+        avail_mask.clear();
 
         for(int i=0;i<(1<<n);i++) {
             int tr = row, tc = col;
@@ -67,9 +81,12 @@ public:
             return ret;
         }
 
-        cout << size(avail_mask) << endl;
-
-        return 0;
+        int ret = go(numGuesses, 0, 0);
+        int rr = 0;
+        for(int i=0;i<ret;i++) {
+            rr += coins[i];
+        }
+        return rr;
     }
 
     
