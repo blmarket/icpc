@@ -104,6 +104,7 @@ public:
 
         int ret = go(numGuesses, 0, 0);
         if(ret > size(coins)) ret = size(coins);
+        cout << ret << endl;
         int rr = 0;
         for(int i=0;i<ret;i++) {
             rr += coins[i];
