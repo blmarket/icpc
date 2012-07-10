@@ -30,13 +30,30 @@ int go(int life, int used, int res)
     if(life == 0) return 0;
     int ret = 0;
     int n = size(hs);
-    for(int i=0;i<size(avail_mask);i++) {
-        int tmp = avail_mask[i];
-        if((tmp & used) == res) {
-            cout << bit(tmp) << endl;
+
+
+    for(int i=0;i<n;i++) if((used & (1<<i)) == 0) {
+        int tmp;
+
+        int c[2] = {0};
+        for(int j=0;j<size(avail_mask);j++) {
+            int tmp2 = avail_mask[j];
+            if((tmp2 & used) != res) continue;
+            cout << bit(tmp2) << endl;
+            c[(tmp2 >> i)&1]++;
         }
+        if(c[0] == 0) {
+            return 1 + go(life-1, used | (1<<i), res | (1<<i));
+        }
+        if(c[1] == 0) continue;
+
+        int left = go(life-1, used | (1<<i), res);
+        int right = 1 + go(life-1, used | (1<<i), res | (1<<i));
+
+        tmp = min(left, right);
+        if(tmp > ret) ret = tmp;
     }
-    return -2;
+    return ret;
 }
 
 class MagicalHats 
