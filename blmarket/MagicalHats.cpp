@@ -56,7 +56,19 @@ public:
             avail_mask.pb(i);
         }
 
+        sort(coins.begin(), coins.end());
+
+        if(size(avail_mask) == 0) return -1;
+        if(size(avail_mask) == 1) {
+            int ret = 0;
+            for(int i=0;i<numGuesses;i++) {
+                ret += coins[i];
+            }
+            return ret;
+        }
+
         cout << size(avail_mask) << endl;
+
         return 0;
     }
 
