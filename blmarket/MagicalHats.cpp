@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,104 +20,47 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-vector<int> b;
-int n,m;
-int memo[13][13][9000];
-
-int go(int row, int cnt, int mask) {
-    if(cnt < 0) return -2;
-
-    if(row == n) {
-        if(cnt == 0 && mask == 0) return 0;
-        return -2; // infeasible solution.
-    }
-
-    if(memo[row][cnt][mask] != -1) return memo[row][cnt][mask];
-
-    vector<PII> avail_mask;
-
-    int cnt3 = 0;
-    for(int i=0;i<m;i++) if(b[row] & (1<<i)) cnt3++;
-
-    for(int i=0;i<(1<<m);i++) if((b[row] & i) == i) {
-        int cnt2 = 0;
-        for(int j=0;j<m;j++) if(i & (1<<j)) cnt2++;
-
-        if(((cnt2+cnt3)%2) != 0) continue;
-        int tmp = go(row+1, cnt - cnt2, mask ^ i);
-        if(tmp == -2) continue;
-
-        if(row == 0) {
-            for(int j=0;j<m;j++) cout << ((i>>j)&1);
-            cout << " : " << tmp << endl;
-        }
-        avail_mask.pb(mp(i, tmp));
-    }
-
-    if(size(avail_mask) == 0)
-        return memo[row][cnt][mask] = -2;
-
-    int ret = -2;
-    for(int i=0;i<(1<<m);i++) if((b[row] & i) == i) {
-        int tmp3 = 0;
-        for(int j=0;j<size(avail_mask);j++) {
-            int tmp = i & (~avail_mask[j].first);
-            int tmp2 = 0;
-            while(tmp) {
-                tmp2 += (1 & tmp);
-                tmp >>= 1;
-            } 
-            tmp2 += avail_mask[j].second;
-            if(tmp3 < tmp2) {
-                tmp3 = tmp2;
-            }
-        }
-        if(ret < 0 || ret > tmp3) ret = tmp3;
-    }
-
-    cout << row << " " << cnt << " " << mask << " = " << ret << endl;
-
-    return memo[row][cnt][mask] = ret;
-}
+vector<PII> hs;
+int row, col;
 
 class MagicalHats 
 {
 public:
     int findMaximumReward(vector <string> board, vector <int> coins, int numGuesses) 
-    {
-        b.clear();
-        memset(memo, -1, sizeof(memo));
-        n = size(board); m = size(board[0]);
-        for(int i=0;i<size(board);i++) {
-            int tmp = 0;
-            for(int j=0;j<size(board[i]);j++) {
-                if(board[i][j] == 'H') tmp |= (1<<j);
+    {		
+        hs.clear();
+        row=0; col=0;
+        for(int i=0;i<size(board);i++) for(int j=0;j<size(board[i]);j++) {
+            if(board[i][j] == 'H') {
+                hs.pb(mp(i,j));
+                row ^= (1<<i);
+                col ^= (1<<j);
             }
-            b.pb(tmp);
         }
 
+        int n  = size(hs);
 
-        int mask = 0;
-        for(int i=0;i<size(board[0]);i++) {
-            bool cnt = false;
-            for(int j=0;j<size(board);j++) {
-                if(board[j][i] == 'H') cnt = !cnt;
+        vector<int> avail_mask;
+
+        for(int i=0;i<(1<<n);i++) {
+            int tr = row, tc = col;
+            int cnt = 0;
+            for(int j=0;j<n;j++) if(i & (1<<j)) {
+                cnt++;
+                if(cnt > size(coins)) break;
+                tr ^= (1<<hs[j].first);
+                tc ^= (1<<hs[j].second);
             }
-            mask |= (cnt << i);
+            if(cnt != size(coins)) continue;
+            if(tr || tc) continue;
+            avail_mask.pb(i);
         }
 
-        int ret = go(0, size(coins), mask);
-        cout << ret << endl;
-        sort(coins.begin(), coins.end());
-        if(ret >= numGuesses) return 0;
-        ret = numGuesses - ret;
-        int rr = 0;
-        for(int i=0;i<ret;i++) {
-            rr += coins[i];
-        }
-        return rr;
+        cout << size(avail_mask) << endl;
+        return 0;
     }
-	
+
+    
 // BEGIN CUT HERE
 	public:
 	void run_test(int Case) { if ((Case == -1) || (Case == 0)) test_case_0(); if ((Case == -1) || (Case == 1)) test_case_1(); if ((Case == -1) || (Case == 2)) test_case_2(); if ((Case == -1) || (Case == 3)) test_case_3(); if ((Case == -1) || (Case == 4)) test_case_4(); if ((Case == -1) || (Case == 5)) test_case_5(); if ((Case == -1) || (Case == 6)) test_case_6(); if ((Case == -1) || (Case == 7)) test_case_7(); }
@@ -163,11 +105,10 @@ public:
 
 };
 
-
-
-// BEGIN CUT HERE 
-int main() {
-	MagicalHats ___test;
-	___test.run_test(3);
-}
+// BEGIN CUT HERE
+int main()
+{
+    MagicalHats ___test; 
+    ___test.run_test(-1); 
+} 
 // END CUT HERE
