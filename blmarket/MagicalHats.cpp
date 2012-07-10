@@ -96,7 +96,7 @@ public:
         if(size(avail_mask) == 0) return -1;
         if(size(avail_mask) == 1) {
             int ret = 0;
-            for(int i=0;i<numGuesses;i++) {
+            for(int i=0;i<min(size(coins),numGuesses);i++) {
                 ret += coins[i];
             }
             return ret;
@@ -104,7 +104,6 @@ public:
 
         int ret = go(numGuesses, 0, 0);
         if(ret > size(coins)) ret = size(coins);
-        cout << ret << endl;
         int rr = 0;
         for(int i=0;i<ret;i++) {
             rr += coins[i];
