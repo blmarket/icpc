@@ -24,13 +24,16 @@ template<typename T> string bit(T a) { string ret; while(a) { ret += ('0' + (a&1
 vector<PII> hs;
 int row, col;
 vector<int> avail_mask;
+map<pair<int, PII>, int> memo;
 
 int go(int life, int used, int res)
 {
     if(life == 0) return 0;
+    pair<int, PII> key = mp(life, mp(used, res));
+    if(memo.count(key)) return memo[key];
+
     int ret = 0;
     int n = size(hs);
-
 
     for(int i=0;i<n;i++) if((used & (1<<i)) == 0) {
         int tmp;
@@ -52,7 +55,7 @@ int go(int life, int used, int res)
         tmp = min(left, right);
         if(tmp > ret) ret = tmp;
     }
-    return ret;
+    return memo[key] = ret;
 }
 
 class MagicalHats 
@@ -60,6 +63,7 @@ class MagicalHats
 public:
     int findMaximumReward(vector <string> board, vector <int> coins, int numGuesses) 
     {		
+        memo.clear();
         hs.clear();
         row=0; col=0;
         for(int i=0;i<size(board);i++) for(int j=0;j<size(board[i]);j++) {
@@ -99,6 +103,7 @@ public:
         }
 
         int ret = go(numGuesses, 0, 0);
+        if(ret > size(coins)) ret = size(coins);
         int rr = 0;
         for(int i=0;i<ret;i++) {
             rr += coins[i];
