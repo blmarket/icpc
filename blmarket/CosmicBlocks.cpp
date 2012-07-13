@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -18,26 +17,39 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> b;
 int n;
-int minW, maxW;
 
-int graph[6][6];
+vector<LL> flow[40][40];
 
-int go(int mask, int prev, int bot) {
-    if(mask+1 == (1<<n)) {
-        return 0;
+void fillflow(int a,int s)
+{
+    flow[a][s].clear();
+    vector<int> tmp;
+    for(int i=0;i<(1<<n);i++) {
+        if((s&i) == i) {
+            tmp.pb(i);
+        }
     }
-    for(int i=0;i<(1<<n);i++) if((mask & i) == 0) {
-        int sum = 0;
-        for(int j=0;j<n;j++) if(i & (1<<j))
-            sum += b[j];
-        if(mask == 0) return go(mask | i, i, sum);
+    int pp = 1;
+    int cnt = 0;
+    for(int i=0;i<n;i++) if(a & (1<<i)) pp *= size(tmp), cnt++;
+
+    for(int i=0;i<pp;i++) {
+        int tmp2 = i;
+        LL tmp4 = 0;
+        for(int j=n-1;j>=0;j--) if(a & (1<<j)) {
+            tmp4 <<= 6;
+            int tmp3 = (tmp2 % size(tmp));
+            tmp4 |= tmp[tmp3];
+        }
+        flow[a][s].pb(tmp4);
     }
-    return 0;
+    cout << size(flow[a][s]) << endl;
 }
 
 class CosmicBlocks 
@@ -45,13 +57,12 @@ class CosmicBlocks
 public:
     int getNumOrders(vector <int> blockTypes, int minWays, int maxWays) 
     {		
-        memset(graph, -1, sizeof(graph));
-
         b = blockTypes;
-        n = size(blockTypes);
-        minW = minWays, maxW = maxWays;
-
-        return go(0, 0, 75000);
+        n = size(b);
+        for(int i=1;i<(1<<n);i++) for(int j=1;j<(1<<n);j++) if((i & j) == 0) {
+            fillflow(i,j);
+        }
+        return 0;
     }
 
     
