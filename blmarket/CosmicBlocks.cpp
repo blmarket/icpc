@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<int> b;
 int n;
 
-vector<LL> flow[40][40];
+vector<LL> flow[70][70];
 
 void fillflow(int a,int s)
 {
