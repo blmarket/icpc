@@ -28,6 +28,7 @@ vector<LL> flow[40][40];
 
 void fillflow(int a,int s)
 {
+    cout << a << " " << s << endl;
     flow[a][s].clear();
     vector<int> tmp;
     for(int i=0;i<(1<<n);i++) {
