@@ -26,13 +26,21 @@ public:
     int countAll(string word1, string word2, vector <int> costs, int maxCost) 
     {		
         vector<int> ncs;
-        for(int i=0;i<size(word1);i++)
-            ncs.pb((word2[i] - word1[i] + 3) % 3);
+        for(int i=0;i<size(word1);i++) {
+            ncs.pb(0);
+            while(word1[i] != word2[i]) {
+                ncs.back()++;
+                maxCost -= costs[word1[i]-'a'];
+                word1[i] = word1[i] + 1;
+                if(word1[i] == 'c') word1[i] = 'a';
+            }
+        }
 
+        cout << maxCost << endl;
         for(int i=0;i<size(ncs);i++)
             cout << ncs[i] << " ";
         cout << endl;
-        return 0;
+        if(maxCost < 0) return 0;
     }
 
     
