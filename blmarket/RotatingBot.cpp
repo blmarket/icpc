@@ -23,6 +23,31 @@ template<typename T> int size(const T &a) { return a.size(); }
 int dx[] = {0,-1,0,1};
 int dy[] = {1,0,-1,0};
 set<PII> visit;
+int tot;
+
+vector<int> build(int x, int y, int sx, int sy)
+{
+    set<PII> board;
+    int d = 0;
+    vector<int> ret;
+
+    ret.pb(0);
+    for(int i=0;i<tot;i++)
+    {
+        int nx = x + dx[d];
+        int ny = y + dy[d];
+
+        if(nx == sx || nx == -1 || ny == sy || ny == -1 || board.count(mp(nx,ny)))
+        {
+            d = (d+1)%4;
+            i--;
+            continue;
+        }
+
+        ret.back()++;
+        x = nx; y = ny;
+    }
+}
 
 class RotatingBot 
 {
@@ -32,8 +57,10 @@ public:
         visit.clear();
         int x=0,y=0,d=0;
         visit.insert(mp(x,y));
+        tot = 0;
         for(int i=0;i<size(moves);i++)
         {
+            tot += moves[i];
             for(int j=0;j<(moves[i]);j++) {
                 x += dx[d];
                 y += dy[d];
@@ -51,7 +78,10 @@ public:
             miny = min(miny, y);
             maxy = max(maxy, y);
         }
-        return (maxx-minx+1) * (maxy - miny+1);
+
+        if(build(-minx, -miny, maxx - minx + 1, maxy - miny + 1) == moves)
+            return (maxx-minx+1) * (maxy - miny+1);
+        return -1;
     }
 
     
