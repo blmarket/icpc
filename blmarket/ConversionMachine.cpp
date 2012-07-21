@@ -33,7 +33,7 @@ public:
                 cout << word1[i] - 'a' << " ";
                 maxCost -= costs[word1[i]-'a'];
                 word1[i] = word1[i] + 1;
-                if(word1[i] == 'c') word1[i] = 'a';
+                if(word1[i] == 'd') word1[i] = 'a';
             }
         }
 
