@@ -51,6 +51,7 @@ public:
                 long long x = x0 + j;
                 long long y = y0 + h - i - 1;
                 tmp += go(t,x,y);
+                cout << tmp << endl;
             }
             ret.pb(tmp);
         }
