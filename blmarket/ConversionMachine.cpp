@@ -28,9 +28,7 @@ public:
         vector<int> ncs(size(word1), 0);
         for(int i=0;i<size(word1);i++) {
             while(word1[i] != word2[i]) {
-                cout << word1[i] << " " << word2[i] << endl;
                 ncs[i]++;
-                cout << word1[i] - 'a' << " ";
                 maxCost -= costs[word1[i]-'a'];
                 word1[i] = word1[i] + 1;
                 if(word1[i] == 'd') word1[i] = 'a';
