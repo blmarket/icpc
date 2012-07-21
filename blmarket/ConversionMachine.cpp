@@ -41,6 +41,7 @@ public:
             cout << ncs[i] << " ";
         cout << endl;
         if(maxCost < 0) return 0;
+        return 0;
     }
 
     
