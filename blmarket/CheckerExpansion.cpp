@@ -29,6 +29,7 @@ long long get2(long long n)
 
 char go(long long t, long long x, long long y)
 {
+    cout << t << " " << x << " " << y << endl;
     if(y > x) return '.';
     if((x+y)%2) return '.';
     long long ss = (x+y)/2;
