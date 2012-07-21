@@ -33,6 +33,7 @@ vector<int> build(int x, int y, int sx, int sy)
     vector<int> ret;
 
     ret.pb(0);
+    board.insert(mp(x,y));
     for(int i=0;i<tot;i++)
     {
         int nx = x + dx[d];
@@ -48,6 +49,7 @@ vector<int> build(int x, int y, int sx, int sy)
 
         ret.back()++;
         x = nx; y = ny;
+        board.insert(mp(x,y));
     }
     for(int i=0;i<size(ret);i++)
         cout << ret[i] << " ";
