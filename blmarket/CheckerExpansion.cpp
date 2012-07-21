@@ -22,6 +22,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long get2(long long n)
 {
+    if(n == 0) return 0;
     long long ret = 0;
     ret += n/2;
     return ret + get2(n/2);
