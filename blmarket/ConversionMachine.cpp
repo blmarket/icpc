@@ -29,6 +29,7 @@ public:
         for(int i=0;i<size(word1);i++) {
             while(word1[i] != word2[i]) {
                 ncs[i]++;
+                cout << word1[i] - 'a' << " ";
                 maxCost -= costs[word1[i]-'a'];
                 word1[i] = word1[i] + 1;
                 if(word1[i] == 'c') word1[i] = 'a';
