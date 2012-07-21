@@ -65,6 +65,7 @@ public:
         {
             tot += moves[i];
             for(int j=0;j<(moves[i]);j++) {
+                cout << x << " " << y << endl;
                 x += dx[d];
                 y += dy[d];
                 if(visit.count(mp(x,y))) return -1;
