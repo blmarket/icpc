@@ -35,7 +35,10 @@ public:
             }
         }
 
-        cout << maxCost << endl;
+        int sum = 0;
+        for(int i=0;i<3;i++) sum += costs[i];
+
+        cout << maxCost << " " << maxCost / sum << endl;
         for(int i=0;i<size(ncs);i++)
             cout << ncs[i] << " ";
         cout << endl;
