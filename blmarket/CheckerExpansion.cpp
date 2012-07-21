@@ -49,7 +49,7 @@ public:
             string tmp = "";
             for(int j=0;j<w;j++) {
                 long long x = x0 + j;
-                long long y = y0 + h - i;
+                long long y = y0 + h - i - 1;
                 tmp += go(t,x,y);
             }
             ret.pb(tmp);
