@@ -47,6 +47,7 @@ vector<int> build(int x, int y, int sx, int sy)
         ret.back()++;
         x = nx; y = ny;
     }
+    return ret;
 }
 
 class RotatingBot 
