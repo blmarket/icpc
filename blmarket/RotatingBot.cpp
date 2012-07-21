@@ -40,6 +40,7 @@ vector<int> build(int x, int y, int sx, int sy)
         if(nx == sx || nx == -1 || ny == sy || ny == -1 || board.count(mp(nx,ny)))
         {
             d = (d+1)%4;
+            ret.pb(0);
             i--;
             continue;
         }
