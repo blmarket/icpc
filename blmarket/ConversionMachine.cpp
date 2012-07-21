@@ -25,11 +25,10 @@ class ConversionMachine
 public:
     int countAll(string word1, string word2, vector <int> costs, int maxCost) 
     {		
-        vector<int> ncs;
+        vector<int> ncs(size(word1), 0);
         for(int i=0;i<size(word1);i++) {
-            ncs.pb(0);
             while(word1[i] != word2[i]) {
-                ncs.back()++;
+                ncs[i]++;
                 maxCost -= costs[word1[i]-'a'];
                 word1[i] = word1[i] + 1;
                 if(word1[i] == 'c') word1[i] = 'a';
@@ -40,6 +39,7 @@ public:
         for(int i=0;i<size(ncs);i++)
             cout << ncs[i] << " ";
         cout << endl;
+
         if(maxCost < 0) return 0;
         return 0;
     }
