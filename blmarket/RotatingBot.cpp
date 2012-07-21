@@ -49,6 +49,9 @@ vector<int> build(int x, int y, int sx, int sy)
         ret.back()++;
         x = nx; y = ny;
     }
+    for(int i=0;i<size(ret);i++)
+        cout << ret[i] << " ";
+    cout << endl;
     return ret;
 }
 
