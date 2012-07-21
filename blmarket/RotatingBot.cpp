@@ -27,6 +27,7 @@ int tot;
 
 vector<int> build(int x, int y, int sx, int sy)
 {
+    cout << x << " " << y << " " << sx << " " << sy << endl;
     set<PII> board;
     int d = 0;
     vector<int> ret;
