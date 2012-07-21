@@ -34,7 +34,6 @@ char go(long long t, long long x, long long y)
     if((x+y)%2) return '.';
     long long ss = (x+y)/2;
     if(ss >= t) return '.';
-    cout << ss << " " << y << " " << (ss-y) << endl;
     if(get2(ss) - get2(y) - get2(ss-y) > 0) return '.';
     if((ss%2)) return 'B';
     return 'A';
@@ -52,7 +51,6 @@ public:
                 long long x = x0 + j;
                 long long y = y0 + h - i - 1;
                 tmp += go(t,x,y);
-                cout << tmp << endl;
             }
             ret.pb(tmp);
         }
