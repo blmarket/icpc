@@ -57,8 +57,8 @@ public:
 
         for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++) {
-                for(int k=i+1;k<N;k++) {
-                    for(int l=j+1;l<M;l++) {
+                for(int k=i+1;k<=N;k++) {
+                    for(int l=j+1;l<=M;l++) {
                         printf("%d %d %d %d = %d\n",i,j,k,l,sums[i][j][k][l]);
                     }
                 }
