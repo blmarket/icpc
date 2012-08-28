@@ -66,11 +66,7 @@ int step(int U, int L, int D, int R, int cDiff) {
     int ret = -1;
     int tmp = step1(0, U, cDiff);
     ret = max(ret, tmp);
-    tmp = step1(D, N, cDiff);
-    ret = max(ret, tmp);
     tmp = step2(0, L, cDiff);
-    ret = max(ret, tmp);
-    tmp = step2(R, M, cDiff);
     ret = max(ret, tmp);
     return ret;
 }
