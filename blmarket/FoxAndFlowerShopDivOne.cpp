@@ -113,6 +113,7 @@ public:
         int ret = -1;
         for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++) {
+                cout << i << " " << j << endl;
                 for(int k=i+1;k<=N;k++) {
                     for(int l=j+1;l<=M;l++) {
                         int tmp = step(i,j,k,l,sums[i][j][k][l]);
