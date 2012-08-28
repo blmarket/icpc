@@ -44,8 +44,7 @@ public:
                     long long hi = low;
 
                     while(lo != hi) {
-                        cout << lo << " " << hi << endl;
-                        long long i = (lo + hi) / 2;
+                        long long i = (lo + hi + 1) / 2;
                         long long RR = R - i * nX;
                         long long GG = G - i * nX;
                         long long BB = B - i * nX;
