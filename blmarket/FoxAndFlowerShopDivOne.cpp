@@ -65,7 +65,7 @@ public:
             for(int j=0;j<M;j++) {
                 for(int k=i+1;k<=N;k++) {
                     for(int l=j+1;l<=M;l++) {
-                        printf("%d %d %d %d = %d\n",i,j,k,l,sums[i][j][k][l]);
+                        printf("%d %d %d %d = %d %d\n",i,j,k,l,sums[i][j][k][l], cnts[i][j][k][l]);
                     }
                 }
             }
