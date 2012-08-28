@@ -28,22 +28,50 @@ int sums[35][35][35][35];
 int cnts[35][35][35][35];
 int maxDiff;
 
-int step(int U, int L, int D, int R, int cDiff) {
+int step1(int U, int D, int cDiff) {
     int ret = -1;
-    for(int i=0;i<N;i++) {
+    for(int i=U;i<D;i++) {
         for(int j=0;j<M;j++) {
-            for(int k=i+1;k<=N;k++) {
+            for(int k=i+1;k<=D;k++) {
                 for(int l=j+1;l<=M;l++) {
-                    if(k <= U || D <= i || l <= L || R <= j) {
-                        int tmp1 = cDiff + sums[i][j][k][l];
-                        if(abs(tmp1) <= maxDiff) {
-                            if(ret < cnts[i][j][k][l]) ret = cnts[i][j][k][l];
-                        }
+                    int tmp1 = cDiff + sums[i][j][k][l];
+                    if(abs(tmp1) <= maxDiff) {
+                        if(ret < cnts[i][j][k][l]) ret = cnts[i][j][k][l];
                     }
                 }
             }
         }
     }
+    return ret;
+}
+
+int step2(int L, int R, int cDiff) {
+    int ret = -1;
+    for(int i=0;i<N;i++) {
+        for(int j=L;j<R;j++) {
+            for(int k=i+1;k<=N;k++) {
+                for(int l=j+1;l<=R;l++) {
+                    int tmp1 = cDiff + sums[i][j][k][l];
+                    if(abs(tmp1) <= maxDiff) {
+                        if(ret < cnts[i][j][k][l]) ret = cnts[i][j][k][l];
+                    }
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+int step(int U, int L, int D, int R, int cDiff) {
+    int ret = -1;
+    int tmp = step1(0, U, cDiff);
+    ret = max(ret, tmp);
+    tmp = step1(D, N, cDiff);
+    ret = max(ret, tmp);
+    tmp = step2(0, L, cDiff);
+    ret = max(ret, tmp);
+    tmp = step2(R, M, cDiff);
+    ret = max(ret, tmp);
     return ret;
 }
 
