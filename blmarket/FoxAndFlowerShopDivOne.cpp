@@ -36,13 +36,17 @@ public:
         N = flowers.size();
         M = flowers[0].size();
 
-        memset(sums, 0, sizeof(sums));
+        memset(cnts, 0, sizeof(cnts));
+
         for(int i=0;i<N;i++) {
-            for(int j=0;j<M;j++) 
+            for(int j=0;j<M;j++) {
                 sums[i][j][i+1][j+1] = (flowers[i][j] == 'L' ? 1 : (flowers[i][j] == 'P' ? -1 : 0));
+                cnts[i][j][i+1][j+1] = sums[i][j][i+1][j+1] == 0 ? 0 : 1;
+            }
             for(int j=0;j<M;j++) {
                 for(int k=j+1;k<M;k++) {
                     sums[i][j][i+1][k+1] = sums[i][j][i+1][k] + sums[i][k][i+1][k+1];
+                    cnts[i][j][i+1][k+1] = cnts[i][j][i+1][k] + cnts[i][k][i+1][k+1];
                 }
             }
         }
@@ -51,6 +55,7 @@ public:
                 for(int k=0;k<M;k++) {
                     for(int l=k+1;l<=M;l++) {
                         sums[i][k][j+1][l] = sums[i][k][j][l] + sums[j][k][j+1][l];
+                        cnts[i][k][j+1][l] = cnts[i][k][j][l] + cnts[j][k][j+1][l];
                     }
                 }
             }
