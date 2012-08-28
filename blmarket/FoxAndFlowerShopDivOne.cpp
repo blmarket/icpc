@@ -158,6 +158,6 @@ public:
 int main()
 {
     FoxAndFlowerShopDivOne ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(5); 
 } 
 // END CUT HERE
