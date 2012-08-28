@@ -48,7 +48,7 @@ public:
         for(int i=0;i<N;i++) {
             for(int j=i+1;j<N;j++) {
                 for(int k=0;k<M;k++) {
-                    for(int l=k+1;l<M;l++) {
+                    for(int l=k+1;l<=M;l++) {
                         sums[i][k][j+1][l] = sums[i][k][j][l] + sums[j][k][j+1][l];
                     }
                 }
