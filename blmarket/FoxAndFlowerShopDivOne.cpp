@@ -24,9 +24,21 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<string> flowers;
 int N,M;
-int sums[35][35][35][35];
-int cnts[35][35][35][35];
+int sums[35][35];
+int cnts[35][35];
 int maxDiff;
+
+int get(int arr[][35], int u, int l, int d, int r) {
+    return arr[d][r] - arr[u][r] - arr[d][l] + arr[u][l];
+}
+
+int getSum(int u,int l,int d,int r) {
+    return get(sums,u,l,d,r);
+}
+
+int getCnt(int u,int l, int d, int r) {
+    return get(cnts, u, l, d, r);
+}
 
 int step1(int U, int D, int cDiff) {
     int ret = -1;
@@ -34,9 +46,10 @@ int step1(int U, int D, int cDiff) {
         for(int j=0;j<M;j++) {
             for(int k=i+1;k<=D;k++) {
                 for(int l=j+1;l<=M;l++) {
-                    int tmp1 = cDiff + sums[i][j][k][l];
+                    int tmp1 = cDiff + getSum(i,j,k,l);
                     if(abs(tmp1) <= maxDiff) {
-                        if(ret < cnts[i][j][k][l]) ret = cnts[i][j][k][l];
+                        int tmp2 = getCnt(i,j,k,l);
+                        if(ret < tmp2) ret = tmp2;
                     }
                 }
             }
@@ -51,9 +64,10 @@ int step2(int L, int R, int cDiff) {
         for(int j=L;j<R;j++) {
             for(int k=i+1;k<=N;k++) {
                 for(int l=j+1;l<=R;l++) {
-                    int tmp1 = cDiff + sums[i][j][k][l];
+                    int tmp1 = cDiff + getSum(i,j,k,l);
                     if(abs(tmp1) <= maxDiff) {
-                        if(ret < cnts[i][j][k][l]) ret = cnts[i][j][k][l];
+                        int tmp2 = getCnt(i,j,k,l);
+                        if(ret < tmp2) ret = tmp2;
                     }
                 }
             }
@@ -81,28 +95,12 @@ public:
         N = flowers.size();
         M = flowers[0].size();
 
-        memset(cnts, 0, sizeof(cnts));
-
         for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++) {
-                sums[i][j][i+1][j+1] = (flowers[i][j] == 'L' ? 1 : (flowers[i][j] == 'P' ? -1 : 0));
-                cnts[i][j][i+1][j+1] = sums[i][j][i+1][j+1] == 0 ? 0 : 1;
-            }
-            for(int j=0;j<M;j++) {
-                for(int k=j+1;k<M;k++) {
-                    sums[i][j][i+1][k+1] = sums[i][j][i+1][k] + sums[i][k][i+1][k+1];
-                    cnts[i][j][i+1][k+1] = cnts[i][j][i+1][k] + cnts[i][k][i+1][k+1];
-                }
-            }
-        }
-        for(int i=0;i<N;i++) {
-            for(int j=i+1;j<N;j++) {
-                for(int k=0;k<M;k++) {
-                    for(int l=k+1;l<=M;l++) {
-                        sums[i][k][j+1][l] = sums[i][k][j][l] + sums[j][k][j+1][l];
-                        cnts[i][k][j+1][l] = cnts[i][k][j][l] + cnts[j][k][j+1][l];
-                    }
-                }
+                int tmp = 0;
+                if(flowers[i][j] == 'L') tmp=1; else if(flowers[i][j] == 'P') tmp = -1;
+                sums[i+1][j+1] = sums[i+1][j] + sums[i][j+1] - sums[i][j] + tmp;
+                cnts[i+1][j+1] = cnts[i+1][j] + cnts[i][j+1] - cnts[i][j] + abs(tmp);
             }
         }
 
@@ -112,10 +110,11 @@ public:
                 cout << i << " " << j << endl;
                 for(int k=i+1;k<=N;k++) {
                     for(int l=j+1;l<=M;l++) {
-                        int tmp = step(i,j,k,l,sums[i][j][k][l]);
+                        int tmp = step(i,j,k,l,getSum(i,j,k,l));
                         if(tmp != -1) {
-                            if(ret < tmp + cnts[i][j][k][l]) {
-                                ret = tmp + cnts[i][j][k][l];
+                            int tmp2 = getCnt(i,j,k,l);
+                            if(ret < tmp + tmp2) {
+                                ret = tmp + tmp2;
                             }
                         }
                         // printf("%d %d %d %d = %d %d\n",i,j,k,l,sums[i][j][k][l], cnts[i][j][k][l]);
