@@ -39,13 +39,24 @@ public:
         switch(N%3)
         {
             case 1:
-                for(long long i=low;i>0;i--) {
-                    long long RR = R - i * nX;
-                    long long GG = G - i * nX;
-                    long long BB = B - i * nX;
-                    if(RR+GG+BB >= i) return i;
+                {
+                    long long lo = 0;
+                    long long hi = low;
+
+                    while(lo != hi) {
+                        long long i = (lo + hi) / 2;
+                        long long RR = R - i * nX;
+                        long long GG = G - i * nX;
+                        long long BB = B - i * nX;
+
+                        if(RR + GG + BB >= i) {
+                            lo = i;
+                        } else {
+                            hi = i - 1;
+                        }
+                    }
+                    return lo;
                 }
-                return 0;
             default:
                 return min(min(R,G),B) / nX;
         }
