@@ -25,6 +25,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<string> flowers;
 int N,M;
 int sums[35][35][35][35];
+int cnts[35][35][35][35];
 
 class FoxAndFlowerShopDivOne 
 {
