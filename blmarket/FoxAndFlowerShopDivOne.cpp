@@ -21,6 +21,7 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+void setmax(int &a, int b) { if(a<b) a=b; }
 
 vector<string> flowers;
 int N,M;
@@ -40,48 +41,48 @@ int getCnt(int u,int l, int d, int r) {
     return get(cnts, u, l, d, r);
 }
 
-int step1(int U, int D, int cDiff) {
-    int ret = -1;
-    for(int i=U;i<D;i++) {
-        for(int j=0;j<M;j++) {
-            for(int k=i+1;k<=D;k++) {
-                for(int l=j+1;l<=M;l++) {
-                    int tmp1 = cDiff + getSum(i,j,k,l);
-                    if(abs(tmp1) <= maxDiff) {
-                        int tmp2 = getCnt(i,j,k,l);
-                        if(ret < tmp2) ret = tmp2;
-                    }
-                }
-            }
-        }
-    }
-    return ret;
-}
+int res1[2000];
+int res2[2000];
 
-int step2(int L, int R, int cDiff) {
-    int ret = -1;
+int go(int res[], int L, int R) {
+    memset(res, -1, sizeof(res1));
     for(int i=0;i<N;i++) {
-        for(int j=L;j<R;j++) {
-            for(int k=i+1;k<=N;k++) {
-                for(int l=j+1;l<=R;l++) {
-                    int tmp1 = cDiff + getSum(i,j,k,l);
-                    if(abs(tmp1) <= maxDiff) {
-                        int tmp2 = getCnt(i,j,k,l);
-                        if(ret < tmp2) ret = tmp2;
-                    }
+        for(int j=i;j<N;j++) {
+            for(int k=L;k<R;k++) {
+                for(int l=k;l<R;l++) {
+                    int sum = getSum(i,k,j+1,l+1);
+                    int cnt = getCnt(i,k,j+1,l+1);
+                    setmax(res[1000 + sum], cnt);
                 }
+            }
+        }
+    }
+}
+
+int calc() {
+    int ret = -1;
+    for(int i=0;i<2000;i++) if(res1[i] != -1) {
+        for(int j=-maxDiff;j<=maxDiff;j++) {
+            int dst = 2000 + j - i;
+            if(res2[dst] == -1) continue;
+
+            if(ret < res1[i] + res2[dst]) {
+                ret = res1[i] + res2[dst];
             }
         }
     }
     return ret;
 }
 
-int step(int U, int L, int D, int R, int cDiff) {
+int build() {
     int ret = -1;
-    int tmp = step1(0, U, cDiff);
-    ret = max(ret, tmp);
-    tmp = step2(0, L, cDiff);
-    ret = max(ret, tmp);
+    for(int j=1;j<M;j++) {
+        go(res1, 0, j);
+        go(res2, j, M);
+
+        int tmp = calc();
+        if(ret < tmp) ret = tmp;
+    }
     return ret;
 }
 
@@ -104,28 +105,17 @@ public:
             }
         }
 
-        return 0;
-
-        int ret = -1;
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<M;j++) {
-                cout << i << " " << j << endl;
-                for(int k=i+1;k<=N;k++) {
-                    for(int l=j+1;l<=M;l++) {
-                        int tmp = step(i,j,k,l,getSum(i,j,k,l));
-                        if(tmp != -1) {
-                            int tmp2 = getCnt(i,j,k,l);
-                            if(ret < tmp + tmp2) {
-                                ret = tmp + tmp2;
-                            }
-                        }
-                        // printf("%d %d %d %d = %d %d\n",i,j,k,l,sums[i][j][k][l], cnts[i][j][k][l]);
-                    }
-                }
+        int tmp = build();
+        for(int i=0;i<=30;i++) {
+            for(int j=0;j<i;j++) {
+                swap(sums[i][j], sums[j][i]);
+                swap(cnts[i][j], cnts[j][i]);
             }
         }
+        swap(N,M);
+        int tmp2 = build();
 
-        return ret;
+        return max(tmp, tmp2);
     }
 
     
