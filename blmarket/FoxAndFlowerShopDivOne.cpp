@@ -26,13 +26,34 @@ vector<string> flowers;
 int N,M;
 int sums[35][35][35][35];
 int cnts[35][35][35][35];
+int maxDiff;
+
+int step(int U, int L, int D, int R, int cDiff) {
+    int ret = -1;
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<M;j++) {
+            for(int k=i+1;k<=N;k++) {
+                for(int l=j+1;l<=M;l++) {
+                    if(k <= U || D <= i || l <= L || R <= j) {
+                        int tmp1 = cDiff + sums[i][j][k][l];
+                        if(abs(tmp1) <= maxDiff) {
+                            if(ret < cnts[i][j][k][l]) ret = cnts[i][j][k][l];
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return ret;
+}
 
 class FoxAndFlowerShopDivOne 
 {
 public:
-    int theMaxFlowers(vector <string> flowers_, int maxDiff) 
+    int theMaxFlowers(vector <string> flowers_, int maxDiff_) 
     {		
         flowers = flowers_;
+        maxDiff = maxDiff_;
         N = flowers.size();
         M = flowers[0].size();
 
@@ -61,17 +82,24 @@ public:
             }
         }
 
-        /*
+        int ret = -1;
         for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++) {
                 for(int k=i+1;k<=N;k++) {
                     for(int l=j+1;l<=M;l++) {
-                        printf("%d %d %d %d = %d %d\n",i,j,k,l,sums[i][j][k][l], cnts[i][j][k][l]);
+                        int tmp = step(i,j,k,l,sums[i][j][k][l]);
+                        if(tmp != -1) {
+                            if(ret < tmp + cnts[i][j][k][l]) {
+                                ret = tmp + cnts[i][j][k][l];
+                            }
+                        }
+                        // printf("%d %d %d %d = %d %d\n",i,j,k,l,sums[i][j][k][l], cnts[i][j][k][l]);
                     }
                 }
             }
         }
-        */
+
+        return ret;
     }
 
     
