@@ -33,9 +33,9 @@ public:
             }
             return ret;
         }
-        int ret = (minC + 1) * 3 - 1;
+        int ret = (minC + 1) * 3 - 2;
         if(redCount == blueCount) {
-            ret -= 2;
+            ret--;
         }
         return ret;
     }
