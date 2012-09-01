@@ -36,6 +36,7 @@ long long cnt(char L, char R) {
         for(int j=0;j<=m;j++) {
             cout << i << " " << j << endl;
             bool fail = false;
+
             for(int k=0;k<j;k++) {
                 if(grid[i][k] == R) {
                     fail = true;
@@ -50,9 +51,10 @@ long long cnt(char L, char R) {
                 }
             }
             if(fail) continue;
-            
+
             if(i == 0) {
                 methods[turn][j][0][0] = 1;
+                cout << methods[turn][j][0][0] << " " << methods[turn][j][0][1] << " " << methods[turn][j][1][0] << " " << methods[turn][j][1][1] << endl;
                 continue;
             }
 
