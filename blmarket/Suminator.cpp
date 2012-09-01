@@ -28,7 +28,7 @@ long long check(vector<int> prog)
         if(prog[i] == 0) {
             if(stack.size() < 2) continue;
 
-            int tmp = stack.back();
+            LL tmp = stack.back();
             stack.pop_back();
             stack.back() += tmp;
         } else {
