@@ -88,25 +88,57 @@ long long cnt(char L, char R) {
     return ret;
 }
 
+bool rowinfo[55][2];
+int chk2(int u, int d)
+{
+    int ret = 0;
+    for(int i=0;i<=n;i++) {
+        bool fail = false;
+        for(int j=0;j<i;j++) {
+            if(rowinfo[j][u] == false) {
+                fail=true;
+                break;
+            }
+        }
+        for(int j=i;j<n;j++) {
+            if(rowinfo[j][d] == false) {
+                fail = true;
+                break;
+            }
+        }
+        if(!fail) ret++;
+    }
+    return ret;
+}
+
 class TwoConvexShapes 
 {
 public:
     int countWays(vector <string> grid_) 
     {
         grid = grid_; n =size(grid); m = size(grid[0]);
-        bool hasB = false, hasW = false;
-        for(int i=0;i<size(grid);i++) for(int j=0;j<size(grid[i]);j++) {
-            if(grid[i][j] == 'B') hasB = true;
-            if(grid[i][j] == 'W') hasW = true;
-        }
         long long ret = cnt('W', 'B') + cnt('B', 'W');
 
-        if(hasB == false || hasW == false) {
-            ret--;
+        for(int i=0;i<n;i++) {
+            rowinfo[i][0] = rowinfo[i][1] = true;
+            for(int j=0;j<m;j++) {
+                if(grid[i][j] == 'B') rowinfo[i][0] = false;
+                if(grid[i][j] == 'W') rowinfo[i][1] = false;
+            }
         }
-        if(hasB == false && hasW == false) {
-            ret--;
+
+        ret -= chk2(0,1) + chk2(1,0);
+        bool all[2];
+        all[0] = all[1] = true;
+        for(int i=0;i<n;i++) {
+            if(rowinfo[i][0] == false)
+                all[0] = false;
+            if(rowinfo[i][1] == false)
+                all[1] = false;
         }
+        if(all[0]) ret++;
+        if(all[1]) ret++;
+
         return ((ret + mod) % mod);
     }
 
