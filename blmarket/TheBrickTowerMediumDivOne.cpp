@@ -39,6 +39,7 @@ public:
             bool found = false;
             for(int i=0;i<size(data);i++) {
                 if(data[i].second <= cur) {
+                    cout << i << endl;
                     found = true;
                     ret.pb(data[i].second);
                     data.erase(data.begin() + i);
