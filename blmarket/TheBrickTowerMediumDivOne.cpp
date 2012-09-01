@@ -35,12 +35,13 @@ public:
         ret.pb(0);
         data.erase(data.begin());
 
+        cout << cur << endl;
         while(true) {
             bool found = false;
             for(int i=0;i<size(data);i++) {
-                if(data[i].second <= cur) {
-                    cout << i << endl;
+                if(data[i].first <= cur) {
                     found = true;
+                    cur = data[i].first;
                     ret.pb(data[i].second);
                     data.erase(data.begin() + i);
                     break;
