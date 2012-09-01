@@ -17,12 +17,13 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int check(vector<int> prog)
+long long check(vector<int> prog)
 {
-    vector<int> stack;
+    vector<long long> stack;
     for(int i=0;i<size(prog);i++) {
         if(prog[i] == 0) {
             if(stack.size() < 2) continue;
@@ -50,11 +51,10 @@ public:
                 }
 
                 program[i] = 1;
-                int tmp = check(program);
+                LL tmp = check(program);
                 program[i] = 2;
-                int tmp2 = check(program);
+                LL tmp2 = check(program);
                 if(tmp2 == tmp + 1) {
-                    cout << tmp << " " << wantedResult << endl;
                     if(wantedResult < tmp) return -1;
                     return wantedResult - tmp + 1;
                 }
