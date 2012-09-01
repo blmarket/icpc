@@ -27,7 +27,7 @@ public:
     {
         int minC = min(redCount, blueCount);
         if(redHeight == blueHeight) {
-            int ret = (minC + 1) * 2;
+            int ret = (minC + 1) * 2 - 1;
             if(redCount == blueCount) {
                 ret--;
             }
