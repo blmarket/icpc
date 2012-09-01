@@ -84,6 +84,7 @@ long long cnt(char L, char R) {
         ret += methods[turn][i][1][1];
     }
     ret %= mod;
+    cout << ret << endl;
     return ret;
 }
 
