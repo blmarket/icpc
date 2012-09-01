@@ -54,6 +54,7 @@ public:
                 program[i] = 2;
                 int tmp2 = check(program);
                 if(tmp2 == tmp + 1) {
+                    cout << tmp << " " << wantedResult << endl;
                     if(wantedResult < tmp) return -1;
                     return wantedResult - tmp + 1;
                 }
