@@ -60,14 +60,14 @@ long long cnt(char L, char R) {
 
             for(int k=0;k<=m;k++) {
                 if(k < j) { // left is expanding, right is shrinking
-                    methods[turn][j][0][1] = (methods[1-turn][k][0][0] + methods[1-turn][k][0][1]) % mod;
+                    methods[turn][j][0][1] += (methods[1-turn][k][0][0] + methods[1-turn][k][0][1]) % mod;
                 } else if(k > j) {
-                    methods[turn][j][1][0] = (methods[1-turn][k][0][0] + methods[1-turn][k][1][0]) % mod;
+                    methods[turn][j][1][0] += (methods[1-turn][k][0][0] + methods[1-turn][k][1][0]) % mod;
                 } else { // j == k
-                    methods[turn][j][0][0] = methods[1-turn][k][0][0];
-                    methods[turn][j][0][1] = methods[1-turn][k][0][1];
-                    methods[turn][j][1][0] = methods[1-turn][k][1][0];
-                    methods[turn][j][1][1] = methods[1-turn][k][1][1];
+                    methods[turn][j][0][0] += methods[1-turn][k][0][0];
+                    methods[turn][j][0][1] += methods[1-turn][k][0][1];
+                    methods[turn][j][1][0] += methods[1-turn][k][1][0];
+                    methods[turn][j][1][1] += methods[1-turn][k][1][1];
                 }
             }
 
