@@ -34,7 +34,6 @@ long long cnt(char L, char R) {
         int turn = (i % 2);
         memset(methods[turn], 0, sizeof(methods[0]));
         for(int j=0;j<=m;j++) {
-            cout << i << " " << j << endl;
             bool fail = false;
 
             for(int k=0;k<j;k++) {
@@ -54,7 +53,7 @@ long long cnt(char L, char R) {
 
             if(i == 0) {
                 methods[turn][j][0][0] = 1;
-                cout << methods[turn][j][0][0] << " " << methods[turn][j][0][1] << " " << methods[turn][j][1][0] << " " << methods[turn][j][1][1] << endl;
+                //cout << methods[turn][j][0][0] << " " << methods[turn][j][0][1] << " " << methods[turn][j][1][0] << " " << methods[turn][j][1][1] << endl;
                 continue;
             }
 
@@ -71,7 +70,7 @@ long long cnt(char L, char R) {
                 }
             }
 
-            cout << methods[turn][j][0][0] << " " << methods[turn][j][0][1] << " " << methods[turn][j][1][0] << " " << methods[turn][j][1][1] << endl;
+            //cout << methods[turn][j][0][0] << " " << methods[turn][j][0][1] << " " << methods[turn][j][1][0] << " " << methods[turn][j][1][1] << endl;
         }
     }
 
@@ -84,7 +83,7 @@ long long cnt(char L, char R) {
         ret += methods[turn][i][1][1];
     }
     ret %= mod;
-    cout << ret << endl;
+    //cout << ret << endl;
     return ret;
 }
 
@@ -202,6 +201,6 @@ public:
 int main()
 {
     TwoConvexShapes ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
