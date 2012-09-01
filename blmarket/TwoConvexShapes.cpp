@@ -34,6 +34,7 @@ long long cnt(char L, char R) {
         int turn = (i % 2);
         memset(methods[turn], 0, sizeof(methods[0]));
         for(int j=0;j<=m;j++) {
+            cout << i << " " << j << endl;
             bool fail = false;
             for(int k=0;k<j;k++) {
                 if(grid[i][k] == R) {
@@ -67,6 +68,8 @@ long long cnt(char L, char R) {
                     methods[turn][j][1][1] = methods[1-turn][k][1][1];
                 }
             }
+
+            cout << methods[turn][j][0][0] << " " << methods[turn][j][0][1] << " " << methods[turn][j][1][0] << " " << methods[turn][j][1][1] << endl;
         }
     }
 
