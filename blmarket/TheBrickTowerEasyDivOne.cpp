@@ -33,7 +33,7 @@ public:
             }
             return ret;
         }
-        int ret = (minC + 1) * 3;
+        int ret = (minC + 1) * 3 - 1;
         if(redCount == blueCount) {
             ret -= 2;
         }
