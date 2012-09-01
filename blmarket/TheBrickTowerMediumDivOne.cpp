@@ -28,16 +28,31 @@ public:
         vector<int> ret;
         vector<PII> data;
         for(int i=0;i<size(heights);i++) {
-            data.pb(mp(i, heights[i]));
+            data.pb(mp(heights[i], i));
         }
 
         int cur = heights[0];
         ret.pb(0);
         data.erase(data.begin());
 
-        for(int i=0;i<size(data);i++) {
-            cout << data[i].first << " " << data[i].second << endl;
+        while(true) {
+            bool found = false;
+            for(int i=0;i<size(data);i++) {
+                if(data[i].second <= cur) {
+                    found = true;
+                    ret.pb(data[i].second);
+                    data.erase(data.begin() + i);
+                    break;
+                }
+            }
+            if(!found) break;
         }
+
+        sort(data.begin(), data.end());
+        for(int i=0;i<size(data);i++)
+            ret.pb(data[i].second);
+
+        return ret;
     }
 
     
