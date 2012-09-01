@@ -100,6 +100,8 @@ public:
             if(grid[i][j] == 'W') hasW = true;
         }
         long long ret = cnt('W', 'B') + cnt('B', 'W');
+
+        cout << ret << endl;
         if(hasB == false || hasW == false) {
             ret--;
         }
