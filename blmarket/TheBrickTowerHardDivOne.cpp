@@ -80,6 +80,7 @@ int getstate(int *arr) {
 void gen(int *arr, int pos) {
     arr[pos] = -1;
     int ee = *max_element(arr, arr+pos) + 1;
+    cout << ee << endl;
     if(pos == 8) {
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
@@ -90,8 +91,8 @@ void gen(int *arr, int pos) {
         }
         for(int i=0;i<8;i++) {
             if(i + nSame >= 8) break;
-            if(p != 0) 
-                cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << " " << p << endl;
+            //if(p != 0) 
+            //    cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << " " << p << endl;
             matrix[32 * (i + nSame) + s2][32 * i + s1] += p;
             matrix[32 * (i + nSame) + s2][32 * i + s1] %= mod;
         }
@@ -152,8 +153,8 @@ public:
         gen(arr, 0);
         VVI tmp;
 
-        debug(matrix);
-        debug(initial);
+        //debug(matrix);
+        //debug(initial);
 
         matpow(H+1, tmp);
         matmul(tmp, initial, tmp);
