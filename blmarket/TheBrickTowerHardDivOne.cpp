@@ -19,13 +19,38 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+long long mod = 1234567891LL;
+int C,K,H;
+
+vector<vector<int> > matrix;
+vector<vector<int> > initial;
+
 int stmap[4][4][4][4];
-int curst = 0;
+int curst = 1;
 
 int tstate[4];
+
+int countsame(int *arr) {
+    int ret = 0;
+    ret += (arr[0] == arr[1]);
+    ret += (arr[0] == arr[2]);
+    ret += (arr[1] == arr[3]);
+    ret += (arr[2] == arr[3]);
+    return ret;
+}
+
+int countPerm(int candis) {
+    long long ret = 1;
+    for(int i=0;i<candis;i++) {
+        ret *= (C - i);
+        ret %= mod;
+    }
+    return ret;
+}
 
 int * exstate(int *arr) {
     map<int, int> m;
@@ -41,34 +66,84 @@ int getstate(int *arr) {
     int &ret = stmap[arr[0]][arr[1]][arr[2]][arr[3]];
     if(ret == -1) {
         ret = curst++;
+        int ee = *max_element(arr, arr+4) + 1;
+        int p = countPerm(ee);
+        int nSame = countsame(arr);
+        initial[32 * nSame + ret][0] = p;
+        for(int i=0;i<=K;i++) {
+            matrix[0][32 * i + ret] = 1;
+        }
     }
     return ret;
 }
 
 void gen(int *arr, int pos) {
+    arr[pos] = -1;
+    int ee = *max_element(arr, arr+pos) + 1;
     if(pos == 8) {
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
-        cout << s1 << " -> " << s2 << endl;
+        int p = countPerm(ee);
+        int nSame = countsame(tstate);
+        for(int i=0;i<4;i++) {
+            if(arr[i] == tstate[i]) nSame++;
+        }
+        for(int i=0;i<8;i++) {
+            if(i + nSame >= 8) break;
+            matrix[32 * (i + nSame) + s2][32 * i + s1] += p;
+            matrix[32 * (i + nSame) + s2][32 * i + s1] %= mod;
+        }
         return;
     }
-    arr[pos] = -1;
-    int ee = *max_element(arr, arr+pos) + 1;
     for(int i=0;i<=ee;i++) {
         arr[pos] = i;
         gen(arr, pos+1);
     }
 }
 
+void matmul(const VVI &a, const VVI &b, VVI &c) {
+    VVI tmp(a.size(), VI(b[0].size(), 0));
+    for(int i=0;i<a.size();i++) {
+        for(int j=0;j<b[0].size();j++) {
+            long long sum = 0;
+            for(int k=0;k<b.size();k++) {
+                sum += ((LL)a[i][k] * b[k][j]);
+                sum %= mod;
+            }
+            tmp[i][j] = sum;
+        }
+    }
+    c=tmp;
+}
+
+void matpow(LL a, VVI &out) {
+    out = matrix;
+    a--;
+    while(a) {
+        if(a & 1) {
+            matmul(out, matrix, out);
+        }
+        matmul(matrix, matrix, matrix);
+        a >>= 1;
+    }
+}
+
 class TheBrickTowerHardDivOne 
 {
 public:
-    int find(int C, int K, long long H) 
+    int find(int C_, int K_, long long H_) 
     {
+        C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        curst = 0;
+        matrix = vector<vector<int> >(260, vector<int>(260, 0));
+        initial = vector<vector<int> >(260, vector<int>(1, 0));
+        curst = 1;
         int arr[8];
         gen(arr, 0);
+        VVI tmp;
+        matpow(H+1, tmp);
+        matmul(tmp, initial, tmp);
+        return tmp[0][0];
     }
 
     
