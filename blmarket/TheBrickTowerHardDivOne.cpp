@@ -84,12 +84,15 @@ void gen(int *arr, int pos) {
     arr[pos] = -1;
     int ee = *max_element(arr, arr+pos) + 1;
     if(pos == 8) {
+        int X[] = {0,1,1,0,1,0,0,1};
+        bool flag = !memcmp(arr, X, sizeof(X));
+
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
         int p = countPerm(ee);
-        int nSame = countsame(tstate);
+        int nSame = countsame(arr + 4);
         for(int i=0;i<4;i++) {
-            if(arr[i] == tstate[i]) nSame++;
+            if(arr[i] == arr[i + 4]) nSame++;
         }
         for(int i=0;i<8;i++) {
             if(i + nSame >= 8) break;
