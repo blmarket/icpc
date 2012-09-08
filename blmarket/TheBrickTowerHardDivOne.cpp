@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <iterator>
 #include <queue>
 #include <set>
@@ -21,10 +22,34 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int stmap[4][4][4][4];
+int curst = 0;
+
+int tstate[4];
+
+int * exstate(int *arr) {
+    map<int, int> m;
+    for(int i=0;i<4;i++) {
+        if(m.count(arr[i]) == 0)
+            m[arr[i]] = m.size();
+        tstate[i] = m[arr[i]];
+    }
+    return tstate;
+}
+
+int getstate(int *arr) {
+    int &ret = stmap[arr[0]][arr[1]][arr[2]][arr[3]];
+    if(ret == -1) {
+        ret = curst++;
+    }
+    return ret;
+}
+
 void gen(int *arr, int pos) {
     if(pos == 8) {
-        copy(arr, arr+8, ostream_iterator<int>(cout, " "));
-        cout << endl;
+        int s1 = getstate(arr);
+        int s2 = getstate(exstate(arr + 4));
+        cout << s1 << " -> " << s2 << endl;
         return;
     }
     arr[pos] = -1;
@@ -40,6 +65,8 @@ class TheBrickTowerHardDivOne
 public:
     int find(int C, int K, long long H) 
     {
+        memset(stmap, -1, sizeof(stmap));
+        curst = 0;
         int arr[8];
         gen(arr, 0);
     }
