@@ -57,17 +57,9 @@ int * exstate(int *arr) {
     m.clear();
     for(int i=0;i<4;i++) {
         if(m.count(arr[i]) == 0) { 
-            if(arr[0] == 1 && arr[1] == 2 && arr[2] == 2 && arr[3] == 1) {
-                cout << m.size() << endl;
-                cout << arr[i] << " = " << m[arr[i]] << endl;
-            }
-            m[arr[i]] = m.size();
+            m[arr[i]] = m.size() - 1;
         }
         tstate[i] = m[arr[i]];
-    }
-    if(arr[0] == 1 && arr[1] == 2 && arr[2] == 2 && arr[3] == 1) {
-        cout << "gotcha" << endl;
-        cout << m[0] << " " << m[1] << " " << m[2] << " " << m[3] << endl;
     }
     return tstate;
 }
