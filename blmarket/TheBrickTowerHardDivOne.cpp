@@ -54,6 +54,7 @@ int countPerm(int candis) {
 
 int * exstate(int *arr) {
     map<int, int> m;
+    m.clear();
     for(int i=0;i<4;i++) {
         if(m.count(arr[i]) == 0)
             m[arr[i]] = m.size();
