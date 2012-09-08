@@ -24,6 +24,7 @@ void gen(int *arr, int pos) {
     if(pos == 8) {
         return;
     }
+    cout << arr[0] << endl;
     int ee = *max_element(arr, arr+pos) + 1;
     cout << ee << endl;
 }
