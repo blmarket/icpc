@@ -147,8 +147,8 @@ public:
     {
         C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        matrix = vector<vector<int> >(260, vector<int>(260, 0));
-        initial = vector<vector<int> >(260, vector<int>(1, 0));
+        matrix = vector<vector<int> >(160, vector<int>(160, 0));
+        initial = vector<vector<int> >(160, vector<int>(1, 0));
         matrix[0][0] = 1;
         curst = 1;
         int arr[8];
