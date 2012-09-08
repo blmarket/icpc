@@ -24,6 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 void gen(int *arr, int pos) {
     if(pos == 8) {
         copy(arr, arr+8, ostream_iterator<int>(cout, " "));
+        cout << endl;
         return;
     }
     arr[pos] = -1;
