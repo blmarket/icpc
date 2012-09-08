@@ -62,8 +62,7 @@ int * exstate(int *arr) {
     }
     if(arr[0] == 1 && arr[1] == 2 && arr[2] == 2 && arr[3] == 1) {
         cout << "gotcha" << endl;
-        cout << m[1] << endl;
-        copy(tstate, tstate+4, ostream_iterator<int>(cout," "));
+        cout << m[0] << " " << m[1] << " " << m[2] << " " << m[3] << endl;
     }
     return tstate;
 }
