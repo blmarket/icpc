@@ -50,6 +50,7 @@ int countPerm(int candis) {
         ret %= mod;
         cout << ret << endl;
     }
+    cout << C << " " << candis << " = " << ret << endl;
     return ret;
 }
 
