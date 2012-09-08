@@ -158,10 +158,9 @@ public:
         gen(arr, 0);
         VVI tmp;
 
-        cout << curst << endl;
+        debug(matrix);
 
         matpow(H, tmp);
-        debug(tmp);
         matmul(tmp, initial, tmp);
 
         cout << stmap[0][1][1][0] << endl;
