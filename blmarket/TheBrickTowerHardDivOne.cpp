@@ -114,28 +114,31 @@ void gen(int *arr, int pos) {
 }
 
 void matmul(const VVI &a, const VVI &b, VVI &c) {
-    VVI tmp(a.size(), VI(b[0].size(), 0));
+    c.resize(a.size());
     for(int i=0;i<a.size();i++) {
+        c[i].resize(b[0].size());
         for(int j=0;j<b[0].size();j++) {
             long long sum = 0;
             for(int k=0;k<b.size();k++) {
                 sum += ((LL)a[i][k] * b[k][j]);
                 sum %= mod;
             }
-            tmp[i][j] = sum;
+            c[i][j] = sum;
         }
     }
-    c=tmp;
 }
 
 void matpow(LL a, VVI &out) {
+    VVI tmp;
     out = matrix;
     a--;
     while(a) {
         if(a & 1) {
-            matmul(out, matrix, out);
+            matmul(out, matrix, tmp);
+            out.swap(tmp);
         }
-        matmul(matrix, matrix, matrix);
+        matmul(matrix, matrix, tmp);
+        matrix.swap(tmp);
         a >>= 1;
     }
 }
@@ -167,9 +170,9 @@ public:
         cout << " here?" << endl;
         matpow(H, tmp);
         cout << " here?" << endl;
-        matmul(tmp, initial, tmp);
+        matmul(tmp, initial, matrix);
 
-        return tmp[0][0];
+        return matrix[0][0];
     }
 
     
