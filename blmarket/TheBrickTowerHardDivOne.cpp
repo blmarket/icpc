@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iterator>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -22,11 +23,15 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 void gen(int *arr, int pos) {
     if(pos == 8) {
+        copy(arr, arr+8, ostream_iterator<int>(cout, " "));
         return;
     }
     arr[pos] = 0;
     int ee = *max_element(arr, arr+pos) + 1;
-    cout << ee << endl;
+    for(int i=0;i<ee;i++) {
+        arr[pos] = i;
+        gen(arr, pos+1);
+    }
 }
 
 class TheBrickTowerHardDivOne 
