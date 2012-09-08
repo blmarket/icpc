@@ -87,9 +87,12 @@ void gen(int *arr, int pos) {
         int X[] = {0,1,1,0,1,0,0,1};
         bool flag = !memcmp(arr, X, sizeof(X));
 
+        int ee2 = *max_element(arr, arr+4) + 1;
+
+        int p = countPerm(ee) / countPerm(ee2);
+
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
-        int p = countPerm(ee);
         int nSame = countsame(arr + 4);
 
         if(flag) cout << ee << " " << p << endl;
