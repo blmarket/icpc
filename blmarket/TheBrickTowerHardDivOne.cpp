@@ -90,7 +90,7 @@ void gen(int *arr, int pos) {
         }
         for(int i=0;i<8;i++) {
             if(i + nSame >= 8) break;
-            cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << endl;
+            cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << " " << p << endl;
             matrix[32 * (i + nSame) + s2][32 * i + s1] += p;
             matrix[32 * (i + nSame) + s2][32 * i + s1] %= mod;
         }
