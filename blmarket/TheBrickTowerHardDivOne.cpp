@@ -84,9 +84,6 @@ void gen(int *arr, int pos) {
     arr[pos] = -1;
     int ee = *max_element(arr, arr+pos) + 1;
     if(pos == 8) {
-        int X[] = {0,1,1,0,1,0,0,1};
-        bool flag = !memcmp(arr, X, sizeof(X));
-
         int ee2 = *max_element(arr, arr+4) + 1;
 
         int p = countPerm(ee);
@@ -97,8 +94,6 @@ void gen(int *arr, int pos) {
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
         int nSame = countsame(arr + 4);
-
-        if(flag) cout << ee << " " << p << endl;
 
         for(int i=0;i<4;i++) {
             if(arr[i] == arr[i + 4]) nSame++;
@@ -159,8 +154,8 @@ public:
     {
         C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        matrix = vector<vector<int> >(160, vector<int>(160, 0));
-        initial = vector<vector<int> >(160, vector<int>(1, 0));
+        matrix = vector<vector<int> >(maxstates * 8, vector<int>(maxstates * 8, 0));
+        initial = vector<vector<int> >(maxstates * 8, vector<int>(1, 0));
         matrix[0][0] = 1;
         curst = 1;
         int arr[8];
@@ -169,11 +164,11 @@ public:
 
         //debug(matrix);
 
+        cout << " here?" << endl;
         matpow(H, tmp);
+        cout << " here?" << endl;
         matmul(tmp, initial, tmp);
 
-        cout << stmap[0][1][1][0] << endl;
-        for(int i=0;i<4;i++) for(int j=0;j<4;j++) for(int k=0;k<4;k++) for(int l=0;l<4;l++) if(stmap[i][j][k][l] == 10) cout << i << j << k << l << endl;
         return tmp[0][0];
     }
 
