@@ -155,7 +155,7 @@ public:
         debug(matrix);
         debug(initial);
 
-        matpow(H+1, tmp);
+        matpow(H, tmp);
         matmul(tmp, initial, tmp);
         return tmp[0][0];
     }
