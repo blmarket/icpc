@@ -200,6 +200,7 @@ public:
         VVI tmp;
 
         debug(matrix);
+        debug(initial);
 
         cout << " here?" << endl;
         matpow(H, tmp);
