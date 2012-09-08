@@ -83,6 +83,7 @@ int getstate(int *arr) {
             exstate(tmparr, tstate);
             int tmp = stmap[tstate[0]][tstate[1]][tstate[2]][tstate[3]];
             if(tmp != -1) {
+                cout << arr[0] << arr[1] << arr[2] << arr[3] << " = " << tmp << endl;
                 ret = tmp;
                 break;
             }
