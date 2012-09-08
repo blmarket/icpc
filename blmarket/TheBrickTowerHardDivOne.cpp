@@ -161,7 +161,7 @@ public:
         gen(arr, 0);
         VVI tmp;
 
-        debug(matrix);
+        //debug(matrix);
 
         matpow(H, tmp);
         matmul(tmp, initial, tmp);
