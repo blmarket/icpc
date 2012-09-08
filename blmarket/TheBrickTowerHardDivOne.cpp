@@ -55,6 +55,9 @@ int countPerm(int candis) {
 int * exstate(int *arr) {
     map<int, int> m;
     m.clear();
+    if(arr[0] == 1 && arr[1] == 2 && arr[2] == 2 && arr[3] == 1) {
+        cout << "gotcha" << endl;
+    }
     for(int i=0;i<4;i++) {
         if(m.count(arr[i]) == 0)
             m[arr[i]] = m.size();
@@ -161,7 +164,6 @@ public:
         matmul(tmp, initial, tmp);
 
         cout << stmap[0][1][1][0] << endl;
-        cout << stmap[1][2][2][1] << endl;
         for(int i=0;i<4;i++) for(int j=0;j<4;j++) for(int k=0;k<4;k++) for(int l=0;l<4;l++) if(stmap[i][j][k][l] == 10) cout << i << j << k << l << endl;
         return tmp[0][0];
     }
