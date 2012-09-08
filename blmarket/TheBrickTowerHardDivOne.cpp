@@ -82,7 +82,6 @@ int getstate(int *arr) {
 void gen(int *arr, int pos) {
     arr[pos] = -1;
     int ee = *max_element(arr, arr+pos) + 1;
-    if(pos <= 1) cout << ee << endl;
     if(pos == 8) {
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
@@ -154,6 +153,8 @@ public:
         int arr[8];
         gen(arr, 0);
         VVI tmp;
+
+        cout << curst << endl;
 
         //debug(matrix);
         //debug(initial);
