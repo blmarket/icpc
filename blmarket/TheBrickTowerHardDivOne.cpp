@@ -130,6 +130,13 @@ void matpow(LL a, VVI &out) {
     }
 }
 
+void debug(const VVI &matrix) {
+    for(int i=0;i<size(matrix);i++) {
+        for(int j=0;j<size(matrix[i]);j++) if(matrix[i][j])
+            cout << i << " " << j << " = " << matrix[i][j] << endl;
+    }
+}
+
 class TheBrickTowerHardDivOne 
 {
 public:
@@ -139,15 +146,14 @@ public:
         memset(stmap, -1, sizeof(stmap));
         matrix = vector<vector<int> >(260, vector<int>(260, 0));
         initial = vector<vector<int> >(260, vector<int>(1, 0));
+        matrix[0][0] = 1;
         curst = 1;
         int arr[8];
         gen(arr, 0);
         VVI tmp;
 
-        for(int i=0;i<size(matrix);i++) {
-            for(int j=0;j<size(matrix[i]);j++) if(matrix[i][j])
-                cout << i << " " << j << " = " << matrix[i][j] << endl;
-        }
+        debug(matrix);
+        debug(initial);
 
         matpow(H+1, tmp);
         matmul(tmp, initial, tmp);
