@@ -26,9 +26,9 @@ void gen(int *arr, int pos) {
         copy(arr, arr+8, ostream_iterator<int>(cout, " "));
         return;
     }
-    arr[pos] = 0;
+    arr[pos] = -1;
     int ee = *max_element(arr, arr+pos) + 1;
-    for(int i=0;i<ee;i++) {
+    for(int i=0;i<=ee;i++) {
         arr[pos] = i;
         gen(arr, pos+1);
     }
