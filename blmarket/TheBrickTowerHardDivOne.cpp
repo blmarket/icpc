@@ -160,10 +160,8 @@ public:
 
         cout << curst << endl;
 
-        debug(matrix);
-        debug(initial);
-
         matpow(H, tmp);
+        debug(tmp);
         matmul(tmp, initial, tmp);
 
         cout << stmap[0][1][1][0] << endl;
