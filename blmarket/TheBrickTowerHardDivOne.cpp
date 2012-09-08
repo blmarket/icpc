@@ -72,7 +72,6 @@ void try_rotate(int *arr) {
 }
 
 int getstate(int *arr) {
-    bool original = false;
     int &ret = stmap[arr[0]][arr[1]][arr[2]][arr[3]];
     if(ret == -1) {
         int tmparr[4];
@@ -91,7 +90,6 @@ int getstate(int *arr) {
         //}
 
         if(ret == -1) {
-            original = true;
             ret = curst++;
         }
         int ee = *max_element(arr, arr+4) + 1;
@@ -106,7 +104,6 @@ int getstate(int *arr) {
             matrix[0][maxstates * i + ret] = 1;
         }
     }
-    if(!original) return -ret;
     return ret;
 }
 
