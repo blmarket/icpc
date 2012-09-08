@@ -72,6 +72,7 @@ void try_rotate(int *arr) {
 }
 
 int getstate(int *arr) {
+    bool original = false;
     int &ret = stmap[arr[0]][arr[1]][arr[2]][arr[3]];
     if(ret == -1) {
         int tmparr[4];
@@ -90,9 +91,9 @@ int getstate(int *arr) {
         }
 
         if(ret == -1) {
+            original = true;
             ret = curst++;
         }
-        cout << arr[0] << " " << arr[1] << " " << arr[2] << " " << arr[3] << endl;
         int ee = *max_element(arr, arr+4) + 1;
         int p = countPerm(ee);
         int nSame = countsame(arr);
@@ -105,6 +106,7 @@ int getstate(int *arr) {
             matrix[0][maxstates * i + ret] = 1;
         }
     }
+    if(!original) return -ret;
     return ret;
 }
 
@@ -120,8 +122,10 @@ void gen(int *arr, int pos) {
         p /= countPerm(ee2);
 
         int s1 = getstate(arr);
+        if(s1 < 0) return;
+
         int tstate[4];
-        int s2 = getstate(exstate(arr + 4, tstate));
+        int s2 = abs(getstate(exstate(arr + 4, tstate)));
         int nSame = countsame(arr + 4);
 
         for(int i=0;i<4;i++) {
