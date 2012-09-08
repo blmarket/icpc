@@ -33,8 +33,6 @@ vector<vector<int> > initial;
 int stmap[4][4][4][4];
 int curst = 1;
 
-int tstate[4];
-
 int countsame(int *arr) {
     int ret = 0;
     ret += (arr[0] == arr[1]);
@@ -53,16 +51,16 @@ int countPerm(int candis) {
     return ret;
 }
 
-int * exstate(int *arr) {
+int * exstate(int *arr, int *res) {
     map<int, int> m;
     m.clear();
     for(int i=0;i<4;i++) {
         if(m.count(arr[i]) == 0) { 
             m[arr[i]] = m.size() - 1;
         }
-        tstate[i] = m[arr[i]];
+        res[i] = m[arr[i]];
     }
-    return tstate;
+    return res;
 }
 
 void try_rotate(int *arr) {
@@ -78,16 +76,18 @@ int getstate(int *arr) {
     if(ret == -1) {
         int tmparr[4];
         memcpy(tmparr, arr, sizeof(tmparr));
-        /*
+
         for(int i=0;i<3;i++) {
+            int tstate[4];
             try_rotate(tmparr);
-            int tmp = stmap[tmparr[0]][tmparr[1]][tmparr[2]][tmparr[3]];
+            exstate(tmparr, tstate);
+            int tmp = stmap[tstate[0]][tstate[1]][tstate[2]][tstate[3]];
             if(tmp != -1) {
                 ret = tmp;
                 break;
             }
         }
-        */
+
         if(ret == -1) {
             ret = curst++;
         }
@@ -119,7 +119,8 @@ void gen(int *arr, int pos) {
         p /= countPerm(ee2);
 
         int s1 = getstate(arr);
-        int s2 = getstate(exstate(arr + 4));
+        int tstate[4];
+        int s2 = getstate(exstate(arr + 4, tstate));
         int nSame = countsame(arr + 4);
 
         for(int i=0;i<4;i++) {
