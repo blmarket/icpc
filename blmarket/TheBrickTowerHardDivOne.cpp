@@ -158,7 +158,7 @@ public:
         matpow(H+1, tmp);
         matmul(tmp, initial, tmp);
 
-        cout << stmap[0][1][0][1] << endl;
+        cout << stmap[0][1][1][0] << endl;
         return tmp[0][0];
     }
 
