@@ -24,6 +24,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 long long mod = 1234567891LL;
+int maxstates = 20;
 int C,K,H;
 
 vector<vector<int> > matrix;
@@ -71,9 +72,9 @@ int getstate(int *arr) {
         int ee = *max_element(arr, arr+4) + 1;
         int p = countPerm(ee);
         int nSame = countsame(arr);
-        initial[32 * nSame + ret][0] = p;
+        initial[maxstates * nSame + ret][0] = p;
         for(int i=0;i<=K;i++) {
-            matrix[0][32 * i + ret] = 1;
+            matrix[0][maxstates * i + ret] = 1;
         }
     }
     return ret;
@@ -93,9 +94,9 @@ void gen(int *arr, int pos) {
         for(int i=0;i<8;i++) {
             if(i + nSame >= 8) break;
             //if(p != 0) 
-            //    cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << " " << p << endl;
-            matrix[32 * (i + nSame) + s2][32 * i + s1] += p;
-            matrix[32 * (i + nSame) + s2][32 * i + s1] %= mod;
+            //    cout << maxstates * (i + nSame) + s2 << " " << maxstates * i + s1 << " " << p << endl;
+            matrix[maxstates * (i + nSame) + s2][maxstates * i + s1] += p;
+            matrix[maxstates * (i + nSame) + s2][maxstates * i + s1] %= mod;
         }
         return;
     }
