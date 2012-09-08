@@ -78,6 +78,7 @@ int getstate(int *arr) {
     if(ret == -1) {
         int tmparr[4];
         memcpy(tmparr, arr, sizeof(tmparr));
+        /*
         for(int i=0;i<3;i++) {
             try_rotate(tmparr);
             int tmp = stmap[tmparr[0]][tmparr[1]][tmparr[2]][tmparr[3]];
@@ -86,6 +87,7 @@ int getstate(int *arr) {
                 break;
             }
         }
+        */
         if(ret == -1) {
             ret = curst++;
         }
