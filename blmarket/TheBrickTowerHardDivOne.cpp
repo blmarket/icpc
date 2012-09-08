@@ -15,7 +15,7 @@
 
 using namespace std;
 
-typedef vector<long long> VI;
+typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
@@ -27,8 +27,8 @@ long long mod = 1234567891LL;
 int maxstates = 16;
 int C,K,H;
 
-vector<vector<LL> > matrix;
-vector<vector<LL> > initial;
+vector<vector<int> > matrix;
+vector<vector<int> > initial;
 
 int stmap[4][4][4][4];
 int curst = 1;
@@ -93,8 +93,11 @@ int getstate(int *arr) {
         int ee = *max_element(arr, arr+4) + 1;
         int p = countPerm(ee);
         int nSame = countsame(arr);
-        initial[maxstates * nSame + ret][0] += p;
-        initial[maxstates * nSame + ret][0] %= p;
+        
+        long long tmp = initial[maxstates * nSame + ret][0];
+        tmp += p;
+        tmp %= mod;
+        initial[maxstates * nSame + ret][0] = tmp;
         for(int i=0;i<=K;i++) {
             matrix[0][maxstates * i + ret] = 1;
         }
@@ -180,8 +183,8 @@ public:
     {
         C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        matrix = vector<vector<LL> >(maxstates * 8, vector<LL>(maxstates * 8, 0));
-        initial = vector<vector<LL> >(maxstates * 8, vector<LL>(1, 0));
+        matrix = vector<vector<int> >(maxstates * 8, vector<int>(maxstates * 8, 0));
+        initial = vector<vector<int> >(maxstates * 8, vector<int>(1, 0));
         matrix[0][0] = 1;
         curst = 1;
         int arr[8];
