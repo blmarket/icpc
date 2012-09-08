@@ -48,9 +48,7 @@ int countPerm(int candis) {
     for(int i=0;i<candis;i++) {
         ret *= (C - i);
         ret %= mod;
-        cout << ret << endl;
     }
-    cout << C << " " << candis << " = " << ret << endl;
     return ret;
 }
 
@@ -93,7 +91,8 @@ void gen(int *arr, int pos) {
         }
         for(int i=0;i<8;i++) {
             if(i + nSame >= 8) break;
-            cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << " " << p << endl;
+            if(p != 0) 
+                cout << 32 * (i + nSame) + s2 << " " << 32 * i + s1 << " " << p << endl;
             matrix[32 * (i + nSame) + s2][32 * i + s1] += p;
             matrix[32 * (i + nSame) + s2][32 * i + s1] %= mod;
         }
