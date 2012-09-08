@@ -48,6 +48,7 @@ int countPerm(int candis) {
     for(int i=0;i<candis;i++) {
         ret *= (C - i);
         ret %= mod;
+        cout << ret << endl;
     }
     return ret;
 }
