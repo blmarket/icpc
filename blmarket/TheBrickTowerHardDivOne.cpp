@@ -199,7 +199,7 @@ public:
         gen(arr, 0);
         VVI tmp;
 
-        //debug(matrix);
+        debug(matrix);
 
         cout << " here?" << endl;
         matpow(H, tmp);
