@@ -144,12 +144,12 @@ public:
         gen(arr, 0);
         VVI tmp;
 
-        //for(int i=0;i<size(matrix);i++) {
-        //    for(int j=0;j<size(matrix[i]);j++) {
-        //        cout << matrix[i][j] << " ";
-        //    }
-        //    cout << endl;
-        //}
+        for(int i=0;i<size(matrix);i++) {
+            for(int j=0;j<size(matrix[i]);j++) {
+                cout << matrix[i][j] << " ";
+            }
+            cout << endl;
+        }
 
         matpow(H+1, tmp);
         matmul(tmp, initial, tmp);
