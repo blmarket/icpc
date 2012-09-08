@@ -15,7 +15,7 @@
 
 using namespace std;
 
-typedef vector<int> VI;
+typedef vector<long long> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
@@ -27,8 +27,8 @@ long long mod = 1234567891LL;
 int maxstates = 16;
 int C,K,H;
 
-vector<vector<int> > matrix;
-vector<vector<int> > initial;
+vector<vector<LL> > matrix;
+vector<vector<LL> > initial;
 
 int stmap[4][4][4][4];
 int curst = 1;
@@ -65,15 +65,36 @@ int * exstate(int *arr) {
     return tstate;
 }
 
+void try_rotate(int *arr) {
+    int tmp = arr[0];
+    arr[0] = arr[1];
+    arr[1] = arr[3];
+    arr[3] = arr[2];
+    arr[2] = tmp;
+}
+
 int getstate(int *arr) {
     int &ret = stmap[arr[0]][arr[1]][arr[2]][arr[3]];
     if(ret == -1) {
+        int tmparr[4];
+        memcpy(tmparr, arr, sizeof(tmparr));
+        for(int i=0;i<3;i++) {
+            try_rotate(tmparr);
+            int tmp = stmap[tmparr[0]][tmparr[1]][tmparr[2]][tmparr[3]];
+            if(tmp != -1) {
+                ret = tmp;
+                break;
+            }
+        }
+        if(ret == -1) {
+            ret = curst++;
+        }
         cout << arr[0] << " " << arr[1] << " " << arr[2] << " " << arr[3] << endl;
-        ret = curst++;
         int ee = *max_element(arr, arr+4) + 1;
         int p = countPerm(ee);
         int nSame = countsame(arr);
-        initial[maxstates * nSame + ret][0] = p;
+        initial[maxstates * nSame + ret][0] += p;
+        initial[maxstates * nSame + ret][0] %= p;
         for(int i=0;i<=K;i++) {
             matrix[0][maxstates * i + ret] = 1;
         }
@@ -159,8 +180,8 @@ public:
     {
         C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        matrix = vector<vector<int> >(maxstates * 8, vector<int>(maxstates * 8, 0));
-        initial = vector<vector<int> >(maxstates * 8, vector<int>(1, 0));
+        matrix = vector<vector<LL> >(maxstates * 8, vector<LL>(maxstates * 8, 0));
+        initial = vector<vector<LL> >(maxstates * 8, vector<LL>(1, 0));
         matrix[0][0] = 1;
         curst = 1;
         int arr[8];
