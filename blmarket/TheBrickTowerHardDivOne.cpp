@@ -78,17 +78,17 @@ int getstate(int *arr) {
         int tmparr[4];
         memcpy(tmparr, arr, sizeof(tmparr));
 
-        for(int i=0;i<3;i++) {
-            int tstate[4];
-            try_rotate(tmparr);
-            exstate(tmparr, tstate);
-            int tmp = stmap[tstate[0]][tstate[1]][tstate[2]][tstate[3]];
-            if(tmp != -1) {
-                cout << arr[0] << arr[1] << arr[2] << arr[3] << " = " << tmp << endl;
-                ret = tmp;
-                break;
-            }
-        }
+        //for(int i=0;i<3;i++) {
+        //    int tstate[4];
+        //    try_rotate(tmparr);
+        //    exstate(tmparr, tstate);
+        //    int tmp = stmap[tstate[0]][tstate[1]][tstate[2]][tstate[3]];
+        //    if(tmp != -1) {
+        //        cout << arr[0] << arr[1] << arr[2] << arr[3] << " = " << tmp << endl;
+        //        ret = tmp;
+        //        break;
+        //    }
+        //}
 
         if(ret == -1) {
             original = true;
