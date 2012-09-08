@@ -157,7 +157,7 @@ public:
 
         cout << curst << endl;
 
-        //debug(matrix);
+        debug(matrix);
         debug(initial);
 
         matpow(H+1, tmp);
