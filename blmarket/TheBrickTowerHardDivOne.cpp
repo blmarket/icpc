@@ -91,6 +91,9 @@ void gen(int *arr, int pos) {
         int s2 = getstate(exstate(arr + 4));
         int p = countPerm(ee);
         int nSame = countsame(arr + 4);
+
+        if(flag) cout << p << endl;
+
         for(int i=0;i<4;i++) {
             if(arr[i] == arr[i + 4]) nSame++;
         }
