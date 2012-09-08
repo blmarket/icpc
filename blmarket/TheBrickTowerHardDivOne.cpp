@@ -55,13 +55,14 @@ int countPerm(int candis) {
 int * exstate(int *arr) {
     map<int, int> m;
     m.clear();
-    if(arr[0] == 1 && arr[1] == 2 && arr[2] == 2 && arr[3] == 1) {
-        cout << "gotcha" << endl;
-    }
     for(int i=0;i<4;i++) {
         if(m.count(arr[i]) == 0)
             m[arr[i]] = m.size();
         tstate[i] = m[arr[i]];
+    }
+    if(arr[0] == 1 && arr[1] == 2 && arr[2] == 2 && arr[3] == 1) {
+        cout << "gotcha" << endl;
+        copy(tstate, tstate+4, ostream_iterator<int>(cout," "));
     }
     return tstate;
 }
