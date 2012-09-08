@@ -155,8 +155,10 @@ public:
         debug(matrix);
         debug(initial);
 
-        matpow(H, tmp);
+        matpow(H+1, tmp);
         matmul(tmp, initial, tmp);
+
+        cout << stmap[0][1][0][1] << endl;
         return tmp[0][0];
     }
 
