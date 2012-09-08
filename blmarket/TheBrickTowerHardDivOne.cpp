@@ -83,7 +83,6 @@ void gen(int *arr, int pos) {
     if(pos == 8) {
         int s1 = getstate(arr);
         int s2 = getstate(exstate(arr + 4));
-        cout << ee << endl;
         int p = countPerm(ee);
         int nSame = countsame(tstate);
         for(int i=0;i<4;i++) {
