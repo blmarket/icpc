@@ -24,7 +24,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 long long mod = 1234567891LL;
-long long cut = mod * mod * 17;
+long long cut = mod * mod * 16;
 int maxstates = 15;
 #define N 120
 int C,K;
