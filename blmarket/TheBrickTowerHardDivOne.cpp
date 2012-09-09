@@ -136,7 +136,7 @@ void gen(int *arr, int pos) {
     if(pos == 8) {
         int ee2 = *max_element(arr, arr+4) + 1;
 
-        if(ee >= C) return;
+        if(ee > C) return;
 
         long long p = 1;
         for(int i=ee2;i<ee;i++) {
