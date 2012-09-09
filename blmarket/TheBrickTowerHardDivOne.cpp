@@ -249,6 +249,6 @@ int main()
 {
     TheBrickTowerHardDivOne ___test; 
     //___test.run_test(-1); 
-    ___test.find(2027, 6, 133181695103836835LL);
+    cout << ___test.find(2027, 6, 133181695103836835LL) << endl;
 } 
 // END CUT HERE
