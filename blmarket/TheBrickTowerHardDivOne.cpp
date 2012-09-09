@@ -24,7 +24,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 long long mod = 1234567891LL;
-long long cut = mod * mod * 16;
+long long cut = mod * mod;
 int maxstates = 15;
 #define N 120
 int C,K;
@@ -41,7 +41,7 @@ mat * matmul(mat *m1, mat *m2, mat *tmp)
             long long sum = 0;
             for(int k=0;k<=N;k++) {
                 sum += ((LL)m1->data[i][k]) * m2->data[k][j];
-                if(sum >= cut) sum %= mod;
+                if(sum >= cut) sum -= cut;
             }
             sum %= mod;
             tmp->data[i][j] = sum;
