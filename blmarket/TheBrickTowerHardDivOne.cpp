@@ -196,6 +196,10 @@ mat * matpow(LL a) {
 }
 
 void debug(mat *matrix) {
+    for(int i=0;i<=N;i++) {
+        for(int j=0;j<=N;j++) cout << matrix->data[i][j] << " ";
+        cout << endl;
+    }
 }
 
 class TheBrickTowerHardDivOne 
