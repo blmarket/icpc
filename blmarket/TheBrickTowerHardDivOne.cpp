@@ -25,6 +25,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long mod = 1234567891LL;
 int maxstates = 16;
+int N = maxstates * 8;
 int C,K,H;
 
 vector<vector<int> > matrix;
@@ -101,7 +102,7 @@ int getstate(int *arr) {
         tmp %= mod;
         initial[maxstates * nSame + ret][0] = tmp;
         for(int i=0;i<=K;i++) {
-            matrix[0][maxstates * i + ret] = 1;
+            matrix[N][maxstates * i + ret] = 1;
         }
     }
     return ret;
@@ -188,10 +189,10 @@ public:
     {
         C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        matrix = vector<vector<int> >(maxstates * 8, vector<int>(maxstates * 8, 0));
-        initial = vector<vector<int> >(maxstates * 8, vector<int>(1, 0));
-        matrix[0][0] = 1;
-        curst = 1;
+        matrix = vector<vector<int> >(N+1, vector<int>(N+1, 0));
+        initial = vector<vector<int> >(N+1, vector<int>(1, 0));
+        matrix[N][N] = 1;
+        curst = 0;
         int arr[8];
         gen(arr, 0);
         VVI tmp;
@@ -199,12 +200,13 @@ public:
         //debug(matrix);
         //debug(initial);
 
+        cout << curst << endl;
         cout << " here?" << endl;
         matpow(H, tmp);
         cout << " here?" << endl;
         matmul(tmp, initial, matrix);
 
-        return matrix[0][0];
+        return matrix[N][0];
     }
 
     
