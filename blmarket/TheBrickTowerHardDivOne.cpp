@@ -183,6 +183,13 @@ mat * matpow(LL a) {
     return result;
 }
 
+void debug(mat *matrix) {
+    for(int i=0;i<=N;i++) {
+        copy(matrix->data[i], matrix->data[i] + N+1, ostream_iterator<int>(cout," "));
+        cout << endl;
+    }
+}
+
 class TheBrickTowerHardDivOne 
 {
 public:
@@ -196,6 +203,8 @@ public:
         curst = 0;
         int arr[8];
         gen(arr, 0);
+
+        debug(matrix);
 
         //debug(matrix);
         //debug(initial);
