@@ -25,11 +25,31 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long mod = 1234567891LL;
 int maxstates = 15;
-int N = maxstates * 8;
-int C,K,H;
+#define N 120
+int C,K;
+long long H;
 
-vector<vector<int> > matrix;
-vector<vector<int> > initial;
+struct mat {
+    int data[N+1][N+1];
+};
+
+mat * matmul(mat *m1, mat *m2, mat *tmp) 
+{
+    for(int i=0;i<=N;i++) {
+        for(int j=0;j<=N;j++) {
+            long long sum = 0;
+            for(int k=0;k<=N;k++) {
+                sum += (LL)m1->data[i][k] * m2->data[k][j];
+            }
+            sum %= mod;
+            tmp->data[i][j] = sum;
+        }
+    }
+
+    return tmp;
+}
+
+mat *matrix = new mat(), *initial = new mat(), *tmpmatrix = new mat();
 
 int stmap[4][4][4][4];
 int curst = 1;
@@ -97,12 +117,12 @@ int getstate(int *arr) {
         int p = countPerm(ee);
         int nSame = countsame(arr);
         
-        long long tmp = initial[maxstates * nSame + ret][0];
+        long long tmp = initial->data[maxstates * nSame + ret][0];
         tmp += p;
         tmp %= mod;
-        initial[maxstates * nSame + ret][0] = tmp;
+        initial->data[maxstates * nSame + ret][0] = tmp;
         for(int i=0;i<=K;i++) {
-            matrix[N][maxstates * i + ret] = 1;
+            matrix->data[N][maxstates * i + ret] = 1;
         }
     }
     return ret;
@@ -133,8 +153,8 @@ void gen(int *arr, int pos) {
             if(i + nSame >= 8) break;
             //if(p != 0) 
             //    cout << maxstates * (i + nSame) + s2 << " " << maxstates * i + s1 << " " << p << endl;
-            matrix[maxstates * (i + nSame) + s2][maxstates * i + s1] += p;
-            matrix[maxstates * (i + nSame) + s2][maxstates * i + s1] %= mod;
+            matrix->data[maxstates * (i + nSame) + s2][maxstates * i + s1] += p;
+            matrix->data[maxstates * (i + nSame) + s2][maxstates * i + s1] %= mod;
         }
         return;
     }
@@ -144,42 +164,23 @@ void gen(int *arr, int pos) {
     }
 }
 
-void matmul(const VVI &a, const VVI &b, VVI &c) {
-    c.resize(a.size());
-    for(int i=0;i<a.size();i++) {
-        c[i].resize(b[0].size());
-        for(int j=0;j<b[0].size();j++) {
-            long long sum = 0;
-            for(int k=0;k<b.size();k++) {
-                sum += ((LL)a[i][k] * b[k][j]);
-                sum %= mod;
-            }
-            c[i][j] = sum;
-        }
-    }
-}
-
-void matpow(LL a, VVI &out) {
-    VVI tmp;
-    out = matrix;
+mat * matpow(LL a) {
+    mat *result = new mat();
+    memcpy(result->data, matrix->data, sizeof(matrix->data));
     a--;
+
     while(a) {
         if(a & 1) {
-            matmul(out, matrix, tmp);
-            out.swap(tmp);
+            matmul(result, matrix, tmpmatrix);
+            swap(result, tmpmatrix);
         }
-        matmul(matrix, matrix, tmp);
-        matrix.swap(tmp);
+        matmul(matrix, matrix, tmpmatrix);
+        swap(matrix, tmpmatrix);
         a >>= 1;
         cout << a << endl;
     }
-}
 
-void debug(const VVI &matrix) {
-    for(int i=0;i<size(matrix);i++) {
-        for(int j=0;j<size(matrix[i]);j++) if(matrix[i][j])
-            cout << i << " " << j << " = " << matrix[i][j] << endl;
-    }
+    return result;
 }
 
 class TheBrickTowerHardDivOne 
@@ -189,24 +190,21 @@ public:
     {
         C = C_; K = K_; H = H_;
         memset(stmap, -1, sizeof(stmap));
-        matrix = vector<vector<int> >(N+1, vector<int>(N+1, 0));
-        initial = vector<vector<int> >(N+1, vector<int>(1, 0));
-        matrix[N][N] = 1;
+        memset(matrix->data, 0, sizeof(matrix->data));
+        memset(initial->data, 0, sizeof(initial->data));
+        matrix->data[N][N] = 1;
         curst = 0;
         int arr[8];
         gen(arr, 0);
-        VVI tmp;
 
         //debug(matrix);
         //debug(initial);
 
         cout << curst << endl;
-        cout << " here?" << endl;
-        matpow(H, tmp);
-        cout << " here?" << endl;
+        mat* tmp = matpow(H);
         matmul(tmp, initial, matrix);
 
-        return matrix[N][0];
+        return matrix->data[N][0];
     }
 
     
