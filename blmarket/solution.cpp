@@ -288,7 +288,7 @@ public:
     }
     
 //    debug = true;
-//    left.print();
+    left.print();
     memset(cnt, 0, sizeof(cnt));
     base = vector<li>(4, -1);
     recur(vector<li>(), -1, 1);
