@@ -163,10 +163,10 @@ void gen(int *arr, int pos) {
         }
         for(int i=0;i<8;i++) {
             if(i + nSame >= 8) break;
-            //if(p != 0) 
-            //    cout << maxstates * (i + nSame) + s2 << " " << maxstates * i + s1 << " " << p << endl;
-            matrix->data[maxstates * (i + nSame) + s2][maxstates * i + s1] += p;
-            matrix->data[maxstates * (i + nSame) + s2][maxstates * i + s1] %= mod;
+            long long tmp = p;
+            tmp += matrix->data[maxstates * (i + nSame) + s2][maxstates * i + s1];
+            tmp %= mod;
+            matrix->data[maxstates * (i + nSame) + s2][maxstates * i + s1] = tmp;
         }
         return;
     }
