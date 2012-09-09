@@ -185,10 +185,6 @@ mat * matpow(LL a) {
 }
 
 void debug(mat *matrix) {
-    for(int i=0;i<=N;i++) {
-        copy(matrix->data[i], matrix->data[i] + N+1, ostream_iterator<int>(cout," "));
-        cout << endl;
-    }
 }
 
 class TheBrickTowerHardDivOne 
