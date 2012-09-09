@@ -24,7 +24,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 long long mod = 1234567891LL;
-long long cut = mod * mod * 10;
+long long cut = mod * mod * 17;
 int maxstates = 15;
 #define N 120
 int C,K;
@@ -41,7 +41,7 @@ mat * matmul(mat *m1, mat *m2, mat *tmp)
             long long sum = 0;
             for(int k=0;k<=N;k++) {
                 sum += ((LL)m1->data[i][k]) * m2->data[k][j];
-                sum %= mod;
+                if(sum >= cut) sum %= mod;
             }
             sum %= mod;
             tmp->data[i][j] = sum;
@@ -136,10 +136,13 @@ void gen(int *arr, int pos) {
     if(pos == 8) {
         int ee2 = *max_element(arr, arr+4) + 1;
 
-        int p = countPerm(ee);
-        if(p == 0)
-            return;
-        p /= countPerm(ee2);
+        if(ee2 >= C) return;
+
+        long long p = 1;
+        for(int i=ee2;i<ee;i++) {
+            p *= (C - i);
+            p %= mod;
+        }
 
         int s1 = getstate(arr);
         if(s1 < 0) return;
