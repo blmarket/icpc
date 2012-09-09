@@ -40,8 +40,8 @@ mat * matmul(mat *m1, mat *m2, mat *tmp)
             long long sum = 0;
             for(int k=0;k<=N;k++) {
                 sum += ((LL)m1->data[i][k]) * m2->data[k][j];
+                sum %= mod;
             }
-            cout << sum << endl;
             sum %= mod;
             tmp->data[i][j] = sum;
         }
