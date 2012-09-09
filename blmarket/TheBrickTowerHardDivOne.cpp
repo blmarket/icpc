@@ -31,6 +31,22 @@ long long H;
 
 struct mat {
     int data[N+1][N+1];
+
+    mat& operator*= (const mat &rhs) {
+        mat tmp;
+        for(int i=0;i<=N;i++) {
+            for(int j=0;j<=N;j++) {
+                long long sum = 0;
+                for(int k=0;k<=N;k++) {
+                    sum += (LL)data[i][k] * rhs.data[k][j];
+                    sum %= mod;
+                }
+                tmp.data[i][j] = sum;
+            }
+        }
+        memcpy(data, tmp.data, sizeof(data));
+        return *this;
+    }
 };
 
 mat * matmul(mat *m1, mat *m2, mat *tmp) 
@@ -172,11 +188,9 @@ mat * matpow(LL a) {
 
     while(a) {
         if(a & 1) {
-            matmul(result, matrix, tmpmatrix);
-            swap(result, tmpmatrix);
+            *result *= *matrix;
         }
-        matmul(matrix, matrix, tmpmatrix);
-        swap(matrix, tmpmatrix);
+        *matrix *= *matrix;
         a >>= 1;
         cout << a << endl;
     }
