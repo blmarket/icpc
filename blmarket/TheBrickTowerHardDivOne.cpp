@@ -136,13 +136,20 @@ void gen(int *arr, int pos) {
     if(pos == 8) {
         int ee2 = *max_element(arr, arr+4) + 1;
 
-        if(ee2 >= C) return;
+        if(ee >= C) return;
 
         long long p = 1;
         for(int i=ee2;i<ee;i++) {
             p *= (C - i);
             p %= mod;
         }
+
+        /*
+        int p = countPerm(ee);
+        if(p == 0)
+            return;
+        p /= countPerm(ee2);
+        */
 
         int s1 = getstate(arr);
         if(s1 < 0) return;
