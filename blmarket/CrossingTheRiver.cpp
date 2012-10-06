@@ -68,6 +68,7 @@ public:
 								tmp.pb(left[i] + depth);
 						}
 						sort(tmp.begin(), tmp.end());
+						cout << "first one = " << left[water-1] << endl;
 						int tmp2 = check(tmp, land, left[water-1]);
 
 						if(tmp2 == land) return "POSSIBLE";
@@ -114,6 +115,6 @@ public:
 int main()
 {
     CrossingTheRiver ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
