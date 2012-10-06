@@ -51,7 +51,10 @@ public:
 
 				sort(block.begin(), block.end());
 				for(int i=0;i<size(blockHeight);i++) {
-						if(check(i)) return "POSSIBLE";
+						if(check(i)) { 
+								cout << i << endl;
+								return "POSSIBLE";
+						}
 				}
 				return "IMPOSSIBLE";
     }
