@@ -71,12 +71,11 @@ public:
 						cout << "first one = " << left[water-1] << endl;
 						int tmp2 = check(tmp, land, left[water-1]);
 
-						cout << tmp2 << endl;
-
 						if(tmp2 == land) return "POSSIBLE";
 						if(tmp2 == -1) return "IMPOSSIBLE";
 
 						int target = tmp[tmp2] - 1 - depth;
+						cout << "target = " << target << endl;
 						if(target < 0) return "IMPOSSIBLE";
 
 						bool fail = true;
