@@ -25,19 +25,24 @@ vector<int> block;
 int depth;
 
 bool check(int a) {
+		vector<int> left;
 		if(a > water) return false;
 		for(int i=0;i<a;i++) {
 				if(block[i] < depth) return false;
+				left.pb(block[i] - depth);
 		}
 		int tmp = water - a;
 
 		for(int i=a+1;i<size(block);i++) {
 				if(tmp == 0) break;
 				if(block[i] < depth) continue;
-				if(block[i] - depth < block[a]) {
+				if(block[i] - depth <= block[a]) {
+						left.pb(block[i] - depth);
 						tmp--;
 				}
 		}
+
+		if(block[a] == 0) return true;
 
 		return tmp == 0;
 }
@@ -49,7 +54,9 @@ public:
     {		
 				water = waterWidth_; land = landWidth_; block = blockHeight; depth = depth_;
 
+				block.pb(0);
 				sort(block.begin(), block.end());
+
 				for(int i=0;i<size(blockHeight);i++) {
 						if(check(i)) { 
 								cout << i << endl;
