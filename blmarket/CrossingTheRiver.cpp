@@ -24,27 +24,16 @@ int water, land;
 vector<int> block;
 int depth;
 
-bool check(int a) {
-		vector<int> left;
-		if(a > water) return false;
-		for(int i=0;i<a;i++) {
-				if(block[i] < depth) return false;
-				left.pb(block[i] - depth);
-		}
-		int tmp = water - a;
-
-		for(int i=a+1;i<size(block);i++) {
-				if(tmp == 0) break;
-				if(block[i] < depth) continue;
-				if(block[i] - depth <= block[a]) {
-						left.pb(block[i] - depth);
-						tmp--;
+int check(VI &a, int sz, int cur) {
+		if(size(a) < sz) return -1;
+		for(int i=0;i<sz;i++) {
+				if(a[i] == cur || a[i] == cur + 1) {
+						cur = a[i];
+						continue;
 				}
+				return i;
 		}
-
-		if(block[a] == 0) return true;
-
-		return tmp == 0;
+		return sz;
 }
 
 class CrossingTheRiver 
@@ -54,15 +43,52 @@ public:
     {		
 				water = waterWidth_; land = landWidth_; block = blockHeight; depth = depth_;
 
-				block.pb(0);
 				sort(block.begin(), block.end());
 
-				for(int i=0;i<size(blockHeight);i++) {
-						if(check(i)) { 
-								cout << i << endl;
-								return "POSSIBLE";
+				vector<int> left, right, tmp;
+
+				for(int i=0;i<size(block);i++) {
+						if(block[i] < depth) {
+								right.pb(block[i]);
+						} else {
+								left.pb(block[i] - depth);
 						}
 				}
+				sort(left.begin(), left.end());
+
+				while(true) {
+						if(check(left, water, 0) != water) return "IMPOSSIBLE";
+
+						if(left[water - 1] == 0) {
+								return "POSSIBLE";
+						}
+
+						tmp = right;
+						for(int i=water;i<size(left);i++) {
+								tmp.pb(left[i] + depth);
+						}
+						sort(tmp.begin(), tmp.end());
+						int tmp2 = check(tmp, land, left[water-1]);
+
+						if(tmp2 == land) return "POSSIBLE";
+						if(tmp2 == -1) return "IMPOSSIBLE";
+
+						int target = tmp[tmp2] - 1 - depth;
+						if(target < 0) return "IMPOSSIBLE";
+
+						bool fail = true;
+						for(int i=0;i<size(left);i++) {
+								if(left[i] == target) {
+										right.pb(left[i] + depth);
+										left.erase(left.begin() + i);
+										fail = false;
+										break;
+								}
+						}
+						if(fail) return "IMPOSSIBLE";
+				}
+
+
 				return "IMPOSSIBLE";
     }
 
