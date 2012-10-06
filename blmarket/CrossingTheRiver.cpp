@@ -25,6 +25,7 @@ class CrossingTheRiver
 public:
     string isItEvenPossible(int waterWidth, int landWidth, vector <int> blockHeight, int depth) 
     {		
+				return "";
     }
 
     
