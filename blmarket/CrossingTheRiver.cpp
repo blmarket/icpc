@@ -20,12 +20,40 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int water, land;
+vector<int> block;
+int depth;
+
+bool check(int a) {
+		if(a > water) return false;
+		for(int i=0;i<a;i++) {
+				if(block[i] < depth) return false;
+		}
+		int tmp = water - a;
+
+		for(int i=a+1;i<size(block);i++) {
+				if(tmp == 0) break;
+				if(block[i] < depth) continue;
+				if(block[i] - depth < block[a]) {
+						tmp--;
+				}
+		}
+
+		return tmp == 0;
+}
+
 class CrossingTheRiver 
 {
 public:
-    string isItEvenPossible(int waterWidth, int landWidth, vector <int> blockHeight, int depth) 
+    string isItEvenPossible(int waterWidth_, int landWidth_, vector <int> blockHeight, int depth_) 
     {		
-				return "";
+				water = waterWidth_; land = landWidth_; block = blockHeight; depth = depth_;
+
+				sort(block.begin(), block.end());
+				for(int i=0;i<size(blockHeight);i++) {
+						if(check(i)) return "POSSIBLE";
+				}
+				return "IMPOSSIBLE";
     }
 
     
