@@ -71,6 +71,8 @@ public:
 						cout << "first one = " << left[water-1] << endl;
 						int tmp2 = check(tmp, land, left[water-1]);
 
+						cout << tmp2 << endl;
+
 						if(tmp2 == land) return "POSSIBLE";
 						if(tmp2 == -1) return "IMPOSSIBLE";
 
