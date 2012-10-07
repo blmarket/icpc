@@ -53,10 +53,17 @@ void tokenize(string str, int *res) {
 		*res = token(str);
 }
 
+map<pair<LL, int>, LL> memo;
+
 long long go(int a, LL mask, int pos) {
 		if(pos == 4) {
 				return !mask;
 		}
+
+		pair<LL, int> key = mp(mask, pos);
+		if(memo.count(key)) return memo[key];
+
+		LL &ret = memo[key];
 
 		if(V[a].a[pos] != -1) {
 				for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
@@ -64,7 +71,7 @@ long long go(int a, LL mask, int pos) {
 								mask ^= (1LL << i);
 						}
 				}
-				return go(a, mask, pos + 1);
+				return ret = go(a, mask, pos + 1);
 		}
 
 		bool dirty = false;
@@ -74,9 +81,8 @@ long long go(int a, LL mask, int pos) {
 						break;
 				}
 		}
-		if(!dirty) return go(a, mask, pos+1) * 1000;
+		if(!dirty) return ret = go(a, mask, pos+1) * 1000;
 
-		LL ret = 0;
 		for(int i=0;i<1000;i++) {
 				LL tmask = mask;
 				for(int j=0;j<size(V);j++) if(mask & (1LL << j)) {
@@ -107,13 +113,11 @@ public:
 				long long ret = 0;
 				
 				for(int i=0;i<size(V);i++) {
-						cout << V[i] << " , ";
+						memo.clear();
 						long long mask = (1LL << i) - 1;
 						LL count = go(i, mask, 0);
-						cout << count << endl;
 						ret += count * V[i].p;
 				}
-				cout << endl;
 
 				return ret;
     }
