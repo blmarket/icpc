@@ -115,6 +115,8 @@ public:
 						cout << endl;
 				}
 
+				cout << test[size(s)][size(t)].substr(pos, 50) << endl;
+
 				return go(size(s), size(t), pos, 50);
     }
     
