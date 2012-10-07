@@ -39,7 +39,7 @@ void tokenize(string str, int *res) {
 
 int get(int pos, int key) {
 		if(ips[pos].count(key)) return ips[pos][key];
-		return ips[pos][key] = ips[pos].size();
+		return ips[pos][key] = ips[pos].size() - 1;
 }
 
 class IPv444 
