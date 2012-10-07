@@ -17,85 +17,29 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
-typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-struct data {
-		int a[4];
-		int p;
+map<int, int> ips[4];
 
-		bool operator<(const data &rhs) const {
-				return p < rhs.p;
-		}
-};
-
-ostream& operator<<(ostream &ost, const data &rhs) {
-		return ost << rhs.p << " " << rhs.a[0] << "." << rhs.a[1] << "." << rhs.a[2] << "." << rhs.a[3];
-}
-
-vector<data> V;
-
-int token(string tmp) {
-		if(tmp == "*") return -1;
-		return atoi(tmp.c_str());
+int token(string str) {
+		if(str[0] == '*') return -1;
+		return atoi(str.c_str());
 }
 
 void tokenize(string str, int *res) {
-		for(int i=0;i<size(str);i++) {
-				if(str[i] == '.') {
-						string tmp = str.substr(0, i);
-						*res = token(tmp);
-						tokenize(str.substr(i+1), ++res);
-						return;
-				}
+		for(int i=0;i<size(str);i++) if(str[i] == '.') {
+				string tmp = str.substr(0, i);
+				*res = token(tmp);
+				tokenize(str.substr(i+1), ++res);
+				return;
 		}
 		*res = token(str);
 }
 
-map<pair<LL, int>, LL> memo;
-
-long long go(int a, LL mask, int pos) {
-		if(pos == 4) {
-				return !mask;
-		}
-
-		cout << a << " " << mask << " " << pos << endl;
-
-		pair<LL, int> key = mp(mask, pos);
-		if(memo.count(key)) return memo[key];
-
-		LL &ret = memo[key];
-
-		if(V[a].a[pos] != -1) {
-				for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
-						if(V[i].a[pos] != -1 && V[i].a[pos] != V[a].a[pos]) {
-								mask ^= (1LL << i);
-						}
-				}
-				return ret = go(a, mask, pos + 1);
-		}
-
-		bool dirty = false;
-		for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
-				if(V[i].a[pos] != -1) {
-						dirty = true;
-						break;
-				}
-		}
-		if(!dirty) return ret = go(a, mask, pos+1) * 1000;
-
-		for(int i=0;i<1000;i++) {
-				LL tmask = mask;
-				for(int j=0;j<size(V);j++) if(mask & (1LL << j)) {
-						if(V[j].a[pos] != i && V[j].a[pos] != -1) {
-								tmask ^= (1LL << j);
-						}
-				}
-				ret += go(a, tmask, pos+1);
-		}
-
-		return ret;
+int get(int pos, int key) {
+		if(ips[pos].count(key)) return ips[pos][key];
+		return ips[pos][key] = ips[pos].size();
 }
 
 class IPv444 
@@ -103,25 +47,17 @@ class IPv444
 public:
     long long getMaximumMoney(vector <string> request, vector <int> price) 
     {		
-				V.clear();
+				for(int i=0;i<4;i++) { ips[i].clear(); ips[i][-1] = 0; }
 				for(int i=0;i<size(price);i++) {
-						data tmp;
-						tokenize(request[i], tmp.a);
-						tmp.p = price[i];
-						V.pb(tmp);
-				}
-				sort(V.rbegin(), V.rend());
+						int arr[4];
+						tokenize(request[i], arr);
+						for(int j=0;j<4;j++) arr[j] = get(j, arr[j]);
 
-				long long ret = 0;
-				
-				for(int i=0;i<size(V);i++) {
-						memo.clear();
-						long long mask = (1LL << i) - 1;
-						LL count = go(i, mask, 0);
-						ret += count * V[i].p;
+						for(int j=0;j<4;j++) cout << arr[j] << " ";
+						cout << endl;
 				}
 
-				return ret;
+				return -1;
     }
 
     
