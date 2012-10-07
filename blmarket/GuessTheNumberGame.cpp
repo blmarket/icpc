@@ -46,7 +46,6 @@ public:
 						while(tmp >= primes[i]) {
 								cnt++; tmp /= primes[i];
 						}
-						cout << cnt << endl;
 						ret *= cnt;
 						ret %= 1000000007LL;
 				}
