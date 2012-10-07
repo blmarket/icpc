@@ -45,7 +45,6 @@ public:
 						int tmp = n;
 						while(tmp >= primes[i]) {
 								cnt++; tmp /= primes[i];
-								cout << tmp << endl;
 						}
 						cout << cnt << endl;
 						ret *= cnt;
@@ -74,6 +73,6 @@ public:
 int main()
 {
     GuessTheNumberGame ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
