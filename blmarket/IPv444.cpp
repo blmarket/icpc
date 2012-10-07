@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -22,6 +23,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 map<int, int> ips[4];
 
+int maxvar[55][55][55][55];
+
 int token(string str) {
 		if(str[0] == '*') return -1;
 		return atoi(str.c_str());
@@ -42,16 +45,33 @@ int get(int pos, int key) {
 		return ips[pos][key] = ips[pos].size() - 1;
 }
 
+void fill(int *arr, int c) {
+		for(int i=0;i<55;i++) if(arr[0] == 0 || arr[0] == i) {
+				for(int j=0;j<55;j++) if(arr[1] == 0 || arr[1] == j) {
+						for(int k=0;k<55;k++) if(arr[2] == 0 || arr[2] == k) {
+								for(int l=0;l<55;l++) if(arr[3] == 0 || arr[3] == l) {
+										if(maxvar[i][j][k][l] < c)
+												maxvar[i][j][k][l] = c;
+								}
+						}
+				}
+		}
+}
+
 class IPv444 
 {
 public:
     long long getMaximumMoney(vector <string> request, vector <int> price) 
     {		
+				memset(maxvar, 0, sizeof(maxvar));
+
 				for(int i=0;i<4;i++) { ips[i].clear(); ips[i][-1] = 0; }
 				for(int i=0;i<size(price);i++) {
 						int arr[4];
 						tokenize(request[i], arr);
 						for(int j=0;j<4;j++) arr[j] = get(j, arr[j]);
+
+						fill(arr, price[i]);
 
 						for(int j=0;j<4;j++) cout << arr[j] << " ";
 						cout << endl;
