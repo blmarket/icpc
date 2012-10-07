@@ -17,6 +17,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
@@ -52,6 +53,39 @@ void tokenize(string str, int *res) {
 		*res = token(str);
 }
 
+long long go(int a, LL mask, int pos) {
+		if(V[a].a[pos] != -1) {
+				for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
+						if(V[i].a[pos] != V[a].a[pos]) {
+								mask ^= (1LL << i);
+						}
+				}
+				return go(a, mask, pos + 1);
+		}
+
+		bool dirty = false;
+		for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
+				if(V[i].a[pos] != -1) {
+						dirty = true;
+						break;
+				}
+		}
+		if(!dirty) return go(a, mask, pos+1) * 1000;
+
+		LL ret = 0;
+		for(int i=0;i<1000;i++) {
+				LL tmask = mask;
+				for(int j=0;j<size(V);j++) if(mask & (1LL << j)) {
+						if(V[j].a[pos] != i && V[j].a[pos] != -1) {
+								tmask ^= (1LL << j);
+						}
+				}
+				ret += go(a, tmask, pos+1);
+		}
+
+		return ret;
+}
+
 class IPv444 
 {
 public:
@@ -65,10 +99,15 @@ public:
 						V.pb(tmp);
 				}
 				sort(V.rbegin(), V.rend());
+
+				long long ret = 0;
 				
 				for(int i=0;i<size(V);i++) {
-						cout << V[i] << endl;
+						long long mask = (1LL << i) - 1;
+						ret += go(i, mask, 0) * V[i].p;
 				}
+
+				return ret;
     }
 
     
