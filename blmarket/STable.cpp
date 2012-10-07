@@ -70,13 +70,19 @@ public:
 				reverse(order.begin(), order.end());
 				for(int i=0;i<size(order);i++) {
 						for(int j=0;j<size(s);j++) if(s[j] == order[i]) {
-								for(int k=0;k<=size(t);k++) {
-										move[j+1][k] = 1;
+								for(int k=0;k<=size(t);k++) { 
+										move[j+1][k] = 1; // left first
+								}
+								for(int k=j+2;k<=size(s);k++) {
+										move[k][1] = 2; // top first
 								}
 						}
 						for(int j=0;j<size(t);j++) if(t[j] == order[i]) {
 								for(int k=0;k<=size(s);k++) {
 										move[k][j+1] = 2;
+								}
+								for(int k=j+2;k<=size(t);k++) {
+										move[1][k] = 1;
 								}
 						}
 				}
