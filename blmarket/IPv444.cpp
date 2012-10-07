@@ -60,7 +60,7 @@ long long go(int a, LL mask, int pos) {
 
 		if(V[a].a[pos] != -1) {
 				for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
-						if(V[i].a[pos] != V[a].a[pos]) {
+						if(V[i].a[pos] != -1 && V[i].a[pos] != V[a].a[pos]) {
 								mask ^= (1LL << i);
 						}
 				}
