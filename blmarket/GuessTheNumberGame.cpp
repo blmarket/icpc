@@ -39,8 +39,6 @@ public:
 						if(!fail) primes.pb(i);
 				}
 
-				cout << size(primes) << endl;
-
 				long long ret = 1;
 				for(int i=0;i<size(primes);i++) {
 						int cnt = 1;
@@ -48,6 +46,7 @@ public:
 						while(tmp > primes[i]) {
 								cnt++; tmp /= primes[i];
 						}
+						cout << cnt << endl;
 						ret *= cnt;
 						ret %= 1000000007LL;
 				}
