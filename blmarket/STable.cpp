@@ -97,15 +97,6 @@ public:
 				for(int i=1;i<=size(s);i++) {
 						for(int j=1;j<=size(t);j++) {
 								cnt[i][j] = cnt[i-1][j] + cnt[i][j-1];
-
-								if(test[i-1][j] < test[i][j-1]) {
-										if(move[i][j] != 2) {
-												cout << "WRONG " << i << " " << j << endl;
-										}
-										test[i][j] = test[i-1][j] + test[i][j-1];
-								} else {
-										test[i][j] = test[i][j-1] + test[i-1][j];
-								}
 						}
 				}
 				
