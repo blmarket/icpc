@@ -53,6 +53,7 @@ string go(int x, int y, int pos, int sz)
 		string ret;
 		if(cnt[fx][fy] > pos) {
 				ret = go(fx,fy,pos,sz);
+				cout << ret << endl;
 				if(size(ret) < sz) ret += go(lx,ly,0,sz - size(ret));
 		} else {
 				return go(lx, ly, pos - cnt[fx][fy], sz);
