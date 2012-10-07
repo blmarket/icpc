@@ -61,6 +61,18 @@ string go(int x, int y, int pos, int sz)
 		}
 }
 
+void propagate(int x, int y) {
+		for(int i=x;i<=size(s);i++) {
+				for(int j=y;j<=size(t);j++) {
+						int xdiff = i-x;
+						int ydiff = j-y;
+						if(xdiff == ydiff) continue;
+						if(xdiff > ydiff) move[i][j] = 2;
+						else move[i][j] = 1;
+				}
+		}
+}
+
 class STable 
 {
 public:
@@ -71,20 +83,12 @@ public:
 				reverse(order.begin(), order.end());
 				for(int i=0;i<size(order);i++) {
 						for(int j=0;j<size(s);j++) if(s[j] == order[i]) {
-								for(int k=0;k<=size(t);k++) { 
-										move[j+1][k] = 1; // left first
-								}
-								for(int k=j+2;k<=size(s);k++) {
-										move[k][1] = 2; // top first
-								}
+								propagate(j+1, 1);
+								move[j+1][1] = 1;
 						}
 						for(int j=0;j<size(t);j++) if(t[j] == order[i]) {
-								for(int k=0;k<=size(s);k++) {
-										move[k][j+1] = 2;
-								}
-								for(int k=j+2;k<=size(t);k++) {
-										move[1][k] = 1;
-								}
+								propagate(1, j+1);
+								move[1][j+1] = 2;
 						}
 				}
 
