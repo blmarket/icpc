@@ -39,6 +39,8 @@ public:
 						if(!fail) primes.pb(i);
 				}
 
+				cout << size(primes) << endl;
+
 				long long ret = 1;
 				for(int i=0;i<size(primes);i++) {
 						int cnt = 1;
