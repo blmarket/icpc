@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int move[33][33];
 LL cnt[33][33];
+string test[33][33];
 string s,t;
 
 string go(int x, int y, int pos, int sz) 
@@ -87,6 +88,19 @@ public:
 						}
 				}
 
+				for(int i=1;i<=size(s);i++) { cnt[i][0] = 1; test[i][0] = string(1, s[i-1]); }
+				for(int i=1;i<=size(t);i++) { cnt[0][i] = 1; test[0][i] = string(1, t[i-1]); }
+				for(int i=1;i<=size(s);i++) {
+						for(int j=1;j<=size(t);j++) {
+								cnt[i][j] = cnt[i-1][j] + cnt[i][j-1];
+								if(test[i-1][j] < test[i][j-1]) {
+										test[i][j] = test[i-1][j] + test[i][j-1];
+								} else {
+										test[i][j] = test[i][j-1] + test[i-1][j];
+								}
+						}
+				}
+				
 				for(int i=1;i<=size(s);i++) {
 						for(int j=1;j<=size(t);j++) {
 								cout << move[i][j] << " ";
@@ -94,12 +108,11 @@ public:
 						cout << endl;
 				}
 
-				for(int i=0;i<=size(s);i++) cnt[i][0] = 1;
-				for(int i=0;i<=size(t);i++) cnt[0][i] = 1;
 				for(int i=1;i<=size(s);i++) {
 						for(int j=1;j<=size(t);j++) {
-								cnt[i][j] = cnt[i-1][j] + cnt[i][j-1];
+								cout << test[i][j] << " ";
 						}
+						cout << endl;
 				}
 
 				return go(size(s), size(t), pos, 50);
