@@ -33,6 +33,7 @@ string go(int x, int y, int pos, int sz)
 				if(pos == 0) return string(1, s[x-1]);
 				return "";
 		}
+
 		if(x == 0) {
 				if(pos == 0) return string(1, t[y-1]);
 				return "";
@@ -53,8 +54,9 @@ string go(int x, int y, int pos, int sz)
 		string ret;
 		if(cnt[fx][fy] > pos) {
 				ret = go(fx,fy,pos,sz);
-				cout << ret << endl;
 				if(size(ret) < sz) ret += go(lx,ly,0,sz - size(ret));
+				cout << ret << endl;
+				return ret;
 		} else {
 				return go(lx, ly, pos - cnt[fx][fy], sz);
 		}
