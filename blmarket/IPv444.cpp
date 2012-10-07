@@ -54,6 +54,10 @@ void tokenize(string str, int *res) {
 }
 
 long long go(int a, LL mask, int pos) {
+		if(pos == 4) {
+				return !mask;
+		}
+
 		if(V[a].a[pos] != -1) {
 				for(int i=0;i<size(V);i++) if(mask & (1LL << i)) {
 						if(V[i].a[pos] != V[a].a[pos]) {
