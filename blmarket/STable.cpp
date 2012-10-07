@@ -107,15 +107,6 @@ public:
 						cout << endl;
 				}
 
-				for(int i=1;i<=size(s);i++) {
-						for(int j=1;j<=size(t);j++) {
-								cout << test[i][j] << " ";
-						}
-						cout << endl;
-				}
-
-				cout << test[size(s)][size(t)].substr(pos, 50) << endl;
-
 				return go(size(s), size(t), pos, 50);
     }
     
