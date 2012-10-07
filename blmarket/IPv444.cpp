@@ -60,6 +60,8 @@ long long go(int a, LL mask, int pos) {
 				return !mask;
 		}
 
+		cout << a << " " << mask << " " << pos << endl;
+
 		pair<LL, int> key = mp(mask, pos);
 		if(memo.count(key)) return memo[key];
 
