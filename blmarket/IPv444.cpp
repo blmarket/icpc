@@ -18,6 +18,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
@@ -72,12 +73,24 @@ public:
 						for(int j=0;j<4;j++) arr[j] = get(j, arr[j]);
 
 						fill(arr, price[i]);
-
-						for(int j=0;j<4;j++) cout << arr[j] << " ";
-						cout << endl;
 				}
 
-				return -1;
+				LL ret = 0;
+				for(int i=0;i<ips[0].size();i++) {
+						LL tmp = (i == 0) ? 1001 - ips[0].size() : 1;
+						for(int j=0;j<ips[1].size();j++) {
+								LL tmp2 = ((j == 0) ? 1001 - ips[1].size() : 1) * tmp;
+								for(int k=0;k<ips[2].size();k++) {
+										LL tmp3 = ((k == 0) ? 1001 - ips[2].size() : 1) * tmp2;
+										for(int l=0;l<ips[3].size();l ++) {
+												LL tmp4 = ((l == 0) ? 1001 - ips[3].size() : 1) * tmp3;
+												ret += tmp4 * maxvar[i][j][k][l];
+										}
+								}
+						}
+				}
+
+				return ret;
     }
 
     
