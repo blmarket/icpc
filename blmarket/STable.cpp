@@ -27,6 +27,7 @@ string s,t;
 
 string go(int x, int y, int pos, int sz) 
 {
+		cout << x << " " << y << " " << pos << endl;
 		if(sz == 0) return "";
 		if(y == 0) {
 				if(pos == 0) return string(1, s[x-1]);
