@@ -51,7 +51,7 @@ string go(int x, int y, int pos, int sz)
 		}
 
 		string ret;
-		if(cnt[fx][fy] < pos) {
+		if(cnt[fx][fy] > pos) {
 				ret = go(fx,fy,pos,sz);
 				if(size(ret) < sz) ret += go(lx,ly,0,sz - size(ret));
 		} else {
