@@ -26,7 +26,8 @@ class GuessTheNumberGame
 {
 public:
     int possibleClues(int n) 
-    {		
+    {	
+				primes.clear();
 				primes.pb(2);
 				for(int i=3;i<=n;i+=2) {
 						bool fail = false;
