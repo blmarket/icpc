@@ -43,8 +43,9 @@ public:
 				for(int i=0;i<size(primes);i++) {
 						int cnt = 1;
 						int tmp = n;
-						while(tmp > primes[i]) {
+						while(tmp >= primes[i]) {
 								cnt++; tmp /= primes[i];
+								cout << tmp << endl;
 						}
 						cout << cnt << endl;
 						ret *= cnt;
