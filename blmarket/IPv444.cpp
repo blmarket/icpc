@@ -109,7 +109,9 @@ public:
 				for(int i=0;i<size(V);i++) {
 						cout << V[i] << " , ";
 						long long mask = (1LL << i) - 1;
-						ret += go(i, mask, 0) * V[i].p;
+						LL count = go(i, mask, 0);
+						cout << count << endl;
+						ret += count * V[i].p;
 				}
 				cout << endl;
 
