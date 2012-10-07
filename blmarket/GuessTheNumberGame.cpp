@@ -31,6 +31,7 @@ public:
 				for(int i=3;i<=n;i+=2) {
 						bool fail = false;
 						for(int j=0;j<size(primes);j++) {
+								if(primes[j] * primes[j] > i) break;
 								if(i % (primes[j]) == 0) {
 										fail=true; break;
 								}
