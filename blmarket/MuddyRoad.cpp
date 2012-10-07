@@ -20,20 +20,27 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-double dyna[55];
+double memo[55];
+VI road;
+
+double go(int a) 
+{
+		if(a >= size(road) - 2) return 0;
+		if(memo[a] >= -0.1) return memo[a];
+
+		double prob = (double)road[a+1] / 100;
+		double ret = prob * (go(a+2) + (double)road[a+2] / 100) + (1-prob) * go(a+1);
+		return memo[a] = ret;
+}
 
 class MuddyRoad 
 {
 public:
-    double getExpectedValue(vector <int> road) 
+    double getExpectedValue(vector <int> road_) 
     {		
-				dyna[0] = 0;
-				dyna[1] = (double)road[1] / 100;
-				for(int i=2;i<size(road);i++) {
-						double myprob = (double)road[i] / 100;
-						dyna[i] = min(dyna[i-2] + myprob, dyna[i-1] + myprob);
-				}
-				return dyna[size(road)-1];
+				road = road_;
+				for(int i=0;i<size(road);i++) memo[i] = -1;
+				return go(0);
     }
 
     
