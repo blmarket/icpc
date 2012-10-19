@@ -36,13 +36,13 @@ int check(int L, int pos) {
 
 										int mincost = -1;
 										for(int k=len;k>=st;k--) {
+												cout << k << endl;
 												int tmp = check(L, pos + k);
 												if(tmp != -1) {
 														int tmp2 = (k + (L-1)) / L;
 														tmp += tmp2;
 														if(mincost == -1 || mincost > tmp) mincost = tmp;
 												}
-												cout << cs[pos + k] << endl;
 												if(cs[pos + k - 1] != 0) break;
 										}
 										cout << L << " " << pos << " = " << mincost << endl;
