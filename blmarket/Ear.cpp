@@ -55,6 +55,7 @@ int count(int l, int r) {
 		index.resize(tmps.size());
 		sort(tmps.begin(), tmps.end(), comp);
 		sort(tmp2.begin(), tmp2.end(), comp);
+
 		for(int i=0;i<size(tmps);i++) {
 				cout << tmps[i].first << "," << tmps[i].second << " ";
 		}
@@ -63,6 +64,20 @@ int count(int l, int r) {
 				cout << tmp2[i].first << "," << tmp2[i].second << " ";
 		}
 		cout << endl;
+
+		int ret = 0;
+		for(int i=0;i<size(tmps);i++) {
+				PII t1 = tmps[i];
+				t1.first += reds[l];
+				for(int j=0;j<size(tmp2);j++) {
+						PII t2 = tmp2[j];
+						t2.first += reds[r];
+						if(t1 == t2) {
+								ret += j;
+						}
+				}
+		}
+		return ret;
 }
 
 class Ear 
