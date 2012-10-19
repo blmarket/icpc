@@ -25,7 +25,7 @@ vector<int> cs;
 int SC, PC;
 
 int check(int L, int pos) {
-		cout << "check " << L << " " << pos << endl;
+		cout << "check " << L << " " << pos << " " << cs[pos] << endl;
 		for(int i=pos;i<size(cs);i++) {
 				if(cs[i] != 0) {
 						for(int j=i+1;j<size(cs);j++) {
