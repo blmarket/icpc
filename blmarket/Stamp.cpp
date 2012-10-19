@@ -32,18 +32,15 @@ int check(int L, int pos) {
 								if(cs[j] != 0 && cs[j] != cs[i]) {
 										int len = j - pos;
 										if(len < L) return -1;
-										int st = (len / L) * L;
 
 										int mincost = -1;
-										for(int k=len;k>=st;k--) {
-												cout << "here again" << endl;
+										for(int k=len;k>=0;k--) {
 												int tmp = check(L, pos + k);
 												if(tmp != -1) {
 														int tmp2 = (k + (L-1)) / L;
 														tmp += tmp2;
 														if(mincost == -1 || mincost > tmp) mincost = tmp;
 												}
-												cout << cs[pos + k - 1] << endl;
 												if(cs[pos + k - 1] != 0) break;
 										}
 										cout << L << " " << pos << " = " << mincost << endl;
