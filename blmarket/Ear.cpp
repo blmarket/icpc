@@ -74,6 +74,8 @@ int count(int l, int r) {
 						t2.first += reds[r];
 						if(t1 == t2) {
 								ret += j;
+								tmp2.erase(tmp2.begin() + j);
+								break;
 						}
 				}
 		}
