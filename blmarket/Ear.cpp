@@ -55,7 +55,6 @@ int count(int l, int r) {
 		index.resize(tmps.size());
 		sort(tmps.begin(), tmps.end(), comp);
 		sort(tmp2.begin(), tmp2.end(), comp);
-		reverse(tmp2.begin(), tmp2.end());
 		for(int i=0;i<size(tmps);i++) {
 				cout << tmps[i].first << "," << tmps[i].second << " ";
 		}
