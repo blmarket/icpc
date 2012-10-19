@@ -29,7 +29,6 @@ int check(int L, int pos) {
 				if(cs[i] != 0) {
 						for(int j=i+1;j<size(cs);j++) {
 								if(cs[j] != 0 && cs[j] != cs[i]) {
-										cout << L << " " << i << " " << j << endl;
 										int len = j - pos;
 										if(len < L) return -1;
 										int st = (len / L) * L;
@@ -44,7 +43,6 @@ int check(int L, int pos) {
 												}
 												if(cs[pos + k - 1] != 0) break;
 										}
-										cout << L << " " << pos << " = " << mincost << endl;
 										return mincost;
 								}
 						}
