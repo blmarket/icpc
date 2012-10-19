@@ -77,6 +77,7 @@ public:
 				for(int i=1;i<size(target);i++) {
 						int tmp = i * stampCost;
 						int tmp2 = check(3, 0);
+						cout << tmp << " " << tmp2 << endl;
 						if(tmp2 == -1) continue;
 						tmp2 *= pushCost;
 						tmp += tmp2;
