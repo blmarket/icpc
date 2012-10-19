@@ -48,10 +48,12 @@ int check(int L, int pos) {
 								}
 						}
 						int len = size(cs) - pos;
+						if(len < L) return -1;
 						return (len + (L-1)) / L;
 				}
 		}
 		int len = size(cs) - pos;
+		if(len < L) return -1;
 		return (len + (L-1)) / L;
 }
 
