@@ -42,6 +42,7 @@ int check(int L, int pos) {
 														tmp += tmp2;
 														if(mincost == -1 || mincost > tmp) mincost = tmp;
 												}
+												cout << cs[pos + k] << endl;
 												if(cs[pos + k - 1] != 0) break;
 										}
 										cout << L << " " << pos << " = " << mincost << endl;
