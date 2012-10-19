@@ -18,8 +18,18 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+bool comp(const PII &lhs, const PII &rhs) {
+		int xx1 = lhs.first;
+		int xx2 = rhs.first;
+		int yy1 = lhs.second;
+		int yy2 = rhs.second;
+
+		return ((LL)xx1 * yy2 > (LL)xx2 * yy1);
+}
 
 vector<int> reds;
 vector<PII> blues;
@@ -30,9 +40,16 @@ int count(int l, int r) {
 		vector<PII>::const_iterator iter, jter, kter;
 		iter = lower_bound(blues.begin(), blues.end(), mp(lx, 0));
 		jter = lower_bound(blues.begin(), blues.end(), mp(rx, 0));
-		cout << lx - 1 << " " << rx << " : ";
+
+		vector<PII> tmps;
 		for(kter = iter; kter != jter; ++kter) {
-				cout << kter->first << "," << kter->second << " ";
+				PII tt = *kter;
+				tt.first -= reds[l];
+				tmps.pb(tt);
+		}
+		sort(tmps.begin(), tmps.end(), comp);
+		for(int i=0;i<size(tmps);i++) {
+				cout << tmps[i].first << "," << tmps[i].second << " ";
 		}
 		cout << endl;
 }
