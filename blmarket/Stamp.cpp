@@ -24,7 +24,11 @@ string target;
 vector<int> cs;
 int SC, PC;
 
+map<PII, int> memo;
+
 int check(int L, int pos) {
+		PII key = mp(L, pos);
+		if(memo.count(key)) return memo[key];
 		for(int i=pos;i<size(cs);i++) {
 				if(cs[i] != 0) {
 						for(int j=i+1;j<size(cs);j++) {
@@ -43,7 +47,7 @@ int check(int L, int pos) {
 												if(cs[pos + k - 1] != 0) break;
 										}
 										//cout << L << " " << pos << " = " << mincost << endl;
-										return mincost;
+										return memo[key] = mincost;
 								}
 						}
 						int len = size(cs) - pos;
@@ -74,6 +78,7 @@ public:
 				int mincost = -1;
 				for(int i=1;i<size(target);i++) {
 						int tmp = i * stampCost;
+						memo.clear();
 						int tmp2 = check(i, 0);
 						if(tmp2 == -1) continue;
 						tmp2 *= pushCost;
