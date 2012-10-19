@@ -24,9 +24,32 @@ string target;
 vector<int> cs;
 int SC, PC;
 
-int check(int L) {
-		for(int i=0;i<L;i++) {
+int check(int L, int pos) {
+		for(int i=pos;i<size(cs);i++) {
+				if(cs[i] != 0) {
+						for(int j=i+1;j<size(cs);j++) {
+								if(cs[j] != 0 && cs[j] != cs[i]) {
+										int len = j - 1 - pos;
+										if(len < L) return -1;
+										int st = (len / L) * L;
+
+										int mincost = -1;
+										for(int k=st;k<=len;k++) {
+												int tmp = check(L, pos + k);
+												if(tmp == -1) continue;
+												int tmp2 = (k + (L-1)) / L;
+												tmp += tmp2;
+												if(mincost == -1 || mincost > tmp) mincost = tmp;
+										}
+										return mincost;
+								}
+						}
+						int len = size(cs) - pos;
+						return (len + (L-1)) / L;
+				}
 		}
+		int len = size(cs) - pos;
+		return (len + (L-1)) / L;
 }
 
 class Stamp 
@@ -47,8 +70,9 @@ public:
 				int mincost = -1;
 				for(int i=1;i<size(target);i++) {
 						int tmp = i * stampCost;
-						int tmp2 = check(i);
+						int tmp2 = check(i, 0);
 						if(tmp2 == -1) continue;
+						tmp2 *= pushCost;
 						tmp += tmp2;
 						if(mincost == -1 || mincost > tmp) mincost = tmp;
 				}
