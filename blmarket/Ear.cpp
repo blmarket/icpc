@@ -24,6 +24,19 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<int> reds;
 vector<PII> blues;
 
+int count(int l, int r) {
+		int lx = reds[l] + 1;
+		int rx = reds[r];
+		vector<PII>::const_iterator iter, jter, kter;
+		iter = lower_bound(blues.begin(), blues.end(), mp(lx, 0));
+		jter = lower_bound(blues.begin(), blues.end(), mp(rx, 0));
+		cout << lx << " " << rx << " : ";
+		for(kter = iter; kter != jter; ++kter) {
+				cout << kter->first << "," << kter->second << " ";
+		}
+		cout << endl;
+}
+
 class Ear 
 {
 public:
@@ -50,11 +63,23 @@ public:
 								int tmp2;
 								sin >> tmp2;
 								blues[i].second = tmp2;
-								cout << blues[i].first << "," << blues[i].second << " ";
 						}
-						cout << endl;
 				}
-				return 0;
+
+				long long ret = 0;
+				sort(reds.begin(), reds.end());
+				sort(blues.begin(), blues.end());
+				for(int i=0;i<size(reds);i++) {
+						for(int j=i+2;j<size(reds);j++) {
+								int btw = j - i;
+								long long base = (btw * (btw - 1));
+								base /= 2;
+
+								ret += base * count(i,j);
+						}
+				}
+
+				return ret;
     }
 
     
