@@ -78,7 +78,6 @@ public:
 						int tmp = i * stampCost;
 						int tmp2 = check(3, 0);
 						if(tmp2 == -1) continue;
-						break;
 						tmp2 *= pushCost;
 						tmp += tmp2;
 						if(mincost == -1 || mincost > tmp) mincost = tmp;
