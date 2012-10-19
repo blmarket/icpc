@@ -79,6 +79,7 @@ int count(int l, int r) {
 						}
 				}
 		}
+		cout << ret << endl;
 		return ret;
 }
 
