@@ -30,17 +30,19 @@ int check(int L, int pos) {
 						for(int j=i+1;j<size(cs);j++) {
 								if(cs[j] != 0 && cs[j] != cs[i]) {
 										cout << L << " " << i << " " << j << endl;
-										int len = j - 1 - pos;
+										int len = j - pos;
 										if(len < L) return -1;
 										int st = (len / L) * L;
 
 										int mincost = -1;
-										for(int k=st;k<=len;k++) {
+										for(int k=len;k>=st;k--) {
 												int tmp = check(L, pos + k);
-												if(tmp == -1) continue;
-												int tmp2 = (k + (L-1)) / L;
-												tmp += tmp2;
-												if(mincost == -1 || mincost > tmp) mincost = tmp;
+												if(tmp != -1) {
+														int tmp2 = (k + (L-1)) / L;
+														tmp += tmp2;
+														if(mincost == -1 || mincost > tmp) mincost = tmp;
+												}
+												if(cs[pos + k - 1] != 0) break;
 										}
 										cout << L << " " << pos << " = " << mincost << endl;
 										return mincost;
