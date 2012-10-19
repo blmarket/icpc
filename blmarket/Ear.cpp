@@ -42,14 +42,25 @@ int count(int l, int r) {
 		jter = lower_bound(blues.begin(), blues.end(), mp(rx, 0));
 
 		vector<PII> tmps;
+		vector<int> index;
+		vector<PII> tmp2;
 		for(kter = iter; kter != jter; ++kter) {
 				PII tt = *kter;
 				tt.first -= reds[l];
 				tmps.pb(tt);
+				tt.first += reds[l];
+				tt.first -= reds[r];
+				tmp2.pb(tt);
 		}
+		index.resize(tmps.size());
 		sort(tmps.begin(), tmps.end(), comp);
+		sort(tmp2.begin(), tmp2.end(), comp);
 		for(int i=0;i<size(tmps);i++) {
 				cout << tmps[i].first << "," << tmps[i].second << " ";
+		}
+		cout << endl;
+		for(int i=0;i<size(tmps);i++) {
+				cout << tmp2[i].first << "," << tmp2[i].second << " ";
 		}
 		cout << endl;
 }
