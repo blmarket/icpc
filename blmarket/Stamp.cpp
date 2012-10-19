@@ -76,10 +76,9 @@ public:
 				int mincost = -1;
 				for(int i=1;i<size(target);i++) {
 						int tmp = i * stampCost;
-						int tmp2 = check(3, 0);
+						int tmp2 = check(i, 0);
 						if(tmp2 == -1) continue;
 						tmp2 *= pushCost;
-						cout << tmp << " " << tmp2 << endl;
 						tmp += tmp2;
 						if(mincost == -1 || mincost > tmp) mincost = tmp;
 				}
