@@ -20,11 +20,39 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+string target;
+vector<int> cs;
+int SC, PC;
+
+int check(int L) {
+		for(int i=0;i<L;i++) {
+		}
+}
+
 class Stamp 
 {
 public:
     int getMinimumCost(string desiredColor, int stampCost, int pushCost) 
     {		
+				target = desiredColor;
+				cs.resize(target.size());
+				for(int i=0;i<size(target);i++) {
+						cs[i] = target[i] == 'R' ? 1 : (target[i] == 'G' ? 2 : ( target[i] == 'B' ? 3 : 0));
+						cout << cs[i] << " ";
+				}
+				cout << endl;
+				SC = stampCost;
+				PC = pushCost;
+				
+				int mincost = -1;
+				for(int i=1;i<size(target);i++) {
+						int tmp = i * stampCost;
+						int tmp2 = check(i);
+						if(tmp2 == -1) continue;
+						tmp += tmp2;
+						if(mincost == -1 || mincost > tmp) mincost = tmp;
+				}
+				return mincost;
     }
 
     
