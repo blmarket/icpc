@@ -116,7 +116,7 @@ public:
 				sort(blues.begin(), blues.end());
 				for(int i=0;i<size(reds);i++) {
 						for(int j=i+3;j<size(reds);j++) {
-								int btw = j - i;
+								int btw = j - i - 1;
 								long long base = (btw * (btw - 1));
 								base /= 2;
 
