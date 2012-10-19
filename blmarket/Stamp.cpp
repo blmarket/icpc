@@ -43,6 +43,7 @@ int check(int L, int pos) {
 												}
 												if(cs[pos + k - 1] != 0) break;
 										}
+										cout << L << " " << pos << " = " << mincost << endl;
 										return mincost;
 								}
 						}
