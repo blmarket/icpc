@@ -28,8 +28,8 @@ int check(int L, int pos) {
 		for(int i=pos;i<size(cs);i++) {
 				if(cs[i] != 0) {
 						for(int j=i+1;j<size(cs);j++) {
-								cout << L << " " << i << " " << j << endl;
 								if(cs[j] != 0 && cs[j] != cs[i]) {
+										cout << L << " " << i << " " << j << endl;
 										int len = j - 1 - pos;
 										if(len < L) return -1;
 										int st = (len / L) * L;
