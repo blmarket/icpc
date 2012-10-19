@@ -28,7 +28,7 @@ bool comp(const PII &lhs, const PII &rhs) {
 		int yy1 = lhs.second;
 		int yy2 = rhs.second;
 
-		return ((LL)xx1 * yy2 > (LL)xx2 * yy1);
+		return ((LL)xx1 * yy2 < (LL)xx2 * yy1);
 }
 
 vector<int> reds;
