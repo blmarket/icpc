@@ -35,6 +35,7 @@ int check(int L, int pos) {
 
 										int mincost = -1;
 										for(int k=len;k>=L;k--) {
+												cout << "trying " << k << endl;
 												int tmp = check(L, pos + k);
 												if(tmp != -1) {
 														int tmp2 = (k + (L-1)) / L;
