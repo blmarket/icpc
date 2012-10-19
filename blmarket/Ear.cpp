@@ -122,6 +122,7 @@ public:
 								base /= 2;
 
 								ret += base * count(i,j);
+								cout << base << endl;
 						}
 				}
 
