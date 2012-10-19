@@ -29,8 +29,31 @@ class Ear
 public:
     long long getCount(vector <string> redX, vector <string> blueX, vector <string> blueY) 
     {		
-				string tmp = accumulate(redX.begin(), redX.end(), string(""));
-				cout << tmp << endl;
+				reds.clear();
+				blues.clear();
+				{
+						string tmp = accumulate(redX.begin(), redX.end(), string(""));
+						istringstream sin(tmp);
+						int tmp2;
+						while(sin >> tmp2) { reds.pb(tmp2); }
+				}
+				{
+						string tmp = accumulate(blueX.begin(), blueX.end(), string());
+						istringstream sin(tmp);
+						int tmp2;
+						while(sin >> tmp2) { blues.pb(mp(tmp2, 0)); }
+				}
+				{
+						string tmp = accumulate(blueY.begin(), blueY.end(), string());
+						istringstream sin(tmp);
+						for(int i=0;i<size(blues);i++) {
+								int tmp2;
+								sin >> tmp2;
+								blues[i].second = tmp2;
+								cout << blues[i].first << "," << blues[i].second << " ";
+						}
+						cout << endl;
+				}
 				return 0;
     }
 
