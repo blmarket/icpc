@@ -34,7 +34,7 @@ int check(int L, int pos) {
 										if(len < L) return -1;
 
 										int mincost = -1;
-										for(int k=len;k>=0;k--) {
+										for(int k=len;k>=L;k--) {
 												int tmp = check(L, pos + k);
 												if(tmp != -1) {
 														int tmp2 = (k + (L-1)) / L;
