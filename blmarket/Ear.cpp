@@ -115,7 +115,7 @@ public:
 				sort(reds.begin(), reds.end());
 				sort(blues.begin(), blues.end());
 				for(int i=0;i<size(reds);i++) {
-						for(int j=i+2;j<size(reds);j++) {
+						for(int j=i+3;j<size(reds);j++) {
 								int btw = j - i;
 								long long base = (btw * (btw - 1));
 								base /= 2;
