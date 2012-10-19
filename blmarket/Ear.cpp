@@ -56,7 +56,6 @@ int count(int l, int r) {
 		sort(tmps.begin(), tmps.end(), comp);
 		sort(tmp2.begin(), tmp2.end(), comp);
 
-		/*
 		for(int i=0;i<size(tmps);i++) {
 				cout << tmps[i].first << "," << tmps[i].second << " ";
 		}
@@ -65,7 +64,6 @@ int count(int l, int r) {
 				cout << tmp2[i].first << "," << tmp2[i].second << " ";
 		}
 		cout << endl;
-		*/
 
 		int ret = 0;
 		for(int i=0;i<size(tmps);i++) {
@@ -151,6 +149,6 @@ public:
 int main()
 {
     Ear ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
