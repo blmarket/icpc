@@ -25,12 +25,12 @@ vector<int> cs;
 int SC, PC;
 
 int check(int L, int pos) {
+		cout << "check " << L << " " << pos << endl;
 		for(int i=pos;i<size(cs);i++) {
 				if(cs[i] != 0) {
 						for(int j=i+1;j<size(cs);j++) {
 								if(cs[j] != 0 && cs[j] != cs[i]) {
 										int len = j - pos;
-										cout << len << endl;
 										if(len < L) return -1;
 										int st = (len / L) * L;
 
