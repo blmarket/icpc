@@ -30,7 +30,7 @@ int count(int l, int r) {
 		vector<PII>::const_iterator iter, jter, kter;
 		iter = lower_bound(blues.begin(), blues.end(), mp(lx, 0));
 		jter = lower_bound(blues.begin(), blues.end(), mp(rx, 0));
-		cout << lx << " " << rx << " : ";
+		cout << lx - 1 << " " << rx << " : ";
 		for(kter = iter; kter != jter; ++kter) {
 				cout << kter->first << "," << kter->second << " ";
 		}
