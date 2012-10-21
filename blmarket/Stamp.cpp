@@ -30,6 +30,7 @@ int check(int L, int pos) {
 		PII key = mp(L, pos);
 		if(memo.count(key)) return memo[key];
 		for(int i=pos;i<size(cs);i++) {
+				cout << cs[i] << endl;
 				if(cs[i] != 0) {
 						for(int j=i+1;j<size(cs);j++) {
 								if(cs[j] != 0 && cs[j] != cs[i]) {
@@ -56,7 +57,6 @@ int check(int L, int pos) {
 				}
 		}
 		int len = size(cs) - pos;
-		cout << "here? " << len << endl;
 		if(len < L) return -1;
 		return (len + (L-1)) / L;
 }
