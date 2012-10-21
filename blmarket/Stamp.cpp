@@ -56,6 +56,7 @@ int check(int L, int pos) {
 				}
 		}
 		int len = size(cs) - pos;
+		cout << "here? " << len << endl;
 		if(len < L) return -1;
 		return (len + (L-1)) / L;
 }
