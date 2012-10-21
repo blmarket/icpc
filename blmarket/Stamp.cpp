@@ -77,7 +77,7 @@ public:
 				PC = pushCost;
 				
 				int mincost = -1;
-				for(int i=1;i<size(target);i++) {
+				for(int i=1;i<=size(target);i++) {
 						int tmp = i * stampCost;
 						memo.clear();
 						int tmp2 = check(i, 0);
