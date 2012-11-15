@@ -3,7 +3,7 @@ set -e
 if [ ! -n "$1" ]; then
     make
 else
-    g++ $1 -o a.exe
+    g++ -O2 $1 -o a.exe
 fi
 git add $1 
 set +e
