@@ -56,5 +56,5 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 
 int main(void)
 {
-		cout << bigint("0001");
+		cout << bigint("10000000000000001");
 }
