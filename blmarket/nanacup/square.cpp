@@ -29,8 +29,14 @@ class bigint {
 public:
 		bigint(string str);
 
+		bigint operator*(const bigint &rhs);
+
 		vector<int> V;
 };
+
+bigint bigint::operator*(const bigint &rhs) {
+		return bigint("0");
+}
 
 bigint::bigint(string str) {
 		V.clear();
@@ -56,5 +62,6 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 
 int main(void)
 {
-		cout << bigint("10000000000000001");
+		cout << bigint("10000000000000001") << endl;
+		cout << bigint("123") * bigint("456") << endl;
 }
