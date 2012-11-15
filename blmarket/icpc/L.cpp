@@ -23,6 +23,9 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
+ostream &operator<<(ostream &ost, const PII &rhs) {
+    return ost << rhs.first << "," << rhs.second;
+}
 
 vector<PII> V;
 
@@ -31,6 +34,11 @@ bool comp(const PII &lhs, const PII &rhs) {
 }
 
 bool check(int a) {
+    for(int i=0;i<size(V);i++) {
+        if(V[i].first <= a) {
+            cout << V[i] << endl;
+        }
+    }
 }
 
 void go(int xdiff) {
