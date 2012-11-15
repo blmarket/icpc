@@ -24,6 +24,7 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
+template<typename T> string toString(const T &a) { ostringstream ost; ost << a; return ost.str(); }
 
 class bigint {
 public:
@@ -77,8 +78,16 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 		return ost;
 }
 
+int n,a,b,c;
+
 int main(void)
 {
-		cout << bigint("10000000000000001") << endl;
-		cout << bigint("123") * 456 << endl;
+		scanf("%d %d %d %d", &n, &a, &b, &c);
+		for(int i=1;i*2<n;i++) {
+				string tmp;
+				for(int j=0;j<i;j++) {
+						tmp += '0' + (rand() % 10);
+				}
+				cout << tmp << endl;
+		}
 }
