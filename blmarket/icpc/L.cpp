@@ -33,9 +33,10 @@ bool comp(const PII &lhs, const PII &rhs) {
     return lhs.second < rhs.second;
 }
 
-bool check(int a) {
+bool check(int right, int a) {
+    cout << right << endl;
     for(int i=0;i<size(V);i++) {
-        //if(V[i].first <= a) continue;
+        if(V[i].first <= a) continue;
         cout << V[i] << endl;
     }
 }
@@ -43,11 +44,11 @@ bool check(int a) {
 void go(int xdiff) {
     int s = 0;
     int e = xdiff + 1;
-    check(5);
+    check(xdiff, 5);
     return;
     while(e-s > 1) {
         int m = (s+e) / 2;
-        if(check(m)) {
+        if(check(xdiff*2, m)) {
             s = m;
         } else {
             e = m;
