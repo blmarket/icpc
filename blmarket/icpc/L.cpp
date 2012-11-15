@@ -35,21 +35,21 @@ bool comp(const PII &lhs, const PII &rhs) {
 
 bool check(int right, int rightmost, int a) {
     int canleft = 0;
-    cout << a << " " << right << " " << rightmost << " : ";
+    //cout << a << " " << right << " " << rightmost << " : ";
     for(int i=0;i<size(V);i++) {
         if(V[i].first <= a) continue;
-        cout << V[i] << " ";
+        //cout << V[i] << " ";
         if(V[i].second <= a) {
             canleft = a - V[i].second;
             canleft = min(canleft, right - rightmost);
         } else {
             if(V[i].second < right - canleft - a) {
-                cout << "fail" << endl;
+                //cout << "fail" << endl;
                 return false;
             }
         }
     }
-    cout << endl;
+    //cout << endl;
     return true;
 }
 
