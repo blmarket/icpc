@@ -1,0 +1,93 @@
+#include <iostream>
+#include <cstring>
+#include <cstdio>
+#include <sstream>
+#include <numeric>
+#include <iterator>
+#include <queue>
+#include <set>
+#include <map>
+#include <vector>
+
+#define mp make_pair
+#define pb push_back
+#define sqr(x) ((x)*(x))
+#define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+
+using namespace std;
+
+typedef vector<int> VI;
+typedef vector<VI> VVI;
+typedef vector<string> VS;
+typedef pair<int,int> PII;
+
+template<typename T> int size(const T &a) { return a.size(); } 
+
+vector<PII> V;
+
+bool check(int a) {
+    
+}
+
+void go(int xdiff) {
+    int s = 0;
+    int e = xdiff + 1;
+    while(e-s > 1) {
+        int m = (s+e) / 2;
+        if(check(m)) {
+            s = m;
+        } else {
+            e = m;
+        }
+    }
+    cout << s << endl;
+}
+
+void process(void)
+{
+    int n;
+    scanf("%d", &n);
+    V.resize(n);
+    int xmin = 1000005, xmax = -1000005, ymin = 1000005, ymax = -1000005;
+    for(int i=0;i<n;i++) {
+        scanf("%d %d",&V[i].first, &V[i].second);
+        xmin = min(xmin, V[i].first);
+        xmax = max(xmax, V[i].first);
+        ymin = min(ymin, V[i].second);
+        ymax = max(ymax, V[i].second);
+    }
+
+    for(int i=0;i<n;i++) {
+        V[i].first -= xmin;
+        V[i].first *= 2;
+        V[i].second -= ymin;
+        V[i].second *= 2;
+    }
+
+    int xdiff = xmax - xmin;
+    int ydiff = ymax - ymin;
+
+    if(xdiff < ydiff) {
+        for(int i=0;i<n;i++) {
+            swap(V[i].first, V[i].second);
+        }
+        xdiff = ydiff;
+    }
+    
+    for(int i=0;i<n;i++) {
+        if(V[i].first > xdiff) V[i].first = (xdiff * 2) - V[i].first;
+        cout << V[i].first << " " << V[i].second << endl;
+    }
+
+    go(xdiff);
+}
+
+int main(void)
+{
+    int N;
+    cin >> N;
+    for(int i=1;i<=N;i++)
+    {
+        process();
+    }
+}
