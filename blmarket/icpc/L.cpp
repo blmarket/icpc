@@ -43,7 +43,7 @@ bool check(int a) {
 void go(int xdiff) {
     int s = 0;
     int e = xdiff + 1;
-    check(7);
+    check(6);
     return;
     while(e-s > 1) {
         int m = (s+e) / 2;
