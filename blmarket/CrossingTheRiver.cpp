@@ -75,7 +75,6 @@ public:
 						if(tmp2 == -1) return "IMPOSSIBLE";
 
 						int target = tmp[tmp2] - 1 - depth;
-						cout << "target = " << target << endl;
 						if(target < 0) return "IMPOSSIBLE";
 
 						bool fail = true;
