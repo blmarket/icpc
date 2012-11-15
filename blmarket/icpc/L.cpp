@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <cstring>
 #include <cstdio>
 #include <sstream>
@@ -25,8 +26,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<PII> V;
 
+bool comp(const PII &lhs, const PII &rhs) {
+    return lhs.second < rhs.second;
+}
+
 bool check(int a) {
-    
 }
 
 void go(int xdiff) {
@@ -79,6 +83,8 @@ void process(void)
         if(V[i].first > xdiff) V[i].first = (xdiff * 2) - V[i].first;
         cout << V[i].first << " " << V[i].second << endl;
     }
+
+    sort(V.begin(), V.end(), comp);
 
     go(xdiff);
 }
