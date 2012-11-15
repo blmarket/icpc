@@ -120,6 +120,7 @@ int main(void)
 						tmp += '0' + (rand() % 10);
 				}
 				bigint bi(tmp);
-				cout << tmp << " " << bi * bi << endl;
+				string baseStr = toString(bi * bi);
+				cout << tmp << " " << baseStr << endl;
 		}
 }
