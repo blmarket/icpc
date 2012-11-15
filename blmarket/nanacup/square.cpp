@@ -30,12 +30,27 @@ public:
 		bigint(string str);
 
 		bigint operator*(const bigint &rhs);
+		bigint& operator*=(int rhs);
 
 		vector<int> V;
 };
 
 bigint bigint::operator*(const bigint &rhs) {
 		return bigint("0");
+}
+
+bigint& bigint::operator*=(int rhs) {
+		long long tmp = 0;
+		for(int i=0;i<size(V);i++) {
+				tmp = tmp + (long long)V[i] * rhs;
+				V[i] = tmp % 10000;
+				tmp /= 10000;
+		}
+		while(tmp) {
+				V.pb(tmp % 10000);
+				tmp /= 10000;
+		}
+		return *this;
 }
 
 bigint::bigint(string str) {
