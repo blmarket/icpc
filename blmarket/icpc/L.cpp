@@ -44,6 +44,8 @@ bool check(int a) {
 void go(int xdiff) {
     int s = 0;
     int e = xdiff + 1;
+    check(7);
+    return;
     while(e-s > 1) {
         int m = (s+e) / 2;
         if(check(m)) {
@@ -92,9 +94,6 @@ void process(void)
     }
 
     sort(V.begin(), V.end(), comp);
-    for(int i=0;i<n;i++) {
-        cout << V[i].first << " " << V[i].second << endl;
-    }
 
     go(xdiff);
 }
