@@ -34,11 +34,19 @@ bool comp(const PII &lhs, const PII &rhs) {
 }
 
 bool check(int right, int rightmost, int a) {
-    cout << right << " " << rightmost << endl;
+    int canleft = 0;
     for(int i=0;i<size(V);i++) {
         if(V[i].first <= a) continue;
-        cout << V[i] << endl;
+        if(V[i].second <= a) {
+            canleft = a - V[i].second;
+            canleft = min(canleft, right - rightmost);
+        } else {
+            if(V[i].second < right - canleft - a) {
+                return false;
+            }
+        }
     }
+    return true;
 }
 
 void go(int xdiff) {
