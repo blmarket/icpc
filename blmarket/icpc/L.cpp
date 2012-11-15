@@ -35,7 +35,7 @@ bool comp(const PII &lhs, const PII &rhs) {
 
 bool check(int right, int rightmost, int a) {
     int canleft = 0;
-    cout << right << " " << rightmost << " : ";
+    cout << a << " " << right << " " << rightmost << " : ";
     for(int i=0;i<size(V);i++) {
         if(V[i].first <= a) continue;
         cout << V[i] << " ";
