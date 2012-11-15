@@ -54,15 +54,15 @@ bool check(int right, int rightmost, int a) {
 }
 
 void go(int xdiff) {
-    int s = 0;
+    int s = -1;
     int e = xdiff + 1;
     while(e-s > 1) {
         cout << s << " " << e << endl;
         int m = (s+e) / 2;
         if(check(xdiff*2, V.back().second, m)) {
-            s = m;
-        } else {
             e = m;
+        } else {
+            s = m;
         }
     }
     cout << s << endl;
