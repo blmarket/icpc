@@ -28,6 +28,7 @@ template<typename T> string toString(const T &a) { ostringstream ost; ost << a; 
 
 class bigint {
 public:
+		bigint() { }
 		bigint(const bigint &rhs) { V = rhs.V; }
 		bigint(string str);
 
@@ -35,11 +36,41 @@ public:
 		bigint& operator*=(int rhs);
 		bigint operator*(int rhs) { bigint ret(*this); ret *= rhs; return ret; }
 
+		// offset 위치부터 rhs에 있는 값들을 더한다.
+		void shiftadd(int offset, const bigint &rhs);
+
 		vector<int> V;
 };
 
+void bigint::shiftadd(int offset, const bigint &rhs) {
+		for(int i=0;i<size(rhs.V);i++) {
+				int pos = offset + i;
+				if(size(V) <= pos) {
+						V.resize(pos + 1);
+				}
+				V[pos] += rhs.V[i];
+		}
+		for(int i=0;i+1<size(V);i++) {
+				if(V[i] > 10000) {
+						V[i+1]++;
+						V[i] -= 10000;
+				}
+		}
+		if(V.back() > 10000) {
+				V.back() -= 10000;
+				V.pb(1);
+		}
+}
+
 bigint bigint::operator*(const bigint &rhs) {
-		return bigint("0");
+		bigint ret;
+		bigint tmp;
+		for(int i=0;i<size(V);i++) {
+				tmp = rhs;
+				tmp *= V[i];
+				ret.shiftadd(i, tmp);
+		}
+		return ret;
 }
 
 bigint& bigint::operator*=(int rhs) {
@@ -88,6 +119,7 @@ int main(void)
 				for(int j=0;j<i;j++) {
 						tmp += '0' + (rand() % 10);
 				}
-				cout << tmp << endl;
+				bigint bi(tmp);
+				cout << tmp << " " << bi * bi << endl;
 		}
 }
