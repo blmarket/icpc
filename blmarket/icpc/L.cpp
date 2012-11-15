@@ -81,10 +81,12 @@ void process(void)
     cout << xdiff << endl;
     for(int i=0;i<n;i++) {
         if(V[i].first > xdiff) V[i].first = (xdiff * 2) - V[i].first;
-        cout << V[i].first << " " << V[i].second << endl;
     }
 
     sort(V.begin(), V.end(), comp);
+    for(int i=0;i<n;i++) {
+        cout << V[i].first << " " << V[i].second << endl;
+    }
 
     go(xdiff);
 }
