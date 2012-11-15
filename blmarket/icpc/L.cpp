@@ -65,7 +65,7 @@ void go(int xdiff) {
             s = m;
         }
     }
-    cout << s << endl;
+    cout << e << endl;
 }
 
 void process(void)
