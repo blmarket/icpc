@@ -52,8 +52,6 @@ bool check(int right, int rightmost, int a) {
 void go(int xdiff) {
     int s = 0;
     int e = xdiff + 1;
-    check(xdiff * 2, V.back().second, 27);
-    return;
     while(e-s > 1) {
         int m = (s+e) / 2;
         if(check(xdiff*2, V.back().second, m)) {
