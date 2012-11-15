@@ -64,7 +64,7 @@ void go(int xdiff) {
             s = m;
         }
     }
-    cout << e << endl;
+    printf("%.1lf\n", (double)e / 2);
 }
 
 void process(void)
