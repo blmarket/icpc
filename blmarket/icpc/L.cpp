@@ -114,6 +114,5 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process();
-        break;
     }
 }
