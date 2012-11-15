@@ -35,7 +35,7 @@ bool comp(const PII &lhs, const PII &rhs) {
 
 bool check(int a) {
     for(int i=0;i<size(V);i++) {
-        if(V[i].first <= a) continue;
+        //if(V[i].first <= a) continue;
         cout << V[i] << endl;
     }
 }
