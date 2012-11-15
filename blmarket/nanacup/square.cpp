@@ -27,10 +27,12 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 class bigint {
 public:
+		bigint(const bigint &rhs) { V = rhs.V; }
 		bigint(string str);
 
 		bigint operator*(const bigint &rhs);
 		bigint& operator*=(int rhs);
+		bigint operator*(int rhs) { bigint ret(*this); ret *= rhs; return ret; }
 
 		vector<int> V;
 };
@@ -78,5 +80,5 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 int main(void)
 {
 		cout << bigint("10000000000000001") << endl;
-		cout << bigint("123") * bigint("456") << endl;
+		cout << bigint("123") * 456 << endl;
 }
