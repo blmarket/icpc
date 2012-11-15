@@ -57,7 +57,6 @@ void go(int xdiff) {
     int s = -1;
     int e = xdiff + 1;
     while(e-s > 1) {
-        cout << s << " " << e << endl;
         int m = (s+e) / 2;
         if(check(xdiff*2, V.back().second, m)) {
             e = m;
