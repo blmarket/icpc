@@ -115,8 +115,9 @@ void bigint::shiftadd(int offset, const bigint &rhs) {
 				}
 		}
 		if(V.back() > 10000) {
-				V.back() -= 10000;
-				V.pb(1);
+				int tmp = V.back() / 10000;
+				V.back() %= 10000;
+				V.pb(tmp);
 		}
 }
 
