@@ -164,7 +164,7 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 		if(size(bi.V) == 0) return ost;
 		ost << bi.V.back();
 		for(int i=size(bi.V) - 2;i>=0; i--) {
-				ost << setfill('0') << setw(4) << bi.V[i];
+				ost << setfill('0') << setw(4) << bi.V[i] << ",";
 		}
 		return ost;
 }
