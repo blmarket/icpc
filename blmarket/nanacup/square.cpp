@@ -223,7 +223,7 @@ struct seed_context {
 
 int main(void)
 {
-    //srand(time(NULL));
+    srand(time(NULL));
     for(int i=1;i<10000;i++) {
         string tmp = toString(i * i);
         sqrs.insert(toString(i * i));
