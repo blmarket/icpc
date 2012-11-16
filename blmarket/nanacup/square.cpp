@@ -117,7 +117,7 @@ int main(void)
 		for(int i=1;i*2<n;i++) {
 				string tmp;
 				for(int j=0;j<i;j++) {
-						tmp += '0' + (rand() % 10);
+						tmp += '1' + (rand() % 9);
 				}
 				bigint bi(tmp);
 				string baseStr = toString(bi * bi);
