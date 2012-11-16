@@ -239,14 +239,15 @@ int main(void)
 
     string maxresult;
     int maxscore = -1;
-    do {
+    int i;
+    for(i=0;getTime() < 4.9;i++) {
         seed_context seed("2916", init, 3);
         string tmp = seed.go();
         if(seed.score > maxscore) {
             maxscore = seed.score;
             maxresult = tmp;
         }
-    } while(getTime() < 4.9);
+    } 
     cout << maxresult << endl;
-    cerr << maxresult << " " << maxscore;
+    cerr << maxresult << " " << maxscore << " with " << i << " trials" << endl;
 }
