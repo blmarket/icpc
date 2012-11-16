@@ -251,10 +251,11 @@ int main(void)
         sqrs.insert(toString(i * i));
         all_sqrs.pb(tmp);
     }
+
     for(int i=0;i<size(all_sqrs);i++) {
-        cout << all_sqrs[i] << " ";
+        cerr << all_sqrs[i] << " ";
     }
-    cout << endl;
+    cerr << endl;
 
 		scanf("%d %d %d %d", &n, &a, &b, &c);
 
