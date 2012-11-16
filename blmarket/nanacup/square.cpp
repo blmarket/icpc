@@ -156,6 +156,8 @@ bigint::bigint(string str) {
 						break;
 				}
 		}
+
+		while(size(V) && V.back() == 0) V.pop_back();
 }
 
 ostream &operator<<(ostream &ost, const bigint &bi) {
@@ -273,7 +275,6 @@ bool is_square(const string &str) {
 		bigint e(str);
 		
 		while(s < e) {
-				cerr << str << " " << s << " " << e << endl;
 				bigint m = (s + e);
 				m.shr();
 				cerr << m << endl;
