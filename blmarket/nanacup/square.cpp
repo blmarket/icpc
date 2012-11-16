@@ -153,6 +153,9 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
+int choices[2] = { 100, 100 };
+int totalchoices = 200;
+
 struct seed_context {
     seed_context(const string &str, const unordered_map<string,int> &contains, int cnt) :
         str(str),
@@ -211,12 +214,18 @@ struct seed_context {
 
     string go() {
         evaluate();
-
-        //foreach(it, contains) {
-        //    cerr << it->first << " = " << it->second << endl;
-        //}
-
         if(size(str) == n) return str;
+
+        int ch = rand() % totalchoices;
+        ch -= choices[0];
+        if(ch < 0) {
+            return stratA();
+        }
+        ch -= choices[1];
+        if(ch < 0) {
+            return stratB();
+        }
+
         return stratB();
     }
 };
