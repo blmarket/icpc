@@ -171,7 +171,7 @@ void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
 
 int main(void)
 {
-    srand(time(NULL));
+    //srand(time(NULL));
     for(int i=1;i<10000;i++) {
         sqrs.insert(toString(i * i));
     }
