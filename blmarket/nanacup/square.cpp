@@ -269,8 +269,7 @@ bool is_square(const bigint &in) {
 		bigint s("1");
 		bigint e = in;
 		
-		while((s == e) == false) {
-				cerr << s << " " << e << endl;
+		while(s < e) {
 				bigint m = (s + e);
 				m.shr();
 				bigint tmp = m * m;
