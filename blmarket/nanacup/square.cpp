@@ -152,10 +152,12 @@ void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
     foreach(it, contains) {
         cout << it->first << " = " << it->second << endl;
     }
+
     if(size(in) == n) {
         cout << in << endl;
         return;
     }
+    cout << "size = " << size(in) << " " << n << endl;
 
     string tmp = in + (char)('0' + (rand() % 10));
     for(int i=1;i<min(8, size(tmp));i++) {
