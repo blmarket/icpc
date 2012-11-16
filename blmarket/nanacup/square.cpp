@@ -321,6 +321,10 @@ void easy_pattern(string head, int multi, int lens) {
 		int as,bs,cs;
 		precise_score(head,as,bs,cs);
 
+		int score = min(min(as,bs),cs);
+		if(score < known_score) return;
+		known_best = head;
+		known_score = score;
 		cerr << head << " = " << as << " " << bs << " " << cs << endl;
 }
 
