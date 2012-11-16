@@ -239,6 +239,6 @@ int main(void)
 
     do {
         seed_context seed("2916", init, 3);
-        cout << seed.go() << endl;
+        cout << seed.go() << " " << seed.score << endl;
     } while(getTime() < 4.9);
 }
