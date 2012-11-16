@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sys/time.h>
 #include <tr1/unordered_set>
 #include <tr1/unordered_map>
 #include <iomanip>
@@ -28,6 +29,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 template<typename T> string toString(const T &a) { ostringstream ost; ost << a; return ost.str(); }
+
+double initGetTime()
+{
+    timeval tv;
+    gettimeofday(&tv, 0);
+    return tv.tv_sec + tv.tv_usec * 0.000001;
+}
+
+double time_limit = 4.9;
+double time_start = initGetTime();
+
+double getTime()
+{
+    timeval tv;
+    gettimeofday(&tv, 0);
+    return (tv.tv_sec + tv.tv_usec * 0.000001 - time_start);
+}
 
 class bigint {
 public:
@@ -221,4 +239,6 @@ int main(void)
 
     seed_context seed("2916", init, 3);
     cout << seed.go() << endl;
+
+    cerr << getTime() << endl;
 }
