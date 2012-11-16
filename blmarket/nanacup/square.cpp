@@ -135,14 +135,16 @@ unordered_set<string> sqrs;
 
 void check(const string &in) {
     cout << in << endl;
-    bigint bi(in);
     for(int i=1;i<=size(in);i++) {
         for(int j=0;j+i <= size(in); j++) {
             string tmp = in.substr(j, i);
             if(tmp[0] == '0') continue;
-            cout << tmp << endl;
+            if(sqrs.count(tmp)) {
+                cout << tmp << " ";
+            }
         }
     }
+    cout << endl;
 }
 
 int main(void)
@@ -150,10 +152,7 @@ int main(void)
     for(int i=1;i<1000;i++) {
         sqrs.insert(toString(i * i));
     }
-    foreach(it, sqrs) {
-        cout << *it << endl;
-    }
-    return 0;
+
 		scanf("%d %d %d %d", &n, &a, &b, &c);
     for(int trial=0;trial<1;trial++) {
         string tmp(1, '1' + (rand() % 9));
