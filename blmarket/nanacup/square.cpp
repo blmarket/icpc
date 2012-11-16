@@ -283,7 +283,8 @@ int main(void)
     int maxscore = -1;
     int i;
     for(i=0;getTime() < 4.9;i++) {
-        seed_context seed("2916", init, 3);
+        //seed_context seed("2916", init, 3);
+        seed_context seed("", unordered_map<string, int>(), 0);
         seed.go();
         string tmp = seed.str;
         if(seed.score > maxscore) {
