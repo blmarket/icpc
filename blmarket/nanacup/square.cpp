@@ -299,6 +299,7 @@ void precise_score(const string &in, int &sa, int &sb, int &sc) {
 				for(int j=0;j+i<=size(in);j++) {
 						string tmp = in.substr(i, j);
 						if(is_square(tmp)) {
+								cerr << tmp << endl;
 								sa += a;
 								sb += size(tmp);
 
