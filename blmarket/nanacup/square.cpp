@@ -154,6 +154,9 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
+string known_best;
+int known_score = 0;
+
 int choices[] = { 1000, 5000, 2000, 2000 };
 int totalchoices = accumulate(choices, choices + ARRAYSIZE(choices), 0);
 
@@ -245,20 +248,47 @@ struct seed_context {
     }
 };
 
+void easy_pattern(string head, int multi, int lens) {
+		if(size(head) > n) return;
+		int n0 = (n - size(head)) / 2 + 1;
+
+		int np = multi * n0;
+		int as,bs,cs;
+		as = np * a;
+		bs=0;
+		for(int i=0;i<n0;i++) {
+				bs += lens + multi * i * 2;
+		}
+		cs = np * c;
+
+		int score = min(as,min(bs,cs));
+		if(score < known_score) return;
+
+		known_best = head;
+		while(size(known_best) < n) {
+				known_best += '0';
+		}
+		cerr << as << " " << bs << " " << cs << endl;
+}
+
 void check_tails() {
-		int maxcnt = 0;
+		int maxcnt = 0, maxlen = 0;
 		for(int i=0;i<size(all_sqrs);i++) {
 				const string &tmp = all_sqrs[i];
 				int cnt = 0;
+				int lens = size(tmp);
 				for(int j=1;j<size(tmp);j++) {
 						string tmp2 = tmp.substr(size(tmp) - j);
+						
 						if(sqrs.count(tmp2)) {
 								cnt++;
+								lens += size(tmp2);
 						}
 				}
-				if(cnt > maxcnt) {
-						cout << tmp << " " << cnt << endl;
+				if(cnt > maxcnt || (cnt == maxcnt && lens > maxlen)) {
+						easy_pattern(tmp, cnt+1, maxlen);
 						maxcnt = cnt;
+						maxlen = lens;
 				}
 		}
 }
@@ -272,56 +302,27 @@ int main(void)
         all_sqrs.pb(tmp);
     }
 
+		scanf("%d %d %d %d", &n, &a, &b, &c);
 		check_tails();
 
-		scanf("%d %d %d %d", &n, &a, &b, &c);
-
-		if(n > 20) {
-				string tmp = "1434515625";
-				while(size(tmp) < n) {
-						tmp += '0';
-				}
-				cout << tmp << endl;
-				return 0;
-		}
-		
-		if(n > 10) {
-				string tmp = "15625";
-				while(size(tmp) < n) {
-						tmp += '0';
-				}
-				cout << tmp << endl;
-				return 0;
-		}
-
-    unordered_map<string, int> init;
-    init["1"] = 1;
-    init["9"] = 1;
-    init["16"] = 1;
-
-    string maxresult;
-    int maxscore = -1;
     int i;
     for(i=0;getTime() < 4.9;i++) {
         //seed_context seed("2916", init, 3);
         seed_context seed("", unordered_map<string, int>(), 0);
         seed.go();
-        string tmp = seed.str;
-        if(seed.score > maxscore) {
-            maxscore = seed.score;
-            maxresult = tmp;
-            fprintf(stderr, "%s %d(%d,%d,%d) with %d trials\n", maxresult.c_str(), maxscore, seed.ascore, seed.bscore, seed.cscore, i);
-        }
 
         if(seed.cscore < seed.ascore && seed.cscore < seed.bscore && choices[0] && choices[2]) {
             choices[1] += 2;
             choices[0] --;
             choices[2] --;
-        } else {
-        }
+        } 
+
+				if(seed.score < known_score) continue;
+				known_score = seed.score;
+				known_best = seed.str;
+
+				fprintf(stderr, "%s %d(%d,%d,%d) with %d trials\n", known_best.c_str(), known_score, seed.ascore, seed.bscore, seed.cscore, i);
     } 
-    cout << maxresult << endl;
-    cerr << maxresult << " " << maxscore << " with " << i << " trials" << endl;
-    copy(choices, choices + ARRAYSIZE(choices), ostream_iterator<int>(cerr, " "));
-    cerr << endl;
+
+		cout << known_best << endl;
 }
