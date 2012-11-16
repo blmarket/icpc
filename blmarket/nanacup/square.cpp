@@ -149,7 +149,7 @@ bigint& bigint::operator*=(int rhs) {
 bigint::bigint(string str) {
 		V.clear();
 		while(str.size() > 0) {
-				cerr << str << endl;
+				cerr << "X" << str << endl;
 				if(size(str) >= 4) {
 						V.pb(atoi(str.substr(size(str) - 4).c_str()));
 						str = str.substr(0, size(str) - 4);
