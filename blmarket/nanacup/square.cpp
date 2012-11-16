@@ -274,9 +274,6 @@ int main(void)
             choices[0] --;
             choices[2] --;
         } else {
-            choices[0] += 2;
-            choices[1] --;
-            choices[2] --;
         }
     } 
     cout << maxresult << endl;
