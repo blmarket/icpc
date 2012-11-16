@@ -272,11 +272,6 @@ int main(void)
 
 		check_tails();
 
-    for(int i=0;i<size(all_sqrs);i++) {
-        cerr << all_sqrs[i] << " ";
-    }
-    cerr << endl;
-
 		scanf("%d %d %d %d", &n, &a, &b, &c);
 
     unordered_map<string, int> init;
