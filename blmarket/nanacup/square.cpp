@@ -38,6 +38,7 @@ public:
 		bigint& operator*=(int rhs);
 		bigint operator*(int rhs) { bigint ret(*this); ret *= rhs; return ret; }
     bool operator==(const bigint &rhs);
+    bool operator<(const bigint &rhs);
 
 		// offset 위치부터 rhs에 있는 값들을 더한다.
 		void shiftadd(int offset, const bigint &rhs);
@@ -46,8 +47,12 @@ public:
 		vector<int> V;
 };
 
-int bigint::hash() const {
-    return 0;
+bool bigint::operator<(const bigint &rhs) {
+    if(size(V) != size(rhs.V)) return size(V) < size(rhs.V);
+    for(int i=size(V)-1;i>=0;i--) {
+        if(V[i] != rhs.V[i]) return V[i] < rhs.V[i];
+    }
+    return false; // it's same!
 }
 
 bool bigint::operator==(const bigint &rhs) {
