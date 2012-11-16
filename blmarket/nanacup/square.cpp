@@ -240,7 +240,7 @@ int main(void)
     string maxresult;
     int maxscore = -1;
     int i;
-    for(i=0;getTime() < 4.9;i++) {
+    for(i=0;i<200000;i++) {
         seed_context seed("2916", init, 3);
         string tmp = seed.go();
         if(seed.score > maxscore) {
