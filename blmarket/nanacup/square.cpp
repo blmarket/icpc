@@ -153,8 +153,13 @@ int main(void)
     for(int i=1;i<1000;i++) {
         sqrs.insert(toString(i * i));
     }
+    foreach(it, sqrs) {
+        cout << *it << " ";
+    }
+    cout << endl;
 
 		scanf("%d %d %d %d", &n, &a, &b, &c);
+
     for(int trial=0;trial<1;trial++) {
         string tmp(1, '1' + (rand() % 9));
         for(int i=1;i<n;i++) {
