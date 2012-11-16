@@ -168,13 +168,14 @@ struct seed_context {
     unordered_map<string, int> contains;
     int cnt;
     int score;
+    int ascore, bscore, cscore;
 
     int evaluate() {
-        int bscore = 0;
+        bscore = 0;
         foreach(it, contains) {
             bscore += b * it->second * size(it->first);
         }
-        int ascore = a*cnt, cscore = c * size(contains);
+        ascore = a*cnt, cscore = c * size(contains);
         //fprintf(stderr, "a : %d * %d = %d\n", a, cnt, ascore);
         //fprintf(stderr, "b : %d\n", bscore);
         //fprintf(stderr, "c : %d * %d = %d\n", c, size(contains), cscore);
@@ -201,6 +202,9 @@ struct seed_context {
             recalc();
         }
         return go();
+    }
+
+    string stratC() {
     }
 
     void recalc() {
