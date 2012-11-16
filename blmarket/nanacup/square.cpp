@@ -182,13 +182,13 @@ struct seed_context {
         score = min(ascore, min(bscore, cscore));
     }
 
-    string stratA() { // add one square
+    void stratA() { // add one square
         str += '1';
         recalc();
         return go();
     }
 
-    string stratB() { // add some specific square number
+    void stratB() { // add some specific square number
         int maxidx = size(all_sqrs);
         string tmp;
         while(true) {
@@ -204,7 +204,7 @@ struct seed_context {
         return go();
     }
 
-    string stratC() {
+    void stratC() {
     }
 
     void recalc() {
@@ -217,9 +217,9 @@ struct seed_context {
         }
     }
 
-    string go() {
+    void go() {
         evaluate();
-        if(size(str) == n) return str;
+        if(size(str) == n) return;
 
         int ch = rand() % totalchoices;
         ch -= choices[0];
@@ -256,7 +256,8 @@ int main(void)
     int i;
     for(i=0;getTime() < 4.9;i++) {
         seed_context seed("2916", init, 3);
-        string tmp = seed.go();
+        seed.go();
+        string tmp = seed.str;
         if(seed.score > maxscore) {
             maxscore = seed.score;
             maxresult = tmp;
