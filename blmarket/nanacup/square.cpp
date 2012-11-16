@@ -286,40 +286,36 @@ bool is_square(const bigint &in) {
 }
 
 void precise_score(const string &in, int &sa, int &sb, int &sc) {
+		sa = sb = sc = 0;
+		int sqr_count = 0;
+		unordered_set<string> S;
 		for(int i=1;i<=size(in);i++) {
 				for(int j=0;j+i<=size(in);j++) {
 						string tmp = in.substr(i, j);
+						if(is_square(tmp)) {
+								sa += a;
+								sb += size(tmp);
+
+								if(S.count(tmp) == 0) {
+										S.insert(tmp);
+										sc += c;
+								}
+						}
 				}
 		}
+		cout << sa << " " << sb << " " << sc << endl;
 }
 
 void easy_pattern(string head, int multi, int lens) {
 		if(size(head) > n) return;
-		int n0 = (n - size(head)) / 2 + 1;
 
-		int np = multi * n0;
+		while(size(head) < n) {
+				head += '0';
+		}
 		int as,bs,cs;
-		as = np * a;
-		bs=0;
-		for(int i=0;i<n0;i++) {
-				bs += lens + multi * i * 2;
-		}
-		cs = np * c;
+		precise_score(head,as,bs,cs);
 
-		int score = min(as,min(bs,cs));
-		if(score < known_score) return;
-
-		known_score = score;
-		known_best = head;
-
-		while(size(known_best) < n) {
-				if(size(known_best) + 1 == n) {
-						known_best += "9";
-						break;
-				}
-				known_best += "00";
-		}
-		cerr << as << " " << bs << " " << cs << endl;
+		cerr << head << " = " << as << " " << bs << " " << cs << endl;
 }
 
 void check_tails() {
