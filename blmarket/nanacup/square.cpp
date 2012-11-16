@@ -111,14 +111,23 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 
 int n,a,b,c;
 
+void check(const string &in) {
+    for(int i=1;i<=size(in);i++) {
+        for(int j=0;j+i <= size(in); j++) {
+            string tmp = in.substr(j, i);
+            cout << tmp << endl;
+        }
+    }
+}
+
 int main(void)
 {
 		scanf("%d %d %d %d", &n, &a, &b, &c);
-    for(int trial=0;trial<1000;trial++) {
+    for(int trial=0;trial<1;trial++) {
         string tmp(1, '1' + (rand() % 9));
         for(int i=1;i<n;i++) {
             tmp += '0' + (rand() % 10);
         }
-        cout << tmp << endl;
+        check(tmp);
     }
 }
