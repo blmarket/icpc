@@ -306,6 +306,12 @@ int main(void)
 		}
 
 		if(n > 15) {
+				string tmp = "275625";
+				while(size(tmp) < n) {
+						tmp += '0';
+				}
+				cout << tmp << endl;
+				return 0;
 		}
 
 		if(n > 10) {
