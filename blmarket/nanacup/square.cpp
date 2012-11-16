@@ -154,7 +154,7 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
-int choices[] = { 10, 50, 20 };
+int choices[] = { 1000, 5000, 2000 };
 int totalchoices = accumulate(choices, choices + ARRAYSIZE(choices), 0);
 
 struct seed_context {
@@ -268,7 +268,14 @@ int main(void)
             maxresult = tmp;
             fprintf(stderr, "%s %d(%d,%d,%d) with %d trials\n", maxresult.c_str(), maxscore, seed.ascore, seed.bscore, seed.cscore, i);
         }
+
+        if(seed.cscore < seed.ascore && seed.cscore < seed.bscore) {
+            choices[1] += 2;
+            choices[0] --;
+            choices[2] --;
+        }
     } 
     cout << maxresult << endl;
     cerr << maxresult << " " << maxscore << " with " << i << " trials" << endl;
+    cerr << choices[0] << " " << choices[1] << " " << choices[2] << endl;
 }
