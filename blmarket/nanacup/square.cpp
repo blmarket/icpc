@@ -248,6 +248,11 @@ int main(void)
         sqrs.insert(toString(i * i));
         all_sqrs.pb(tmp);
     }
+    sort(all_sqrs.begin(), all_sqrs.end());
+    for(int i=0;i<size(all_sqrs);i++) {
+        cout << all_sqrs[i] << " ";
+    }
+    cout << endl;
 
 		scanf("%d %d %d %d", &n, &a, &b, &c);
 
