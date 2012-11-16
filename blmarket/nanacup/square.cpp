@@ -116,6 +116,7 @@ void check(const string &in) {
     for(int i=1;i<=size(in);i++) {
         for(int j=0;j+i <= size(in); j++) {
             string tmp = in.substr(j, i);
+            if(tmp[0] == '0') continue;
             cout << tmp << endl;
         }
     }
