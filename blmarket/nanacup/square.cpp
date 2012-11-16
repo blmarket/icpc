@@ -275,10 +275,10 @@ bool is_square(const string &str) {
 		bigint e(str);
 		
 		while(s < e) {
-				cerr << str << " " << s << " " << e << endl;
 				bigint m = (s + e);
 				m.shr();
 				bigint tmp = m * m;
+				cerr << str << " " << s << " " << e << " " << tmp << endl;
 				if(tmp == in) {
 						return true;
 				}
