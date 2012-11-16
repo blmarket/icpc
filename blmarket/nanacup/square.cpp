@@ -266,8 +266,21 @@ void easy_pattern(string head, int multi, int lens) {
 
 		known_score = score;
 		known_best = head;
+
 		while(size(known_best) < n) {
-				known_best += '0';
+				if(size(known_best) + 3 == n) {
+						known_best += "816";
+						break;
+				}
+				if(size(known_best) + 2 == n) {
+						known_best += "81";
+						break;
+				}
+				if(size(known_best) + 1 == n) {
+						known_best += "9";
+						break;
+				}
+				known_best += "00";
 		}
 		cerr << as << " " << bs << " " << cs << endl;
 }
