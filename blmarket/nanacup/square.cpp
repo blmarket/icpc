@@ -1,4 +1,5 @@
 #include <iostream>
+#include <tr1/unordered_map>
 #include <iomanip>
 #include <algorithm>
 #include <cstring>
@@ -17,6 +18,7 @@
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
 using namespace std;
+using namespace std::tr1;
 
 typedef vector<int> VI;
 typedef vector<VI> VVI;
@@ -35,12 +37,21 @@ public:
 		bigint operator*(const bigint &rhs);
 		bigint& operator*=(int rhs);
 		bigint operator*(int rhs) { bigint ret(*this); ret *= rhs; return ret; }
+    bool operator==(const bigint &rhs);
 
 		// offset 위치부터 rhs에 있는 값들을 더한다.
 		void shiftadd(int offset, const bigint &rhs);
 
 		vector<int> V;
 };
+
+bool bigint::operator==(const bigint &rhs) {
+    if(size(V) != size(rhs.V)) return false;
+    for(int i=0;i<size(V);i++) {
+        if(V[i] != rhs.V[i]) return false;
+    }
+    return true;
+}
 
 void bigint::shiftadd(int offset, const bigint &rhs) {
 		for(int i=0;i<size(rhs.V);i++) {
