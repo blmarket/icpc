@@ -264,9 +264,9 @@ void check_tails() {
 int main(void)
 {
     srand(time(NULL));
-    for(int i=1;i<10000;i++) {
-        string tmp = toString(i * i);
-        sqrs.insert(toString(i * i));
+    for(int i=1;i<100000;i++) {
+        string tmp = toString((long long)i * i);
+        sqrs.insert(tmp);
         all_sqrs.pb(tmp);
     }
 
