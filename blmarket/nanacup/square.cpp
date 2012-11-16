@@ -326,4 +326,5 @@ int main(void)
     } 
 
 		cout << known_best << endl;
+		cerr << "score with : " << known_score << endl;
 }
