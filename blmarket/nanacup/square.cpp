@@ -229,8 +229,10 @@ struct seed_context {
     }
 
     void go() {
-        evaluate();
-        if(size(str) == n) return;
+        if(size(str) == n) {
+						evaluate();
+						return;
+				}
 
         int ch = rand() % totalchoices;
         ch -= choices[0];
