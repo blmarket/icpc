@@ -134,7 +134,8 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 int n,a,b,c;
 unordered_set<string> sqrs;
 
-void seed(const string &in, unordered_map<string, int> &contains) {
+void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
+    cout << contains.size() << endl;
     foreach(it, contains) {
         cout << it->first << " = " << it->second << endl;
     }
@@ -152,5 +153,5 @@ int main(void)
     init["1"] = 1;
     init["9"] = 1;
     init["16"] = 1;
-    seed("2916", init);
+    seed("2916", init, 3);
 }
