@@ -286,8 +286,9 @@ bool is_square(const string &str) {
 						cerr << "change s" << endl;
 						s = m + bigint("1");
 				} else {
-						cerr << "change e" << endl;
+						cerr << "change e : " << e << endl;
 						e = m;
+						cerr << e << endl;
 				}
 		}
 		return false;
