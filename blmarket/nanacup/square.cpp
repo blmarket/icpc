@@ -285,5 +285,6 @@ int main(void)
     } 
     cout << maxresult << endl;
     cerr << maxresult << " " << maxscore << " with " << i << " trials" << endl;
-    cerr << choices[0] << " " << choices[1] << " " << choices[2] << endl;
+    copy(choices, choices + ARRAYSIZE(choices), ostream_iterator<int>(cerr, " "));
+    cerr << endl;
 }
