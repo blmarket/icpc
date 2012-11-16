@@ -243,6 +243,24 @@ struct seed_context {
     }
 };
 
+void check_tails() {
+		int maxcnt = 0;
+		for(int i=0;i<size(all_sqrs);i++) {
+				const string &tmp = all_sqrs[i];
+				int cnt = 0;
+				for(int j=1;j<size(tmp);j++) {
+						string tmp2 = tmp.substr(size(tmp) - j);
+						if(sqrs.count(tmp2)) {
+								cnt++;
+						}
+				}
+				if(cnt > maxcnt) {
+						cout << tmp << " " << cnt << endl;
+						maxcnt = cnt;
+				}
+		}
+}
+
 int main(void)
 {
     srand(time(NULL));
@@ -251,6 +269,8 @@ int main(void)
         sqrs.insert(toString(i * i));
         all_sqrs.pb(tmp);
     }
+
+		check_tails();
 
     for(int i=0;i<size(all_sqrs);i++) {
         cerr << all_sqrs[i] << " ";
