@@ -154,7 +154,7 @@ unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
 int choices[2] = { 100, 1 };
-int totalchoices = 200;
+int totalchoices = 101;
 
 struct seed_context {
     seed_context(const string &str, const unordered_map<string,int> &contains, int cnt) :
