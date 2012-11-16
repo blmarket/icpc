@@ -297,9 +297,10 @@ void precise_score(const string &in, int &sa, int &sb, int &sc) {
 		unordered_set<string> S;
 		for(int i=1;i<=size(in);i++) {
 				for(int j=0;j+i<=size(in);j++) {
-						string tmp = in.substr(i, j);
+						if(in[j] == '0') continue;
+						string tmp = in.substr(j, i);
+						cerr << tmp << endl;
 						if(is_square(tmp)) {
-								cerr << tmp << endl;
 								sa += a;
 								sb += size(tmp);
 
