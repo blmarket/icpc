@@ -131,6 +131,7 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 }
 
 int n,a,b,c;
+unordered_set<string> sqrs;
 
 void check(const string &in) {
     cout << in << endl;
@@ -146,6 +147,13 @@ void check(const string &in) {
 
 int main(void)
 {
+    for(int i=1;i<1000;i++) {
+        sqrs.insert(toString(i * i));
+    }
+    foreach(it, sqrs) {
+        cout << *it << endl;
+    }
+    return 0;
 		scanf("%d %d %d %d", &n, &a, &b, &c);
     for(int trial=0;trial<1;trial++) {
         string tmp(1, '1' + (rand() % 9));
