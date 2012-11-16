@@ -134,40 +134,50 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 int n,a,b,c;
 unordered_set<string> sqrs;
 
-int evaluate(const string &in, unordered_map<string, int> &contains, int cnt) {
-    int bscore = 0;
-    foreach(it, contains) {
-        bscore += b * it->second * size(it->first);
-    }
-    int ascore = a*cnt, cscore = c * size(contains);
-    //printf("a : %d * %d = %d\n", a, cnt, ascore);
-    //printf("b : %d\n", bscore);
-    //printf("c : %d * %d = %d\n", c, size(contains), cscore);
-    return min(ascore, min(bscore, cscore));
-}
+struct seed_context {
+    seed_context(const string &str, const unordered_map<string,int> &contains, int cnt) :
+        str(str),
+        contains(contains),
+        cnt(cnt) 
+    { }
 
-void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
-    cerr << in << endl;
-    evaluate(in, contains, cnt);
-    foreach(it, contains) {
-        cerr << it->first << " = " << it->second << endl;
-    }
+    string str;
+    unordered_map<string, int> contains;
+    int cnt;
 
-    if(size(in) == n) {
-        cout << in << endl;
-        return;
-    }
-
-    string tmp = in + (char)('0' + (rand() % 10));
-    for(int i=1;i<min(8, size(tmp));i++) {
-        string sub = tmp.substr(size(tmp) - i);
-        if(sqrs.count(sub)) {
-            contains[sub] += 1;
-            cnt++;
+    int evaluate() {
+        int bscore = 0;
+        foreach(it, contains) {
+            bscore += b * it->second * size(it->first);
         }
-        return seed(tmp, contains, cnt);
+        int ascore = a*cnt, cscore = c * size(contains);
+        fprintf(stderr, "a : %d * %d = %d\n", a, cnt, ascore);
+        fprintf(stderr, "b : %d\n", bscore);
+        fprintf(stderr, "c : %d * %d = %d\n", c, size(contains), cscore);
+        return min(ascore, min(bscore, cscore));
     }
-}
+
+    string go() {
+        cerr << str << endl;
+        evaluate();
+
+        foreach(it, contains) {
+            cerr << it->first << " = " << it->second << endl;
+        }
+
+        if(size(str) == n) return str;
+
+        str += (char)('0' + (rand() % 10));
+        for(int i=1;i<min(8, size(str));i++) {
+            string sub = str.substr(size(str) - i);
+            if(sqrs.count(sub)) {
+                contains[sub] += 1;
+                cnt++;
+            }
+            return go();
+        }
+    }
+};
 
 int main(void)
 {
@@ -177,9 +187,12 @@ int main(void)
     }
 
 		scanf("%d %d %d %d", &n, &a, &b, &c);
+
     unordered_map<string, int> init;
     init["1"] = 1;
     init["9"] = 1;
     init["16"] = 1;
-    seed("2916", init, 3);
+
+    seed_context seed("2916", init, 3);
+    cout << seed.go() << endl;
 }
