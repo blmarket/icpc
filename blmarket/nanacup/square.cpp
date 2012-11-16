@@ -1,5 +1,6 @@
 #include <iostream>
 #include <tr1/unordered_set>
+#include <tr1/unordered_map>
 #include <iomanip>
 #include <algorithm>
 #include <cstring>
@@ -133,38 +134,23 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 int n,a,b,c;
 unordered_set<string> sqrs;
 
-void check(const string &in) {
-    cout << in << endl;
-    for(int i=1;i<=size(in);i++) {
-        for(int j=0;j+i <= size(in); j++) {
-            string tmp = in.substr(j, i);
-            if(tmp[0] == '0') continue;
-            if(sqrs.count(tmp)) {
-                cout << tmp << " ";
-            }
-        }
+void seed(const string &in, unordered_map<string, int> &contains) {
+    foreach(it, contains) {
+        cout << it->first << " = " << it->second << endl;
     }
-    cout << endl;
 }
 
 int main(void)
 {
     srand(time(NULL));
-    for(int i=1;i<100;i++) {
+    for(int i=1;i<10000;i++) {
         sqrs.insert(toString(i * i));
     }
-    foreach(it, sqrs) {
-        cout << *it << " ";
-    }
-    cout << endl;
 
 		scanf("%d %d %d %d", &n, &a, &b, &c);
-
-    for(int trial=0;trial<1;trial++) {
-        string tmp(1, '1' + (rand() % 9));
-        for(int i=1;i<n;i++) {
-            tmp += '0' + (rand() % 10);
-        }
-        check(tmp);
-    }
+    unordered_map<string, int> init;
+    init["1"] = 1;
+    init["9"] = 1;
+    init["16"] = 1;
+    seed("2916", init);
 }
