@@ -150,7 +150,7 @@ void check(const string &in) {
 int main(void)
 {
     srand(time(NULL));
-    for(int i=1;i<1000;i++) {
+    for(int i=1;i<100;i++) {
         sqrs.insert(toString(i * i));
     }
     foreach(it, sqrs) {
