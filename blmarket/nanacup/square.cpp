@@ -147,6 +147,7 @@ int evaluate(const string &in, unordered_map<string, int> &contains, int cnt) {
 }
 
 void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
+    cout << in << endl;
     evaluate(in, contains, cnt);
     foreach(it, contains) {
         cout << it->first << " = " << it->second << endl;
