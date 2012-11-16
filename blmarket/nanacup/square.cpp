@@ -154,7 +154,7 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
-int choices[] = { 1000, 5000, 2000 };
+int choices[] = { 1000, 5000, 2000, 2000 };
 int totalchoices = accumulate(choices, choices + ARRAYSIZE(choices), 0);
 
 struct seed_context {
@@ -213,6 +213,11 @@ struct seed_context {
         return stratB();
     }
 
+    void stratD() {
+        if(size(str) + 5 <= n) return attachNumber("11449");
+        return stratB();
+    }
+
     void recalc() {
         for(int i=1;i<min(8, size(str));i++) {
             string sub = str.substr(size(str) - i);
@@ -229,14 +234,12 @@ struct seed_context {
 
         int ch = rand() % totalchoices;
         ch -= choices[0];
-        if(ch < 0) {
-            return stratA();
-        }
+        if(ch < 0) return stratA();
         ch -= choices[1];
-        if(ch < 0) {
-            return stratB();
-        }
-        return stratC();
+        if(ch < 0) return stratB();
+        ch -= choices[2];
+        if(ch < 0) return stratC();
+        return stratD();
     }
 };
 
