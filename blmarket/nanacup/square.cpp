@@ -18,6 +18,7 @@
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+#define ARRAYSIZE(a) ( sizeof(a) / sizeof((a)[0]) )
 
 using namespace std;
 using namespace std::tr1;
@@ -154,7 +155,7 @@ unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
 int choices[2] = { 100, 1 };
-int totalchoices = 101;
+int totalchoices = accumulate(choices, choices + ARRAYSIZE(choices), 0);
 
 struct seed_context {
     seed_context(const string &str, const unordered_map<string,int> &contains, int cnt) :
