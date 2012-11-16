@@ -133,6 +133,7 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 
 int n,a,b,c;
 unordered_set<string> sqrs;
+vector<string> all_sqrs;
 
 struct seed_context {
     seed_context(const string &str, const unordered_map<string,int> &contains, int cnt) :
@@ -157,6 +158,38 @@ struct seed_context {
         return min(ascore, min(bscore, cscore));
     }
 
+    string stratA() { // add one square
+        str += '1';
+        recalc();
+        return go();
+    }
+
+    string stratB() { // add some specific square number
+        int maxidx = size(all_sqrs);
+        string tmp;
+        while(true) {
+            int idx = rand() % maxidx;
+            tmp = all_sqrs[idx];
+            if(size(str) + size(tmp) <= n) break;
+            maxidx = idx;
+        }
+        for(int i=0;i<size(tmp);i++) {
+            str += tmp[i];
+            recalc();
+        }
+        return go();
+    }
+
+    void recalc() {
+        for(int i=1;i<min(8, size(str));i++) {
+            string sub = str.substr(size(str) - i);
+            if(sqrs.count(sub)) {
+                contains[sub] += 1;
+                cnt++;
+            }
+        }
+    }
+
     string go() {
         cerr << str << endl;
         evaluate();
@@ -166,16 +199,7 @@ struct seed_context {
         }
 
         if(size(str) == n) return str;
-
-        str += (char)('0' + (rand() % 10));
-        for(int i=1;i<min(8, size(str));i++) {
-            string sub = str.substr(size(str) - i);
-            if(sqrs.count(sub)) {
-                contains[sub] += 1;
-                cnt++;
-            }
-            return go();
-        }
+        return stratB();
     }
 };
 
@@ -183,7 +207,9 @@ int main(void)
 {
     //srand(time(NULL));
     for(int i=1;i<10000;i++) {
+        string tmp = toString(i * i);
         sqrs.insert(toString(i * i));
+        all_sqrs.pb(tmp);
     }
 
 		scanf("%d %d %d %d", &n, &a, &b, &c);
