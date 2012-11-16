@@ -112,6 +112,7 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 int n,a,b,c;
 
 void check(const string &in) {
+    cout << in << endl;
     for(int i=1;i<=size(in);i++) {
         for(int j=0;j+i <= size(in); j++) {
             string tmp = in.substr(j, i);
