@@ -153,7 +153,7 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
-int choices[2] = { 100, 100 };
+int choices[2] = { 100, 1 };
 int totalchoices = 200;
 
 struct seed_context {
