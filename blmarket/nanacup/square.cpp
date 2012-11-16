@@ -237,8 +237,16 @@ int main(void)
     init["9"] = 1;
     init["16"] = 1;
 
+    string maxresult;
+    int maxscore = -1;
     do {
         seed_context seed("2916", init, 3);
-        cout << seed.go() << " " << seed.score << endl;
+        string tmp = seed.go();
+        if(seed.score > maxscore) {
+            maxscore = seed.score;
+            maxresult = tmp;
+        }
     } while(getTime() < 4.9);
+    cout << maxresult << endl;
+    cerr << maxresult << " " << maxscore;
 }
