@@ -163,6 +163,7 @@ struct seed_context {
     string str;
     unordered_map<string, int> contains;
     int cnt;
+    int score;
 
     int evaluate() {
         int bscore = 0;
@@ -173,7 +174,7 @@ struct seed_context {
         fprintf(stderr, "a : %d * %d = %d\n", a, cnt, ascore);
         fprintf(stderr, "b : %d\n", bscore);
         fprintf(stderr, "c : %d * %d = %d\n", c, size(contains), cscore);
-        return min(ascore, min(bscore, cscore));
+        score = min(ascore, min(bscore, cscore));
     }
 
     string stratA() { // add one square
@@ -209,12 +210,11 @@ struct seed_context {
     }
 
     string go() {
-        cerr << str << endl;
         evaluate();
 
-        foreach(it, contains) {
-            cerr << it->first << " = " << it->second << endl;
-        }
+        //foreach(it, contains) {
+        //    cerr << it->first << " = " << it->second << endl;
+        //}
 
         if(size(str) == n) return str;
         return stratB();
