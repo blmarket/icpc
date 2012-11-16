@@ -157,7 +157,6 @@ void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
         cout << in << endl;
         return;
     }
-    cout << "size = " << size(in) << " " << n << endl;
 
     string tmp = in + (char)('0' + (rand() % 10));
     for(int i=1;i<min(8, size(tmp));i++) {
@@ -165,8 +164,8 @@ void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
         if(sqrs.count(sub)) {
             contains[sub] += 1;
             cnt++;
-            return seed(tmp, contains, cnt);
         }
+        return seed(tmp, contains, cnt);
     }
 }
 
