@@ -276,7 +276,7 @@ int main(void)
             fprintf(stderr, "%s %d(%d,%d,%d) with %d trials\n", maxresult.c_str(), maxscore, seed.ascore, seed.bscore, seed.cscore, i);
         }
 
-        if(seed.cscore < seed.ascore && seed.cscore < seed.bscore) {
+        if(seed.cscore < seed.ascore && seed.cscore < seed.bscore && choices[0] && choices[2]) {
             choices[1] += 2;
             choices[0] --;
             choices[2] --;
