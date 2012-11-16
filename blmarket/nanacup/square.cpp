@@ -201,7 +201,7 @@ struct seed_context {
         string tmp;
         while(true) {
             if(maxidx == 0) {
-                cout << size(str) << " " << n << endl;
+                cout << size(str) << " " << n << " " << maxidx << endl;
             }
             int idx = rand() % maxidx;
             tmp = all_sqrs[idx];
