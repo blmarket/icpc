@@ -255,6 +255,7 @@ int main(void)
         if(seed.score > maxscore) {
             maxscore = seed.score;
             maxresult = tmp;
+            cerr << maxresult << " " << maxscore << " with " << i << " trials" << endl;
         }
     } 
     cout << maxresult << endl;
