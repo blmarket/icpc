@@ -278,7 +278,6 @@ bool is_square(const string &str) {
 				cerr << str << " " << s << " " << e << endl;
 				bigint m = (s + e);
 				m.shr();
-				break;
 				bigint tmp = m * m;
 				if(tmp == in) {
 						return true;
