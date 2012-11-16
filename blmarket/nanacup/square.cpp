@@ -109,12 +109,12 @@ void bigint::shiftadd(int offset, const bigint &rhs) {
 				V[pos] += rhs.V[i];
 		}
 		for(int i=0;i+1<size(V);i++) {
-				if(V[i] > 10000) {
+				if(V[i] >= 10000) {
 						V[i+1]++;
 						V[i] -= 10000;
 				}
 		}
-		if(V.back() > 10000) {
+		if(V.back() >= 10000) {
 				int tmp = V.back() / 10000;
 				V.back() %= 10000;
 				V.pb(tmp);
