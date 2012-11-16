@@ -260,7 +260,7 @@ int main(void)
         if(seed.score > maxscore) {
             maxscore = seed.score;
             maxresult = tmp;
-            cerr << maxresult << " " << maxscore << " with " << i << " trials" << endl;
+            fprintf(stderr, "%s %d(%d,%d,%d) with %d trials", maxresult.c_str(), maxscore, seed.ascore, seed.bscore, seed.cscore, i);
         }
     } 
     cout << maxresult << endl;
