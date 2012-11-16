@@ -171,9 +171,9 @@ struct seed_context {
             bscore += b * it->second * size(it->first);
         }
         int ascore = a*cnt, cscore = c * size(contains);
-        fprintf(stderr, "a : %d * %d = %d\n", a, cnt, ascore);
-        fprintf(stderr, "b : %d\n", bscore);
-        fprintf(stderr, "c : %d * %d = %d\n", c, size(contains), cscore);
+        //fprintf(stderr, "a : %d * %d = %d\n", a, cnt, ascore);
+        //fprintf(stderr, "b : %d\n", bscore);
+        //fprintf(stderr, "c : %d * %d = %d\n", c, size(contains), cscore);
         score = min(ascore, min(bscore, cscore));
     }
 
