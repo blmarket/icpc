@@ -237,8 +237,8 @@ int main(void)
     init["9"] = 1;
     init["16"] = 1;
 
-    seed_context seed("2916", init, 3);
-    cout << seed.go() << endl;
-
-    cerr << getTime() << endl;
+    do {
+        seed_context seed("2916", init, 3);
+        cout << seed.go() << endl;
+    } while(getTime() < 4.9);
 }
