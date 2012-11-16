@@ -76,7 +76,7 @@ void bigint::shr() {
 				V[i] /= 2;
 		}
 		V[0] /= 2;
-		if(V.back() == 0) V.pop_back();
+		while(V.back() == 0) V.pop_back();
 }
 
 bigint& bigint::operator+=(const bigint &rhs) {
