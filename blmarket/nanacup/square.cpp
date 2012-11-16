@@ -284,6 +284,15 @@ int main(void)
 				cout << tmp << endl;
 				return 0;
 		}
+		
+		if(n > 10) {
+				string tmp = "15625";
+				while(size(tmp) < n) {
+						tmp += '0';
+				}
+				cout << tmp << endl;
+				return 0;
+		}
 
     unordered_map<string, int> init;
     init["1"] = 1;
