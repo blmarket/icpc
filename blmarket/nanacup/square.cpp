@@ -154,7 +154,7 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
-int choices[] = { 1000, 5000, 2000 };
+int choices[] = { 1, 5000, 2};
 int totalchoices = accumulate(choices, choices + ARRAYSIZE(choices), 0);
 
 struct seed_context {
