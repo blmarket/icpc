@@ -114,13 +114,11 @@ int n,a,b,c;
 int main(void)
 {
 		scanf("%d %d %d %d", &n, &a, &b, &c);
-		for(int i=1;i*2<n;i++) {
-				string tmp;
-				for(int j=0;j<i;j++) {
-						tmp += '1' + (rand() % 9);
-				}
-				bigint bi(tmp);
-				string baseStr = toString(bi * bi);
-				cout << tmp << " " << baseStr << endl;
-		}
+    for(int trial=0;trial<1000;trial++) {
+        string tmp(1, '1' + (rand() % 9));
+        for(int i=1;i<n;i++) {
+            tmp += '0' + (rand() % 10);
+        }
+        cout << tmp << endl;
+    }
 }
