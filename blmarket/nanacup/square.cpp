@@ -314,7 +314,6 @@ void precise_score(const string &in, int &sa, int &sb, int &sc) {
 						}
 				}
 		}
-		cout << sa << " " << sb << " " << sc << endl;
 }
 
 void easy_pattern(string head, int multi, int lens) {
