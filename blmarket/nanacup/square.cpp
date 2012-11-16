@@ -149,7 +149,6 @@ bigint& bigint::operator*=(int rhs) {
 bigint::bigint(string str) {
 		V.clear();
 		while(str.size() > 0) {
-				cerr << "X" << str << endl;
 				if(size(str) >= 4) {
 						V.pb(atoi(str.substr(size(str) - 4).c_str()));
 						str = str.substr(0, size(str) - 4);
@@ -164,7 +163,7 @@ bigint::bigint(string str) {
 
 ostream &operator<<(ostream &ost, const bigint &bi) {
 		if(size(bi.V) == 0) return ost;
-		ost << bi.V.back();
+		ost << bi.V.back() << ",";
 		for(int i=size(bi.V) - 2;i>=0; i--) {
 				ost << setfill('0') << setw(4) << bi.V[i] << ",";
 		}
