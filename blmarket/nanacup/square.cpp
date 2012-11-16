@@ -264,6 +264,7 @@ void easy_pattern(string head, int multi, int lens) {
 		int score = min(as,min(bs,cs));
 		if(score < known_score) return;
 
+		known_score = score;
 		known_best = head;
 		while(size(known_best) < n) {
 				known_best += '0';
