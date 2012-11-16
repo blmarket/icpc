@@ -134,8 +134,20 @@ ostream &operator<<(ostream &ost, const bigint &bi) {
 int n,a,b,c;
 unordered_set<string> sqrs;
 
+int evaluate(const string &in, unordered_map<string, int> &contains, int cnt) {
+    int bscore = 0;
+    foreach(it, contains) {
+        bscore += b * it->second * size(it->first);
+    }
+    int ascore = a*cnt, cscore = c * size(contains);
+    printf("a : %d * %d = %d\n", a, cnt, ascore);
+    printf("b : %d\n", bscore);
+    printf("c : %d * %d = %d\n", c, size(contains), cscore);
+    return min(ascore, min(bscore, cscore));
+}
+
 void seed(const string &in, unordered_map<string, int> &contains, int cnt) {
-    cout << contains.size() << endl;
+    evaluate(in, contains, cnt);
     foreach(it, contains) {
         cout << it->first << " = " << it->second << endl;
     }
