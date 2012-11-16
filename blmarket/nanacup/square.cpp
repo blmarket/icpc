@@ -265,11 +265,15 @@ struct seed_context {
     }
 };
 
-bool is_square(const bigint &in) {
+bool is_square(const string &str) {
+		if(sqrs.count(str)) return true;
+
+		bigint in(str);
 		bigint s("1");
 		bigint e = in;
 		
 		while(s < e) {
+				cerr << s << " " << e << endl;
 				bigint m = (s + e);
 				m.shr();
 				bigint tmp = m * m;
