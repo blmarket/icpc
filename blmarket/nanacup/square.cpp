@@ -154,7 +154,7 @@ int n,a,b,c;
 unordered_set<string> sqrs;
 vector<string> all_sqrs;
 
-int choices[2] = { 100, 1 };
+int choices[] = { 100, 1, 10 };
 int totalchoices = accumulate(choices, choices + ARRAYSIZE(choices), 0);
 
 struct seed_context {
@@ -188,6 +188,14 @@ struct seed_context {
         return go();
     }
 
+    void attachNumber(const string &tmp) {
+        for(int i=0;i<size(tmp);i++) {
+            str += tmp[i];
+            recalc();
+        }
+        return go();
+    }
+
     void stratB() { // add some specific square number
         int maxidx = size(all_sqrs);
         string tmp;
@@ -197,14 +205,11 @@ struct seed_context {
             if(size(str) + size(tmp) <= n) break;
             maxidx = idx;
         }
-        for(int i=0;i<size(tmp);i++) {
-            str += tmp[i];
-            recalc();
-        }
-        return go();
+        return attachNumber(tmp);
     }
 
     void stratC() {
+        return attachNumber("2116");
     }
 
     void recalc() {
@@ -230,8 +235,7 @@ struct seed_context {
         if(ch < 0) {
             return stratB();
         }
-
-        return stratB();
+        return stratC();
     }
 };
 
