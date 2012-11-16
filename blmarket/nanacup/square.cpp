@@ -57,15 +57,32 @@ public:
 		bigint operator*(const bigint &rhs);
 		bigint& operator*=(int rhs);
 		bigint operator*(int rhs) { bigint ret(*this); ret *= rhs; return ret; }
+		bigint& operator+=(const bigint &rhs);
+		bigint operator+(const bigint &rhs) { bigint ret(*this); ret += rhs; return ret; }
     bool operator==(const bigint &rhs);
     bool operator<(const bigint &rhs);
 
 		// offset 위치부터 rhs에 있는 값들을 더한다.
 		void shiftadd(int offset, const bigint &rhs);
+		void shr();
     int hash() const;
 
 		vector<int> V;
 };
+
+void bigint::shr() {
+		for(int i=size(V)-1;i>0;i--) {
+				if(V[i] & 1) V[i-1] += 10000;
+				V[i] /= 2;
+		}
+		V[0] /= 2;
+		if(V.back() == 0) V.pop_back();
+}
+
+bigint& bigint::operator+=(const bigint &rhs) {
+		shiftadd(0, rhs);
+		return *this;
+}
 
 bool bigint::operator<(const bigint &rhs) {
     if(size(V) != size(rhs.V)) return size(V) < size(rhs.V);
@@ -248,6 +265,34 @@ struct seed_context {
     }
 };
 
+bool is_square(const bigint &in) {
+		bigint s("1");
+		bigint e = in;
+		
+		while((s == e) == false) {
+				bigint m = (s + e);
+				m.shr();
+				bigint tmp = m * m;
+				if(tmp == in) {
+						return true;
+				}
+				if(tmp < in) {
+						s = m + bigint("1");
+				} else {
+						e = m;
+				}
+		}
+		return false;
+}
+
+void precise_score(const string &in, int &sa, int &sb, int &sc) {
+		for(int i=1;i<=size(in);i++) {
+				for(int j=0;j+i<=size(in);j++) {
+						string tmp = in.substr(i, j);
+				}
+		}
+}
+
 void easy_pattern(string head, int multi, int lens) {
 		if(size(head) > n) return;
 		int n0 = (n - size(head)) / 2 + 1;
@@ -268,14 +313,6 @@ void easy_pattern(string head, int multi, int lens) {
 		known_best = head;
 
 		while(size(known_best) < n) {
-				if(size(known_best) + 3 == n) {
-						known_best += "816";
-						break;
-				}
-				if(size(known_best) + 2 == n) {
-						known_best += "81";
-						break;
-				}
 				if(size(known_best) + 1 == n) {
 						known_best += "9";
 						break;
