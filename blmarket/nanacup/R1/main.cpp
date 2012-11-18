@@ -23,12 +23,11 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
+bool bySize(const string &lhs, const string &rhs) { return lhs.size() < rhs.size(); }
 
 int n,m;
 vector<string> data;
 vector<string> words;
-
-bool bySize(const string &lhs, const string &rhs) { return lhs.size() < rhs.size(); }
 
 void input() 
 {
