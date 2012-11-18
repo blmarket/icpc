@@ -74,8 +74,8 @@ bool findexact(const string &in) {
         for(int j=0;j<m;j++) {
             visit.clear();
             if(go(in, i, j, 0, 0)) {
-                cout << in << " : ";
-                for(int k=0;k<size(visit);k++) cout << visit[k].first << "," << visit[k].second << " ";
+                cout << in << " ";
+                for(int k=0;k<size(visit);k++) cout << visit[k].second << "," << visit[k].first << " ";
                 cout << endl;
             }
         }
