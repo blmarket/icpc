@@ -96,9 +96,13 @@ int main(void)
         findexact(words[i]);
     }
 
-    cout << size(result);
+    cout << size(result) << endl;
     for(int i=0;i<size(result);i++) {
         cout << result[i] << endl;
+    }
+
+    for(int i=0;i<size(data);i++) {
+        cerr << data[i] << endl;
     }
     return 0;
 }
