@@ -48,5 +48,7 @@ void input()
 int main(void)
 {
     input();
-    cout << size(words) << endl;
+    sort(words.rbegin(), words.rend());
+    for(int i=0;i<size(words);i++) cout << words[i].size() << " ";
+    cout << endl;
 }
