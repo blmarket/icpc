@@ -49,23 +49,25 @@ void input()
     }
 }
 
-bool go(const string &in, int x, int y, int pos) {
+bool go(const string &in, int x, int y, int pos, int life) {
     if(!check(x,y)) return false;
-    if(data[x][y] != in[pos]) return false;
+    if(data[x][y] != in[pos]) {
+        if(!life) return false;
+        life--;
+    }
 
     if(pos+1 == size(in)) return true;
     
     for(int i=0;i<4;i++) {
-        if(go(in, x + dx[i], y + dy[i], pos + 1)) return true;
+        if(go(in, x + dx[i], y + dy[i], pos + 1, life)) return true;
     }
     return false;
 }
 
 bool findexact(const string &in) {
-    return go(in, 0, 0, 0);
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
-            if(go(in, i, j, 0)) {
+            if(go(in, i, j, 0, 0)) {
                 return true;
             }
         }
