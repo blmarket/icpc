@@ -74,11 +74,12 @@ bool findexact(const string &in) {
         for(int j=0;j<m;j++) {
             visit.clear();
             if(go(in, i, j, 0, 0)) {
-                return true;
+                cout << in << " : ";
+                for(int k=0;k<size(visit);k++) cout << visit[k].first << "," << visit[k].second << " ";
+                cout << endl;
             }
         }
     }
-    return false;
 }
 
 int main(void)
@@ -87,9 +88,7 @@ int main(void)
     sort(words.rbegin(), words.rend(), bySize);
 
     for(int i=0;i<size(words);i++) {
-        if(findexact(words[i])) {
-            cout << words[i] << endl;
-        }
+        findexact(words[i]);
     }
     return 0;
 }
