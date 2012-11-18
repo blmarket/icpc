@@ -78,9 +78,6 @@ int main(void)
 {
     input();
     sort(words.rbegin(), words.rend(), bySize);
-    findexact("scalar");
-    return 0;
-
 
     for(int i=0;i<size(words);i++) {
         if(findexact(words[i])) {
