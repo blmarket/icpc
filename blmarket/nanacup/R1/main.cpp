@@ -57,7 +57,7 @@ bool go(const string &in, int x, int y, int pos, int life) {
         life--;
     }
     PII key = mp(x,y);
-    //for(int i=0;i<size(visit);i++) if(visit[i] == key) return false;
+    for(int i=0;i<size(visit);i++) if(visit[i] == key) return false;
     visit.pb(key);
 
     if(pos+1 == size(in)) return true;
@@ -65,12 +65,14 @@ bool go(const string &in, int x, int y, int pos, int life) {
     for(int i=0;i<4;i++) {
         if(go(in, x + dx[i], y + dy[i], pos + 1, life)) return true;
     }
+    visit.pop_back();
     return false;
 }
 
 bool findexact(const string &in) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
+            visit.clear();
             if(go(in, i, j, 0, 0)) {
                 return true;
             }
