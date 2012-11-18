@@ -28,6 +28,8 @@ int n,m;
 vector<string> data;
 vector<string> words;
 
+bool bySize(const string &lhs, const string &rhs) { return lhs.size() > rhs.size(); }
+
 void input() 
 {
     scanf(" %d %d", &n, &m);
@@ -48,7 +50,7 @@ void input()
 int main(void)
 {
     input();
-    sort(words.rbegin(), words.rend());
+    sort(words.begin(), words.end(), bySize);
     for(int i=0;i<size(words);i++) cout << words[i].size() << " ";
     cout << endl;
 }
