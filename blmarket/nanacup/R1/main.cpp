@@ -62,6 +62,7 @@ bool go(const string &in, int x, int y, int pos) {
 }
 
 bool findexact(const string &in) {
+    return go(in, 0, 0, 0);
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             if(go(in, i, j, 0)) {
