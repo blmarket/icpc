@@ -49,12 +49,16 @@ void input()
     }
 }
 
+vector<PII> visit;
 bool go(const string &in, int x, int y, int pos, int life) {
     if(!check(x,y)) return false;
     if(data[x][y] != in[pos]) {
         if(!life) return false;
         life--;
     }
+    PII key = mp(x,y);
+    for(int i=0;i<size(visit);i++) if(visit[i] == key) return false;
+    visit.pb(key);
 
     if(pos+1 == size(in)) return true;
     
