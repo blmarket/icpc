@@ -53,7 +53,6 @@ bool go(const string &in, int x, int y, int pos) {
     if(!check(x,y)) return false;
     if(data[x][y] != in[pos]) return false;
 
-    cout << in << " " << x << " " << y << " " << pos << " " << in[pos] << endl;
     if(pos+1 == size(in)) return true;
     
     for(int i=0;i<4;i++) {
