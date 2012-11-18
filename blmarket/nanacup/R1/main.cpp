@@ -28,7 +28,7 @@ int n,m;
 vector<string> data;
 vector<string> words;
 
-bool bySize(const string &lhs, const string &rhs) { return lhs.size() > rhs.size(); }
+bool bySize(const string &lhs, const string &rhs) { return lhs.size() < rhs.size(); }
 
 void input() 
 {
@@ -50,7 +50,7 @@ void input()
 int main(void)
 {
     input();
-    sort(words.begin(), words.end(), bySize);
+    sort(words.rbegin(), words.rend(), bySize);
     for(int i=0;i<size(words);i++) cout << words[i].size() << " ";
     cout << endl;
 }
