@@ -1,0 +1,3 @@
+#!/bin/bash
+
+java WordSnakeGenerator -seed $1 > $1.in
