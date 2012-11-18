@@ -69,14 +69,19 @@ bool go(const string &in, int x, int y, int pos, int life) {
     return false;
 }
 
+vector<string> result;
 bool findexact(const string &in) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             visit.clear();
             if(go(in, i, j, 0, 0)) {
-                cout << in << " ";
-                for(int k=0;k<size(visit);k++) cout << visit[k].second << " " << visit[k].first << " ";
-                cout << endl;
+                ostringstream ost;
+                ost << in << " ";
+                for(int k=0;k<size(visit);k++) {
+                    ost << visit[k].second << " " << visit[k].first << " ";
+                    data[visit[k].first][visit[k].second] = ' ';
+                }
+                result.pb(ost.str());
             }
         }
     }
@@ -89,6 +94,11 @@ int main(void)
 
     for(int i=0;i<size(words);i++) {
         findexact(words[i]);
+    }
+
+    cout << size(result);
+    for(int i=0;i<size(result);i++) {
+        cout << result[i] << endl;
     }
     return 0;
 }
