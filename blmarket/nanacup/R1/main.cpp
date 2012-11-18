@@ -82,6 +82,7 @@ bool findexact(const string &in) {
                     data[visit[k].first][visit[k].second] = ' ';
                 }
                 result.pb(ost.str());
+                return true;
             }
         }
     }
