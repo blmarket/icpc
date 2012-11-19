@@ -162,11 +162,16 @@ int main(void)
 
     vector<pair<string, vector<PII> > > result;
     cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
+    vector<long long> save_used = used;
 
     vector<pair<string, vector<PII> > > result2, result3;
     while(getTime() < 4.5) {
         cerr << stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3) << endl;
         result2 = result3;
+        used = save_used;
+        for(int i=3;i<=5;i++) {
+            used_words[i] = vector<bool>(size(words[i]), false);
+        }
     }
 
     cout << size(result) + size(result2) << endl;
