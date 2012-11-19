@@ -41,7 +41,7 @@ void process(int dataId)
         int minsum = 9990000;
         for(int j=0;j+i<=n;j++) {
             sums[j][j+i] = sums[j][j+i-1] + sums[j+i-1][j+i];
-            if(minsum < sums[j][j+i]) minsum = sums[j][j+i];
+            if(minsum > sums[j][j+i]) minsum = sums[j][j+i];
         }
         if(i >= l) {
             double tmp = (double)minsum / i;
