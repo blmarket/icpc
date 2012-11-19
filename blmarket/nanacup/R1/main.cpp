@@ -118,11 +118,11 @@ int must_do[][2] = {
 };
 
 int first_step[][2] = {
-    {7,0},{6,0},{5,0}
+    {7,0},{6,0}
 };
 
 int second_step[][2] = {
-    {4,0},{3,0},{4,1},{3,1},{4,2}
+    {5,0},{4,0},{3,0},{5,1},{4,1},{5,2},{3,1},{4,2}
 };
 
 int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > > &result) {
@@ -189,7 +189,7 @@ int main(void)
                 maxscore2 = tmpscore2;
             }
             used = save_used2;
-            for(int i=3;i<=4;i++) {
+            for(int i=3;i<=5;i++) {
                 used_words[i] = vector<bool>(size(words[i]), false);
             }
         }
@@ -203,7 +203,7 @@ int main(void)
             maxscore = tmpscore;
         }
         used = save_used;
-        for(int i=5;i<=9;i++) {
+        for(int i=6;i<=7;i++) {
             used_words[i] = vector<bool>(size(words[i]), false);
         }
     }
