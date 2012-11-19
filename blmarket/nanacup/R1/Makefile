@@ -9,7 +9,7 @@ a.exe: main.cpp
 	g++ -O2 $< -o $@
 
 .in.out: a.exe judge
-	./a.exe < $< 2>/dev/null | ./judge > $@
+	./a.exe < $< | ./judge $< > $@
 
 test: a.exe judge $(RESULT)
 	@cat $(RESULT)

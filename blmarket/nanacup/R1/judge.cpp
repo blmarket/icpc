@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <algorithm>
 #include <cstring>
 #include <cstdio>
@@ -24,19 +25,33 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-int main(void)
+int n,m;
+vector<string> data;
+
+int main(int argc, const char *argv[])
 {
+    ifstream fin(argv[argc-1]);
+    fin >> n >> m;
+    data.resize(n);
+    for(int i=0;i<n;i++)
+        fin >> data[i];
+    fin.close();
+    
     int score = 0;
     int T;
     cin >> T;
     for(int i=0;i<T;i++) {
         string word;
         cin >> word;
+        int wrong = 0;
         for(int j=0;j<size(word);j++) {
             int x,y;
             cin >> x >> y;
+            if(data[y][x] != word[j]) wrong++;
         }
-        score += size(word) * size(word);
+        int tmp = sqr(size(word) - wrong) / (wrong + 1);
+        cerr << size(word) << " " << wrong << " = " << tmp << endl;
+        score += tmp;
     }
     cout << score << endl;
 }
