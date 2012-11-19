@@ -26,28 +26,26 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int n,l;
-vector<int> V;
+int sums[1005][1005];
 
 void process(int dataId)
 {
     double minimalist = 999;
     
     scanf("%d %d", &n, &l);
-    V.resize(n);
     for(int i=0;i<n;i++) {
-        scanf(" %d",&V[i]);
+        scanf(" %d",&sums[i][i+1]);
     }
 
-    for(int i=0;i<n;i++) {
-        int cnt = 0;
-        int sum = 0;
-        for(int j=i;j<n;j++) {
-            cnt++;
-            sum += V[j];
-            if(cnt >= l) {
-                double tmp = (double)sum / cnt;
-                if(tmp < minimalist) minimalist = tmp;
-            }
+    for(int i=2;i<=n;i++) {
+        int minsum = 9990000;
+        for(int j=0;j+i<=n;j++) {
+            sums[j][j+i] = sums[j][j+i-1] + sums[j+i-1][j+i];
+            if(minsum < sums[j][j+i]) minsum = sums[j][j+i];
+        }
+        if(i >= l) {
+            double tmp = (double)minsum / i;
+            if(tmp < minimalist) minimalist = tmp;
         }
     }
     
