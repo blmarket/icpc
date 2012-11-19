@@ -114,7 +114,6 @@ int main(void)
     for(int i=24;i>=1;i--) {
         vector<string> &v = words[i];
         for(int j=0;j<size(v);j++) {
-            cout << v[j] << endl;
             findexact(v[j]);
         }
     }
