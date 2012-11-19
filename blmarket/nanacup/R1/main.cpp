@@ -179,9 +179,11 @@ int main(void)
         vector<long long> save_used2 = used;
         int maxscore2 = 0;
         double curTime = getTime();
+        int ntrials = 0;
         while(getTime() < 4.9 && getTime() - curTime < 1.0) {
             current2.clear();
             int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);
+            ntrials++;
             if(maxscore2 < tmpscore2) {
                 max_result2 = current2;
                 maxscore2 = tmpscore2;
@@ -191,6 +193,7 @@ int main(void)
                 used_words[i] = vector<bool>(size(words[i]), false);
             }
         }
+        cerr << ntrials << endl;
 
         int tmpscore = maxscore2 + tmpscore1;
         if(maxscore < tmpscore) {
