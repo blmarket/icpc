@@ -50,7 +50,7 @@ int main(int argc, const char *argv[])
             if(data[y][x] != word[j]) wrong++;
         }
         int tmp = sqr(size(word) - wrong) / (wrong + 1);
-        cerr << size(word) << " " << wrong << " = " << tmp << endl;
+        //cerr << size(word) << " " << wrong << " = " << tmp << endl;
         score += tmp;
     }
     cout << score << endl;
