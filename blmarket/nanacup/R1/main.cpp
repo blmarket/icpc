@@ -145,15 +145,7 @@ int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > 
     return ret;
 }
 
-int main(void)
-{
-    input();
-
-    vector<pair<string, vector<PII> > > result;
-    cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
-    cerr << stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result) << endl;
-
-    cout << size(result) << endl;
+void output(vector<pair<string, vector<PII> > > &result) {
     for(int i=0;i<size(result);i++) {
         cout << result[i].first << " ";
         const vector<PII> &tmp = result[i].second;
@@ -162,6 +154,24 @@ int main(void)
         }
         cout << endl;
     }
+}
+
+int main(void)
+{
+    input();
+
+    vector<pair<string, vector<PII> > > result;
+    cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
+
+    vector<pair<string, vector<PII> > > result2, result3;
+    while(getTime() < 4.5) {
+        cerr << stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3) << endl;
+        result2 = result3;
+    }
+
+    cout << size(result) + size(result2) << endl;
+    output(result);
+    output(result2);
 
     /*
     for(int i=0;i<size(data);i++) {
