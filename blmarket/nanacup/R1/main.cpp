@@ -124,6 +124,7 @@ int main(void)
             for(int j=0;j<size(v);j++) {
                 findexact(v[j], cur);
             }
+
             if(size(best) < size(cur)) {
                 best = cur;
             }
@@ -139,7 +140,7 @@ int main(void)
         cout << result[i].first << " ";
         const vector<PII> &tmp = result[i].second;
         for(int j=0;j<size(tmp);j++) {
-            cout << tmp[j].first << " " << tmp[j].second << " ";
+            cout << tmp[j].second << " " << tmp[j].first << " ";
         }
         cout << endl;
     }
