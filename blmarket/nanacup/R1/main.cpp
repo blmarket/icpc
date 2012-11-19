@@ -16,6 +16,7 @@
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+#define ARRAYSIZE(a) ( sizeof(a) / sizeof((a)[0]) )
 
 using namespace std;
 
@@ -99,34 +100,34 @@ bool go(const string &in, int x, int y, int pos, int life) {
 }
 
 vector<pair<string, vector<PII> > > result;
-bool findexact(const string &in) {
+bool findexact(const string &in, int life) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             visit.clear();
-            if(go(in, i, j, 0, 0)) {
+            if(go(in, i, j, 0, life)) {
                 return true;
             }
         }
     }
 }
 
+int try_order[][2] = {
+    {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{15,0},{14,0},{13,0},{12,0},{11,0},{10,0},{9,0},{8,0},{7,0},{6,0},{5,0},{4,0},{3,0} 
+};
+
 int main(void)
 {
     input();
 
-    for(int i=24;i>=1;i--) {
-        vector<string> &v = words[i];
-        if(size(v) == 0) continue;
-        cerr << i << endl;
-        vector<int> idx(size(v));
-        for(int j=0;j<size(v);j++) {
-            idx[j] = j;
-        }
+    for(int i=0;i<ARRAYSIZE(try_order);i++) {
+        int idx = try_order[i][0];
+        vector<string> &v = words[idx];
 
         for(int j=0;j<size(v);j++) {
-            if(findexact(v[idx[j]])) {
-                result.pb(mp(v[idx[j]], visit));
-                used_words[i][idx[j]] = true;
+            if(used_words[idx][j]) continue;
+            if(findexact(v[j], try_order[i][1])) {
+                result.pb(mp(v[j], visit));
+                used_words[idx][j] = true;
             }
         }
     }
