@@ -47,7 +47,7 @@ double getTime()
 int n,m;
 vector<string> data;
 vector<long long> used;
-vector<string> words;
+vector<string> words[20];
 
 bool check(int x, int y) { return (x>=0 && y>=0 && x<n && y<m); }
 bool get_used(int x, int y) { return used[x] & (1LL << y); }
@@ -68,7 +68,9 @@ void input()
     for(int i=0;i<tmp;i++) {
         char buffer[512];
         scanf(" %s", buffer);
-        words.pb(buffer);
+        int len = strlen(buffer);
+        cerr << len << endl;
+        words[len].pb(buffer);
     }
 }
 
@@ -93,18 +95,13 @@ bool go(const string &in, int x, int y, int pos, int life) {
     return false;
 }
 
-vector<string> result;
+vector<pair<string, vector<PII> > > result;
 bool findexact(const string &in) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             visit.clear();
             if(go(in, i, j, 0, 0)) {
-                ostringstream ost;
-                ost << in << " ";
-                for(int k=0;k<size(visit);k++) {
-                    ost << visit[k].second << " " << visit[k].first << " ";
-                }
-                result.pb(ost.str());
+                result.pb(mp(in, visit));
                 return true;
             }
         }
@@ -114,15 +111,23 @@ bool findexact(const string &in) {
 int main(void)
 {
     input();
-    sort(words.rbegin(), words.rend(), bySize);
 
-    for(int i=0;i<size(words);i++) {
-        findexact(words[i]);
+    for(int i=19;i>=1;i--) {
+        vector<string> &v = words[i];
+        for(int j=0;j<size(v);j++) {
+            cout << v[j] << endl;
+            findexact(v[j]);
+        }
     }
 
     cout << size(result) << endl;
     for(int i=0;i<size(result);i++) {
-        cout << result[i] << endl;
+        cout << result[i].first << " ";
+        const vector<PII> &tmp = result[i].second;
+        for(int j=0;j<size(tmp);j++) {
+            cout << tmp[j].first << " " << tmp[j].second << " ";
+        }
+        cout << endl;
     }
 
     for(int i=0;i<size(data);i++) {
