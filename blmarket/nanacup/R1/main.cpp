@@ -136,6 +136,7 @@ int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > 
         random_shuffle(order.begin(), order.end());
 
         for(int j=0;j<size(v);j++) {
+            if(getTime() > 4.9) return ret;
             int jj = order[j];
             if(used_words[idx][jj]) continue;
             if(findexact(v[jj], try_order[i][1])) {
