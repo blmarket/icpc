@@ -69,7 +69,6 @@ void input()
         char buffer[512];
         scanf(" %s", buffer);
         int len = strlen(buffer);
-        cerr << len << endl;
         words[len].pb(buffer);
     }
 }
