@@ -57,6 +57,7 @@ bool reset_used(int x, int y) { used[x] &= ~(1LL << y); }
 void input() 
 {
     scanf(" %d %d", &n, &m);
+    used.resize(n);
     for(int i=0;i<n;i++) {
         char buffer[1024];
         scanf(" %s", buffer);
@@ -74,13 +75,13 @@ void input()
 vector<PII> visit;
 bool go(const string &in, int x, int y, int pos, int life) {
     if(!check(x,y)) return false;
+    if(get_used(x,y)) return false;
     if(data[x][y] != in[pos]) {
         if(!life) return false;
         life--;
     }
-    PII key = mp(x,y);
-    for(int i=0;i<size(visit);i++) if(visit[i] == key) return false;
-    visit.pb(key);
+    set_used(x,y);
+    visit.pb(mp(x,y));
 
     if(pos+1 == size(in)) return true;
 
@@ -88,6 +89,7 @@ bool go(const string &in, int x, int y, int pos, int life) {
         if(go(in, x + dx[i], y + dy[i], pos + 1, life)) return true;
     }
     visit.pop_back();
+    reset_used(x,y);
     return false;
 }
 
@@ -101,7 +103,6 @@ bool findexact(const string &in) {
                 ost << in << " ";
                 for(int k=0;k<size(visit);k++) {
                     ost << visit[k].second << " " << visit[k].first << " ";
-                    data[visit[k].first][visit[k].second] = ' ';
                 }
                 result.pb(ost.str());
                 return true;
