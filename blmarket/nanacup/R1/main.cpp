@@ -48,7 +48,7 @@ double getTime()
 int n,m;
 vector<string> data;
 vector<long long> used;
-vector<string> words[25];
+vector<pair<string, bool> > words[25];
 
 bool check(int x, int y) { return (x>=0 && y>=0 && x<n && y<m); }
 bool get_used(int x, int y) { return used[x] & (1LL << y); }
@@ -70,7 +70,7 @@ void input()
         char buffer[512];
         scanf(" %s", buffer);
         int len = strlen(buffer);
-        words[len].pb(buffer);
+        words[len].pb(mp(buffer, false));
     }
 }
 
@@ -96,12 +96,11 @@ bool go(const string &in, int x, int y, int pos, int life) {
 }
 
 vector<pair<string, vector<PII> > > result;
-bool findexact(const string &in, vector<pair<string, vector<PII> > > &ret) {
+bool findexact(const string &in) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             visit.clear();
             if(go(in, i, j, 0, 0)) {
-                ret.pb(mp(in, visit));
                 return true;
             }
         }
@@ -110,19 +109,24 @@ bool findexact(const string &in, vector<pair<string, vector<PII> > > &ret) {
 
 int main(void)
 {
-    srand(time(NULL));
     input();
 
     for(int i=24;i>=1;i--) {
-        vector<string> &v = words[i];
+        vector<pair<string, bool> > &v = words[i];
         if(size(v) == 0) continue;
+        vector<int> idx(size(v));
+        for(int j=0;j<size(v);j++) {
+            idx[j] = j;
+        }
 
-        vector<pair<string, vector<PII> > > best, cur;
-        for(int j=0;j<30;j++) {
-            random_shuffle(v.begin(), v.end());
-            cur.clear();
+        vector<pair<int, vector<PII> > > best, cur;
+        best.clear();
+        for(int j=0;j<10;j++) {
+            random_shuffle(idx.begin(), idx.end());
             for(int j=0;j<size(v);j++) {
-                findexact(v[j], cur);
+                if(findexact(v[idx[j]].first)) {
+                    cur.pb(mp(idx[j], visit));
+                }
             }
 
             if(size(best) < size(cur)) {
@@ -130,8 +134,12 @@ int main(void)
             }
             if(size(cur) == 0) break;
         }
+
         for(int j=0;j<size(best);j++) {
-            result.pb(best[j]);
+            int index = best[j].first;
+            vector<PII> &path = best[j].second;
+            result.pb(mp(v[index].first, path));
+            v[index].second = true;
         }
     }
 
