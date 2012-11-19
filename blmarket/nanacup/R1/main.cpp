@@ -125,7 +125,6 @@ int shuffle_trials[][2] = {
 int stupid_trials(int try_order[][2], int sz) {
     for(int i=0;i<sz;i++) {
         int idx = try_order[i][0];
-        if(idx > 5 && getTime() > 4) continue;
         vector<string> &v = words[idx];
 
         for(int j=0;j<size(v);j++) {
