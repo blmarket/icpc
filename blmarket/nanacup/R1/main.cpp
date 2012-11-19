@@ -47,7 +47,7 @@ double getTime()
 int n,m;
 vector<string> data;
 vector<long long> used;
-vector<string> words[20];
+vector<string> words[25];
 
 bool check(int x, int y) { return (x>=0 && y>=0 && x<n && y<m); }
 bool get_used(int x, int y) { return used[x] & (1LL << y); }
@@ -112,7 +112,7 @@ int main(void)
 {
     input();
 
-    for(int i=19;i>=1;i--) {
+    for(int i=24;i>=1;i--) {
         vector<string> &v = words[i];
         for(int j=0;j<size(v);j++) {
             cout << v[j] << endl;
