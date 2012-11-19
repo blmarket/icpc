@@ -167,6 +167,7 @@ int main(void)
 
     vector<pair<string, vector<PII> > > result;
     cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
+    cerr << getTime() << endl;
     vector<long long> save_used = used;
 
     int maxscore = 0;
