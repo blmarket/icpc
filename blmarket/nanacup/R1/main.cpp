@@ -113,6 +113,7 @@ int main(void)
 
     for(int i=24;i>=1;i--) {
         vector<string> &v = words[i];
+        random_shuffle(v.begin(), v.end());
         for(int j=0;j<size(v);j++) {
             findexact(v[j]);
         }
