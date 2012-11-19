@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sys/time.h>
 #include <algorithm>
 #include <cstring>
 #include <cstdio>
@@ -25,6 +26,23 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 bool bySize(const string &lhs, const string &rhs) { return lhs.size() < rhs.size(); }
 const int dx[] = { -1, 0, 0, 1 }, dy[] = { 0, -1, 1, 0 };
+
+double initGetTime()
+{
+    timeval tv;
+    gettimeofday(&tv, 0);
+    return tv.tv_sec + tv.tv_usec * 0.000001;
+}
+
+double time_limit = 4.9;
+double time_start = initGetTime();
+
+double getTime()
+{
+    timeval tv;
+    gettimeofday(&tv, 0);
+    return (tv.tv_sec + tv.tv_usec * 0.000001 - time_start);
+}
 
 int n,m;
 vector<string> data;
@@ -61,7 +79,7 @@ bool go(const string &in, int x, int y, int pos, int life) {
     visit.pb(key);
 
     if(pos+1 == size(in)) return true;
-    
+
     for(int i=0;i<4;i++) {
         if(go(in, x + dx[i], y + dy[i], pos + 1, life)) return true;
     }
