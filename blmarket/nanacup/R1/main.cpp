@@ -110,6 +110,7 @@ int main(void)
 {
     input();
     sort(words.rbegin(), words.rend(), bySize);
+    cerr << getTime() << endl;
 
     for(int i=0;i<size(words);i++) {
         findexact(words[i]);
