@@ -164,10 +164,13 @@ int main(void)
     cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
     vector<long long> save_used = used;
 
+    int maxscore = 0;
     vector<pair<string, vector<PII> > > result2, result3;
-    while(getTime() < 4.5) {
-        cerr << stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3) << endl;
-        result2 = result3;
+    while(getTime() < 4.2) {
+        int tmpscore = stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3);
+        if(maxscore < tmpscore) {
+            result2 = result3;
+        }
         used = save_used;
         for(int i=3;i<=5;i++) {
             used_words[i] = vector<bool>(size(words[i]), false);
