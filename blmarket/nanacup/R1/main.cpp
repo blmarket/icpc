@@ -124,7 +124,7 @@ int main(void)
 
         vector<pair<int, vector<PII> > > best, cur;
         best.clear();
-        for(int j=0;j<10;j++) {
+        for(int j=0;j<5;j++) {
             random_shuffle(idx.begin(), idx.end());
             for(int j=0;j<size(v);j++) {
                 if(findexact(v[idx[j]])) {
