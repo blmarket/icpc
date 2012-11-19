@@ -99,7 +99,6 @@ bool go(const string &in, int x, int y, int pos, int life) {
     return false;
 }
 
-vector<pair<string, vector<PII> > > result;
 bool findexact(const string &in, int life) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
@@ -122,16 +121,21 @@ int shuffle_trials[][2] = {
     {5,0},{4,0},{3,0},{5,1},{4,1},{5,2},{3,1},{4,2}
 };
 
-int stupid_trials(int try_order[][2], int sz) {
+int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > > &result) {
     for(int i=0;i<sz;i++) {
         int idx = try_order[i][0];
         vector<string> &v = words[idx];
 
+        vector<int> order(size(v));
+        for(int j=0;j<size(v);j++) order[j] = j;
+        random_shuffle(order.begin(), order.end());
+
         for(int j=0;j<size(v);j++) {
-            if(used_words[idx][j]) continue;
-            if(findexact(v[j], try_order[i][1])) {
-                result.pb(mp(v[j], visit));
-                used_words[idx][j] = true;
+            int jj = order[j];
+            if(used_words[idx][jj]) continue;
+            if(findexact(v[jj], try_order[i][1])) {
+                result.pb(mp(v[jj], visit));
+                used_words[idx][jj] = true;
             }
         }
     }
@@ -140,8 +144,10 @@ int stupid_trials(int try_order[][2], int sz) {
 int main(void)
 {
     input();
-    stupid_trials(must_do, ARRAYSIZE(must_do));
-    stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials));
+
+    vector<pair<string, vector<PII> > > result;
+    stupid_trials(must_do, ARRAYSIZE(must_do), result);
+    stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result);
 
     cout << size(result) << endl;
     for(int i=0;i<size(result);i++) {
