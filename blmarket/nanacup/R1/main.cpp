@@ -114,15 +114,16 @@ bool findexact(const string &in, int life) {
 /*int try_order[][2] = {
     {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{22,1},{15,0},{21,1},{14,0},{19,1},{13,0},{18,1},{12,0},{17,1},{11,0},{16,1},{10,0},{15,1},{14,1},{9,0},{13,1},{8,0},{12,1},{11,1},{7,0},{10,1},{6,0},{9,1},{5,0},{8,1},{7,1},{4,0},{3,0},{3,1}
 };*/
-int try_order[][2] = {
-    {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{15,0},{14,0},{13,0},{12,0},{11,0},{10,0},{9,0},{8,0},{7,0},{6,0},{5,0},{4,0},{3,0},{5,1},{4,1},{5,2},{3,1}
+int must_do[][2] = {
+    {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{15,0},{14,0},{13,0},{12,0},{11,0},{10,0},{9,0},{8,0},{7,0},{6,0}
 };
 
-int main(void)
-{
-    input();
+int shuffle_trials[][2] = {
+    {5,0},{4,0},{3,0},{5,1},{4,1},{5,2},{3,1},{4,2}
+};
 
-    for(int i=0;i<ARRAYSIZE(try_order);i++) {
+int stupid_trials(int try_order[][2], int sz) {
+    for(int i=0;i<sz;i++) {
         int idx = try_order[i][0];
         if(idx > 5 && getTime() > 4) continue;
         vector<string> &v = words[idx];
@@ -135,6 +136,13 @@ int main(void)
             }
         }
     }
+}
+
+int main(void)
+{
+    input();
+    stupid_trials(must_do, ARRAYSIZE(must_do));
+    stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials));
 
     cout << size(result) << endl;
     for(int i=0;i<size(result);i++) {
