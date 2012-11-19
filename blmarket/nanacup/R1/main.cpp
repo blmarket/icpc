@@ -122,6 +122,7 @@ int shuffle_trials[][2] = {
 };
 
 int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > > &result) {
+    int ret = 0;
     for(int i=0;i<sz;i++) {
         int idx = try_order[i][0];
         vector<string> &v = words[idx];
@@ -134,11 +135,14 @@ int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > 
             int jj = order[j];
             if(used_words[idx][jj]) continue;
             if(findexact(v[jj], try_order[i][1])) {
+                int myscore = sqr(try_order[i][0] - try_order[i][1]) / (1 + try_order[i][1]);
+                ret += myscore;
                 result.pb(mp(v[jj], visit));
                 used_words[idx][jj] = true;
             }
         }
     }
+    return ret;
 }
 
 int main(void)
@@ -146,8 +150,8 @@ int main(void)
     input();
 
     vector<pair<string, vector<PII> > > result;
-    stupid_trials(must_do, ARRAYSIZE(must_do), result);
-    stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result);
+    cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
+    cerr << stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result) << endl;
 
     cout << size(result) << endl;
     for(int i=0;i<size(result);i++) {
