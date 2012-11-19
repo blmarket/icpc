@@ -117,32 +117,17 @@ int main(void)
     for(int i=24;i>=1;i--) {
         vector<string> &v = words[i];
         if(size(v) == 0) continue;
+        cerr << i << endl;
         vector<int> idx(size(v));
         for(int j=0;j<size(v);j++) {
             idx[j] = j;
         }
 
-        vector<pair<int, vector<PII> > > best, cur;
-        best.clear();
-        for(int j=0;j<5;j++) {
-            for(int j=0;j<size(v);j++) {
-                if(findexact(v[idx[j]])) {
-                    cur.pb(mp(idx[j], visit));
-                }
+        for(int j=0;j<size(v);j++) {
+            if(findexact(v[idx[j]])) {
+                result.pb(mp(v[idx[j]], visit));
+                used_words[i][idx[j]] = true;
             }
-
-            if(size(best) < size(cur)) {
-                best = cur;
-            }
-            if(size(cur) == 0) break;
-            random_shuffle(idx.begin(), idx.end());
-        }
-
-        for(int j=0;j<size(best);j++) {
-            int index = best[j].first;
-            vector<PII> &path = best[j].second;
-            result.pb(mp(v[index], path));
-            used_words[i][index] = true;
         }
     }
 
@@ -156,11 +141,14 @@ int main(void)
         cout << endl;
     }
 
+    /*
     for(int i=0;i<size(data);i++) {
         for(int j=0;j<size(data[i]);j++) {
             if(get_used(i,j)) cerr << ' '; else cerr << data[i][j];
         }
         cerr << endl;
     }
+    */
+    cerr << getTime() << endl;
     return 0;
 }
