@@ -3,7 +3,7 @@ RESULT = 1.out 2.out 3.out 4.out 5.out 6.out 7.out 8.out 9.out 10.out
 all: a.exe judge
 
 clean:
-	rm a.exe judge
+	rm a.exe judge $(RESULT)
 
 a.exe: main.cpp
 	g++ -O2 $< -o $@
@@ -11,7 +11,7 @@ a.exe: main.cpp
 .in.out: a.exe judge
 	./a.exe < $< 2>/dev/null | ./judge > $@
 
-test: $(RESULT)
+test: a.exe $(RESULT)
 	@cat $(RESULT)
 
 .PHONY: all clean test

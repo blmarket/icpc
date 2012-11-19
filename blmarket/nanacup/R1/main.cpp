@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <sys/time.h>
 #include <algorithm>
 #include <cstring>
@@ -95,12 +96,12 @@ bool go(const string &in, int x, int y, int pos, int life) {
 }
 
 vector<pair<string, vector<PII> > > result;
-bool findexact(const string &in) {
+bool findexact(const string &in, vector<pair<string, vector<PII> > > &ret) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             visit.clear();
             if(go(in, i, j, 0, 0)) {
-                result.pb(mp(in, visit));
+                ret.pb(mp(in, visit));
                 return true;
             }
         }
@@ -109,13 +110,27 @@ bool findexact(const string &in) {
 
 int main(void)
 {
+    srand(time(NULL));
     input();
 
     for(int i=24;i>=1;i--) {
         vector<string> &v = words[i];
-        random_shuffle(v.begin(), v.end());
-        for(int j=0;j<size(v);j++) {
-            findexact(v[j]);
+        if(size(v) == 0) continue;
+
+        vector<pair<string, vector<PII> > > best, cur;
+        for(int j=0;j<30;j++) {
+            random_shuffle(v.begin(), v.end());
+            cur.clear();
+            for(int j=0;j<size(v);j++) {
+                findexact(v[j], cur);
+            }
+            if(size(best) < size(cur)) {
+                best = cur;
+            }
+            if(size(cur) == 0) break;
+        }
+        for(int j=0;j<size(best);j++) {
+            result.pb(best[j]);
         }
     }
 
@@ -130,7 +145,10 @@ int main(void)
     }
 
     for(int i=0;i<size(data);i++) {
-        cerr << data[i] << endl;
+        for(int j=0;j<size(data[i]);j++) {
+            if(get_used(i,j)) cerr << ' '; else cerr << data[i][j];
+        }
+        cerr << endl;
     }
     return 0;
 }
