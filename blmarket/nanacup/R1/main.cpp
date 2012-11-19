@@ -171,6 +171,7 @@ int main(void)
         int tmpscore = stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3);
         if(maxscore < tmpscore) {
             result2 = result3;
+            maxscore = tmpscore;
         }
         used = save_used;
         for(int i=3;i<=5;i++) {
