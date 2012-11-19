@@ -167,6 +167,7 @@ int main(void)
     int maxscore = 0;
     vector<pair<string, vector<PII> > > result2, result3;
     while(getTime() < 4.2) {
+        result3.clear();
         int tmpscore = stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3);
         if(maxscore < tmpscore) {
             result2 = result3;
