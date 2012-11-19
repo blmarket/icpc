@@ -46,9 +46,13 @@ double getTime()
 
 int n,m;
 vector<string> data;
+vector<long long> used;
 vector<string> words;
 
 bool check(int x, int y) { return (x>=0 && y>=0 && x<n && y<m); }
+bool get_used(int x, int y) { return used[x] & (1LL << y); }
+bool set_used(int x, int y) { used[x] |= (1LL << y); }
+bool reset_used(int x, int y) { used[x] &= ~(1LL << y); }
 
 void input() 
 {
@@ -110,7 +114,6 @@ int main(void)
 {
     input();
     sort(words.rbegin(), words.rend(), bySize);
-    cerr << getTime() << endl;
 
     for(int i=0;i<size(words);i++) {
         findexact(words[i]);
