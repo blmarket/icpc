@@ -114,10 +114,14 @@ bool findexact(const string &in, int life) {
     {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{22,1},{15,0},{21,1},{14,0},{19,1},{13,0},{18,1},{12,0},{17,1},{11,0},{16,1},{10,0},{15,1},{14,1},{9,0},{13,1},{8,0},{12,1},{11,1},{7,0},{10,1},{6,0},{9,1},{5,0},{8,1},{7,1},{4,0},{3,0},{3,1}
 };*/
 int must_do[][2] = {
-    {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{15,0},{14,0},{13,0},{12,0},{11,0},{10,0},{9,0},{8,0},{7,0},{6,0}
+    {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{15,0},{14,0},{13,0},{12,0},{11,0},{10,0}
 };
 
-int shuffle_trials[][2] = {
+int first_step[][2] = {
+    {9,0},{8,0},{7,0},{6,0}
+};
+
+int second_step[][2] = {
     {5,0},{4,0},{3,0},{5,1},{4,1},{5,2},{3,1},{4,2}
 };
 
@@ -165,23 +169,44 @@ int main(void)
     vector<long long> save_used = used;
 
     int maxscore = 0;
-    vector<pair<string, vector<PII> > > result2, result3;
-    while(getTime() < 4.2) {
-        result3.clear();
-        int tmpscore = stupid_trials(shuffle_trials, ARRAYSIZE(shuffle_trials), result3);
+    vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
+    while(getTime() < 4.9) {
+        current.clear();
+        int tmpscore1 = stupid_trials(first_step, ARRAYSIZE(first_step), current);
+
+        vector<long long> save_used2 = used;
+        int maxscore2 = 0;
+        double curTime = getTime();
+        while(getTime() < 4.9 && getTime() - curTime < 1.0) {
+            current2.clear();
+            int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);
+            if(maxscore2 < tmpscore2) {
+                max_result2 = current2;
+                maxscore2 = tmpscore2;
+            }
+            used = save_used2;
+            for(int i=3;i<=5;i++) {
+                used_words[i] = vector<bool>(size(words[i]), false);
+            }
+        }
+
+        int tmpscore = maxscore2 + tmpscore1;
         if(maxscore < tmpscore) {
-            result2 = result3;
+            max_result = current;
+            for(int i=0;i<size(max_result2);i++) {
+                max_result.pb(max_result2[i]);
+            }
             maxscore = tmpscore;
         }
         used = save_used;
-        for(int i=3;i<=5;i++) {
+        for(int i=6;i<=9;i++) {
             used_words[i] = vector<bool>(size(words[i]), false);
         }
     }
 
-    cout << size(result) + size(result2) << endl;
+    cout << size(result) + size(max_result) << endl;
     output(result);
-    output(result2);
+    output(max_result);
 
     /*
     for(int i=0;i<size(data);i++) {
