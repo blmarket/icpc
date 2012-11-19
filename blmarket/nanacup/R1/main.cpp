@@ -48,7 +48,8 @@ double getTime()
 int n,m;
 vector<string> data;
 vector<long long> used;
-vector<pair<string, bool> > words[25];
+vector<string> words[25];
+vector<bool> used_words[25];
 
 bool check(int x, int y) { return (x>=0 && y>=0 && x<n && y<m); }
 bool get_used(int x, int y) { return used[x] & (1LL << y); }
@@ -70,8 +71,10 @@ void input()
         char buffer[512];
         scanf(" %s", buffer);
         int len = strlen(buffer);
-        words[len].pb(mp(buffer, false));
+        words[len].pb(buffer);
     }
+    
+    for(int i=0;i<25;i++) used_words[i] = vector<bool>(words[i].size(), false);
 }
 
 vector<PII> visit;
@@ -112,7 +115,7 @@ int main(void)
     input();
 
     for(int i=24;i>=1;i--) {
-        vector<pair<string, bool> > &v = words[i];
+        vector<string> &v = words[i];
         if(size(v) == 0) continue;
         vector<int> idx(size(v));
         for(int j=0;j<size(v);j++) {
@@ -124,7 +127,7 @@ int main(void)
         for(int j=0;j<10;j++) {
             random_shuffle(idx.begin(), idx.end());
             for(int j=0;j<size(v);j++) {
-                if(findexact(v[idx[j]].first)) {
+                if(findexact(v[idx[j]])) {
                     cur.pb(mp(idx[j], visit));
                 }
             }
@@ -138,8 +141,8 @@ int main(void)
         for(int j=0;j<size(best);j++) {
             int index = best[j].first;
             vector<PII> &path = best[j].second;
-            result.pb(mp(v[index].first, path));
-            v[index].second = true;
+            result.pb(mp(v[index], path));
+            used_words[i][index] = true;
         }
     }
 
