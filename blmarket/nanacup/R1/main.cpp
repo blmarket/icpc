@@ -125,7 +125,6 @@ int main(void)
         vector<pair<int, vector<PII> > > best, cur;
         best.clear();
         for(int j=0;j<5;j++) {
-            random_shuffle(idx.begin(), idx.end());
             for(int j=0;j<size(v);j++) {
                 if(findexact(v[idx[j]])) {
                     cur.pb(mp(idx[j], visit));
@@ -136,6 +135,7 @@ int main(void)
                 best = cur;
             }
             if(size(cur) == 0) break;
+            random_shuffle(idx.begin(), idx.end());
         }
 
         for(int j=0;j<size(best);j++) {

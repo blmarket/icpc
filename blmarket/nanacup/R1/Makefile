@@ -11,7 +11,7 @@ a.exe: main.cpp
 .in.out: a.exe judge
 	./a.exe < $< 2>/dev/null | ./judge > $@
 
-test: a.exe $(RESULT)
+test: a.exe judge $(RESULT)
 	@cat $(RESULT)
 
 .PHONY: all clean test

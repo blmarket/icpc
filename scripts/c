@@ -9,7 +9,7 @@ git add $1
 set +e
 git commit -m "--Empty Message--" > /dev/null
 if [ ! -n "$2" ]; then
-    ./a.exe
+    time ./a.exe
 else
-    ./a.exe < $2
+    time ./a.exe < $2
 fi
