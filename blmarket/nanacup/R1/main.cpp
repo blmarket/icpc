@@ -169,7 +169,6 @@ int main(void)
     cerr << stupid_trials(must_do, ARRAYSIZE(must_do), result) << endl;
     cerr << getTime() << endl;
     vector<long long> save_used = used;
-    vector<long long> best_used;
 
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
@@ -178,7 +177,6 @@ int main(void)
         int tmpscore1 = stupid_trials(first_step, ARRAYSIZE(first_step), current);
 
         vector<long long> save_used2 = used;
-        vector<long long> best_used2;
         int maxscore2 = 0;
         double curTime = getTime();
         int ntrials = 0;
@@ -189,7 +187,6 @@ int main(void)
             if(maxscore2 < tmpscore2) {
                 max_result2 = current2;
                 maxscore2 = tmpscore2;
-                best_used2 = used;
             }
             used = save_used2;
             for(int i=3;i<=5;i++) {
@@ -204,7 +201,6 @@ int main(void)
                 max_result.pb(max_result2[i]);
             }
             maxscore = tmpscore;
-            best_used = best_used2;
         }
         used = save_used;
         for(int i=6;i<=7;i++) {
@@ -216,13 +212,6 @@ int main(void)
     output(result);
     output(max_result);
 
-    used = best_used;
-    for(int i=0;i<size(data);i++) {
-        for(int j=0;j<size(data[i]);j++) {
-            if(get_used(i,j)) cerr << ' '; else cerr << data[i][j];
-        }
-        cerr << endl;
-    }
     cerr << getTime() << endl;
     return 0;
 }
