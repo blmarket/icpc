@@ -172,8 +172,8 @@ int main(void)
     cerr << getTime() << endl;
     vector<long long> save_used = used;
 
-    int maxtrials = 35;
-    if(n*m > 1000) maxtrials = 40;
+    int maxtrials = 40;
+    if(n*m > 1000) maxtrials = 15;
 
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
