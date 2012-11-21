@@ -9,11 +9,11 @@ a.exe: main.cpp
 	g++ -O2 $< -o $@
 
 .in.out: a.exe judge
-	./a.exe < $< | ./judge $< > $@
+	./a.exe < $< | tee $@.mid | ./judge $< > $@
 
 test: a.exe judge $(RESULT)
 	@cat $(RESULT)
-
+	
 .PHONY: all clean test
 
 .SUFFIXES: .c .o .in .out
