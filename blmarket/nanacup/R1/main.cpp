@@ -172,7 +172,7 @@ int main(void)
     vector<long long> save_used = used;
 
     int maxtrials = 25;
-    if(n*m > 1000) maxtrials = 15;
+    if(n*m > 1000) maxtrials = 25;
 
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
