@@ -2,9 +2,40 @@
 html
   head
     title Visualizer
+    script(type='text/javascript', src='http://code.jquery.com/jquery-1.8.3.min.js')
+    style(type='text/css')
+      td.something.selected.wrong {
+        background: red;
+      }
+      td.something.selected {
+        background: #99f;
+      }
+      td {
+        background: #999;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+      }
+      td.something {
+        background: #fff;
+      }
   body
     table
       for row in board
         tr
           for item in row
-            td #{item}
+            td(class=item.style, data-group=item.group) #{item.value}
+    #selectedstring
+    script(type='text/javascript')
+      $(document).ready(function() {
+        $('td').hover(function() {
+          var group = $(this).data('group');
+          $('.' + group).addClass("selected");
+          $('#selectedstring').text(group);
+        }, function() {
+          var group = $(this).data('group');
+          $('.' + group).removeClass("selected");
+          $('#selectedstring').text('');
+        });
+      });
+
