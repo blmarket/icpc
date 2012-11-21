@@ -164,7 +164,6 @@ void output(vector<pair<string, vector<PII> > > &result) {
 
 int main(void)
 {
-    srand(time(NULL));
     input();
 
     vector<pair<string, vector<PII> > > result;
