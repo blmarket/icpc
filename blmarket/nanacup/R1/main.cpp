@@ -172,6 +172,9 @@ int main(void)
     cerr << getTime() << endl;
     vector<long long> save_used = used;
 
+    int maxtrials = 35;
+    if(n*m > 1000) maxtrials = 40;
+
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
     while(getTime() < 4.9) {
@@ -183,7 +186,7 @@ int main(void)
         double curTime = getTime();
         int ntrials = 0;
 
-        for(int i=0;i<10;i++) {
+        for(int i=0;i<maxtrials;i++) {
             if(getTime() > 4.95) break;
             current2.clear();
             int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);

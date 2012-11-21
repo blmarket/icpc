@@ -25,17 +25,22 @@ html
         tr
           for item in row
             td(class=item.style, data-group=item.group) #{item.value}
-    #selectedstring
+    input(id="selectedstring", type="text")
     script(type='text/javascript')
       $(document).ready(function() {
-        $('td').hover(function() {
+        $('td').mouseover(function() {
           var group = $(this).data('group');
+          $('#selectedstring').val(group).change();
+        });
+
+        var oldtext;
+        $('#selectedstring').change(function() {
+          if(oldtext) {
+            $('.' + oldtext).removeClass("selected");
+          }
+          var group = $('#selectedstring').val();
           $('.' + group).addClass("selected");
-          $('#selectedstring').text(group);
-        }, function() {
-          var group = $(this).data('group');
-          $('.' + group).removeClass("selected");
-          $('#selectedstring').text('');
+          oldtext = group;
         });
       });
 

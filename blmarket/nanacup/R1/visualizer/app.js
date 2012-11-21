@@ -12,16 +12,24 @@ var dataid = process.argv.pop();
 var infilename = dataid + ".in";
 var resfilename = dataid + ".out.mid";
 
-var board = readinfile(infilename);
-readoutfile(board, resfilename);
+var board;
 
-console.log(board);
+reload();
+fs.watch(resfilename, {}, function() {
+  console.log("reloading");
+  reload();
+});
 
 app.get('/', function(req, res) {
   res.render('index.jade', { board: board });
 });
 
 app.listen(3000);
+
+function reload() {
+  board = readinfile(infilename);
+  readoutfile(board, resfilename);
+}
 
 function readinfile(infilename) {
   var data = fs.readFileSync(infilename, 'utf-8');
