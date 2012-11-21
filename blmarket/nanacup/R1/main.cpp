@@ -173,6 +173,7 @@ int main(void)
 
     int maxtrials = 25;
     if(n*m > 1000) maxtrials = 25;
+    int ntrials = 0;
 
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
@@ -183,7 +184,6 @@ int main(void)
         vector<long long> save_used2 = used;
         int maxscore2 = 0;
         double curTime = getTime();
-        int ntrials = 0;
 
         for(int i=0;i<maxtrials;i++) {
             if(getTime() > 4.95) break;
@@ -218,6 +218,6 @@ int main(void)
     output(result);
     output(max_result);
 
-    cerr << getTime() << endl;
+    cerr << getTime() << " " << ntrials << endl;
     return 0;
 }
