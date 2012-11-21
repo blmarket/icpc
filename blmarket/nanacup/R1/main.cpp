@@ -172,7 +172,7 @@ int main(void)
     vector<long long> save_used = used;
 
     int maxtrials = 25;
-    if(n*m > 1000) maxtrials = 25;
+    if(n*m > 1000) maxtrials = 15;
     int ntrials = 0;
 
     int maxscore = 0;
