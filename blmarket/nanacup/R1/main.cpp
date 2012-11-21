@@ -173,7 +173,6 @@ int main(void)
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
     while(getTime() < 4.9) {
-        break;
         current.clear();
         int tmpscore1 = stupid_trials(first_step, ARRAYSIZE(first_step), current);
 
