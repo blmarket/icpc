@@ -25,7 +25,7 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 
-template<typename T> int size(const T &a) { return a.size(); } 
+template<typename T> int size(const T &a) { return a.size(); }
 bool bySize(const string &lhs, const string &rhs) { return lhs.size() < rhs.size(); }
 const int dx[] = { -1, 0, 0, 1 }, dy[] = { 0, -1, 1, 0 };
 
@@ -57,7 +57,7 @@ bool get_used(int x, int y) { return used[x] & (1LL << y); }
 bool set_used(int x, int y) { used[x] |= (1LL << y); }
 bool reset_used(int x, int y) { used[x] &= ~(1LL << y); }
 
-void input() 
+void input()
 {
     scanf(" %d %d", &n, &m);
     used.resize(n);
@@ -74,7 +74,7 @@ void input()
         int len = strlen(buffer);
         words[len].pb(buffer);
     }
-    
+
     for(int i=0;i<25;i++) used_words[i] = vector<bool>(words[i].size(), false);
 }
 
@@ -111,8 +111,8 @@ bool findexact(const string &in, int life) {
 }
 
 /*int try_order[][2] = {
-    {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{22,1},{15,0},{21,1},{14,0},{19,1},{13,0},{18,1},{12,0},{17,1},{11,0},{16,1},{10,0},{15,1},{14,1},{9,0},{13,1},{8,0},{12,1},{11,1},{7,0},{10,1},{6,0},{9,1},{5,0},{8,1},{7,1},{4,0},{3,0},{3,1}
-};*/
+  {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{22,1},{15,0},{21,1},{14,0},{19,1},{13,0},{18,1},{12,0},{17,1},{11,0},{16,1},{10,0},{15,1},{14,1},{9,0},{13,1},{8,0},{12,1},{11,1},{7,0},{10,1},{6,0},{9,1},{5,0},{8,1},{7,1},{4,0},{3,0},{3,1}
+  };*/
 int must_do[][2] = {
     {22,0},{21,0},{20,0},{19,0},{18,0},{17,0},{16,0},{15,0},{14,0},{13,0},{12,0},{11,0},{10,0},{9,0},{8,0},
 };
@@ -213,13 +213,13 @@ int main(void)
     output(max_result);
 
     /*
-    for(int i=0;i<size(data);i++) {
-        for(int j=0;j<size(data[i]);j++) {
-            if(get_used(i,j)) cerr << ' '; else cerr << data[i][j];
-        }
-        cerr << endl;
-    }
-    */
+       for(int i=0;i<size(data);i++) {
+       for(int j=0;j<size(data[i]);j++) {
+       if(get_used(i,j)) cerr << ' '; else cerr << data[i][j];
+       }
+       cerr << endl;
+       }
+       */
     cerr << getTime() << endl;
     return 0;
 }
