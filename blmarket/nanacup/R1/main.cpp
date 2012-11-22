@@ -36,7 +36,7 @@ double initGetTime()
     return tv.tv_sec + tv.tv_usec * 0.000001;
 }
 
-double time_limit = 4.94;
+double time_limit = 4444.94;
 double time_start = initGetTime();
 
 double getTime()
@@ -137,7 +137,7 @@ int stupid_trials(int try_order[][2], int sz, vector<pair<string, vector<PII> > 
         random_shuffle(order.begin(), order.end());
 
         for(int j=0;j<size(v);j++) {
-            if(getTime() > 4.9) return ret;
+            if(getTime() > time_limit) return ret;
             int jj = order[j];
             if(used_words[idx][jj]) continue;
             if(findexact(v[jj], try_order[i][1])) {
@@ -171,13 +171,13 @@ int main(void)
     cerr << getTime() << endl;
     vector<long long> save_used = used;
 
-    int maxtrials = 25;
-    if(n*m > 1000) maxtrials = 15;
+    int maxtrials = 45;
+    if(n*m > 1000) maxtrials = 45;
     int ntrials = 0;
 
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
-    while(getTime() < 4.9) {
+    while(getTime() < time_limit) {
         current.clear();
         int tmpscore1 = stupid_trials(first_step, ARRAYSIZE(first_step), current);
 
@@ -187,7 +187,7 @@ int main(void)
 
         for(int i=0;i<maxtrials;i++) {
             cerr << i << " " << getTime() << endl;
-            if(getTime() > 4.95) break;
+            if(getTime() > time_limit) break;
             current2.clear();
             int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);
             ntrials++;
