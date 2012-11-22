@@ -36,7 +36,7 @@ double initGetTime()
     return tv.tv_sec + tv.tv_usec * 0.000001;
 }
 
-double time_limit = 4444.94;
+double time_limit = 4.94;
 double time_start = initGetTime();
 
 double getTime()
