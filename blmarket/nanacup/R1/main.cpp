@@ -186,10 +186,10 @@ int main(void)
         double curTime = getTime();
 
         for(int i=0;i<maxtrials;i++) {
-            cerr << i << " " << getTime() << endl;
             if(getTime() > time_limit) break;
             current2.clear();
             int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);
+            cerr << i << " " << getTime() << " " << tmpscore2 << "/" << maxscore2 << " " << maxscore << endl;
             ntrials++;
             if(maxscore2 < tmpscore2) {
                 max_result2 = current2;
