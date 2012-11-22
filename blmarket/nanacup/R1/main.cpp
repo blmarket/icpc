@@ -179,7 +179,6 @@ int main(void)
     int maxscore = 0;
     vector<pair<string, vector<PII> > > max_result, current, max_result2, current2;
     while(getTime() < time_limit) {
-        break;
         current.clear();
         int tmpscore1 = stupid_trials(first_step, ARRAYSIZE(first_step), current);
 
@@ -188,7 +187,6 @@ int main(void)
         double curTime = getTime();
 
         for(int i=0;i<maxtrials;i++) {
-            break;
             if(getTime() > time_limit) break;
             current2.clear();
             int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);
