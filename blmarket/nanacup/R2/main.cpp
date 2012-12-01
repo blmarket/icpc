@@ -41,8 +41,17 @@ int main(void)
             scanf("%d", &tmp);
             diff[i][j] = sum[i][j] - tmp;
             sum[i][j] += tmp;
-            printf("%5d ",diff[i][j]);
+            fprintf(stderr, "%5d ",diff[i][j]);
         }
-        printf("\n");
+        fprintf(stderr, "\n");
     }
+
+    cout << 1 << endl;
+    cout << n*m << " ";
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            cout << i << " " << j << " ";
+        }
+    }
+    cout << endl;
 }
