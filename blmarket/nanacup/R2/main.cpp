@@ -42,6 +42,10 @@ struct moim_t {
 
     moim_t(int sum, int diff,int x, int y) : sum(sum), diff(diff), headx(x), heady(y) {}
 
+    moim_t *clone() {
+        return new moim_t(sum, diff, headx, heady);
+    }
+
     void forall(function<void(int, int)> f, function<void(int, int)> others) {
         bool visit[105][105];
         memset(visit, 0, sizeof(visit));
@@ -74,7 +78,7 @@ struct moim_t {
     }
 };
 
-void expansion(int a, int b) {
+void expansion(moim_t *moim[][105], int a, int b) {
     vector<PII> near;
 
     moim[a][b]->forall([](int,int){ },[&](int a, int b) {
@@ -85,15 +89,14 @@ void expansion(int a, int b) {
     auto it = near[pick];
     moim[a][b]->merge(moim[it.first][it.second]);
 
-    if(moim[a][b]->diff <= 0) return expansion(a,b);
+    if(moim[a][b]->diff <= 0) return expansion(moim, a, b);
 }
 
 bool try_equalize(int target) {
-    auto copy = moim;
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             while(moim[i][j]->sum < target) {
-                expansion(i,j);
+                expansion(moim, i,j);
             }
             if(moim[i][j]->sum > target*5) return false;
         }
@@ -125,7 +128,7 @@ int main(void)
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             if(moim[i][j]->diff <= 0) {
-                expansion(i,j);
+                expansion(moim, i,j);
             }
         }
     }
