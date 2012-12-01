@@ -94,7 +94,7 @@ bool try_equalize(int target) {
             if(moim[i][j]->sum > target*5) return false;
         }
     }
-    cerr << target << endl;
+    cerr << "target = " << target << endl;
     return true;
 }
 
@@ -126,17 +126,17 @@ int main(void)
         }
     }
 
-    for(int i=100;;i+=100) {
-        if(try_equalize(i)) {
-            break;
-        }
-    }
-
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             fprintf(stderr, "%6d ", moim[i][j]->sum);
         }
         fprintf(stderr,"\n");
+    }
+
+    for(int i=100;;i+=100) {
+        if(try_equalize(i)) {
+            break;
+        }
     }
 
     cout << 1 << endl;
