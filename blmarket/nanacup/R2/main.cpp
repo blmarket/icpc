@@ -81,9 +81,10 @@ void expansion(int a, int b) {
         near.pb(mp(a,b));
     });
 
-    for(auto it : near) {
-        moim[a][b]->merge(moim[it.first][it.second]);
-    }
+    int pick = rand() % size(near);
+    auto it = near[pick];
+    moim[a][b]->merge(moim[it.first][it.second]);
+
     if(moim[a][b]->diff <= 0) return expansion(a,b);
     cerr << a << " " << b << " " << moim[a][b]->sum << " " << moim[a][b]->diff << endl;
 }
