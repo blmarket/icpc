@@ -186,7 +186,6 @@ int main(void)
         double curTime = getTime();
 
         for(int i=0;i<maxtrials;i++) {
-            cerr << i << " " << getTime() << endl;
             if(getTime() > 4.95) break;
             current2.clear();
             int tmpscore2 = stupid_trials(second_step, ARRAYSIZE(second_step), current2);
