@@ -64,11 +64,16 @@ struct moim_t {
     }
 
     void merge(moim_t *rhs) {
+        if(this == rhs) return;
         rhs->forall([&](int a, int b) {
             moim[a][b] = this;
         }, [](int a, int b) {});
+        sum += rhs->sum;
+        diff += rhs->diff;
+        delete rhs;
     }
 };
+
 void expansion(int a, int b) {
     vector<PII> near;
 
@@ -76,11 +81,11 @@ void expansion(int a, int b) {
         near.pb(mp(a,b));
     });
 
-    cerr << a << " " << b << " " << moim[a][b]->diff << " : ";
-    for(int i=0;i<size(near);i++) {
-        cerr << near[i].first << " " << near[i].second << " ";
+    for(auto it : near) {
+        moim[a][b]->merge(moim[it.first][it.second]);
     }
-    cerr << endl;
+    if(moim[a][b]->diff <= 0) return expansion(a,b);
+    cerr << a << " " << b << " " << moim[a][b]->diff << endl;
 }
 
 int main(void)
