@@ -32,7 +32,7 @@ int sum[105][105], diff[105][105];
 bool check(int x, int y) { return x>=0 && y>=0 && x<n && y<m; }
 
 struct moim_t;
-moim_t *moim[105][105];
+moim_t *moim[105][105], *clonemoim[105][105];
 
 struct moim_t {
     int sum;
@@ -78,18 +78,18 @@ struct moim_t {
     }
 };
 
-void expansion(moim_t *moim[][105], int a, int b) {
+void expansion(moim_t *hehe[][105], int a, int b) {
     vector<PII> near;
 
-    moim[a][b]->forall([](int,int){ },[&](int a, int b) {
+    hehe[a][b]->forall([](int,int){ },[&](int a, int b) {
         near.pb(mp(a,b));
     });
 
     int pick = rand() % size(near);
     auto it = near[pick];
-    moim[a][b]->merge(moim[it.first][it.second]);
+    hehe[a][b]->merge(hehe[it.first][it.second]);
 
-    if(moim[a][b]->diff <= 0) return expansion(moim, a, b);
+    if(hehe[a][b]->diff <= 0) return expansion(hehe, a, b);
 }
 
 bool try_equalize(int target) {
