@@ -67,7 +67,7 @@ struct moim_t {
         if(this == rhs) return;
         rhs->forall([&](int a, int b) {
             moim[a][b] = this;
-        }, [](int a, int b) {});
+        }, [](int,int) {});
         sum += rhs->sum;
         diff += rhs->diff;
         delete rhs;
