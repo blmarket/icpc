@@ -46,7 +46,7 @@ struct moim_t {
         return new moim_t(sum, diff, headx, heady);
     }
 
-    void forall(function<void(int, int)> f, function<void(int, int)> others) {
+    void forall(moim_t *hehe[][105], function<void(int, int)> f, function<void(int, int)> others) {
         bool visit[105][105];
         memset(visit, 0, sizeof(visit));
         function<void(int, int)> func = [&](int a, int b) {
@@ -56,7 +56,7 @@ struct moim_t {
                 int nx = a + dx[i];
                 int ny = b + dy[i];
                 if(check(nx, ny) == false) continue;
-                if(moim[nx][ny] != moim[a][b]) {
+                if(hehe[nx][ny] != hehe[a][b]) {
                     others(nx, ny);
                     continue;
                 }
@@ -67,9 +67,9 @@ struct moim_t {
         func(headx, heady);
     }
 
-    void merge(moim_t *rhs) {
+    void merge(moim_t *hehe[][105], moim_t *rhs) {
         if(this == rhs) return;
-        rhs->forall([&](int a, int b) {
+        rhs->forall(hehe, [&](int a, int b) {
             moim[a][b] = this;
         }, [](int,int){});
         sum += rhs->sum;
@@ -81,13 +81,13 @@ struct moim_t {
 void expansion(moim_t *hehe[][105], int a, int b) {
     vector<PII> near;
 
-    hehe[a][b]->forall([](int,int){ },[&](int a, int b) {
+    hehe[a][b]->forall(hehe, [](int,int){ },[&](int a, int b) {
         near.pb(mp(a,b));
     });
 
     int pick = rand() % size(near);
     auto it = near[pick];
-    hehe[a][b]->merge(hehe[it.first][it.second]);
+    hehe[a][b]->merge(hehe, hehe[it.first][it.second]);
 
     if(hehe[a][b]->diff <= 0) return expansion(hehe, a, b);
 }
