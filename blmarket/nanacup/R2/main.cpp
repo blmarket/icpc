@@ -46,7 +46,7 @@ void go(int a, int b) {
 
 void expansion(int a, int b) {
     memset(visit, 0, sizeof(visit));
-    function<void(int, int)> func = [&](int a, int b) {
+    function<void(int, int)> func = [visit, func](int a, int b) {
         if(visit[a][b]) return;
         func(a,b);
     };
