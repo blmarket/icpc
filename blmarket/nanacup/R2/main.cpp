@@ -50,6 +50,7 @@ void expansion(int a, int b) {
         if(visit[a][b]) return;
         func(a,b);
     };
+    func(a,b);
 }
 
 int main(void)
