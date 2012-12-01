@@ -88,6 +88,16 @@ void expansion(int a, int b) {
     if(moim[a][b]->diff <= 0) return expansion(a,b);
 }
 
+bool try_equalize(int target) {
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            if(moim[i][j]->sum > target*5) return false;
+        }
+    }
+    cerr << target << endl;
+    return true;
+}
+
 int main(void)
 {
     if(scanf("%d %d",&n, &m) == -1) return -1;
@@ -113,6 +123,12 @@ int main(void)
             if(moim[i][j]->diff <= 0) {
                 expansion(i,j);
             }
+        }
+    }
+
+    for(int i=100;;i+=100) {
+        if(try_equalize(i)) {
+            break;
         }
     }
 
