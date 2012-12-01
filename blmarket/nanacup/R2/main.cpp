@@ -142,6 +142,13 @@ int main(void)
         }
     }
 
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            fprintf(stderr, "%6d ", moim[i][j]->sum);
+        }
+        fprintf(stderr,"\n");
+    }
+
     cout << 1 << endl;
     cout << n*m << " ";
     for(int i=0;i<n;i++) {
