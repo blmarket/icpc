@@ -24,8 +24,32 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const int dx[4] = {-1,0,0,1};
+const int dy[4] = {0,-1,1,0};
+
+struct moim {
+    int sum;
+    int diff;
+
+    moim(int sum, int diff) : sum(sum), diff(diff) {}
+};
+
 int n,m;
 int sum[105][105], diff[105][105];
+moim *hehe[105][105];
+
+bool visit[105][105];
+void go(int a, int b) {
+    if(visit[a][b]) return;
+    visit[a][b] = true;
+}
+
+void expansion(int a, int b) {
+    memset(visit, 0, sizeof(visit));
+    function<void(int, int)> func = [&](int a, int b) {
+        func(a,b);
+    };
+}
 
 int main(void)
 {
@@ -41,9 +65,18 @@ int main(void)
             scanf("%d", &tmp);
             diff[i][j] = sum[i][j] - tmp;
             sum[i][j] += tmp;
+            hehe[i][j] = new moim(sum[i][j], diff[i][j]);
             fprintf(stderr, "%5d ",diff[i][j]);
         }
         fprintf(stderr, "\n");
+    }
+
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            if(hehe[i][j]->diff <= 0) {
+                expansion(i,j);
+            }
+        }
     }
 
     cout << 1 << endl;
