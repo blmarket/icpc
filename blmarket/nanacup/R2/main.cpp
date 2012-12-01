@@ -32,7 +32,7 @@ int sum[105][105], diff[105][105];
 bool check(int x, int y) { return x>=0 && y>=0 && x<n && y<m; }
 
 struct moim_t;
-moim_t *moim[105][105], *clonemoim[105][105] = {0};
+moim_t *moim[105][105];
 
 struct moim_t {
     int sum;
@@ -46,7 +46,7 @@ struct moim_t {
         return new moim_t(sum, diff, headx, heady);
     }
 
-    void forall(moim_t *hehe[][105], function<void(int, int)> f, function<void(int, int)> others) {
+    void forall(function<void(int, int)> f, function<void(int, int)> others) {
         bool visit[105][105];
         memset(visit, 0, sizeof(visit));
         function<void(int, int)> func = [&](int a, int b) {
@@ -56,7 +56,7 @@ struct moim_t {
                 int nx = a + dx[i];
                 int ny = b + dy[i];
                 if(check(nx, ny) == false) continue;
-                if(hehe[nx][ny] != hehe[a][b]) {
+                if(moim[nx][ny] != moim[a][b]) {
                     others(nx, ny);
                     continue;
                 }
@@ -67,9 +67,9 @@ struct moim_t {
         func(headx, heady);
     }
 
-    void merge(moim_t *hehe[][105], moim_t *rhs) {
+    void merge(moim_t *rhs) {
         if(this == rhs) return;
-        rhs->forall(hehe, [&](int a, int b) {
+        rhs->forall([&](int a, int b) {
             moim[a][b] = this;
         }, [](int,int){});
         sum += rhs->sum;
@@ -78,50 +78,21 @@ struct moim_t {
     }
 };
 
-void expansion(moim_t *hehe[][105], int a, int b) {
+void expansion(int a, int b) {
     vector<PII> near;
 
-    hehe[a][b]->forall(hehe, [](int,int){ },[&](int a, int b) {
+    moim[a][b]->forall([](int,int){ },[&](int a, int b) {
         near.pb(mp(a,b));
     });
 
     int pick = rand() % size(near);
     auto it = near[pick];
-    hehe[a][b]->merge(hehe, hehe[it.first][it.second]);
+    moim[a][b]->merge(moim[it.first][it.second]);
 
-    if(hehe[a][b]->diff <= 0) return expansion(hehe, a, b);
+    if(moim[a][b]->diff <= 0) return expansion(a, b);
 }
 
 bool try_equalize(int target) {
-    for(int i=0;i<n;i++) {
-        for(int j=0;j<m;j++) {
-            if(clonemoim[i][j]->headx == i && clonemoim[i][j]->heady == j) {
-                delete clonemoim[i][j];
-            }
-            if(moim[i][j]->headx == i && moim[i][j]->heady == j) {
-                clonemoim[i][j] = moim[i][j]->clone();
-            }
-        }
-    }
-    for(int i=0;i<n;i++) {
-        for(int j=0;j<m;j++) {
-            if(moim[i][j]->headx != i || moim[i][j]->heady != j) {
-                int hx = moim[i][j]->headx;
-                int hy = moim[i][j]->heady;
-                clonemoim[i][j] = clonemoim[hx][hy];
-            }
-        }
-    }
-
-    cerr << "trying : " << target << endl;
-    for(int i=0;i<n;i++) {
-        for(int j=0;j<m;j++) {
-            while(clonemoim[i][j]->sum < target) {
-                expansion(clonemoim, i,j);
-            }
-            if(clonemoim[i][j]->sum > target*5) return false;
-        }
-    }
     cerr << "target = " << target << endl;
     return true;
 }
@@ -149,7 +120,7 @@ int main(void)
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             if(moim[i][j]->diff <= 0) {
-                expansion(moim, i,j);
+                expansion(i,j);
             }
         }
     }
