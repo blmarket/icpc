@@ -64,6 +64,9 @@ struct moim_t {
     }
 
     void merge(moim_t *rhs) {
+        rhs->forall([&](int a, int b) {
+            moim[a][b] = this;
+        }, [](int a, int b) {});
     }
 };
 void expansion(int a, int b) {
