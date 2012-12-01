@@ -110,6 +110,7 @@ bool try_equalize(int target) {
         }
     }
 
+    cerr << "trying : " << target << endl;
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             while(clonemoim[i][j]->sum < target) {
