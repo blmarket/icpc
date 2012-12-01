@@ -85,7 +85,7 @@ void expansion(int a, int b) {
         moim[a][b]->merge(moim[it.first][it.second]);
     }
     if(moim[a][b]->diff <= 0) return expansion(a,b);
-    cerr << a << " " << b << " " << moim[a][b]->diff << endl;
+    cerr << a << " " << b << " " << moim[a][b]->sum << " " << moim[a][b]->diff << endl;
 }
 
 int main(void)
