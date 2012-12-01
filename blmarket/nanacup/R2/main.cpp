@@ -27,38 +27,51 @@ template<typename T> int size(const T &a) { return a.size(); }
 const int dx[4] = {-1,0,0,1};
 const int dy[4] = {0,-1,1,0};
 
+int n,m;
+int sum[105][105], diff[105][105];
+bool check(int x, int y) { return x>=0 && y>=0 && x<n && y<m; }
+
+struct moim_t;
+moim_t *moim[105][105];
+
 struct moim_t {
     int sum;
     int diff;
 
-    moim_t(int sum, int diff) : sum(sum), diff(diff) {}
-};
+    int headx, heady;
 
-int n,m;
-int sum[105][105], diff[105][105];
-moim_t *moim[105][105];
+    moim_t(int sum, int diff,int x, int y) : sum(sum), diff(diff), headx(x), heady(y) {}
 
-bool check(int x, int y) { return x>=0 && y>=0 && x<n && y<m; }
-
-bool visit[105][105];
-void expansion(int a, int b) {
-    memset(visit, 0, sizeof(visit));
-    vector<PII> near;
-    function<void(int, int)> func = [&](int a, int b) {
-        if(visit[a][b]) return;
-        visit[a][b] = true;
-        for(int i=0;i<4;i++) {
-            int nx = a + dx[i];
-            int ny = b + dy[i];
-            if(check(nx,ny) == false) continue;
-            if(moim[nx][ny] != moim[a][b]) {
-                near.pb(mp(nx,ny));
-                continue;
+    void forall(function<void(int, int)> f, function<void(int, int)> others) {
+        bool visit[105][105];
+        memset(visit, 0, sizeof(visit));
+        function<void(int, int)> func = [&](int a, int b) {
+            if(visit[a][b]) return;
+            visit[a][b] = true;
+            for(int i=0;i<4;i++) {
+                int nx = a + dx[i];
+                int ny = b + dy[i];
+                if(check(nx, ny) == false) continue;
+                if(moim[nx][ny] != moim[a][b]) {
+                    others(nx, ny);
+                    continue;
+                }
+                func(nx, ny);
             }
-            func(nx, ny);
-        }
-    };
-    func(a,b);
+            f(a,b);
+        };
+        func(headx, heady);
+    }
+
+    void merge(moim_t *rhs) {
+    }
+};
+void expansion(int a, int b) {
+    vector<PII> near;
+
+    moim[a][b]->forall([](int a, int b){ },[&](int a, int b) {
+        near.pb(mp(a,b));
+    });
 
     cerr << a << " " << b << " " << moim[a][b]->diff << " : ";
     for(int i=0;i<size(near);i++) {
@@ -81,7 +94,7 @@ int main(void)
             if(scanf("%d", &tmp) == -1) return -1;
             diff[i][j] = sum[i][j] - tmp;
             sum[i][j] += tmp;
-            moim[i][j] = new moim_t(sum[i][j], diff[i][j]);
+            moim[i][j] = new moim_t(sum[i][j], diff[i][j], i, j);
             fprintf(stderr, "%5d ",diff[i][j]);
         }
         fprintf(stderr, "\n");
