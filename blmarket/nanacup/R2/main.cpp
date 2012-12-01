@@ -95,6 +95,9 @@ void expansion(moim_t *hehe[][105], int a, int b) {
 bool try_equalize(int target) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
+            if(clonemoim[i][j]->headx == i && clonemoim[i][j]->heady == j) {
+                delete clonemoim[i][j];
+            }
             if(moim[i][j]->headx == i && moim[i][j]->heady == j) {
                 clonemoim[i][j] = moim[i][j]->clone();
             }
