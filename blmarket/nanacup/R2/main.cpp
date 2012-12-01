@@ -41,7 +41,7 @@ int main(void)
             scanf("%d", &tmp);
             diff[i][j] = sum[i][j] - tmp;
             sum[i][j] += tmp;
-            printf("%d ",diff[i][j]);
+            printf("%5d ",diff[i][j]);
         }
         printf("\n");
     }
