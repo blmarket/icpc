@@ -24,6 +24,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int n,m;
+int sum[105][105], diff[105][105];
+
 int main(void)
 {
+    scanf("%d %d",&n, &m);
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            scanf("%d", &sum[i][j]);
+        }
+    }
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            int tmp;
+            scanf("%d", &tmp);
+            diff[i][j] = sum[i][j] - tmp;
+            sum[i][j] += tmp;
+            printf("%d ",diff[i][j]);
+        }
+        printf("\n");
+    }
 }
