@@ -32,7 +32,7 @@ int sum[105][105], diff[105][105];
 bool check(int x, int y) { return x>=0 && y>=0 && x<n && y<m; }
 
 struct moim_t;
-moim_t *moim[105][105], *clonemoim[105][105];
+moim_t *moim[105][105], *clonemoim[105][105] = {0};
 
 struct moim_t {
     int sum;
