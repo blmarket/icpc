@@ -38,20 +38,33 @@ int n,m;
 int sum[105][105], diff[105][105];
 moim_t *moim[105][105];
 
-bool visit[105][105];
-void go(int a, int b) {
-    if(visit[a][b]) return;
-    visit[a][b] = true;
-}
+bool check(int x, int y) { return x>=0 && y>=0 && x<n && y<m; }
 
+bool visit[105][105];
 void expansion(int a, int b) {
     memset(visit, 0, sizeof(visit));
+    vector<PII> near;
     function<void(int, int)> func = [&](int a, int b) {
         if(visit[a][b]) return;
         visit[a][b] = true;
-        func(a,b);
+        for(int i=0;i<4;i++) {
+            int nx = a + dx[i];
+            int ny = b + dy[i];
+            if(check(nx,ny) == false) continue;
+            if(moim[nx][ny] != moim[a][b]) {
+                near.pb(mp(nx,ny));
+                continue;
+            }
+            func(nx, ny);
+        }
     };
     func(a,b);
+
+    cerr << a << " " << b << " " << moim[a][b]->diff << " : ";
+    for(int i=0;i<size(near);i++) {
+        cerr << near[i].first << " " << near[i].second << " ";
+    }
+    cerr << endl;
 }
 
 int main(void)
