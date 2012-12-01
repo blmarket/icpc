@@ -48,6 +48,7 @@ void expansion(int a, int b) {
     memset(visit, 0, sizeof(visit));
     function<void(int, int)> func = [&](int a, int b) {
         if(visit[a][b]) return;
+        visit[a][b] = true;
         func(a,b);
     };
     func(a,b);
