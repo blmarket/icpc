@@ -54,16 +54,16 @@ void expansion(int a, int b) {
 
 int main(void)
 {
-    scanf("%d %d",&n, &m);
+    if(scanf("%d %d",&n, &m) == -1) return -1;
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
-            scanf("%d", &sum[i][j]);
+            if(scanf("%d", &sum[i][j]) == -1) return -1;
         }
     }
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             int tmp;
-            scanf("%d", &tmp);
+            if(scanf("%d", &tmp) == -1) return -1;
             diff[i][j] = sum[i][j] - tmp;
             sum[i][j] += tmp;
             moim[i][j] = new moim_t(sum[i][j], diff[i][j]);
