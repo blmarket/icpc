@@ -95,10 +95,27 @@ void expansion(moim_t *hehe[][105], int a, int b) {
 bool try_equalize(int target) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
-            while(moim[i][j]->sum < target) {
-                expansion(moim, i,j);
+            if(moim[i][j]->headx == i && moim[i][j]->heady == j) {
+                clonemoim[i][j] = moim[i][j]->clone();
             }
-            if(moim[i][j]->sum > target*5) return false;
+        }
+    }
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            if(moim[i][j]->headx != i || moim[i][j]->heady != j) {
+                int hx = moim[i][j]->headx;
+                int hy = moim[i][j]->heady;
+                clonemoim[i][j] = clonemoim[hx][hy];
+            }
+        }
+    }
+
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            while(clonemoim[i][j]->sum < target) {
+                expansion(clonemoim, i,j);
+            }
+            if(clonemoim[i][j]->sum > target*5) return false;
         }
     }
     cerr << "target = " << target << endl;
