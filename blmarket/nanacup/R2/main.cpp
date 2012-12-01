@@ -67,7 +67,7 @@ struct moim_t {
         if(this == rhs) return;
         rhs->forall([&](int a, int b) {
             moim[a][b] = this;
-        }, [](int,int) {});
+        }, [](int,int){});
         sum += rhs->sum;
         diff += rhs->diff;
         delete rhs;
@@ -77,7 +77,7 @@ struct moim_t {
 void expansion(int a, int b) {
     vector<PII> near;
 
-    moim[a][b]->forall([](int a, int b){ },[&](int a, int b) {
+    moim[a][b]->forall([](int,int){ },[&](int a, int b) {
         near.pb(mp(a,b));
     });
 
