@@ -89,6 +89,7 @@ void expansion(int a, int b) {
 }
 
 bool try_equalize(int target) {
+    auto copy = moim;
     for(int i=0;i<n;i++) {
         for(int j=0;j<m;j++) {
             while(moim[i][j]->sum < target) {
