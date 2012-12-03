@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 
+
 #define mp make_pair
 #define pb push_back
 #define sqr(x) ((x)*(x))
@@ -50,7 +51,7 @@ void cnt(LL &R, LL &G, LL &B) {
 class PastingPaintingDivOne 
 {
 public:
-    vector<long long> cntColors(vector <string> clipboard, int T_) 
+    vector<long long> countColors(vector <string> clipboard, int T_) 
     {
         memset(tempboard, 0, sizeof(tempboard));
         board = clipboard;
