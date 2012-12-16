@@ -50,14 +50,17 @@ public:
     int maxSize(int w_, int h_) 
     {
         w=w_;h=h_;
+        if(w > 50 && h > 50) return w*h;
+        int maxx = 0;
         for(int i=0;i<3;i++) {
             for(int j=0;j<2;j++) {
                 if(!check(i,j)) continue;
                 memset(visit, 0, sizeof(visit));
-                cout << go(i,j) << endl;
+                int tmp = go(i,j);
+                maxx = max(maxx, tmp);
             }
         }
-        return 0;
+        return maxx;
     }
 
     
