@@ -37,15 +37,15 @@ public:
     long long countWays(int n, int k) 
     {		
         long long ret = 0;
-        int o2 = k / 3;
+        int o2 = (k - 1) / 3;
         for(int i=o2;i>=0;i--) {
             int rest = k - (i*3);
-            cerr << "REST = " << rest << endl;
-            if(rest == 1) {
+            if(rest == 1) { // special case
                 int avail = n - 1 - (i*3);
                 ret += H(avail, 3);
                 continue;
             }
+            cerr << rest << endl;
         }
         return ret;
     }
