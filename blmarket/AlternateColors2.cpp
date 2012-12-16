@@ -39,6 +39,7 @@ public:
         int o2 = k / 3;
         for(int i=o2;i>=0;i--) {
             int rest = k - (i*3);
+            cerr << "REST = " << rest << endl;
             if(rest == 1) {
                 int avail = n - 1 - (i*3);
                 ret += H(avail, 3);
