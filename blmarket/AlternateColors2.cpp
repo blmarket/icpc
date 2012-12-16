@@ -49,7 +49,6 @@ public:
                 continue;
             }
 
-            cerr << rest << endl;
             int o1 = rest / 2;
             if((rest % 2) == 0) {
                 int avail = n - (i*3) - rest;
@@ -57,9 +56,7 @@ public:
                 o1--;
             } 
 
-            for(int j=o1;j>0;j--) {
-                ret += 2;
-            }
+            ret += 2 * o1;
             ret++;
         }
         return ret;
