@@ -57,9 +57,10 @@ public:
                 o1--;
             } 
 
-            for(int j=o1;j>=0;j--) {
+            for(int j=o1;j>0;j--) {
                 ret += 2;
             }
+            ret++;
         }
         return ret;
     }
