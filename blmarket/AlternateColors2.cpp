@@ -36,8 +36,11 @@ class AlternateColors2
 public:
     long long countWays(int n, int k) 
     {		
+        n--; k--;
+        if(k == 0) return H(n, 3);
+
         long long ret = 0;
-        int o2 = (k - 1) / 3;
+        int o2 = k / 3;
         for(int i=o2;i>=0;i--) {
             int rest = k - (i*3);
             if(rest == 1) { // special case
