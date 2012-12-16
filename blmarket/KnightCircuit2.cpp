@@ -52,6 +52,7 @@ public:
         w=w_;h=h_;
         for(int i=0;i<3;i++) {
             for(int j=0;j<2;j++) {
+                if(!check(i,j)) continue;
                 memset(visit, 0, sizeof(visit));
                 cout << go(i,j) << endl;
             }
