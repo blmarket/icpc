@@ -86,6 +86,6 @@ public:
 int main()
 {
     AlternateColors2 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
