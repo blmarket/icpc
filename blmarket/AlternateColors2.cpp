@@ -20,17 +20,32 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+long long H(int a, int b) {
+    long long ret = 1;
+    a += b-1;
+    for(int i=0;i<b;i++) {
+        ret *= (a - i);
+        ret /= (i+1);
+    }
+    return ret;
+}
+
 class AlternateColors2 
 {
 public:
     long long countWays(int n, int k) 
     {		
-        int others = k / 3;
-        for(int i=others;i>=0;i--) {
+        long long ret = 0;
+        int o2 = k / 3;
+        for(int i=o2;i>=0;i--) {
             int rest = k - (i*3);
-            cout << rest << endl;
+            if(rest == 1) {
+                int avail = n - 1 - (i*3);
+                ret += H(avail, 3);
+                continue;
+            }
         }
-        return 0LL;
+        return ret;
     }
 
     
