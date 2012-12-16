@@ -22,7 +22,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long H(int a, int b) {
     long long ret = 1;
-    a += b-1;
+    b--;
+    a += b;
     for(int i=0;i<b;i++) {
         ret *= (a - i);
         ret /= (i+1);
