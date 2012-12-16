@@ -49,6 +49,7 @@ public:
                 continue;
             }
 
+            cerr << rest << endl;
             int o1 = rest / 2;
             if((rest % 2) == 0) {
                 int avail = n - (i*3) - rest;
