@@ -43,12 +43,22 @@ public:
         int o2 = k / 3;
         for(int i=o2;i>=0;i--) {
             int rest = k - (i*3);
-            if(rest == 1) { // special case
-                int avail = n - 1 - (i*3);
+            if(rest == 0) { // special case
+                int avail = n - (i*3);
                 ret += H(avail, 3);
                 continue;
             }
-            cerr << rest << endl;
+
+            int o1 = rest / 2;
+            if((rest % 2) == 0) {
+                int avail = n - (i*3) - rest;
+                ret += 2 * H(avail, 2);
+                o1--;
+            } 
+
+            for(int j=o1;j>=0;j--) {
+                ret += 2;
+            }
         }
         return ret;
     }
