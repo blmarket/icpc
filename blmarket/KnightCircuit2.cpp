@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const int dx[] = {-2,-2,-1,-1,1,1,2,2};
 const int dy[] = {-1,1,-2,2,-2,2,-1,1};
 
-bool visit[105][105];
+bool visit[3][50000];
 int w,h;
 
 bool check(int a, int b) {
@@ -50,7 +50,8 @@ public:
     int maxSize(int w_, int h_) 
     {
         w=w_;h=h_;
-        if(w > 50 && h > 50) return w*h;
+        if(h < w) swap(w,h);
+        if(w >= 3) return w*h;
         int maxx = 0;
         for(int i=0;i<3;i++) {
             for(int j=0;j<2;j++) {
