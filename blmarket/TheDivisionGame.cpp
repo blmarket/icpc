@@ -82,7 +82,7 @@ public:
         M.clear();
         ltr[0] = 0;
         M[0] = 1;
-        for(int i=1;i<=n;i++) {
+        for(int i=1;i<n;i++) {
             ltr[i] = ltr[i-1] ^ cnts[i-1];
             M[ltr[i]] += 1;
         }
