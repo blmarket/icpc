@@ -55,7 +55,6 @@ public:
             for(int j=tmp2;j>0;j--) {
                 int rest2 = rest - (j * 2);
                 if(rest2 == 0) {
-                    cerr << "here" << endl;
                     ret += 2 * H(n - i * 3 - j * 2, 2);
                     continue;
                 }
@@ -89,6 +88,6 @@ public:
 int main()
 {
     AlternateColors2 ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
