@@ -43,6 +43,7 @@ public:
                 }
             }
             cur.swap(next);
+            cout << size(cur) << endl;
         }
         foreach(it, cur) {
             return it->first;
