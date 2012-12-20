@@ -43,13 +43,14 @@ public:
 
         int tmp = k / 3;
         for(int i=tmp;i>=0;i--) {
-            cerr << i << " = " << ret << endl;
             // GBR GBR GBR ...
             int rest = k - (i * 3);
             if(rest == 0) {
                 ret += H(n - (i * 3), 3);
                 continue;
             }
+
+            cerr << rest << endl;
 
             // XR XR XR ...
             int tmp2 = rest / 2;
