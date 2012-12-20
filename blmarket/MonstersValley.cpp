@@ -28,7 +28,8 @@ public:
     {
         int n = size(dread);
         map<int, LL> cur, next;
-        for(int i=0;i<n;i++) {
+        cur[price[0]] = dread[0];
+        for(int i=1;i<n;i++) {
             next.clear();
             foreach(it, cur) {
                 int cost = it->first + price[i];
