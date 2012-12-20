@@ -45,6 +45,7 @@ public:
         for(int i=tmp;i>=0;i--) {
             // GBR GBR GBR ...
             int rest = k - (i * 3);
+            cerr << rest << endl;
             if(rest == 0) {
                 ret += H(n - (i * 3), 3);
                 continue;
