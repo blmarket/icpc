@@ -73,6 +73,7 @@ public:
         }
         cout << endl;
 
+        /*
         memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<n;i++) {
             if((i % 10000) == 0) cout << i << " " << nums[i] << endl;
@@ -90,6 +91,7 @@ public:
             cout << cnts[i] << " ";
         }
         cout << endl;
+        */
 
         M.clear();
         ltr[0] = 0;
