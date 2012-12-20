@@ -25,6 +25,7 @@ vector<int> level, damage;
 map<long long, int> memo;
 
 int calc1(long long mask) {
+    cerr << "calc1" << endl;
     int ret = 0;
     for(int i=0;i<n;i++) if(level[i] == 1) if(mask & (1LL << i) == 0) {
         ret += damage[i];
