@@ -27,7 +27,7 @@ map<long long, int> memo;
 int calc1(long long mask) {
     cerr << "calc1 : " << mask << endl;
     int ret = 0;
-    for(int i=0;i<n;i++) if(level[i] == 1) if(mask & (1LL << i) == 0) {
+    for(int i=0;i<n;i++) if(level[i] == 1) if((mask & (1LL << i)) == 0) {
         ret += damage[i];
     }
     cerr << "ret = " << ret << endl;
@@ -39,9 +39,9 @@ int go(long long mask) {
     int &ret = memo[mask];
     ret = calc1(mask);
     int elasp = n;
-    for(int i=0;i<n;i++) if(mask & (1LL << i)) elasp--;
+    for(int i=0;i<n;i++) if((mask & (1LL << i))) elasp--;
 
-    for(int i=0;i<n;i++) if(mask & (1LL << i) == 0) if(level[i] > 1 && level[i] <= elasp) {
+    for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] > 1 && level[i] <= elasp) {
         long long tmp1 = mask;
 
         int pos = i;
