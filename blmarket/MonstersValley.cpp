@@ -46,6 +46,7 @@ public:
             foreach(it, cur) {
                 cout << it->first << " " << it->second << endl;
             }
+            cout << endl;
         }
         foreach(it, cur) {
             return it->first;
