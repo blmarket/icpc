@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <cstring>
 #include <set>
 #include <sstream>
 #include <algorithm>
@@ -21,6 +22,9 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> primes;
+int nums[1000005];
+int cnts[1000005];
+int n;
 
 class TheDivisionGame 
 {
@@ -29,7 +33,7 @@ public:
     {
         primes.clear();
         primes.pb(2);
-        for(int i=3;i<2010000;i+=2) {
+        for(int i=3;i<50000;i+=2) {
             bool fail = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;
@@ -38,6 +42,17 @@ public:
             if(!fail) primes.pb(i);
         }
         cout << size(primes) << endl;
+        
+        for(int i=L;i<=R;i++) {
+            nums[i-L] = i;
+        }
+        n = R-L+1;
+        
+        memset(cnts, 0, sizeof(cnts));
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<size(primes);j++) {
+            }
+        }
     }
 
     
