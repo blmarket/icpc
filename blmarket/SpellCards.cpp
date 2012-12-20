@@ -30,6 +30,7 @@ int calc1(long long mask) {
     for(int i=0;i<n;i++) if(level[i] == 1) if(mask & (1LL << i) == 0) {
         ret += damage[i];
     }
+    cerr << "ret = " << ret << endl;
     return ret;
 }
 
