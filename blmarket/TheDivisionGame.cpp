@@ -50,9 +50,23 @@ public:
             nums[i-L] = i;
         }
         n = R-L+1;
+
+        for(int i=0;i<size(primes);i++) {
+            long long p = primes[i];
+
+            while(true) {
+                long long s = -(L % p); if(s<0) s+=p;
+                if(s > n) break;
+                for(int j=s;j<=n;j+=p) {
+                    cnts[j]++;
+                }
+                p *= primes[i];
+            }
+        }
         
         memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<n;i++) {
+            if((i % 10000) == 0) cout << i << " " << nums[i] << endl;
             cnts[i] = 0;
             for(int j=0;j<size(primes);j++) {
                 while((nums[i] % primes[j]) == 0) {
