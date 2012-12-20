@@ -71,10 +71,13 @@ public:
             M[ltr[i]] += 1;
         }
 
+        long long losecount = 0;
         foreach(it, M) {
-            cout << it->second << " ";
+            losecount += (it->second * (it->second - 1)) / 2;
         }
-        cout << endl;
+        long long totalcount = n * (n-1) / 2;
+
+        return totalcount - losecount;
     }
 
     
