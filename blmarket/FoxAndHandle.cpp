@@ -20,6 +20,32 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+bool avail(string base, map<char, int> cnt) { 
+    for(int i=0;i<size(base);i++) {
+        cnt[base[i]]--;
+    }
+    foreach(it, cnt) if(it->second > 0) return false;
+    return true;
+}
+
+string go(string base, map<char, int> cnt) { 
+    foreach(it, cnt) if(it->second) {
+        for(int i=0;i<size(base);i++) {
+            if(base[i] == it->first) {
+                it->second--;
+                string tmp = base.substr(i+1);
+                if(avail(tmp, cnt)) {
+                    string ret = go(tmp, cnt);
+                    return it->first + ret;
+                }
+                it->second++;
+                break;
+            }
+        }
+    }
+    return "";
+}
+
 class FoxAndHandle 
 {
 public:
@@ -28,6 +54,8 @@ public:
         map<char, int> cnt;
         for(int i=0;i<size(S);i++) cnt[S[i]]++;
         foreach(it, cnt) { it->second /= 2; };
+
+        return go(S, cnt);
 
         foreach(it, cnt) { cerr << it->first << " = " << it->second << endl; }
         return "";
