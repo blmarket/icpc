@@ -22,35 +22,25 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 vector<int> level, damage;
+vector<int> s1;
 map<long long, int> memo;
 
-int calc1(long long mask) {
-    int ret = 0;
-    for(int i=0;i<n;i++) if(level[i] == 1) if((mask & (1LL << i)) == 0) {
-        ret += damage[i];
-    }
-    return ret;
-}
-
-int go(long long mask) {
+int go(long long mask, int drop) {
+    if(drop >= n) return 0;
     if(memo.count(mask)) return memo[mask];
     int &ret = memo[mask];
-    ret = calc1(mask);
-    int elasp = n;
-    for(int i=0;i<n;i++) if((mask & (1LL << i))) elasp--;
 
-    for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] <= elasp) {
-        long long tmp1 = mask;
+    ret = 0;
+    int elasp = n - drop;
+    for(int i=0;i<min(size(s1), elasp);i++) {
+        ret += s1[i];
+    }
 
-        int pos = i;
-        for(int j=0;j<level[i];j++) {
-            while(tmp1 & (1LL << pos)) {
-                pos = (pos + 1) % n;
-            }
-            tmp1 |= (1LL << pos);
-        }
-        int tmp = damage[i] + go(tmp1);
-        if(ret < tmp) ret = tmp;
+    for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] > 1 && level[i] <= elasp) {
+        long long tmp1 = mask | (1LL << i);
+        int tmp = go(tmp1, drop + level[i]);
+
+        if(tmp > ret) ret = tmp;
     }
     return ret;
 }
@@ -62,8 +52,15 @@ public:
     {		
         level = level_; damage = damage_;
         n = size(level);
+        s1.clear();
+        for(int i=0;i<n;i++) {
+            if(level[i] == 1) {
+                s1.pb(damage[i]);
+            }
+        }
+        sort(s1.rbegin(), s1.rend());
         memo.clear();
-        return go(0);
+        return go(0, 0);
     }
 
     
