@@ -24,7 +24,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<int> primes;
 int nums[1000005];
 int cnts[1000005];
+int ltr[1000005];
 int n;
+
+map<int, int> M;
 
 class TheDivisionGame 
 {
@@ -58,7 +61,18 @@ public:
                 }
             }
             if(nums[i] > 1) cnts[i]++;
-            cout << cnts[i] << " ";
+        }
+
+        M.clear();
+        ltr[0] = 0;
+        M[0] = 1;
+        for(int i=1;i<=n;i++) {
+            ltr[i] = ltr[i-1] ^ cnts[i-1];
+            M[ltr[i]] += 1;
+        }
+
+        foreach(it, M) {
+            cout << it->second << " ";
         }
         cout << endl;
     }
