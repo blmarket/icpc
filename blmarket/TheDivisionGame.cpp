@@ -68,11 +68,6 @@ public:
 
         for(int i=0;i<n;i++) if(nums[i] > 1) cnts[i]++;
 
-        for(int i=0;i<n;i++) {
-            cout << cnts[i] << " ";
-        }
-        cout << endl;
-
         /*
         memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<n;i++) {
