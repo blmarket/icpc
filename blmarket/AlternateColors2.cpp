@@ -65,6 +65,7 @@ public:
                 ret += 2;
             }
         }
+        return ret;
     }
 
     
