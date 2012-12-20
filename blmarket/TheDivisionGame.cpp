@@ -64,8 +64,13 @@ public:
                 p *= primes[i];
             }
         }
-        
-        /*
+
+        for(int i=0;i<n;i++) {
+            cout << cnts[i] << " ";
+        }
+        cout << endl;
+
+        memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<n;i++) {
             if((i % 10000) == 0) cout << i << " " << nums[i] << endl;
             cnts[i] = 0;
@@ -77,7 +82,11 @@ public:
             }
             if(nums[i] > 1) cnts[i]++;
         }
-        */
+
+        for(int i=0;i<n;i++) {
+            cout << cnts[i] << " ";
+        }
+        cout << endl;
 
         M.clear();
         ltr[0] = 0;
