@@ -26,6 +26,7 @@ long long C(int a,int b) {
     for(int i=0;i<b;i++) {
         ret *= (a-i);
         ret /= (i+1);
+        cerr << ret << endl;
     }
     return ret;
 }
