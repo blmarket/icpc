@@ -20,46 +20,48 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-long long H(int a, int b) {
+long long C(int a,int b) {
     long long ret = 1;
-    b--;
-    a += b;
     for(int i=0;i<b;i++) {
-        ret *= (a - i);
+        ret *= (a-i);
         ret /= (i+1);
     }
     return ret;
+}
+
+long long H(int a,int b) {
+    return C(a+b-1, b-1);
 }
 
 class AlternateColors2 
 {
 public:
     long long countWays(int n, int k) 
-    {		
-        n--; k--;
-        if(k == 0) return H(n, 3);
-
+    {
         long long ret = 0;
-        int o2 = k / 3;
-        for(int i=o2;i>=0;i--) {
-            int rest = k - (i*3);
-            if(rest == 0) { // special case
-                int avail = n - (i*3);
-                ret += H(avail, 3);
+        n--; k--;
+
+        int tmp = k / 3;
+        for(int i=tmp;i>=0;i--) {
+            // GBR GBR GBR ...
+            int rest = k - (i * 3);
+            if(rest == 0) {
+                ret += H(n - (i * 3), 3);
                 continue;
             }
 
-            int o1 = rest / 2;
-            if((rest % 2) == 0) {
-                int avail = n - (i*3) - rest;
-                ret += 2 * H(avail, 2);
-                o1--;
-            } 
+            // XR XR XR ...
+            int tmp2 = rest / 2;
+            for(int j=tmp2;j>=0;j--) {
+                int rest2 = rest - (j * 2);
+                if(rest2 == 0) {
+                    ret += 2 * H(n - i * 3 - j * 2, 2);
+                    continue;
+                }
 
-            ret += 2 * o1;
-            ret++;
+                ret += 2;
+            }
         }
-        return ret;
     }
 
     
