@@ -36,7 +36,7 @@ public:
     {
         primes.clear();
         primes.pb(2);
-        for(int i=3;i<100000;i+=2) {
+        for(int i=3;i<40000;i+=2) {
             bool fail = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;
