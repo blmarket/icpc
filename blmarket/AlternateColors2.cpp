@@ -30,7 +30,7 @@ long long C(int a,int b) {
 }
 
 long long H(int a,int b) {
-    cerr << a << " " << b << endl;
+    cerr << a << " " << b << " = " << C(a+b-1,b-1) << endl;
     return C(a+b-1, b-1);
 }
 
