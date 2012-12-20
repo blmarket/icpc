@@ -22,11 +22,9 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long C(int a,int b) {
     long long ret = 1;
-    cerr << a << " " << b << endl;
     for(int i=0;i<b;i++) {
         ret *= (a-i);
         ret /= (i+1);
-        cerr << ret << endl;
     }
     return ret;
 }
@@ -90,6 +88,6 @@ public:
 int main()
 {
     AlternateColors2 ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
