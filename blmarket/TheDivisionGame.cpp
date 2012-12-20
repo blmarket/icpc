@@ -51,6 +51,7 @@ public:
         }
         n = R-L+1;
 
+        memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<size(primes);i++) {
             long long p = primes[i];
 
@@ -64,7 +65,7 @@ public:
             }
         }
         
-        memset(cnts, 0, sizeof(cnts));
+        /*
         for(int i=0;i<n;i++) {
             if((i % 10000) == 0) cout << i << " " << nums[i] << endl;
             cnts[i] = 0;
@@ -76,6 +77,7 @@ public:
             }
             if(nums[i] > 1) cnts[i]++;
         }
+        */
 
         M.clear();
         ltr[0] = 0;
