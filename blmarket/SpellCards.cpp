@@ -39,7 +39,7 @@ int go(long long mask) {
     int elasp = n;
     for(int i=0;i<n;i++) if((mask & (1LL << i))) elasp--;
 
-    for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] > 1 && level[i] <= elasp) {
+    for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] <= elasp) {
         long long tmp1 = mask;
 
         int pos = i;
