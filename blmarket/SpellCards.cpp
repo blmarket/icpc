@@ -30,13 +30,13 @@ int go(long long mask, int drop) {
     if(memo.count(mask)) return memo[mask];
     int &ret = memo[mask];
 
+    cerr << size(s1) << endl;
+
     ret = 0;
     int elasp = n - drop;
     for(int i=0;i<min(size(s1), elasp);i++) {
         ret += s1[i];
     }
-
-    cerr << ret << endl;
 
     cerr << "elasp = " << elasp << endl;
     for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] > 1 && level[i] <= elasp) {
