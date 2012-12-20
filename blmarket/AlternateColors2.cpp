@@ -43,6 +43,7 @@ public:
 
         int tmp = k / 3;
         for(int i=tmp;i>=0;i--) {
+            cerr << i << " = " << ret << endl;
             // GBR GBR GBR ...
             int rest = k - (i * 3);
             if(rest == 0) {
@@ -87,6 +88,6 @@ public:
 int main()
 {
     AlternateColors2 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
