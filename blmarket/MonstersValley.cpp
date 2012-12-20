@@ -43,7 +43,9 @@ public:
                 }
             }
             cur.swap(next);
-            cout << size(cur) << endl;
+            foreach(it, cur) {
+                cout << it->first << " " << it->second << endl;
+            }
         }
         foreach(it, cur) {
             return it->first;
