@@ -36,6 +36,8 @@ int go(long long mask, int drop) {
         ret += s1[i];
     }
 
+    cerr << "elasp = " << elasp << endl;
+
     for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] > 1 && level[i] <= elasp) {
         long long tmp1 = mask | (1LL << i);
         int tmp = go(tmp1, drop + level[i]);
@@ -86,6 +88,6 @@ public:
 int main()
 {
     SpellCards ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
