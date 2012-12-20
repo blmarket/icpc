@@ -50,10 +50,9 @@ public:
                 continue;
             }
 
-            cerr << rest << endl;
-
             // XR XR XR ...
             int tmp2 = rest / 2;
+            cerr << rest << " " << tmp2 << endl;
             for(int j=tmp2;j>=0;j--) {
                 int rest2 = rest - (j * 2);
                 if(rest2 == 0) {
