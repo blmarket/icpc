@@ -28,7 +28,7 @@ public:
     long long countWinningIntervals(int L, int R) 
     {
         primes.pb(2);
-        for(int i=3;i<1010000000;i+=2) {
+        for(int i=3;i<1010000;i+=2) {
             bool fail = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;
