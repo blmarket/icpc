@@ -50,9 +50,17 @@ public:
         
         memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<n;i++) {
+            cnts[i] = 0;
             for(int j=0;j<size(primes);j++) {
+                while((nums[i] % primes[j]) == 0) {
+                    nums[i] /= primes[j];
+                    cnts[i]++;
+                }
             }
+            if(nums[i] > 1) cnts[i]++;
+            cout << cnts[i] << " ";
         }
+        cout << endl;
     }
 
     
