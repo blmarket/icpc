@@ -77,6 +77,8 @@ public:
         }
         long long totalcount = n * (n-1) / 2;
 
+        cout << totalcount << " " << losecount << endl;
+
         return totalcount - losecount;
     }
 
