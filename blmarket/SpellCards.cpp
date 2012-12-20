@@ -30,8 +30,6 @@ int go(long long mask, int drop) {
     if(memo.count(mask)) return memo[mask];
     int &ret = memo[mask];
 
-    cerr << size(s1) << endl;
-
     ret = 0;
     int elasp = n - drop;
     for(int i=0;i<min(size(s1), elasp);i++) {
@@ -41,7 +39,7 @@ int go(long long mask, int drop) {
     cerr << "elasp = " << elasp << endl;
     for(int i=0;i<n;i++) if((mask & (1LL << i)) == 0) if(level[i] > 1 && level[i] <= elasp) {
         long long tmp1 = mask | (1LL << i);
-        int tmp = go(tmp1, drop + level[i]);
+        int tmp = damage[i] + go(tmp1, drop + level[i]);
 
         if(tmp > ret) ret = tmp;
     }
