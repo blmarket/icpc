@@ -30,6 +30,7 @@ long long C(int a,int b) {
 }
 
 long long H(int a,int b) {
+    cerr << a << " " << b << endl;
     return C(a+b-1, b-1);
 }
 
@@ -52,10 +53,10 @@ public:
 
             // XR XR XR ...
             int tmp2 = rest / 2;
-            cerr << rest << " " << tmp2 << endl;
             for(int j=tmp2;j>=0;j--) {
                 int rest2 = rest - (j * 2);
                 if(rest2 == 0) {
+                    cerr << "here" << endl;
                     ret += 2 * H(n - i * 3 - j * 2, 2);
                     continue;
                 }
