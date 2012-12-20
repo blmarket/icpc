@@ -59,11 +59,14 @@ public:
                 long long s = -(L % p); if(s<0) s+=p;
                 if(s > n) break;
                 for(int j=s;j<=n;j+=p) {
+                    nums[j] /= primes[i];
                     cnts[j]++;
                 }
                 p *= primes[i];
             }
         }
+
+        for(int i=0;i<n;i++) if(nums[i] > 1) cnts[i]++;
 
         for(int i=0;i<n;i++) {
             cout << cnts[i] << " ";
