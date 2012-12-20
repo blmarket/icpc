@@ -75,7 +75,7 @@ public:
         foreach(it, M) {
             losecount += (it->second * (it->second - 1)) / 2;
         }
-        long long totalcount = n * (n-1) / 2;
+        long long totalcount = n * (n+1) / 2;
 
         cout << totalcount << " " << losecount << endl;
 
