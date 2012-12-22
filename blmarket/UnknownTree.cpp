@@ -87,12 +87,12 @@ int go1(const VI &da, const VI &db, const VI &dc) {
     int ret = 0;
 
     // A - B - C
-    check1(da, db, dc);
+    ret = check1(da, db, dc);
 
     // A - B - X - C
     // A - X - B - C
     // A - X - B - X - C
-    return 0;
+    return ret;
 }
 
 class UnknownTree 
