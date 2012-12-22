@@ -20,11 +20,59 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+const int mod = 1000000009;
+
+int go2(VI da, VI db, VI dc) {
+    return 0;
+}
+
+int check1(const VI &da, const VI &db, const VI &dc) {
+    VI la, lb, lc;
+    for(int i=0;i<size(da);i++) {
+        if(da[i] < db[i] && da[i] < dc[i]) {
+            la.pb(da[i]);
+            continue;
+        }
+        if(db[i] < da[i] && db[i] < dc[i]) {
+            lb.pb(db[i]);
+            continue;
+        }
+        if(dc[i] < da[i] && dc[i] < db[i]) {
+            lc.pb(dc[i]);
+            continue;
+        }
+        return 0;
+    }
+
+    sort(la.begin(), la.end()); sort(lb.begin(), lb.end()); sort(lc.begin(), lc.end());
+
+    for(int i=0;i<size(la);i++) cout << la[i] << " ";
+    for(int i=0;i<size(lb);i++) cout << lb[i] << " ";
+    for(int i=0;i<size(lc);i++) cout << lc[i] << " ";
+}
+
+int go1(const VI &da, const VI &db, const VI &dc) {
+    int ret = 0;
+
+    // A - B - C
+    check1(da, db, dc);
+
+    // A - B - X - C
+    // A - X - B - C
+    // A - X - B - X - C
+    return 0;
+}
+
 class UnknownTree 
 {
 public:
-    int getCount(vector <int> distancesA, vector <int> distancesB, vector <int> distancesC) 
+    int getCount(vector <int> dA, vector <int> dB, vector <int> dC) 
     {		
+        int ret = go1(dA, dB, dC);
+        //ret = (ret + go1(dB, dC, dA)) % mod;
+        //ret = (ret + go1(dC, dA, dB)) % mod;
+        //ret = (ret + go2(dA, dB, dC)) % mod;
+        return ret;
     }
 
     
