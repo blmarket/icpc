@@ -26,6 +26,19 @@ int go2(VI da, VI db, VI dc) {
     return 0;
 }
 
+int pump(const VI &a) {
+    long long ret = 1;
+    int lastidx = 0;
+    for(int i=1;i<size(a);i++) {
+        ret = (ret * (lastidx + 1)) % mod;
+        if(a[i] == a[i-1]) {
+            continue;
+        }
+        lastidx = i;
+    }
+    return ret;
+}
+
 int check1(const VI &da, const VI &db, const VI &dc) {
     VI la, lb, lc;
     int dab = -1, dbc = -1;
@@ -60,8 +73,14 @@ int check1(const VI &da, const VI &db, const VI &dc) {
         return 0;
     }
 
-    cout << "here" << endl;
+    la.pb(0); lb.pb(0); lc.pb(0);
     sort(la.begin(), la.end()); sort(lb.begin(), lb.end()); sort(lc.begin(), lc.end());
+    long long ret = 1;
+    ret *= pump(la);
+    ret = (ret * pump(lb)) % mod;
+    ret = (ret * pump(lc)) % mod;
+    cout << ret << endl;
+    return ret;
 }
 
 int go1(const VI &da, const VI &db, const VI &dc) {
