@@ -138,6 +138,61 @@ int check2(const VI &da, const VI &db, const VI &dc) {
     return ret;
 }
 
+int check3(const VI &da, const VI &db, const VI &dc) {
+    int mindist = 2100000000;
+    for(int i=0;i<size(da);i++) {
+        int tmp = da[i] + db[i];
+        if(tmp < mindist) {
+            mindist = tmp;
+        }
+    }
+
+    map<int, VI> M;
+    vector<int> lc;
+    int dbc = -1;
+    for(int i=0;i<size(da);i++) {
+        int key = da[i] - db[i];
+        if(key < -mindist || key > mindist) return 0;
+
+        if(key >= -mindist && key < mindist) { // mid
+            int tbc = dc[i] - db[i];
+            if(tbc <= 0) return 0;
+            if(dbc == -1) dbc = tbc;
+            if(dbc != tbc) return 0;
+            int sum = da[i] + db[i] - mindist;
+            if(sum & 1) return 0;
+            sum /= 2;
+            M[key].pb(sum);
+            continue;
+        }
+
+        assert(key == mindist); // bind to B or C
+        if(db[i] == dc[i]) return 0;
+        if(db[i] < dc[i]) {
+            int tbc = dc[i] - db[i];
+            if(dbc == -1) dbc = tbc;
+            if(dbc != tbc) return 0;
+            M[mindist].pb(db[i]);
+        } else { assert(db[i] > dc[i]);
+            int tbc = db[i] - dc[i];
+            if(dbc == -1) dbc = tbc;
+            if(dbc != tbc) return 0;
+            M[mindist + dbc].pb(dc[i]);
+        }
+    }
+    M[-mindist].pb(0);
+    M[mindist].pb(0);
+    M[mindist + dbc].pb(0);
+    cout << "info : " << mindist << " " << dbc << endl;
+
+    long long ret = 1;
+    foreach(it, M) {
+        sort(it->second.begin(), it->second.end());
+        ret = (ret * pump(it->second)) % mod;
+    }
+    return ret;
+}
+
 int go1(const VI &da, const VI &db, const VI &dc) {
     int ret = 0;
 
