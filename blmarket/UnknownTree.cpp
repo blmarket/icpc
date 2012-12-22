@@ -121,6 +121,7 @@ int check2(const VI &da, const VI &db, const VI &dc) {
     M[-mindist].pb(0);
     M[mindist].pb(0);
     M[mindist + dbc].pb(0);
+    cout << "info : " << mindist << " " << dbc << endl;
 
     long long ret = 1;
     foreach(it, M) {
