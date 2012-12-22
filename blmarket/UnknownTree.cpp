@@ -101,8 +101,8 @@ public:
     int getCount(vector <int> dA, vector <int> dB, vector <int> dC) 
     {		
         int ret = go1(dA, dB, dC);
-        //ret = (ret + go1(dB, dC, dA)) % mod;
-        //ret = (ret + go1(dC, dA, dB)) % mod;
+        ret = (ret + go1(dB, dC, dA)) % mod;
+        ret = (ret + go1(dC, dA, dB)) % mod;
         //ret = (ret + go2(dA, dB, dC)) % mod;
         return ret;
     }
