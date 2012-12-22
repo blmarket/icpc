@@ -60,6 +60,7 @@ int check1(const VI &da, const VI &db, const VI &dc) {
         return 0;
     }
 
+    cout << "here" << endl;
     sort(la.begin(), la.end()); sort(lb.begin(), lb.end()); sort(lc.begin(), lc.end());
 }
 
