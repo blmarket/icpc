@@ -28,27 +28,39 @@ int go2(VI da, VI db, VI dc) {
 
 int check1(const VI &da, const VI &db, const VI &dc) {
     VI la, lb, lc;
+    int dab = -1, dbc = -1;
     for(int i=0;i<size(da);i++) {
         if(da[i] < db[i] && da[i] < dc[i]) {
             la.pb(da[i]);
+            int tab = db[i] - da[i], tbc = dc[i] - db[i];            
+            if(tbc < 0) return 0;
+            if(dab == -1) dab = tab;
+            if(dbc == -1) dbc = tbc;
+            if(dab != tab || dbc != tbc) return 0;
             continue;
         }
         if(db[i] < da[i] && db[i] < dc[i]) {
             lb.pb(db[i]);
+            int tab = da[i] - db[i];
+            int tbc = dc[i] - db[i];
+            if(dab == -1) dab = tab;
+            if(dbc == -1) dbc = tbc;
+            if(dab != tab || dbc != tbc) return 0;
             continue;
         }
         if(dc[i] < da[i] && dc[i] < db[i]) {
             lc.pb(dc[i]);
+            int tab = da[i] - db[i];
+            int tbc = db[i] - dc[i];
+            if(dab == -1) dab = tab;
+            if(dbc == -1) dbc = tbc;
+            if(dab != tab || dbc != tbc) return 0;
             continue;
         }
         return 0;
     }
 
     sort(la.begin(), la.end()); sort(lb.begin(), lb.end()); sort(lc.begin(), lc.end());
-
-    cout << "A : "; for(int i=0;i<size(la);i++) cout << la[i] << " "; cout << endl;
-    cout << "A : "; for(int i=0;i<size(lb);i++) cout << lb[i] << " "; cout << endl;
-    cout << "A : "; for(int i=0;i<size(lc);i++) cout << lc[i] << " "; cout << endl;
 }
 
 int go1(const VI &da, const VI &db, const VI &dc) {
