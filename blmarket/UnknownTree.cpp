@@ -102,6 +102,7 @@ int check2(const VI &da, const VI &db, const VI &dc) {
         if(key >= -mindist && key < mindist) { // mid
             cout << "case a" << endl;
             int tbc = dc[i] - db[i];
+            cout << "tb = " << tbc << endl;
             if(dbc == -1) dbc = tbc;
             if(dbc != tbc) return 0;
             int sum = da[i] + db[i] - mindist;
