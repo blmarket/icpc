@@ -100,6 +100,9 @@ int check2(const VI &da, const VI &db, const VI &dc) {
         if(key < -mindist || key > mindist) return 0;
 
         if(key >= -mindist && key < mindist) { // mid
+            int tbc = dc[i] - db[i];
+            if(dbc == -1) dbc = tbc;
+            if(dbc != tbc) return 0;
             int sum = da[i] + db[i] - mindist;
             if(sum & 1) return 0;
             sum /= 2;
@@ -110,6 +113,9 @@ int check2(const VI &da, const VI &db, const VI &dc) {
         assert(key == mindist); // bind to B or C
         if(db[i] == dc[i]) return 0;
         if(db[i] < dc[i]) {
+            int tbc = dc[i] - db[i];
+            if(dbc == -1) dbc = tbc;
+            if(dbc != tbc) return 0;
             M[mindist].pb(db[i]);
         } else { assert(db[i] > dc[i]);
             int tbc = db[i] - dc[i];
