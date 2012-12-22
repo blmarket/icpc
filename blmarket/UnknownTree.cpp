@@ -46,9 +46,9 @@ int check1(const VI &da, const VI &db, const VI &dc) {
 
     sort(la.begin(), la.end()); sort(lb.begin(), lb.end()); sort(lc.begin(), lc.end());
 
-    for(int i=0;i<size(la);i++) cout << la[i] << " ";
-    for(int i=0;i<size(lb);i++) cout << lb[i] << " ";
-    for(int i=0;i<size(lc);i++) cout << lc[i] << " ";
+    cout << "A : "; for(int i=0;i<size(la);i++) cout << la[i] << " "; cout << endl;
+    cout << "A : "; for(int i=0;i<size(lb);i++) cout << lb[i] << " "; cout << endl;
+    cout << "A : "; for(int i=0;i<size(lc);i++) cout << lc[i] << " "; cout << endl;
 }
 
 int go1(const VI &da, const VI &db, const VI &dc) {
