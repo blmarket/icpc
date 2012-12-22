@@ -146,9 +146,8 @@ int go1(const VI &da, const VI &db, const VI &dc) {
 
     // A - B - X - C
     // A - X - B - C
-    ret = (ret + check2(da, db, dc)) % mod;
-    ret = (ret + check2(dc, db, da)) % mod;
-    cout << ret << endl;
+    //ret = (ret + check2(da, db, dc)) % mod;
+    //ret = (ret + check2(dc, db, da)) % mod;
     // A - X - B - X - C
     return ret;
 }
