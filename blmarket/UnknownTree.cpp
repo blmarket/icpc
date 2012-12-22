@@ -95,12 +95,12 @@ int check2(const VI &da, const VI &db, const VI &dc) {
     map<int, VI> M;
     vector<int> lc;
     int dbc = -1;
-    cout << " eh?" << endl;
     for(int i=0;i<size(da);i++) {
         int key = da[i] - db[i];
         if(key < -mindist || key > mindist) return 0;
 
         if(key >= -mindist && key < mindist) { // mid
+            cout << "case a" << endl;
             int tbc = dc[i] - db[i];
             if(dbc == -1) dbc = tbc;
             if(dbc != tbc) return 0;
