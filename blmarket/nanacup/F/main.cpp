@@ -72,12 +72,12 @@ int main(void)
         order[i] = i;
     }
 
-    for(int i=0;i<n-2;i++) {
 redo:
+    for(int i=0;i<n-2;i++) {
         for(int j=i+2;j<n;j++) {
             if(i == 0 && j == n-1) break;
             if(check(order[i], order[i+1], order[j], order[j+1])) {
-                // cerr << i << " " << i+1 << " " << j << " " << j+1 << endl;
+                cerr << i << " " << i+1 << " " << j << " " << j+1 << endl;
                 reverse(order + i + 1, order + j + 1);
                 goto redo;
             }
