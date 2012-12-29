@@ -26,7 +26,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 int x[1000], y[1000];
-int nex[1000];
+int order[1000];
 
 bool have_intersection(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
     if (x1 == x2 && y1 == y2) return false; // indeed, not possible.
@@ -68,27 +68,23 @@ int main(void)
     for(int i=0;i<n;i++) {
         scanf("%d %d", &x[i], &y[i]);
     }
-    for(int i=0;i<n-1;i++) {
-        nex[i] = i+1;
+    for(int i=0;i<n;i++) {
+        order[i] = i;
     }
-    nex[n-1] = 0;
 
 redo:
-    int cur = 0;
     for(int i=0;i<n-2;i++) {
-        int n1 = nex[cur];
-        int n2 = nex[n1];
         for(int j=i+2;j<n;j++) {
             if(i == 0 && j == n-1) break;
-            int n3 = nex[n2];
-
-            if(check(cur, n1, n2, n3)) {
+            if(check(order[i], order[i+1], order[j], order[j+1])) {
+                reverse(order + i + 1, order + j + 1);
+                goto redo;
             }
-
-            n2 = n3;
         }
-
-        cur = n1;
     }
+
+    for(int i=0;i<n;i++)
+        cout << order[i] << " ";
+    cout << endl;
     return 0;
 }
