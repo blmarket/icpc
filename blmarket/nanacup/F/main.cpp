@@ -71,6 +71,7 @@ int main(void)
     for(int i=0;i<n;i++) {
         order[i] = i;
     }
+    random_shuffle(order, order+n);
 
 redo:
     for(int i=0;i<n-2;i++) {
