@@ -84,7 +84,7 @@ redo:
     }
 
     for(int i=0;i<n;i++)
-        cout << order[i] << " ";
+        cout << order[i] << endl;
     cout << endl;
     return 0;
 }
