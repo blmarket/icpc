@@ -57,6 +57,10 @@ bool have_intersection(int x1, int y1, int x2, int y2, int x3, int y3, int x4, i
     return false;
 }
 
+bool check(int a, int b, int c,int d) {
+    return have_intersection(x[a], y[a], x[b], y[b], x[c], y[c], x[d], y[d]);
+}
+
 
 int main(void)
 {
@@ -69,7 +73,22 @@ int main(void)
     }
     nex[n-1] = 0;
 
+redo:
+    int cur = 0;
     for(int i=0;i<n-2;i++) {
+        int n1 = nex[cur];
+        int n2 = nex[n1];
+        for(int j=i+2;j<n;j++) {
+            if(i == 0 && j == n-1) break;
+            int n3 = nex[n2];
+
+            if(check(cur, n1, n2, n3)) {
+            }
+
+            n2 = n3;
+        }
+
+        cur = n1;
     }
     return 0;
 }
