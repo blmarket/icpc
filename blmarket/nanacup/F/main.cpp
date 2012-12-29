@@ -26,4 +26,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int main(void)
 {
+    auto a = 5;
+    cout << a << endl;
+    return 0;
 }
