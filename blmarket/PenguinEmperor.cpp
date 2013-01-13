@@ -66,6 +66,7 @@ public:
         build(t1, 1);
         matrix *cur = &t1, *next = &t2, *buff = &t3;
         for(int i=2;i<=tmp;i++) {
+            cout << i << endl;
             build(*next, i);
             matmul(*cur, *next, *buff);
             swap(buff, cur);
