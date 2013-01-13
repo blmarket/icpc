@@ -44,7 +44,7 @@ public:
         arr[0] = 1;
 
         int *t1 = arr, *t2 = arr2;
-        for(int i=1;i<daysPassed;i++) {
+        for(int i=1;i<=daysPassed;i++) {
             for(int j=0;j<N;j++) {
                 cout << t1[j] << " ";
             }
