@@ -37,10 +37,10 @@ void matmulx(matrix &src, int move, matrix &dst) {
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) {
             dst.a[i][(j + move) % N] += src.a[i][j];
-            if(dst.a[i][(j + move) % N] > mod) dst.a[i][(j + move) % N] -= mod;
+            if(dst.a[i][(j + move) % N] >= mod) dst.a[i][(j + move) % N] -= mod;
             if(move * 2 == N) continue;
             dst.a[i][(j + N - move) % N] += src.a[i][j];
-            dst.a[i][(j + N - move) % N] %= mod;
+            if(dst.a[i][(j + N - move) % N] >= mod) dst.a[i][(j + N - move) % N] -= mod;
         }
     }
 }
