@@ -32,15 +32,13 @@ struct matrix {
     void clear() { memset(a, 0, sizeof(a)); }
 };
 
-void matmul(matrix &a, matrix &b, matrix &c) {
+void matmulx(matrix &src, int move, matrix &dst) {
+    dst.clear();
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) {
-            long long tmp = 0;
-            for(int k=0;k<N;k++) {
-                tmp += a.a[i][k] * b.a[k][j];
-                if(tmp > mod2) tmp -= mod2;
-            }
-            c.a[i][j] = tmp % mod;
+            dst.a[i][(j + move) % N] += src.a[i][j];
+            if(move * 2 == N) continue;
+            dst.a[i][(j + N - move) % N] += src.a[i][j];
         }
     }
 }
@@ -67,9 +65,8 @@ public:
         matrix *cur = &t1, *next = &t2, *buff = &t3;
         for(int i=2;i<=tmp;i++) {
             cout << i << endl;
-            build(*next, i);
-            matmul(*cur, *next, *buff);
-            swap(buff, cur);
+            matmulx(*cur, i, *next);
+            swap(next, cur);
         }
         return cur->a[0][0];
     }
