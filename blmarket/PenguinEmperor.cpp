@@ -64,10 +64,6 @@ public:
             walk(t1, (i % N), t2);
             swap(t1, t2);
         }
-        for(int i=0;i<N;i++) {
-            cout << t1[i] << " ";        
-        }
-        cout << endl;
 
         long long tmp = daysPassed / N;
         bool first = true;
