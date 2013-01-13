@@ -26,7 +26,8 @@ int arr[355], arr2[355];
 
 void walk(int *src, int move, int *dst) {
     memset(dst, 0, sizeof(arr));
-    for(int i=0;i<N;i++) {
+    for(int i=0;i<N;i++) if(src[i]) {
+        cout << i << " = " << src[i] << endl;
         dst[(i + move) % N] += src[i];
         if(move == 0 || move * 2 == N) continue;
         dst[(i + N - move) % N] += src[i];
