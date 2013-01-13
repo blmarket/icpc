@@ -79,6 +79,11 @@ public:
             swap(t1, t3);
         }
 
+        if(first) {
+            memset(t2, 0, sizeof(arr));
+            t2[0] = 1;
+        }
+
         daysPassed %= N;
         for(int i=1;i<=daysPassed;i++) {
             walk(t2, i, t3);
