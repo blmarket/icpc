@@ -62,10 +62,16 @@ public:
         }
 
         long long tmp = daysPassed / N;
+        bool first = true;
         while(tmp) {
             if(tmp & 1) {
-                mul(t2, t1, t3);
-                swap(t2, t3);
+                if(first) {
+                    memcpy(t2, t1, sizeof(arr));
+                    first = false;
+                } else {
+                    mul(t2, t1, t3);
+                    swap(t2, t3);
+                }
             }
             tmp >>= 1;
             if(tmp == 0) break;
