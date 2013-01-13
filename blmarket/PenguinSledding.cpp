@@ -37,7 +37,7 @@ public:
         for(int i=1;i<=50;i++) {
             cout << list[i].size() << " ";
             if(list[i].size() == 0) continue;
-            ret += (1LL << list[i].size()) - list[i].size();
+            ret += (1LL << list[i].size()) - list[i].size() - 1;
         }
         cout << endl;
         return ret;
