@@ -22,7 +22,8 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
-int arr[355], arr2[355];
+int arr[355], arr2[355], arr3[355];
+const int mod = 1000000007;
 
 void walk(int *src, int move, int *dst) {
     memset(dst, 0, sizeof(arr));
@@ -30,6 +31,18 @@ void walk(int *src, int move, int *dst) {
         dst[(i + move) % N] += src[i];
         if(move == 0 || move * 2 == N) continue;
         dst[(i + N - move) % N] += src[i];
+    }
+}
+
+void mul(int *src, int *src2, int *dst) {
+    memset(dst, 0, sizeof(arr));
+    for(int i=0;i<N;i++) if(src[i]) {
+        for(int j=0;j<N;j++) if(src2[i]) {
+            long long tmp = (long long)src[i] * src2[i];
+            tmp += dst[(i+j)%N];
+            tmp %= mod;
+            dst[(i+j) % N] = tmp;
+        }
     }
 }
 
@@ -42,12 +55,25 @@ public:
         memset(arr, 0, sizeof(arr));
         arr[0] = 1;
 
-        int *t1 = arr, *t2 = arr2;
-        for(int i=1;i<=daysPassed;i++) {
+        int *t1 = arr, *t2 = arr2, *t3 = arr3;
+        for(int i=1;i<N;i++) {
             walk(t1, (i % N), t2);
             swap(t1, t2);
         }
 
+        long long tmp = daysPassed / N;
+        while(tmp) {
+            if(tmp & 1) {
+                mul(t2, t1, t3);
+                swap(t2, t3);
+            }
+            tmp >>= 1;
+            if(tmp == 0) break;
+            mul(t1, t1, t3);
+            swap(t1, t3);
+        }
+
+        daysPassed %= N;
         return t1[0];
     }
 
