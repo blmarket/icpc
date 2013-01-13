@@ -80,7 +80,11 @@ public:
         }
 
         daysPassed %= N;
-        return t1[0];
+        for(int i=1;i<=daysPassed;i++) {
+            walk(t2, i, t3);
+            swap(t2, t3);
+        }
+        return t2[0];
     }
 
     
