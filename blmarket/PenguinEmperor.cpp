@@ -41,8 +41,8 @@ void walk(int *src, int move, int *dst) {
 void mul(int *src, int *src2, int *dst) {
     memset(dst, 0, sizeof(arr));
     for(int i=0;i<N;i++) if(src[i]) {
-        for(int j=0;j<N;j++) if(src2[i]) {
-            long long tmp = (long long)src[i] * src2[i];
+        for(int j=0;j<N;j++) if(src2[j]) {
+            long long tmp = (long long)src[i] * src2[j];
             tmp += dst[(i+j)%N];
             tmp %= mod;
             dst[(i+j) % N] = tmp;
