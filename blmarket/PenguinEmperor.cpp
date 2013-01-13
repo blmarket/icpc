@@ -44,6 +44,10 @@ public:
 
         int *t1 = arr, *t2 = arr2;
         for(int i=1;i<daysPassed;i++) {
+            for(int j=0;j<N;j++) {
+                cout << t1[j] << " ";
+            }
+            cout << endl;
             walk(t1, i, t2);
             swap(t1, t2);
         }
