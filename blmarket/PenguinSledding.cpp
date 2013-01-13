@@ -32,6 +32,7 @@ public:
         for(int i=0;i<size(cp1);i++) {
             list[cp1[i]].pb(cp2[i]);
             list[cp2[i]].pb(cp1[i]);
+            ret++;
         }
 
         for(int i=1;i<=50;i++) {
