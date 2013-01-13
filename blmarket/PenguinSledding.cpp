@@ -28,7 +28,7 @@ public:
     long long countDesigns(int numCheckpoints, vector <int> cp1, vector <int> cp2) 
     {		
         for(int i=0;i<55;i++) list[i].clear();
-        long long ret = 0;
+        long long ret = 1;
         for(int i=0;i<size(cp1);i++) {
             list[cp1[i]].pb(cp2[i]);
             list[cp2[i]].pb(cp1[i]);
