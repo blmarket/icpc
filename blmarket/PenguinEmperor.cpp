@@ -27,7 +27,6 @@ int arr[355], arr2[355];
 void walk(int *src, int move, int *dst) {
     memset(dst, 0, sizeof(arr));
     for(int i=0;i<N;i++) if(src[i]) {
-        cout << i << " = " << src[i] << endl;
         dst[(i + move) % N] += src[i];
         if(move == 0 || move * 2 == N) continue;
         dst[(i + N - move) % N] += src[i];
@@ -45,10 +44,6 @@ public:
 
         int *t1 = arr, *t2 = arr2;
         for(int i=1;i<=daysPassed;i++) {
-            for(int j=0;j<N;j++) {
-                cout << t1[j] << " ";
-            }
-            cout << endl;
             walk(t1, i, t2);
             swap(t1, t2);
         }
@@ -79,6 +74,6 @@ public:
 int main()
 {
     PenguinEmperor ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
