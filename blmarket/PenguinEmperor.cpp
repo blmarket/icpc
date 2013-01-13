@@ -38,7 +38,7 @@ void matmulx(matrix &src, int move, matrix &dst) {
         for(int j=0;j<N;j++) {
             dst.a[i][(j + move) % N] += src.a[i][j];
             if(dst.a[i][(j + move) % N] >= mod) dst.a[i][(j + move) % N] -= mod;
-            if(move * 2 == N) continue;
+            if(move == 0 || move * 2 == N) continue;
             dst.a[i][(j + N - move) % N] += src.a[i][j];
             if(dst.a[i][(j + N - move) % N] >= mod) dst.a[i][(j + N - move) % N] -= mod;
         }
@@ -62,6 +62,15 @@ public:
     {		
         N = numCities;
         long long tmp = daysPassed % numCities;
+
+        { 
+            build(t1, 1);
+            matrix *cur = &t1, *next = &t2, *buff = &t3;
+            for(int i=2;i<=N;i++) {
+                matmulx(*cur, i, *next);
+                swap(next, cur);
+            }
+        }
 
         build(t1, 1);
         matrix *cur = &t1, *next = &t2, *buff = &t3;
