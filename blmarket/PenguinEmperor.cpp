@@ -70,13 +70,6 @@ public:
                 matmulx(*cur, i, *next);
                 swap(next, cur);
             }
-            for(int i=0;i<N;i++) {
-                for(int j=0;j<N;j++) {
-                    if(cur->a[i][j]) {
-                        cout << i << "," << j << " = " << cur->a[i][j] << endl;
-                    }
-                }
-            }
         }
 
         build(t1, 1);
