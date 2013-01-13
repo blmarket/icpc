@@ -44,7 +44,7 @@ public:
 
         int *t1 = arr, *t2 = arr2;
         for(int i=1;i<=daysPassed;i++) {
-            walk(t1, i, t2);
+            walk(t1, (i % N), t2);
             swap(t1, t2);
         }
 
@@ -74,6 +74,6 @@ public:
 int main()
 {
     PenguinEmperor ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
