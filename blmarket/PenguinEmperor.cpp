@@ -22,100 +22,33 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
-const int mod = 1000000007LL;
-const long long mod2 = (long long)mod * mod;
+int arr[355], arr2[355];
 
-struct matrix {
-    int a[351][351];
-
-    matrix() { clear(); }
-    void clear() { memset(a, 0, sizeof(a)); }
-};
-
-void matmulx(matrix &src, int move, matrix &dst) {
-    dst.clear();
+void walk(int *src, int move, int *dst) {
+    memset(dst, 0, sizeof(arr));
     for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) {
-            dst.a[i][(j + move) % N] += src.a[i][j];
-            if(dst.a[i][(j + move) % N] >= mod) dst.a[i][(j + move) % N] -= mod;
-            if(move == 0 || move * 2 == N) continue;
-            dst.a[i][(j + N - move) % N] += src.a[i][j];
-            if(dst.a[i][(j + N - move) % N] >= mod) dst.a[i][(j + N - move) % N] -= mod;
-        }
+        dst[(i + move) % N] += src[i];
+        if(move == 0 || move * 2 == N) continue;
+        dst[(i + N - move) % N] += src[i];
     }
 }
-
-void matmul(matrix &src, matrix &src2, matrix &dst) {
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) {
-            long long sum = 0;
-            for(int k=0;k<N;k++) {
-                sum += (long long)src.a[i][k] * src2.a[k][j];
-                if(sum >= mod2) sum -= mod2;
-            }
-            dst.a[i][j] = sum % mod;
-        }
-    }
-}
-
-void build(matrix &mat, int a) {
-    mat.clear();
-    for(int i=0;i<N;i++) {
-        mat.a[i][(i+a) % N] = 1;
-        mat.a[i][(i-a+N) % N] = 1;
-    }
-}
-
-matrix t1,t2,t3;
 
 class PenguinEmperor 
 {
 public:
     int countJourneys(int numCities, long long daysPassed) 
-    {		
+    {
         N = numCities;
-        if(daysPassed > N) {
-            build(t1, 1);
-            matrix *cur = &t1, *next = &t2, *buff = &t3;
-            for(int i=2;i<N;i++) {
-                matmulx(*cur, i, *next);
-                swap(next, cur);
-            }
+        memset(arr, 0, sizeof(arr));
+        arr[0] = 1;
 
-            long long tt = daysPassed / N;
-            bool first = true;
-            while(tt) {
-                cout << tt << endl;
-                if(tt & 1) {
-                    if(first) {
-                        memcpy(next->a, cur->a, sizeof(cur->a));
-                        first = false;
-                    } else {
-                        matmul(*next, *cur, *buff);
-                        swap(next, buff);
-                    }
-                }
-                tt >>= 1;
-                if(tt == 0) break;
-                matmul(*cur, *cur, *buff);
-                swap(cur, buff);
-            }
-
-            daysPassed %= N;
-            for(int i=1;i<=daysPassed;i++) {
-                matmulx(*next, i, *buff);
-                swap(next, buff);
-            }
-            return next->a[0][0];
+        int *t1 = arr, *t2 = arr2;
+        for(int i=1;i<daysPassed;i++) {
+            walk(t1, i, t2);
+            swap(t1, t2);
         }
 
-        build(t1, 1);
-        matrix *cur = &t1, *next = &t2, *buff = &t3;
-        for(int i=2;i<=daysPassed;i++) {
-            matmulx(*cur, i, *next);
-            swap(next, cur);
-        }
-        return cur->a[0][0];
+        return t1[0];
     }
 
     
@@ -141,6 +74,6 @@ public:
 int main()
 {
     PenguinEmperor ___test; 
-    ___test.run_test(5); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
