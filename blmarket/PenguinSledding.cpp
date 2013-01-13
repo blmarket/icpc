@@ -21,12 +21,22 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> list[55];
+vector<int> cp1, cp2;
+
+int find(int s,int a, int b) {
+    for(int i=s;i<size(cp1);i++) {
+        if(cp1[i] == a && cp2[i] == b) return 1;
+        if(cp2[i] == a && cp1[i] == b) return 1;
+    }
+    return 0;
+}
 
 class PenguinSledding 
 {
 public:
-    long long countDesigns(int numCheckpoints, vector <int> cp1, vector <int> cp2) 
+    long long countDesigns(int numCheckpoints, vector <int> cp1_, vector <int> cp2_) 
     {		
+        cp1 = cp1_; cp2 = cp2_;
         for(int i=0;i<55;i++) list[i].clear();
         long long ret = 1;
         for(int i=0;i<size(cp1);i++) {
@@ -41,6 +51,15 @@ public:
             ret += (1LL << list[i].size()) - list[i].size() - 1;
         }
         cout << endl;
+
+        for(int i=0;i<size(cp1);i++) {
+            for(int j=i+1;j<size(cp1);j++) {
+                if(cp1[i] == cp1[j]) ret += find(j+1, cp2[i], cp2[j]);
+                if(cp1[i] == cp2[j]) ret += find(j+1, cp2[i], cp1[j]);
+                if(cp2[i] == cp1[j]) ret += find(j+1, cp1[i], cp2[j]);
+                if(cp2[i] == cp2[j]) ret += find(j+1, cp1[i], cp1[j]);
+            }
+        }
         return ret;
     }
 
