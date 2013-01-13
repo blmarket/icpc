@@ -25,12 +25,16 @@ int N;
 int arr[355], arr2[355], arr3[355];
 const int mod = 1000000007;
 
+void addmod(int &a, int b) {
+    a = (a+b) % mod;
+}
+
 void walk(int *src, int move, int *dst) {
     memset(dst, 0, sizeof(arr));
     for(int i=0;i<N;i++) if(src[i]) {
-        dst[(i + move) % N] += src[i];
+        addmod(dst[(i + move) % N], src[i]);
         if(move == 0 || move * 2 == N) continue;
-        dst[(i + N - move) % N] += src[i];
+        addmod(dst[(i + N - move) % N], src[i]);
     }
 }
 
