@@ -85,6 +85,7 @@ public:
             long long tt = daysPassed / N;
             bool first = true;
             while(tt) {
+                cout << tt << endl;
                 if(tt & 1) {
                     if(first) {
                         memcpy(next->a, cur->a, sizeof(cur->a));
