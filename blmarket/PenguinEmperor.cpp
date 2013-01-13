@@ -50,7 +50,7 @@ void matmul(matrix &src, matrix &src2, matrix &dst) {
         for(int j=0;j<N;j++) {
             long long sum = 0;
             for(int k=0;k<N;k++) {
-                sum += src.a[i][k] * src2.a[k][j];
+                sum += (long long)src.a[i][k] * src2.a[k][j];
                 if(sum >= mod2) sum -= mod2;
             }
             dst.a[i][j] = sum % mod;
