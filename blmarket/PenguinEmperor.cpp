@@ -45,6 +45,19 @@ void matmulx(matrix &src, int move, matrix &dst) {
     }
 }
 
+void matmul(matrix &src, matrix &src2, matrix &dst) {
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            long long sum = 0;
+            for(int k=0;k<N;k++) {
+                sum += src.a[i][k] * src2.a[k][j];
+                if(sum >= mod2) sum -= mod2;
+            }
+            dst.a[i][j] = sum % mod;
+        }
+    }
+}
+
 void build(matrix &mat, int a) {
     mat.clear();
     for(int i=0;i<N;i++) {
@@ -61,20 +74,43 @@ public:
     int countJourneys(int numCities, long long daysPassed) 
     {		
         N = numCities;
-        long long tmp = daysPassed % numCities;
-
-        { 
+        if(daysPassed > N) {
             build(t1, 1);
             matrix *cur = &t1, *next = &t2, *buff = &t3;
-            for(int i=2;i<=N;i++) {
+            for(int i=2;i<N;i++) {
                 matmulx(*cur, i, *next);
                 swap(next, cur);
             }
+
+            long long tt = daysPassed / N;
+            bool first = true;
+            while(tt) {
+                if(tt & 1) {
+                    if(first) {
+                        memcpy(next->a, cur->a, sizeof(cur->a));
+                        first = false;
+                    } else {
+                        matmul(*next, *cur, *buff);
+                        swap(next, buff);
+                    }
+                }
+                tt >>= 1;
+                if(tt == 0) break;
+                matmul(*cur, *cur, *buff);
+                swap(cur, buff);
+            }
+
+            daysPassed %= N;
+            for(int i=1;i<=daysPassed;i++) {
+                matmulx(*next, i, *buff);
+                swap(next, buff);
+            }
+            return next->a[0][0];
         }
 
         build(t1, 1);
         matrix *cur = &t1, *next = &t2, *buff = &t3;
-        for(int i=2;i<=tmp;i++) {
+        for(int i=2;i<=daysPassed;i++) {
             matmulx(*cur, i, *next);
             swap(next, cur);
         }
