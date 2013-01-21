@@ -46,7 +46,7 @@ public:
             for(int j=0;j<size(sqrs);j++) {
                 int tmp2 = tmp * sqrs[j];
                 if(tmp2 > M) break;
-                cnt[i] += cnt[tmp2];
+                if(j) cnt[i] += cnt[tmp2];
                 cnt[i]++;
             }
             ret += cnt[i];
