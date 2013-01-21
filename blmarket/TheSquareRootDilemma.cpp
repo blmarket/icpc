@@ -27,7 +27,7 @@ public:
     {
         int ret = 0;
         vector<int> sqrs;
-        for(int i=1;i*i<=77777;i++) {
+        for(int i=1;i*i<=99999;i++) {
             sqrs.pb(i*i);
         }
         cout << size(sqrs) << endl;
