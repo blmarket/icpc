@@ -42,12 +42,11 @@ bool go(int a, LL life, int cards) {
         if(good) {
             cout << a << " " << i << endl;
             LL newlife = 0;
-            for(int j=0;j<N;j++) {
+            for(int j=0;j<N;j++) if(life & (1LL << j)) {
                 if(cnts[j][i] == cnts[a][i]) {
                     newlife |= (1LL << j);
                 }
             }
-            cout << newlife << endl;
             return go(a, newlife, cards ^ (1<<i));
         }
     }
