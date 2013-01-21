@@ -39,7 +39,7 @@ public:
             int tmp = i;
             for(int j=0;j<size(sqrs);j++) {
                 if(tmp < sqrs[j]) break;
-                if((tmp % sqrs[j]) == 0) {
+                while((tmp % sqrs[j]) == 0) {
                     tmp /= sqrs[j];
                 }
             }
