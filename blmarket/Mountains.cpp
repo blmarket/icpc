@@ -36,8 +36,6 @@ int go(int a, const vector<int> &state) {
     if(a == -1) return 1;
     int ret = 0;
     for(int i=0;i<W;i++) {
-        if((masks[a] & (1LL << i)) == 0) continue;
-
         LL mask = 0;
         for(int j=0;j<W;j++) {
             int diff = abs(i-j);
