@@ -44,6 +44,7 @@ public:
                 if(tmp2 > M) break;
                 ret++;
             }
+            cout << ret << endl;
         }
         return ret;
     }
