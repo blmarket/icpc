@@ -29,6 +29,10 @@ vector<int> heights;
 vector<long long> masks;
 
 int go(int a, const vector<int> &state) {
+    cout << a << " : ";
+    for(int i=0;i<size(state);i++) cout << state[i] << " ";
+    cout << endl;
+
     if(a == -1) return 1;
     int ret = 0;
     for(int i=0;i<W;i++) {
@@ -41,8 +45,6 @@ int go(int a, const vector<int> &state) {
             if(hh > state[j]) mask |= (1LL << j);
         }
         
-        cout << bitset<6>(mask) << endl;
-
         if(mask != masks[a]) continue;
         vector<int> tmp = state;
         for(int j=0;j<W;j++) {
