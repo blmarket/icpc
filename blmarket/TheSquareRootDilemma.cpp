@@ -43,7 +43,7 @@ public:
                     tmp /= sqrs[j];
                 }
             }
-            cout << i << " " << tmp << endl;
+            cout << i << " = " << tmp << endl;
 
             for(int j=0;j<size(sqrs);j++) {
                 int tmp2 = tmp * sqrs[j];
