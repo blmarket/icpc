@@ -48,9 +48,8 @@ public:
                 int tmp2 = tmp * sqrs[j];
                 if(tmp2 > M) break;
                 cout << i << " " << tmp2 << endl;
-                cnt[i]++;
+                ret++;
             }
-            ret += cnt[i];
         }
         return ret;
     }
