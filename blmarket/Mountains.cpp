@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bitset>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -40,7 +41,7 @@ int go(int a, const vector<int> &state) {
             if(hh > state[j]) mask |= (1LL << j);
         }
         
-        cout << mask << endl;
+        cout << bitset<50>(mask) << endl;
 
         if(mask != masks[a]) continue;
         vector<int> tmp = state;
