@@ -41,7 +41,7 @@ int go(int a, const vector<int> &state) {
             if(hh > state[j]) mask |= (1LL << j);
         }
         
-        cout << bitset<20>(mask) << endl;
+        cout << bitset<6>(mask) << endl;
 
         if(mask != masks[a]) continue;
         vector<int> tmp = state;
