@@ -31,6 +31,7 @@ bool go(int a, LL life, int cards) {
     if(cards == 0) return false;
 
     for(int i=0;i<26;i++) if(cards & (1<<i)) {
+        if(cnts[a][i] == 0) continue;
         bool good = true;
         for(int j=0;j<N;j++) if(life & (1LL << j)) {
             if(cnts[j][i] > cnts[a][i]) {
