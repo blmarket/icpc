@@ -28,6 +28,7 @@ vector<int> heights;
 vector<long long> masks;
 
 int go(int a, const vector<int> &state) {
+    if(a == -1) return 1;
     int ret = 0;
     for(int i=0;i<W;i++) {
         if((masks[a] & (1LL << i)) == 0) continue;
