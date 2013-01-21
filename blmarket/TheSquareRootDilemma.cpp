@@ -35,7 +35,7 @@ public:
             sqrs.pb(i*i);
         }
 
-        for(int i=N;i>=1;i--) {
+        for(int i=1;i<=100;i++) {
             int tmp = i;
             for(int j=0;j<size(sqrs);j++) {
                 if(tmp < sqrs[j]) break;
