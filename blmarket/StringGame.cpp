@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -17,16 +18,29 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<string> S;
-vector<map<char, int> > cnts;
+int cnts[55][30];
+
+bool go(int a, LL life, int cards) {
+    if(life == 0) return true;
+    if(cards == 0) return false;
+
+    for(int i=0;i<26;i++) {
+    }
+    return false;
+}
 
 bool check(int a) {
     int cards = (1<<26)-1;
-    cout << cards << endl;
-    return false;
+    long long life = (1LL << size(S)) - 1;
+
+    life ^= (1LL << a);
+
+    return go(a, life, cards);
 }
 
 class StringGame 
@@ -35,10 +49,10 @@ public:
     vector <int> getWinningStrings(vector <string> S_) 
     {
         S = S_;
-        cnts.clear(); cnts.resize(size(S));
+        memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<size(S);i++) {
             for(int j=0;j<size(S[i]);j++) {
-                cnts[i][S[i][j]]++;
+                cnts[i][S[i][j] - 'a']++;
             }
         }
         vector<int> ret;
