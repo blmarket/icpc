@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -20,18 +21,20 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int cnt[90000];
+
 class TheSquareRootDilemma 
 {
 public:
     int countPairs(int N, int M) 
     {
+        memset(cnt, 0, sizeof(cnt));
         int ret = 0;
         vector<int> sqrs;
-        for(int i=1;i*i<=99999;i++) {
+        for(int i=1;i*i<=77777;i++) {
             sqrs.pb(i*i);
         }
-        cout << size(sqrs) << endl;
-        for(int i=1;i<=N;i++) {
+        for(int i=N;i>=1;i--) {
             int tmp = i;
             for(int j=0;j<size(sqrs);j++) {
                 if(tmp < sqrs[j]) break;
@@ -39,12 +42,14 @@ public:
                     tmp /= sqrs[j];
                 }
             }
+
             for(int j=0;j<size(sqrs);j++) {
                 int tmp2 = tmp * sqrs[j];
                 if(tmp2 > M) break;
-                ret++;
+                cnt[i] += cnt[tmp2];
+                cnt[i]++;
             }
-            cout << ret << endl;
+            ret += cnt[i];
         }
         return ret;
     }
