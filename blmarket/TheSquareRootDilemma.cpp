@@ -43,6 +43,7 @@ public:
                     tmp /= sqrs[j];
                 }
             }
+            cout << i << " " << tmp << endl;
 
             for(int j=0;j<size(sqrs);j++) {
                 int tmp2 = tmp * sqrs[j];
@@ -52,7 +53,7 @@ public:
             }
         }
 
-        if(true) {
+        if(false) {
             int ret2 = 0;
             for(int i=1;i<=N;i++) {
                 for(int j=1;j<=M;j++) {
