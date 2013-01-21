@@ -40,7 +40,6 @@ bool go(int a, LL life, int cards) {
             }
         }
         if(good) {
-            cout << a << " " << i << endl;
             LL newlife = 0;
             for(int j=0;j<N;j++) if(life & (1LL << j)) {
                 if(cnts[j][i] == cnts[a][i]) {
@@ -101,6 +100,6 @@ public:
 int main()
 {
     StringGame ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
