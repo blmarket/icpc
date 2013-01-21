@@ -52,20 +52,22 @@ public:
             }
         }
 
-        int ret2 = 0;
-        for(int i=1;i<=N;i++) {
-            for(int j=1;j<=M;j++) {
-                int tmp = i*j;
-                for(int k=0;k<size(sqrs);k++) {
-                    if(tmp == sqrs[k]) {
-                        cout << i << " " << j << endl;
-                        ret2++;
-                        break;
+        if(false) {
+            int ret2 = 0;
+            for(int i=1;i<=N;i++) {
+                for(int j=1;j<=M;j++) {
+                    int tmp = i*j;
+                    for(int k=0;k<size(sqrs);k++) {
+                        if(tmp == sqrs[k]) {
+                            cout << i << " " << j << endl;
+                            ret2++;
+                            break;
+                        }
                     }
                 }
             }
+            cout << ret2 << endl;
         }
-        cout << ret2 << endl;
 
         return ret;
     }
