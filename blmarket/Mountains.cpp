@@ -63,6 +63,7 @@ public:
     int countPlacements(vector <int> heights_, vector <string> visi) 
     {
         heights = heights_;
+        N = size(heights);
         masks.clear();
         for(int i=0;i<size(visi);i++) {
             long long mask = 0;
