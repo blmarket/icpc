@@ -37,7 +37,7 @@ public:
 
         for(int i=1;i<=100;i++) {
             int tmp = i;
-            for(int j=0;j<size(sqrs);j++) {
+            for(int j=1;j<size(sqrs);j++) {
                 if(tmp < sqrs[j]) break;
                 while((tmp % sqrs[j]) == 0) {
                     tmp /= sqrs[j];
