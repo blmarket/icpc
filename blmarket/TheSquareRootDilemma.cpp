@@ -45,6 +45,7 @@ public:
             }
 
             for(int j=0;j<size(sqrs);j++) {
+                cout << i << " " << tmp*sqrs[j] << endl;
                 int tmp2 = tmp * sqrs[j];
                 if(tmp2 > M) break;
                 cnt[i]++;
