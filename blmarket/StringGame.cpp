@@ -47,6 +47,7 @@ bool go(int a, LL life, int cards) {
                     newlife |= (1LL << j);
                 }
             }
+            cout << newlife << endl;
             return go(a, newlife, cards ^ (1<<i));
         }
     }
