@@ -39,6 +39,7 @@ bool go(int a, LL life, int cards) {
             }
         }
         if(good) {
+            cout << a << " " << i << endl;
             LL newlife = 0;
             for(int j=0;j<N;j++) {
                 if(cnts[j][i] == cnts[a][i]) {
