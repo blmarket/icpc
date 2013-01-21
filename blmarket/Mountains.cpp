@@ -29,9 +29,11 @@ vector<int> heights;
 vector<long long> masks;
 
 int go(int a, const vector<int> &state) {
+    /*
     cout << a << " : ";
     for(int i=0;i<size(state);i++) cout << state[i] << " ";
     cout << endl;
+    */
 
     if(a == -1) return 1;
     int ret = 0;
@@ -123,6 +125,6 @@ public:
 int main()
 {
     Mountains ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
