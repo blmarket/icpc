@@ -25,14 +25,27 @@ class TheSquareRootDilemma
 public:
     int countPairs(int N, int M) 
     {
+        int ret = 0;
         vector<int> sqrs;
         for(int i=1;i*i<=77777;i++) {
             sqrs.pb(i*i);
         }
         cout << size(sqrs) << endl;
         for(int i=1;i<=N;i++) {
+            int tmp = i;
+            for(int j=0;j<size(sqrs);j++) {
+                if(tmp < sqrs[j]) break;
+                if((tmp % sqrs[j]) == 0) {
+                    tmp /= sqrs[j];
+                }
+            }
+            for(int j=0;j<size(sqrs);j++) {
+                int tmp2 = tmp * sqrs[j];
+                if(tmp2 > M) break;
+                ret++;
+            }
         }
-        return 0;
+        return ret;
     }
 
     
