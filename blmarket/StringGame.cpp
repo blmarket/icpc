@@ -21,17 +21,12 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<string> S;
+vector<map<char, int> > cnts;
 
 bool check(int a) {
-    map<char, int> M;
-    string &tmp = S[a];
-    for(int i=0;i<size(tmp);i++) {
-        M[tmp[i]]++;
-    }
-    foreach(it, M) {
-        cout << it->first << "=" << it->second << " ";
-    }
-    cout << endl;
+    int cards = (1<<26)-1;
+    cout << cards << endl;
+    return false;
 }
 
 class StringGame 
@@ -40,6 +35,12 @@ public:
     vector <int> getWinningStrings(vector <string> S_) 
     {
         S = S_;
+        cnts.clear(); cnts.resize(size(S));
+        for(int i=0;i<size(S);i++) {
+            for(int j=0;j<size(S[i]);j++) {
+                cnts[i][S[i][j]]++;
+            }
+        }
         vector<int> ret;
         for(int i=0;i<size(S);i++) {
             if(check(i)) ret.pb(i);
