@@ -22,6 +22,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int N;
 vector<string> S;
 int cnts[55][30];
 
@@ -29,7 +30,23 @@ bool go(int a, LL life, int cards) {
     if(life == 0) return true;
     if(cards == 0) return false;
 
-    for(int i=0;i<26;i++) {
+    for(int i=0;i<26;i++) if(cards & (1<<i)) {
+        bool good = true;
+        for(int j=0;j<N;j++) if(life & (1LL << j)) {
+            if(cnts[j][i] > cnts[a][i]) {
+                good = false;
+                break;
+            }
+        }
+        if(good) {
+            LL newlife = 0;
+            for(int j=0;j<N;j++) {
+                if(cnts[j][i] == cnts[a][i]) {
+                    newlife |= (1LL << j);
+                }
+            }
+            return go(a, newlife, cards ^ (1<<i));
+        }
     }
     return false;
 }
@@ -48,7 +65,7 @@ class StringGame
 public:
     vector <int> getWinningStrings(vector <string> S_) 
     {
-        S = S_;
+        S = S_; N = size(S);
         memset(cnts, 0, sizeof(cnts));
         for(int i=0;i<size(S);i++) {
             for(int j=0;j<size(S[i]);j++) {
