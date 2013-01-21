@@ -43,31 +43,12 @@ public:
                     tmp /= sqrs[j];
                 }
             }
-            cout << i << " = " << tmp << endl;
 
             for(int j=0;j<size(sqrs);j++) {
                 int tmp2 = tmp * sqrs[j];
                 if(tmp2 > M) break;
-                cout << i << " " << tmp2 << endl;
                 ret++;
             }
-        }
-
-        if(false) {
-            int ret2 = 0;
-            for(int i=1;i<=N;i++) {
-                for(int j=1;j<=M;j++) {
-                    int tmp = i*j;
-                    for(int k=0;k<size(sqrs);k++) {
-                        if(tmp == sqrs[k]) {
-                            cout << i << " " << j << endl;
-                            ret2++;
-                            break;
-                        }
-                    }
-                }
-            }
-            cout << ret2 << endl;
         }
 
         return ret;
