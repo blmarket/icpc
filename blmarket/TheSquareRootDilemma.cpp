@@ -35,7 +35,7 @@ public:
             sqrs.pb(i*i);
         }
 
-        for(int i=1;i<=100;i++) {
+        for(int i=1;i<=N;i++) {
             int tmp = i;
             for(int j=1;j<size(sqrs);j++) {
                 if(tmp < sqrs[j]) break;
@@ -74,6 +74,6 @@ public:
 int main()
 {
     TheSquareRootDilemma ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
