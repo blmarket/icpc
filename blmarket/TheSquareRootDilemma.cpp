@@ -34,6 +34,7 @@ public:
         for(int i=1;i*i<=77777;i++) {
             sqrs.pb(i*i);
         }
+
         for(int i=N;i>=1;i--) {
             int tmp = i;
             for(int j=0;j<size(sqrs);j++) {
@@ -46,7 +47,6 @@ public:
             for(int j=0;j<size(sqrs);j++) {
                 int tmp2 = tmp * sqrs[j];
                 if(tmp2 > M) break;
-                if(j > 0) cnt[i] += cnt[tmp2];
                 cnt[i]++;
             }
             ret += cnt[i];
