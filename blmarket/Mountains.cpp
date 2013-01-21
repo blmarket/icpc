@@ -29,7 +29,6 @@ vector<long long> masks;
 
 int go(int a, const vector<int> &state) {
     if(a == -1) return 1;
-    cout << a << endl;
     int ret = 0;
     for(int i=0;i<W;i++) {
         if((masks[a] & (1LL << i)) == 0) continue;
@@ -40,6 +39,8 @@ int go(int a, const vector<int> &state) {
             int hh = heights[a] - diff;
             if(hh > state[j]) mask |= (1LL << j);
         }
+        
+        cout << mask << endl;
 
         if(mask != masks[a]) continue;
         vector<int> tmp = state;
