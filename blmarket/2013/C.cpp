@@ -25,31 +25,37 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N,K;
-int arr[100005];
+int arr[200005];
+int occ[100005];
 
 void process(void) {
+    memset(occ, 0, sizeof(occ));
     scanf("%d %d", &N, &K);
     int a,b,c,r;
     scanf("%d %d %d %d",&a,&b,&c,&r);
-    arr[0] = a;
+    arr[0] = a; occ[a]++;
     for(int i=1;i<K;i++) {
         long long tmp = arr[i-1];
         tmp *= b;
         tmp += c;
         tmp %= r;
-        arr[i] = tmp;
+        arr[i] = tmp; occ[tmp]++;
     }
-    sort(arr, arr+K);
-    reverse(arr, arr+K);
-    int ret = N-1;
-    for(int i=0;i<K;i++) {
-        if(arr[i] >= ret) {
-            ret--;
-        } else {
-            break;
+
+    int j = 0;
+    for(int i=K;i<K*2;i++) {
+        for(;occ[j];j++);
+        arr[i] = j; occ[j]++;
+
+        if(--occ[arr[i-K]] == 0) {
+            if(j > arr[i-K]) j = arr[i-K];
         }
     }
-    cout << ret << endl;
+
+    if(N <= K*2) {
+        cout << arr[N-1] << endl;
+        return;
+    }
 }
 
 int main(void)
