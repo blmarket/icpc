@@ -36,16 +36,16 @@ void process(void) {
     arr[0] = a; occ[a]++;
     for(int i=1;i<K;i++) {
         long long tmp = arr[i-1];
-        tmp *= b;
+        tmp *= (long long)b;
         tmp += c;
         tmp %= r;
+        cout << tmp << endl;
         arr[i] = tmp; occ[tmp]++;
     }
 
     int j = 0;
     for(int i=K;i<=K*2;i++) {
         for(;occ[j];j++);
-        cout << j << endl;
         arr[i] = j; occ[j]++;
 
         if(--occ[arr[i-K]] == 0) {
