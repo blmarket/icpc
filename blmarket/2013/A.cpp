@@ -26,11 +26,22 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 void process(void) {
     string str;
+    map<char, int> M;
     getline(cin, str);
     for(int i=0;i<size(str);i++) {
         str[i] = tolower(str[i]);
+        if(str[i] >= 'a' && str[i] <= 'z') {
+            M[str[i]]++;
+        }
     }
-    cout << str << endl;
+    vector<int> V;
+    foreach(it, M) V.pb(it->second);
+    sort(V.rbegin(), V.rend());
+    int ret = 0;
+    for(int i=0;i<size(V);i++) {
+        ret += (26 - i) * V[i];
+    }
+    cout << ret << endl;
 }
 
 int main(void)
