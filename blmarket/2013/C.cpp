@@ -39,6 +39,10 @@ void process(void) {
         tmp %= r;
         arr[i] = tmp;
     }
+    sort(arr, arr+K);
+    for(int i=0;i<K;i++) {
+        cout << arr[i] << " ";
+    }
     cout << 0 << endl;
 }
 
