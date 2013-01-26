@@ -41,10 +41,15 @@ void process(void) {
     }
     sort(arr, arr+K);
     reverse(arr, arr+K);
-    for(int i=0;i<K;i++) {
-        cout << arr[i] << " ";
-    }
     int ret = N-1;
+    for(int i=0;i<K;i++) {
+        if(arr[i] >= ret) {
+            ret--;
+        } else {
+            break;
+        }
+    }
+    cout << ret << endl;
 }
 
 int main(void)
