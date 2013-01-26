@@ -43,7 +43,7 @@ void process(void) {
     }
 
     int j = 0;
-    for(int i=K;i<K*2;i++) {
+    for(int i=K;i<N;i++) {
         for(;occ[j];j++);
         arr[i] = j; occ[j]++;
 
@@ -52,12 +52,14 @@ void process(void) {
         }
     }
 
+    cout << arr[N-1] << endl;
+    return;
     if(N <= K*2) {
         cout << arr[N-1] << endl;
         return;
     }
 
-    N -= K*2 + 1;
+    N -= K*2;
     cout << arr[(N % K) + K] << endl;
 }
 
