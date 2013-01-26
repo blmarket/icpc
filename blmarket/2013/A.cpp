@@ -25,6 +25,9 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 void process(void) {
+    string str;
+    getline(cin, str);
+    cout << str << endl;
 }
 
 int main(void)
@@ -33,7 +36,6 @@ int main(void)
     scanf("%d", &T);
     string str;
     getline(cin, str);
-    cout << str << endl;
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ", i);
         process();
