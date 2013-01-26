@@ -45,6 +45,7 @@ void process(void) {
     int j = 0;
     for(int i=K;i<=K*2;i++) {
         for(;occ[j];j++);
+        cout << j << endl;
         arr[i] = j; occ[j]++;
 
         if(--occ[arr[i-K]] == 0) {
