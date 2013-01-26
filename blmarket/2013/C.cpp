@@ -42,8 +42,6 @@ void process(void) {
         tmp %= r;
         arr[i] = tmp; 
 
-        cout << tmp << endl;
-
         if(tmp < 100005) occ[tmp]++;
     }
 
