@@ -40,6 +40,11 @@ void process(void) {
     for(int j=0;j<size(str);j++) {
         flag[j][j] = true;
         flag[j][j+1] = type1(str[j]);
+        if(str[j] == ':' && j+1 < size(str)) {
+            if(str[j+1] == '(' || str[j+1] == ')') {
+                flag[j][j+2] = true;
+            }
+        }
     }
 
     for(int i=2;i<=size(str);i++) {
@@ -48,8 +53,8 @@ void process(void) {
             if(str[j] == '(' && str[right] == ')') {
                 flag[j][j+i] = flag[j+1][j+i-1];
             }
+            if(flag[j][j+i]) continue;
             for(int k=j+1;k<=right;k++) {
-                if(flag[j][j+i]) break;
                 if(flag[j][k] && flag[k][j+i]) {
                     flag[j][j+i] = true;
                     break;
