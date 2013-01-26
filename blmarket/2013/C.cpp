@@ -48,6 +48,8 @@ void process(void) {
         arr[i] = j; occ[j]++;
         cout << arr[i] << " ";
 
+        if(i == K*2) cout << endl;
+
         if(--occ[arr[i-K]] == 0) {
             if(j > arr[i-K]) j = arr[i-K];
         }
