@@ -39,8 +39,9 @@ void process(void) {
         tmp *= (long long)b;
         tmp += c;
         tmp %= r;
-        cout << tmp << endl;
-        arr[i] = tmp; occ[tmp]++;
+        arr[i] = tmp; 
+
+        if(tmp < 100005) occ[tmp]++;
     }
 
     int j = 0;
