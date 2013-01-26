@@ -44,9 +44,9 @@ void process(void) {
 
     int j = 0;
     for(int i=K;i<N;i++) {
-        cout << arr[i] << " ";
         for(;occ[j];j++);
         arr[i] = j; occ[j]++;
+        cout << arr[i] << " ";
 
         if(--occ[arr[i-K]] == 0) {
             if(j > arr[i-K]) j = arr[i-K];
