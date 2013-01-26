@@ -27,6 +27,9 @@ template<typename T> int size(const T &a) { return a.size(); }
 void process(void) {
     string str;
     getline(cin, str);
+    for(int i=0;i<size(str);i++) {
+        str[i] = tolower(str[i]);
+    }
     cout << str << endl;
 }
 
