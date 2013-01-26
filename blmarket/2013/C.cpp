@@ -41,10 +41,10 @@ void process(void) {
         tmp %= r;
         arr[i] = tmp; 
 
+        cout << tmp << endl;
+
         if(tmp < 100005) occ[tmp]++;
     }
-
-    cout << "here" << endl;
 
     int j = 0;
     for(int i=K;i<=K*2;i++) {
