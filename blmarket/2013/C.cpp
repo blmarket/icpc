@@ -55,7 +55,7 @@ void process(void) {
     cout << endl;
 
     cout << arr[N-1] << endl;
-    N -= K;
+    N -= K + 1;
     N %= K;
     cout << arr[N + K - 1] << endl;
 
