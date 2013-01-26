@@ -33,7 +33,8 @@ void process(void) {
     scanf("%d %d", &N, &K);
     int a,b,c,r;
     scanf("%d %d %d %d",&a,&b,&c,&r);
-    arr[0] = a; occ[a]++;
+    arr[0] = a; 
+    if(a < 100005) occ[a]++;
     for(int i=1;i<K;i++) {
         long long tmp = arr[i-1];
         tmp *= (long long)b;
