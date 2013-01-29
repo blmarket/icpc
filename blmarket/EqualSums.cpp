@@ -59,11 +59,13 @@ int go(int pos, string &in) {
         ret += go(pos+1, tin);
         ret %= mod;
     }
+    /*
     for(int i=0;i<n;i++) {
         if(in[i] == M) cout << M;
         else cout << (int)in[i];
     }
     cout << " = " << ret << endl;
+    */
     return ret;
 }
 
