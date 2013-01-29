@@ -23,6 +23,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 int n;
 vector<string> board;
 
+#define M '-'
+
 class EqualSums 
 {
 public:
@@ -30,41 +32,35 @@ public:
     {
         board = board_;
         n = size(board);
-        for(int i=0;i<n;i++) for(int j=0;j<n;j++) if(board[i][j] != '-') board[i][j] -= '0';
+        for(int i=0;i<n;i++) for(int j=0;j<n;j++) if(board[i][j] != M) board[i][j] -= '0';
 
-        while(true) {
-            bool found = false;
-            for(int i=0;i<n;i++) for(int j=i+1;j<n;j++) {
-                for(int k=0;k<n;k++) for(int l=k+1;l<n;l++) {
-                    int nm = 0;
-                    if(board[i][k] == '-') nm++;
-                    if(board[i][l] == '-') nm++;
-                    if(board[j][k] == '-') nm++;
-                    if(board[j][l] == '-') nm++;
-
-                    if(nm == 0) {
-                        if(board[i][k] + board[j][l] != board[i][l] + board[j][k]) return 0;
-                    }
-                    if(nm == 1) {
-                        int s1 = board[i][k] + board[j][l];
-                        int s2 = board[i][l] + board[j][k];
-                        if(board[i][k] == '-') board[i][k] = s2 - board[j][l];
-                        if(board[j][l] == '-') board[j][l] = s2 - board[i][k];
-                        if(board[i][l] == '-') board[i][l] = s1 - board[j][k];
-                        if(board[j][k] == '-') board[j][k] = s1 - board[i][l];
-                        found = true;
+        for(int i=0;i<n;i++) {
+            int mind = -1;
+            for(int j=0;j<n;j++) if(board[j][i] != M) {
+                if(mind == -1 || board[mind][i] > board[j][i]) mind = j;
+            }
+            if(mind != -1) {
+                for(int j=0;j<n;j++) if(board[j][i] != M && j != mind) {
+                    int offset = board[j][i] - board[mind][i];
+                    for(int k=0;k<n;k++) {
+                        if(board[j][k] != M) {
+                            int tmp = board[j][k] - offset;
+                            if(tmp < 0) return 0;
+                            if(board[mind][k] != M && board[mind][k] != tmp) return 0;
+                            board[mind][k] = tmp;
+                        }
                     }
                 }
             }
-            if(!found) break;
         }
 
         for(int i=0;i<n;i++) {
-            if(board[0][i] == '-') cout << '-';
-            else cout << (int)board[0][i];
+            for(int j=0;j<n;j++) {
+                if(board[i][j] == M) cout << M;
+                else cout << (int) board[i][j];
+            }
+            cout << endl;
         }
-        cout << endl;
-        return 1;
     }
 
     
