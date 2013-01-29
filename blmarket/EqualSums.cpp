@@ -41,7 +41,6 @@ int go(int pos, string &in) {
         int maxoffset = 0;
         for(int j=0;j<n;j++) if(board[j][pos] != M) {
             int offset = i - board[j][pos];
-            cout << pos << " " << offset << endl;
             if(offset > maxoffset) maxoffset = offset;
             for(int k=0;k<n;k++) if(board[j][k] != M) {
                 int tmp = board[j][k] + offset;
