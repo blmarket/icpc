@@ -157,6 +157,6 @@ public:
 int main()
 {
     EqualSums ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(5); 
 } 
 // END CUT HERE
