@@ -41,6 +41,7 @@ public:
             }
             if(mind != -1) {
                 for(int j=0;j<n;j++) if(board[j][i] != M && j != mind) {
+                    cout << j << " " << mind << endl;
                     int offset = board[j][i] - board[mind][i];
                     for(int k=0;k<n;k++) {
                         if(board[j][k] != M) {
@@ -148,6 +149,6 @@ public:
 int main()
 {
     EqualSums ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
