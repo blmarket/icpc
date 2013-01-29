@@ -30,7 +30,6 @@ map<pair<int, string>, int> memo;
 
 int go(int pos, string &in) {
     if(pos == n) return 1;
-    if(in[pos] != M) return go(pos+1, in);
 
     pair<int, string> key = mp(pos, in);
     if(memo.count(key)) return memo[key];
