@@ -38,6 +38,8 @@ int chk(int a, int b, int c) {
     if(greens == 0) b = -2;
     if(blues == 0) c = -3;
 
+    if(a == b || a==c || b==c) return -1;
+
     int ret = 0;
     for(int i=0;i<n;i++) {
         if(i == a) {
