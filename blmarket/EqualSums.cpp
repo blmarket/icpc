@@ -41,7 +41,6 @@ public:
             }
             if(mind != -1) {
                 for(int j=0;j<n;j++) if(board[j][i] != M && j != mind) {
-                    cout << j << " " << mind << endl;
                     int offset = board[j][i] - board[mind][i];
                     for(int k=0;k<n;k++) {
                         if(board[j][k] != M) {
@@ -50,6 +49,14 @@ public:
                             if(board[mind][k] != M && board[mind][k] != tmp) return 0;
                             board[mind][k] = tmp;
                         }
+                    }
+                }
+                for(int j=0;j<n;j++) if(board[j][i] != M) {
+                    int offset = board[j][i] - board[mind][i];
+                    for(int k=0;k<n;k++) if(board[mind][k] != M) {
+                        int tmp = board[mind][k] + offset;
+                        if(board[j][k] != M && board[j][k] != tmp) return 0;
+                        board[j][k] = tmp;
                     }
                 }
             }
