@@ -58,6 +58,12 @@ public:
             }
             if(!found) break;
         }
+
+        for(int i=0;i<n;i++) {
+            if(board[0][i] == '-') cout << '-';
+            else cout << (int)board[0][i];
+        }
+        cout << endl;
         return 1;
     }
 
