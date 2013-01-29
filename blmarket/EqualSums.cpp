@@ -69,6 +69,7 @@ public:
             }
             cout << endl;
         }
+        return 1;
     }
 
     
