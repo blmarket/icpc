@@ -20,10 +20,48 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+const int mod = 1000000007;
 int n;
 vector<string> board;
 
 #define M '-'
+
+map<pair<int, string>, int> memo;
+
+int go(int pos, string &in) {
+    if(pos == n) return 1;
+    if(in[pos] != M) return go(pos+1, in);
+
+    pair<int, string> key = mp(pos, in);
+    if(memo.count(key)) return memo[key];
+    int &ret = memo[key];
+    for(int i=0;i<20;i++) {
+        string tin = in;
+        tin[pos] = i;
+        bool fail = false;
+        int maxoffset = 0;
+        for(int j=0;j<n;j++) if(board[j][pos] != M) {
+            int offset = i - board[j][pos];
+            if(offset > maxoffset) maxoffset = offset;
+            for(int k=0;k<n;k++) if(board[j][k] != M) {
+                int tmp = board[j][k] + offset;
+                if(tmp < 0) { fail = true; break; }
+                if(tin[k] != M && tin[k] != tmp) { fail = true; break; }
+                tin[k] = tmp;
+            }
+            if(fail) break;
+        }
+        if(fail) continue;
+        for(int i=0;i<n;i++) if(tin[i] != M) {
+            tin[i] -= maxoffset;
+            if(tin[i] < 0) { fail=true; break; }
+        }
+        if(fail) continue;
+        ret += go(pos+1, tin);
+        ret %= mod;
+    }
+    return ret;
+}
 
 class EqualSums 
 {
@@ -62,14 +100,8 @@ public:
             }
         }
 
-        for(int i=0;i<n;i++) {
-            for(int j=0;j<n;j++) {
-                if(board[i][j] == M) cout << M;
-                else cout << (int) board[i][j];
-            }
-            cout << endl;
-        }
-        return 1;
+        string tmp = board[0];
+        return go(0, tmp);
     }
 
     
