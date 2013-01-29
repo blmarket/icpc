@@ -68,6 +68,7 @@ class EqualSums
 public:
     int count(vector <string> board_) 
     {
+        memo.clear();
         board = board_;
         n = size(board);
         for(int i=0;i<n;i++) for(int j=0;j<n;j++) if(board[i][j] != M) board[i][j] -= '0';
