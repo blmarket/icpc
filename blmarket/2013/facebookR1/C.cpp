@@ -40,6 +40,7 @@ void process(int ID) {
     }
 
     sort(data.begin(), data.end());
+    data.erase(unique(data.begin(), data.end()), data.end());
     /*
     if(ID == 1) {
         for(int i=0;i<size(data);i++) {
