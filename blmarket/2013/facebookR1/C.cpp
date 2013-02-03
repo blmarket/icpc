@@ -74,10 +74,12 @@ void process(int ID) {
         foreach(it, M) {
             if(it->second == 0) continue;
             int range = it->first - (prev + 1);
+            cout << it->first << ":" << range << " ";
             prev = it->first;
             if(range < Q) continue;
             ret += range - Q + 1;
         }
+        cout << endl;
     }
     cout << ret << endl;
 }
