@@ -51,7 +51,7 @@ void process(void) {
     }
     sort(data.rbegin(), data.rend());
     long long cc1 = 1, cc2 = 1;
-    for(int i=k;i<=n-1;i++) {
+    for(int i=(n-k+1);i<=n-1;i++) {
         cc1 *= i;
         cc1 %= mod;
     }
