@@ -69,6 +69,7 @@ void process(int ID) {
             if(range < Q) continue;
             ret += range - Q + 1;
         }
+        cout << endl;
     }
     cout << ret << endl;
 }
