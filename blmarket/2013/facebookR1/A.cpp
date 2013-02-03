@@ -60,6 +60,8 @@ void process(void) {
         cc2 %= mod;
     }
 
+    cout << cc1 << "/" << cc2 << endl;
+
     long long ret = 0;
     for(int i=0;i<=n-k;i++) {
         long long tmp = cc1 * data[i];
