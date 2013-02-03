@@ -54,19 +54,20 @@ void process(int ID) {
     // wrange
     for(int i=0;i<=W-P;i++) {
         // xs are i~(i+P-1)
-        set<int> S;
-        S.clear();
+        map<int, int> M;
+        M.clear();
         for(int j=0;j<size(data);j++) {
             if(data[j].first >= i && data[j].first < i+P) {
-                S.insert(data[j].second);
+                M[data[j].second]++;
             }
         }
-        S.insert(H);
+        M[H] = 1;
 
         int prev = -1;
-        foreach(it, S) {
-            int range = *it - (prev + 1);
-            prev = *it;
+        foreach(it, M) {
+            if(it->second == 0) continue;
+            int range = it->first - (prev + 1);
+            prev = it->first;
             if(range < Q) continue;
             ret += range - Q + 1;
         }
