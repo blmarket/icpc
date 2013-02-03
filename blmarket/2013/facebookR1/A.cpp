@@ -26,11 +26,34 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int n,k;
+vector<int> data;
 LL inverse[10005];
 const LL mod = 1000000007LL;
 
+int combination(int a, int b) {
+    long long ret = 1;
+    for(int i=1;i<=a;i++) {
+        ret *= i;
+        ret %= mod;
+    }
+    for(int i=1;i<=b;i++) {
+        ret *= inverse[i];
+        ret %= mod;
+    }
+    return ret;
+}
+
 void process(void) {
     scanf("%d %d",&n, &k);
+    data.resize(n);
+    for(int i=0;i<n;i++) {
+        scanf("%d", &data[i]);
+    }
+    sort(data.rbegin(), data.rend());
+    int cc = combination(n-1, k-1);
+    cout << cc << endl;
+    for(int i=0;i<=n-k;i++) {
+    }
 }
 
 void precalc(void) {
@@ -39,7 +62,6 @@ void precalc(void) {
         int mul = (mod + i - 1) / i;
         int mulx = (i * mul) % mod;
         inverse[i] = (inverse[mulx] * mul) % mod;
-        cout << i << " = " << inverse[i] << endl;
     }
 }
 
