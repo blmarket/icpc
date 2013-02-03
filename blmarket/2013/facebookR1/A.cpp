@@ -69,6 +69,7 @@ void process(void) {
         ret += tmp;
 
         cc1 *= (n-k-i);
+        cc1 %= mod;
         cc1 *= inverse[n-1-i];
         cc1 %= mod;
     }
