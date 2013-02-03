@@ -67,7 +67,7 @@ void process(void) {
         tmp *= cc2;
         tmp %= mod;
         ret += tmp;
-        cout << (cc1 * cc2) % mod;
+        cout << (cc1 * cc2) % mod << " ";
 
         cc1 *= inverse[n-1-i];
         cc1 %= mod;
