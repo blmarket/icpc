@@ -40,6 +40,7 @@ void process() {
 
     sort(data.begin(), data.end());
 
+    int ret = 0;
     // wrange
     for(int i=0;i<W-P;i++) {
         // xs are i~(i+P-1)
@@ -50,12 +51,15 @@ void process() {
                 S.insert(data[j].second);
             }
         }
-        cout << i << " : ";
+        S.insert(H);
+
+        int prev = -1;
         foreach(it, S) {
-            cout << *it << " ";
+            int range = *it - (prev + 1);
+            ret += range - Q + 1;
         }
-        cout << endl;
     }
+    cout << ret << endl;
 }
 
 int main(void)
