@@ -63,6 +63,7 @@ void process(int ID) {
 
         int prev = -1;
         foreach(it, S) {
+            cout << *it << " ";
             int range = *it - (prev + 1);
             prev = *it;
             if(range < Q) continue;
