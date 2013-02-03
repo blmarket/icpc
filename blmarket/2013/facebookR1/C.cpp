@@ -49,7 +49,7 @@ void process(int ID) {
 
     int ret = 0;
     // wrange
-    for(int i=0;i<W-P;i++) {
+    for(int i=0;i<=W-P;i++) {
         // xs are i~(i+P-1)
         set<int> S;
         S.clear();
