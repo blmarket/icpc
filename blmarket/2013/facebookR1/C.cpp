@@ -64,6 +64,7 @@ void process(int ID) {
         foreach(it, S) {
             int range = *it - (prev + 1);
             ret += range - Q + 1;
+            prev = *it;
         }
     }
     cout << ret << endl;
