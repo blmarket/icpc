@@ -39,6 +39,7 @@ void assign(const string &a, string target[]) {
 void process(void) {
     char buff[1024];
     scanf(" %s",buff);
+    cout << buff << endl;
     k1 = buff;
     l = size(k1) / m;
     scanf(" %s", buff);
