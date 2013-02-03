@@ -59,7 +59,6 @@ void process(void) {
         cc2 *= inverse[i];
         cc2 %= mod;
     }
-    cout << cc1 << endl;
 
     long long ret = 0;
     for(int i=0;i<=n-k;i++) {
@@ -70,7 +69,7 @@ void process(void) {
         ret += tmp;
         cout << (cc1 * cc2) % mod << " ";
 
-        cc1 *= k-i;
+        cc1 *= (n-k+1-i);
         cc1 *= inverse[n-1-i];
         cc1 %= mod;
     }
