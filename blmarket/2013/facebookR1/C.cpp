@@ -28,6 +28,7 @@ int W,H,P,Q,N,X,Y,A,B,C,D;
 vector<PII> data;
 
 void process(int ID) {
+    data.clear();
     scanf("%d %d %d %d %d %d %d %d %d %d %d",&W,&H,&P,&Q,&N,&X,&Y,&A,&B,&C,&D);
     data.pb(mp(X,Y));
     for(int i=1;i<N;i++) {
