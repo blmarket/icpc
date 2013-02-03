@@ -50,7 +50,7 @@ void process(int ID) {
     }
     */
 
-    int ret = 0;
+    long long ret = 0;
     map<int, int> M;
     M.clear();
     M[H] = 1;
