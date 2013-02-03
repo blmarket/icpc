@@ -68,6 +68,13 @@ bool try_flow() {
     return true;
 }
 
+bool checkit(int a) {
+    for(int i=0;i<m;i++) {
+        links[a][i] = matches(block1[a], block2[i]);
+    }
+    return try_flow();
+}
+
 void process(void) {
     char buff[1024];
     scanf("%d", &m);
@@ -89,6 +96,20 @@ void process(void) {
         printf("IMPOSSIBLE\n");
         return;
     }
+
+    for(int i=0;i<m;i++) {
+        for(int j=0;j<l;j++) {
+            if(block1[i][j] == '?') {
+                for(int k=0;k<6;k++) {
+                    block1[i][j] = 'a' + k;
+                    if(checkit(i)) break;
+                }
+            }
+        }
+    }
+    for(int i=0;i<m;i++)
+        cout << block1[i];
+    cout << endl;
 }
 
 int main(void)
