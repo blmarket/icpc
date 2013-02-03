@@ -50,9 +50,26 @@ void process(void) {
         scanf("%d", &data[i]);
     }
     sort(data.rbegin(), data.rend());
-    int cc = combination(n-1, k-1);
-    cout << cc << endl;
+    long long cc1 = 1, cc2 = 1;
+    for(int i=1;i<=n-1;i++) {
+        cc1 *= i;
+        cc1 %= mod;
+    }
+    for(int i=1;i<=k-1;i++) {
+        cc2 *= inverse[i];
+        cc2 %= mod;
+    }
+
+    long long ret = 0;
     for(int i=0;i<=n-k;i++) {
+        long long tmp = cc1 * data[i];
+        tmp %= mod;
+        tmp *= cc2;
+        tmp %= mod;
+        ret += tmp;
+
+        cc1 *= inverse[n-1-i];
+        cc1 %= mod;
     }
 }
 
