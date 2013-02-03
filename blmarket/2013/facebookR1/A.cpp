@@ -71,6 +71,8 @@ void process(void) {
         cc1 *= inverse[n-1-i];
         cc1 %= mod;
     }
+    ret %= mod;
+    cout << ret << endl;
 }
 
 void precalc(void) {
