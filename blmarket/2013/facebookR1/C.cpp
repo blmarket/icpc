@@ -63,16 +63,16 @@ void process(int ID) {
             j++;
         }
         while(jj < size(data) && data[jj].first < i) {
-            map<int, int>::iterator it = M.find(data[j].second);
-            if(--it->second == 0) {
-                M.erase(it);
-            }
+            M[data[jj].second]--;
             jj++;
         }
 
         int prev = -1;
         foreach(it, M) {
-            if(it->second == 0) continue;
+            while(it != M.end() && it->second == 0) {
+                M.erase(it++);
+            }
+            if(it == M.end()) break;
             int range = it->first - (prev + 1);
             cout << it->first << ":" << range << " ";
             prev = it->first;
