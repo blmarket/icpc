@@ -48,6 +48,7 @@ int back[105];
 
 bool check_flow(int a) {
     if(visit[a]) return false;
+    visit[a] = true;
     for(int i=0;i<m;i++) if(links[a][i]) {
         if(back[i] == -1 || check_flow(back[i])) {
             back[i] = a;
