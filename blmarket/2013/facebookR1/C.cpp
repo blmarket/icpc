@@ -39,10 +39,23 @@ void process() {
     }
 
     sort(data.begin(), data.end());
-    for(int i=0;i<N;i++) {
-        cout << data[i].first << "," << data[i].second << " ";
+
+    // wrange
+    for(int i=0;i<W-P;i++) {
+        // xs are i~(i+P-1)
+        set<int> S;
+        S.clear();
+        for(int j=0;j<size(data);j++) {
+            if(data[j].first >= i && data[j].first < i+P) {
+                S.insert(data[j].second);
+            }
+        }
+        cout << i << " : ";
+        foreach(it, S) {
+            cout << *it << " ";
+        }
+        cout << endl;
     }
-    cout << endl;
 }
 
 int main(void)
