@@ -40,12 +40,14 @@ void process(int ID) {
     }
 
     sort(data.begin(), data.end());
+    /*
     if(ID == 1) {
         for(int i=0;i<size(data);i++) {
             cout << data[i].first << "," << data[i].second << " ";
         }
         cout << endl;
     }
+    */
 
     int ret = 0;
     // wrange
