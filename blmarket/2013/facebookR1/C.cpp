@@ -58,11 +58,11 @@ void process(int ID) {
     int j = 0, jj = 0;
     // wrange
     for(int i=0;i<=W-P;i++) {
-        while(data[j].first < i+P) {
+        while(j < size(data) && data[j].first < i+P) {
             M[data[j].second]++;
             j++;
         }
-        while(data[jj].first < i) {
+        while(jj < size(data) && data[jj].first < i) {
             map<int, int>::iterator it = M.find(data[j].second);
             if(--it->second == 0) {
                 M.erase(it);
