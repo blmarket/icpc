@@ -51,7 +51,7 @@ void process(void) {
     }
     sort(data.rbegin(), data.rend());
     long long cc1 = 1, cc2 = 1;
-    for(int i=1;i<=n-1;i++) {
+    for(int i=k;i<=n-1;i++) {
         cc1 *= i;
         cc1 %= mod;
     }
@@ -59,8 +59,6 @@ void process(void) {
         cc2 *= inverse[i];
         cc2 %= mod;
     }
-
-    cout << cc1 << "/" << cc2 << endl;
 
     long long ret = 0;
     for(int i=0;i<=n-k;i++) {
@@ -71,6 +69,7 @@ void process(void) {
         ret += tmp;
         cout << (cc1 * cc2) % mod << " ";
 
+        cc1 *= k-1-i;
         cc1 *= inverse[n-1-i];
         cc1 %= mod;
     }
