@@ -59,6 +59,7 @@ void process(void) {
         cc2 *= inverse[i];
         cc2 %= mod;
     }
+    cout << cc1 << endl;
 
     long long ret = 0;
     for(int i=0;i<=n-k;i++) {
