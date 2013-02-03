@@ -74,7 +74,6 @@ void process(int ID) {
             }
             if(it == M.end()) break;
             int range = it->first - (prev + 1);
-            cout << it->first << ":" << range << " ";
             prev = it->first;
             if(range < Q) continue;
             ret += range - Q + 1;
