@@ -51,17 +51,24 @@ void process(int ID) {
     */
 
     int ret = 0;
+    map<int, int> M;
+    M.clear();
+    M[H] = 1;
+
+    int j = 0, jj = 0;
     // wrange
     for(int i=0;i<=W-P;i++) {
-        // xs are i~(i+P-1)
-        map<int, int> M;
-        M.clear();
-        for(int j=0;j<size(data);j++) {
-            if(data[j].first >= i && data[j].first < i+P) {
-                M[data[j].second]++;
-            }
+        while(data[j].first < i+P) {
+            M[data[j].second]++;
+            j++;
         }
-        M[H] = 1;
+        while(data[jj].first < i) {
+            map<int, int>::iterator it = M.find(data[j].second);
+            if(--it->second == 0) {
+                M.erase(it);
+            }
+            jj++;
+        }
 
         int prev = -1;
         foreach(it, M) {
