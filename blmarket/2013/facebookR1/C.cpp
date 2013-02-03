@@ -27,7 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int W,H,P,Q,N,X,Y,A,B,C,D;
 vector<PII> data;
 
-void process() {
+void process(int ID) {
     scanf("%d %d %d %d %d %d %d %d %d %d %d",&W,&H,&P,&Q,&N,&X,&Y,&A,&B,&C,&D);
     data.pb(mp(X,Y));
     for(int i=1;i<N;i++) {
@@ -39,6 +39,12 @@ void process() {
     }
 
     sort(data.begin(), data.end());
+    if(ID == 5) {
+        for(int i=0;i<size(data);i++) {
+            cout << data[i].first << "," << data[i].second << " ";
+        }
+        cout << endl;
+    }
 
     int ret = 0;
     // wrange
@@ -68,6 +74,6 @@ int main(void)
     scanf("%d",&T);
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ",i);
-        process();
+        process(i);
     }
 }
