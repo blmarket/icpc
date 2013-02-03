@@ -44,6 +44,7 @@ void process(int ID) {
             cout << data[i].first << "," << data[i].second << " ";
         }
         cout << endl;
+        cout << P << " " << Q << endl;
     }
 
     int ret = 0;
