@@ -44,7 +44,7 @@ int go(int a, int b) {
             tmp += i / K;
             if(ret == -1 || ret > tmp) {
                 ret = tmp;
-                value = i;
+                value = -V[a+1];
             }
             break;
         }
@@ -53,10 +53,10 @@ int go(int a, int b) {
         tmp += i / K;
         if(ret == -1 || ret > tmp) {
             ret = tmp;
-            value = i;
+            value = elasp;
         }
     }
-    if(a == 0) {
+    if(a == 1) {
         cout << ret << " : " << value << endl;
     }
     return memo[key] = ret;
