@@ -32,15 +32,8 @@ public:
         int n = size(plates);
         int m = size(plates[0]);
         for(int i=0;i<n;i++) {
-            for(int j=i+1;j<n;j++) {
-                string &a = plates[i];
-                string &b = plates[j];
-                for(int k=0;k<size(a);k++) {
-                    int t1 = a[k] - '0';
-                    int t2 = b[k] - '0';
-                    int tmp = 1 << (t1 * 2 + t2);
-                    flag[k] |= tmp;
-                }
+            for(int j=0;j<m;j++) {
+                flag[j] += plates[i][j] - '0';
             }
         }
         for(int i=0;i<m;i++) {
