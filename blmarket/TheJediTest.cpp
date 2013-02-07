@@ -37,7 +37,13 @@ int go(int a, int b) {
     for(int i=0;;i+=K) {
         int elasp = V[a] + b - i;
         if(elasp > V[a]) continue;
-        if(-elasp > V[a+1]) break;
+        if(-elasp > V[a+1]) {
+            int tmp = go(a+1, -V[a+1]);
+            if(tmp == -1) break;
+            tmp += i / K;
+            if(ret == -1 || ret > tmp) ret = tmp;
+            break;
+        }
         int tmp = go(a+1, elasp);
         if(tmp == -1) continue;
         tmp += i / K;
