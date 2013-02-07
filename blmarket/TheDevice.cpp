@@ -36,11 +36,12 @@ public:
                 flag[j] += plates[i][j] - '0';
             }
         }
+        int ret = 0;
         for(int i=0;i<m;i++) {
-            cout << flag[i] << " ";
+            if(flag[i] == 0) return 2;
+            if(flag[1] == 1) ret = 1;
         }
-        cout << endl;
-        return 0;
+        return ret;
     }
 
     
