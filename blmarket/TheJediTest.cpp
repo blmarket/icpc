@@ -51,6 +51,9 @@ int go(int a, int b) {
             ret = tmp;
         }
     }
+    if(a == 0) {
+        cout << ret << endl;
+    }
     return memo[key] = ret;
 }
 
