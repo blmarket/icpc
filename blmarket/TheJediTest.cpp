@@ -20,19 +20,44 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+vector<int> V;
+int K;
+
+map<PII, int> memo;
+
+int go(int a, int b) {
+    PII key = mp(a,b);
+    if(memo.count(key)) return memo[key];
+
+    int ret = -1;
+
+    for(int i=0;;i+=K) {
+        int elasp = V[a] + b - i;
+        if(elasp > V[a]) continue;
+        if(-elasp > V[a+1]) break;
+        int tmp = go(a+1, elasp);
+        if(tmp == -1) continue;
+        tmp += i / K;
+        if(ret == -1 || ret > tmp) {
+            ret = tmp;
+        }
+    }
+    return memo[key] = ret;
+}
+
 class TheJediTest 
 {
 public:
-    int minimumSupervisors(vector <int> V, int K) 
+    int minimumSupervisors(vector <int> V_, int K_) 
     {		
+        V = V_; K = K_;
+        memo.clear();
         int ret = 0;
-        V[1] += V[0];
-        for(int i=1;i<size(V);i++) {
-            int elasp = V[i] % K;
+        for(int i=0;i<size(V);i++) {
             ret += V[i] / K;
-            V[i+1] += elasp;
+            V[i] %= K;
         }
-        return ret;
+        ret += go(0, 0);
     }
 
     
