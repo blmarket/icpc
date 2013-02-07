@@ -58,6 +58,7 @@ public:
             V[i] %= K;
         }
         ret += go(0, 0);
+        return ret;
     }
 
     
