@@ -26,6 +26,9 @@ int K;
 map<PII, int> memo;
 
 int go(int a, int b) {
+    if(a+1 == size(V)) {
+        return (V[a]+b+K-1) / K;
+    }
     PII key = mp(a,b);
     if(memo.count(key)) return memo[key];
 
