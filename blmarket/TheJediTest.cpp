@@ -33,6 +33,7 @@ int go(int a, int b) {
     if(memo.count(key)) return memo[key];
 
     int ret = -1;
+    int value = 0;
 
     for(int i=0;;i+=K) {
         int elasp = V[a] + b - i;
@@ -41,7 +42,10 @@ int go(int a, int b) {
             int tmp = go(a+1, -V[a+1]);
             if(tmp == -1) break;
             tmp += i / K;
-            if(ret == -1 || ret > tmp) ret = tmp;
+            if(ret == -1 || ret > tmp) {
+                ret = tmp;
+                value = i;
+            }
             break;
         }
         int tmp = go(a+1, elasp);
@@ -49,10 +53,11 @@ int go(int a, int b) {
         tmp += i / K;
         if(ret == -1 || ret > tmp) {
             ret = tmp;
+            value = i;
         }
     }
     if(a == 0) {
-        cout << ret << endl;
+        cout << ret << " : " << value << endl;
     }
     return memo[key] = ret;
 }
