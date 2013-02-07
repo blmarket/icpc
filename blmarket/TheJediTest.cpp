@@ -56,7 +56,7 @@ int go(int a, int b) {
             value = elasp;
         }
     }
-    if(a == 7 && b == 479) {
+    if(a == 0 && b == 0) {
         cout << ret << " : " << value << endl;
     }
     return memo[key] = ret;
@@ -70,12 +70,10 @@ public:
         V = V_; K = K_;
         memo.clear();
         int ret = 0;
-        /*
         for(int i=0;i<size(V);i++) {
             ret += V[i] / K;
             V[i] %= K;
         }
-        */
         ret += go(0, 0);
         return ret;
     }
