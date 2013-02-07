@@ -39,7 +39,7 @@ public:
         int ret = 0;
         for(int i=0;i<m;i++) {
             if(flag[i] == 0) return 2;
-            if(flag[1] == 1) ret = 1;
+            if(flag[i] == 1) ret = 1;
         }
         return ret;
     }
