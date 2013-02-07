@@ -56,7 +56,7 @@ int go(int a, int b) {
             value = elasp;
         }
     }
-    if(a == 1) {
+    if(a == 0) {
         cout << ret << " : " << value << endl;
     }
     return memo[key] = ret;
