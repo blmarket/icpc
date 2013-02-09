@@ -64,6 +64,7 @@ void take(int pos, bits &ret) {
 }
 
 int go(bits &st) {
+    cout << st << endl;
     bits candi = st;
 
     int cnt = candi.count();
