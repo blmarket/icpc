@@ -23,11 +23,27 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
+typedef bitset<10> bits;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N;
 PII rela[1005];
+
+int go(const bits &st) {
+    bits candi(st);
+    for(int i=0;i<N;i++) {
+        int p1 = rela[i].first;
+        int p2 = rela[i].second;
+        if(!st.test(p1) || !st.test(p2)) continue;
+        candi.reset(p2);
+    }
+
+    for(int i=0;i<N;i++) {
+        if(candi.test(i)) cout << i << " ";
+    }
+    cout << endl;
+}
 
 void process() 
 {
@@ -40,11 +56,13 @@ void process()
         }
     }
 
-    bitset<10> state;
+    bits state;
     for(int i=0;i<N;i++) {
         state.set(i);
     }
     cout << state << endl;
+
+    cout << go(state) << endl;
 }
 
 int main(void)
