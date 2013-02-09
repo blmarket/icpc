@@ -45,10 +45,10 @@ void process()
 
     for(LL i=tmp+K;i!=N;i+=K) {
         round--;
-        LL tmp2 = tmp + K;
         votes += K;
 
-        if(votes * 100 >= tmp2 * P) { // will win
+        cerr << i << ":" << votes << " ";
+        if(votes * 100 >= i * P) { // will win
             winround = round;
             votes = 0;
         } 
