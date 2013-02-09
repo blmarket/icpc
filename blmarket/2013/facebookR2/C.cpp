@@ -32,11 +32,11 @@ PII rela[1005];
 int combi[1005][1005];
 
 void precalc(void) {
+    cout << "hi" << endl;
     for(int i=0;i<=1000;i++) {
         combi[i][0] = combi[i][i] = 1;
         for(int j=i+1;j<i;j++) {
             combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
-            cout << combi[i][j] << endl;
             combi[i][j] %= 1000000007;
         }
     }
