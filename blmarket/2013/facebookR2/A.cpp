@@ -39,8 +39,9 @@ void process()
         A[i] = tmp;
         for(int j=0;j<=tmp;j++) {
             ret += prevline + 1;
-            prevline++;
+            if(j>0) prevline++;
         }
+        prevline++;
         cout << ret << " ";
     }
     cout << ret << endl;
