@@ -37,7 +37,7 @@ void process()
         int tmp;
         scanf("%d", &tmp);
         A[i] = tmp;
-        for(int j=0;j<tmp;j++) {
+        for(int j=0;j<=tmp;j++) {
             ret += prevline + 1;
             prevline++;
         }
