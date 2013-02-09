@@ -32,7 +32,7 @@ PII rela[1005];
 
 int go(const bits &st) {
     bits candi(st);
-    for(int i=0;i<N;i++) {
+    for(int i=0;i<N-1;i++) {
         int p1 = rela[i].first;
         int p2 = rela[i].second;
         if(!st.test(p1) || !st.test(p2)) continue;
