@@ -132,6 +132,7 @@ int go(bits &st) {
 
 void process() 
 {
+    memo.clear();
     scanf("%d", &N);
     for(int i=0;i+1<N;i++) {
         char flag;
