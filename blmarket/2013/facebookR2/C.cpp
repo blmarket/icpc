@@ -32,6 +32,7 @@ PII rela[1005];
 
 int go(const bits &st) {
     bits candi(st);
+    cout << candi << endl;
     for(int i=0;i<N;i++) {
         int p1 = rela[i].first;
         int p2 = rela[i].second;
@@ -43,6 +44,7 @@ int go(const bits &st) {
         if(candi.test(i)) cout << i << " ";
     }
     cout << endl;
+    return 0;
 }
 
 void process() 
