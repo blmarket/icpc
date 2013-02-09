@@ -41,7 +41,6 @@ void process()
             ret += prevline + 1;
             prevline++;
         }
-        cout << ret << endl;
     }
     cout << ret << endl;
 }
