@@ -117,6 +117,7 @@ void process()
     bits candi;
     for(int i=0;i<N;i++) candi.set(i);
     int ret = go(candi);
+    cout << ret << endl;
 }
 
 int main(void)
