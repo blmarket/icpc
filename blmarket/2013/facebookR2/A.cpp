@@ -43,7 +43,6 @@ void process()
             if(j>0) prevline++;
         }
         prevline++;
-        cout << ret << " ";
     }
     cout << ret << endl;
 }
