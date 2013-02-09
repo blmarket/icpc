@@ -30,8 +30,38 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 PII rela[1005];
 
-int go(const bits &st) {
-    bits candi(st);
+void take2(int pos, bits &ret) {
+    ret.set(pos);
+    for(int i=0;i<N-1;i++) {
+        if(rela[i].first == pos) {
+            take2(rela[i].second, ret);
+        }
+        if(rela[i].second == pos && !ret.test(rela[i].first)) {
+            take2(rela[i].first, ret);
+        }
+    }
+}
+
+void take(int pos, bits &ret) {
+    ret.set(pos);
+    for(int i=0;i<N-1;i++) {
+        if(rela[i].first == pos) {
+            take2(rela[i].second, ret);
+        }
+    }
+    ret.reset(pos);
+}
+
+int go(int pos) {
+    bits candi;
+    if(pos == -1) {
+        for(int i=0;i<N;i++) candi.set(i);
+    } else {
+        take(pos, candi);
+    }
+    cout << candi << endl;
+
+    bits st = candi;
     for(int i=0;i<N-1;i++) {
         int p1 = rela[i].first;
         int p2 = rela[i].second;
@@ -41,10 +71,18 @@ int go(const bits &st) {
 
     cout << candi << endl;
     for(int i=0;i<N;i++) {
-        if(candi.test(i)) cout << i << " ";
+        if(candi.test(i)) {
+            long long ret = 1;
+            for(int j=0;j<N-1;j++) {
+                if(rela[j].first == i) {
+                    ret *= go(rela[j].second);
+                    ret %= 1000000007;
+                }
+            }
+            return ret;
+        }
     }
-    cout << endl;
-    return 0;
+    return -1;
 }
 
 void process() 
@@ -58,13 +96,7 @@ void process()
         }
     }
 
-    bits state;
-    for(int i=0;i<N;i++) {
-        state.set(i);
-    }
-    cout << state << endl;
-
-    int ret = go(state);
+    int ret = go(-1);
 }
 
 int main(void)
