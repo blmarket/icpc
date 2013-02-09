@@ -47,7 +47,7 @@ void process()
         round--;
         votes += K;
 
-        cerr << i << ":" << votes << " ";
+        cerr << round << ":" << i << ":" << votes << " ";
         if(votes * 100 >= i * P) { // will win
             winround = round;
             votes = 0;
