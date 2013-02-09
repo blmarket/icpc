@@ -64,7 +64,7 @@ void process()
     }
     cout << state << endl;
 
-    cout << go(state) << endl;
+    int ret = go(state);
 }
 
 int main(void)
