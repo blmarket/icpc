@@ -36,6 +36,7 @@ void precalc(void) {
         combi[i][0] = combi[i][i] = 1;
         for(int j=i+1;j<i;j++) {
             combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
+            cout << combi[i][j] << endl;
             combi[i][j] %= 1000000007;
         }
     }
