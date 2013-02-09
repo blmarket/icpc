@@ -66,8 +66,23 @@ void take(int pos, int no, bits &ret) {
     ret.reset(pos);
 }
 
+struct ci_less : binary_function<bits, bits, bool>
+{
+    bool operator() (const bits & s1, const bits & s2) const
+    {
+        for(int i=0;i<N;i++)
+        {
+            if(s1[i] != s2[i])
+                return s1[i] < s2[i];
+        }
+        return false;
+    }
+};
+
+map<bits, int, ci_less> memo;
+
 int go(bits &st) {
-    cout << st << endl;
+    if(memo.count(st)) return memo[st];
     bits candi = st;
 
     int cnt = candi.count();
@@ -106,9 +121,10 @@ int go(bits &st) {
                 }
             }
             rett += ret;
+            rett %= 1000000007;
         }
     }
-    return rett;
+    memo[st] = rett;
 }
 
 void process() 
