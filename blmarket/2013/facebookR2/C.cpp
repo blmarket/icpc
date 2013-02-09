@@ -41,11 +41,10 @@ void process()
         cout << rela[i].first << "," << rela[i].second << endl;
     }
 
-    bitset<1005> state;
+    bitset<10> state;
     for(int i=0;i<N;i++) {
         state.set(i);
     }
-    cout << state << endl;
 }
 
 int main(void)
