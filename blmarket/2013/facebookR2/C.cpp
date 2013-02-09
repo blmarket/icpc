@@ -80,10 +80,11 @@ int go(bits &st) {
         candi.reset(p2);
     }
 
+    long long rett = 0;
     for(int i=0;i<N;i++) {
         if(candi.test(i)) {
             long long ret = 1;
-            cnt--;
+            int cnt2 = cnt-1;
             for(int j=0;j<N-1;j++) {
                 if(rela[j].first == i) {
                     bits tmp;
@@ -96,18 +97,18 @@ int go(bits &st) {
 
                     int tmp2 = tmp.count();
 
-                    ret *= combi[cnt][tmp2];
-                    cnt -= tmp2;
+                    ret *= combi[cnt2][tmp2];
+                    cnt2 -= tmp2;
                     ret %= 1000000007;
 
                     ret *= go(tmp);
                     ret %= 1000000007;
                 }
             }
-            return ret;
+            rett += ret;
         }
     }
-    return 1;
+    return rett;
 }
 
 void process() 
