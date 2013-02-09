@@ -23,7 +23,7 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
-typedef bitset<10> bits;
+typedef bitset<1005> bits;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
