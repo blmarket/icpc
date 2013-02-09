@@ -82,7 +82,11 @@ struct ci_less : binary_function<bits, bits, bool>
 map<bits, int, ci_less> memo;
 
 int go(bits &st) {
-    if(memo.count(st)) return memo[st];
+    cout << st << endl;
+    if(memo.count(st)) {
+        cout << "here" << endl;
+        return memo[st];
+    }
     bits candi = st;
 
     int cnt = candi.count();
