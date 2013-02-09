@@ -56,7 +56,7 @@ void process()
         tmp += go * K;
         votes += go * K;
         if(round < 1) break;
-        cerr << round << ":" << tmp << ":" << votes << " ";
+        // cerr << round << ":" << tmp << ":" << votes << " ";
         if(votes * 100 >= tmp * P) { // will win
             winround = round;
             votes = 0;
@@ -67,7 +67,7 @@ void process()
         tmp += K;
         votes += K;
         if(round < 1) break;
-        cerr << round << ":" << tmp << ":" << votes << " ";
+        // cerr << round << ":" << tmp << ":" << votes << " ";
         if(votes * 100 >= tmp * P) { // will win
             winround = round;
             votes = 0;
