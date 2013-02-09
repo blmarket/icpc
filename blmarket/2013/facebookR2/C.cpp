@@ -44,7 +44,7 @@ void precalc(void) {
 void take2(int pos, bits &ret) {
     ret.set(pos);
     for(int i=0;i<N-1;i++) {
-        if(rela[i].first == pos) {
+        if(rela[i].first == pos && !ret.test(rela[i].second)) {
             take2(rela[i].second, ret);
         }
         if(rela[i].second == pos && !ret.test(rela[i].first)) {
@@ -53,11 +53,14 @@ void take2(int pos, bits &ret) {
     }
 }
 
-void take(int pos, bits &ret) {
+void take(int pos, int no, bits &ret) {
     ret.set(pos);
     for(int i=0;i<N-1;i++) {
-        if(rela[i].first == pos) {
+        if(rela[i].first == pos && rela[i].second != no) {
             take2(rela[i].second, ret);
+        }
+        if(rela[i].second == pos && rela[i].first != no) {
+            take2(rela[i].first, ret);
         }
     }
     ret.reset(pos);
@@ -84,7 +87,7 @@ int go(bits &st) {
             for(int j=0;j<N-1;j++) {
                 if(rela[j].first == i) {
                     bits tmp;
-                    take(rela[j].second, tmp);
+                    take(rela[j].second, i, tmp);
                     tmp.set(rela[j].second);
 
                     int tmp2 = tmp.count();
