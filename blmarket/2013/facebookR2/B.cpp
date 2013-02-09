@@ -41,10 +41,32 @@ void process()
     LL votes = 0;
     LL winround = round;
 
-    for(--round;round>0;round--) {
+    if(P == 100) {
+        cout << winround << endl;
+        return;
+    }
+
+    // for(--round;round>0;round--) {
+    while(true) {
+        LL go = P * tmp - 100 * votes;
+        LL go2 = (100 - P) * K;
+
+        go /= go2;
+        round -= go;
+        tmp += go * K;
+        votes += go * K;
+        if(round < 1) break;
+        cerr << round << ":" << tmp << ":" << votes << " ";
+        if(votes * 100 >= tmp * P) { // will win
+            winround = round;
+            votes = 0;
+            continue;
+        } 
+
+        round--;
         tmp += K;
         votes += K;
-
+        if(round < 1) break;
         cerr << round << ":" << tmp << ":" << votes << " ";
         if(votes * 100 >= tmp * P) { // will win
             winround = round;
