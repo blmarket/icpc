@@ -35,7 +35,7 @@ void process()
         return;
     }
 
-    LL tmp = N % K;
+    LL tmp = ((N-1) % K) + 1;
     LL round = (N + K - 1) / K;
     // in here, they always vote so they will not vote for tmp + K turn.
     LL votes = 0;
