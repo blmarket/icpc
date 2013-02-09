@@ -89,6 +89,10 @@ int go(bits &st) {
                     bits tmp;
                     take(rela[j].second, i, tmp);
                     tmp.set(rela[j].second);
+                    for(int k=0;k<N;k++) {
+                        if(tmp.test(k) && !st.test(k))
+                            tmp.reset(k);
+                    }
 
                     int tmp2 = tmp.count();
 
