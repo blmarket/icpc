@@ -124,6 +124,7 @@ int go(bits &st) {
             }
             rett += ret;
             rett %= 1000000007;
+            cout << ret << " " << rett << endl;
         }
     }
     memo[st] = rett;
