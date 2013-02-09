@@ -88,6 +88,7 @@ int go(bits &st) {
                     tmp.set(rela[j].second);
 
                     int tmp2 = tmp.count();
+                    cout << cnt << "," << tmp2 << endl;
 
                     ret *= combi[cnt][tmp2];
                     cnt -= tmp2;
