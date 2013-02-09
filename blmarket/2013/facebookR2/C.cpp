@@ -29,6 +29,17 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 PII rela[1005];
+int combi[1005][1005];
+
+void precalc(void) {
+    for(int i=0;i<=1000;i++) {
+        combi[i][0] = combi[i][i] = 1;
+        for(int j=i+1;j<i;j++) {
+            combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
+            combi[i][j] %= 1000000007;
+        }
+    }
+}
 
 void take2(int pos, bits &ret) {
     ret.set(pos);
@@ -52,16 +63,13 @@ void take(int pos, bits &ret) {
     ret.reset(pos);
 }
 
-int go(int pos) {
-    bits candi;
-    if(pos == -1) {
-        for(int i=0;i<N;i++) candi.set(i);
-    } else {
-        take(pos, candi);
-    }
-    cout << candi << endl;
+int go(bits &st) {
+    bits candi = st;
 
-    bits st = candi;
+    cout << candi << endl;
+    int cnt = candi.count();
+    if(cnt == 0) return 1;
+
     for(int i=0;i<N-1;i++) {
         int p1 = rela[i].first;
         int p2 = rela[i].second;
@@ -75,14 +83,17 @@ int go(int pos) {
             long long ret = 1;
             for(int j=0;j<N-1;j++) {
                 if(rela[j].first == i) {
-                    ret *= go(rela[j].second);
+                    bits tmp;
+                    take(rela[j].second, tmp);
+
+                    ret *= go(tmp);
                     ret %= 1000000007;
                 }
             }
             return ret;
         }
     }
-    return -1;
+    return 1;
 }
 
 void process() 
@@ -96,11 +107,14 @@ void process()
         }
     }
 
-    int ret = go(-1);
+    bits candi;
+    for(int i=0;i<N;i++) candi.set(i);
+    int ret = go(candi);
 }
 
 int main(void)
 {
+    precalc();
     int T;
     scanf("%d",&T);
     for(int i=1;i<=T;i++) {
