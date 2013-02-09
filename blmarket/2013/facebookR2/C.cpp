@@ -81,6 +81,7 @@ int go(bits &st) {
     for(int i=0;i<N;i++) {
         if(candi.test(i)) {
             long long ret = 1;
+            cnt--;
             for(int j=0;j<N-1;j++) {
                 if(rela[j].first == i) {
                     bits tmp;
