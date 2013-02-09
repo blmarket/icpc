@@ -87,6 +87,12 @@ int go(bits &st) {
                     take(rela[j].second, tmp);
                     tmp.set(rela[j].second);
 
+                    int tmp2 = tmp.count();
+
+                    ret *= combi[cnt][tmp2];
+                    cnt -= tmp2;
+                    ret %= 1000000007;
+
                     ret *= go(tmp);
                     ret %= 1000000007;
                 }
