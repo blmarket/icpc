@@ -43,7 +43,7 @@ void process()
 
     cerr << tmp << ":" << votes << " ";
 
-    for(LL i=tmp+K;i!=N;i+=K) {
+    for(LL i=tmp+K;i<=N;i+=K) {
         round--;
         votes += K;
 
