@@ -41,12 +41,12 @@ void process()
     LL votes = 0;
     LL winround = round;
 
-    for(LL i=tmp+K;i<=N;i+=K) {
-        round--;
+    for(--round;round>0;round--) {
+        tmp += K;
         votes += K;
 
-        cerr << round << ":" << i << ":" << votes << " ";
-        if(votes * 100 >= i * P) { // will win
+        cerr << round << ":" << tmp << ":" << votes << " ";
+        if(votes * 100 >= tmp * P) { // will win
             winround = round;
             votes = 0;
         } 
