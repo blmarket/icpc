@@ -85,6 +85,7 @@ int go(bits &st) {
                 if(rela[j].first == i) {
                     bits tmp;
                     take(rela[j].second, tmp);
+                    tmp.set(rela[j].second);
 
                     ret *= go(tmp);
                     ret %= 1000000007;
