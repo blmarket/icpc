@@ -30,7 +30,7 @@ int A[105];
 
 void process() 
 {
-    int ret = 0;
+    int ret = 1;
     int prevline = 0;
     scanf("%d", &N);
     for(int i=0;i<N;i++) {
