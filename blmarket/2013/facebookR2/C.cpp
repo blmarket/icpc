@@ -66,7 +66,6 @@ void take(int pos, bits &ret) {
 int go(bits &st) {
     bits candi = st;
 
-    cout << candi << endl;
     int cnt = candi.count();
     if(cnt == 0) return 1;
 
@@ -77,7 +76,6 @@ int go(bits &st) {
         candi.reset(p2);
     }
 
-    cout << candi << endl;
     for(int i=0;i<N;i++) {
         if(candi.test(i)) {
             long long ret = 1;
@@ -89,7 +87,6 @@ int go(bits &st) {
                     tmp.set(rela[j].second);
 
                     int tmp2 = tmp.count();
-                    cout << cnt << "," << tmp2 << " = " << combi[cnt][tmp2] << endl;
 
                     ret *= combi[cnt][tmp2];
                     cnt -= tmp2;
