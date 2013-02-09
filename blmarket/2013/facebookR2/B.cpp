@@ -41,8 +41,6 @@ void process()
     LL votes = 0;
     LL winround = round;
 
-    cerr << tmp << ":" << votes << " ";
-
     for(LL i=tmp+K;i<=N;i+=K) {
         round--;
         votes += K;
