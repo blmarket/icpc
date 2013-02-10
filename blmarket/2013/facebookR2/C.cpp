@@ -126,7 +126,6 @@ int go(bits &st) {
             rett %= 1000000007;
         }
     }
-    cerr << st << " " << rett << endl;
     memo[st] = rett;
 }
 
