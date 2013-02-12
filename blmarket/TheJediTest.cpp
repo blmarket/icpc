@@ -29,10 +29,9 @@ public:
         int n = size(st);
         st.pb(0);
         st.pb(0);
-        int sum = st[0];
         for(int i=0;i<n;i++) {
             int others = st[i+1] + st[i+2];
-            int ssum = sum + others;
+            int ssum = st[i] + others;
             int tmp = ssum % K;
 
             if(tmp > others) {
