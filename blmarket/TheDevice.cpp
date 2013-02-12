@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,25 +20,19 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int flag[55];
-
 class TheDevice 
 {
 public:
     int minimumAdditional(vector <string> plates) 
-    {		
-        memset(flag, 0, sizeof(flag));
-        int n = size(plates);
-        int m = size(plates[0]);
-        for(int i=0;i<n;i++) {
-            for(int j=0;j<m;j++) {
-                flag[j] += plates[i][j] - '0';
-            }
-        }
+    {
         int ret = 0;
-        for(int i=0;i<m;i++) {
-            if(flag[i] == 0) return 2;
-            if(flag[i] == 1) ret = 1;
+        for(int i=0;i<size(plates[0]);i++) {
+            int c[2] = {0};
+            for(int j=0;j<size(plates);j++) {
+                c[plates[j][i] - '0']++;
+            }
+            int tmp = !c[0] + (2 - min(2, c[1]));
+            if(ret < tmp) ret = tmp;
         }
         return ret;
     }
