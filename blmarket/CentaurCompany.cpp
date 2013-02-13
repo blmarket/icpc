@@ -101,10 +101,16 @@ public:
             if(occur == 1) {
                 cout << i << endl;
                 data ret = go(i, -1);
-                long long tot = 1;
+                long long tot = 0;
                 long long need = 0;
                 foreach(it, ret) {
                     cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
+                    int same = it->first.head;
+                    if(it->first.same != -99999) same += it->first.same - 2;
+                    if(same < 0) need += it->second * -same;
+                    if(it->first.diff != -99999 && it->first.diff < 0) need += it->second * -it->first.diff;
+
+                    tot += it->second;
                     /*
 
                     // same:
