@@ -48,6 +48,7 @@ public:
             move(a, T);
             move(a, T);
             move(a, T);
+            cout << T << endl;
             T -= 4;
             px *= T / 4;
             py *= T / 4;
