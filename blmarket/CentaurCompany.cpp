@@ -118,6 +118,7 @@ long long brute() {
         if(tmp.first < 0) ret += -tmp.first;
         if(tmp.second < 0) ret += -tmp.second;
     }
+    return ret;
 }
 
 class CentaurCompany 
