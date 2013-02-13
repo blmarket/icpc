@@ -26,14 +26,13 @@ const int dy[] = {1,0,-1,0};
 long long px, py;
 int d;
 
-void move(const VI &a, int &T) {
+void move(const VI &a, int T) {
     for(int i=0;i<size(a);i++) {
         px += dx[d] * a[i];
         py += dy[d] * a[i];
         d += a[i];
         d %= 4;
         cout << px << " " << py << " " << d << endl;
-        if(--T == 0) return;
     }
 }
 
@@ -44,17 +43,19 @@ public:
     {
         px = py = 0;
         d = 0;
-        if(T > size(a) * 4) {
+        if(T > 4) {
             move(a, T);
             move(a, T);
             move(a, T);
             move(a, T);
-            px *= T / (size(a) * 4);
-            py *= T / (size(a) * 4);
-            T %= (size(a) * 4);
+            T -= 4;
+            px *= T / 4;
+            py *= T / 4;
+            T %= 4;
         }
         while(T) {
             move(a, T);
+            T--;
         }
         if(px < 0) px = -px;
         if(py < 0) py = -py;
