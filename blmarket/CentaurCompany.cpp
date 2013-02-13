@@ -104,7 +104,7 @@ public:
                 long long tot = 0;
                 long long need = 0;
                 foreach(it, ret) {
-//                    cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
+                    cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
                     int same = it->first.head;
                     if(it->first.same != -99999) same += it->first.same - 2;
                     if(same < 0) need += it->second * -same;
