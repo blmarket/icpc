@@ -20,24 +20,57 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-struct data {
+struct item {
     int head;
     int diff;
     int same;
+
+    bool operator<(const item &rhs) const {
+        if(head != rhs.head) return head < rhs.head;
+        if(diff != rhs.diff) return diff < rhs.diff;
+        return same < rhs.same;
+    }
 };
+
+typedef map<item, long long> data;
 
 int N;
 VI a,b;
 
 data go(int pos, int parent) {
+    data ret;
+
+    item key;
+    key.head = 1;
+    key.diff = 1; key.same = 1; // FIXME: check later
+    ret[key] = 1;
+
     for(int i=0;i<size(a);i++) {
         if(a[i] != pos && b[i] != pos) continue;
         int oth = a[i] + b[i] - pos;
         if(oth == parent) continue;
 
         data tmp = go(oth, pos);
+
+        data tmp2;
+        tmp2.clear();
+        foreach(it, ret) {
+            foreach(jt, tmp) {
+                // same head
+                item tmpkey;
+                tmpkey.head = it->first.head + jt->first.head;
+                tmpkey.diff = it->first.diff + jt->first.diff - 1;
+                tmpkey.same = it->first.same + jt->first.same - 1;
+                tmp2[tmpkey] += it->second * jt->second;
+                // diff head
+                tmpkey.head = it->first.head;
+                tmpkey.diff = it->first.diff + jt->first.diff + jt->first.head - 2;
+                tmpkey.same = it->first.same + jt->first.same - 1;
+                tmp2[tmpkey] += it->second * jt->second;
+            }
+        }
+        ret.swap(tmp2);
     }
-    data ret;
     return ret;
 }
 
@@ -56,10 +89,14 @@ public:
                 if(b[j] == i) { occur++; pos = j; }
             }
             if(occur == 1) {
-                go(a[pos]+b[pos]-i, i);
+                data ret = go(a[pos]+b[pos]-i, i);
+                foreach(it, ret) {
+                    cout << it->first.head << " " << it->first.same << " " << it->first.diff << " " << it->second << endl;
+                }
                 return 0;
             }
         }
+        return -1;
     }
 
     
