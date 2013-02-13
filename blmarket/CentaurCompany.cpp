@@ -116,13 +116,14 @@ public:
                     if(same < 0) need += it->second * -same;
 
                     if(it->first.diff != -99999 && it->first.diff < 0) need += it->second * -it->first.diff;
+
                     // diff:
                     same = 1;
-                    if(it->first.same != -99999) same += it->first.same - 2;
+                    if(it->first.diff != -99999) same += it->first.diff - 2;
                     if(same < 0) need += it->second * -same;
 
                     int diff = it->first.head;
-                    if(it->first.diff != -99999) diff += it->first.diff - 2;
+                    if(it->first.same != -99999) diff += it->first.same - 2;
                     if(diff < 0) need += it->second * -diff;
 
                     tot += it->second * 2;
