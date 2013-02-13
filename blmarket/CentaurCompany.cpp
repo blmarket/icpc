@@ -100,11 +100,12 @@ public:
 
             if(occur == 1) {
                 cout << i << endl;
-                data ret = go(a[pos]+b[pos]-i, i);
-                long long tot = 0;
+                data ret = go(i, -1);
+                long long tot = 1;
                 long long need = 0;
                 foreach(it, ret) {
                     cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
+                    /*
 
                     // same:
                     int same = it->first.head + 1;
@@ -123,6 +124,7 @@ public:
                     if(diff < 0) need += it->second * -diff;
 
                     tot += it->second * 2;
+                    */
                 }
                 cout << need << " / " << tot << endl;
                 return (double)need / tot;
