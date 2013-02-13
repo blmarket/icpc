@@ -124,6 +124,7 @@ public:
 
                     tot += it->second * 2;
                 }
+                cout << need << " / " << tot << endl;
                 return (double)need / tot;
             }
         }
