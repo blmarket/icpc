@@ -79,13 +79,6 @@ data go(int pos, int parent) {
             }
         }
         ret.swap(tmp2);
-
-        if(pos == 2) {
-            foreach(it, ret) {
-                cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
-            }
-            cout << "----" << endl;
-        }
     }
     return ret;
 }
@@ -156,6 +149,6 @@ public:
 int main()
 {
     CentaurCompany ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
