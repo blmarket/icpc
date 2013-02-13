@@ -115,7 +115,7 @@ long long brute() {
     for(long long i=0;i<dst;i++) {
         brute_cur = i << 1;
         PII tmp = brute_dfs(1, -1);
-        cout << tmp.first << " / " << tmp.second << endl;
+        cout << tmp.first << " : " << tmp.second << endl;
         if(tmp.first < 0) ret += -tmp.first;
         if(tmp.second < 0) ret += -tmp.second;
     }
