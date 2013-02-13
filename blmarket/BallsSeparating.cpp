@@ -1,5 +1,4 @@
 #include <iostream>
-#include <functional>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,74 +20,28 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int sum(vector<int> &v) {
-    int ret = 0;
-    for(int i=0;i<size(v);i++) {
-        ret += v[i];
-    }
-    return ret;
-}
-
-int n;
-vector<int> red, green, blue;
-int reds, greens, blues;
-
-int chk(int a, int b, int c) {
-    if(reds == 0) a = -1;
-    if(greens == 0) b = -2;
-    if(blues == 0) c = -3;
-
-    if(a == b || a==c || b==c) return -1;
-
-    int ret = 0;
-    for(int i=0;i<n;i++) {
-        if(i == a) {
-            ret += green[i] + blue[i];
-            continue;
-        }
-        if(i == b) {
-            ret += red[i] + blue[i];
-            continue;
-        }
-        if(i == c) {
-            ret += red[i] + green[i];
-            continue;
-        }
-
-        int mini = max(max(red[i], green[i]), blue[i]);
-        ret += red[i] + green[i] + blue[i] - mini;
-    }
-
-    return ret;
-}
-
 class BallsSeparating 
 {
 public:
-    int minOperations(vector <int> red_, vector <int> green_, vector <int> blue_) 
+    int minOperations(vector <int> red, vector <int> green, vector <int> blue) 
     {		
-        red = red_; green = green_; blue = blue_;
-        n = size(red);
-        if(sum(red) == 0) {
-            if(sum(blue) == 0) return 0;
-            swap(red, blue);
-        } else {
-            if(sum(green) == 0) {
-                if(sum(blue) == 0) return 0;
-                swap(green, blue);
-            }
-        }
-
-        reds = sum(red);
-        greens = sum(green);
-        blues = sum(blue);
-
+        int n = size(red);
         int ret = -1;
         for(int i=0;i<n;i++) {
-            for(int j=0;j<n;j++) {
-                for(int k=0;k<n;k++) {
-                    int tmp = chk(i,j,k);
-                    if(tmp == -1) continue;
+            for(int j=0;j<n;j++) if(i != j) {
+                for(int k=0;k<n;k++) if(k != i && k != j) {
+                    int tmp = 0;
+                    for(int a=0;a<n;a++) {
+                        int state[3] = { red[a], green[a], blue[a] };
+                        int sum = red[a] + green[a] + blue[a];
+                        int pick = -1;
+                        if(a == i) pick = 0; else if(a == j) pick = 1; else if(a == k) pick = 2;
+                        if(pick == -1) {
+                            pick = 0; if(green[a] > red[a]) pick = 1;
+                            if(blue[a] > state[pick]) pick = 2;
+                        }
+                        tmp += sum - state[pick];
+                    }
                     if(ret == -1 || ret > tmp) ret = tmp;
                 }
             }
@@ -117,6 +70,6 @@ public:
 int main()
 {
     BallsSeparating ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
