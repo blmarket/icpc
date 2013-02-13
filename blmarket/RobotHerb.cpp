@@ -32,6 +32,7 @@ void move(const VI &a) {
         py += dy[d] * a[i];
         d += a[i];
         d %= 4;
+        cout << px << " " << py << " " << d << endl;
     }
 }
 
@@ -42,9 +43,6 @@ public:
     {
         px = py = 0;
         d = 0;
-        move(a);
-        move(a);
-        move(a);
         move(a);
         cout << px << " " << py << " " << d << endl;
     }
