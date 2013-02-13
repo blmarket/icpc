@@ -103,7 +103,7 @@ public:
                 long long tot = 0;
                 long long need = 0;
                 foreach(it, ret) {
-                    //cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
+                    cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
 
                     // same:
                     int same = it->first.head + 1;
@@ -150,6 +150,6 @@ public:
 int main()
 {
     CentaurCompany ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
