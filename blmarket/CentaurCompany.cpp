@@ -17,6 +17,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
@@ -83,6 +84,42 @@ data go(int pos, int parent) {
     return ret;
 }
 
+LL brute_cur;
+bool chk(int pos) {
+    if(brute_cur & (1LL << pos)) return true;
+    return false;
+}
+PII brute_dfs(int pos, int par) {
+    PII ret = mp(0,0);
+    if(chk(pos)) ret.second++; else ret.first++;
+
+    for(int i=0;i<size(a);i++) {
+        if(a[i] != pos && b[i] != pos) continue;
+        int oth = a[i] + b[i] - pos;
+        if(oth == par) continue;
+
+        PII tmp = brute_dfs(oth, pos);
+        ret.first += tmp.first;
+        ret.second += tmp.second;
+        if(chk(pos) != chk(oth)) {
+            if(chk(pos)) ret.second-=2;
+            else ret.first-=2;
+        }
+    }
+    return ret;
+}
+
+long long brute() {
+    long long dst = (1LL << N);
+    long long ret = 0;
+    for(long long i=0;i<dst;i++) {
+        brute_cur = i << 1;
+        PII tmp = brute_dfs(1, -1);
+        if(tmp.first < 0) ret += -tmp.first;
+        if(tmp.second < 0) ret += -tmp.second;
+    }
+}
+
 class CentaurCompany 
 {
 public:
@@ -90,6 +127,9 @@ public:
     {
         a=a_;b=b_;
         N = size(a) + 1;
+
+        cout << brute() << endl;
+
         for(int i=1;i<=N;i++) {
             int occur = 0;
             int pos = -1;
@@ -104,33 +144,12 @@ public:
                 long long tot = 0;
                 long long need = 0;
                 foreach(it, ret) {
-                    cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
                     int same = it->first.head;
                     if(it->first.same != -99999) same += it->first.same - 2;
                     if(same < 0) need += it->second * -same;
                     if(it->first.diff != -99999 && it->first.diff < 0) need += it->second * -it->first.diff;
 
                     tot += it->second;
-                    /*
-
-                    // same:
-                    int same = it->first.head + 1;
-                    if(it->first.same != -99999) same += it->first.same - 2;
-                    if(same < 0) need += it->second * -same;
-
-                    if(it->first.diff != -99999 && it->first.diff < 0) need += it->second * -it->first.diff;
-
-                    // diff:
-                    same = 1;
-                    if(it->first.diff != -99999) same += it->first.diff - 2;
-                    if(same < 0) need += it->second * -same;
-
-                    int diff = it->first.head;
-                    if(it->first.same != -99999) diff += it->first.same - 2;
-                    if(diff < 0) need += it->second * -diff;
-
-                    tot += it->second * 2;
-                    */
                 }
                 cout << need << " / " << tot << endl;
                 return (double)need / tot;
