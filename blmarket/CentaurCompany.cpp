@@ -140,7 +140,6 @@ public:
             }
 
             if(occur == 1) {
-                cout << i << endl;
                 data ret = go(i, -1);
                 long long tot = 0;
                 long long need = 0;
