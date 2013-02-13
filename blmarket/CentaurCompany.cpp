@@ -64,14 +64,16 @@ data go(int pos, int parent) {
                 tmpkey.same = it->first.same + jt->first.same - 1;
                 if(tmpkey.same < -90000) tmpkey.same = it->first.same + jt->first.same + 99999;
                 tmp2[tmpkey] += it->second * jt->second;
+
                 // diff head
                 tmpkey.head = it->first.head;
-                tmpkey.diff = it->first.diff + jt->first.diff - 1;
-                if(tmpkey.diff < -90000) tmpkey.diff = it->first.diff + jt->first.diff + 99999;
-                if(tmpkey.diff < -90000) tmpkey.diff = jt->first.head;
+                tmpkey.diff = it->first.diff + jt->first.same - 1;
+                if(tmpkey.diff < -90000) tmpkey.diff = it->first.diff + jt->first.same + 99999;
+                if(tmpkey.diff < -90000) tmpkey.diff = jt->first.same;
+
                 else tmpkey.diff += jt->first.head - 2;
-                tmpkey.same = it->first.same + jt->first.same - 1;
-                if(tmpkey.same < -90000) tmpkey.same = it->first.same + jt->first.same + 99999;
+                tmpkey.same = it->first.same + jt->first.diff - 1;
+                if(tmpkey.same < -90000) tmpkey.same = it->first.same + jt->first.diff + 99999;
                 tmp2[tmpkey] += it->second * jt->second;
             }
         }
