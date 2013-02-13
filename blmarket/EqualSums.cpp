@@ -20,53 +20,22 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-const int mod = 1000000007;
+int board[55][55];
 int n;
-vector<string> board;
 
-#define M '-'
-
-map<pair<int, string>, int> memo;
-
-int go(int pos, string &in) {
-    if(pos == n) return 1;
-
-    pair<int, string> key = mp(pos, in);
-    if(memo.count(key)) return memo[key];
-    int &ret = memo[key];
-    for(int i=0;i<20;i++) {
-        string tin = in;
-        tin[pos] = i;
-        bool fail = false;
-        int maxoffset = 0;
-        for(int j=0;j<n;j++) if(board[j][pos] != M) {
-            int offset = i - board[j][pos];
-            if(offset > maxoffset) maxoffset = offset;
-            for(int k=0;k<n;k++) if(board[j][k] != M) {
-                int tmp = board[j][k] + offset;
-                if(tmp < 0) { fail = true; break; }
-                if(tin[k] != M && tin[k] != tmp) { fail = true; break; }
-                tin[k] = tmp;
-            }
-            if(fail) break;
-        }
-        if(fail) continue;
-        for(int i=0;i<n;i++) if(tin[i] != M) {
-            tin[i] -= maxoffset;
-            if(tin[i] < 0) { fail=true; break; }
-        }
-        if(fail) continue;
-        ret += go(pos+1, tin);
-        ret %= mod;
-    }
-    /*
+bool go1(int a,int b,int offset) {
     for(int i=0;i<n;i++) {
-        if(in[i] == M) cout << M;
-        else cout << (int)in[i];
+        if(board[a][i] == -1) {
+            if(board[b][i] == -1) continue;
+            board[a][i] = board[b][i] - offset;
+            if(board[a][i] < 0) return false;
+        } else {
+            int tmp = board[a][i] + offset;
+            if(board[b][i] != -1 && board[b][i] != tmp) return false;
+            board[b][i] = tmp;
+        }
     }
-    cout << " = " << ret << endl;
-    */
-    return ret;
+    return true;
 }
 
 class EqualSums 
@@ -74,41 +43,37 @@ class EqualSums
 public:
     int count(vector <string> board_) 
     {
-        memo.clear();
-        board = board_;
-        n = size(board);
-        for(int i=0;i<n;i++) for(int j=0;j<n;j++) if(board[i][j] != M) board[i][j] -= '0';
-
+        n = size(board_);
         for(int i=0;i<n;i++) {
-            int mind = -1;
-            for(int j=0;j<n;j++) if(board[j][i] != M) {
-                if(mind == -1 || board[mind][i] > board[j][i]) mind = j;
-            }
-            if(mind != -1) {
-                for(int j=0;j<n;j++) if(board[j][i] != M && j != mind) {
-                    int offset = board[j][i] - board[mind][i];
-                    for(int k=0;k<n;k++) {
-                        if(board[j][k] != M) {
-                            int tmp = board[j][k] - offset;
-                            if(tmp < 0) return 0;
-                            if(board[mind][k] != M && board[mind][k] != tmp) return 0;
-                            board[mind][k] = tmp;
-                        }
-                    }
+            for(int j=0;j<n;j++) {
+                if(board_[i][j] == '-') {
+                    board[i][j] = -1;
+                    continue;
                 }
-                for(int j=0;j<n;j++) if(board[j][i] != M) {
-                    int offset = board[j][i] - board[mind][i];
-                    for(int k=0;k<n;k++) if(board[mind][k] != M) {
-                        int tmp = board[mind][k] + offset;
-                        if(board[j][k] != M && board[j][k] != tmp) return 0;
-                        board[j][k] = tmp;
-                    }
-                }
+                board[i][j] = board_[i][j] - '0';
             }
         }
 
-        string tmp = board[0];
-        return go(0, tmp);
+        while(true) {
+            bool retry = false;
+            for(int i=0;i<n;i++) {
+                for(int j=i+1;j<n;j++) {
+                    for(int k=0;k<n;k++) {
+                        if(board[i][k] != -1 && board[j][k] != -1) {
+                            if(go1(i,j,board[j][k] - board[i][k]) == false) return 0;
+                            retry = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(!retry) break;
+        }
+
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) cout << board[i][j] << " ";
+            cout << endl;
+        }
     }
 
     
@@ -196,6 +161,6 @@ public:
 int main()
 {
     EqualSums ___test; 
-    ___test.run_test(6); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
