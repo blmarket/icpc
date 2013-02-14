@@ -34,6 +34,7 @@ void move() {
         d += a[i];
         d %= 4;
     }
+    cout << px << " " << py << " " << d << endl;
 }
 
 class RobotHerb 
