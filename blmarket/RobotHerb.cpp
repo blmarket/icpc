@@ -23,42 +23,36 @@ template<typename T> int size(const T &a) { return a.size(); }
 const int dx[] = {0,1,0,-1};
 const int dy[] = {1,0,-1,0};
 
-long long px, py;
+vector<int> a;
 int d;
+long long px,py;
 
-void move(const VI &a, int T) {
+void move() {
     for(int i=0;i<size(a);i++) {
         px += dx[d] * a[i];
         py += dy[d] * a[i];
         d += a[i];
         d %= 4;
-        cout << px << " " << py << " " << d << endl;
     }
 }
 
 class RobotHerb 
 {
 public:
-    long long getdist(int T, vector <int> a) 
+    long long getdist(int T, vector <int> a_) 
     {
-        px = py = 0;
-        d = 0;
+        a = a_;
+        d=px=py=0;
         if(T > 4) {
-            move(a, T);
-            move(a, T);
-            move(a, T);
-            move(a, T);
-            px *= T / 4;
-            py *= T / 4;
+            move(); move(); move(); move();
+            px *= (T / 4);
+            py *= (T / 4);
             T %= 4;
         }
         while(T) {
-            move(a, T);
+            move();
             T--;
         }
-        if(px < 0) px = -px;
-        if(py < 0) py = -py;
-        return px + py;
     }
 
     
