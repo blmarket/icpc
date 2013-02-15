@@ -60,6 +60,7 @@ public:
                     int tmp = getg(k);
                     if(tmp == j) cnt++;
                 }
+                cout << cnt << endl;
                 if(cnt) g[get(mask, j)].pb(cnt);
             }
 
