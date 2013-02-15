@@ -20,32 +20,57 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int group[40];
+const int INF = 99999;
 
-int get(int mask, int pos) {
-    return (mask >> pos) & 1;
-}
+struct info {
+    info(int h, int s, int d) : head(h), same(s), diff(d) {}
 
-int getg(int a) {
-    if(group[a] == a) return a;
-    return group[a] = getg(group[a]);
-}
+    int head, same, diff;
 
-void uni(int a, int b) {
-    a = getg(a); b = getg(b);
-    if(a == b) return;
-    group[b] = a;
-}
-
-int shrink(vector<int> &v) {
-    if(v.size() == 0) return 0;
-    while(v.size() > 1) {
-        int a = v[0];
-        int b = v.back();
-        v[0] = a+b-2;
-        v.pop_back();
+    bool operator<(const info &rhs) const {
+        if(head != rhs.head) return head < rhs.head;
+        if(same != rhs.same) return same < rhs.same;
+        return diff < rhs.diff;
     }
-    return -min(v[0], 0);
+};
+typedef map<info, long long> data;
+
+int n;
+vector<int> links[40];
+
+int add(int a, int b) {
+    if(a == -INF) a = 0;
+    if(b == -INF) b = 0;
+    return a+b;
+}
+
+void go(int a, int parent, data &ret) {
+    ret.clear();
+    ret[info(1, -INF, -INF)] = 1;
+
+    for(int i=0;i<size(links[a]);i++) {
+        int oth = links[a][i];
+        if(oth == parent) continue;
+
+        data tmp;
+        go(oth, a, tmp);
+
+        data tmp2; tmp2.clear();
+        foreach(it, ret) {
+            foreach(jt, tmp) {
+                int nh = it->first.head + jt->first.head;
+                int ns = add(it->first.same, jt->first.same) - 2;
+                int nd = add(it->first.diff, jt->first.diff) - 2;
+                tmp2[info(nh, ns, nd)] += it->second * jt->second;
+
+                nh = it->first.head;
+                ns = add(it->first.same, jt->first.diff) - 2;
+                nd = add(add(it->first.diff, jt->first.head), jt->first.same) - 4;
+                tmp2[info(nh, ns, nd)] += it->second * jt->second;
+            }
+        }
+        ret.swap(tmp2);
+    }
 }
 
 class CentaurCompany 
@@ -53,33 +78,22 @@ class CentaurCompany
 public:
     double getvalue(vector <int> a, vector <int> b) 
     {
-        int n = size(a) + 1;
-        long long need = 0;
-        long long total = 0;
-        for(int i=0;i<(1<<n);i++) {
-            int mask = i<<1;
-            for(int j=1;j<=n;j++) group[j] = j;
-            for(int j=0;j<size(a);j++) {
-                if(get(mask, a[j]) == get(mask, b[j])) {
-                    uni(a[j], b[j]);
-                }
-            }
-
-            vector<int> g[2];
-            g[0]=g[1]=vector<int>();
-            for(int j=1;j<=n;j++) {
-                int cnt = 0;
-                for(int k=1;k<=n;k++) {
-                    int tmp = getg(k);
-                    if(tmp == j) cnt++;
-                }
-                if(cnt) g[get(mask, j)].pb(cnt);
-            }
-
-            need += shrink(g[0]) + shrink(g[1]);
-            total++;
+        n = size(a) + 1;
+        for(int i=1;i<=n;i++) links[i].clear();
+        for(int i=0;i<size(a);i++) {
+            links[a[i]].pb(b[i]);
+            links[b[i]].pb(a[i]);
         }
-        return (double)need / total;
+        data ret;
+        go(1, -1, ret);
+        long long tot = 0, need = 0;
+        foreach(it, ret) {
+            int same = add(it->first.head, it->first.same) - 2;
+            int diff = it->first.diff;
+            if(diff == -INF) diff = 0;
+            need += -min(same, 0) - min(diff, 0);
+        }
+        return (double)need / tot;
     }
 
     
@@ -104,6 +118,6 @@ public:
 int main()
 {
     CentaurCompany ___test; 
-    ___test.run_test(5); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
