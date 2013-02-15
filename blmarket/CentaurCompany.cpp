@@ -17,146 +17,57 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
-typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-struct item {
-    int head;
-    int diff;
-    int same;
+int group[40];
 
-    bool operator<(const item &rhs) const {
-        if(head != rhs.head) return head < rhs.head;
-        if(diff != rhs.diff) return diff < rhs.diff;
-        return same < rhs.same;
-    }
-};
-
-typedef map<item, long long> data;
-
-int N;
-VI a,b;
-
-data go(int pos, int parent) {
-    data ret;
-
-    item key;
-    key.head = 1;
-    key.diff = -99999; key.same = -99999; // FIXME: check later
-    ret[key] = 1;
-
-    for(int i=0;i<size(a);i++) {
-        if(a[i] != pos && b[i] != pos) continue;
-        int oth = a[i] + b[i] - pos;
-        if(oth == parent) continue;
-
-        data tmp = go(oth, pos);
-
-        data tmp2;
-        tmp2.clear();
-        foreach(it, ret) {
-            foreach(jt, tmp) {
-                // same head
-                item tmpkey;
-                tmpkey.head = it->first.head + jt->first.head;
-                tmpkey.diff = it->first.diff + jt->first.diff - 1;
-                if(tmpkey.diff < -90000) tmpkey.diff = it->first.diff + jt->first.diff + 99999;
-                tmpkey.same = it->first.same + jt->first.same - 1;
-                if(tmpkey.same < -90000) tmpkey.same = it->first.same + jt->first.same + 99999;
-                tmp2[tmpkey] += it->second * jt->second;
-
-                // diff head
-                tmpkey.head = it->first.head;
-                tmpkey.diff = it->first.diff + jt->first.same - 1;
-                if(tmpkey.diff < -90000) tmpkey.diff = it->first.diff + jt->first.same + 99999;
-
-                if(tmpkey.diff < -90000) tmpkey.diff = jt->first.head; 
-                else tmpkey.diff += jt->first.head - 2;
-
-                tmpkey.same = it->first.same + jt->first.diff - 1;
-                if(tmpkey.same < -90000) tmpkey.same = it->first.same + jt->first.diff + 99999;
-                tmp2[tmpkey] += it->second * jt->second;
-            }
-        }
-        ret.swap(tmp2);
-    }
-    return ret;
+int get(int mask, int pos) {
+    return (mask >> pos) & 1;
 }
 
-LL brute_cur;
-bool chk(int pos) {
-    if(brute_cur & (1LL << pos)) return true;
-    return false;
-}
-PII brute_dfs(int pos, int par) {
-    PII ret = mp(0,0);
-    if(chk(pos)) ret.second++; else ret.first++;
-
-    for(int i=0;i<size(a);i++) {
-        if(a[i] != pos && b[i] != pos) continue;
-        int oth = a[i] + b[i] - pos;
-        if(oth == par) continue;
-
-        PII tmp = brute_dfs(oth, pos);
-        ret.first += tmp.first;
-        ret.second += tmp.second;
-        if(chk(pos) != chk(oth)) {
-            if(chk(pos)) ret.second-=2;
-            else ret.first-=2;
-        }
-    }
-    return ret;
+int getg(int a) {
+    if(group[a] == a) return a;
+    return group[a] = getg(group[a]);
 }
 
-long long brute() {
-    long long dst = (1LL << N);
-    long long ret = 0;
-    for(long long i=0;i<dst;i++) {
-        brute_cur = i << 1;
-        PII tmp = brute_dfs(1, -1);
-        cout << tmp.first << " : " << tmp.second << endl;
-        if(tmp.first < 0) ret += -tmp.first;
-        if(tmp.second < 0) ret += -tmp.second;
-    }
-    return ret;
+void uni(int a, int b) {
+    a = getg(a); b = getg(b);
+    if(a == b) return;
+    group[b] = a;
 }
 
 class CentaurCompany 
 {
 public:
-    double getvalue(vector <int> a_, vector <int> b_) 
+    double getvalue(vector <int> a, vector <int> b) 
     {
-        a=a_;b=b_;
-        N = size(a) + 1;
-
-        cout << brute() << endl;
-
-        for(int i=1;i<=N;i++) {
-            int occur = 0;
-            int pos = -1;
+        int n = size(a) + 1;
+        for(int i=0;i<(1<<n);i++) {
+            int mask = n<<1;
+            for(int j=1;j<=n;j++) group[j] = j;
             for(int j=0;j<size(a);j++) {
-                if(a[j] == i) { occur++; pos = j; }
-                if(b[j] == i) { occur++; pos = j; }
-            }
-
-            if(occur == 1) {
-                data ret = go(i, -1);
-                long long tot = 0;
-                long long need = 0;
-                foreach(it, ret) {
-                    int same = it->first.head;
-                    if(it->first.same != -99999) same += it->first.same - 2;
-                    if(same < 0) need += it->second * -same;
-                    if(it->first.diff != -99999 && it->first.diff < 0) need += it->second * -it->first.diff;
-
-                    tot += it->second;
+                if(get(mask, a[j]) == get(mask, b[j])) {
+                    uni(a[j], b[j]);
                 }
-                cout << need << " / " << tot << endl;
-                return (double)need / tot;
             }
+
+            vector<int> g[2];
+            g[0]=g[1]=vector<int>();
+            for(int j=1;j<=n;j++) {
+                int cnt = 0;
+                for(int k=1;k<=n;k++) {
+                    int tmp = getg(k);
+                    if(tmp == j) cnt++;
+                }
+                if(cnt) g[get(mask, j)].pb(cnt);
+            }
+
+            for(int i=0;i<size(g[0]);i++) cout << g[0][i] << " ";
+            cout << endl;
+            for(int i=0;i<size(g[1]);i++) cout << g[1][i] << " ";
+            cout << endl;
         }
-        return -1;
     }
 
     
