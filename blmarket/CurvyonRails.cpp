@@ -56,6 +56,7 @@ void go(const string &a, int mask, int nmask, int pos, int tv, bool left) {
 void move(const string &a) {
     next.clear();
     foreach(it, cur) {
+        cout << it->first << " = " << it->second << endl;
         int mask = it->first;
         go(a, mask, 0, 0, it->second, false);
     }
@@ -70,6 +71,7 @@ public:
         cur[0] = 0;
         for(int i=0;i<size(field);i++) {
             move(field[i]);
+            cout << "----------" << endl;
         }
         int ret = -1;
         foreach(it, cur) {
