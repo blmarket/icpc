@@ -94,6 +94,7 @@ public:
             need += it->second * (-min(same, 0) - min(diff, 0));
             tot += it->second;
         }
+        cout << need << endl;
         return (double)need / tot;
     }
 
