@@ -44,7 +44,7 @@ public:
     {
         int n = size(a) + 1;
         for(int i=0;i<(1<<n);i++) {
-            int mask = n<<1;
+            int mask = i<<1;
             for(int j=1;j<=n;j++) group[j] = j;
             for(int j=0;j<size(a);j++) {
                 if(get(mask, a[j]) == get(mask, b[j])) {
