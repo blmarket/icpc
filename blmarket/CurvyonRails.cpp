@@ -22,6 +22,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 map<int, int> cur, next;
 
+// FIXME: meet in the middle
 void go(const string &a, int mask, int nmask, int pos, int tv, bool left) {
     if(pos == size(a)) {
         if(left) return;
