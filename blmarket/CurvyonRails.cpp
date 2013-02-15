@@ -28,7 +28,7 @@ public:
         int a = 0;
         for(int i=0;i<25;i++) {
             for(int j=0;j<(1<<25);j++) {
-                a++;
+                a+=(i&j);
             }
         }
         return a;
