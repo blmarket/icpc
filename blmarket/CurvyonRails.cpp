@@ -73,11 +73,8 @@ public:
             move(field[i]);
             cout << "----------" << endl;
         }
-        int ret = -1;
-        foreach(it, cur) {
-            if(ret == -1 || ret > it->second) ret = it->second;
-        }
-        return ret;
+        if(cur.count(0) == 0) return -1;
+        return cur[0];
     }
 
     
