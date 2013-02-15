@@ -37,12 +37,25 @@ void uni(int a, int b) {
     group[b] = a;
 }
 
+int shrink(vector<int> &v) {
+    if(v.size() == 0) return 0;
+    while(v.size() > 1) {
+        int a = v[0];
+        int b = v.back();
+        v[0] = a+b-2;
+        v.pop_back();
+    }
+    return -min(v[0], 0);
+}
+
 class CentaurCompany 
 {
 public:
     double getvalue(vector <int> a, vector <int> b) 
     {
         int n = size(a) + 1;
+        long long need = 0;
+        long long total = 0;
         for(int i=0;i<(1<<n);i++) {
             int mask = i<<1;
             for(int j=1;j<=n;j++) group[j] = j;
@@ -63,12 +76,10 @@ public:
                 if(cnt) g[get(mask, j)].pb(cnt);
             }
 
-            cout << mask << ":" << endl;
-            for(int i=0;i<size(g[0]);i++) cout << g[0][i] << " ";
-            cout << endl;
-            for(int i=0;i<size(g[1]);i++) cout << g[1][i] << " ";
-            cout << endl;
+            need += shrink(g[0]) + shrink(g[1]);
+            total++;
         }
+        return (double)need / total;
     }
 
     
