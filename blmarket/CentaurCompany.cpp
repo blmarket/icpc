@@ -91,7 +91,8 @@ public:
             int same = add(it->first.head, it->first.same) - 2;
             int diff = it->first.diff;
             if(diff == -INF) diff = 0;
-            need += -min(same, 0) - min(diff, 0);
+            need += it->second * (-min(same, 0) - min(diff, 0));
+            tot += it->second;
         }
         return (double)need / tot;
     }
