@@ -20,14 +20,62 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+map<int, int> cur, next;
+
+void go(const string &a, int mask, int nmask, int pos, int tv, bool left) {
+    if(pos == size(a)) {
+        if(left) return;
+        if(next.count(nmask) == 0 || next[nmask] > tv) next[nmask] = tv;
+        return;
+    }
+
+    bool flag = (mask >> pos) & 1;
+    if(flag) {
+        if(a[pos] == 'w') return;
+        if(left) return go(a, mask, nmask, pos+1, tv, false);
+        int ttv = tv + (a[pos] == 'C');
+        go(a, mask, nmask | (1 << pos), pos + 1, ttv, false);
+        go(a, mask, nmask, pos+1, tv, true);
+    } else {
+        if(a[pos] == 'w') {
+            if(left) return;
+            go(a, mask, nmask, pos+1, tv, false);
+            return;
+        }
+
+        int ttv = tv + (a[pos] == 'C');
+        if(left) {
+            go(a, mask, nmask, pos+1, ttv, true);
+            go(a, mask, nmask | (1<<pos), pos+1, tv, false);
+            return;
+        }
+        go(a, mask, nmask | (1<<pos), pos+1, tv, true);
+    }
+}
+
+void move(const string &a) {
+    next.clear();
+    foreach(it, cur) {
+        int mask = it->first;
+        go(a, mask, 0, 0, it->second, false);
+    }
+    cur.swap(next);
+}
 
 class CurvyonRails 
 {
 public:
     int getmin(vector <string> field) 
     {
-        cout << (1<<25) << endl;
-        return 0;
+        cur[0] = 0;
+        for(int i=0;i<size(field);i++) {
+            move(field[i]);
+        }
+        int ret = -1;
+        foreach(it, cur) {
+            if(ret == -1 || ret > it->second) ret = it->second;
+        }
+        return ret;
     }
 
     
