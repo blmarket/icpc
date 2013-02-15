@@ -56,7 +56,7 @@ void go(const string &a, int mask, int nmask, int pos, int tv, bool left) {
 void move(const string &a) {
     next.clear();
     foreach(it, cur) {
-        cout << it->first << " = " << it->second << endl;
+        // cout << it->first << " = " << it->second << endl;
         int mask = it->first;
         go(a, mask, 0, 0, it->second, false);
     }
