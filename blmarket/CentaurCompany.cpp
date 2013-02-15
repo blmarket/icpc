@@ -88,13 +88,13 @@ public:
         go(1, -1, ret);
         long long tot = 0, need = 0;
         foreach(it, ret) {
+            cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
             int same = add(it->first.head, it->first.same) - 2;
             int diff = it->first.diff;
             if(diff == -INF) diff = 0;
             need += it->second * (-min(same, 0) - min(diff, 0));
             tot += it->second;
         }
-        cout << need << endl;
         return (double)need / tot;
     }
 
@@ -120,6 +120,6 @@ public:
 int main()
 {
     CentaurCompany ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
