@@ -89,7 +89,7 @@ public:
         long long tot = 0, need = 0;
         foreach(it, ret) {
             cout << it->first.head << " " << it->first.same << " " << it->first.diff << " = " << it->second << endl;
-            int same = add(it->first.head, it->first.same) - 2;
+            int same = add(it->first.head, it->first.same);
             int diff = it->first.diff;
             if(diff == -INF) diff = 0;
             need += it->second * (-min(same, 0) - min(diff, 0));
