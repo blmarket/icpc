@@ -20,18 +20,14 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+
 class CurvyonRails 
 {
 public:
     int getmin(vector <string> field) 
     {
-        int a = 0;
-        for(int i=0;i<25;i++) {
-            for(int j=0;j<(1<<25);j++) {
-                a+=(i&j);
-            }
-        }
-        return a;
+        cout << (1<<25) << endl;
+        return 0;
     }
 
     
