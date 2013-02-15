@@ -39,9 +39,9 @@ int n;
 vector<int> links[40];
 
 int add(int a, int b) {
-    if(a == -INF) a = 0;
-    if(b == -INF) b = 0;
-    return a+b;
+    if(a == -INF) return b;
+    if(b == -INF) return a;
+    return a+b-2;
 }
 
 void go(int a, int parent, data &ret) {
@@ -59,13 +59,13 @@ void go(int a, int parent, data &ret) {
         foreach(it, ret) {
             foreach(jt, tmp) {
                 int nh = it->first.head + jt->first.head;
-                int ns = add(it->first.same, jt->first.same) - 2;
-                int nd = add(it->first.diff, jt->first.diff) - 2;
+                int ns = add(it->first.same, jt->first.same);
+                int nd = add(it->first.diff, jt->first.diff);
                 tmp2[info(nh, ns, nd)] += it->second * jt->second;
 
                 nh = it->first.head;
-                ns = add(it->first.same, jt->first.diff) - 2;
-                nd = add(add(it->first.diff, jt->first.head), jt->first.same) - 4;
+                ns = add(it->first.same, jt->first.diff);
+                nd = add(add(it->first.diff, jt->first.head), jt->first.same);
                 tmp2[info(nh, ns, nd)] += it->second * jt->second;
             }
         }
