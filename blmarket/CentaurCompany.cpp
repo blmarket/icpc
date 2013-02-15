@@ -63,7 +63,7 @@ public:
                 if(cnt) g[get(mask, j)].pb(cnt);
             }
 
-            cout << mask << endl;
+            cout << mask << ":" << endl;
             for(int i=0;i<size(g[0]);i++) cout << g[0][i] << " ";
             cout << endl;
             for(int i=0;i<size(g[1]);i++) cout << g[1][i] << " ";
