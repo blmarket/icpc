@@ -25,11 +25,13 @@ class CurvyonRails
 public:
     int getmin(vector <string> field) 
     {
+        int a = 0;
         for(int i=0;i<25;i++) {
             for(int j=0;j<(1<<25);j++) {
+                a++;
             }
         }
-        return 0;
+        return a;
     }
 
     
