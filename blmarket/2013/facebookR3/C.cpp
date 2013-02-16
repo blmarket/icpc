@@ -115,7 +115,7 @@ int go(int cut) {
 
     if(sol == -1 || sol > ret) sol = ret;
 
-    cerr << cut << " " << size(cnts) << " = " << ret << endl;
+    cerr << cut << " " << size(cnts) << " = " << ret << " " << sol << endl;
 
     return size(cnts);
 }
