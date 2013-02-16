@@ -47,13 +47,19 @@ void input(void) {
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) if(i != j) {
             if(i > j) R[i][j] = f1[i * (i-1) / 2 + j];
-            if(j > i) R[i][j] = f2[j * (j-1) / 2 + j];
+            if(j > i) R[i][j] = f2[j * (j-1) / 2 + i];
         }
     }
 }
 
 void process(void) {
     input();
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            cout << R[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
 
 int main(void)
