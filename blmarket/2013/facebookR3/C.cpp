@@ -72,6 +72,7 @@ void visit(int cut, int a, set<int> &res) {
 LL sol = -1;
 
 int go(int cut) {
+    if(sol != -1 && cut > sol) return N+1;
     set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
