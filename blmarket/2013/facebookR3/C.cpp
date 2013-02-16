@@ -102,7 +102,7 @@ LL go(int cut) {
         ret += (LL)cnts[i] * C;
     }
 
-    cerr << cut << " = " << ret << endl;
+    cerr << cut << " = " << size(cnts) << " " << ret << endl;
 
     return ret;
 }
