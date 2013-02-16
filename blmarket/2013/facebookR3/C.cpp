@@ -75,6 +75,8 @@ LL go(int cut) {
         visit(cut, i, S[i]);
     }
 
+    cerr << "dont visit" << endl;
+
     vector<int> cnts;
     bool useless[1120];
     memset(useless, 0, sizeof(useless));
