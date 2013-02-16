@@ -73,8 +73,8 @@ LL go(int cut) {
     set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
-    memset(chk, 0, sizeof(chk));
     for(int i=0;i<N;i++) {
+        memset(chk, 0, sizeof(chk));
         visit(cut, i, S[i]);
     }
 
