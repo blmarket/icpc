@@ -84,6 +84,7 @@ LL go(int cut) {
                 break;
             }
         }
+        if(fail) continue;
 
         cerr << i << " : ";
         foreach(it, S[i]) {
