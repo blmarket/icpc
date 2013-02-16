@@ -106,6 +106,8 @@ LL go(int cut) {
         ret += (LL)cnts[i] * C;
     }
 
+    cerr << cut << " = " << ret << endl;
+
     return ret;
 }
 
