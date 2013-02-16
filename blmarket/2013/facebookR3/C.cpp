@@ -91,12 +91,13 @@ LL go(int cut) {
         cnts.pb(S[i].size());
 
         foreach(it, S[i]) useless[*it] = true;
-
+        /*
         cerr << i << " : ";
         foreach(it, S[i]) {
             cerr << *it << " ";
         }
         cerr << endl;
+        */
     }
 
     for(int i=0;i<size(cnts);i++) {
