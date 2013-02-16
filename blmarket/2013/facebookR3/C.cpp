@@ -115,8 +115,6 @@ void process(void) {
     sort(values.begin(), values.end());
     values.erase(unique(values.begin(), values.end()), values.end());
 
-    cerr << endl;
-
     LL ret = -1;
     for(int i=0;i<size(values);i++) {
         LL tmp = go(values[i]);
