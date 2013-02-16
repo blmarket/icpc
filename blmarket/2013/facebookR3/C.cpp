@@ -28,6 +28,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N,K,C;
 int R[1120][1120];
 LL f1[1120 * 1120], f2[1120 * 1120];
+vector<int> values;
 
 void input(void) {
     int x1,a1,b1,m1;
@@ -44,22 +45,40 @@ void input(void) {
         f2[i] = (f2[i-1] * a2 + b2) % m2;
     }
 
+    values.clear();
+    values.pb(0);
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) if(i != j) {
             if(i > j) R[i][j] = f1[i * (i-1) / 2 + j];
             if(j > i) R[i][j] = f2[j * (j-1) / 2 + i];
+            values.pb(R[i][j]);
         }
     }
 }
 
+LL go(int cut) {
+    return 0;
+}
+
 void process(void) {
     input();
+
+    sort(values.begin(), values.end());
+    values.erase(unique(values.begin(), values.end()), values.end());
+
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) {
-            cout << R[i][j] << " ";
+            cerr << R[i][j] << " ";
         }
-        cout << endl;
+        cerr << endl;
     }
+
+    LL ret = -1;
+    for(int i=0;i<size(values);i++) {
+        LL tmp = go(values[i]);
+        if(ret == -1 || ret > tmp) ret = tmp;
+    }
+    cout << ret << endl;
 }
 
 int main(void)
