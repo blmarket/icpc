@@ -76,15 +76,21 @@ LL go(int cut) {
         visit(cut, i, S[i]);
     }
 
+    vector<int> cnts;
+    bool useless[1120];
+    memset(useless, 0, sizeof(useless));
     for(int i=0;i<N;i++) {
-        bool fail = false;
+        if(useless[i]) continue;
         foreach(it, S[i]) {
             if(S[*it].count(i) == 0) {
-                fail = true;
+                useless[i] = true;
                 break;
             }
         }
-        if(fail) continue;
+        if(useless[i]) continue;
+        cnts.pb(S[i].size());
+
+        foreach(it, S[i]) useless[*it] = true;
 
         cerr << i << " : ";
         foreach(it, S[i]) {
