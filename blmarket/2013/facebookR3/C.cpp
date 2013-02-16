@@ -95,6 +95,8 @@ int go(int cut) {
         if(useless[i]) continue;
         cnts.pb(S[i].size());
 
+        cerr << S[i].size() << endl;
+
         foreach(it, S[i]) useless[*it] = true;
     }
 
