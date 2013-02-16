@@ -95,8 +95,6 @@ int go(int cut) {
         if(useless[i]) continue;
         cnts.pb(S[i].size());
 
-        cerr << S[i].size() << endl;
-
         foreach(it, S[i]) useless[*it] = true;
     }
 
@@ -128,7 +126,10 @@ void go2(int s, int e, int si, int ei) {
 void process(void) {
     input();
 
-    cout << "input done" << endl;
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) cerr << R[i][j] << " ";
+        cerr << endl;
+    }
 
     sort(values.begin(), values.end());
     values.erase(unique(values.begin(), values.end()), values.end());
