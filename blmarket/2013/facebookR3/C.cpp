@@ -69,7 +69,7 @@ void visit(int cut, int a, set<int> &res) {
     }
 }
 
-LL sol = -1;
+LL sol;
 
 int go(int cut) {
     if(sol != -1 && cut > sol) return N+1;
@@ -133,6 +133,7 @@ void go2(int s, int e, int si, int ei) {
 
 void process(void) {
     input();
+    sol = -1;
 
     sort(values.begin(), values.end());
     values.erase(unique(values.begin(), values.end()), values.end());
