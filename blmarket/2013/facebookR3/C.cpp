@@ -117,7 +117,7 @@ void go2(int s, int e, int si, int ei) {
     if(si == ei) return;
     if(s+1 == e) return;
     int m = (s+e)/2;
-    int mi = go(m);
+    int mi = go(values[m]);
 
     go2(s, m, si, mi);
     go2(m, e, mi, ei);
@@ -126,16 +126,11 @@ void go2(int s, int e, int si, int ei) {
 void process(void) {
     input();
 
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) cerr << R[i][j] << " ";
-        cerr << endl;
-    }
-
     sort(values.begin(), values.end());
     values.erase(unique(values.begin(), values.end()), values.end());
 
     int s = 0; int e = size(values) - 1;
-    int si = go(s); int ei = go(e);
+    int si = go(values[s]); int ei = go(values[e]);
     go2(s, e, si, ei);
     cout << sol << endl;
 }
