@@ -77,6 +77,16 @@ LL go(int cut) {
     cerr << "cut = " << cut << endl;
     for(int i=0;i<N;i++) {
         visit(cut, i);
+    }
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<i;j++) if(R[i][j] > cut) {
+            foreach(it, S[j]) {
+                S[i].insert(*it);
+            }
+        }
+    }
+
+    for(int i=0;i<N;i++) {
         cerr << i << " : ";
         foreach(it, S[i]) {
             cerr << *it << " ";
