@@ -40,7 +40,7 @@ void input(void) {
 
     f1[0] = x1; f2[0] = x2;
 
-    for(int i=1;i<N;i++) {
+    for(int i=1;i<N*(N+1);i++) {
         f1[i] = (f1[i-1] * a1 + b1) % m1;
         f2[i] = (f2[i-1] * a2 + b2) % m2;
     }
