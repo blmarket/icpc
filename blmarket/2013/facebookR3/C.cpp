@@ -62,7 +62,7 @@ void visit(int cut, int a, set<int> &res) {
     chk[a] = true;
     res.insert(a);
 
-    for(int i=0;i<N;i++) if(i != a) {
+    for(int i=0;i<N;i++) if(i != a && chk[i] == false) {
         if(R[a][i] > cut) {
             visit(cut, i, res);
         }
@@ -93,12 +93,6 @@ LL go(int cut) {
         cnts.pb(S[i].size());
 
         foreach(it, S[i]) useless[*it] = true;
-
-        cerr << i << " : ";
-        foreach(it, S[i]) {
-            cerr << *it << " ";
-        }
-        cerr << endl;
     }
 
     if(size(cnts) < K) return -1;
