@@ -27,6 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N,K,C;
 int R[1120][1120];
+LL f1[1120 * 1120], f2[1120 * 1120];
 
 void input(void) {
     int x1,a1,b1,m1;
@@ -36,7 +37,6 @@ void input(void) {
     scanf("%d %d %d %d", &x1, &a1, &b1, &m1);
     scanf("%d %d %d %d", &x2, &a2, &b2, &m2);
 
-    LL f1[1120 * 1120], f2[1120 * 1120];
     f1[0] = x1; f2[0] = x2;
 
     for(int i=1;i<N;i++) {
