@@ -57,6 +57,7 @@ void input(void) {
 }
 
 void visit(int cut, int a, set<int> &res) {
+    cerr << a << endl;
     if(res.count(a)) return;
     res.insert(a);
 
