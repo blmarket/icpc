@@ -69,7 +69,9 @@ void visit(int cut, int a, set<int> &res) {
     }
 }
 
-LL go(int cut) {
+LL sol = -1;
+
+int go(int cut) {
     set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
@@ -79,6 +81,7 @@ LL go(int cut) {
     }
 
     vector<int> cnts;
+    cnts.clear();
     bool useless[1120];
     memset(useless, 0, sizeof(useless));
     for(int i=0;i<N;i++) {
@@ -95,16 +98,29 @@ LL go(int cut) {
         foreach(it, S[i]) useless[*it] = true;
     }
 
-    if(size(cnts) < K) return -1;
     sort(cnts.begin(), cnts.end());
+    if(size(cnts) < K) return size(cnts);
+
     LL ret = cut;
     for(int i=0;i<K;i++) {
         ret += (LL)cnts[i] * C;
     }
 
-    cerr << cut << " = " << size(cnts) << " " << ret << endl;
+    if(sol == -1 || sol > ret) sol = ret;
 
-    return ret;
+    cerr << cut << " " << size(cnts) << " = " << ret << endl;
+
+    return size(cnts);
+}
+
+void go2(int s, int e, int si, int ei) {
+    if(si == ei) return;
+    if(s+1 == e) return;
+    int m = (s+e)/2;
+    int mi = go(m);
+
+    go2(s, m, si, mi);
+    go2(m, e, mi, ei);
 }
 
 void process(void) {
@@ -115,12 +131,10 @@ void process(void) {
     sort(values.begin(), values.end());
     values.erase(unique(values.begin(), values.end()), values.end());
 
-    LL ret = -1;
-    for(int i=0;i<size(values);i++) {
-        LL tmp = go(values[i]);
-        if(ret == -1 || ret > tmp) ret = tmp;
-    }
-    cout << ret << endl;
+    int s = 0; int e = size(values) - 1;
+    int si = go(s); int ei = go(e);
+    go2(s, e, si, ei);
+    cout << sol << endl;
 }
 
 int main(void)
