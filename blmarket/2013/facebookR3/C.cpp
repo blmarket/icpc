@@ -76,6 +76,13 @@ int go(int cut) {
     for(int i=0;i<N;i++) S[i].clear();
 
     for(int i=0;i<N;i++) {
+        for(int j=0;j<i;j++) {
+            if(R[i][j] > cut && R[j][i] > cut) {
+                S[i] = S[j];
+                break;
+            }
+        }
+        if(S[i].size()) continue;
         memset(chk, 0, sizeof(chk));
         visit(cut, i, S[i]);
     }
