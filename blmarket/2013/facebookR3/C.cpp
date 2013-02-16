@@ -99,6 +99,11 @@ LL go(int cut) {
         cerr << endl;
     }
 
+    for(int i=0;i<size(cnts);i++) {
+        cout << cnts[i] << " ";
+    }
+    cout << endl;
+
     return 0;
 }
 
