@@ -60,7 +60,6 @@ bool chk[1120];
 void visit(int cut, int a, set<int> &res) {
     if(chk[a]) return;
     chk[a] = true;
-    cerr << a << endl;
     res.insert(a);
 
     for(int i=0;i<N;i++) if(i != a) {
@@ -129,7 +128,6 @@ void process(void) {
         LL tmp = go(values[i]);
         cout << values[i] << " = " << tmp << endl;
         if(ret == -1 || ret > tmp) ret = tmp;
-        if(tmp > ret) break;
     }
     cout << ret << endl;
 }
