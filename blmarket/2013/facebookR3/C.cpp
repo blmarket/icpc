@@ -113,6 +113,11 @@ LL go(int cut) {
 void process(void) {
     input();
 
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) cerr << R[i][j] << " ";
+        cerr << endl;
+    }
+
     sort(values.begin(), values.end());
     values.erase(unique(values.begin(), values.end()), values.end());
 
