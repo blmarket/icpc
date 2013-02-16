@@ -121,6 +121,7 @@ void process(void) {
     LL ret = -1;
     for(int i=0;i<size(values);i++) {
         LL tmp = go(values[i]);
+        cout << values[i] << " = " << tmp << endl;
         if(ret == -1 || ret > tmp) ret = tmp;
         if(tmp > ret) break;
     }
