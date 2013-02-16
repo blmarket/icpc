@@ -72,6 +72,8 @@ void visit(int cut, int a) {
 }
 
 LL go(int cut) {
+    for(int i=0;i<N;i++) S[i].clear();
+
     cerr << "cut = " << cut << endl;
     for(int i=0;i<N;i++) {
         visit(cut, i);
