@@ -100,12 +100,14 @@ LL go(int cut) {
         */
     }
 
-    for(int i=0;i<size(cnts);i++) {
-        cout << cnts[i] << " ";
+    if(size(cnts) < K) return -1;
+    sort(cnts.begin(), cnts.end());
+    LL ret = cut;
+    for(int i=0;i<K;i++) {
+        ret += (LL)cnts[i] * C;
     }
-    cout << endl;
 
-    return 0;
+    return ret;
 }
 
 void process(void) {
@@ -115,12 +117,6 @@ void process(void) {
     values.erase(unique(values.begin(), values.end()), values.end());
 
     cerr << endl;
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) {
-            cerr << R[i][j] << " ";
-        }
-        cerr << endl;
-    }
 
     LL ret = -1;
     for(int i=0;i<size(values);i++) {
