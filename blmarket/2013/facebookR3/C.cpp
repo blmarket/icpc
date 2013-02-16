@@ -56,9 +56,11 @@ void input(void) {
     }
 }
 
+bool chk[1120];
 void visit(int cut, int a, set<int> &res) {
+    if(chk[a]) return;
+    chk[a] = true;
     cerr << a << endl;
-    if(res.count(a)) return;
     res.insert(a);
 
     for(int i=0;i<N;i++) if(i != a) {
@@ -72,6 +74,7 @@ LL go(int cut) {
     set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
+    memset(chk, 0, sizeof(chk));
     for(int i=0;i<N;i++) {
         visit(cut, i, S[i]);
     }
