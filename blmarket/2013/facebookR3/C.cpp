@@ -71,7 +71,6 @@ LL go(int cut) {
     set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
-    cerr << "cut = " << cut << endl;
     for(int i=0;i<N;i++) {
         visit(cut, i, S[i]);
     }
