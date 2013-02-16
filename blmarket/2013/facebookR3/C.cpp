@@ -56,34 +56,24 @@ void input(void) {
     }
 }
 
-set<int> S[1120];
-void visit(int cut, int a) {
-    if(S[a].size() != 0) return;
-    S[a].insert(a);
+void visit(int cut, int a, set<int> &res) {
+    if(res.count(a)) return;
+    res.insert(a);
+
     for(int i=0;i<N;i++) if(i != a) {
         if(R[a][i] > cut) {
-            S[a].insert(i);
-            visit(cut, i);
-            foreach(it, S[i]) {
-                S[a].insert(*it);
-            }
+            visit(cut, i, res);
         }
     }
 }
 
 LL go(int cut) {
+    set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
     cerr << "cut = " << cut << endl;
     for(int i=0;i<N;i++) {
-        visit(cut, i);
-    }
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<i;j++) if(R[i][j] > cut) {
-            foreach(it, S[j]) {
-                S[i].insert(*it);
-            }
-        }
+        visit(cut, i, S[i]);
     }
 
     for(int i=0;i<N;i++) {
