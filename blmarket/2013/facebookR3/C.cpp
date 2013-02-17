@@ -13,7 +13,11 @@
 #define mp make_pair
 #define pb push_back
 #define sqr(x) ((x)*(x))
+#ifndef __cplusplus
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+#else
+#define foreach(it, c) for(auto it = (c).begin(); it != (c).end(); ++it)
+#endif
 
 using namespace std;
 
