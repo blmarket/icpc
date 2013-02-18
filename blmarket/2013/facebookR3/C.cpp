@@ -168,7 +168,9 @@ void go2(int s, int e, int si, int ei) {
     int m = (s+e)/2;
     int mi = go(values[m]);
 
-    go2(s, m, si, mi);
+    if(mi >= K) {
+        go2(s, m, si, mi);
+    }
     go2(m, e, mi, ei);
 }
 
