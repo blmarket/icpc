@@ -130,20 +130,12 @@ int go(int cut) {
     set<int> S[1120];
     for(int i=0;i<N;i++) S[i].clear();
 
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<i;j++) {
-            if(R[i][j] > cut && R[j][i] > cut) {
-                S[i] = S[j];
-                break;
-            }
-        }
-        if(S[i].size()) continue;
-        memset(chk, 0, sizeof(chk));
-        visit(cut, i, S[i]);
-    }
-
     vector<int> cnts;
-    cnts.clear();
+    tarjan(N, cnts, [&](int a, int b) {
+            return (R[a][b] > cut);
+            });
+
+
     bool useless[1120];
     memset(useless, 0, sizeof(useless));
     for(int i=0;i<N;i++) {
