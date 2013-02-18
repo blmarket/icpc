@@ -135,6 +135,11 @@ int go(int cut) {
             return (R[a][b] > cut);
             });
 
+    for(int i=0;i<size(cnts);i++) {
+        cerr << cnts[i] << " ";
+    }
+    cerr << endl;
+
 
     bool useless[1120];
     memset(useless, 0, sizeof(useless));
