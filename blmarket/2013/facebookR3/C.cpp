@@ -140,23 +140,6 @@ int go(int cut) {
     }
     cerr << endl;
 
-
-    bool useless[1120];
-    memset(useless, 0, sizeof(useless));
-    for(int i=0;i<N;i++) {
-        if(useless[i]) continue;
-        foreach(it, S[i]) {
-            if(S[*it].count(i) == 0) {
-                useless[i] = true;
-                break;
-            }
-        }
-        if(useless[i]) continue;
-        cnts.pb(S[i].size());
-
-        foreach(it, S[i]) useless[*it] = true;
-    }
-
     sort(cnts.begin(), cnts.end());
     if(size(cnts) < K) return size(cnts);
 
