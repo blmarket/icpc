@@ -135,6 +135,7 @@ int go(int cut) {
             return (R[a][b] > cut);
             });
 
+    cerr << K << " : ";
     for(int i=0;i<size(cnts);i++) {
         cerr << cnts[i] << " ";
     }
