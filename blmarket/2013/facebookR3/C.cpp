@@ -143,14 +143,20 @@ int go(int cut) {
     sort(cnts.begin(), cnts.end());
     if(size(cnts) < K) return size(cnts);
 
+    int tsum = 0;
     LL ret = cut;
     for(int i=0;i<K;i++) {
         ret += (LL)cnts[i] * C;
+        tsum += cnts[i];
     }
 
     if(sol == -1 || sol > ret) sol = ret;
 
     cerr << cut << " " << size(cnts) << " = " << ret << " " << sol << endl;
+
+    if(tsum == K) {
+        return N;
+    }
 
     return size(cnts);
 }
