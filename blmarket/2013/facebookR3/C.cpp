@@ -28,6 +28,7 @@ typedef pair<int,int> PII;
 typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
+template<typename T> void setmin(T &a, const T &b) { if(a>b) a=b; }
 
 int N,K,C;
 int R[1120][1120];
@@ -57,6 +58,55 @@ void input(void) {
             if(j > i) R[i][j] = f2[j * (j-1) / 2 + i];
             values.pb(R[i][j]);
         }
+    }
+}
+
+void tarjan(int N, vector<int> &cnts, const function<bool(int, int)> &chk) 
+{
+    cnts.clear();
+    vector<int> index(N, -1);
+    vector<int> lowlink(N, -1);
+
+    int idx = 0;
+    vector<int> S;
+    
+    std::function<bool(int)> sconnect = [&](int a) {
+        index[a] = lowlink[a] = idx++;
+        S.pb(a);
+
+        bool ret = true;
+        for(int i=0;i<N;i++) if(chk(a,i)) {
+            if(index[i] == -1) {
+                if(sconnect(i)) {
+                    ret = false;
+                }
+                setmin(lowlink[a], lowlink[i]);
+            } else {
+                for(int j=0;j<size(S);j++) if(S[j] == i) {
+                    setmin(lowlink[a], index[i]);
+                    break;
+                }
+            }
+        }
+
+        if(index[a] == lowlink[a]) {
+            int cnt = 0;
+            while(true) {
+                int b = S.back();
+                cnt++;
+                S.pop_back();
+                if(b == a) break;
+            }
+            if(ret) {
+                cnts.pb(cnt);
+            }
+            return ret;
+        }
+        return false;
+    };
+
+    for(int i=0;i<N;i++) if(index[i] == -1) {
+        sconnect(i);
     }
 }
 
