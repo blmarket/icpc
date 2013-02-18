@@ -82,10 +82,13 @@ void tarjan(int N, vector<int> &cnts, const function<bool(int, int)> &chk)
                 }
                 setmin(lowlink[a], lowlink[i]);
             } else {
+                bool found = false;
                 for(int j=0;j<size(S);j++) if(S[j] == i) {
                     setmin(lowlink[a], index[i]);
+                    found = true;
                     break;
-                }
+                } 
+                if(!found) ret = false;
             }
         }
 
