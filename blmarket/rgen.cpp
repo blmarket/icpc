@@ -12,7 +12,7 @@ int main(void) {
         cout << (rand() % 90000) + 10000;
         if(i+1 < 50) cout << ",";
     }
-    cout << endl;
+    cout << endl << endl;
 
     for(int i=0;i<50;i++) mapp[i][i] = 'N';
 
