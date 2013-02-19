@@ -122,11 +122,21 @@ public:
         }
 
         for(int i=0;i<N;i++) {
-            cout << visit[i] << " ";
         }
-        cout << endl;
-        
-        return "";
+
+        for(int i=0;i<N;i++) {
+            LL dx = x[i] - tx;
+            LL dy = y[i] - ty;
+            LL dd = sqr(dx) + sqr(dy);
+            LL ddx = x[i] - sx;
+            LL ddy = y[i] - sy;
+            LL dd2 = sqr(ddx) + sqr(ddy);
+            if(dd == dd2) return "YES";
+            double d = r[i] - sqrt(dd);
+            if(visit[i] > d) return "YES";
+        }
+
+        return "NO";
     }
 
     
