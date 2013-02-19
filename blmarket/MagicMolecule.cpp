@@ -44,6 +44,7 @@ map<state, int> memo;
 int go(int a, LL dis, int pc) {
     if(N-a + pc < M) return -1;
     if(a == N) {
+        cout << a << " " << dis << " " << pc << endl;
         return 0;
     }
     if(dis & 1) {
