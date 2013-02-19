@@ -23,8 +23,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 map<pair<int, PII>, int> memo;
 
 int go(int a, int b, int c) {
+    cout << a << " " << b << " " << c << endl;
     if(a == 0 && c == 0) return 1;
     if(b == 0 && c == 0) return -1;
+
     pair<int, PII> key = mp(c, mp(a,b));
     if(memo.count(key)) return memo[key];
 
