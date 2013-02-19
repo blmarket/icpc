@@ -20,6 +20,26 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+map<pair<int, PII>, int> memo;
+
+int go(int a, int b, int c) {
+    pair<int, PII> key = mp(c, mp(a,b));
+    if(memo.count(key)) return memo[key];
+
+    int t1 = go(b, a-1, c);
+    int t2 = go(b-1, a, c);
+    int t3 = go(b, a, c-1);
+
+    int minn = min(t3, min(t1,t2));
+    if(minn < 0) {
+        return memo[key] = -minn + 1;
+    }
+    if(minn == 0) {
+        return memo[key] = 0;
+    }
+    return memo[key] = -minn - 1;
+}
+
 class DoorsGame 
 {
 public:
@@ -28,13 +48,18 @@ public:
         string left = doors.substr(0, trophy);
         string right = doors.substr(trophy);
 
-        int ret = 0;
-        vector<int> V;
-        for(int i=0;i<16;i++) V.pb(i);
-        do {
-            ret++;
-        } while(next_permutation(V.begin(), V.end()));
-        return ret;
+        set<char> S1, S2;
+        for(int i=0;i<size(left);i++) S1.insert(left[i]);
+        for(int i=0;i<size(right);i++) S2.insert(right[i]);
+
+        int common = 0;
+        foreach(it, S1) {
+            if(S2.count(*it)) {
+                common++;
+            }
+        }
+
+        return go(size(S1) - common, size(S2) - common, common);
     }
 
     
@@ -48,6 +73,7 @@ public:
 	void test_case_1() { string Arg0 = "ABCC"; int Arg1 = 2; int Arg2 = -2; verify_case(1, Arg2, determineOutcome(Arg0, Arg1)); }
 	void test_case_2() { string Arg0 = "ABABAB"; int Arg1 = 3; int Arg2 = 0; verify_case(2, Arg2, determineOutcome(Arg0, Arg1)); }
 	void test_case_3() { string Arg0 = "ABAPDCAA"; int Arg1 = 5; int Arg2 = -4; verify_case(3, Arg2, determineOutcome(Arg0, Arg1)); }
+
 	void test_case_4() { string Arg0 = "MOCFDCE"; int Arg1 = 3; int Arg2 = 5; verify_case(4, Arg2, determineOutcome(Arg0, Arg1)); }
 	void test_case_5() { string Arg0 = "ABCCDE"; int Arg1 = 3; int Arg2 = 0; verify_case(5, Arg2, determineOutcome(Arg0, Arg1)); }
 	void test_case_6() { string Arg0 = "ABCCD"; int Arg1 = 3; int Arg2 = 0; verify_case(6, Arg2, determineOutcome(Arg0, Arg1)); }
