@@ -20,7 +20,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int N;
+int N, M;
 vector<int> pow;
 vector<string> bond;
 
@@ -32,6 +32,8 @@ public:
         pow = magicPower;
         bond = magicBond;
         N = size(pow);
+        M = (N * 2 + 2) / 3;
+        cout << M << endl;
 
         for(int i=0;i<N;i++) {
             cout << i << " : ";
