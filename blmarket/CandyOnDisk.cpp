@@ -57,9 +57,7 @@ public:
                     LL dyy = y[i] - y[j];
                     LL ddd = sqr(dxx) + sqr(dyy);
                     double d = sqrt(ddd);
-                    cout << d << endl;
                     double d2 = d - d1 - r[j];
-                    cout << "d2 = " << d2 << endl;
                     if(d2 > 1e-3) continue;
                     d2 = -d2;
                     if(d2 > r[j] + r[j]) continue;
@@ -107,6 +105,6 @@ public:
 int main()
 {
     CandyOnDisk ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
