@@ -35,9 +35,51 @@ void go(int a) {
         LL ddd = sqr(dxx) + sqr(dyy);
         double d = sqrt(ddd);
         double d2 = d - r[a];
-        cout << d << " " << d2 << endl;
 
+        if(d2 > r[i]) continue;
+        if(d2 > 0) {
+            double d3 = r[i] - d2;
+            if(visit[i] < d3) {
+                visit[i] = d3;
+                go(i);
+            }
+            continue;
+        }
+        if(d2 > -r[i]) {
+            double d3 = r[i] + d2;
+            if(visit[i] < d3) {
+                visit[i] = d3;
+                go(i);
+            }
+            continue;
+        }
+    }
+
+    for(int i=0;i<N;i++) if(i != a) {
         // inner
+        LL dxx = x[a] - x[i];
+        LL dyy = y[a] - y[i];
+        LL ddd = sqr(dxx) + sqr(dyy);
+        double d = sqrt(ddd);
+        double d2 = d - r[a] + visit[a];
+
+        if(d2 > r[i]) continue;
+        if(d2 > 0) {
+            double d3 = r[i] - d2;
+            if(visit[i] < d3) {
+                visit[i] = d3;
+                go(i);
+            }
+            continue;
+        }
+        if(d2 > -r[i]) {
+            double d3 = r[i] + d2;
+            if(visit[i] < d3) {
+                visit[i] = d3;
+                go(i);
+            }
+            continue;
+        }
     }
 }
 
@@ -79,12 +121,10 @@ public:
             go(i);
         }
 
-        /*
         for(int i=0;i<N;i++) {
             cout << visit[i] << " ";
         }
         cout << endl;
-        */
         
         return "";
     }
