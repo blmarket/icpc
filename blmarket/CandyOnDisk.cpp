@@ -36,6 +36,7 @@ public:
         for(int i=0;i<55;i++) visit[i] = -1;
 
         for(int i=0;i<N;i++) {
+            cout << i << endl;
             LL dx = x[i] - sx;
             LL dy = y[i] - sy;
             LL dd = sqr(dx) + sqr(dy);
