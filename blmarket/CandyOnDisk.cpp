@@ -122,7 +122,9 @@ public:
         }
 
         for(int i=0;i<N;i++) {
+            cout << visit[i] << " ";
         }
+        cout << endl;
 
         for(int i=0;i<N;i++) {
             LL dx = x[i] - tx;
