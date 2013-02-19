@@ -133,7 +133,8 @@ public:
             LL ddx = x[i] - sx;
             LL ddy = y[i] - sy;
             LL dd2 = sqr(ddx) + sqr(ddy);
-            if(dd == dd2) return "YES";
+            LL dd3 = sqr(r[i]);
+            if(dd <= dd3 && dd == dd2) return "YES";
             double d = r[i] - sqrt(dd);
             if(visit[i] > d) return "YES";
         }
