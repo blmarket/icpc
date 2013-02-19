@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -23,6 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 vector<LL> x,y,r;
+double visit[55];
 
 class CandyOnDisk 
 {
@@ -31,6 +33,37 @@ public:
     {
         N = size(x); x=y=r=vector<LL>(N, 0);
         for(int i=0;i<N;i++) { x[i] = x_[i]; y[i] = y_[i]; r[i] = r_[i]; }
+        for(int i=0;i<55;i++) visit[i] = -1;
+
+        for(int i=0;i<N;i++) {
+            LL dx = x[i] - sx;
+            LL dy = y[i] - sy;
+            LL dd = sqr(dx) + sqr(dy);
+            LL tt = sqr(r[i]);
+            double d1 = sqrt(tt);
+            if(dd <= tt) { // on disk
+                for(int j=0;j<N;j++) if(i != j) {
+                    LL dxx = x[i] - x[j];
+                    LL dyy = y[i] - y[j];
+                    LL ddd = sqr(dxx) + sqr(dyy);
+                    double d = sqrt(ddd);
+                    double d2 = d - d1 - r[j];
+                    if(d2 > 1e-3) continue;
+                    d2 = -d2;
+                    if(d2 > r[j] + r[j]) continue;
+                    if(d2 > r[j]) {
+                        d2 = (double)r[j] + r[j] - d2;
+                    }
+                    visit[j] = d2;
+                }
+            }
+        }
+
+        for(int i=0;i<N;i++) {
+            cout << visit[i] << " ";
+        }
+        cout << endl;
+        
         return "";
     }
 
