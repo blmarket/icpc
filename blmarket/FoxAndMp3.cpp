@@ -20,13 +20,37 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+long long N;
+vector<string> ret;
+
+string toString(int a) {
+    ostringstream ost;
+    ost << a;
+    return ost.str() + ".mp3";
+}
+
+bool go(long long a) {
+    if(size(ret) >= 50) return false;
+    if(a > N) return true;
+    ret.pb(toString(a));
+    for(int i=0;i<10;i++) {
+        return go(a*10+i);
+    }
+    return true;
+}
+
 class FoxAndMp3 
 {
 public:
     vector <string> playList(int n) 
     {		
-        cout << (int)'.' << " " << (int)'9' << endl;
-        return vector<string>();
+        N = n;
+        ret.clear();
+        for(int i=1;i<=9;i++) {
+            if(go(i) == false) break;
+        }
+        if(size(ret) > 50) ret.resize(50);
+        return ret;
     }
 
     
