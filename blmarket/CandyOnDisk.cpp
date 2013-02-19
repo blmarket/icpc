@@ -57,6 +57,7 @@ public:
                     LL dyy = y[i] - y[j];
                     LL ddd = sqr(dxx) + sqr(dyy);
                     double d = sqrt(ddd);
+                    cout << d << endl;
                     double d2 = d - d1 - r[j];
                     cout << "d2 = " << d2 << endl;
                     if(d2 > 1e-3) continue;
