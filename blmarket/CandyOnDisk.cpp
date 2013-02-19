@@ -134,8 +134,9 @@ public:
             LL ddy = y[i] - sy;
             LL dd2 = sqr(ddx) + sqr(ddy);
             LL dd3 = sqr(r[i]);
-            cout << dd << " " << dd2 << endl;
-            if(dd <= dd3 && dd == dd2) return "YES";
+
+            if(dd > dd3) continue;
+            if(dd == dd2) return "YES";
             double d = r[i] - sqrt(dd);
             if(visit[i] > d) return "YES";
         }
