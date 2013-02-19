@@ -17,12 +17,59 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N, M;
 vector<int> pow;
 vector<string> bond;
+
+map<pair<LL,LL>, int> memo;
+
+int go(int pos, LL pick, LL dis) {
+    if(pos == N) {
+        int cnt = 0;
+        int sum = 0;
+        for(int i=0;i<N;i++) {
+            if(pick & (1LL << i)) {
+                cnt++;
+                sum += pow[i];
+            }
+        }
+        if(cnt < M) return -1;
+        return sum;
+    }
+
+    pair<LL, LL> key = mp(pick, dis);
+    if(memo.count(key)) return memo[key];
+
+    if(pick & (1LL << pos)) return go(pos+1, pick, dis);
+    if(dis & (1LL << pos)) return go(pos+1, pick, dis);
+
+    int tmp1 = go(pos+1, pick, dis | (1LL << pos));
+
+    LL tpick = pick | (1LL << pos);
+    LL tdis = dis;
+    bool fail = false;
+    for(int i=0;i<N;i++) {
+        if(bond[pos][i] == 'N') {
+            if(pick & (1LL << i)) {
+                fail = true;
+                break;
+            }
+            tdis |= (1LL << i);
+        }
+    }
+
+    if(fail) {
+        dis |= (1LL << pos);
+        return go(pos+1, pick, dis);
+    }
+
+    int tmp = go(pos+1, tpick, tdis);
+    return memo[key] = max(tmp, tmp1);
+}
 
 class MagicMolecule 
 {
@@ -31,6 +78,7 @@ public:
     {		
         pow = magicPower;
         bond = magicBond;
+        memo.clear();
         N = size(pow);
         M = (N * 2 + 2) / 3;
         cout << M << endl;
@@ -44,6 +92,8 @@ public:
             }
             cout << endl;
         }
+
+        return go(0, 0, 0);
     }
 
     
