@@ -50,8 +50,7 @@ public:
             LL dy = y[i] - sy;
             LL dd = sqr(dx) + sqr(dy);
             LL tt = sqr(r[i]);
-            double d1 = sqrt(tt);
-            cout << d1 << endl;
+            double d1 = sqrt(dd);
             if(dd <= tt) { // on disk
                 for(int j=0;j<N;j++) if(i != j) {
                     LL dxx = x[i] - x[j];
