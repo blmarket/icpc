@@ -44,7 +44,6 @@ map<state, int> memo;
 int go(int a, LL dis, int pc) {
     if(N-a + pc < M) return -1;
     if(a == N) {
-        cout << a << " " << dis << " " << pc << endl;
         return 0;
     }
     if(dis & 1) {
@@ -60,7 +59,8 @@ int go(int a, LL dis, int pc) {
         int pp = i - a - 1;
         dis |= (1LL << pp);
     }
-    int tmp2 = go(a+1, dis, pc + 1) + pow[a];
+    int tmp2 = go(a+1, dis, pc + 1);
+    if(tmp2 != -1) tmp2 += pow[a];
 
     return memo[key] = max(tmp1, tmp2);
 }
