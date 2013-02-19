@@ -144,6 +144,8 @@ public:
         return "NO";
     }
 
+//    {-5, -2, -3, 5}, {-2, 7, 3, 4}, {3, 4, 2, 4}, -5, 5, 2, -6
+
     
 // BEGIN CUT HERE
 	public:
@@ -151,7 +153,7 @@ public:
 	private:
 	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
 	void verify_case(int Case, const string &Expected, const string &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
-	void test_case_0() { int Arr0[] = {0, 4}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arr1[] = {0, 0}; vector <int> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arr2[] = {3, 3}; vector <int> Arg2(Arr2, Arr2 + (sizeof(Arr2) / sizeof(Arr2[0]))); int Arg3 = -1; int Arg4 = -2; int Arg5 = 6; int Arg6 = 1; string Arg7 = "YES"; verify_case(0, Arg7, ableToAchieve(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)); }
+	void test_case_0() { int Arr0[] = {-5,-2,-3,5}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arr1[] = {-2,7,3,4}; vector <int> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arr2[] = {3,4,2,4}; vector <int> Arg2(Arr2, Arr2 + (sizeof(Arr2) / sizeof(Arr2[0]))); int Arg3 = -5; int Arg4 = 5; int Arg5 = 2; int Arg6 = -6; string Arg7 = "YES"; verify_case(0, Arg7, ableToAchieve(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)); }
 	void test_case_1() { int Arr0[] = {0, 3}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arr1[] = {0, 0}; vector <int> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arr2[] = {5, 3}; vector <int> Arg2(Arr2, Arr2 + (sizeof(Arr2) / sizeof(Arr2[0]))); int Arg3 = -4; int Arg4 = 0; int Arg5 = -2; int Arg6 = 0; string Arg7 = "YES"; verify_case(1, Arg7, ableToAchieve(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)); }
 	void test_case_2() { int Arr0[] = {0}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arr1[] = {0}; vector <int> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arr2[] = {1000000000}; vector <int> Arg2(Arr2, Arr2 + (sizeof(Arr2) / sizeof(Arr2[0]))); int Arg3 = 500000000; int Arg4 = 0; int Arg5 = 500000000; int Arg6 = 1; string Arg7 = "NO"; verify_case(2, Arg7, ableToAchieve(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)); }
 	void test_case_3() { int Arr0[] = {0}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arr1[] = {0}; vector <int> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arr2[] = {1}; vector <int> Arg2(Arr2, Arr2 + (sizeof(Arr2) / sizeof(Arr2[0]))); int Arg3 = 571; int Arg4 = 571; int Arg5 = 571; int Arg6 = 571; string Arg7 = "YES"; verify_case(3, Arg7, ableToAchieve(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)); }
@@ -166,6 +168,6 @@ public:
 int main()
 {
     CandyOnDisk ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
