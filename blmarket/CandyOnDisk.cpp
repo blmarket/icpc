@@ -27,12 +27,17 @@ vector<LL> x,y,r;
 double visit[55];
 
 void go(int a) {
+    if(visit[a] < -1e-3) return;
     for(int i=0;i<N;i++) if(i != a) {
+        // outer
         LL dxx = x[a] - x[i];
         LL dyy = y[a] - y[i];
         LL ddd = sqr(dxx) + sqr(dyy);
         double d = sqrt(ddd);
         double d2 = d - r[a];
+        cout << d << " " << d2 << endl;
+
+        // inner
     }
 }
 
@@ -71,9 +76,7 @@ public:
         }
 
         for(int i=0;i<N;i++) {
-            if(visit[i] > -1e-3) {
-                go(i);
-            }
+            go(i);
         }
 
         for(int i=0;i<N;i++) {
