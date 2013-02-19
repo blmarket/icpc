@@ -31,12 +31,11 @@ class CandyOnDisk
 public:
     string ableToAchieve(vector <int> x_, vector <int> y_, vector <int> r_, int sx, int sy, int tx, int ty) 
     {
-        N = size(x); x=y=r=vector<LL>(N, 0);
+        N = size(x_); x=y=r=vector<LL>(N, 0);
         for(int i=0;i<N;i++) { x[i] = x_[i]; y[i] = y_[i]; r[i] = r_[i]; }
         for(int i=0;i<55;i++) visit[i] = -1;
 
         for(int i=0;i<N;i++) {
-            cout << i << endl;
             LL dx = x[i] - sx;
             LL dy = y[i] - sy;
             LL dd = sqr(dx) + sqr(dy);
