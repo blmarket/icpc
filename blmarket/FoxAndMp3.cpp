@@ -30,6 +30,7 @@ string toString(int a) {
 }
 
 bool go(long long a) {
+    cout << a << " " << N << endl;
     if(size(ret) >= 50) return false;
     if(a > N) return true;
     ret.pb(toString(a));
