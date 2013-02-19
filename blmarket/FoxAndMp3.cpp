@@ -30,13 +30,13 @@ string toString(int a) {
 }
 
 bool go(long long a) {
-    cout << a << " " << N << endl;
     if(size(ret) >= 50) return false;
     if(a > N) return true;
     ret.pb(toString(a));
     for(int i=0;i<10;i++) {
-        return go(a*10+i);
+        go(a*10+i);
     }
+    if(size(ret) >= 50) return false;
     return true;
 }
 
