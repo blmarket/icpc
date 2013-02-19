@@ -58,6 +58,7 @@ public:
                     LL ddd = sqr(dxx) + sqr(dyy);
                     double d = sqrt(ddd);
                     double d2 = d - d1 - r[j];
+                    cout << "d2 = " << d2 << endl;
                     if(d2 > 1e-3) continue;
                     d2 = -d2;
                     if(d2 > r[j] + r[j]) continue;
