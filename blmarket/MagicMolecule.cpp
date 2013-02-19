@@ -37,7 +37,7 @@ public:
 
         for(int i=0;i<N;i++) {
             cout << i << " : ";
-            for(int j=i+1;j<N;j++) {
+            for(int j=0;j<N;j++) if(i != j) {
                 if(bond[i][j] == 'N') {
                     cout << j << " ";
                 }
