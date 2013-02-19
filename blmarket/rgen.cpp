@@ -14,6 +14,8 @@ int main(void) {
     }
     cout << endl;
 
+    for(int i=0;i<50;i++) mapp[i][i] = 'N';
+
     for(int i=0;i<10;i++) {
         int x = rand() % 50;
         int y = rand() % 50;
