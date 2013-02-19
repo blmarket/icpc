@@ -28,8 +28,13 @@ public:
         string left = doors.substr(0, trophy);
         string right = doors.substr(trophy);
 
-        cout << left << " " << right << endl;
-        return 0;
+        int ret = 0;
+        vector<int> V;
+        for(int i=0;i<16;i++) V.pb(i);
+        do {
+            ret++;
+        } while(next_permutation(V.begin(), V.end()));
+        return ret;
     }
 
     
