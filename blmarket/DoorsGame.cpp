@@ -26,6 +26,7 @@ int go(int a, int b, int c) {
     if(a < 0) return 99999;
     if(b < 0) return 99999;
     if(c < 0) return 99999;
+    cout << a << " " << b << " " << c << endl;
     if(a == 0 && c == 0) return 1;
     if(b == 0 && c == 0) return -1;
 
