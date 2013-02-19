@@ -26,6 +26,16 @@ int N;
 vector<LL> x,y,r;
 double visit[55];
 
+void go(int a) {
+    for(int i=0;i<N;i++) if(i != a) {
+        LL dxx = x[a] - x[i];
+        LL dyy = y[a] - y[i];
+        LL ddd = sqr(dxx) + sqr(dyy);
+        double d = sqrt(ddd);
+        double d2 = d - r[a];
+    }
+}
+
 class CandyOnDisk 
 {
 public:
@@ -56,6 +66,12 @@ public:
                     }
                     visit[j] = d2;
                 }
+            }
+        }
+
+        for(int i=0;i<N;i++) {
+            if(visit[i] > -1e-3) {
+                go(i);
             }
         }
 
