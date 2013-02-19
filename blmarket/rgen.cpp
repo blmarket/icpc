@@ -8,7 +8,6 @@ using namespace std;
 vector<string> mapp(50, string(50, 'Y'));
 
 int main(void) {
-    cout << "{";
     for(int i=0;i<50;i++) {
         cout << (rand() % 90000) + 10000;
         if(i+1 < 50) cout << ",";
