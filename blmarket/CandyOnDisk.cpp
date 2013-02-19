@@ -24,30 +24,31 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 vector<LL> x,y,r;
-double visit[55];
+long double visit[55];
 
 void go(int a) {
+    cout << a << " " << visit[a] << endl;
     if(visit[a] < -1e-3) return;
-    for(int i=0;i<N;i++) if(i != a) {
+    for(int i=0;i<N;i++) if(x[i] != x[a] || y[i] != y[a]) {
         // outer
         LL dxx = x[a] - x[i];
         LL dyy = y[a] - y[i];
         LL ddd = sqr(dxx) + sqr(dyy);
-        double d = sqrt(ddd);
-        double d2 = d - r[a];
+        long double d = sqrtl(ddd);
+        long double d2 = d - r[a];
 
         if(d2 > r[i]) continue;
         if(d2 > 0) {
-            double d3 = r[i] - d2;
-            if(visit[i] < d3) {
+            long double d3 = r[i] - d2;
+            if(visit[i] + 1e-3 < d3) {
                 visit[i] = d3;
                 go(i);
             }
             continue;
         }
         if(d2 > -r[i]) {
-            double d3 = r[i] + d2;
-            if(visit[i] < d3) {
+            long double d3 = r[i] + d2;
+            if(visit[i] + 1e-3 < d3) {
                 visit[i] = d3;
                 go(i);
             }
@@ -55,26 +56,26 @@ void go(int a) {
         }
     }
 
-    for(int i=0;i<N;i++) if(i != a) {
+    for(int i=0;i<N;i++) if(x[i] != x[a] || y[i] != y[a]) {
         // inner
         LL dxx = x[a] - x[i];
         LL dyy = y[a] - y[i];
         LL ddd = sqr(dxx) + sqr(dyy);
-        double d = sqrt(ddd);
-        double d2 = d - r[a] + visit[a];
+        long double d = sqrtl(ddd);
+        long double d2 = d - r[a] + visit[a];
 
         if(d2 > r[i]) continue;
         if(d2 > 0) {
-            double d3 = r[i] - d2;
-            if(visit[i] < d3) {
+            long double d3 = r[i] - d2;
+            if(visit[i] + 1e-3 < d3) {
                 visit[i] = d3;
                 go(i);
             }
             continue;
         }
         if(d2 > -r[i]) {
-            double d3 = r[i] + d2;
-            if(visit[i] < d3) {
+            long double d3 = r[i] + d2;
+            if(visit[i] + 1e-3 < d3) {
                 visit[i] = d3;
                 go(i);
             }
@@ -98,19 +99,19 @@ public:
             LL dy = y[i] - sy;
             LL dd = sqr(dx) + sqr(dy);
             LL tt = sqr(r[i]);
-            double d1 = sqrt(dd);
+            long double d1 = sqrtl(dd);
             if(dd <= tt) { // on disk
-                for(int j=0;j<N;j++) if(i != j) {
+                for(int j=0;j<N;j++) if(x[i] != x[j] || y[i] != y[j]) {
                     LL dxx = x[i] - x[j];
                     LL dyy = y[i] - y[j];
                     LL ddd = sqr(dxx) + sqr(dyy);
-                    double d = sqrt(ddd);
-                    double d2 = d - d1 - r[j];
+                    long double d = sqrtl(ddd);
+                    long double d2 = d - d1 - r[j];
                     if(d2 > 1e-3) continue;
                     d2 = -d2;
                     if(d2 > r[j] + r[j]) continue;
                     if(d2 > r[j]) {
-                        d2 = (double)r[j] + r[j] - d2;
+                        d2 = (long double)r[j] + r[j] - d2;
                     }
                     visit[j] = d2;
                 }
@@ -137,7 +138,7 @@ public:
 
             if(dd > dd3) continue;
             if(dd == dd2) return "YES";
-            double d = r[i] - sqrt(dd);
+            long double d = r[i] - sqrtl(dd);
             if(visit[i] > d) return "YES";
         }
 
