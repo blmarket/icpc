@@ -25,50 +25,43 @@ int N, M;
 vector<int> pow;
 vector<string> bond;
 
-map<pair<LL,LL>, int> memo;
+struct state {
+    state(int pos, LL dis, int pc) : pos(pos), dis(dis), pick_cnt(pc) {};
 
-int go(int pos, LL pick, LL dis) {
-    if(pos == N) {
-        int cnt = 0;
-        int sum = 0;
-        for(int i=0;i<N;i++) {
-            if(pick & (1LL << i)) {
-                cnt++;
-                sum += pow[i];
-            }
-        }
-        if(cnt < M) return -1;
-        return sum;
+    int pos;
+    LL dis;
+    int pick_cnt;
+
+    bool operator<(const state &rhs) const {
+        if(pos != rhs.pos) return pos < rhs.pos;
+        if(pick_cnt != rhs.pick_cnt) return pick_cnt < rhs.pick_cnt;
+        return dis < rhs.dis;
+    }
+};
+
+map<state, int> memo;
+
+int go(int a, LL dis, int pc) {
+    if(N-a + pc < M) return -1;
+    if(a == N) {
+        return 0;
+    }
+    if(dis & 1) {
+        return go(a+1, dis >> 1, pc);
     }
 
-    pair<LL, LL> key = mp(pick, dis);
+    state key(a, dis, pc);
     if(memo.count(key)) return memo[key];
 
-    if(pick & (1LL << pos)) return go(pos+1, pick, dis);
-    if(dis & (1LL << pos)) return go(pos+1, pick, dis);
-
-    int tmp1 = go(pos+1, pick, dis | (1LL << pos));
-
-    LL tpick = pick | (1LL << pos);
-    LL tdis = dis;
-    bool fail = false;
-    for(int i=0;i<N;i++) {
-        if(bond[pos][i] == 'N') {
-            if(pick & (1LL << i)) {
-                fail = true;
-                break;
-            }
-            tdis |= (1LL << i);
-        }
+    int tmp1 = go(a+1, dis >> 1, pc);
+    dis >>= 1;
+    for(int i=a+1;i<N;i++) if(bond[a][i] == 'N') {
+        int pp = i - a - 1;
+        dis |= (1LL << pp);
     }
+    int tmp2 = go(a+1, dis, pc + 1) + pow[a];
 
-    if(fail) {
-        dis |= (1LL << pos);
-        return go(pos+1, pick, dis);
-    }
-
-    int tmp = go(pos+1, tpick, tdis);
-    return memo[key] = max(tmp, tmp1);
+    return memo[key] = max(tmp1, tmp2);
 }
 
 class MagicMolecule 
@@ -81,8 +74,9 @@ public:
         memo.clear();
         N = size(pow);
         M = (N * 2 + 2) / 3;
-        cout << M << endl;
 
+        /*
+        cout << M << endl;
         for(int i=0;i<N;i++) {
             cout << i << " : ";
             for(int j=0;j<N;j++) if(i != j) {
@@ -92,6 +86,7 @@ public:
             }
             cout << endl;
         }
+        */
 
         return go(0, 0, 0);
     }
