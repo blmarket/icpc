@@ -24,19 +24,30 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N,K;
 vector<int> power;
-LL fails[55];
+vector<string> bond;
+bool useit[55];
 
-int go(int pos, int cnt, LL mask) {
+int go(int cnt) {
     if(cnt == K) {
+        for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(bond[i][j] == 'Y') {
+            if(!useit[i] && !useit[j]) return -1;
+        }
         return 0;
     }
-    if(pos == N) return -1;
-    int tmp = go(pos+1, cnt, mask);
-    if(mask & (1LL << pos)) return tmp;
-    int tmp2 = go(pos+1, cnt+1, mask | fails[pos]);
-    if(tmp2 == -1) return tmp;
-    tmp2 += power[pos];
-    return max(tmp, tmp2);
+
+    for(int i=0;i<N;i++) if(!useit[i]) {
+        for(int j=i+1;j<N;j++) if(bond[i][j] == 'Y' && !useit[j]) {
+            useit[i] = true;
+            int tmp1 = go(cnt + 1);
+            if(tmp1 != -1) tmp1 += power[i];
+            useit[i] = false;
+            useit[j] = true;
+            int tmp2 = go(cnt + 1);
+            if(tmp2 != -1) tmp2 += power[j];
+            useit[j] = false;
+            return max(tmp1, tmp2);
+        }
+    }
 }
 
 class MagicMoleculeEasy 
@@ -47,15 +58,9 @@ public:
         K = k_;
         power = magicPower;
         N = size(power);
-        memset(fails, 0, sizeof(fails));
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<N;j++) {
-                if(magicBond[i][j] == 'N') {
-                    fails[i] |= (1LL << j);
-                }
-            }
-        }
-        return go(0, 0, 0);
+        bond = magicBond;
+        memset(useit, 0, sizeof(useit));
+        return go(0);
     }
 
     
