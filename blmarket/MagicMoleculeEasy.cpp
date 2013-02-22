@@ -48,6 +48,12 @@ int go(int cnt) {
             return max(tmp1, tmp2);
         }
     }
+
+    int ret = -1;
+    for(int i=0;i<N;i++) if(!useit[i]) {
+        if(ret == -1 || power[i] < ret) ret += power[i];
+    }
+    return ret + go(cnt+1);
 }
 
 class MagicMoleculeEasy 
@@ -97,6 +103,6 @@ public:
 int main()
 {
     MagicMoleculeEasy ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(6); 
 } 
 // END CUT HERE
