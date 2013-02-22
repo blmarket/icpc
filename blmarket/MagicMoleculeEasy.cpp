@@ -49,12 +49,18 @@ int go(int cnt) {
         }
     }
 
-    cout << "here" << endl;
-    int ret = -1;
+    vector<int> tmp;
     for(int i=0;i<N;i++) if(!useit[i]) {
-        if(ret == -1 || power[i] < ret) ret += power[i];
+        tmp.pb(power[i]);
     }
-    return ret + go(cnt+1);
+    sort(tmp.begin(), tmp.end());
+    int ret = 0;
+    while(cnt < K) {
+        ret += tmp.back();
+        tmp.pop_back();
+        cnt++;
+    }
+    return ret;
 }
 
 class MagicMoleculeEasy 
