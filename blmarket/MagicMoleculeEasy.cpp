@@ -49,6 +49,7 @@ int go(int cnt) {
         }
     }
 
+    cout << "here" << endl;
     int ret = -1;
     for(int i=0;i<N;i++) if(!useit[i]) {
         if(ret == -1 || power[i] < ret) ret += power[i];
