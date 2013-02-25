@@ -46,8 +46,9 @@ public:
 
         for(int i=0;i<size(R);i++) L.pb(R[i]);
         L.pb(D);
+        sort(L.begin(), L.end());
 
-        for(int i=0;i<size(L);i++) {
+        for(int i=0;i<size(L);i++) if(L[i] != 0) {
             if(chk(L[i]) == false) continue;
             cout << L[i] << endl;
         }
