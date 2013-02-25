@@ -25,7 +25,6 @@ int D;
 vector<PII> lr;
 
 bool chk(LL a, LL b) {
-    cout << a << " " << b << endl;
     for(int i=0;i<size(lr);i++) {
         int p1 = (lr[i].first * b) / a;
         int p2 = (lr[i].second * b - 1) / a;
