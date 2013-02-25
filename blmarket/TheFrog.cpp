@@ -27,6 +27,7 @@ vector<PII> lr;
 bool chk(LL a, LL b) {
     LL pos = a;
     int i = 0;
+    cout << a << " " << b << endl;
     while(pos < D) {
         while(i < size(lr) && b * lr[i].second < a) i++;
         if(i == size(lr)) return true;
