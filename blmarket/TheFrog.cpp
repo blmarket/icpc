@@ -48,12 +48,19 @@ public:
         L.pb(D);
         sort(L.begin(), L.end());
 
+        double ret = -1;
         for(int i=0;i<size(L);i++) if(L[i] != 0) {
             if(chk(L[i]) == false) continue;
-            cout << L[i] << endl;
+            if(ret == -1 || ret > L[i]) ret = L[i];
+
+            for(int j=1;j<=30000;j++) {
+                double tmp = (double)L[i] / j;
+                if(ret != -1 && ret < tmp) continue;
+                if(chk(tmp)) ret = tmp;
+            }
         }
 
-        return 0;
+        return ret;
     }
 
     
