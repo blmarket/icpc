@@ -26,6 +26,7 @@ vector<PII> lr;
 bool chk(double dist) {
     double pos = dist;
     int i = 0;
+    cout << pos << " " << D << endl;
     while(pos < D) {
         while(lr[i].second < pos + 1e-3) i++;
         if(lr[i].first < pos - 1e-3) return false;
@@ -50,6 +51,7 @@ public:
             if(chk(L[i]) == false) continue;
             cout << L[i] << endl;
         }
+
         return 0;
     }
 
