@@ -25,14 +25,10 @@ int D;
 vector<PII> lr;
 
 bool chk(LL a, LL b) {
-    LL pos = a;
-    int i = 0;
-    while(pos < D * b) {
-        while(i < size(lr) && b * lr[i].second <= pos) i++;
-        if(i == size(lr)) return true;
-        if(lr[i].first * b < pos) return false;
-        pos += a;
-        while(lr[i].first * b >= pos) pos += a;
+    for(int i=0;i<size(lr);i++) {
+        int p1 = lr[i].first * b / a;
+        int p2 = lr[i].second * b / a;
+        if(p1 != p2) return false;
     }
     return true;
 }
