@@ -27,7 +27,6 @@ vector<PII> lr;
 bool chk(LL a, LL b) {
     LL pos = a;
     int i = 0;
-    cout << "checking ... " << a << " " << b << endl;
     while(pos < D * b) {
         while(i < size(lr) && b * lr[i].second <= pos) i++;
         if(i == size(lr)) return true;
@@ -93,6 +92,6 @@ public:
 int main()
 {
     TheFrog ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
