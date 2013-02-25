@@ -55,6 +55,7 @@ public:
 
             for(int j=1;j<=30000;j++) {
                 double tmp = (double)L[i] / j;
+                if(tmp < 1) break;
                 cout << "chk = " << tmp << endl;
                 if(ret != -1 && ret < tmp) continue;
                 if(chk(tmp)) ret = tmp;
