@@ -61,7 +61,6 @@ public:
 
             for(int j=2;j<=30000;j++) {
                 double tmp = (double)L[i] / j;
-                cout << tmp << endl;
                 if(tmp < maxdist) break;
                 if(ret != -1 && ret < tmp) continue;
                 if(chk(L[i], j)) ret = tmp;
