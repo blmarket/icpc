@@ -29,7 +29,7 @@ bool chk(LL a, LL b) {
     int i = 0;
     cout << "checking ... " << a << " " << b << endl;
     while(pos < D) {
-        while(i < size(lr) && b * lr[i].second < a) i++;
+        while(i < size(lr) && b * lr[i].second < pos) i++;
         if(i == size(lr)) return true;
         if(lr[i].first * b < pos) return false;
         pos += a;
