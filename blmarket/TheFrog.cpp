@@ -40,6 +40,7 @@ class TheFrog
 public:
     double getMinimum(int D_, vector <int> L, vector <int> R) 
     {		
+        lr.clear();
         D = D_;
         for(int i=0;i<size(L);i++) lr.pb(mp(L[i], R[i]));
         sort(lr.begin(), lr.end());
@@ -56,7 +57,6 @@ public:
             for(int j=1;j<=30000;j++) {
                 double tmp = (double)L[i] / j;
                 if(tmp < 1) break;
-                cout << "chk = " << tmp << endl;
                 if(ret != -1 && ret < tmp) continue;
                 if(chk(tmp)) ret = tmp;
             }
