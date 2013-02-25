@@ -17,20 +17,21 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
 int D;
 vector<PII> lr;
 
-bool chk(double dist) {
-    double pos = dist;
+bool chk(LL a, LL b) {
+    LL pos = a;
     int i = 0;
     while(pos < D) {
-        while(i < size(lr) && lr[i].second < pos + 1e-3) i++;
+        while(i < size(lr) && b * lr[i].second < a) i++;
         if(i == size(lr)) return true;
-        if(lr[i].first < pos - 1e-3) return false;
-        pos += dist;
+        if(lr[i].first * b < a) return false;
+        pos += a;
     }
     return true;
 }
@@ -42,7 +43,11 @@ public:
     {		
         lr.clear();
         D = D_;
-        for(int i=0;i<size(L);i++) lr.pb(mp(L[i], R[i]));
+        int maxdist = 0;
+        for(int i=0;i<size(L);i++) {
+            maxdist = max(maxdist, R[i] - L[i]);
+            lr.pb(mp(L[i], R[i]));
+        }
         sort(lr.begin(), lr.end());
 
         for(int i=0;i<size(R);i++) L.pb(R[i]);
@@ -51,14 +56,14 @@ public:
 
         double ret = -1;
         for(int i=0;i<size(L);i++) if(L[i] != 0) {
-            if(chk(L[i]) == false) continue;
+            if(chk(L[i], 1) == false) continue;
             if(ret == -1 || ret > L[i]) ret = L[i];
 
-            for(int j=1;j<=30000;j++) {
+            for(int j=2;j<=30000;j++) {
                 double tmp = (double)L[i] / j;
-                if(tmp < 1) break;
+                if(tmp < maxdist) break;
                 if(ret != -1 && ret < tmp) continue;
-                if(chk(tmp)) ret = tmp;
+                if(chk(L[i], j)) ret = tmp;
             }
         }
 
