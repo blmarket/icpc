@@ -27,12 +27,9 @@ vector<PII> lr;
 bool chk(LL a, LL b) {
     LL pos = a;
     int i = 0;
-    cout << "checking ... " << a << " " << b << endl;
-    while(pos < D) {
-        cout << (double)pos / b << " vs " << lr[i].second << endl;
+    while(pos < D * b) {
         while(i < size(lr) && b * lr[i].second < pos) i++;
         if(i == size(lr)) return true;
-        cout << lr[i].first << " " << (double)pos / b << endl;
         if(lr[i].first * b < pos) return false;
         pos += a;
     }
