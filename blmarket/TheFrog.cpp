@@ -31,6 +31,7 @@ bool chk(LL a, LL b) {
     while(pos < D) {
         while(i < size(lr) && b * lr[i].second < pos) i++;
         if(i == size(lr)) return true;
+        cout << lr[i].first << " " << (double)pos / b << endl;
         if(lr[i].first * b < pos) return false;
         pos += a;
     }
