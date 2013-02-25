@@ -32,6 +32,7 @@ bool chk(LL a, LL b) {
         if(i == size(lr)) return true;
         if(lr[i].first * b < pos) return false;
         pos += a;
+        while(lr[i].first * b >= pos) pos += a;
     }
     return true;
 }
