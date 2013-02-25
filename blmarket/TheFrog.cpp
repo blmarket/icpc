@@ -53,10 +53,9 @@ public:
             if(chk(L[i]) == false) continue;
             if(ret == -1 || ret > L[i]) ret = L[i];
 
-            cout << L[i] << endl;
-
             for(int j=1;j<=30000;j++) {
                 double tmp = (double)L[i] / j;
+                cout << "chk = " << tmp << endl;
                 if(ret != -1 && ret < tmp) continue;
                 if(chk(tmp)) ret = tmp;
             }
