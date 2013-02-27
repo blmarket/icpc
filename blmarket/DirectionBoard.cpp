@@ -58,6 +58,7 @@ public:
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
                 links[node(nx,ny)][node(tx,ty)][0]++;
             }
+            cout << links[6][4][0] << endl;
         }
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[i][j] -= 1;
