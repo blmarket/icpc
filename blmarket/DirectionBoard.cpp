@@ -50,7 +50,6 @@ int find_sink(int a) {
     while(!Q.empty()) {
         int cur = Q.top().first;
         int pos = Q.top().second; 
-        cout << pos << " = " << cur << endl;
         Q.pop();
         if(mincost[pos] != cur) continue;
 
@@ -104,6 +103,7 @@ public:
 
         int ret = 0;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+            cout << "here" << endl;
             while(intake[node(i,j)] > 0) {
                 ret += find_sink(node(i,j));
             }
