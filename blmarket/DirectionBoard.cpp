@@ -88,6 +88,7 @@ public:
             else if(board[i][j] == 'L') board[i][j] = 1;
             else if(board[i][j] == 'R') board[i][j] = 2;
             else board[i][j] = 3;
+            cout << i << " " << j << endl;
 
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
