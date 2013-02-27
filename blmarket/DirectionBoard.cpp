@@ -99,11 +99,12 @@ public:
             }
         }
 
+        cout << "here" << endl;
+
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[node(i,j)] -= 1;
 
         int ret = 0;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            cout << "here" << endl;
             while(intake[node(i,j)] > 0) {
                 ret += find_sink(node(i,j));
             }
