@@ -61,11 +61,11 @@ int find_sink() {
             }
 
             if(back[node] == -1 || mincost[node] > ncost) {
-                if(node == 155 && pos == 185) {
-                    cout << " here" << endl;
+                if(node == 155) {
+                    cout << cur << " -> 155 " << ncost << endl;
                 }
-                if(node == 185 && pos == 155) {
-                    cout << "here" << endl;
+                if(node == 185) {
+                    cout << cur << " -> 185 " << ncost << endl;
                 }
                 back[node] = pos;
                 mincost[node] = ncost;
