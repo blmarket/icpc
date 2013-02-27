@@ -88,16 +88,14 @@ public:
             else if(board[i][j] == 'L') board[i][j] = 1;
             else if(board[i][j] == 'R') board[i][j] = 2;
             else board[i][j] = 3;
-            cout << i << " " << j << endl;
 
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
-            cout << node(nx, ny) << endl;
-            intake[1]++;
-            //intake[node(nx,ny)]++;
+            intake[node(nx,ny)]++;
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
+                cout << tx << " " << ty << endl;
                 links[node(nx,ny)][node(tx,ty)].first++;
             }
         }
