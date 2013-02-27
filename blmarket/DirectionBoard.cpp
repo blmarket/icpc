@@ -83,8 +83,6 @@ public:
         memset(intake, 0, sizeof(intake));
         memset(links, 0, sizeof(links));
 
-        cout << "here" << endl;
-
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(board[i][j] == 'U') board[i][j] = 0;
             else if(board[i][j] == 'L') board[i][j] = 1;
@@ -93,6 +91,7 @@ public:
 
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
+            cout << node(nx, ny) << endl;
             intake[node(nx,ny)]++;
 
             for(int k=0;k<4;k++) if(k != d) {
