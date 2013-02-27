@@ -63,7 +63,7 @@ public:
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[i][j] -= 1;
 
         for(int i=0;i<N;i++) {
-            for(int j=0;j<M;j++) cout << intake[i][j] << " ";
+            for(int j=0;j<M;j++) cout << node(i,j) << ":" << intake[i][j] << " ";
             cout << endl;
         }
     }
