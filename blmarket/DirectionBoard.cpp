@@ -73,7 +73,21 @@ int find_sink(int a) {
         }
     }
 
-    cout << a << "->" << mind << " = " << minc << endl;
+    intake[mind]++;
+    intake[a]--;
+    while(mind != a) {
+        int b = back[mind];
+        if(links[b][mind].second) {
+            links[b][mind].second--;
+            links[mind][b].first++;
+        } else {
+            links[b][mind].first--;
+            links[mind][b].second++;
+        }
+        mind = b;
+    }
+
+    return minc;
 }
 
 class DirectionBoard 
