@@ -27,8 +27,13 @@ const int dy[] = {0,-1,1,0};
 int N,M;
 int intake[20][20];
 
+int avail[230][230];
+
 int R(int x) { return (x + N) % N; }
 int C(int y) { return (y + M) % M; }
+int node(int x,int y) {
+    return x*M + y;
+}
 
 class DirectionBoard 
 {
@@ -37,6 +42,7 @@ public:
     {		
         N = size(board); M = size(board[0]);
         memset(intake, 0, sizeof(intake));
+        memset(avail, 0, sizeof(avail));
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(board[i][j] == 'U') board[i][j] = 0;
@@ -47,7 +53,14 @@ public:
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
             intake[nx][ny]++;
+
+            for(int k=0;k<4;k++) if(k != d) {
+                int tx = R(i + dx[k]), ty = C(j + dy[k]);
+                avail[node(nx,ny)][node(tx,ty)] = 1;
+            }
         }
+
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[i][j] -= 1;
 
         for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++) cout << intake[i][j] << " ";
