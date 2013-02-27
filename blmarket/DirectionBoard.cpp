@@ -93,7 +93,8 @@ public:
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
             cout << node(nx, ny) << endl;
-            intake[node(nx,ny)]++;
+            intake[1]++;
+            //intake[node(nx,ny)]++;
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
