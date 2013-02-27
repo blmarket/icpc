@@ -37,13 +37,10 @@ int node(int x,int y) {
 
 int back[230];
 int mincost[230];
-int find_sink(int a) {
-    memset(back, -1, sizeof(back));
-    priority_queue<PII> Q;
+priority_queue<PII> Q;
 
-    Q.push(mp(0, a));
-    back[a] = a;
-    mincost[a] = 0;
+int find_sink() {
+    memset(back, -1, sizeof(back));
 
     int minc = 99999, mind;
 
@@ -74,8 +71,7 @@ int find_sink(int a) {
     }
 
     intake[mind]++;
-    intake[a]--;
-    while(mind != a) {
+    while(mind != back[mind]) {
         int b = back[mind];
         if(links[b][mind].second) {
             links[b][mind].second--;
@@ -86,6 +82,7 @@ int find_sink(int a) {
         }
         mind = b;
     }
+    intake[mind]--;
 
     return minc;
 }
@@ -118,10 +115,19 @@ public:
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[node(i,j)] -= 1;
 
         int ret = 0;
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            while(intake[node(i,j)] > 0) {
-                ret += find_sink(node(i,j));
+
+        while(true) {
+            while(!Q.empty()) Q.pop();
+            for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+                int n = node(i,j);
+                if(intake[n] > 0) {
+                    Q.push(mp(0, n));
+                    back[n] = n;
+                    mincost[n] = 0;
+                }
             }
+            if(Q.empty()) return ret;
+            ret += find_sink();
         }
         return ret;
     }
