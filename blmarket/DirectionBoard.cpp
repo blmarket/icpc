@@ -81,7 +81,7 @@ public:
     {		
         N = size(board); M = size(board[0]);
         memset(intake, 0, sizeof(intake));
-        memset(links, 0, sizeof(links));
+        for(int i=0;i<230;i++) links[i].clear();
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(board[i][j] == 'U') board[i][j] = 0;
@@ -95,7 +95,6 @@ public:
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                cout << node(nx,ny) << " " << node(tx,ty) << endl;
                 links[node(nx,ny)][node(tx,ty)].first++;
             }
         }
