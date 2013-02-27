@@ -71,7 +71,7 @@ int find_sink() {
     intake[mind]++;
     while(mind != back[mind]) {
         int b = back[mind];
-        cout << mind << " " << b << endl;
+        cout << mind << " " << b << " = " << mincost[mind] << " " << mincost[b] << endl;
         if(links[b][mind].second) {
             links[b][mind].second--;
             links[mind][b].first++;
