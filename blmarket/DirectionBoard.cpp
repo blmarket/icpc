@@ -66,6 +66,7 @@ public:
             for(int j=0;j<M;j++) cout << node(i,j) << ":" << intake[i][j] << " ";
             cout << endl;
         }
+        cout << avail[6][4] << endl;
     }
 
     
