@@ -46,6 +46,7 @@ int find_sink() {
         int cur = Q.top().first;
         int pos = Q.top().second; 
         Q.pop();
+        cout << pos << " = " << cur << endl;
         if(mincost[pos] != cur) continue;
 
         if(intake[pos] == -1 && minc > mincost[pos]) { minc = mincost[pos]; mind = pos; }
