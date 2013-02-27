@@ -40,8 +40,6 @@ int mincost[230];
 priority_queue<PII> Q;
 
 int find_sink() {
-    memset(back, -1, sizeof(back));
-
     int minc = 99999, mind;
 
     while(!Q.empty()) {
@@ -73,7 +71,6 @@ int find_sink() {
     intake[mind]++;
     while(mind != back[mind]) {
         int b = back[mind];
-        cout << mind << " " << b << endl;
         if(links[b][mind].second) {
             links[b][mind].second--;
             links[mind][b].first++;
@@ -119,6 +116,8 @@ public:
 
         while(true) {
             while(!Q.empty()) Q.pop();
+            memset(back, -1, sizeof(back));
+
             for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
                 int n = node(i,j);
                 if(intake[n] > 0) {
