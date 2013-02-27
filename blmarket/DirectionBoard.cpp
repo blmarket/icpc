@@ -64,12 +64,6 @@ int find_sink() {
             }
 
             if(back[node] == -1 || mincost[node] > ncost) {
-                if(node == 155) {
-                    cout << pos << " " << cur << " -> 155 " << ncost << " " << cost.first << " " << cost.second << endl;
-                }
-                if(node == 185) {
-                    cout << pos << " " << cur << " -> 185 " << ncost << endl;
-                }
                 back[node] = pos;
                 mincost[node] = ncost;
                 Q.push(mp(ncost, node));
@@ -77,12 +71,9 @@ int find_sink() {
         }
     }
 
-    if(back[155] == 185 && back[185] == 155) exit(-1);
-
     intake[mind]++;
     while(mind != back[mind]) {
         int b = back[mind];
-        cout << mind << " " << b << " = " << mincost[mind] << " " << mincost[b] << endl;
         if(links[b][mind].second) {
             links[b][mind].second--;
             links[mind][b].first++;
