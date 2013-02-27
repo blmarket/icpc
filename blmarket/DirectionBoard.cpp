@@ -59,6 +59,8 @@ int find_sink() {
                 ncost = cur - 1;
             } else if(cost.first) {
                 ncost = cur + 1;
+            } else { // no edge available
+                continue;
             }
 
             if(back[node] == -1 || mincost[node] > ncost) {
