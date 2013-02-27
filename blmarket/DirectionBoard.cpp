@@ -42,7 +42,6 @@ priority_queue<PII> Q;
 int find_sink() {
     int minc = 99999, mind;
 
-    cout << "start!" << endl;
     while(!Q.empty()) {
         int cur = Q.top().first;
         int pos = Q.top().second; 
