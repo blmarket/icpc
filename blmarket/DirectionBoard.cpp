@@ -25,14 +25,53 @@ const int dx[] = {-1, 0,0, 1};
 const int dy[] = {0,-1,1,0};
 
 int N,M;
-int intake[20][20];
 
-int links[230][230][2];
+int intake[230];
+map<int, PII> links[230];
 
 int R(int x) { return (x + N) % N; }
 int C(int y) { return (y + M) % M; }
 int node(int x,int y) {
     return x*M + y;
+}
+
+int back[230];
+int mincost[230];
+int find_sink(int a) {
+    memset(back, -1, sizeof(back));
+    priority_queue<PII> Q;
+
+    Q.push(mp(0, a));
+    back[a] = a;
+    mincost[a] = 0;
+
+    int minc = 99999, mind;
+
+    while(!Q.empty()) {
+        int cur = Q.top().first;
+        int pos = Q.top().second; 
+        Q.pop();
+        if(mincost[pos] != cur) continue;
+
+        if(intake[pos] == -1 && minc > mincost[pos]) { minc = mincost[pos]; mind = pos; }
+        
+        foreach(it, links[pos]) {
+            int node = it->first;
+            PII cost = it->second;
+            int ncost;
+            if(cost.second) { // back link;
+                ncost = cur - 1;
+            } else if(cost.first) {
+                ncost = cur + 1;
+            }
+
+            if(back[node] == -1 || mincost[node] > ncost) {
+                back[node] = pos;
+                mincost[node] = ncost;
+                Q.push(mp(ncost, node));
+            }
+        }
+    }
 }
 
 class DirectionBoard 
@@ -52,22 +91,23 @@ public:
 
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
-            intake[nx][ny]++;
+            intake[node(nx,ny)]++;
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                links[node(nx,ny)][node(tx,ty)][0]++;
+                links[node(nx,ny)][node(tx,ty)].first++;
             }
-            cout << i << " " << j << " : " << links[6][4][0] << endl;
         }
 
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[i][j] -= 1;
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[node(i,j)] -= 1;
 
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<M;j++) cout << node(i,j) << ":" << intake[i][j] << " ";
-            cout << endl;
+        int ret = 0;
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+            while(intake[node(i,j)] > 0) {
+                ret += find_sink(node(i,j));
+            }
         }
-        cout << links[6][4][0] << endl;
+        return ret;
     }
 
     
