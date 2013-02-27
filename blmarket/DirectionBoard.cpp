@@ -83,6 +83,8 @@ public:
         memset(intake, 0, sizeof(intake));
         memset(links, 0, sizeof(links));
 
+        cout << "here" << endl;
+
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(board[i][j] == 'U') board[i][j] = 0;
             else if(board[i][j] == 'L') board[i][j] = 1;
@@ -98,8 +100,6 @@ public:
                 links[node(nx,ny)][node(tx,ty)].first++;
             }
         }
-
-        cout << "here" << endl;
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[node(i,j)] -= 1;
 
