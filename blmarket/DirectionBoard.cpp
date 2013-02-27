@@ -74,7 +74,7 @@ int find_sink() {
         }
     }
 
-    if(back[155] == 185 && back[185] == 155) return -1;
+    if(back[155] == 185 && back[185] == 155) exit(-1);
 
     intake[mind]++;
     while(mind != back[mind]) {
