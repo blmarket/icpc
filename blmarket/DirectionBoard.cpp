@@ -95,7 +95,7 @@ public:
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                cout << tx << " " << ty << endl;
+                cout << node(nx,ny) << " " << node(tx,ty) << endl;
                 links[node(nx,ny)][node(tx,ty)].first++;
             }
         }
