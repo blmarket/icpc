@@ -50,7 +50,6 @@ int find_sink(int a) {
     while(!Q.empty()) {
         int cur = Q.top().first;
         int pos = Q.top().second; 
-        cout << cur << " " << pos << " = " << mincost[pos] << endl;
         Q.pop();
         if(mincost[pos] != cur) continue;
 
