@@ -27,7 +27,7 @@ const int dy[] = {0,-1,1,0};
 int N,M;
 
 int intake[500];
-map<int, PII> links[500];
+map<int, map<int, int> > links[500];
 
 int R(int x) { return (x + N) % N; }
 int C(int y) { return (y + M) % M; }
@@ -55,17 +55,9 @@ int find_sink() {
         
         foreach(it, links[pos]) {
             int node = it->first;
-            PII cost = it->second;
-            int ncost;
-            if(cost.second) { // back link;
-                ncost = cur - 1;
-            } else if(cost.first) {
-                ncost = cur + 1;
-            } else { // no edge available
-                continue;
-            }
+            map<int,int>::iterator jt = it->second.begin();
 
-            if(pos >= 250) ncost = cur;
+            int ncost = cur + jt->first;
 
             if(back[node] == -1 || mincost[node] > ncost) {
                 back[node] = pos;
@@ -79,22 +71,15 @@ int find_sink() {
     while(mind != back[mind]) {
         int b = back[mind];
 
-        debug(b);
-        cout << " ";
-        debug(mind);
-        if(links[b][mind].second) {
-            links[b][mind].second--;
-            links[mind][b].first++;
-            cout << ":0 - ";
-        } else {
-            links[b][mind].first--;
-            links[mind][b].second++;
-            cout << ":1 - ";
+        map<int,int>::iterator jt = links[b][mind].begin();
+        jt->second--;
+        links[mind][b][-jt->first] += 1;
+        if(jt->second == 0) {
+            links[b][mind].erase(jt);
         }
         mind = b;
     }
     intake[mind]--;
-    cout << endl;
 
     return minc;
 }
@@ -117,18 +102,12 @@ public:
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
             intake[node(nx,ny)]++;
-            links[node(nx,ny)][250+node(i,j)].first++;
+            links[node(nx, ny)][node(i,j)][1]++;
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                links[250+node(i,j)][node(tx,ty)].first++;
+                links[node(i,j)][node(tx,ty)][0]++;
             }
-        }
-
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<M;j++)
-                cout << intake[node(i,j)] << " ";
-            cout << endl;
         }
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[node(i,j)] -= 1;
@@ -150,17 +129,6 @@ public:
             if(Q.empty()) break;
 
             ret += find_sink();
-        }
-
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            int d = board[i][j];
-            int nx = R(i + dx[d]), ny = C(j + dy[d]);
-            for(int k=0;k<4;k++) if(k != d) {
-                int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                if(links[node(tx,ty)][node(nx,ny)].second) {
-                    cout << i << " " << j << endl;
-                }
-            }
         }
 
         return ret;
