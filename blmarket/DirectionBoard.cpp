@@ -129,6 +129,7 @@ public:
             if(Q.empty()) break;
 
             ret += find_sink();
+            cout << "sink" << endl;
         }
 
         return ret;
