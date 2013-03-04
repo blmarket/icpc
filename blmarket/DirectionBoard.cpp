@@ -34,9 +34,12 @@ int C(int y) { return (y + M) % M; }
 int node(int x,int y) {
     return x*M + y;
 }
+void debug(int a) {
+    cout << (a/M) << " " << (a%M);
+}
 
-int back[230];
-int mincost[230];
+int back[500];
+int mincost[500];
 priority_queue<PII> Q;
 
 int find_sink() {
@@ -62,6 +65,8 @@ int find_sink() {
                 continue;
             }
 
+            if(pos >= 250) ncost = cur;
+
             if(back[node] == -1 || mincost[node] > ncost) {
                 back[node] = pos;
                 mincost[node] = ncost;
@@ -73,16 +78,23 @@ int find_sink() {
     intake[mind]++;
     while(mind != back[mind]) {
         int b = back[mind];
+
+        debug(b);
+        cout << " ";
+        debug(mind);
         if(links[b][mind].second) {
             links[b][mind].second--;
             links[mind][b].first++;
+            cout << ":0 - ";
         } else {
             links[b][mind].first--;
             links[mind][b].second++;
+            cout << ":1 - ";
         }
         mind = b;
     }
     intake[mind]--;
+    cout << endl;
 
     return minc;
 }
@@ -105,11 +117,18 @@ public:
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
             intake[node(nx,ny)]++;
+            links[node(nx,ny)][250+node(i,j)].first++;
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                links[node(nx,ny)][node(tx,ty)].first++;
+                links[250+node(i,j)][node(tx,ty)].first++;
             }
+        }
+
+        for(int i=0;i<N;i++) {
+            for(int j=0;j<M;j++)
+                cout << intake[node(i,j)] << " ";
+            cout << endl;
         }
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) intake[node(i,j)] -= 1;
@@ -128,10 +147,23 @@ public:
                     mincost[n] = 0;
                 }
             }
-            if(Q.empty()) return ret;
+            if(Q.empty()) break;
 
             ret += find_sink();
         }
+
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+            int d = board[i][j];
+            int nx = R(i + dx[d]), ny = C(j + dy[d]);
+            for(int k=0;k<4;k++) if(k != d) {
+                int tx = R(i + dx[k]), ty = C(j + dy[k]);
+                if(links[node(tx,ty)][node(nx,ny)].second) {
+                    cout << i << " " << j << endl;
+                }
+            }
+        }
+
+        return ret;
     }
 
     
