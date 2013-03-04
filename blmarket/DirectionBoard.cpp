@@ -26,8 +26,8 @@ const int dy[] = {0,-1,1,0};
 
 int N,M;
 
-int intake[230];
-map<int, PII> links[230];
+int intake[500];
+map<int, PII> links[500];
 
 int R(int x) { return (x + N) % N; }
 int C(int y) { return (y + M) % M; }
@@ -106,7 +106,7 @@ public:
     {		
         N = size(board); M = size(board[0]);
         memset(intake, 0, sizeof(intake));
-        for(int i=0;i<230;i++) links[i].clear();
+        for(int i=0;i<500;i++) links[i].clear();
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(board[i][j] == 'U') board[i][j] = 0;
