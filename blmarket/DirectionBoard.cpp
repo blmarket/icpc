@@ -102,11 +102,11 @@ public:
             int d = board[i][j];
             int nx = R(i + dx[d]), ny = C(j + dy[d]);
             intake[node(nx,ny)]++;
-            links[node(nx, ny)][node(i,j)][1]++;
+            links[node(nx, ny)][250 + node(i,j)][1]++;
 
             for(int k=0;k<4;k++) if(k != d) {
                 int tx = R(i + dx[k]), ty = C(j + dy[k]);
-                links[node(i,j)][node(tx,ty)][0]++;
+                links[250 + node(i,j)][node(tx,ty)][0]++;
             }
         }
 
