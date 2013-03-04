@@ -67,6 +67,8 @@ int find_sink() {
         }
     }
 
+    cout << "minc=" << minc << endl;
+
     intake[mind]++;
     while(mind != back[mind]) {
         int b = back[mind];
