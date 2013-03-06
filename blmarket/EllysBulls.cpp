@@ -75,7 +75,7 @@ int main()
 {
     string tmp = "";
     for(int i=0;i<9;i++) {
-        tmp = tmp + (char)('0' + i);
+        tmp = tmp + (char)('0' + (rand() % 10));
     }
     cout << tmp << endl;
 } 
