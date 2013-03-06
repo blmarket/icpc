@@ -25,22 +25,14 @@ class NewArenaPassword
 public:
     int minChange(string old, int K) 
     {
-        int diff = size(old) - K;
-        int ret = 0;
-        for(int i=0;i<min(K, diff);i++) {
-            map<char, int> M;
-            M.clear();
-            for(int j=i;j<size(old);j+=diff) {
-                M[old[j]]++;
-            }
-            int maxc = 0, sum = 0;
-            foreach(it, M) {
-                maxc = max(maxc, it->second);
-                sum += it->second;
-            }
-            ret += (sum - maxc);
-        }
-        return ret;
+        int n = old.size(),ans=0,ans1=0,ans2=0,ans3=0;
+        string old1=old,old2=old,old3=old;
+        for(int i=K-1;i>=0;i--) if(old[i] != old[n-K+i]) { old[n-K+i] = old[i]; ans++; }
+        for(int i=K-1;i>=0;i--) if(old2[i] != old2[n-K+i]) { old2[i] = old2[n-K+i]; ans2++; }
+        for(int i=0;i<K;i++) if(old1[i] != old1[n-K+i]) { old1[i] = old1[n-K+i]; ans1++; }
+        for(int i=0;i<K;i++) if(old1[i] != old1[n-K+i]) { old1[n-K+i] = old1[i]; ans3++; }
+
+        return min(min(ans, ans1), min(ans2, ans3));
     }
 
     
