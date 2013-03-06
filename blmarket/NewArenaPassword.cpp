@@ -28,7 +28,7 @@ public:
         int diff = size(old) - K;
         int ret = 0;
         for(int i=0;i<K;i++) {
-            cout << old[i] << " " << old[i + diff] << endl;
+            //cout << old[i] << " " << old[i + diff] << endl;
             if(old[i] != old[i+diff]) {
                 ret++;
                 if(i+diff+diff < size(old)) {
