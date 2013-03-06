@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -81,6 +82,7 @@ string gen(void) {
 
 int main()
 {
+    srand(time(NULL));
     string orig = gen();
 
     vector<int> bull;
