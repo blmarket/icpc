@@ -32,6 +32,8 @@ public:
         for(int i=0;i<K;i++) if(old1[i] != old1[n-K+i]) { old1[i] = old1[n-K+i]; ans1++; }
         for(int i=0;i<K;i++) if(old1[i] != old1[n-K+i]) { old1[n-K+i] = old1[i]; ans3++; }
 
+        cout << ans << " " << ans1 << " " << ans2 << " " << ans3 << endl;
+
         return min(min(ans, ans1), min(ans2, ans3));
     }
 
