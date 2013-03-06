@@ -26,11 +26,13 @@ public:
     int minChange(string old, int K) 
     {
         int j = size(old) - K;
+        int ret = 0;
         for(int i=0;i<K;i++) {
             cout << old[i] << " " << old[j] << endl;
+            if(old[i] != old[j]) ret++;
             j++;
         }
-        return 0;
+        return ret;
     }
 
     
