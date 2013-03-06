@@ -21,9 +21,33 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
+vector<string> guess;
+map<pair<int, VI>, int> memo;
+string result;
 
-int go(const string &cur, const VI &bull) {
-    cout << cur << endl;
+int go(int pos, const VI &bull) {
+    pair<int, VI> key = mp(pos, bull);
+    if(memo.count(key)) return memo[key];
+
+    int ret = 0;
+    
+    for(int i='0';i<='9';i++) {
+        bool fail = false;
+        vector<int> tmp = bull;
+        for(int j=0;j<size(guess);j++) {
+            if(guess[j][pos] == i) {
+                if(tmp[j] == 0) { fail = true; break; }
+                tmp[j]--;
+            }
+        }
+        if(fail) continue;
+        int tmp2 = go(pos+1, tmp);
+        if(tmp2 < 1) continue;
+        result[pos] = i;
+        ret += tmp2;
+        if(ret > 1) break;
+    }
+    return memo[key] = ret;
 }
 
 class EllysBulls 
@@ -31,9 +55,13 @@ class EllysBulls
 public:
     string getNumber(vector <string> guesses, vector <int> bulls) 
     {
+        guess = guesses;
         N = size(guesses[0]);
-        go(string(N, '?'), bulls);
-        return "";
+        result = string(N, '?');
+        int ret = go(0, bulls);
+        if(ret == 1) return result;
+        if(ret == 0) return "Liar";
+        return "Ambiguity";
     }
 
     
