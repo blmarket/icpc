@@ -31,6 +31,17 @@ public:
             if(tmp == 0) tmp = goal[i];
             if(tmp !=goal[i]) return -1;
         }
+
+        char first = mapping.begin()->second;
+
+        foreach(it, mapping) {
+            map<char, char>::iterator jt = it;
+            char next;
+            if(++jt != mapping.end()) next = jt->second;
+            else next = first;
+            if(next < it->second) return -1;
+        }
+
         foreach(it, mapping) {
             cout << it->first << " - " << it->second << endl;
         }
