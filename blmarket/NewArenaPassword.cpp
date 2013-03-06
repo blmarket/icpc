@@ -27,14 +27,15 @@ public:
     {
         int diff = size(old) - K;
         int ret = 0;
-        for(int i=0;i<K;i++) {
-            //cout << old[i] << " " << old[i + diff] << endl;
-            if(old[i] != old[i+diff]) {
-                ret++;
-                if(i+diff+diff < size(old)) {
-                    if(old[i+diff+diff] == old[i] || old[i+diff+diff] == old[i+diff]) ret--;
-                }
+        for(int i=0;i<min(K, diff);i++) {
+            vector<char> V;
+            V.clear();
+            for(int j=i;j<size(old);j+=diff) {
+                V.pb(old[j]);
             }
+            for(int i=0;i<size(V);i++)
+                cout << V[i] << " ";
+            cout << endl;
         }
         return ret;
     }
