@@ -71,11 +71,29 @@ public:
     }
 };
 
-int main()
-{
+string gen(void) {
     string tmp = "";
     for(int i=0;i<9;i++) {
         tmp = tmp + (char)('0' + (rand() % 10));
     }
-    cout << tmp << endl;
+    return tmp;
+}
+
+int main()
+{
+    string orig = gen();
+
+    vector<int> bull;
+    vector<string> arr;
+    for(int i=0;i<50;i++) {
+        arr.pb(gen());
+        int cnt = 0;
+        for(int j=0;j<9;j++) {
+            if(arr.back()[j] == orig[j]) cnt++;
+        }
+        bull.pb(cnt);
+    }
+
+    EllysBulls __tmp;
+    cout << __tmp.getNumber(arr, bull) << endl;
 } 
