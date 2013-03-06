@@ -87,7 +87,7 @@ int main()
 
     vector<int> bull;
     vector<string> arr;
-    for(int i=0;i<10;i++) {
+    for(int i=0;i<30;i++) {
         arr.pb(gen());
         int cnt = 0;
         for(int j=0;j<9;j++) {
