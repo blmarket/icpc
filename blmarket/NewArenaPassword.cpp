@@ -25,12 +25,16 @@ class NewArenaPassword
 public:
     int minChange(string old, int K) 
     {
-        int j = size(old) - K;
+        int diff = size(old) - K;
         int ret = 0;
         for(int i=0;i<K;i++) {
-            cout << old[i] << " " << old[j] << endl;
-            if(old[i] != old[j]) ret++;
-            j++;
+            cout << old[i] << " " << old[i + diff] << endl;
+            if(old[i] != old[i+diff]) {
+                ret++;
+                if(i+diff+diff < size(old)) {
+                    if(old[i+diff+diff] == old[i] || old[i+diff+diff] == old[i+diff]) ret--;
+                }
+            }
         }
         return ret;
     }
