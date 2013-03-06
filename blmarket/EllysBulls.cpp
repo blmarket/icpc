@@ -94,6 +94,7 @@ int main()
         bull.pb(cnt);
     }
 
+    cout << orig << endl;
     EllysBulls __tmp;
     cout << __tmp.getNumber(arr, bull) << endl;
 } 
