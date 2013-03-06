@@ -27,7 +27,7 @@ public:
     {
         int j = size(old) - K;
         for(int i=0;i<K;i++) {
-            cout << old[i] << " " << old[j];
+            cout << old[i] << " " << old[j] << endl;
             j++;
         }
         return 0;
