@@ -29,6 +29,8 @@ int go(int pos, const VI &bull) {
     pair<int, VI> key = mp(pos, bull);
     if(memo.count(key)) return memo[key];
 
+    cout << pos << endl;
+
     int ret = 0;
     
     for(int i='0';i<='9';i++) {
