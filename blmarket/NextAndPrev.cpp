@@ -38,14 +38,6 @@ public:
             cout << it->first << " - " << it->second << endl;
         }
 
-        foreach(it, mapping) {
-            map<char, char>::iterator jt = it;
-            char next;
-            if(++jt != mapping.end()) next = jt->second;
-            else next = first;
-            if(next < it->second) return -1;
-        }
-
         return 0;
     }
 
