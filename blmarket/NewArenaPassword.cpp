@@ -30,7 +30,7 @@ public:
         for(int i=K-1;i>=0;i--) if(old[i] != old[n-K+i]) { old[n-K+i] = old[i]; ans++; }
         for(int i=K-1;i>=0;i--) if(old2[i] != old2[n-K+i]) { old2[i] = old2[n-K+i]; ans2++; }
         for(int i=0;i<K;i++) if(old1[i] != old1[n-K+i]) { old1[i] = old1[n-K+i]; ans1++; }
-        for(int i=0;i<K;i++) if(old1[i] != old1[n-K+i]) { old1[n-K+i] = old1[i]; ans3++; }
+        for(int i=0;i<K;i++) if(old3[i] != old3[n-K+i]) { old3[n-K+i] = old3[i]; ans3++; }
 
         cout << ans << " " << ans1 << " " << ans2 << " " << ans3 << endl;
 
