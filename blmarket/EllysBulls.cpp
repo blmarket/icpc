@@ -47,16 +47,20 @@ int go(keyt key) {
     if(pos == M) {
         return 0;
     }
+    int elasplife = M - pos;
 
     keyt nkey;
     nkey.pos = key.pos + 1;
     int ret = 0;
     for(int i=0;i<10;i++) {
+        bool fail = false;
         for(int j=0;j<N;j++) {
             nkey.life[j] = key.life[j];
             if(guess[j][pos] == i + '0') {
                 nkey.life[j]--;
+                if(nkey.life[j] < 0) { fail=true; break; }
             }
+            if(nkey.life[j] >= elasplife) { fail=true; break; }
         }
         int tmp = go(nkey);
         if(tmp == 1) {
