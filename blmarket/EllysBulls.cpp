@@ -51,6 +51,7 @@ void go(int s, int e, string current, VI &state, func_t onEnd) {
 }
 
 void add_one(const VI &tmp, const string &current) {
+    cout << current << endl;
     if(memo.count(tmp)) {
         memo[tmp] = "X";
         return;
@@ -60,7 +61,7 @@ void add_one(const VI &tmp, const string &current) {
 
 void print_result(const VI &tmp, const string &current) {
     if(memo.count(tmp)) {
-        cout << memo[tmp] << current << endl;
+//        cout << memo[tmp] << current << endl;
         return;
     }
 }
