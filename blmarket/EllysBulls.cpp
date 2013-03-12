@@ -74,6 +74,7 @@ class EllysBulls
 public:
     string getNumber(vector <string> guesses, vector <int> bulls) 
     {
+        memo.clear();
         guess = guesses;
         N = size(guess);
         M = size(guess[0]);
