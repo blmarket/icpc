@@ -69,7 +69,7 @@ void print_result(const VI &tmp, const string &current) {
     if(memo.count(tmp2)) {
         if(ret.size() == 0) ret = memo[tmp2] + current;
         else {
-            ret = "Ambiguous";
+            ret = "Ambiguity";
         }
         return;
     }
