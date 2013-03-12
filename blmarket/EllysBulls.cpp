@@ -23,7 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 struct keyt {
     int pos;
-    int life[50];
+    char life[50];
 
     bool operator<(const keyt &rhs) const;
 };
