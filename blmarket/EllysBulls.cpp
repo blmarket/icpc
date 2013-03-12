@@ -35,6 +35,7 @@ void go(int s, int e, string current, VI &state, func_t onEnd) {
         return;
     }
 
+    current += '-';
     for(int i=0;i<10;i++) {
         *current.rbegin() = ('0' + i);
         for(int j=0;j<N;j++) {
