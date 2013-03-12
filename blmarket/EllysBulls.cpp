@@ -34,8 +34,6 @@ void go(int s, int e, string current, VI &state, func_t onEnd) {
         return;
     }
 
-    current += ' ';
-
     for(int i=0;i<10;i++) {
         *current.rbegin() = ('0' + i);
         for(int j=0;j<N;j++) {
@@ -51,7 +49,7 @@ void go(int s, int e, string current, VI &state, func_t onEnd) {
 }
 
 void add_one(const VI &tmp, const string &current) {
-    cout << current << endl;
+    cout << current.size() << endl;
     if(memo.count(tmp)) {
         memo[tmp] = "X";
         return;
