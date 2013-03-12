@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <functional>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,56 +21,48 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-struct keyt {
-    int pos;
-    char life[50];
-
-    bool operator<(const keyt &rhs) const;
-};
-
 int N, M;
 vector<string> guess;
-map<keyt, int> memo;
-string result;
 
-bool keyt::operator<(const keyt &rhs) const {
-    if(pos != rhs.pos) return pos < rhs.pos;
-    for(int i=0;i<N;i++) {
-        if(life[i] != rhs.life[i]) return life[i] < rhs.life[i];
+map<VI, string> memo;
+
+typedef void (*func_t)(const VI&, const string &);
+
+void go(int s, int e, string current, VI &state, func_t onEnd) {
+    if(s == e) {
+        onEnd(state, current);
+        return;
     }
-    return false;
+
+    current += ' ';
+
+    for(int i=0;i<10;i++) {
+        *current.rbegin() = ('0' + i);
+        for(int j=0;j<N;j++) {
+            if(guess[j][s] == '0' + i) { state[j]++; }
+        }
+
+        go(s+1, e, current, state, onEnd);
+
+        for(int j=0;j<N;j++) {
+            if(guess[j][s] == '0' + i) { state[j]--; }
+        }
+    }
 }
 
-int go(keyt key) {
-    if(memo.count(key)) return memo[key];
-    int pos = key.pos;
-    if(pos == M) {
-        return 0;
+void add_one(const VI &tmp, const string &current) {
+    if(memo.count(tmp)) {
+        memo[tmp] = "X";
+        return;
     }
-    int elasplife = M - pos;
+    memo[tmp] = current;
+}
 
-    keyt nkey;
-    nkey.pos = key.pos + 1;
-    int ret = 0;
-    for(int i=0;i<10;i++) {
-        bool fail = false;
-        for(int j=0;j<N;j++) {
-            nkey.life[j] = key.life[j];
-            if(guess[j][pos] == i + '0') {
-                nkey.life[j]--;
-                if(nkey.life[j] < 0) { fail=true; break; }
-            }
-            if(nkey.life[j] >= elasplife) { fail=true; break; }
-        }
-        int tmp = go(nkey);
-        if(tmp == 1) {
-            result[pos] = i + '0';
-        }
-        ret += tmp;
-        if(ret > 1) break;
+void print_result(const VI &tmp, const string &current) {
+    if(memo.count(tmp)) {
+        cout << memo[tmp] << current << endl;
+        return;
     }
-
-    return memo[key] = ret;
 }
 
 class EllysBulls 
@@ -78,22 +70,13 @@ class EllysBulls
 public:
     string getNumber(vector <string> guesses, vector <int> bulls) 
     {
-        memo.clear();
         guess = guesses;
-        N = size(guess);
+        N = size(bulls);
         M = size(guess[0]);
-        result = string(M, '-');
-        keyt key;
-        memset(key.life, 0, sizeof(key.life));
-        key.pos = M;
-        memo[key] = 1;
-        key.pos = 0;
 
-        for(int i=0;i<N;i++) key.life[i] = bulls[i];
-        int tmp = go(key);
-        if(tmp == 0) return "Liar";
-        if(tmp > 1) return "Ambiguity";
-        return result;
+        VI tmp(N,0);
+        go(0, M/2, "", tmp, add_one);
+        go(M/2, M, "", tmp, print_result);
     }
 
     
