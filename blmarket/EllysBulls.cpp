@@ -29,7 +29,7 @@ map<VI, string> memo;
 typedef void (*func_t)(const VI&, const string &);
 
 void go(int s, int e, string current, VI &state, func_t onEnd) {
-    cout << s << " " << e << endl;
+    cout << s << " " << e << " " << current << endl;
     if(s == e) {
         onEnd(state, current);
         return;
