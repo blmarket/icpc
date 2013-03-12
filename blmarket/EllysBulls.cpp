@@ -31,6 +31,7 @@ struct keyt {
 int N, M;
 vector<string> guess;
 map<keyt, int> memo;
+string result;
 
 bool keyt::operator<(const keyt &rhs) const {
     if(pos != rhs.pos) return pos < rhs.pos;
@@ -57,7 +58,11 @@ int go(keyt key) {
                 nkey.life[j]--;
             }
         }
-        ret += go(nkey);
+        int tmp = go(nkey);
+        if(tmp == 1) {
+            result[pos] = i + '0';
+        }
+        ret += tmp;
         if(ret > 1) break;
     }
 
@@ -72,6 +77,7 @@ public:
         guess = guesses;
         N = size(guess);
         M = size(guess[0]);
+        result = string(M, '-');
         keyt key;
         memset(key.life, 0, sizeof(key.life));
         key.pos = M;
