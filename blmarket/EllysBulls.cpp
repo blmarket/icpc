@@ -29,7 +29,6 @@ map<VI, string> memo;
 typedef void (*func_t)(const VI&, const string &);
 
 void go(int s, int e, string current, VI &state, func_t onEnd) {
-    cout << s << " " << e << " " << current << endl;
     if(s == e) {
         onEnd(state, current);
         return;
@@ -60,9 +59,15 @@ void add_one(const VI &tmp, const string &current) {
     memo[tmp] = current;
 }
 
+VI bulls;
 void print_result(const VI &tmp, const string &current) {
-    if(memo.count(tmp)) {
-//        cout << memo[tmp] << current << endl;
+    VI tmp2;
+    for(int i=0;i<N;i++) {
+        if(bulls[i] < tmp[i]) return;
+        tmp2.pb(bulls[i] - tmp[i]);
+    }
+    if(memo.count(tmp2)) {
+        cout << memo[tmp] << current << endl;
         return;
     }
 }
@@ -70,9 +75,10 @@ void print_result(const VI &tmp, const string &current) {
 class EllysBulls 
 {
 public:
-    string getNumber(vector <string> guesses, vector <int> bulls) 
+    string getNumber(vector <string> guesses, vector <int> bulls_) 
     {
         memo.clear();
+        bulls = bulls_;
         guess = guesses;
         N = size(bulls);
         M = size(guess[0]);
