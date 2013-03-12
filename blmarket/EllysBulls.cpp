@@ -59,6 +59,7 @@ void add_one(const VI &tmp, const string &current) {
 }
 
 VI bulls;
+string ret;
 void print_result(const VI &tmp, const string &current) {
     VI tmp2;
     for(int i=0;i<N;i++) {
@@ -66,7 +67,10 @@ void print_result(const VI &tmp, const string &current) {
         tmp2.pb(bulls[i] - tmp[i]);
     }
     if(memo.count(tmp2)) {
-        cout << memo[tmp2] << current << endl;
+        if(ret.size() == 0) ret = memo[tmp2] + current;
+        else {
+            ret = "Ambiguous";
+        }
         return;
     }
 }
@@ -76,6 +80,7 @@ class EllysBulls
 public:
     string getNumber(vector <string> guesses, vector <int> bulls_) 
     {
+        ret = "";
         memo.clear();
         bulls = bulls_;
         guess = guesses;
@@ -86,7 +91,8 @@ public:
         go(0, M/2, "", tmp, add_one);
         go(M/2, M, "", tmp, print_result);
 
-        return "";
+        if(ret.size() == 0) ret = "Liar";
+        return ret;
     }
 
     
