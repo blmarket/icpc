@@ -35,7 +35,6 @@ void go(int s, int e, string current, VI &state, func_t onEnd) {
         return;
     }
 
-    current += '-';
     for(int i=0;i<10;i++) {
         current[size(current) - 1] = (char)('0' + i);
         for(int j=0;j<N;j++) {
@@ -79,6 +78,8 @@ public:
         VI tmp(N,0);
         go(0, M/2, "", tmp, add_one);
         go(M/2, M, "", tmp, print_result);
+
+        return "";
     }
 
     
