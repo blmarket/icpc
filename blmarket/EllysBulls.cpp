@@ -86,7 +86,9 @@ public:
 
         for(int i=0;i<N;i++) key.life[i] = bulls[i];
         int tmp = go(key);
-        return "";
+        if(tmp == 0) return "Liar";
+        if(tmp > 1) return "Ambiguity";
+        return result;
     }
 
     
