@@ -66,7 +66,7 @@ void print_result(const VI &tmp, const string &current) {
         tmp2.pb(bulls[i] - tmp[i]);
     }
     if(memo.count(tmp2)) {
-        cout << memo[tmp] << current << endl;
+        cout << memo[tmp2] << current << endl;
         return;
     }
 }
