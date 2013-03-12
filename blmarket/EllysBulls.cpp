@@ -37,7 +37,7 @@ void go(int s, int e, string current, VI &state, func_t onEnd) {
 
     current += '-';
     for(int i=0;i<10;i++) {
-        *(current.rbegin()) = (char)('0' + i);
+        current[size(current) - 1] = (char)('0' + i);
         for(int j=0;j<N;j++) {
             if(guess[j][s] == '0' + i) { state[j]++; }
         }
