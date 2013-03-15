@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -17,28 +18,56 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+long long mincost[55][55];
 int N;
+vector<int> als, alti;
+vector<string> road;
 
 class SkiResorts 
 {
 public:
-    long long minCost(vector <string> road, vector <int> altitude) 
+    long long minCost(vector <string> road_, vector <int> altitude) 
     {
         N = size(altitude);
-        vector<int> als = altitude;
+        alti = altitude;
+        als = altitude;
+        road = road_;
         sort(als.begin(), als.end());
         als.erase(unique(als.begin(), als.end()), als.end());
 
         for(int i=0;i<N;i++) {
-            for(int j=0;j<size(als);j++) if(altitude[i] == als[j]) { altitude[i] = j; break; }
-            cout << altitude[i] << " ";
+            for(int j=0;j<size(als);j++) if(alti[i] == als[j]) { alti[i] = j; break; }
+            cout << alti[i] << " ";
         }
         cout << endl;
-        
-        return 0;
+
+        memset(mincost, -1, sizeof(mincost));
+
+        priority_queue<pair<PII, LL> > Q;
+
+        for(int i=0;i<size(als);i++) {
+            mincost[0][i] = abs(als[i] - als[alti[0]]);
+            cout << mincost[0][i] << " ";
+            Q.push(mp(mp(0,i), mincost[0][i]));
+        }
+        cout << endl;
+
+        while(!Q.empty()) {
+            int p1 = Q.top().first.first;
+            int p2 = Q.top().first.second;
+            LL cur = Q.top().second;
+            Q.pop();
+
+            if(mincost[p1][p2] != cur) continue;
+            for(int i=0;i<N;i++) if(road[p1][i] == 'Y') {
+                for(int j=0;j<size(als);j++) {
+                }
+            }
+        }
     }
 
     
