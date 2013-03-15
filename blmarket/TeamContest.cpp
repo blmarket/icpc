@@ -22,6 +22,14 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 VI V;
 
+VI cut(const VI &strength, int f) {
+    VI ret;
+    for(int i=0;i<size(strength) - 3; i++) {
+        ret.pb(strength[i+f]);
+    }
+    return ret;
+}
+
 class TeamContest 
 {
 public:
@@ -30,9 +38,21 @@ public:
         int mypower = max(max(strength[0], strength[1]), strength[2]);
         mypower += min(min(strength[0], strength[1]), strength[2]);
         cout << mypower << endl;
-        V.clear();
-        for(int i=3;i<size(strength);i++) V.pb(strength[i]);
-        return 0;
+
+        V = cut(strength, 3);
+        sort(V.rbegin(), V.rend());
+
+        int myrank = 1;
+
+        while(size(V)) {
+            if(V[0] + V.back() > mypower) { // nooo..
+                myrank++;
+                V = cut(V, 3);
+            } else {
+                V = cut(V, 2);
+            }
+        }
+        return myrank;
     }
 
     
