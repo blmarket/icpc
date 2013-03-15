@@ -22,6 +22,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 const int dx[] = {-1,0,0,1};
 const int dy[] = {0,-1,1,0};
+const long long mod = 1000000007LL;
 
 vector<int> x,y;
 int n,m;
@@ -30,6 +31,16 @@ int pari(int a, int b) {
     int ret = (a+b) % 2;
     ret = (ret+2)%2;
     return ret;
+}
+
+int gather(int a, int b) {
+    for(int i=0;i<n;i++) {
+        int dx = abs(a - x[i]) + abs(b - y[i]);
+        int elasp = m - dx;
+        cout << elasp << " ";
+    }
+    cout << endl;
+    return 1;
 }
 
 class WolfPack 
@@ -74,14 +85,15 @@ public:
             sey = min(sey, ey);
         }
 
+        long long ret = 0;
         for(int i=stx;i<=sex;i+=2) {
             for(int j=sty;j<=sey;j+=2) {
-                cout << (i+j)/2 << "," << (i-j)/2 << " ";
+                ret += gather((i+j)/2, (i-j)/2);
+                ret %= mod;
             }
-            cout << endl;
         }
 
-        return 0;
+        return ret;
     }
 
     
