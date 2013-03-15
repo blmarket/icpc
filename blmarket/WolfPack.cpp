@@ -45,12 +45,18 @@ public:
             if(pari(x[i], y[i]) != parity) return 0;
         }
 
-        for(int i=0;i<n;i++) {
-            int stx = (x[i] - m + y[i]) / 2;
-            int sty = (x[i] - m - y[i]) / 2;
-            int sr = m;
-            int su = m;
-            cout << stx << " " << sty << endl;
+        int stx = (x[0] - m + y[0]) / 2;
+        int sty = (x[0] - m - y[0]) / 2;
+        int sr = m + 1;
+        int su = m + 1;
+
+        for(int i=1;i<n;i++) {
+            int tx = (x[i] - m + y[i]) / 2;
+            int ty = (x[i] - m - y[i]) / 2;
+            int r = m + 1;
+            int u = m + 1;
+
+            cout << stx << "-" << sr << " & " << tx << "-" << r << endl;
         }
         return 0;
     }
