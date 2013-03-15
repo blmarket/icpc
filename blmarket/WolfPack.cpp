@@ -32,37 +32,6 @@ int pari(int a, int b) {
     return ret;
 }
 
-void move(int a, int b) {
-    while(true) {
-        bool dir[4] = {true, true, true, true};
-        bool havesome = false;
-        for(int i=0;i<n;i++) {
-            int d1 = x[i] - a;
-            int d2 = y[i] - b;
-            if(abs(d1) + abs(d2) <= m) continue;
-
-            havesome = true;
-            if(d1 >= 0) dir[0] = false;
-            if(d1 <= 0) dir[3] = false;
-            if(d2 >= 0) dir[1] = false;
-            if(d2 <= 0) dir[2] = false;
-        }
-
-        if(!havesome) {
-            cout << a << " " << b << endl;
-            return;
-        }
-
-        for(int i=0;i<4;i++) {
-            if(dir[i]) {
-                a += dx[i];
-                b += dy[i];
-                break;
-            }
-        }
-    }
-}
-
 class WolfPack 
 {
 public:
@@ -76,8 +45,13 @@ public:
             if(pari(x[i], y[i]) != parity) return 0;
         }
 
-        if((m % 2) == parity) move(0, 0);
-        else move(0, 1);
+        for(int i=1;i<n;i++) {
+            int stx = (x[i] - m + y[i]) / 2;
+            int sty = (x[i] - m - y[i]) / 2;
+            int sr = m;
+            int su = m;
+            cout << stx << " " << sty << endl;
+        }
     }
 
     
