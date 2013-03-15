@@ -34,7 +34,6 @@ int pari(int a, int b) {
 
 void move(int a, int b) {
     while(true) {
-        cout << a << " " << b << endl;
         bool dir[4] = {true, true, true, true};
         bool havesome = false;
         for(int i=0;i<n;i++) {
@@ -43,10 +42,10 @@ void move(int a, int b) {
             if(abs(d1) + abs(d2) <= m) continue;
 
             havesome = true;
-            if(d1 > 0) dir[0] = false;
-            if(d1 < 0) dir[3] = false;
-            if(d2 > 0) dir[1] = false;
-            if(d2 < 0) dir[2] = false;
+            if(d1 >= 0) dir[0] = false;
+            if(d1 <= 0) dir[3] = false;
+            if(d2 >= 0) dir[1] = false;
+            if(d2 <= 0) dir[2] = false;
         }
 
         if(!havesome) {
