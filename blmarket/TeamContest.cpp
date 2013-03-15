@@ -79,6 +79,6 @@ public:
 int main()
 {
     TeamContest ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
