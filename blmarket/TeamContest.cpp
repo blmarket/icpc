@@ -39,18 +39,22 @@ public:
         mypower += min(min(strength[0], strength[1]), strength[2]);
 
         V = cut(strength, 3);
-        sort(V.rbegin(), V.rend());
+        sort(V.begin(), V.end());
 
         int myrank = 1;
 
         while(size(V)) {
-            cout << V[0] + V.back() << " " << mypower << endl;
-            if(V[0] + V.back() > mypower) { // nooo..
-                myrank++;
-                V = cut(V, 3);
-            } else {
-                V = cut(V, 2);
+            int need = mypower - V[0];
+            vector<int>::iterator it = upper_bound(V.begin(), V.end(), need);
+            if(it == V.end()) { // no way
+                V = cut(V,3);
+                continue;
             }
+
+            myrank++;
+            *it = 0;
+            sort(V.begin(), V.end());
+            V = cut(V, 3);
         }
         return myrank;
     }
