@@ -64,10 +64,21 @@ public:
 
             if(mincost[p1][p2] != cur) continue;
             for(int i=0;i<N;i++) if(road[p1][i] == 'Y') {
-                for(int j=0;j<size(als);j++) {
+                for(int j=0;j<=p2;j++) {
+                    LL tmp = cur + abs(als[j] - als[alti[i]]);
+                    if(mincost[i][j] == -1 || mincost[i][j] > tmp) {
+                        mincost[i][j] = tmp;
+                        Q.push(mp(mp(i,j), tmp));
+                    }
                 }
             }
         }
+
+        long long ret = -1;
+        for(int i=0;i<size(als);i++) if(mincost[N-1][i] != -1) {
+            if(ret == -1 || ret > mincost[N-1][i]) ret = mincost[N-1][i];
+        }
+        return ret;
     }
 
     
