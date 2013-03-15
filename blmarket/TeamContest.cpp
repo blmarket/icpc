@@ -47,12 +47,12 @@ public:
             int need = mypower - V[0];
             vector<int>::iterator it = upper_bound(V.begin(), V.end(), need);
             if(it == V.end()) { // no way
-                cout << V[0] << " " << V[1] << " " << V[2] << endl;
+                cout << need << ":" << V[0] << " " << V[1] << " " << V[2] << endl;
                 V = cut(V,3);
                 continue;
             }
 
-            cout << V[0] << " " << V[1] << " " << *it << "*" << endl;
+            cout << need << ":" << V[0] << " " << V[1] << " " << *it << "*" << endl;
 
             myrank++;
             *it = 0;
