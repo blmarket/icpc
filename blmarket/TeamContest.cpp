@@ -37,7 +37,6 @@ public:
     {
         int mypower = max(max(strength[0], strength[1]), strength[2]);
         mypower += min(min(strength[0], strength[1]), strength[2]);
-        cout << mypower << endl;
 
         V = cut(strength, 3);
         sort(V.rbegin(), V.rend());
@@ -45,6 +44,7 @@ public:
         int myrank = 1;
 
         while(size(V)) {
+            cout << V[0] + V.back() << " " << mypower << endl;
             if(V[0] + V.back() > mypower) { // nooo..
                 myrank++;
                 V = cut(V, 3);
