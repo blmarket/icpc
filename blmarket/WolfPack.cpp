@@ -74,8 +74,8 @@ public:
             sey = min(sey, ey);
         }
 
-        for(int i=stx;i<=sex;i+=2) {
-            for(int j=sty;j<=sey;j+=2) {
+        for(int i=stx;i<=sex;i++) {
+            for(int j=sty;j<=sey;j++) {
                 cout << (i+j) << "," << (i-j) << " ";
             }
             cout << endl;
