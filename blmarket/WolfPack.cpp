@@ -45,19 +45,42 @@ public:
             if(pari(x[i], y[i]) != parity) return 0;
         }
 
-        int stx = (x[0] - m + y[0]) / 2;
-        int sty = (x[0] - m - y[0]) / 2;
-        int sr = m + 1;
-        int su = m + 1;
+        int stx = (x[0] - m + y[0]);
+        int sty = (x[0] - m - y[0]);
+        int sex = stx + m * 2;
+        int sey = sty + m * 2;
 
         for(int i=1;i<n;i++) {
-            int tx = (x[i] - m + y[i]) / 2;
-            int ty = (x[i] - m - y[i]) / 2;
-            int r = m + 1;
-            int u = m + 1;
+            int tx = (x[i] - m + y[i]);
+            int ty = (x[i] - m - y[i]);
+            int ex = tx + m * 2;
+            int ey = ty + m * 2;
 
-            cout << stx << "-" << sr << " & " << tx << "-" << r << endl;
+            if(stx > tx) {
+                swap(stx, tx);
+                swap(sex, ex);
+            }
+
+            if(sty > ty) {
+                swap(sty, ty);
+                swap(sex, ey);
+            }
+
+            if(sex < tx) return 0;
+            if(sex < ty) return 0;
+            stx = tx;
+            sex = min(sex, ex);
+            sty = ty;
+            sey = min(sey, ey);
         }
+
+        for(int i=stx;i<=sex;i+=2) {
+            for(int j=sty;j<=sey;j+=2) {
+                cout << (i+j) << "," << (i-j) << " ";
+            }
+            cout << endl;
+        }
+
         return 0;
     }
 
