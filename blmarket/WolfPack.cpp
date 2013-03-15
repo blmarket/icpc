@@ -34,6 +34,7 @@ int pari(int a, int b) {
 
 void move(int a, int b) {
     while(true) {
+        cout << a << " " << b << endl;
         bool dir[4] = {true, true, true, true};
         bool havesome = false;
         for(int i=0;i<n;i++) {
