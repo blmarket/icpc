@@ -56,10 +56,12 @@ long long go(int mask, int pos) {
         mask ^= (1 << pp);
     }
 
+    /*
     for(int i=0;i<N;i++) {
         cout << ((mask >> i)&1);
     }
     cout << " " << pos << " = " << ret << endl;
+    */
 
     return memo[key] = ret;
 }
