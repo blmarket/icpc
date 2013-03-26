@@ -46,6 +46,7 @@ class TheNumberGame
 public:
     string determineOutcome(int A, int B) 
     {		
+        memo.clear();
         string aa, bb;
         aa = toString(A); bb = toString(B);
         if(canmake(aa,bb)) return "Manao wins";
