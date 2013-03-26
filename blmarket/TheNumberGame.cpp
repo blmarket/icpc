@@ -21,6 +21,25 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 template<typename T> string toString(const T &a) { ostringstream ost; ost << a; return ost.str(); }
 
+set<string> memo;
+
+bool canmake(string &aa, string &bb) {
+    if(memo.count(aa) > 0) return false;
+    memo.insert(aa);
+
+    if(aa.size() < bb.size()) return false;
+    if(aa.size() == bb.size()) {
+        if(aa == bb) return true;
+        reverse(aa.begin(), aa.end());
+        return aa == bb;
+    }
+
+    string tmp = aa.substr(1);
+    if(canmake(tmp, bb)) return true;
+    aa.resize(size(aa) - 1);
+    return canmake(aa, bb);
+}
+
 class TheNumberGame 
 {
 public:
@@ -28,7 +47,8 @@ public:
     {		
         string aa, bb;
         aa = toString(A); bb = toString(B);
-        return "";
+        if(canmake(aa,bb)) return "Manao wins";
+        return "Manao loses";
     }
 
     
