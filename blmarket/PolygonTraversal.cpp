@@ -25,6 +25,7 @@ int N;
 
 long long go(int mask, int pos) {
     if(mask + 1 == (1 << N)) return 1;
+    cout << mask << " " << pos << endl;
     PII key = mp(mask, pos);
     if(memo.count(key)) return memo[key];
 
@@ -90,6 +91,6 @@ public:
 int main()
 {
     PolygonTraversal ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
