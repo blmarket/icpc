@@ -25,7 +25,10 @@ int N;
 
 long long go(int mask, int pos) {
     if(mask + 1 == (1 << N)) return 1;
-    cout << mask << " " << pos << endl;
+    for(int i=0;i<N;i++) {
+        cout << ((mask >> i)&1);
+    }
+    cout << " " << pos << endl;
     PII key = mp(mask, pos);
     if(memo.count(key)) return memo[key];
 
