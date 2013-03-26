@@ -22,9 +22,14 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 map<PII, long long> memo;
 int N;
+int begin;
 
 long long go(int mask, int pos) {
-    if(mask + 1 == (1 << N)) return 1;
+    if(mask + 1 == (1 << N)) {
+        pos = (pos - begin + N) % N;
+        if(pos == 1 || pos == N-1) return 0;
+        return 1;
+    }
 
     PII key = mp(mask, pos);
     if(memo.count(key)) return memo[key];
@@ -72,6 +77,7 @@ public:
             points[i]--;
             mask |= (1 << points[i]);
         }
+        begin = points[0];
 
         return go(mask, points.back());
     }
