@@ -35,7 +35,7 @@ bool canmake(string &aa, string &bb) {
     }
 
     string tmp = aa.substr(1);
-    cout << tmp << endl;
+    cout << tmp << " " << bb << endl;
     if(canmake(tmp, bb)) return true;
     aa.resize(size(aa) - 1);
     return canmake(aa, bb);
