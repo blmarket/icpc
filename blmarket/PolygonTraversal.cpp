@@ -20,51 +20,52 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-map<vector<PII>, long long> memo;
+map<PII, long long> memo;
+int N;
 
-void cut(vector<PII> &cur, int pos) {
-    for(int i=0;i<size(cur);i++) {
-        if(cur[i].first <= pos && cur[i].second >= pos) {
-            if(pos+1 <= cur[i].second) cur.pb(mp(pos+1, cur[i].second));
-            if(cur[i].first <= pos - 1) cur[i].second = pos - 1;
-            else {
-                swap(cur[i], cur.back());
-                cur.pop_back();
-            }
-            sort(cur.begin(), cur.end());
-            return;
+long long go(int mask, int pos) {
+    PII key = mp(mask, pos);
+    if(memo.count(key)) return memo[key];
+
+    long long ret = 0;
+    int left, right;
+    for(left=1;left<N;left++) {
+        int pp = (pos - left + N) % N; 
+        if(mask & (1 << pp)) {
+            break;
         }
     }
+    for(right = 1; right < N; right++) {
+        int pp = (pos + right) % N;
+        if(mask & (1 << pp)) {
+            break;
+        }
+    }
+    for(;right + left < N; right++) {
+        int pp = (pos + right) % N;
+        if(mask & (1 << pp)) continue;
+        mask |= (1 << pp);
+        ret += go(mask, pp);
+        mask ^= (1 << pp);
+    }
+    return memo[key] = ret;
 }
 
 class PolygonTraversal 
 {
 public:
-    long long count(int N, vector <int> points) 
+    long long count(int N_, vector <int> points) 
     {
+        N = N_;
         memo.clear();
-        for(int i=1;i<size(points);i++) {
-            points[i] = (points[i] - points[0] + N) % N;
-        }
-        points[0] = 0;
+        int mask = 0;
 
-        vector<PII> cur;
-        if(points[1] == 1) {
-            cur.pb(mp(2, N-1));
-        } else if(points[1] == N-1) {
-            cur.pb(mp(1, N-2));
-        } else {
-            cur.pb(mp(1, points[1] - 1));
-            cur.pb(mp(points[1]+1, N-1));
+        for(int i=0;i<size(points);i++) {
+            points[i]--;
+            mask |= (1 << points[i]);
         }
 
-        for(int i=2;i<size(points);i++) {
-            cut(cur, points[i]);
-        }
-        for(int i=0;i<size(cur);i++) {
-            cout << cur[i].first << "-" << cur[i].second << " ";
-        }
-        cout << endl;
+        return go(mask, points.back());
     }
 
     
