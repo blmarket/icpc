@@ -24,6 +24,7 @@ map<PII, long long> memo;
 int N;
 
 long long go(int mask, int pos) {
+    if(mask + 1 == (1 << N)) return 1;
     PII key = mp(mask, pos);
     if(memo.count(key)) return memo[key];
 
