@@ -30,13 +30,11 @@ public:
         long long s = first;
         long long e = 3000000000LL;
         while(s < e) {
-            cout << s << " " << e << endl;
             long long m = (s+e+1) / 2;
             bool check = false;
 
             long long d1 = (abs(m - first) + d - 1) / d;
             long long d2 = (abs(m - last) + d - 1) / d;
-            cout << m << " : " << d1 << " " << d2 << endl;
 
             check = (d1 + d2 < n);
             if(check) {
@@ -69,6 +67,6 @@ public:
 int main()
 {
     TheArray ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
