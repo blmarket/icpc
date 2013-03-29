@@ -31,7 +31,7 @@ public:
         long long e = 3000000000LL;
         while(s < e) {
             cout << s << " " << e << endl;
-            long long m = (s+e+1) / 2;
+            long long m = (s+e) / 2;
             bool check = false;
 
             long long d1 = (abs(m - first) + d - 1) / d;
