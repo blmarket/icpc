@@ -30,6 +30,7 @@ public:
         long long s = -3000000000LL;
         long long e = 3000000000LL;
         while(s < e) {
+            cout << s << " " << e << endl;
             long long m = (s+e) / 2;
             bool check = false;
 
