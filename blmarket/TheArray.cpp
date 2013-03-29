@@ -36,7 +36,7 @@ public:
 
             long long d1 = (abs(m - first) + d - 1) / d;
             long long d2 = (abs(m - last) + d - 1) / d;
-            cout << d1 << " " << d2 << endl;
+            cout << m << " : " << d1 << " " << d2 << endl;
 
             check = (d1 + d2 <= n);
             if(check) {
