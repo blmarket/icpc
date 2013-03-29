@@ -42,7 +42,7 @@ public:
         int s = 0, e = 1000000001;
         while(s < e) {
             int m = (s+e) / 2;
-            cout << m << " = " << check(m) << endl;
+            // cout << m << " = " << check(m) << endl;
             if(check(m)) {
                 e = m;
             } else {
@@ -72,6 +72,6 @@ public:
 int main()
 {
     TheOlympiadInInformatics ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
