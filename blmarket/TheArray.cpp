@@ -38,7 +38,7 @@ public:
             long long d2 = (abs(m - last) + d - 1) / d;
             cout << m << " : " << d1 << " " << d2 << endl;
 
-            check = (d1 + d2 < n - 1);
+            check = (d1 + d2 < n - 2);
             if(check) {
                 s = m;
             } else {
