@@ -29,7 +29,7 @@ bool check(int m) {
         int higher = sums[i] / (m + 1);
         ss += higher;
     }
-    if(ss < k) return true;
+    if(ss <= k) return true;
     return false;
 }
 
