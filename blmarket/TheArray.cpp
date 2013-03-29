@@ -40,9 +40,9 @@ public:
 
             check = (d1 + d2 <= n);
             if(check) {
-                e = m;
+                s = m;
             } else {
-                s = m+1;
+                e = m - 1;
             }
         }
         return e;
