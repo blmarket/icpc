@@ -27,7 +27,7 @@ public:
     {		
         if(d == 0) return last;
 
-        long long s = -3000000000LL;
+        long long s = first;
         long long e = 3000000000LL;
         while(s < e) {
             cout << s << " " << e << endl;
