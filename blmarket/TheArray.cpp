@@ -45,6 +45,7 @@ public:
                 e = m - 1;
             }
         }
+        cout << s << " " << e << endl;
         return s;
     }
 
