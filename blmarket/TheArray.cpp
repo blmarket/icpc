@@ -45,7 +45,7 @@ public:
                 e = m - 1;
             }
         }
-        return e;
+        return s;
     }
 
     
