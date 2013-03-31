@@ -61,7 +61,7 @@ public:
             maxc = findmax(s);
 
             string ret = s1 + t1;
-            if(maxc <= t[0]) return ret; // TODO: FIX
+            if(maxc < t[0]) return ret; // TODO: FIX
 
             for(int i=0;i<size(s);i++) {
                 if(s[i] == maxc) {
