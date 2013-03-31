@@ -84,7 +84,16 @@ public:
         while(size(s)) {
             maxc = findmax(s);
             if(maxc < t1[0]) return s1 + t1;
-            break;
+
+            for(int i=0;i<size(s);i++) {
+                if(s[i] == maxc) {
+                    s1 += s[i];
+                    t1 += t[i];
+                    lastidx = i;
+                }
+            }
+            s = s.substr(lastidx + 1);
+            t = t.substr(lastidx + 1);
         }
         return s1 + t1;
     }
