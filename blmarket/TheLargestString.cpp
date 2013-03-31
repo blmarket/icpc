@@ -30,11 +30,18 @@ public:
         for(int i=1;i<size(s);i++) {
             if(s[i] > maxc) maxc = s[i];
         }
+
+        char maxt = -1;
         for(int i=0;i<size(s);i++) {
             if(s[i] == maxc) {
-                if(t[i] > maxc) {
-                    return "" + s[i] + t[i];
-                }
+                if(t[i] > maxt) maxt = t[i];
+            }
+        }
+        cout << maxc << " " << maxt << endl;
+        if(maxt > maxc) return "" + maxc + maxt;
+
+        for(int i=0;i<size(s);i++) {
+            if(s[i] == maxc) {
             }
         }
         return "";
