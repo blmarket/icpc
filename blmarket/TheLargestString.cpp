@@ -38,13 +38,11 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
     }
 
     for(int i=0;i<=cnt2;i++) {
-        int cur = 0, cnt = 0;
+        int cur = i, cnt = 0;
         string s2 = "", t2 = "";
 
         for(int j=0;j<size(s);j++) if(s[j] == c) {
-            cout << cur << " " << t[j] << endl;
             if(cur > 0 && t[j] != c) continue;
-            cout << "OO" << endl;
             if(t[j] == c && cur) cur--;
 
             s2 += s[j]; 
