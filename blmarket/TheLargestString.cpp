@@ -75,11 +75,8 @@ public:
 
         int lastidx;
         string s1, t1;
-        count(s, t, maxc, lastidx, s1, t1);
+        cout << count(s, t, maxc, lastidx, s1, t1) << endl;
         s = s.substr(lastidx + 1); t = t.substr(lastidx + 1);
-
-        cout << s1 << " " << t1 << endl;
-        cout << s << " " << t << endl;
 
         while(size(s)) {
             maxc = findmax(s);
