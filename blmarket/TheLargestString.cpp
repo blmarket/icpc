@@ -78,6 +78,8 @@ public:
         count(s, t, maxc, lastidx, s1, t1);
         s = s.substr(lastidx + 1); t = t.substr(lastidx + 1);
 
+        cout << s << " " << t << endl;
+
         while(size(s)) {
             maxc = findmax(s);
             if(maxc < t1[0]) return s1 + t1;
