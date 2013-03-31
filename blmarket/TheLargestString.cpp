@@ -28,6 +28,35 @@ char findmax(string s) {
     return maxc;
 }
 
+int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
+    int ret = 0;
+    int cnt2 = 0;
+
+    for(int i=0;i<size(s);i++) if(s[i] == c) {
+        lastidx = i;
+        if(t[i] == c) cnt2++;
+    }
+
+    for(int i=0;i<=cnt2;i++) {
+        int cur = 0, cnt = 0;
+        string s2 = "", t2 = "";
+        for(int j=0;j<size(s);j++) if(s[i] == c) {
+            if(cur && t[j] != c) continue;
+            if(t[j] == c && cur) cur--;
+
+            s2 += s[j]; 
+            t2 += t[j];
+            cnt++;
+        }
+        if(cnt + i > ret) {
+            ret = cnt + i;
+            s1 = s2; t1 = t2;
+        }
+    }
+
+    return ret;
+}
+
 class TheLargestString 
 {
 public:
@@ -44,36 +73,16 @@ public:
         }
         if(maxt > maxc) return string("") + maxc + maxt;
 
+        int lastidx;
         string s1, t1;
-        int lastidx = -1;
-        for(int i=0;i<size(s);i++) {
-            if(s[i] == maxc) {
-                lastidx = i;
-                s1 += s[i];
-                t1 += t[i];
-            }
-        }
-
-        s = s.substr(lastidx+1);
-        t = t.substr(lastidx+1);
+        count(s, t, maxc, lastidx, s1, t1);
+        s = s.substr(lastidx + 1); t = t.substr(lastidx + 1);
 
         while(size(s)) {
             maxc = findmax(s);
-
-            string ret = s1 + t1;
-            if(maxc < t[0]) return ret; // TODO: FIX
-
-            for(int i=0;i<size(s);i++) {
-                if(s[i] == maxc) {
-                    lastidx = i;
-                    s1 += s[i];
-                    t1 += t[i];
-                }
-            }
-            s = s.substr(lastidx+1);
-            t = t.substr(lastidx+1);
+            if(maxc < t1[0]) return s1 + t1;
         }
-        return s1+t1;
+        return s1 + t1;
     }
 
     
