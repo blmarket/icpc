@@ -42,16 +42,13 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
         string s2 = "", t2 = "";
 
         for(int j=0;j<size(s);j++) if(s[j] == c) {
-            if(cur && t[j] != c) continue;
+            if(cur > 0 && t[j] != c) continue;
             if(t[j] == c && cur) cur--;
 
             s2 += s[j]; 
             t2 += t[j];
             cnt++;
         }
-        cout << i << " " << cnt << endl;
-
-        cout << cnt + i << endl;
         if(cnt + i > ret) {
             ret = cnt + i;
             s1 = s2; t1 = t2;
