@@ -37,8 +37,7 @@ public:
                 if(t[i] > maxt) maxt = t[i];
             }
         }
-        cout << maxc << " " << maxt << endl;
-        if(maxt > maxc) return "" + maxc + maxt;
+        if(maxt > maxc) return string("") + maxc + maxt;
 
         for(int i=0;i<size(s);i++) {
             if(s[i] == maxc) {
