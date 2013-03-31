@@ -20,46 +20,38 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-VI V;
-
-VI cut(const VI &strength, int f) {
-    VI ret;
-    for(int i=0;i<size(strength) - 3; i++) {
-        ret.pb(strength[i+f]);
-    }
-    return ret;
-}
-
 class TeamContest 
 {
 public:
-    int worstRank(vector <int> strength) 
+    int worstRank(vector <int> str) 
     {
-        int mypower = max(max(strength[0], strength[1]), strength[2]);
-        mypower += min(min(strength[0], strength[1]), strength[2]);
+        int my[3] = { str[0], str[1], str[2] };
+        sort(my, my+3);
+        int mypow = my[0] + my[2];
 
-        V = cut(strength, 3);
-        sort(V.begin(), V.end());
-
-        int myrank = 1;
-
-        while(size(V)) {
-            int need = mypower - V[0];
-            vector<int>::iterator it = upper_bound(V.begin(), V.end(), need);
-            if(it == V.end()) { // no way
-                cout << need << ":" << V[0] << " " << V[1] << " " << V[2] << endl;
-                V = cut(V,3);
-                continue;
-            }
-
-            cout << need << ":" << V[0] << " " << V[1] << " " << *it << "*" << endl;
-
-            myrank++;
-            *it = 0;
-            sort(V.begin(), V.end());
-            V = cut(V, 3);
+        vector<int> V;
+        for(int i=3;i<size(str);i++) {
+            V.pb(str[i]);
         }
-        return myrank;
+        sort(V.begin(), V.end());
+        int ret = 1;
+        while(size(V)) {
+            if(V[0] + V.back() > mypow) {
+                ret++;
+                V.pop_back();
+                swap(V[0], V.back());
+                V.pop_back();
+                swap(V[1], V.back());
+                V.pop_back();
+                sort(V.begin(), V.end());
+            } else {
+                for(int i=3;i<size(V);i++) {
+                    V[i-3] = V[i];
+                }
+                V.resize(size(V) - 3);
+            }
+        }
+        return ret;
     }
 
     
