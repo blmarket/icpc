@@ -41,6 +41,8 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
         int cur = 0, cnt = 0;
         string s2 = "", t2 = "";
 
+        cur = 0; cnt = 0;
+
         for(int j=0;j<size(s);j++) if(s[j] == c) {
             if(cur && t[j] != c) continue;
             if(t[j] == c && cur) cur--;
