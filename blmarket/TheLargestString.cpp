@@ -37,11 +37,11 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
         if(t[i] == c) cnt2++;
     }
 
+    cout << cnt2 << endl;
+
     for(int i=0;i<=cnt2;i++) {
         int cur = 0, cnt = 0;
         string s2 = "", t2 = "";
-
-        cur = 0; cnt = 0;
 
         for(int j=0;j<size(s);j++) if(s[j] == c) {
             if(cur && t[j] != c) continue;
