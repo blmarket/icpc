@@ -37,8 +37,6 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
         if(t[i] == c) cnt2++;
     }
 
-    cout << cnt2 << endl;
-
     for(int i=0;i<=cnt2;i++) {
         int cur = 0, cnt = 0;
         string s2 = "", t2 = "";
@@ -51,6 +49,8 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
             t2 += t[j];
             cnt++;
         }
+        cout << i << " " << cnt << endl;
+
         cout << cnt + i << endl;
         if(cnt + i > ret) {
             ret = cnt + i;
