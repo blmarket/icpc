@@ -40,7 +40,7 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
     for(int i=0;i<=cnt2;i++) {
         int cur = 0, cnt = 0;
         string s2 = "", t2 = "";
-        for(int j=0;j<size(s);j++) if(s[i] == c) {
+        for(int j=0;j<size(s);j++) if(s[j] == c) {
             if(cur && t[j] != c) continue;
             if(t[j] == c && cur) cur--;
 
@@ -48,7 +48,6 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
             t2 += t[j];
             cnt++;
         }
-        cout << cnt + i << endl;
         if(cnt + i > ret) {
             ret = cnt + i;
             s1 = s2; t1 = t2;
