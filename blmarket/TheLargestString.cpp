@@ -20,16 +20,21 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+char findmax(string s) {
+    char maxc = s[0];
+    for(int i=1;i<size(s);i++) {
+        if(s[i] > maxc) maxc = s[i];
+    }
+    return maxc;
+}
+
 class TheLargestString 
 {
 public:
     string find(string s, string t) 
     {
         if(size(s) == 0) return "";
-        char maxc = s[0];
-        for(int i=1;i<size(s);i++) {
-            if(s[i] > maxc) maxc = s[i];
-        }
+        char maxc = findmax(s);
 
         char maxt = -1;
         for(int i=0;i<size(s);i++) {
@@ -40,14 +45,21 @@ public:
         if(maxt > maxc) return string("") + maxc + maxt;
 
         string s1, t1;
+        int lastidx = -1;
         for(int i=0;i<size(s);i++) {
             if(s[i] == maxc) {
+                lastidx = i;
                 s1 += s[i];
                 t1 += t[i];
             }
         }
 
-        return s1 + t1;
+        s = s.substr(lastidx+1);
+        t = t.substr(lastidx+1);
+        maxc = findmax(s);
+
+        if(maxc < t[0]) return s1 + t1;
+        return "";
     }
 
     
