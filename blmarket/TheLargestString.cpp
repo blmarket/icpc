@@ -48,6 +48,7 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
             t2 += t[j];
             cnt++;
         }
+        cout << cnt + i << endl;
         if(cnt + i > ret) {
             ret = cnt + i;
             s1 = s2; t1 = t2;
