@@ -81,6 +81,7 @@ public:
         while(size(s)) {
             maxc = findmax(s);
             if(maxc < t1[0]) return s1 + t1;
+            break;
         }
         return s1 + t1;
     }
