@@ -42,7 +42,9 @@ int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
         string s2 = "", t2 = "";
 
         for(int j=0;j<size(s);j++) if(s[j] == c) {
+            cout << cur << " " << t[j] << endl;
             if(cur > 0 && t[j] != c) continue;
+            cout << "OO" << endl;
             if(t[j] == c && cur) cur--;
 
             s2 += s[j]; 
