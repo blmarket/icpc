@@ -39,11 +39,15 @@ public:
         }
         if(maxt > maxc) return string("") + maxc + maxt;
 
+        string s1, t1;
         for(int i=0;i<size(s);i++) {
             if(s[i] == maxc) {
+                s1 += s[i];
+                t1 += t[i];
             }
         }
-        return "";
+
+        return s1 + t1;
     }
 
     
