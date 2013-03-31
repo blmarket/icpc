@@ -78,6 +78,7 @@ public:
         count(s, t, maxc, lastidx, s1, t1);
         s = s.substr(lastidx + 1); t = t.substr(lastidx + 1);
 
+        cout << s1 << " " << t1 << endl;
         cout << s << " " << t << endl;
 
         while(size(s)) {
