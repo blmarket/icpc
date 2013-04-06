@@ -62,7 +62,7 @@ public:
         for(int i=0;i<m;i++) {
             for(int j=0;j<m;j++)  {
                 matb[i][j] = mata[i][j];
-                cout << mata[i][j] << " ";
+                cout << matb[i][j] << " ";
             }
             cout << endl;
         }
