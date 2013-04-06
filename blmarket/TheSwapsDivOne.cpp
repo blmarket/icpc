@@ -57,6 +57,7 @@ public:
                 mata[i][j] = (double)np1;
             }
             mata[i][i] = (double)elasp;
+
             for(int j=0;j<m;j++) {
                 cout << mata[i][j] << " ";
             }
