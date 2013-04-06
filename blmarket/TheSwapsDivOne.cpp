@@ -23,17 +23,13 @@ template<typename T> int size(const T &a) { return a.size(); }
 string seq;
 
 double calc(const string &str) {
-    int total = 0;
     int sum = 0;
     int len = str.size();
     for(int i=0;i<len;i++) {
         int occur = (i+1) * (len - i);
-        cout << str[i] << " : " << occur << " ";
         sum += occur * (str[i] - '0');
-        total += occur;
     }
-    cout << endl;
-    return (double)sum / total;
+    return (double)sum * 2 / len / (len + 1);
 }
 
 class TheSwapsDivOne 
