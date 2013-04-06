@@ -48,7 +48,7 @@ public:
             flag[i] = false;
             for(int j=2;j<i;j++) if((i % j) == 0) {
                 if(i == 128) {
-                    cout << (i/j) << " ";
+                    cout << (i/j) << ":" << flag[i/j] << " ";
                 }
                 if(flag[i/j] == false) {
                     flag[i] = true;
