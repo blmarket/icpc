@@ -83,7 +83,7 @@ public:
 
         for(int i=0;i<m;i++) {
             for(int j=0;j<m;j++) 
-                cout << *dst[i][j] << " ";
+                cout << (*dst)[i][j] << " ";
             cout << endl;
         }
         cout << "-------" << endl;
