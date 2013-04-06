@@ -63,8 +63,6 @@ public:
         k--;
         matrix *src = &mata, *dst = &matb, *tmp = &matc;
 
-        cout << "-------" << endl;
-
         while(k) {
             if(k&1) {
                 matmul(*src, *dst, *tmp);
@@ -118,6 +116,6 @@ public:
 int main()
 {
     TheSwapsDivOne ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
