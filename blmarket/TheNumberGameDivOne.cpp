@@ -27,7 +27,7 @@ class TheNumberGameDivOne
 public:
     string find(long long n) 
     {		
-        for(int i=2;i<=1000000000;i+=2) {
+        for(int i=2;i<=10000;i+=2) {
             bool fail = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;
@@ -38,6 +38,7 @@ public:
             }
             if(!fail) primes.pb(i);
         }
+        cout << size(primes) << endl;
         return "";
     }
 
