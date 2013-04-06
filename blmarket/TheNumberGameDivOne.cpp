@@ -52,8 +52,8 @@ public:
                     break;
                 }
             }
+            cout << flag[i] << " ";
         }
-        cout << endl << flag[128] << endl;
 
         return "";
     }
