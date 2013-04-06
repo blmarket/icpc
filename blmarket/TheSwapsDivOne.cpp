@@ -66,10 +66,10 @@ public:
         while(k) {
             if(k&1) {
                 matmul(*src, *dst, *tmp);
-                swap(*dst, *tmp);
+                swap(dst, tmp);
             }
             matmul(*src, *src, *tmp);
-            swap(*src, *tmp);
+            swap(src, tmp);
             k>>=1;
         }
 
