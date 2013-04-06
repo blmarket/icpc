@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -45,6 +46,8 @@ public:
             }
             mata[i][i] = (double)elasp / nmoves;
         }
+        memcpy(matb, mata, sizeof(matrix));
+        matrix *src = &mata, *dst = &matb, *tmp = &matc;
     }
 
     
