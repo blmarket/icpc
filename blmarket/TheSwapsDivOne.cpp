@@ -94,7 +94,12 @@ public:
 	private:
 	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
 	void verify_case(int Case, const double &Expected, const double &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
-	void test_case_0() { string Arr0[] = {"4", "77"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1; double Arg2 = 10.0; verify_case(0, Arg2, find(Arg0, Arg1)); }
+	void test_case_0() { 
+
+string Arr0[] = {"1036289617", "9", "384291788", "96335541573832682", "4", "1145886696298818414409133853", "14003669829889666632945210664529577317996900453", "82693945549422703149770409756645099919935", "63848", "54920232068520940146620831532", "7972648441263043822510844454622945596963728168", "77924812773987462545137418685572685085149", "9598902647806463326698034850", "469219720257361086076072438401", "4608219002506398", "295887240155846949391897815", "313541402779220386738561", "449204598080091286340588122261239768475745", "004580988", "64297948069966", "38", "99634652276403970661097710570754719", "0900457768474418456", "702766459586239506910468", "966801", "7190", "83", "30584", "41406007382355862157884964760302924733292", "222545775097", "33815114706414507938", "982760962164611308051945360486494228129358", "69572722063648288572177822973844324122", "283406552987622181313437819833302", "480561611800320964348782093106451343386"};
+
+
+vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 6491; double Arg2 = 10.0; verify_case(0, Arg2, find(Arg0, Arg1)); }
 	void test_case_1() { string Arr0[] = {"4", "77"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 47; double Arg2 = 10.0; verify_case(1, Arg2, find(Arg0, Arg1)); }
 	void test_case_2() { string Arr0[] = {"1", "1", "1", "1", "1", "1", "1"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1000000; double Arg2 = 3.0; verify_case(2, Arg2, find(Arg0, Arg1)); }
 	void test_case_3() { string Arr0[] = {"572685085149095989026478064633266980348504469", "19720257361", "9", "69"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 7; double Arg2 = 98.3238536775161; verify_case(3, Arg2, find(Arg0, Arg1)); }
@@ -107,6 +112,6 @@ public:
 int main()
 {
     TheSwapsDivOne ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
