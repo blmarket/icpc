@@ -75,6 +75,7 @@ public:
         double ret = 0;
         for(int i=0;i<m;i++) {
             int num = (seq[i]-'0') + (seq[n-i]-'0');
+            cout << i << " " << num << endl;
             if(n-1-i == i) num = seq[i] - '0';
 
             for(int j=0;j<m;j++) {
