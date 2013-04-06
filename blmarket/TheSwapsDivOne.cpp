@@ -28,9 +28,11 @@ double calc(const string &str) {
     int len = str.size();
     for(int i=0;i<len;i++) {
         int occur = (i+1) * (len - i);
+        cout << str[i] << " : " << occur << " ";
         sum += occur * (str[i] - '0');
         total += occur;
     }
+    cout << endl;
     return (double)sum / total;
 }
 
