@@ -71,6 +71,7 @@ public:
             swap(*src, *tmp);
             k>>=1;
         }
+        cout << m << endl;
 
         double ret = 0;
         for(int i=0;i<m;i++) {
