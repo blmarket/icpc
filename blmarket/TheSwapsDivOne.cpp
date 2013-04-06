@@ -58,15 +58,13 @@ public:
             }
             mata[i][i] = (double)elasp / nmoves;
         }
-        memcpy(matb, mata, sizeof(matrix));
+        for(int i=0;i<m;i++) {
+            for(int j=0;j<m;j++) 
+                matb[i][j] = mata[i][j];
+        }
         k--;
         matrix *src = &mata, *dst = &matb, *tmp = &matc;
 
-        for(int i=0;i<m;i++) {
-            for(int j=0;j<m;j++) 
-                cout << *dst[i][j] << " ";
-            cout << endl;
-        }
         cout << "-------" << endl;
 
         while(k) {
