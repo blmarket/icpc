@@ -55,7 +55,7 @@ public:
         }
         for(int i=5000;i>=1;i--) {
             bool fail = false;
-            for(int j=0;j+i<10000;j++) {
+            for(int j=10;j+i<10000;j++) {
                 if(flag[j] != flag[j+i]) {
                     fail = true;
                     break;
