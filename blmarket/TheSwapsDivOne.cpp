@@ -57,14 +57,18 @@ public:
                 mata[i][j] = (double)np1 / nmoves;
             }
             mata[i][i] = (double)elasp / nmoves;
+
             for(int j=0;j<m;j++) {
                 cout << mata[i][j] << " ";
             }
             cout << endl;
         }
         for(int i=0;i<m;i++) {
-            for(int j=0;j<m;j++) 
+            for(int j=0;j<m;j++)  {
                 matb[i][j] = mata[i][j];
+                cout << mata[i][j] << " ";
+            }
+            cout << endl;
         }
         k--;
         matrix *src = &mata, *dst = &matb, *tmp = &matc;
