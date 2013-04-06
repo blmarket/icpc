@@ -61,6 +61,7 @@ public:
                     break;
                 }
             }
+            cout << fail << endl;
             if(!fail) {
                 cout << i << endl;
                 break;
