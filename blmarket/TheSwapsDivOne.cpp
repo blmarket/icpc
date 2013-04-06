@@ -64,6 +64,7 @@ public:
         matrix *src = &mata, *dst = &matb, *tmp = &matc;
 
         while(k) {
+            cout << k << endl;
             if(k&1) {
                 matmul(*src, *dst, *tmp);
                 swap(dst, tmp);
