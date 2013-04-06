@@ -44,7 +44,7 @@ public:
         }
 
         bool flag[10000] = {0};
-        for(int i=1;i<200;i++) {
+        for(int i=1;i<10000;i++) {
             flag[i] = false;
             for(int j=2;j<i;j++) if((i % j) == 0) {
                 if(flag[i - j] == false) {
