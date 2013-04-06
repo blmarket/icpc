@@ -47,10 +47,7 @@ public:
         for(int i=1;i<200;i++) {
             flag[i] = false;
             for(int j=2;j<i;j++) if((i % j) == 0) {
-                if(i == 128) {
-                    cout << (i/j) << ":" << flag[i/j] << " ";
-                }
-                if(flag[i/j] == false) {
+                if(flag[i - j] == false) {
                     flag[i] = true;
                     break;
                 }
