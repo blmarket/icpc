@@ -47,8 +47,7 @@ public:
         int n = size(seq);
         m = (n+1) / 2;
 
-        cout << n << endl;
-        int nmoves = n * (n+1) / 2;
+        int nmoves = n * (n-1) / 2;
         for(int i=0;i<m;i++) {
             int elasp = nmoves;
             cout << "elasp = " << elasp << endl;
