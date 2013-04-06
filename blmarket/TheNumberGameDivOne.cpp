@@ -59,6 +59,9 @@ public:
             if((i % 2) == 0 && flag[i] == 0) {
                 cout << i << " ";
             }
+            if((i % 2) == 1 && flag[i] == 1) {
+                cout << i << " ";
+            }
 //            cout << flag[i] << " ";
         }
 
