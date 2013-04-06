@@ -23,8 +23,20 @@ typedef double matrix[1110][1110];
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int m;
 matrix mata, matb, matc;
 string seq;
+
+void matmul(const matrix &src1, const matrix &src2, matrix &target) {
+    for(int i=0;i<m;i++) {
+        for(int j=0;j<m;j++) {
+            target[i][j] = 0;
+            for(int k=0;k<m;k++) {
+                target[i][j] += src1[i][k] * src2[k][j];
+            }
+        }
+    }
+}
 
 class TheSwapsDivOne 
 {
@@ -33,7 +45,7 @@ public:
     {
         seq.clear(); for(int i=0;i<size(sequence);i++) seq += sequence[i];
         int n = size(seq);
-        int m = (n+1) / 2;
+        m = (n+1) / 2;
 
         int nmoves = n * (n+1) / 2;
         for(int i=0;i<m;i++) {
@@ -47,7 +59,19 @@ public:
             mata[i][i] = (double)elasp / nmoves;
         }
         memcpy(matb, mata, sizeof(matrix));
+        k--;
         matrix *src = &mata, *dst = &matb, *tmp = &matc;
+
+        while(k) {
+            if(k&1) {
+                matmul(*src, *dst, *tmp);
+                swap(*dst, *tmp);
+            }
+            matmul(*src, *src, *tmp);
+            swap(*src, *tmp);
+            k>>=1;
+        }
+        return 0;
     }
 
     
