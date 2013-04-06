@@ -18,29 +18,33 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 
+typedef double matrix[1110][1110];
+
 template<typename T> int size(const T &a) { return a.size(); }
 
+matrix mata, matb, matc;
 string seq;
-
-double calc(const string &str) {
-    int sum = 0;
-    int len = str.size();
-    for(int i=0;i<len;i++) {
-        int occur = (i+1) * (len - i);
-        sum += occur * (str[i] - '0');
-    }
-    return (double)sum * 2 / len / (len + 1);
-}
 
 class TheSwapsDivOne 
 {
 public:
     double find(vector <string> sequence, int k) 
-    {	
-        seq.clear();
-        for(int i=0;i<size(sequence);i++) seq += sequence[i];
+    {
+        seq.clear(); for(int i=0;i<size(sequence);i++) seq += sequence[i];
+        int n = size(seq);
+        int m = (n+1) / 2;
 
-        return calc(seq);
+        int nmoves = n * (n+1) / 2;
+        for(int i=0;i<m;i++) {
+            int elasp = nmoves;
+            for(int j=0;j<m;j++) {
+                int np1 = 2;
+                if(n-1-j == j) np1 = 1;
+                elasp -= np1;
+                mata[i][j] = (double)np1 / nmoves;
+            }
+            mata[i][i] = (double)elasp / nmoves;
+        }
     }
 
     
