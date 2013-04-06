@@ -42,16 +42,28 @@ public:
                 primes.pb(i);
             }
         }
-        cout << size(primes) << endl;
 
-        bool flag[100000] = {0};
+        bool flag[10000] = {0};
         flag[1] = false;
-        for(int i=2;i<100000;i++) {
+        for(int i=2;i<10000;i++) {
             for(int j=2;j<i;j++) if((i % j) == 0) {
                 if(flag[i/j] == false) {
                     flag[i] = true;
                     break;
                 }
+            }
+        }
+        for(int i=5000;i>=1;i--) {
+            bool fail = false;
+            for(int j=0;j+i<10000;j++) {
+                if(flag[j] != flag[j+i]) {
+                    fail = true;
+                    break;
+                }
+            }
+            if(!fail) {
+                cout << i << endl;
+                break;
             }
         }
 
