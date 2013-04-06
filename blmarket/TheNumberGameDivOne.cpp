@@ -43,6 +43,9 @@ public:
             }
         }
 
+        if(n % 2 == 1) {
+        }
+
         bool flag[10000] = {0};
         for(int i=1;i<10000;i++) {
             flag[i] = false;
