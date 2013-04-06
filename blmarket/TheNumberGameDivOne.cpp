@@ -44,6 +44,7 @@ public:
         }
 
         if(n % 2 == 1) {
+            return "Brus";
         }
 
         bool flag[10000] = {0};
