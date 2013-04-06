@@ -77,7 +77,6 @@ public:
         for(int i=0;i<m;i++) {
             int num = (seq[i]-'0') + (seq[n-1-i]-'0');
             if(n-1-i == i) num = seq[i] - '0';
-            cout << i << " " << num << endl;
 
             for(int j=0;j<m;j++) {
                 double &prob = (*dst)[i][j];
