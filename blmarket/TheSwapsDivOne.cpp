@@ -77,6 +77,7 @@ public:
                 cout << *dst[i][j] << " ";
             cout << endl;
         }
+        cout << "-------" << endl;
 
         double ret = 0;
         for(int i=0;i<m;i++) {
