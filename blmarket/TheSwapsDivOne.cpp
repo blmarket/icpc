@@ -54,9 +54,13 @@ public:
                 int np1 = 2;
                 if(n-1-j == j) np1 = 1;
                 elasp -= np1;
-                mata[i][j] = (double)np1 / nmoves;
+                mata[i][j] = (double)np1;
             }
-            mata[i][i] = (double)elasp / nmoves;
+            mata[i][i] = (double)elasp;
+            for(int j=0;j<m;j++) {
+                cout << mata[i][j] << " ";
+            }
+            cout << endl;
         }
         memcpy(matb, mata, sizeof(matrix));
         k--;
@@ -71,7 +75,6 @@ public:
             swap(*src, *tmp);
             k>>=1;
         }
-        cout << m << endl;
 
         double ret = 0;
         for(int i=0;i<m;i++) {
