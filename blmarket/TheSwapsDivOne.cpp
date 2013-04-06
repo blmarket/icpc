@@ -89,7 +89,7 @@ public:
             cout << i << " " << num << endl;
 
             for(int j=0;j<m;j++) {
-                double &prob = *dst[i][j];
+                double &prob = (*dst)[i][j];
                 double multiplier = (double)(j+1) * (n-j) * 2 / n / (n+1);
                 cout << j << ":" << prob << " " << num*prob << endl;
                 ret += num * prob * multiplier;
