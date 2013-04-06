@@ -28,7 +28,8 @@ public:
     string find(long long n) 
     {		
         primes.clear();
-        for(int i=2;i<=10000;i+=2) {
+        primes.pb(2);
+        for(int i=3;i<=10000;i+=2) {
             bool fail = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;
