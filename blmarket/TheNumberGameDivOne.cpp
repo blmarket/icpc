@@ -44,28 +44,17 @@ public:
         }
 
         if(n % 2 == 1) {
-            // return "Brus";
+            return "Brus";
         }
 
-        bool flag[10000] = {0};
-        for(int i=1;i<10000;i++) {
-            flag[i] = false;
-            for(int j=2;j<i;j++) if((i % j) == 0) {
-                if(flag[i - j] == false) {
-                    flag[i] = true;
-                    break;
-                }
-            }
-            if((i % 2) == 0 && flag[i] == 0) {
-                cout << i << " ";
-            }
-            if((i % 2) == 1 && flag[i] == 1) {
-                cout << i << " ";
-            }
-//            cout << flag[i] << " ";
+        int cnt = 0;
+        while((n % 2) == 0){
+            n /= 2;
+            cnt++;
         }
-
-        return "";
+        if(n != 1) return "John";
+        if((cnt % 2) == 1) return "Brus";
+        return "John";
     }
 
     
@@ -88,6 +77,6 @@ public:
 int main()
 {
     TheNumberGameDivOne ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
