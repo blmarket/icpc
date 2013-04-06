@@ -50,13 +50,13 @@ public:
         int nmoves = n * (n-1) / 2;
         for(int i=0;i<m;i++) {
             int elasp = nmoves;
-            cout << "elasp = " << elasp << endl;
             for(int j=0;j<m;j++) {
                 int np1 = 2;
                 if(n-1-j == j) np1 = 1;
                 elasp -= np1;
                 mata[i][j] = (double)np1;
             }
+            cout << elasp << endl;
             mata[i][i] = (double)elasp;
 
             for(int j=0;j<m;j++) {
