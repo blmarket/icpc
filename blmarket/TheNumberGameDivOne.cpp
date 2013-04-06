@@ -44,7 +44,7 @@ public:
         }
 
         if(n % 2 == 1) {
-            return "Brus";
+            // return "Brus";
         }
 
         bool flag[10000] = {0};
@@ -56,7 +56,10 @@ public:
                     break;
                 }
             }
-            cout << flag[i] << " ";
+            if((i % 2) == 0 && flag[i] == 0) {
+                cout << i << " ";
+            }
+//            cout << flag[i] << " ";
         }
 
         return "";
