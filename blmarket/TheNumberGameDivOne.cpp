@@ -29,7 +29,7 @@ public:
     {		
         primes.clear();
         primes.pb(2);
-        for(int i=3;i<=10000;i+=2) {
+        for(int i=3;i<=10000000;i+=2) {
             bool fail = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;
@@ -39,7 +39,6 @@ public:
                 }
             }
             if(!fail) {
-                cout << i << endl;
                 primes.pb(i);
             }
         }
