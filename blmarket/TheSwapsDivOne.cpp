@@ -40,7 +40,7 @@ public:
         seq.clear();
         for(int i=0;i<size(sequence);i++) seq += sequence[i];
 
-        return calc("747") / 3 + calc("477") * 2 / 3;
+        return calc(seq);
     }
 
     
