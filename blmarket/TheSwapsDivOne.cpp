@@ -73,13 +73,6 @@ public:
             k>>=1;
         }
 
-        for(int i=0;i<m;i++) {
-            for(int j=0;j<m;j++) 
-                cout << (*dst)[i][j] << " ";
-            cout << endl;
-        }
-        cout << "-------" << endl;
-
         double ret = 0;
         for(int i=0;i<m;i++) {
             int num = (seq[i]-'0') + (seq[n-1-i]-'0');
