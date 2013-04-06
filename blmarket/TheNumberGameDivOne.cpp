@@ -36,6 +36,7 @@ public:
                     break;
                 }
             }
+            cout << i << " ";
             if(!fail) primes.pb(i);
         }
         cout << size(primes) << endl;
