@@ -71,7 +71,19 @@ public:
             swap(*src, *tmp);
             k>>=1;
         }
-        return 0;
+
+        double ret = 0;
+        for(int i=0;i<m;i++) {
+            int num = (seq[i]-'0') + (seq[n-i]-'0');
+            if(n-1-i == i) num = seq[i] - '0';
+
+            for(int j=0;j<m;j++) {
+                double &prob = *dst[i][j];
+                double multiplier = (double)(j+1) * (n-j) * 2 / n / (n+1);
+                ret += num * prob * multiplier;
+            }
+        }
+        return ret;
     }
 
     
