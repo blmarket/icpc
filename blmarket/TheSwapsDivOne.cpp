@@ -19,7 +19,8 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 
-typedef double matrix[2][2];
+#define MATSIZE 2
+typedef double matrix[MATSIZE][MATSIZE];
 
 template<typename T> int size(const T &a) { return a.size(); }
 
@@ -28,10 +29,10 @@ matrix mata, matb, matc;
 string seq;
 
 void matmul(const matrix &src1, const matrix &src2, matrix &target) {
-    for(int i=0;i<m;i++) {
-        for(int j=0;j<m;j++) {
+    for(int i=0;i<2;i++) {
+        for(int j=0;j<2;j++) {
             target[i][j] = 0;
-            for(int k=0;k<m;k++) {
+            for(int k=0;k<2;k++) {
                 target[i][j] += src1[i][k] * src2[k][j];
             }
         }
