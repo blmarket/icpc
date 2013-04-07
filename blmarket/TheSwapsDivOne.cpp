@@ -19,7 +19,7 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 
-typedef double matrix[1110][1110];
+typedef double matrix[2][2];
 
 template<typename T> int size(const T &a) { return a.size(); }
 
@@ -48,17 +48,11 @@ public:
         m = (n+1) / 2;
 
         int nmoves = n * (n-1) / 2;
-        for(int i=0;i<m;i++) {
-            int elasp = nmoves;
-            for(int j=0;j<m;j++) if(i != j) {
-                int np1 = 2;
-                if(n-1-j == j) np1 = 1;
-                elasp -= np1;
-                mata[i][j] = (double)np1 / nmoves;
-            }
-            mata[i][i] = (double)elasp / nmoves;
+        mata[0][1] = (double)(n-1) / nmoves;
+        mata[0][0] = (double)(nmoves - n + 1) / nmoves;
+        mata[1][0] = 1.0 / nmoves;
+        mata[1][1] = (double)(nmoves - 1) / nmoves;
 
-        }
         memcpy(matb, mata, sizeof(matrix));
         k--;
         matrix *src = &mata, *dst = &matb, *tmp = &matc;
@@ -75,13 +69,17 @@ public:
         }
 
         double ret = 0;
-        for(int i=0;i<m;i++) {
-            int num = (seq[i]-'0') + (seq[n-1-i]-'0');
-            if(n-1-i == i) num = seq[i] - '0';
+        for(int i=0;i<n;i++) {
+            int num = (seq[i] - '0');
 
-            for(int j=0;j<m;j++) {
-                double &prob = (*dst)[i][j];
+            for(int j=0;j<n;j++) {
+                double prob;
                 double multiplier = (double)(j+1) * (n-j) * 2 / n / (n+1);
+                if(i == j) {
+                    prob = (*dst)[0][0];
+                } else {
+                    prob = (*dst)[0][1] / (n-1);
+                }
                 ret += num * prob * multiplier;
             }
         }
