@@ -26,6 +26,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 string toString(int a) { ostringstream ost; ost << a; return ost.str(); } 
 bool chkpalin(const string &a) { 
+    cout << a << endl;
     for(int i=0;i*2<size(a);i++) {
         if(a[i] != a[size(a)-i]) return false;
     }
