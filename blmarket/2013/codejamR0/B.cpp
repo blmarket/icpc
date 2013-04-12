@@ -45,7 +45,7 @@ bool chkgood(const string &a) {
     }
     mid = a[size(a)-1] - '0';
 
-    cout << a << " " << mid << endl;
+    cout << a << " " << sum << " " << mid << endl;
 
     string tmp = a;
     reverse(tmp.begin(), tmp.end());
