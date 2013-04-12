@@ -133,4 +133,7 @@ int main(void)
         break;
     }
     cout << bigV.size() << endl;
+    sort(bigV.begin(), bigV.end(), comp);
+    for(int i=0;i<size(bigV);i++)
+        cout << bigV[i] << endl;
 }
