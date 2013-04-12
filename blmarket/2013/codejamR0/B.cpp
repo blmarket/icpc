@@ -38,7 +38,7 @@ bool chkgood(const string &a) {
     for(int i=0;i<size(a);i++) {
         sum += sqr(a[i]-'0');
     }
-    if(sum >= 10) {
+    if(sum >= 5) {
         return false;
     }
     string tmp = a;
@@ -53,7 +53,7 @@ void precalc() {
     }
     cout << endl << endl;
 
-    for(long long i=1;i<=10000000;i++) {
+    for(long long i=1;i<=100000;i++) {
         if(chkpalin(toString(i)) == false) continue;
         if(chkpalin(toString(i*i))) {
             cout << i << " : " << i*i << endl;
