@@ -79,7 +79,7 @@ bool chkgood(const string &a) {
 }
 
 void go(string &tmp) {
-    if(size(tmp) > 20) return;
+    if(size(tmp) > 52) return;
     for(int i=0;i<2;i++) {
         tmp += (char)(i + '0');
         if(chkgood(tmp)) {
