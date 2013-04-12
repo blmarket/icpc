@@ -73,9 +73,25 @@ void precalc() {
     }
 }
 
-int A,B;
+void go(string &tmp) {
+    if(size(tmp) > 52) return;
+    for(int i=0;i<3;i++) {
+        tmp += (char)(i + '0');
+        if(chkgood(tmp)) {
+            go(tmp);
+        }
+        tmp.resize(size(tmp) - 1);
+    }
+}
+
+string A,B;
 void process(void) {
-    scanf("%d %d", &A, &B);
+    char a[200], b[200];
+    scanf(" %s %s", a, b);
+    A = a; B = b;
+
+    string tmp;
+    go(tmp);
 }
 
 int main(void)
