@@ -41,7 +41,7 @@ bool chkgood(const string &a) {
 }
 
 void precalc() {
-    chkgood("11");
+    chkgood("12");
     /*
     for(long long i=1;i<=10000000;i++) {
         if(chkpalin(toString(i)) == false) continue;
