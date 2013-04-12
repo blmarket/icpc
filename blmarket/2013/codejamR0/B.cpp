@@ -44,6 +44,8 @@ bool comp(const string &a, const string &b) {
 
 int ret;
 string A,B;
+vector<string> bigV;
+bool putflag = true;
 void candidate(string candi) {
     string tmp(size(candi)*2-1, '0');
     for(int i=0;i<size(candi);i++) candi[i] -= '0';
@@ -52,6 +54,7 @@ void candidate(string candi) {
             tmp[i+j] += candi[i] * candi[j];
         }
     }
+    if(putflag) bigV.pb(tmp);
 
     if(comp(tmp, A)) return;
     if(comp(B, tmp)) return;
@@ -127,5 +130,7 @@ int main(void)
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ", i);
         process();
+        break;
     }
+    cout << bigV.size() << endl;
 }
