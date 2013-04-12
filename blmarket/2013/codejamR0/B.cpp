@@ -47,6 +47,7 @@ string A,B;
 void candidate(const string &candi) {
     if(comp(candi, A)) return;
     if(comp(B, candi)) return;
+    cout << candi << " ";
     ret++;
 }
 
