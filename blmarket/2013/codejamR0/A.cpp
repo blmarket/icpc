@@ -49,8 +49,6 @@ char process(void) {
             t1 = acc(t1, board[i][j]);
             t2 = acc(t2, board[j][i]);
         }
-        cout << endl;
-        cout << i << " : " << t1 << " " << t2 << endl;
         if(t1 != '.') return t1;
         if(t2 != '.') return t2;
     }
