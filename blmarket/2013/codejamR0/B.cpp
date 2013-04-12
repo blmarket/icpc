@@ -34,7 +34,7 @@ bool chkpalin(const string &a) {
 }
 
 void candidate(const string &candi) {
-    cout << candi << endl;
+    // cout << candi << endl;
 }
 
 bool chkgood(const string &a) {
