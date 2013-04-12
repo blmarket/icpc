@@ -50,6 +50,7 @@ void process(void) {
 int main(void)
 {
     precalc();
+    return 0;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
