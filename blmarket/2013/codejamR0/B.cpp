@@ -43,7 +43,7 @@ bool chkgood(const string &a) {
     for(int i=0;i<size(a);i++) {
         sum += sqr(a[i]-'0') * 2;
     }
-    mid = a[size(a)-1] - '0';
+    mid = sqr(a[size(a)-1] - '0');
 
     cout << a << " " << sum << " " << mid << endl;
 
