@@ -33,13 +33,23 @@ bool chkpalin(const string &a) {
     return true;
 }
 
+bool chkgood(const string &a) {
+    string tmp = a;
+    reverse(tmp.begin(), tmp.end());
+    tmp = a + tmp;
+    cout << tmp << endl;
+}
+
 void precalc() {
+    chkgood("1");
+    /*
     for(long long i=1;i<=10000000;i++) {
         if(chkpalin(toString(i)) == false) continue;
         if(chkpalin(toString(i*i))) {
             cout << i << " : " << i*i << endl;
         }
     }
+    */
 }
 
 int A,B;
