@@ -51,10 +51,10 @@ char process(void) {
         if(t2 != '.') return t2;
     }
     char t1 = board[0][0];
-    char t2 = board[3][0];
+    char t2 = board[0][3];
     for(int i=1;i<4;i++) {
         t1 = acc(t1, board[i][i]);
-        t2 = acc(t2, board[4-i][i]);
+        t2 = acc(t2, board[i][3-i]);
     }
     cout << t2 << endl;
     if(t1 != '.') return t1;
