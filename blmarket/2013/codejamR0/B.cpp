@@ -94,13 +94,7 @@ void process(void) {
     scanf(" %s %s", a, b);
     A = a; B = b; 
     
-    int ret = 0;
-    for(int i=0;i<size(bigV);i++) {
-        const string &tmp = bigV[i];
-        if(comp(tmp, A)) continue;
-        if(comp(B, tmp)) continue;
-        ret++;
-    }
+    int ret = upper_bound(bigV.begin(), bigV.end(), B, comp) - lower_bound(bigV.begin(), bigV.end(), A, comp);
 
     printf("%d\n", ret);
 }
