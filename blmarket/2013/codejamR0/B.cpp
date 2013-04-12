@@ -45,9 +45,16 @@ bool comp(const string &a, const string &b) {
 int ret;
 string A,B;
 void candidate(const string &candi) {
-    if(comp(candi, A)) return;
-    if(comp(B, candi)) return;
-    cout << candi << " ";
+    string tmp(size(candi)*2-1, '0');
+    for(int i=0;i<size(candi);i++) {
+        for(int j=0;j<size(candi);j++) {
+            tmp[i+j] += candi[i] * candi[j];
+        }
+    }
+
+    if(comp(tmp, A)) return;
+    if(comp(B, tmp)) return;
+    cout << tmp << " ";
     ret++;
 }
 
