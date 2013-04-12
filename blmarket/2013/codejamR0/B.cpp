@@ -33,8 +33,21 @@ bool chkpalin(const string &a) {
     return true;
 }
 
+bool comp(const string &a, const string &b) {
+    int sz1 = size(a), sz2 = size(b);
+    if(sz1 != sz2) return sz1 < sz2;
+    for(int i=0;i<sz1;i++) {
+        if(a[i] != b[i]) return a[i] < b[i];
+    }
+    return false;
+}
+
+int ret;
+string A,B;
 void candidate(const string &candi) {
-    // cout << candi << endl;
+    if(comp(candi, A)) return;
+    if(comp(B, candi)) return;
+    ret++;
 }
 
 bool chkgood(const string &a) {
@@ -84,14 +97,14 @@ void go(string &tmp) {
     }
 }
 
-string A,B;
 void process(void) {
     char a[200], b[200];
     scanf(" %s %s", a, b);
-    A = a; B = b;
+    A = a; B = b; ret = 0;
 
     string tmp;
     go(tmp);
+    printf("%d\n", ret);
 }
 
 int main(void)
