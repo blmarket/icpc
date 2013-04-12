@@ -33,18 +33,30 @@ bool chkpalin(const string &a) {
     return true;
 }
 
+void candidate(const string &candi) {
+    cout << candi << endl;
+}
+
 bool chkgood(const string &a) {
-    int sum = 0;
+    bool ret = false;
+    int sum = 0, mid = 0;
     for(int i=0;i<size(a);i++) {
-        sum += sqr(a[i]-'0');
+        sum += sqr(a[i]-'0') * 2;
     }
-    if(sum >= 5) {
-        return false;
-    }
+    mid = a[size(a)-1] - '0';
+
     string tmp = a;
     reverse(tmp.begin(), tmp.end());
-    cout << "sqr : " << a+tmp << " = " << endl;
-    return true;
+    if(sum < 10) {
+        ret = true;
+        candidate(a + tmp);
+    }
+    sum -= mid;
+    if(sum < 10) {
+        ret = true;
+        candidate(a + tmp.substr(1));
+    }
+    return ret;
 }
 
 void precalc() {
