@@ -89,7 +89,7 @@ void precalc() {
 
 void go(string &tmp) {
     if(size(tmp) > 52) return;
-    for(int i=0;i<3;i++) {
+    for(int i=0;i<2;i++) {
         tmp += (char)(i + '0');
         if(chkgood(tmp)) {
             go(tmp);
@@ -103,8 +103,12 @@ void process(void) {
     scanf(" %s %s", a, b);
     A = a; B = b; ret = 0;
 
-    string tmp;
+    chkgood("1"); chkgood("2"); chkgood("3");
+    string tmp = "1";
+    go(tmp); 
+    tmp = "2";
     go(tmp);
+
     printf("%d\n", ret);
 }
 
