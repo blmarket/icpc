@@ -34,8 +34,8 @@ bool chkpalin(const string &a) {
 
 void precalc() {
     for(int i=1;i<=1000;i++) {
-        cout << i << endl;
         if(chkpalin(toString(i)) == false) continue;
+        cout << i << endl;
         if(chkpalin(toString(i*i))) {
             cout << i << " : " << i*i << endl;
         }
