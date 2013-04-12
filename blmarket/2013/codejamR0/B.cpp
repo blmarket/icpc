@@ -21,10 +21,11 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-string toString(int a) { ostringstream ost; ost << a; return ost.str(); } 
+string toString(LL a) { ostringstream ost; ost << a; return ost.str(); } 
 bool chkpalin(const string &a) { 
     for(int i=0;i*2<size(a);i++) {
         if(a[i] != a[size(a)-1-i]) return false;
@@ -33,7 +34,7 @@ bool chkpalin(const string &a) {
 }
 
 void precalc() {
-    for(int i=1;i<=1000;i++) {
+    for(long long i=1;i<=100000;i++) {
         if(chkpalin(toString(i)) == false) continue;
         if(chkpalin(toString(i*i))) {
             cout << i << " : " << i*i << endl;
