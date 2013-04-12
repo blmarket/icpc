@@ -59,8 +59,8 @@ char process(void) {
     if(t1 != '.') return t1;
     if(t2 != '.') return t2;
 
-    if(hasdot) return -1;
-    return 0;
+    if(hasdot) return 0;
+    return -1;
 }
 
 int main(void)
