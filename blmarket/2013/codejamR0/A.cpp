@@ -30,6 +30,7 @@ char acc(char a, char b) {
     if(a == 0) return b;
     if(b == 'T') return a;
     if(a != b) return '.';
+    return a;
 }
 
 char process(void) {
@@ -46,7 +47,6 @@ char process(void) {
         char t2 = board[0][i];
         for(int j=1;j<4;j++) {
             t1 = acc(t1, board[i][j]);
-            cout << "T1 = " << t1 << endl;
             t2 = acc(t2, board[j][i]);
         }
         cout << endl;
