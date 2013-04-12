@@ -45,8 +45,6 @@ bool chkgood(const string &a) {
     }
     mid = sqr(a[size(a)-1] - '0');
 
-    cout << a << " " << sum << " " << mid << endl;
-
     string tmp = a;
     reverse(tmp.begin(), tmp.end());
     if(sum < 10) {
