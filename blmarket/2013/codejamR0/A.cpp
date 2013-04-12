@@ -36,9 +36,7 @@ char acc(char a, char b) {
 char process(void) {
     for(int i=0;i<4;i++) {
         scanf(" %s", board[i]);
-        cout << board[i] << endl;
     }
-
 
     bool hasdot = false;
     for(int i=0;i<4;i++) for(int j=0;j<4;j++) if(board[i][j] == '.') hasdot = true;
