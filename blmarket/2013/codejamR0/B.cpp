@@ -34,22 +34,31 @@ bool chkpalin(const string &a) {
 }
 
 bool chkgood(const string &a) {
+    int sum = 0;
+    for(int i=0;i<size(a);i++) {
+        sum += sqr(a[i]-'0');
+    }
+    if(sum >= 10) {
+        return false;
+    }
     string tmp = a;
     reverse(tmp.begin(), tmp.end());
-    tmp = a + tmp;
-    cout << tmp << endl;
+    cout << "sqr : " << a+tmp << " = " << endl;
+    return true;
 }
 
 void precalc() {
-    chkgood("12");
-    /*
+    for(int i=1;i<=100000;i++) {
+        chkgood(toString(i));
+    }
+    cout << endl << endl;
+
     for(long long i=1;i<=10000000;i++) {
         if(chkpalin(toString(i)) == false) continue;
         if(chkpalin(toString(i*i))) {
             cout << i << " : " << i*i << endl;
         }
     }
-    */
 }
 
 int A,B;
