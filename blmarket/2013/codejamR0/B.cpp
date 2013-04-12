@@ -46,6 +46,7 @@ int ret;
 string A,B;
 void candidate(const string &candi) {
     string tmp(size(candi)*2-1, '0');
+    cout << candi << " " << tmp << endl;
     for(int i=0;i<size(candi);i++) {
         for(int j=0;j<size(candi);j++) {
             tmp[i+j] += candi[i] * candi[j];
