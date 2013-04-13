@@ -36,6 +36,8 @@ bool go(void) {
         cout << endl;
     }
 
+    cout << small << endl;
+
     for(int i=0;i<size(V);i++) {
         bool good = true;
         for(int j=0;j<size(V[i]);j++) {
