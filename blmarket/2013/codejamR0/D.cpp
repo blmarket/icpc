@@ -45,10 +45,16 @@ bool go(set<int> &cur) {
         if(keys[types[i]]) {
             keys[types[i]]--;
             cur.insert(i);
+            for(int j=0;j<size(inside[i]);j++) {
+                keys[inside[i][j]]++;
+            }
             bool tmp = go(cur);
             if(tmp) {
                 cout << i << " ";
                 return true;
+            }
+            for(int j=0;j<size(inside[i]);j++) {
+                keys[inside[i][j]]--;
             }
             cur.erase(i);
             keys[types[i]]++;
