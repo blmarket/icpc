@@ -34,7 +34,9 @@ int keys[205];
 bool go(set<int> &cur) {
     if(memo.count(cur)) return memo[cur];
 
+    bool chk = false;
     for(int i=0;i<N;i++) if(cur.count(i) == 0) {
+        chk = true;
         if(keys[types[i]]) {
             keys[types[i]]--;
             cur.insert(i);
@@ -47,6 +49,7 @@ bool go(set<int> &cur) {
             keys[types[i]]++;
         }
     }
+    if(!chk) return true;
     return false;
 }
 
@@ -72,6 +75,7 @@ void process(void) {
 
     set<int> S;
     go(S);
+    cout << endl;
 }
 
 int main(void)
