@@ -27,6 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<vector<int> > V;
 
 bool go(void) {
+    if(size(V) == 0) return true;
     int small = 101;
     for(int i=0;i<size(V);i++) {
         for(int j=0;j<size(V[i]);j++) {
@@ -35,8 +36,6 @@ bool go(void) {
         }
         cout << endl;
     }
-
-    cout << small << endl;
 
     for(int i=0;i<size(V);i++) {
         bool good = true;
