@@ -47,6 +47,7 @@ bool go(void) {
             for(int k=i;k+1<size(V);k++) {
                 V[k] = V[k+1];
             }
+            V.pop_back();
             return go();
         }
     }
