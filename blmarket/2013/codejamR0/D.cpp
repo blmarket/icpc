@@ -101,5 +101,6 @@ int main(void)
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ", i);
         process();
+        cerr << i << endl;
     }
 }
