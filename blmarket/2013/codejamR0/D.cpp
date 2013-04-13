@@ -84,7 +84,7 @@ void process(void) {
     ret.clear();
     if(go(S)) {
         for(int i=size(ret)-1;i>=0;i--) {
-            cout << ret[i] << " ";
+            cout << ret[i]+1 << " ";
         }
         cout << endl;
     } else {
