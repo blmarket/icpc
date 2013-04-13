@@ -34,11 +34,6 @@ int keys[205];
 bool go(set<int> &cur) {
     if(memo.count(cur)) return memo[cur];
 
-    foreach(it, cur) {
-        cout << *it << " ";
-    }
-    cout << " : " << endl;
-
     bool chk = false;
     for(int i=0;i<N;i++) if(cur.count(i) == 0) {
         chk = true;
