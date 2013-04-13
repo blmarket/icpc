@@ -57,6 +57,8 @@ bool go(set<int> &cur) {
         }
     }
     if(!chk) return true;
+
+    memo[cur] = false;
     return false;
 }
 
