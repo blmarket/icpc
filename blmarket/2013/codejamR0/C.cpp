@@ -31,10 +31,8 @@ bool go(void) {
     int small = 101;
     for(int i=0;i<size(V);i++) {
         for(int j=0;j<size(V[i]);j++) {
-            cout << V[i][j] << " ";
             if(small > V[i][j]) small = V[i][j];
         }
-        cout << endl;
     }
 
     for(int i=0;i<size(V);i++) {
