@@ -29,6 +29,7 @@ map<set<int>, bool> memo;
 int types[205];
 vector<int> inside[205];
 int N;
+vector<int> ret;
 
 int keys[205];
 bool go(set<int> &cur) {
@@ -45,7 +46,7 @@ bool go(set<int> &cur) {
             }
             bool tmp = go(cur);
             if(tmp) {
-                cout << i << " ";
+                ret.pb(i);
                 return true;
             }
             for(int j=0;j<size(inside[i]);j++) {
@@ -80,8 +81,15 @@ void process(void) {
     }
 
     set<int> S;
-    go(S);
-    cout << endl;
+    ret.clear();
+    if(go(S)) {
+        for(int i=size(ret)-1;i>=0;i--) {
+            cout << ret[i] << " ";
+        }
+        cout << endl;
+    } else {
+        printf("IMPOSSIBLE\n");
+    }
 }
 
 int main(void)
