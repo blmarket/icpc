@@ -59,6 +59,8 @@ bool go(void) {
             return go();
         }
     }
+
+    return false;
 }
 
 void process(void) {
