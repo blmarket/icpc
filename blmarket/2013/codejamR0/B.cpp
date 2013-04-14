@@ -64,8 +64,6 @@ bool chkgood(const string &a) {
     }
     mid = sqr(a[size(a)-1] - '0');
 
-    cout << sum << " " << mid << endl;
-
     string tmp = a;
     reverse(tmp.begin(), tmp.end());
     if(sum < 10) {
@@ -75,6 +73,7 @@ bool chkgood(const string &a) {
     sum -= mid;
     if(sum < 10) {
         ret = true;
+        cout << a + tmp.substr(1) << endl;
         candidate(a + tmp.substr(1));
     }
     return ret;
