@@ -64,6 +64,8 @@ bool chkgood(const string &a) {
     }
     mid = sqr(a[size(a)-1] - '0');
 
+    cout << sum << " " << mid << endl;
+
     string tmp = a;
     reverse(tmp.begin(), tmp.end());
     if(sum < 10) {
@@ -122,7 +124,8 @@ void precalc2() {
 
 int main(void)
 {
-    precalc();
+    // precalc();
+    chkgood("112");
     precalc2();
     return 0;
     int T;
