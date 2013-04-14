@@ -123,6 +123,7 @@ int main(void)
 {
     precalc();
     precalc2();
+    return 0;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
