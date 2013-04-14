@@ -53,7 +53,6 @@ void candidate(string candi) {
             tmp[i+j] += candi[i] * candi[j];
         }
     }
-    cout << tmp << endl;
     bigV.pb(tmp);
 }
 
@@ -123,8 +122,7 @@ void precalc2() {
 
 int main(void)
 {
-    // precalc();
-    chkgood("112");
+    precalc();
     precalc2();
     return 0;
     int T;
