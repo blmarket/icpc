@@ -106,25 +106,11 @@ void precalc() {
     tmp = "2";
     go(tmp);
     sort(bigV.begin(), bigV.end(), comp);
-    bigV.resize(20);
-    for(auto item : bigV) cout << item << endl;
-}
-
-void precalc2() {
-    for(LL i=1;i<100000;i++) {
-        string s1 = toString(i);
-        if(chkpalin(s1) == false) continue;
-        string s2 = toString(i*i);
-        if(chkpalin(s2) == false) continue;
-        cout << s1 << " " << s2 << endl;
-    }
 }
 
 int main(void)
 {
     precalc();
-    precalc2();
-    return 0;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
