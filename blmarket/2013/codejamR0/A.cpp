@@ -27,7 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 char board[10][10];
 
 char acc(char a, char b) {
-    if(a == 0) return b;
+    if(a == 0 || a == 'T') return b;
     if(b == 'T') return a;
     if(a != b) return '.';
     return a;
