@@ -81,7 +81,7 @@ bool chkgood(const string &a) {
 void go(string &tmp) {
     if(size(tmp) > 5) return;
     cout << tmp << endl;
-    for(int i=0;i<2;i++) {
+    for(int i=0;i<3;i++) {
         tmp += (char)(i + '0');
         if(chkgood(tmp)) {
             go(tmp);
