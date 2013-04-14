@@ -25,7 +25,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-string toString(LL a) { ostringstream ost; ost << a; return ost.str(); } 
+template<typename T> string toString(const T &a) { ostringstream ost; ost << a; return ost.str(); } 
 bool chkpalin(const string &a) { 
     for(int i=0;i*2<size(a);i++) {
         if(a[i] != a[size(a)-1-i]) return false;
@@ -109,9 +109,20 @@ void precalc() {
     for(auto item : bigV) cout << item << endl;
 }
 
+void precalc2() {
+    for(LL i=1;i<100000;i++) {
+        string s1 = toString(i);
+        if(chkpalin(s1) == false) continue;
+        string s2 = toString(i*i);
+        if(chkpalin(s2) == false) continue;
+        cout << s2 << endl;
+    }
+}
+
 int main(void)
 {
     precalc();
+    precalc2();
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
