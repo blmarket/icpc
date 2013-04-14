@@ -106,7 +106,7 @@ void precalc() {
     tmp = "2";
     go(tmp);
     sort(bigV.begin(), bigV.end(), comp);
-    bigV.resize(10);
+    bigV.resize(20);
     for(auto item : bigV) cout << item << endl;
 }
 
