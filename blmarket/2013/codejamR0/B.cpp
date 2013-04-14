@@ -53,6 +53,7 @@ void candidate(string candi) {
             tmp[i+j] += candi[i] * candi[j];
         }
     }
+    cout << tmp << endl;
     bigV.pb(tmp);
 }
 
