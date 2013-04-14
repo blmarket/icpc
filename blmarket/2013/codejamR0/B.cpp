@@ -116,7 +116,7 @@ void precalc2() {
         if(chkpalin(s1) == false) continue;
         string s2 = toString(i*i);
         if(chkpalin(s2) == false) continue;
-        cout << s2 << endl;
+        cout << s1 << " " << s2 << endl;
     }
 }
 
