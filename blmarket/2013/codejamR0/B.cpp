@@ -53,6 +53,7 @@ void candidate(string candi) {
             tmp[i+j] += candi[i] * candi[j];
         }
     }
+    cout << tmp << endl;
     bigV.pb(tmp);
 }
 
@@ -73,7 +74,6 @@ bool chkgood(const string &a) {
     sum -= mid;
     if(sum < 10) {
         ret = true;
-        cout << a + tmp.substr(1) << endl;
         candidate(a + tmp.substr(1));
     }
     return ret;
