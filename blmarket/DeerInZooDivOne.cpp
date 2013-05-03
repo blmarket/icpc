@@ -137,13 +137,15 @@ int go(int pos) {
     memset(match, -1, sizeof(match));
     dfs(a[pos]);
 
+    int ret = 0;
     for(int i=0;i<N;i++) if(group1[i]) {
         for(int j=0;j<N;j++) if(!group1[j]) {
-            calc(i,j);
+            int tmp = calc(i,j);
+            if(ret < tmp) ret = tmp;
         }
     }
 
-    return 0;
+    return ret;
 }
 
 class DeerInZooDivOne 
