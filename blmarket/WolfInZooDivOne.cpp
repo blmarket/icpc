@@ -73,10 +73,24 @@ public:
 
             next.clear();
             foreach(it, cur) {
-                const trip &tmp = it->first;
+                trip tmp = it->first;
+                if(tmp.v[0] < i) tmp.v[0] = -1;
+                if(tmp.v[1] < i) tmp.v[1] = -1;
+                if(tmp.v[2] < i) tmp.v[2] = -1;
+
                 printf("%d %d %d\n",tmp.v[0],tmp.v[1],tmp.v[2]);
+                if(sho != -1) {
+                    if(tmp.v[0] >= sho || tmp.v[1] >= sho) {} 
+                    else if(tmp.v[2] == -1 || tmp.v[2] > sho) tmp.v[2] = sho;
+                }
+                next[tmp] += it->second;
+                if(tmp.v[0] != -1) continue;
+                tmp.v[0] = tmp.v[1];
+                tmp.v[1] = tmp.v[2];
+                tmp.v[2] = -1;
+                next[tmp] += it->second;
             }
-            break;
+            cur.swap(next);
         }
 
         long long ret = 0;
