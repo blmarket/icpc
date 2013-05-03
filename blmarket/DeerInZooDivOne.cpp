@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -115,7 +116,9 @@ int calc(int p1, int p2) {
 
     int flow, cost;
     mcmf(matt, flow, cost);
-    return match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
+    match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
+    printf("%d %d : %d\n", p1, p2, match[p1][p2]);
+    return match[p1][p2];
 }
 
 void dfs(int pos) {
