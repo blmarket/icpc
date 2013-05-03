@@ -45,6 +45,7 @@ class GooseInZooDivOne
 public:
     int count(vector <string> field_, int dist_) 
     {
+        G.clear();
         field = field_; dist = dist_;
         for(int i=0;i<size(field);i++) {
             for(int j=0;j<size(field[i]);j++) {
