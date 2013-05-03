@@ -149,7 +149,7 @@ int go(int pos) {
         for(int j=0;j<N;j++) if(!group1[j]) {
             int tmp = calc(i,j);
             if(ret < tmp) {
-                cout << i << " " << j << tmp << endl;
+                cout << i << " " << j << " " << tmp << endl;
                 ret = tmp;
             }
         }
