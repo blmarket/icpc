@@ -94,12 +94,6 @@ void mcmf(const VVI &matt, int &flow, int &cost) {
     for(int i=0;i<flow;i++) {
         cost += try_flow(matt, move, used);
     }
-
-    for(int i=0;i<size(matt);i++) {
-        for(int j=0;j<size(matt[i]);j++) cout << matt[i][j] << " ";
-        cout << endl;
-    }
-    cout << " = " << flow << " " << cost << endl;
 }
 
 int calc(int p1, int p2) {
@@ -124,7 +118,7 @@ int calc(int p1, int p2) {
     int flow, cost;
     mcmf(matt, flow, cost);
     match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
-    printf("%d %d : %d %d %d\n", p1, p2, flow, cost, match[p1][p2]);
+    // printf("%d %d : %d %d %d\n", p1, p2, flow, cost, match[p1][p2]);
     return match[p1][p2];
 }
 
