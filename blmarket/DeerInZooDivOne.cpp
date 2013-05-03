@@ -122,7 +122,7 @@ int calc(int p1, int pp1, int p2, int pp2) {
 
     int flow, cost;
     mcmf(matt, flow, cost);
-    return match[p1][p2] = match[p2][p1] = 100 * flow - cost;
+    return match[p1][p2] = match[p2][p1] = 1 + 100 * flow - cost;
 }
 
 void dfs(int pos) {
