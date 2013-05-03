@@ -68,6 +68,11 @@ void calc(int a, int b) {
     for(int i=0;i<N;i++) if(parent[i] == a) ca.pb(i);
     for(int i=0;i<N;i++) if(parent[i] == b) cb.pb(i);
 
+    if(ca.size() == 0 || cb.size() == 0) {
+        match[a][b] = match[b][a] = 1;
+        return;
+    }
+
     w.resize(ca.size());
     for(int i=0;i<size(ca);i++) w[i].resize(cb.size());
 
