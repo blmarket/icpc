@@ -64,6 +64,7 @@ public:
         trip tmp;
         memset(&tmp, -1, sizeof(tmp));
 
+        cur.clear();
         cur[tmp] = 1;
         for(int i=0;i<N;i++) {
             int sho = -1;
@@ -118,6 +119,6 @@ public:
 int main()
 {
     WolfInZooDivOne ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
