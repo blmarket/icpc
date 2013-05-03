@@ -120,22 +120,6 @@ int calc(int cut, int p1, int pp1, int p2, int pp2) {
         }
     }
 
-    if(pp1 == -1) {
-        for(int i=0;i<size(c1);i++) {
-            cout << c1[i] << " ";
-        }
-        cout << endl;
-        for(int i=0;i<size(c2);i++) {
-            cout << c2[i] << " ";
-        }
-        cout << endl;
-
-        for(int i=0;i<size(matt);i++) {
-            for(int j=0;j<size(matt[i]);j++) cout << matt[i][j] << " ";
-            cout << endl;
-        }
-    }
-
     int flow, cost;
     mcmf(matt, flow, cost);
     return match[p1][p2] = match[p2][p1] = 1 + 100 * flow - cost;
@@ -157,7 +141,6 @@ int go(int pos) {
     dfs(a[pos]);
 
     memset(match, -1, sizeof(match));
-    return calc(pos, 11,-1,9,-1);
 
     int ret = 0;
     for(int i=0;i<N;i++) if(group1[i]) {
