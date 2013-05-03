@@ -80,7 +80,7 @@ public:
                 if(tmp.v[1] < i) tmp.v[1] = -1;
                 if(tmp.v[2] < i) tmp.v[2] = -1;
 
-                printf("%d %d %d = %d\n",tmp.v[0],tmp.v[1],tmp.v[2],it->second);
+                //printf("%d %d %d = %d\n",tmp.v[0],tmp.v[1],tmp.v[2],it->second);
                 if(sho != -1) {
                     if(tmp.v[0] >= sho || tmp.v[1] >= sho) {} 
                     else if(tmp.v[2] < sho) tmp.v[2] = sho;
@@ -92,7 +92,7 @@ public:
                 tmp.v[2] = -1;
                 next[tmp] += it->second;
             }
-            printf("\n");
+            //printf("\n");
             cur.swap(next);
         }
 
@@ -121,6 +121,6 @@ public:
 int main()
 {
     WolfInZooDivOne ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
