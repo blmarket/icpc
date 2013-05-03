@@ -91,6 +91,7 @@ public:
                 tmp.v[2] = -1;
                 next[tmp] += it->second;
             }
+            printf("\n");
             cur.swap(next);
         }
 
