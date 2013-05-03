@@ -98,37 +98,31 @@ void mcmf(const VVI &matt, int &flow, int &cost) {
     }
 }
 
-int calc(int p1, int p2) {
+int calc(int p1, int pp1, int p2, int pp2) {
     if(match[p1][p2] != -1) return match[p1][p2];
-
     vector<int> c1, c2;
-    for(int i=0;i<N;i++) if(parent[i] == p1) c1.pb(i);
-    for(int i=0;i<N;i++) if(parent[i] == p2) c2.pb(i);
-
-    cout << "child " << p1 << " : ";
-    for(int i=0;i<size(c1);i++) cout << c1[i] << " ";
-    cout << endl;
-
-    cout << "child " << p2 << " : ";
-    for(int i=0;i<size(c2);i++) cout << c2[i] << " ";
-    cout << endl;
-
-    if(size(c1) == 0 || size(c2) == 0) {
-        return match[p1][p2] = match[p2][p1] = 1;
+    for(int i=0;i<size(a);i++) if(a[i] == p1 || b[i] == p1) {
+        int oth = a[i] + b[i] - p1;
+        if(oth == pp1) continue;
+        c1.pb(oth);
     }
-
-    VVI matt(c1.size());
+    for(int i=0;i<size(a);i++) if(a[i] == p2 || b[i] == p2) {
+        int oth = a[i] + b[i] - p2;
+        if(oth == pp2) continue;
+        c2.pb(oth);
+    }
+    
+    VVI matt(size(c1));
     for(int i=0;i<size(c1);i++) {
         matt[i].resize(size(c2));
         for(int j=0;j<size(c2);j++) {
-            matt[i][j] = 100 - calc(c1[i], c2[j]);
+            matt[i][j] = 100 - calc(c1[i], p1, c2[j], p2);
         }
     }
 
     int flow, cost;
     mcmf(matt, flow, cost);
-    match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
-    return match[p1][p2];
+    return match[p1][p2] = match[p2][p1] = 100 * flow - cost;
 }
 
 void dfs(int pos) {
@@ -144,29 +138,18 @@ int go(int pos) {
     parent[a[pos]] = parent[b[pos]] = -1;
 
     memset(group1, 0, sizeof(group1));
-    memset(match, -1, sizeof(match));
     dfs(a[pos]);
-
-    return calc(11,9);
 
     int ret = 0;
     for(int i=0;i<N;i++) if(group1[i]) {
         for(int j=0;j<N;j++) if(!group1[j]) {
-            int tmp = calc(i,j);
+            memset(match, -1, sizeof(match));
+            int tmp = calc(i,-1,j,-1);
             if(ret < tmp) {
                 ret = tmp;
             }
         }
     }
-
-    /*
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) {
-            printf("%4d", match[i][j]);
-        }
-        cout << endl;
-    }
-    */
 
     return ret;
 }
