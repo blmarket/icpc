@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<string> field;
 vector<int> G;
 int dist;
+const long long mod = 1000000007LL;
 
 int go(int a,int b) {
     int ret = 1;
@@ -54,10 +55,21 @@ public:
                 }
             }
         }
+
+        long long nodd = 0, neven = 1;
         for(int i=0;i<size(G);i++) {
-            cout << G[i] << " ";
+            if(G[i] % 2) {
+                long long tmp = nodd;
+                nodd = (nodd + neven) % mod;
+                neven += tmp;
+            } else {
+                nodd = (nodd * 2) % mod;
+                neven = (neven * 2) % mod;
+            }
         }
-        cout << endl;
+        neven = (neven + mod - 1);
+        neven %= mod;
+        return neven;
     }
 
     
