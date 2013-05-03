@@ -117,7 +117,7 @@ int calc(int p1, int p2) {
     int flow, cost;
     mcmf(matt, flow, cost);
     match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
-    printf("%d %d : %d\n", p1, p2, match[p1][p2]);
+    printf("%d %d : %d %d %d\n", p1, p2, flow, cost, match[p1][p2]);
     return match[p1][p2];
 }
 
