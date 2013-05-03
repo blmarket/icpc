@@ -74,11 +74,6 @@ public:
             next.clear();
             foreach(it, cur) {
                 const trip &tmp = it->first;
-            }
-        }
-        for(int i=0;i<size(lrs);i++) {
-            foreach(it, cur) {
-                trip tmp = it->first;
                 printf("%d %d %d\n",tmp.v[0],tmp.v[1],tmp.v[2]);
             }
             break;
