@@ -111,7 +111,7 @@ int calc(int p1, int pp1, int p2, int pp2) {
         if(oth == pp2) continue;
         c2.pb(oth);
     }
-    
+
     VVI matt(size(c1));
     for(int i=0;i<size(c1);i++) {
         matt[i].resize(size(c2));
@@ -121,6 +121,15 @@ int calc(int p1, int pp1, int p2, int pp2) {
     }
 
     if(pp1 == -1) {
+        for(int i=0;i<size(c1);i++) {
+            cout << c1[i] << " ";
+        }
+        cout << endl;
+        for(int i=0;i<size(c2);i++) {
+            cout << c2[i] << " ";
+        }
+        cout << endl;
+
         for(int i=0;i<size(matt);i++) {
             for(int j=0;j<size(matt[i]);j++) cout << matt[i][j] << " ";
             cout << endl;
