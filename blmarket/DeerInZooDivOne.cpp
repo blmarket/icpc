@@ -29,7 +29,6 @@ int match[55][55];
 bool group1[55];
 
 void findpar(int pos, int par) {
-    cout << pos << " par " << par << endl;
     parent[pos] = par;
     for(int i=0;i<size(a);i++) {
         if(a[i] == pos || b[i] == pos) {
@@ -163,7 +162,6 @@ public:
     {
         a=a_;b=b_; N = size(a) + 1;
         int ret = 0;
-        return go(12);
         for(int i=0;i<size(a);i++) {
             int tmp = go(i);
             if(ret < tmp) ret = tmp;
