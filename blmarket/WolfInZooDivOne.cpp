@@ -90,6 +90,7 @@ public:
                 tmp.v[0] = tmp.v[1];
                 tmp.v[1] = tmp.v[2];
                 tmp.v[2] = -1;
+                printf("+%d %d %d = %d\n",tmp.v[0],tmp.v[1],tmp.v[2],it->second);
                 next[tmp] += it->second;
             }
             printf("\n");
