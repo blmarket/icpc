@@ -178,8 +178,8 @@ public:
     {
         a=a_;b=b_; N = size(a) + 1;
         int ret = 0;
+        return go(12);
         for(int i=0;i<size(a);i++) {
-            cerr << "XXX" << i << " " << a[i] << " " << b[i] << endl;
             int tmp = go(i);
             if(ret < tmp) ret = tmp;
         }
