@@ -65,6 +65,10 @@ int try_flow(const VVI &matt, VI &move, VI &used) {
         if(!update) break;
     }
 
+    printf("mc2:");
+    for(int i=0;i<size(mc2);i++) cout << mc2[i] << " ";
+    cout << endl;
+
     int mincost = -1, md;
     for(int i=0;i<size(used);i++) if(mc2[i] != -1 && used[i] != -1) {
         if(mincost == -1 || mincost > mc2[i]) {
