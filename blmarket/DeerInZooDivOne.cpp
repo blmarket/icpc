@@ -138,6 +138,8 @@ int go(int pos) {
     memset(match, -1, sizeof(match));
     dfs(a[pos]);
 
+    return calc(15,16);
+
     int ret = 0;
     for(int i=0;i<N;i++) if(group1[i]) {
         for(int j=0;j<N;j++) if(!group1[j]) {
@@ -154,7 +156,6 @@ int go(int pos) {
         }
         cout << endl;
     }
-    cout << match[15][16] << endl;
 
     return ret;
 }
