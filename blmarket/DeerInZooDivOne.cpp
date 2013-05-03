@@ -74,16 +74,17 @@ int try_flow(const VVI &matt, VI &move, VI &used) {
 
     while(md != -1) {
         used[md] = back[md];
-        md = move[back[md]];
+        int tmp = move[back[md]];
         move[back[md]] = md;
+        md = tmp;
     }
 
     return mincost;
 }
 
 void mcmf(const VVI &matt, int &flow, int &cost) {
+    cost = 0; flow = 0;
     if(size(matt) == 0) {
-        flow = 0; cost = 0;
         return;
     }
 
@@ -118,7 +119,6 @@ int calc(int p1, int p2) {
     int flow, cost;
     mcmf(matt, flow, cost);
     match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
-    // printf("%d %d : %d %d %d\n", p1, p2, flow, cost, match[p1][p2]);
     return match[p1][p2];
 }
 
@@ -156,7 +156,7 @@ public:
         a=a_;b=b_; N = size(a) + 1;
         int ret = 0;
         for(int i=0;i<size(a);i++) {
-            cout << i << " " << ret << endl;
+            // cout << i << " " << ret << endl;
             int tmp = go(i);
             if(ret < tmp) ret = tmp;
         }
