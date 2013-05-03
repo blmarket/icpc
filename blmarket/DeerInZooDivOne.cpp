@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,92 +20,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int match[55][55];
-int parent[55];
-vector<int> a,b;
 int N;
+vector<int> a,b;
+int parent[55];
 
-void setparent(int pos, int par) {
+void findpar(int pos, int par) {
     parent[pos] = par;
     for(int i=0;i<size(a);i++) {
-        if(a[i] != pos && b[i] != pos) continue;
-        int oth = a[i] + b[i] - pos;
-        if(oth == par) continue;
-        setparent(oth, pos);
-    }
-}
-
-bool FindMatch(int i, const VVI &w, VI &mr, VI &mc, VI &seen) {
-    cout << i << endl;
-    for (int j = 0; j < w[i].size(); j++) {
-        if (w[i][j] && !seen[j]) {
-            seen[j] = true;
-            if (mc[j] < 0 || FindMatch(mc[j], w, mr, mc, seen)) {
-                mr[i] = j;
-                mc[j] = i;
-                return true;
-            }
+        if(a[i] == pos || b[i] == pos) {
+            if(a[i] == par || b[i] == par) continue;
+            findpar(a[i]+b[i]-pos, pos);
         }
     }
-    return false;
-}
-
-int BipartiteMatching(const VVI &w, VI &mr, VI &mc) {
-    mr = VI(w.size(), -1);
-    mc = VI(w[0].size(), -1);
-
-    int ct = 0;
-    for (int i = 0; i < w.size(); i++) {
-        VI seen(w[0].size());
-        if (FindMatch(i, w, mr, mc, seen)) ct++;
-    }
-    return ct;
-}
-
-void calc(int a, int b) {
-    vector<int> ca, cb;
-    VVI w;
-    for(int i=0;i<N;i++) if(parent[i] == a) ca.pb(i);
-    for(int i=0;i<N;i++) if(parent[i] == b) cb.pb(i);
-
-    if(ca.size() == 0 || cb.size() == 0) {
-        match[a][b] = match[b][a] = 1;
-        return;
-    }
-
-    w.resize(ca.size());
-    for(int i=0;i<size(ca);i++) w[i].resize(cb.size());
-
-    for(int i=0;i<size(ca);i++) for(int j=0;j<size(cb);j++) {
-        if(match[ca[i]][cb[i]] == -1) calc(ca[i], cb[i]);
-        w[i][j] = match[ca[i]][cb[i]];
-    }
-
-    vector<int> t1,t2;
-    BipartiteMatching(w, t1, t2);
-
-    int totmatch = 1;
-    for(int i=0;i<size(t1);i++) if(t1[i] >= 0) {
-        totmatch += w[i][t1[i]];
-    }
-
-    match[a][b] = match[b][a] = totmatch;
 }
 
 int go(int pos) {
-    memset(match, -1, sizeof(match));
-    setparent(a[pos], b[pos]);
-    setparent(b[pos], a[pos]);
-
-    parent[a[pos]] = -1;
-    parent[b[pos]] = -1;
-
-    int ret = -1;
-    for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) {
-        if(match[i][j] == -1) calc(i,j);
-        if(ret < match[i][j]) ret = match[i][j];
+    findpar(a[pos], b[pos]);
+    findpar(b[pos], a[pos]);
+    for(int i=0;i<N;i++) {
     }
-    return ret;
 }
 
 class DeerInZooDivOne 
@@ -114,10 +46,8 @@ class DeerInZooDivOne
 public:
     int getmax(vector <int> a_, vector <int> b_) 
     {
+        a=a_;b=b_; N = size(a) + 1;
         int ret = 0;
-        a=a_;b=b_;
-        N = size(a) + 1;
-
         for(int i=0;i<size(a);i++) {
             int tmp = go(i);
             if(ret < tmp) ret = tmp;
@@ -146,6 +76,6 @@ public:
 int main()
 {
     DeerInZooDivOne ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
