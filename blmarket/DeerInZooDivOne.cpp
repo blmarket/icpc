@@ -41,6 +41,7 @@ int go(int pos) {
         cout << parent[i] << " ";
     }
     cout << endl;
+    return 0;
 }
 
 class DeerInZooDivOne 
