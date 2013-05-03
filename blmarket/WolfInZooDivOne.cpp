@@ -73,14 +73,12 @@ public:
             }
 
             next.clear();
-            printf("i=%d\n",i);
             foreach(it, cur) {
                 trip tmp = it->first;
                 if(tmp.v[0] < i) tmp.v[0] = -1;
                 if(tmp.v[1] < i) tmp.v[1] = -1;
                 if(tmp.v[2] < i) tmp.v[2] = -1;
 
-                printf("%d %d %d = %d\n",tmp.v[0],tmp.v[1],tmp.v[2],it->second);
                 if(sho != -1) {
                     if(tmp.v[0] >= sho || tmp.v[1] >= sho) {} 
                     else if(tmp.v[2] < sho) tmp.v[2] = sho;
