@@ -73,7 +73,7 @@ public:
             }
 
             next.clear();
-            printf("i=%d\n",i);
+            //printf("i=%d\n",i);
             foreach(it, cur) {
                 trip tmp = it->first;
                 if(tmp.v[0] < i) tmp.v[0] = -1;
