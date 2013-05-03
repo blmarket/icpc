@@ -104,6 +104,14 @@ int calc(int p1, int p2) {
     for(int i=0;i<N;i++) if(parent[i] == p1) c1.pb(i);
     for(int i=0;i<N;i++) if(parent[i] == p2) c2.pb(i);
 
+    cout << "child " << p1 << " : ";
+    for(int i=0;i<size(c1);i++) cout << c1[i] << " ";
+    cout << endl;
+
+    cout << "child " << p2 << " : ";
+    for(int i=0;i<size(c2);i++) cout << c2[i] << " ";
+    cout << endl;
+
     if(size(c1) == 0 || size(c2) == 0) {
         return match[p1][p2] = match[p2][p1] = 1;
     }
