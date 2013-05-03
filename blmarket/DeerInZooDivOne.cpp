@@ -98,15 +98,15 @@ void mcmf(const VVI &matt, int &flow, int &cost) {
     }
 }
 
-int calc(int p1, int pp1, int p2, int pp2) {
+int calc(int cut, int p1, int pp1, int p2, int pp2) {
     if(match[p1][p2] != -1) return match[p1][p2];
     vector<int> c1, c2;
-    for(int i=0;i<size(a);i++) if(a[i] == p1 || b[i] == p1) {
+    for(int i=0;i<size(a);i++) if(i != cut) if(a[i] == p1 || b[i] == p1) {
         int oth = a[i] + b[i] - p1;
         if(oth == pp1) continue;
         c1.pb(oth);
     }
-    for(int i=0;i<size(a);i++) if(a[i] == p2 || b[i] == p2) {
+    for(int i=0;i<size(a);i++) if(i != cut) if(a[i] == p2 || b[i] == p2) {
         int oth = a[i] + b[i] - p2;
         if(oth == pp2) continue;
         c2.pb(oth);
@@ -116,7 +116,7 @@ int calc(int p1, int pp1, int p2, int pp2) {
     for(int i=0;i<size(c1);i++) {
         matt[i].resize(size(c2));
         for(int j=0;j<size(c2);j++) {
-            matt[i][j] = 100 - calc(c1[i], p1, c2[j], p2);
+            matt[i][j] = 100 - calc(cut, c1[i], p1, c2[j], p2);
         }
     }
 
@@ -157,13 +157,13 @@ int go(int pos) {
     dfs(a[pos]);
 
     memset(match, -1, sizeof(match));
-    return calc(11,-1,9,-1);
+    return calc(pos, 11,-1,9,-1);
 
     int ret = 0;
     for(int i=0;i<N;i++) if(group1[i]) {
         for(int j=0;j<N;j++) if(!group1[j]) {
             memset(match, -1, sizeof(match));
-            int tmp = calc(i,-1,j,-1);
+            int tmp = calc(pos, i,-1,j,-1);
             if(ret < tmp) {
                 ret = tmp;
             }
