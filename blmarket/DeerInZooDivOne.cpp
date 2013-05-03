@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <map>
 #include <vector>
+#include <cstring>
 
 #define mp make_pair
 #define pb push_back
@@ -23,6 +24,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<int> a,b;
 int parent[55];
+int match[55][55];
+bool group1[55];
 
 void findpar(int pos, int par) {
     parent[pos] = par;
@@ -34,13 +37,108 @@ void findpar(int pos, int par) {
     }
 }
 
+int try_flow(const VVI &matt, VI &move, VI &used) {
+    VI mc1(size(move), -1);
+    VI mc2(size(used), -1), back(size(used), -1);
+
+    for(int i=0;i<size(move);i++) if(move[i] == -1) mc1[i] = 0;
+    while(true) {
+        bool update = false;
+        for(int i=0;i<size(mc1);i++) if(mc1[i] != -1) {
+            for(int j=0;j<size(mc2);j++) {
+                int tmp = mc1[i] + matt[i][j];
+                if(mc2[j] == -1 || mc2[j] > tmp) {
+                    back[j] = i;
+                    mc2[j] = tmp;
+                    update = true;
+                }
+            }
+        }
+        for(int i=0;i<size(mc2);i++) if(used[i] != -1) {
+            int j = used[i];
+            int tmp = mc2[i] - matt[j][i];
+            if(mc1[j] == -1 || mc1[j] > tmp) {
+                mc1[j] = tmp, update = true;
+            }
+        }
+        if(!update) break;
+    }
+
+    int mincost = -1, md;
+    for(int i=0;i<size(used);i++) if(mc2[i] != -1 && used[i] != -1) {
+        if(mincost == -1 || mincost > mc2[i]) {
+            mincost = mc2[i]; md = i;
+        }
+    }
+
+    while(md != -1) {
+        used[md] = back[md];
+        md = move[back[md]];
+        move[back[md]] = md;
+    }
+
+    return mincost;
+}
+
+void mcmf(const VVI &matt, int &flow, int &cost) {
+    if(size(matt) == 0) {
+        flow = 0; cost = 0;
+        return;
+    }
+
+    VI move(size(matt), -1);
+    VI used(size(matt[0]), -1);
+    flow = min(size(matt), size(matt[0]));
+    for(int i=0;i<flow;i++) {
+        cost += try_flow(matt, move, used);
+    }
+}
+
+int calc(int p1, int p2) {
+    if(match[p1][p2] != -1) return match[p1][p2];
+
+    vector<int> c1, c2;
+    for(int i=0;i<N;i++) if(parent[i] == p1) c1.pb(i);
+    for(int i=0;i<N;i++) if(parent[i] == p2) c2.pb(i);
+
+    if(size(c1) == 0 || size(c2) == 0) {
+        return match[p1][p2] = match[p2][p1] = 1;
+    }
+
+    VVI matt(c1.size());
+    for(int i=0;i<size(c1);i++) {
+        matt[i].resize(size(c2));
+        for(int j=0;j<size(c2);j++) {
+            matt[i][j] = 100 - calc(c1[i], c2[j]);
+        }
+    }
+
+    int flow, cost;
+    mcmf(matt, flow, cost);
+    return match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
+}
+
+void dfs(int pos) {
+    if(group1[pos]) return;
+    group1[pos] = true;
+    for(int i=0;i<N;i++) if(parent[i] == pos) dfs(i);
+}
+
 int go(int pos) {
     findpar(a[pos], b[pos]);
     findpar(b[pos], a[pos]);
-    for(int i=0;i<N;i++) {
-        cout << parent[i] << " ";
+
+    parent[a[pos]] = parent[b[pos]] = -1;
+    memset(group1, 0, sizeof(group1));
+    memset(match, -1, sizeof(match));
+    dfs(a[pos]);
+
+    for(int i=0;i<N;i++) if(group1[i]) {
+        for(int j=0;j<N;j++) if(!group1[j]) {
+            calc(i,j);
+        }
     }
-    cout << endl;
+
     return 0;
 }
 
