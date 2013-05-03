@@ -84,11 +84,12 @@ void calc(int a, int b) {
     vector<int> t1,t2;
     BipartiteMatching(w, t1, t2);
 
-    for(int i=0;i<size(t1);i++) cout << t1[i] << " ";
-    cout << endl;
+    int totmatch = 1;
+    for(int i=0;i<size(t1);i++) if(t1[i] >= 0) {
+        totmatch += w[i][t1[i]];
+    }
 
-
-    match[a][b] = match[b][a] = 1;
+    match[a][b] = match[b][a] = totmatch;
 }
 
 int go(int pos) {
@@ -115,8 +116,6 @@ public:
         int ret = 0;
         a=a_;b=b_;
         N = size(a) + 1;
-        go(1);
-        return -1;
 
         for(int i=0;i<size(a);i++) {
             int tmp = go(i);
