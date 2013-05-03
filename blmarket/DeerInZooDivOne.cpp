@@ -141,7 +141,7 @@ int go(int pos) {
     dfs(a[pos]);
 
     memset(match, -1, sizeof(match));
-    return calc(6,-1,9,-1);
+    return calc(11,-1,9,-1);
 
     int ret = 0;
     for(int i=0;i<N;i++) if(group1[i]) {
