@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdio>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -17,8 +19,18 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+struct trip {
+    int v[3];
+    bool operator<(const trip &rhs) const {
+        if(v[0] != rhs.v[0]) return v[0] < rhs.v[0];
+        if(v[1] != rhs.v[1]) return v[1] < rhs.v[1];
+        return v[2] < rhs.v[2];
+    }
+};
 
 vector<int> ls, rs;
 
@@ -30,6 +42,12 @@ vector<int> split(string str) {
     return ret;
 }
 
+vector<PII> lrs;
+
+map<trip, LL> cur, next;
+
+const long long mod = 1000000007;
+
 class WolfInZooDivOne 
 {
 public:
@@ -40,8 +58,24 @@ public:
         for(int i=0;i<size(R);i++) str += R[i];
         rs = split(str);
 
-        cout << ls.size() << endl;
-        return 0;
+        for(int i=0;i<size(ls);i++) lrs.pb(mp(ls[i], rs[i]));
+        sort(lrs.begin(), lrs.end());
+
+        trip tmp;
+        memset(&tmp, -1, sizeof(tmp));
+
+        cur[tmp] = 1;
+        for(int i=0;i<size(lrs);i++) {
+            foreach(it, cur) {
+                trip tmp = it->first;
+                printf("%d %d %d\n",tmp.v[0],tmp.v[1],tmp.v[2]);
+            }
+            break;
+        }
+
+        long long ret = 0;
+        foreach(it, cur) ret = (ret + it->second) % mod;
+        return ret;
     }
 
     
