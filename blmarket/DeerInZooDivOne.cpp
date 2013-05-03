@@ -36,13 +36,34 @@ void setparent(int pos, int par) {
     }
 }
 
+void calc(int a, int b) {
+    vector<int> ca, cb;
+    int matt[55][55];
+    for(int i=0;i<N;i++) if(parent[i] == a) ca.pb(i);
+    for(int i=0;i<N;i++) if(parent[i] == b) cb.pb(i);
+
+    for(int i=0;i<size(ca);i++) for(int j=0;j<size(cb);j++) {
+        if(match[ca[i]][cb[i]] == -1) calc(ca[i], cb[i]);
+        matt[i][j] = match[ca[i]][cb[i]];
+    }
+
+    match[a][b] = match[b][a] = 1;
+}
+
 int go(int pos) {
     memset(match, -1, sizeof(match));
     setparent(a[pos], b[pos]);
     setparent(b[pos], a[pos]);
 
-    for(int i=0;i<N;i++) cout << parent[i] << " ";
-    cout << endl;
+    parent[a[pos]] = -1;
+    parent[b[pos]] = -1;
+
+    int ret = -1;
+    for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) {
+        if(match[i][j] == -1) calc(i,j);
+        if(ret < match[i][j]) ret = match[i][j];
+    }
+    return ret;
 }
 
 class DeerInZooDivOne 
