@@ -90,6 +90,7 @@ void mcmf(const VVI &matt, int &flow, int &cost) {
     VI move(size(matt), -1);
     VI used(size(matt[0]), -1);
     flow = min(size(matt), size(matt[0]));
+    cost = 0;
     for(int i=0;i<flow;i++) {
         cost += try_flow(matt, move, used);
     }
