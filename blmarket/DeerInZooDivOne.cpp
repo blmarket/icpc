@@ -37,6 +37,7 @@ void setparent(int pos, int par) {
 }
 
 bool FindMatch(int i, const VVI &w, VI &mr, VI &mc, VI &seen) {
+    cout << i << endl;
     for (int j = 0; j < w[i].size(); j++) {
         if (w[i][j] && !seen[j]) {
             seen[j] = true;
