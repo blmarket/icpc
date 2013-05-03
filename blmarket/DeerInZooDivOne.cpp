@@ -73,7 +73,7 @@ void calc(int a, int b) {
 
     for(int i=0;i<size(ca);i++) for(int j=0;j<size(cb);j++) {
         if(match[ca[i]][cb[i]] == -1) calc(ca[i], cb[i]);
-        w[i][j] = 100 - match[ca[i]][cb[i]];
+        w[i][j] = match[ca[i]][cb[i]];
     }
 
     vector<int> t1,t2;
