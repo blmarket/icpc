@@ -83,7 +83,7 @@ public:
                 printf("%d %d %d = %d\n",tmp.v[0],tmp.v[1],tmp.v[2],it->second);
                 if(sho != -1) {
                     if(tmp.v[0] >= sho || tmp.v[1] >= sho) {} 
-                    else if(tmp.v[2] == -1 || tmp.v[2] > sho) tmp.v[2] = sho;
+                    else if(tmp.v[2] < sho) tmp.v[2] = sho;
                 }
                 next[tmp] += it->second;
                 if(tmp.v[0] != -1) continue;
