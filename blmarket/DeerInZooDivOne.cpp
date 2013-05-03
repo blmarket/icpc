@@ -94,6 +94,12 @@ void mcmf(const VVI &matt, int &flow, int &cost) {
     for(int i=0;i<flow;i++) {
         cost += try_flow(matt, move, used);
     }
+
+    for(int i=0;i<size(matt);i++) {
+        for(int j=0;j<size(matt[i]);j++) cout << matt[i][j] << " ";
+        cout << endl;
+    }
+    cout << " = " << flow << " " << cost << endl;
 }
 
 int calc(int p1, int p2) {
