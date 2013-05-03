@@ -65,6 +65,17 @@ public:
         memset(&tmp, -1, sizeof(tmp));
 
         cur[tmp] = 1;
+        for(int i=0;i<N;i++) {
+            int sho = -1;
+            for(int j=0;j<size(lrs);j++) if(lrs[j].first == i) {
+                if(sho == -1 || sho > lrs[j].second) sho = lrs[j].second;
+            }
+
+            next.clear();
+            foreach(it, cur) {
+                const trip &tmp = it->first;
+            }
+        }
         for(int i=0;i<size(lrs);i++) {
             foreach(it, cur) {
                 trip tmp = it->first;
