@@ -120,6 +120,13 @@ int calc(int p1, int pp1, int p2, int pp2) {
         }
     }
 
+    if(pp1 == -1) {
+        for(int i=0;i<size(matt);i++) {
+            for(int j=0;j<size(matt[i]);j++) cout << matt[i][j] << " ";
+            cout << endl;
+        }
+    }
+
     int flow, cost;
     mcmf(matt, flow, cost);
     return match[p1][p2] = match[p2][p1] = 1 + 100 * flow - cost;
