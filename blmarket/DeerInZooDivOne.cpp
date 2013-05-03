@@ -154,7 +154,7 @@ int go(int pos) {
         }
         cout << endl;
     }
-    cout << match[10][8] << endl;
+    cout << match[11][7] << endl;
 
     return ret;
 }
