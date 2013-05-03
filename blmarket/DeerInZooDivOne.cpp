@@ -38,7 +38,9 @@ int go(int pos) {
     findpar(a[pos], b[pos]);
     findpar(b[pos], a[pos]);
     for(int i=0;i<N;i++) {
+        cout << parent[i] << " ";
     }
+    cout << endl;
 }
 
 class DeerInZooDivOne 
