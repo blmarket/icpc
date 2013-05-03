@@ -141,7 +141,7 @@ int go(int pos) {
 
     parent[a[pos]] = parent[b[pos]] = -1;
 
-    for(int i=0;i<N;i++) cout << parent[i] << " ";
+    for(int i=0;i<N;i++) cout << i << ":" << parent[i] << " ";
     cout << endl;
     memset(group1, 0, sizeof(group1));
     memset(match, -1, sizeof(match));
