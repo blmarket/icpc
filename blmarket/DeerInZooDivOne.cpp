@@ -29,7 +29,6 @@ int match[55][55];
 bool group1[55];
 
 void findpar(int pos, int par) {
-    cout << pos << " par " << par << endl;
     parent[pos] = par;
     for(int i=0;i<size(a);i++) {
         if(a[i] == pos || b[i] == pos) {
@@ -118,13 +117,6 @@ int calc(int p1, int p2) {
     }
 
     int flow, cost;
-    /*
-    for(int i=0;i<size(matt);i++) {
-        for(int j=0;j<size(matt[i]);j++) cout << matt[i][j] << " ";
-        cout << endl;
-    }
-    cout << " = " << flow << " " << cost << endl;
-    */
     mcmf(matt, flow, cost);
     match[p1][p2] = match[p2][p1] = 1 + flow * 100 - cost;
     return match[p1][p2];
@@ -142,7 +134,6 @@ int go(int pos) {
 
     parent[a[pos]] = parent[b[pos]] = -1;
 
-    cout << endl;
     memset(group1, 0, sizeof(group1));
     memset(match, -1, sizeof(match));
     dfs(a[pos]);
@@ -152,7 +143,6 @@ int go(int pos) {
         for(int j=0;j<N;j++) if(!group1[j]) {
             int tmp = calc(i,j);
             if(ret < tmp) {
-                cout << i << " " << j << " " << tmp << endl;
                 ret = tmp;
             }
         }
@@ -169,9 +159,8 @@ public:
         a=a_;b=b_; N = size(a) + 1;
         int ret = 0;
         for(int i=0;i<size(a);i++) {
-            // cout << i << " " << ret << endl;
+            cout << i << " " << a[i] << " " << b[i] << endl;
             int tmp = go(i);
-            cout << i << " " << tmp << endl;
             if(ret < tmp) ret = tmp;
         }
         return ret;
