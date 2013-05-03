@@ -36,16 +36,48 @@ void setparent(int pos, int par) {
     }
 }
 
+bool FindMatch(int i, const VVI &w, VI &mr, VI &mc, VI &seen) {
+    for (int j = 0; j < w[i].size(); j++) {
+        if (w[i][j] && !seen[j]) {
+            seen[j] = true;
+            if (mc[j] < 0 || FindMatch(mc[j], w, mr, mc, seen)) {
+                mr[i] = j;
+                mc[j] = i;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int BipartiteMatching(const VVI &w, VI &mr, VI &mc) {
+    mr = VI(w.size(), -1);
+    mc = VI(w[0].size(), -1);
+
+    int ct = 0;
+    for (int i = 0; i < w.size(); i++) {
+        VI seen(w[0].size());
+        if (FindMatch(i, w, mr, mc, seen)) ct++;
+    }
+    return ct;
+}
+
 void calc(int a, int b) {
     vector<int> ca, cb;
-    int matt[55][55];
+    VVI w;
     for(int i=0;i<N;i++) if(parent[i] == a) ca.pb(i);
     for(int i=0;i<N;i++) if(parent[i] == b) cb.pb(i);
 
+    w.resize(ca.size());
+    for(int i=0;i<size(ca);i++) w[i].resize(cb.size());
+
     for(int i=0;i<size(ca);i++) for(int j=0;j<size(cb);j++) {
         if(match[ca[i]][cb[i]] == -1) calc(ca[i], cb[i]);
-        matt[i][j] = match[ca[i]][cb[i]];
+        w[i][j] = 100 - match[ca[i]][cb[i]];
     }
+
+    vector<int> t1,t2;
+    BipartiteMatching(w, t1, t2);
 
     match[a][b] = match[b][a] = 1;
 }
@@ -74,6 +106,9 @@ public:
         int ret = 0;
         a=a_;b=b_;
         N = size(a) + 1;
+        go(1);
+        return -1;
+
         for(int i=0;i<size(a);i++) {
             int tmp = go(i);
             if(ret < tmp) ret = tmp;
