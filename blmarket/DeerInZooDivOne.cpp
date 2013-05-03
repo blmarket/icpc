@@ -84,6 +84,8 @@ void calc(int a, int b) {
     vector<int> t1,t2;
     BipartiteMatching(w, t1, t2);
 
+    cout << a << " " << b << endl;
+
     match[a][b] = match[b][a] = 1;
 }
 
