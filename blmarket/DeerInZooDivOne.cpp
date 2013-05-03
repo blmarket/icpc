@@ -163,6 +163,7 @@ public:
         for(int i=0;i<size(a);i++) {
             // cout << i << " " << ret << endl;
             int tmp = go(i);
+            cout << i << " " << tmp << endl;
             if(ret < tmp) ret = tmp;
         }
         return ret;
