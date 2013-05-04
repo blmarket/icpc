@@ -32,12 +32,11 @@ long long r,t;
 
 void process(void) {
     cin >> r >> t;
-    t *= 10;
 
     long long sum = 0;
     for(int i=0;;i++) {
         sum += sqr(r+1) - sqr(r);
-        cout << sum*M_PI << " " << t << endl;
+        cout << sum << " " << t << endl;
         cout << 1 << endl;
         break;
     }
