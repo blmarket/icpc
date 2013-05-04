@@ -30,7 +30,6 @@ int V[105];
 map<PII, int> memo;
 
 int go(int pos, int cur) {
-    cout << pos << " " << cur << endl;
     if(pos == N) {
         return 0;
     }
@@ -43,6 +42,8 @@ int go(int pos, int cur) {
     if(memo.count(key)) return memo[key];
 
     int ret = N-pos;
+
+    cout << N-pos << endl;
     for(int i=1;N-pos;i++) {
         cur += (cur - 1);
         if(cur > V[pos]) {
