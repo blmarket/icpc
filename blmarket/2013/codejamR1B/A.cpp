@@ -50,6 +50,11 @@ void process(void) {
     scanf("%d %d", &A, &N);
     for(int i=0;i<N;i++) scanf("%d", &V[i]);
 
+    if(A == 1) {
+        cout << N << endl;
+        return;
+    }
+
     sort(V,V+N);
     int ret = checkit(-1);
 
