@@ -88,6 +88,9 @@ void process(void) {
         }
         cur.swap(nex);
     }
+    for(int i=0;i<size(cur);i++) cout << cur[i] << " ";
+    cout << endl;
+
     double ret = 0;
     for(int i=Y;i<size(cur);i++) ret += cur[i];
 
