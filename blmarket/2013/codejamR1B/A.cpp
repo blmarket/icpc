@@ -27,43 +27,44 @@ template<typename T> int size(const T &a) { return a.size(); }
 int A,N;
 int V[105];
 
-int checkit(vector<int> &data) {
-    int ret = 0;
-    int cur = A;
-    for(int i=0;i<size(data);i++) {
-        while(cur <= data[i]) {
-            cur += (cur - 1);
-            ret++;
-        }
-        cur += data[i];
+map<PII, int> memo;
+
+int go(int pos, int cur) {
+    if(pos == N) {
+        return 0;
     }
 
-    return ret;
+    PII key = mp(pos, cur);
+    if(cur > V[pos]) {
+        return go(pos+1, cur + V[pos]);
+    }
+
+    if(memo.count(key)) return memo[key];
+
+    int ret = N-pos;
+    for(int i=1;N-pos;i++) {
+        cur += (cur - 1);
+        if(cur > V[pos]) {
+            int tmp = i + go(pos+1, cur + V[pos]);
+            if(tmp < ret) ret = tmp;
+        }
+    }
+
+    return memo[key] = ret;
 }
 
 void process(void) {
+    memo.clear();
     scanf("%d %d", &A, &N);
     for(int i=0;i<N;i++) scanf("%d", &V[i]);
+    sort(V,V+N);
 
     if(A == 1) {
         cout << N << endl;
         return;
     }
 
-    int ret = N;
-    sort(V,V+N);
-    for(int i=0;i<(1<<N);i++) {
-        vector<int> data;
-        data.clear();
-        int tmp = 0;
-        for(int j=0;j<N;j++) if(i & (1<<j)) {
-            data.pb(V[j]);
-        } else tmp++;
-        tmp += checkit(data);
-        if(ret > tmp) ret = tmp;
-    }
-
-    cout << ret << endl;
+    cout << go(0, A) << endl;
 }
 
 int main(void)
