@@ -43,7 +43,7 @@ void process(void) {
         }
     }
 
-    cout << s+1 << endl;
+    cout << s << endl;
 }
 
 int main(void)
