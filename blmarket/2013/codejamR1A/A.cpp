@@ -35,8 +35,10 @@ void process(void) {
 
     while(s+1<e) {
         long long m = (s+e+1) / 2;
-        long long tmp = X * m + m * (m-1) * 2;
-        if(tmp > t) {
+        long long tmp = m * (m-1) * 2;
+        long long tmp2 = t - tmp;
+
+        if(tmp2 / X < m) {
             e = m;
         } else {
             s = m;
