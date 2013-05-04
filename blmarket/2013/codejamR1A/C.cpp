@@ -75,6 +75,7 @@ void go() {
         lcm /= 2;
     }
     guess(life, p2, p3);
+    cout << endl;
 }
 
 void process(void) {
