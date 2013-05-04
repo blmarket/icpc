@@ -32,7 +32,6 @@ void go() {
     for(int i=0;i<k;i++) {
         lcm = lcm * kk[i] / __gcd(lcm, kk[i]);
     }
-    cout << lcm << endl;
 
     string sol;
 
