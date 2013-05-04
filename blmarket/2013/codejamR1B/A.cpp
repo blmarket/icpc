@@ -30,6 +30,7 @@ int V[105];
 map<PII, int> memo;
 
 int go(int pos, int cur) {
+    cout << pos << " " << cur << endl;
     if(pos == N) {
         return 0;
     }
