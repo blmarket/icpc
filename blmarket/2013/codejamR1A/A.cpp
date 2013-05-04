@@ -32,6 +32,7 @@ long long r,t;
 
 void process(void) {
     cin >> r >> t;
+    t *= 10;
 
     long long sum = 0;
     for(int i=0;;i++) {
