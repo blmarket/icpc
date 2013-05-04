@@ -27,12 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int A,N;
 int V[105];
 
-int checkit(int a) {
-    vector<int> data;
-    for(int i=0;i<N;i++) if(i != a) {
-        data.pb(V[i]);
-    }
-
+int checkit(vector<int> &data) {
     int ret = 0;
     int cur = A;
     for(int i=0;i<size(data);i++) {
@@ -55,13 +50,19 @@ void process(void) {
         return;
     }
 
+    int ret = N;
     sort(V,V+N);
-    int ret = checkit(-1);
-
-    for(int i=0;i<N;i++) {
-        int tmp = checkit(i) + 1;
+    for(int i=0;i<(1<<N);i++) {
+        vector<int> data;
+        data.clear();
+        int tmp = 0;
+        for(int j=0;j<N;j++) if(i & (1<<j)) {
+            data.pb(V[j]);
+        } else tmp++;
+        tmp += checkit(data);
         if(ret > tmp) ret = tmp;
     }
+
     cout << ret << endl;
 }
 
