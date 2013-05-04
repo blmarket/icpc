@@ -65,6 +65,8 @@ void process(void) {
 
     int given = N - minrange;
 
+    cout << "given = " << given << endl;
+
     vector<double> cur, nex;
     cur.resize(2, 0.5);
     for(int i=2;i<=given;i++) {
