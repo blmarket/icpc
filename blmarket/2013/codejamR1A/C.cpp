@@ -35,7 +35,7 @@ void guess(int life, int p2, int p3) {
         return;
     }
     cout << "2";
-    guess(life-2, p2-1, p3);
+    guess(life-1, p2-1, p3);
     return;
 }
 
