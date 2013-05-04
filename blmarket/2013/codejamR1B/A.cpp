@@ -50,8 +50,6 @@ void process(void) {
     scanf("%d %d", &A, &N);
     for(int i=0;i<N;i++) scanf("%d", &V[i]);
 
-    cout << "start" << endl;
-
     sort(V,V+N);
     int ret = checkit(-1);
 
@@ -69,6 +67,6 @@ int main(void)
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ", i);
         process();
-        cerr << i << endl;
+        // cerr << i << endl;
     }
 }
