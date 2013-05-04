@@ -49,8 +49,6 @@ void process(void) {
     layer++;
     int maxrange = (2*layer+1) * (layer+1);
 
-    cerr << "maxrange = " << maxrange << endl;
-
     if(N <= minrange) {
         cout << "0.0" << endl;
         return;
