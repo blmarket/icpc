@@ -38,7 +38,7 @@ void process(void) {
         long long tmp = m * (m-1) * 2;
         long long tmp2 = t - tmp;
 
-        if(tmp2 / X < m) {
+        if(tmp2 < 0 || tmp2 / X < m) {
             e = m;
         } else {
             s = m;
