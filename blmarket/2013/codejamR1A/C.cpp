@@ -33,6 +33,25 @@ void go() {
         lcm = lcm * kk[i] / __gcd(lcm, kk[i]);
     }
     cout << lcm << endl;
+
+    string sol;
+
+    int life = n;
+    while((lcm % 7) == 0) {
+        lcm /= 7;
+        sol += "7";
+        life--;
+    }
+    while((lcm % 5) == 0) {
+        lcm /= 5;
+        sol += "5";
+        life--;
+    }
+    if(life == 1) {
+        cout << sol << lcm << endl;
+        return;
+    }
+    cout << sol << " and... some more " << lcm << endl;
 }
 
 void process(void) {
