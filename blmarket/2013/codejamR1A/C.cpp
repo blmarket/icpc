@@ -46,6 +46,11 @@ void go() {
         sol += "5";
         life--;
     }
+    while((lcm % 3) == 0) {
+        lcm /= 3;
+        sol += "3";
+        life--;
+    }
     if(life == 1) {
         cout << sol << lcm << endl;
         return;
