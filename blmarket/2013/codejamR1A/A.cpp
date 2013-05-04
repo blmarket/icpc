@@ -36,6 +36,7 @@ void process(void) {
     long long sum = 0;
     for(int i=0;;i++) {
         sum += sqr(r+1) - sqr(r);
+        cout << sum << " " << t << endl;
         if(sum > t) {
             cout << i-1 << endl;
             break;
