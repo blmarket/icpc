@@ -28,14 +28,48 @@ vector<string> wlist;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-map<PII, int> memo;
+int memo[5000][10];
 string str;
 
 int go(int a, int dist) {
+    if(a == size(str)) {
+        return 0;
+    }
+
+    if(memo[a][dist] != -1) return memo[a][dist];
+    string tt = str.substr(a);
+
+    int ret = -2;
+    for(int i=0;i<size(wlist);i++) {
+        const string &w = wlist[i];
+        if(size(w) > size(tt)) continue;
+
+        int tmp = 0;
+        int dd = dist;
+        for(int j=0;j<size(w);j++) {
+            if(tt[j] != w[j]) {
+                tmp++;
+                if(dd) {
+                    dd = -1; break;
+                } else {
+                    dd = 5;
+                }
+            }
+            if(dd) dd--;
+        }
+        if(dd == -1) continue;
+
+        int tmp2 = go(a + size(w), dd);
+        if(tmp2 < 0) continue;
+
+        tmp += tmp2;
+        if(ret == -2 || ret > tmp) ret = tmp;
+    }
+    return memo[a][dist] = ret;
 }
 
 void process(void) {
-    memo.clear();
+    memset(memo, -1, sizeof(memo));
     cin >> str;
     cout << go(0, 0) << endl;
 }
@@ -49,7 +83,6 @@ int main(void)
     }
     dict = set<string>(wlist.begin(), wlist.end());
 
-    cout << wlist.size() << " " << dict.size() << endl;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
