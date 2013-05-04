@@ -55,7 +55,12 @@ void go() {
         cout << sol << lcm << endl;
         return;
     }
-    cout << sol << " and... some more " << lcm << endl;
+    cout << sol;
+    while(life) {
+        cout << 4;
+        life--;
+    }
+    cout << endl;
 }
 
 void process(void) {
