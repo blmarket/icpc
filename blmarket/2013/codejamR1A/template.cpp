@@ -24,7 +24,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int r,n,m,k;
+int kk[15];
+
+void go() {
+    int lcm = 1;
+    for(int i=0;i<k;i++) {
+        lcm = lcm * kk[i] / __gcd(lcm, kk[i]);
+    }
+    cout << lcm << endl;
+}
+
 void process(void) {
+    scanf("%d %d %d %d",&r,&n,&m,&k);
+    for(int i=0;i<r;i++) {
+        for(int j=0;j<k;j++) {
+            scanf("%d",&kk[j]);
+        }
+        go();
+    }
 }
 
 int main(void)
