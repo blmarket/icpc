@@ -28,7 +28,7 @@ int N,X,Y;
 
 void process(void) {
     scanf("%d %d %d",&N, &X, &Y);
-    Y = 10;
+    Y = 20;
     int layer = (abs(X) + abs(Y)) / 2;
     if(layer == 0) {
         cout << "1.0" << endl;
