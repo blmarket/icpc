@@ -24,10 +24,20 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 set<string> dict;
+vector<string> wlist;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+map<PII, int> memo;
+string str;
+
+int go(int a, int dist) {
+}
+
 void process(void) {
+    memo.clear();
+    cin >> str;
+    cout << go(0, 0) << endl;
 }
 
 int main(void)
@@ -35,8 +45,11 @@ int main(void)
     ifstream fin("garbled_email_dictionary.txt");
     string str;
     while(fin >> str) {
-        dict.insert(str);
+        wlist.pb(str);
     }
+    dict = set<string>(wlist.begin(), wlist.end());
+
+    cout << wlist.size() << " " << dict.size() << endl;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
