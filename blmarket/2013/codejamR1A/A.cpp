@@ -28,12 +28,22 @@ const double pi = M_PI;
 
 vector<double> paint;
 
+long long r,t;
+
 void process(void) {
+    cin >> r >> t;
+
+    long long sum = 0;
+    for(int i=0;;i++) {
+        sum += sqr(r+1) - sqr(r);
+        cout << sum*M_PI << " " << t << endl;
+        cout << 1 << endl;
+        break;
+    }
 }
 
 int main(void)
 {
-    cout << pi << endl;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
