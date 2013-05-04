@@ -43,8 +43,8 @@ int go(int pos, int cur) {
 
     int ret = N-pos;
 
-    cout << N-pos << endl;
     for(int i=1;N-pos;i++) {
+        cout << i << endl;
         cur += (cur - 1);
         if(cur > V[pos]) {
             int tmp = i + go(pos+1, cur + V[pos]);
