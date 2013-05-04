@@ -29,15 +29,21 @@ long long r,t;
 void process(void) {
     cin >> r >> t;
 
-    long long sum = 0;
-    for(int i=1;;i++) {
-        sum += (r+r+1);
-        if(sum > t) {
-            cout << i-1 << endl;
-            break;
+    long long X = r * 2 + 1;
+
+    long long s = 0, e = 707106790;
+
+    while(s+1<e) {
+        long long m = (s+e+1) / 2;
+        long long tmp = X * m + m * (m-1) * 2;
+        if(tmp > t) {
+            e = m;
+        } else {
+            s = m;
         }
-        r += 2;
     }
+
+    cout << s+1 << endl;
 }
 
 int main(void)
