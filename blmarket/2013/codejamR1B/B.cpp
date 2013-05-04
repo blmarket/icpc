@@ -88,8 +88,10 @@ void process(void) {
         }
         cur.swap(nex);
     }
+    double ret = 0;
+    for(int i=Y;i<size(cur);i++) ret += cur[i];
 
-    printf("%.12lf\n", cur[Y]);
+    printf("%.12lf\n", ret);
 }
 
 int main(void)
