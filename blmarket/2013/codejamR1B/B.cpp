@@ -28,6 +28,7 @@ int N,X,Y;
 
 void process(void) {
     scanf("%d %d %d",&N, &X, &Y);
+    Y = 10;
     int layer = (abs(X) + abs(Y)) / 2;
     if(layer == 0) {
         cout << "1.0" << endl;
@@ -37,6 +38,8 @@ void process(void) {
     int minrange = (2*layer+1) * (layer+1);
     layer++;
     int maxrange = (2*layer+1) * (layer+1);
+
+    cerr << "maxrange = " << maxrange << endl;
 
     if(N <= minrange) {
         cout << "0.0" << endl;
@@ -51,6 +54,8 @@ void process(void) {
         cout << "0.0" << endl;
         return;
     }
+
+    int given = N - minrange;
 
     cout << "???" << endl;
 }
