@@ -41,6 +41,7 @@ void process(void) {
             cout << i-1 << endl;
             break;
         }
+        r += 2;
     }
 }
 
