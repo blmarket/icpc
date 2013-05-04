@@ -68,6 +68,8 @@ void go() {
         return;
     }
 
+    cerr << life << " " << lcm << endl;
+
     cout << sol;
     int p2 = 0, p3 = 0;
     while((lcm % 2) == 0) {
