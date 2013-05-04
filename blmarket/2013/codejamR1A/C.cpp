@@ -68,14 +68,14 @@ void go() {
         return;
     }
 
-    if(life != 0) cerr << life << " " << lcm << endl;
-
     cout << sol;
     int p2 = 0, p3 = 0;
     while((lcm % 2) == 0) {
         p2++;
         lcm /= 2;
     }
+    if(life != 0) cerr << life << " " << p2 << endl;
+
     guess(life, p2, p3);
     cout << endl;
 }
