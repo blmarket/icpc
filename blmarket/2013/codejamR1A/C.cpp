@@ -27,6 +27,18 @@ template<typename T> int size(const T &a) { return a.size(); }
 int r,n,m,k;
 int kk[15];
 
+void guess(int life, int p2, int p3) {
+    if(life == 0) return;
+    if(p2 == life * 2) {
+        cout << "4";
+        guess(life-1, p2-2, p3);
+        return;
+    }
+    cout << "2";
+    guess(life-2, p2-1, p3);
+    return;
+}
+
 void go() {
     int lcm = 1;
     for(int i=0;i<k;i++) {
@@ -55,12 +67,14 @@ void go() {
         cout << sol << lcm << endl;
         return;
     }
+
     cout << sol;
-    while(life) {
-        cout << 4;
-        life--;
+    int p2 = 0, p3 = 0;
+    while((lcm % 2) == 0) {
+        p2++;
+        lcm /= 2;
     }
-    cout << endl;
+    guess(life, p2, p3);
 }
 
 void process(void) {
