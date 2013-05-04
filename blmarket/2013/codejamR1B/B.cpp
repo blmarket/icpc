@@ -92,7 +92,7 @@ void process(void) {
     cout << endl;
 
     double ret = 0;
-    for(int i=Y;i<size(cur);i++) ret += cur[i];
+    for(int i=Y+1;i<size(cur);i++) ret += cur[i];
 
     printf("%.12lf\n", ret);
 }
