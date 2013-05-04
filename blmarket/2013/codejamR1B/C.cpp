@@ -35,10 +35,8 @@ int main(void)
     ifstream fin("garbled_email_dictionary.txt");
     string str;
     while(fin >> str) {
-        cout << str.size() << " ";
         dict.insert(str);
     }
-    cout << endl;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
