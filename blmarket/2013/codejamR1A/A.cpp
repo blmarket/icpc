@@ -24,10 +24,6 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-const double pi = M_PI;
-
-vector<double> paint;
-
 long long r,t;
 
 void process(void) {
@@ -35,7 +31,7 @@ void process(void) {
 
     long long sum = 0;
     for(int i=1;;i++) {
-        sum += sqr(r+1) - sqr(r);
+        sum += (r+r+1);
         if(sum > t) {
             cout << i-1 << endl;
             break;
