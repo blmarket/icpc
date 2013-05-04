@@ -47,6 +47,11 @@ void process(void) {
         return;
     }
 
+    if(X == 0) {
+        cout << "0.0" << endl;
+        return;
+    }
+
     cout << "???" << endl;
 }
 
