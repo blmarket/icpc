@@ -68,7 +68,7 @@ void go() {
         return;
     }
 
-    cerr << life << " " << lcm << endl;
+    if(life != 0) cerr << life << " " << lcm << endl;
 
     cout << sol;
     int p2 = 0, p3 = 0;
