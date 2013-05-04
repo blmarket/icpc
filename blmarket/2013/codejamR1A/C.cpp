@@ -74,7 +74,7 @@ void go() {
         p2++;
         lcm /= 2;
     }
-    if(life != 0) cerr << life << " " << p2 << endl;
+    if(life != 0) cerr << life << " " << p2 << " " << p3 << endl;
 
     guess(life, p2, p3);
     cout << endl;
