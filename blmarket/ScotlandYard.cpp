@@ -62,7 +62,7 @@ public:
         }
         cur.insert((1LL << N) - 1);
 
-        for(int t=0;t<100000;t++) {
+        for(int t=0;t<500000;t++) {
             bool hasmove = false;
             for(int i=0;i<3;i++) {
                 hasmove |= try_move(i);
