@@ -66,17 +66,18 @@ public:
             bool hasmove = false;
             for(int i=0;i<3;i++) {
                 hasmove |= try_move(i);
+                /*
                 cout << i << endl;
                 foreach(it, n[i]) {
                     for(int j=0;j<N;j++) if(*it & (1LL << j)) cout << "1"; else cout << "0";
                     cout << endl;
                 }
+                */
             }
             if(!hasmove) return t;
 
             cur.swap(n[0]);
             for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
-            cout << endl;
             if(size(cur) == 0) return t+1;
         }
         return -1;
@@ -164,6 +165,6 @@ public:
 int main()
 {
     ScotlandYard ___test; 
-    ___test.run_test(5); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
