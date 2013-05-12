@@ -24,11 +24,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<string> m[3];
 vector<LL> mm[3];
-set<LL> pcur, cur, n[3];
+vector<LL> cur, nex;
 
 bool try_move(int a) {
     bool hasmove = false;
-    n[a].clear();
     foreach(it, cur) {
         LL pos = *it;
         LL next = 0;
@@ -38,7 +37,7 @@ bool try_move(int a) {
         if(next == 0) continue;
         hasmove = true;
         if((next & (next-1)) != 0) {
-            n[a].insert(next);
+            nex.pb(next);
         }
     }
     return hasmove;
@@ -60,26 +59,21 @@ public:
                 }
             }
         }
-        cur.insert((1LL << N) - 1);
+        cur.pb((1LL << N) - 1);
 
         for(int t=0;t<100000;t++) {
-            pcur = cur;
             bool hasmove = false;
+            nex.clear();
             for(int i=0;i<3;i++) {
                 hasmove |= try_move(i);
-                /*
-                cout << i << endl;
-                foreach(it, n[i]) {
-                    for(int j=0;j<N;j++) if(*it & (1LL << j)) cout << "1"; else cout << "0";
-                    cout << endl;
-                }
-                */
             }
             if(!hasmove) return t;
 
-            cur.swap(n[0]);
-            for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
-            if(pcur == cur) return -1;
+            sort(nex.begin(), nex.end());
+            nex.erase(unique(nex.begin(), nex.end()), nex.end());
+            if(cur == nex) return -1;
+            cur.swap(nex);
+            cout << endl;
             if(size(cur) == 0) return t+1;
         }
         return -1;
