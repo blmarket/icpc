@@ -70,10 +70,12 @@ public:
             cur.clear();
             cur.swap(n[0]);
             for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
+            /*
             foreach(it, cur) {
                 cout << *it << endl;
             }
             cout << endl;
+            */
             if(size(cur) == 0) return t;
         }
         return -1;
@@ -161,6 +163,6 @@ public:
 int main()
 {
     ScotlandYard ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
