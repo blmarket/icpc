@@ -35,7 +35,6 @@ void try_move(int a) {
             next |= mm[a][i];
         }
         if(next == 0) continue;
-        cout << next << endl;
         n[a].insert(next);
     }
     if(n[a].size() == 1) {
@@ -54,7 +53,9 @@ public:
         N = size(taxi);
         m[0] = taxi; m[1] = bus; m[2] = metro;
         for(int i=0;i<3;i++) {
+            mm[i].resize(N);
             for(int j=0;j<N;j++) {
+                mm[i][j] = 0;
                 for(int k=0;k<N;k++) {
                     if(m[i][j][k] == 'Y') mm[i][j] |= (1LL << k);
                 }
