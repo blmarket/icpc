@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<string> m[3];
 vector<LL> mm[3];
-set<LL> cur, n[3];
+set<LL> pcur, cur, n[3];
 
 bool try_move(int a) {
     bool hasmove = false;
@@ -62,7 +62,8 @@ public:
         }
         cur.insert((1LL << N) - 1);
 
-        for(int t=0;t<500000;t++) {
+        for(int t=0;t<100000;t++) {
+            pcur = cur;
             bool hasmove = false;
             for(int i=0;i<3;i++) {
                 hasmove |= try_move(i);
@@ -78,6 +79,7 @@ public:
 
             cur.swap(n[0]);
             for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
+            if(pcur == cur) return -1;
             if(size(cur) == 0) return t+1;
         }
         return -1;
