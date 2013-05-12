@@ -27,6 +27,7 @@ vector<LL> mm[3];
 set<LL> cur, n[3];
 
 bool try_move(int a) {
+    bool hasmove = false;
     n[a].clear();
     foreach(it, cur) {
         LL pos = *it;
@@ -35,18 +36,12 @@ bool try_move(int a) {
             next |= mm[a][i];
         }
         if(next == 0) continue;
-        n[a].insert(next);
-    }
-    if(n[a].size() == 0) {
-        return false;
-    }
-    if(n[a].size() == 1) {
-        LL tmp = *(n[a].begin());
-        if((tmp & (tmp-1)) == 0) {
-            n[a].clear();
+        hasmove = true;
+        if((next & (next-1)) != 0) {
+            n[a].insert(next);
         }
     }
-    return true;
+    return hasmove;
 }
 
 class ScotlandYard 
