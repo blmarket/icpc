@@ -26,7 +26,7 @@ vector<string> m[3];
 vector<LL> mm[3];
 set<LL> cur, n[3];
 
-void try_move(int a) {
+bool try_move(int a) {
     n[a].clear();
     foreach(it, cur) {
         LL pos = *it;
@@ -37,12 +37,16 @@ void try_move(int a) {
         if(next == 0) continue;
         n[a].insert(next);
     }
+    if(n[a].size() == 0) {
+        return false;
+    }
     if(n[a].size() == 1) {
         LL tmp = *(n[a].begin());
         if((tmp & (tmp-1)) == 0) {
             n[a].clear();
         }
     }
+    return true;
 }
 
 class ScotlandYard 
@@ -64,9 +68,11 @@ public:
         cur.insert((1LL << N) - 1);
 
         for(int t=0;t<100000;t++) {
+            bool hasmove = false;
             for(int i=0;i<3;i++) {
-                try_move(i);
+                hasmove |= try_move(i);
             }
+            if(!hasmove) return t;
             cur.clear();
             cur.swap(n[0]);
             for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
@@ -76,7 +82,7 @@ public:
             }
             cout << endl;
             */
-            if(size(cur) == 0) return t;
+            if(size(cur) == 0) return t+1;
         }
         return -1;
     }
