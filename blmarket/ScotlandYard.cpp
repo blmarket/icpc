@@ -77,7 +77,8 @@ public:
             cur.swap(n[0]);
             for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
             foreach(it, cur) {
-                cout << *it << endl;
+                for(int j=0;j<N;j++) if(*it & (1LL << j)) cout << "1"; else cout << "0";
+                cout << endl;
             }
             cout << endl;
             if(size(cur) == 0) return t+1;
