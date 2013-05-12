@@ -62,6 +62,7 @@ public:
         cur.pb((1LL << N) - 1);
 
         for(int t=0;t<100000;t++) {
+            cout << t << endl;
             bool hasmove = false;
             nex.clear();
             for(int i=0;i<3;i++) {
