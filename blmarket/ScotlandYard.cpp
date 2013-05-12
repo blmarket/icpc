@@ -35,6 +35,7 @@ void try_move(int a) {
             next |= mm[a][i];
         }
         if(next == 0) continue;
+        cout << next << endl;
         n[a].insert(next);
     }
     if(n[a].size() == 1) {
