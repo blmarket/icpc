@@ -169,6 +169,6 @@ public:
 int main()
 {
     ScotlandYard ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(5); 
 } 
 // END CUT HERE
