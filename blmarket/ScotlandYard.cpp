@@ -73,7 +73,6 @@ public:
             nex.erase(unique(nex.begin(), nex.end()), nex.end());
             if(cur == nex) return -1;
             cur.swap(nex);
-            cout << endl;
             if(size(cur) == 0) return t+1;
         }
         return -1;
