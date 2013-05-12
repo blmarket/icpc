@@ -61,14 +61,14 @@ public:
         }
         cur.insert((1LL << N) - 1);
 
-        for(int i=0;i<100000;i++) {
+        for(int t=0;t<100000;t++) {
             for(int i=0;i<3;i++) {
                 try_move(i);
             }
             cur.clear();
             cur.swap(n[0]);
             for(int i=1;i<3;i++) foreach(it, n[i]) cur.insert(*it);
-            if(size(cur) == 0) return i;
+            if(size(cur) == 0) return t;
         }
         return -1;
     }
