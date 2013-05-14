@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -17,66 +18,59 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
-typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int N;
 vector<string> m[3];
-vector<LL> mm[3];
-vector<LL> cur, nex;
 
-bool try_move(int a) {
-    bool hasmove = false;
-    foreach(it, cur) {
-        LL pos = *it;
-        LL next = 0;
-        for(int i=0;i<N;i++) if(pos & (1LL << i)) {
-            next |= mm[a][i];
+int N;
+int memo[55][55];
+
+int go(int a, int b) {
+    if(a>b) swap(a,b);
+    if(memo[a][b] != -1) return memo[a][b];
+    memo[a][b] = -2;
+
+    int ret = 0;
+    for(int i=0;i<3;i++) {
+        vector<int> candi; candi.clear();
+        for(int j=0;j<N;j++) {
+            if(m[i][a][j] == 'Y' || m[i][b][j] == 'Y') candi.pb(j);
         }
-        if(next == 0) continue;
-        hasmove = true;
-        if((next & (next-1)) != 0) {
-            nex.pb(next);
+        if(size(candi)) {
+            ret = max(ret, 1);
+        }
+        for(int j=0;j<size(candi);j++) {
+            for(int k=j+1;k<size(candi);k++) {
+                int tmp = go(candi[j], candi[k]);
+                if(tmp == -2) return tmp;
+                ret = max(ret, tmp + 1);
+            }
         }
     }
-    return hasmove;
+
+    return memo[a][b] = ret;
 }
 
 class ScotlandYard 
 {
 public:
     int maxMoves(vector <string> taxi, vector <string> bus, vector <string> metro) 
-    {
+    {		
         N = size(taxi);
         m[0] = taxi; m[1] = bus; m[2] = metro;
-        for(int i=0;i<3;i++) {
-            mm[i].resize(N);
-            for(int j=0;j<N;j++) {
-                mm[i][j] = 0;
-                for(int k=0;k<N;k++) {
-                    if(m[i][j][k] == 'Y') mm[i][j] |= (1LL << k);
-                }
-            }
-        }
-        cur.pb((1LL << N) - 1);
+        memset(memo, -1, sizeof(memo));
 
-        for(int t=0;t<100000;t++) {
-            cout << t << endl;
-            bool hasmove = false;
-            nex.clear();
-            for(int i=0;i<3;i++) {
-                hasmove |= try_move(i);
+        int ret = 0;
+        for(int i=0;i<N;i++) {
+            for(int j=i+1;j<N;j++) {
+                int tmp = go(i,j);
+                if(ret < tmp) ret = tmp;
+                cout << tmp << " ";
             }
-            if(!hasmove) return t;
-
-            sort(nex.begin(), nex.end());
-            nex.erase(unique(nex.begin(), nex.end()), nex.end());
-            if(cur == nex) return -1;
-            cur.swap(nex);
-            if(size(cur) == 0) return t+1;
+            cout << endl;
         }
-        return -1;
+        return ret;
     }
 
     
