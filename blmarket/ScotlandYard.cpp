@@ -65,10 +65,9 @@ public:
         for(int i=0;i<N;i++) {
             for(int j=i+1;j<N;j++) {
                 int tmp = go(i,j);
+                if(tmp == -2) return -1;
                 if(ret < tmp) ret = tmp;
-                cout << tmp << " ";
             }
-            cout << endl;
         }
         return ret;
     }
