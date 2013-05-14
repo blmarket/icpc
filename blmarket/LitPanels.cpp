@@ -26,8 +26,8 @@ int pow2[2000];
 
 LL cnt(int X,int Y,int sx,int sy) {
     if(X <= sx && Y <= sy) {
-        
     }
+    return 0;
 }
 
 class LitPanels 
