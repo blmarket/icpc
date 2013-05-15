@@ -80,12 +80,10 @@ LL diagonal(int X, int Y, int sx, int sy) {
 }
 
 LL cross(int X, int Y, int sx, int sy) {
+    if(X >= 2*sx || Y >= 2*sy) return 0;
     LL cnt1 = sqr(pow2[2*sx-X]-1) % mod;
     LL cnt2 = sqr(pow2[2*sy-Y]-1) % mod;
     LL inner = pow2[(X-2) * (Y-2) - 4 * (X-1-sx) * (Y-1-sy)];
-    cout << X << " " << Y << " " << sx << " " << sy << endl;
-    cout << X-1-sx << " " << Y-1-sy << endl;
-    cout << (X-2)*(Y-2)-4*(X-1-sx)*(Y-1-sy) << endl;
     LL ret = (cnt1 * cnt2) % mod;
     ret = (ret * inner) % mod;
     if(ret < 0) ret += mod;
