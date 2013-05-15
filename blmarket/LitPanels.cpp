@@ -69,7 +69,11 @@ LL diagonal(int X, int Y, int sx, int sy) {
         ret += (cnt1 * cnt2);
         ret %= mod;
     }
-    LL inner = pow2[2*(sx-1)*(sy-1) - (2*sx-X)*(2*sy-Y)];
+    int intersec = 0;
+    if(X < 2*sx && Y < 2 * sy) {
+        intersec = (2*sx - X) * (2*sy-Y);
+    }
+    LL inner = pow2[2*(sx-1)*(sy-1) - intersec];
     ret = (ret * inner) % mod;
     if(ret < 0) ret += mod;
     return ret;
