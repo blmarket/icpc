@@ -79,6 +79,16 @@ LL diagonal(int X, int Y, int sx, int sy) {
     return ret;
 }
 
+LL cross(int X, int Y, int sx, int sy) {
+    LL cnt1 = sqr(pow2[2*sx-X]-1) % mod;
+    LL cnt2 = sqr(pow2[2*sy-Y]-1) % mod;
+    LL inner = pow2[(X-2) * (Y-2) - 4 * (X-1-sx) * (Y-1-sy)];
+    LL ret = (cnt1 * cnt2) % mod;
+    ret = (ret * inner) % mod;
+    if(ret < 0) ret += mod;
+    return ret;
+}
+
 LL cnt(int X,int Y,int sx,int sy) {
     if(X <= sx && Y <= sy) {
         return small(X,Y);
@@ -89,7 +99,9 @@ LL cnt(int X,int Y,int sx,int sy) {
     if(Y <= sy) {
         return thin(Y, X, sx);
     }
-    return (2 * diagonal(X,Y,sx,sy)) % mod;
+    LL ret = (2 * diagonal(X,Y,sx,sy) - cross(X,Y,sx,sy)) % mod;
+    if(ret < 0) ret += mod;
+    return ret;
 }
 
 class LitPanels 
