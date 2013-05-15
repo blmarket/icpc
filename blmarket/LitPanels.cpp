@@ -102,6 +102,7 @@ public:
             pow2[i] = (pow2[i-1] * 2) % mod;
         }
         cout << small(4,3) << endl;
+        cout << diagonal(4,3,3,2) << endl;
         LL ret = 0;
         for(int i=1;i<=X;i++) {
             for(int j=1;j<=Y;j++) {
