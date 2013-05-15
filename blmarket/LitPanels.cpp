@@ -101,9 +101,9 @@ public:
         for(int i=1;i<=X;i++) {
             for(int j=1;j<=Y;j++) {
                 LL tmp = cnt(i,j,sx,sy);
-                cout << i << " " << j << " = " << tmp << endl;
                 ret += tmp * (X-i+1) * (Y-i+1);
                 ret %= mod;
+                cout << i << " " << j << " = " << tmp << " " << ret << endl;
             }
         }
         return (ret + 1) % mod;
