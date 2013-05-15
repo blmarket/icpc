@@ -133,6 +133,6 @@ public:
 int main()
 {
     LitPanels ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
