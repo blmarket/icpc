@@ -97,6 +97,7 @@ class LitPanels
 public:
     int countPatterns(int X, int Y, int sx, int sy) 
     {
+        cout << small(3,4) << endl;
         pow2[0] = 1;
         for(int i=1;i<2000;i++) {
             pow2[i] = (pow2[i-1] * 2) % mod;
