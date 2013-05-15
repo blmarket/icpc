@@ -101,7 +101,7 @@ public:
         for(int i=1;i<2000;i++) {
             pow2[i] = (pow2[i-1] * 2) % mod;
         }
-        cout << small(3,4) << endl;
+        cout << small(4,3) << endl;
         LL ret = 0;
         for(int i=1;i<=X;i++) {
             for(int j=1;j<=Y;j++) {
