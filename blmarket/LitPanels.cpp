@@ -24,11 +24,68 @@ template<typename T> int size(const T &a) { return a.size(); }
 const LL mod = 1000000007LL;
 int pow2[2000];
 
+LL small(int X, int Y) {
+    if(X>Y) swap(X,Y);
+    if(X == 1) {
+        if(Y == 1) return 1;
+        return pow2[Y-2];
+    }
+
+    LL ret = 0;
+
+    for(int a=0;a<2;a++) for(int b=0;b<2;b++) for(int c=0;c<2;c++) for(int d=0;d<2;d++) {
+        bool hasu = a || b;
+        bool hasl = a || c;
+        bool hasr = b || d;
+        bool hasd = c || d;
+        LL cntu = pow2[Y-2] - !hasu;
+        LL cntl = pow2[X-2] - !hasl;
+        LL cntr = pow2[X-2] - !hasr;
+        LL cntd = pow2[Y-2] - !hasd;
+
+        LL t1 = (cntu * cntl) % mod;
+        LL t2 = (cntr * cntd) % mod;
+        ret += (t1*t2);
+        ret %= mod;
+    }
+    LL inner = pow2[(X-2)*(Y-2)];
+    ret = ((ret * inner) % mod);
+    if(ret < 0) ret += mod;
+    return ret;
+}
+
+LL thin(int X, int Y, int sy) {
+    if(Y <= sy * 2) {
+        return small(X,Y);
+    }
+    return small(X, 2*sy);
+}
+
+LL diagonal(int X, int Y, int sx, int sy) {
+    LL ret = 0;
+    for(int a=0;a<2;a++) for(int b=0;b<2;b++) {
+        LL cnt1 = ((pow2[sy-1] - !a) * (pow2[sx-1] - !a)) % mod;
+        LL cnt2 = ((pow2[sy-1] - !b) * (pow2[sx-1] - !b)) % mod;
+        ret += (cnt1 * cnt2);
+        ret %= mod;
+    }
+    LL inner = pow2[2*(sx-1)*(sy-1) - (2*sx-X)*(2*sy-Y)];
+    ret = (ret * inner) % mod;
+    if(ret < 0) ret += mod;
+    return ret;
+}
+
 LL cnt(int X,int Y,int sx,int sy) {
     if(X <= sx && Y <= sy) {
-        return 0;
+        return small(X,Y);
     }
-    return 0;
+    if(X <= sx) {
+        return thin(X, Y, sy);
+    }
+    if(Y <= sy) {
+        return thin(Y, X, sx);
+    }
+    return (2 * diagonal(X,Y,sx,sy)) % mod;
 }
 
 class LitPanels 
