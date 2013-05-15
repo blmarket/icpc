@@ -103,6 +103,7 @@ public:
                 LL tmp = cnt(i,j,sx,sy);
                 ret += tmp * (X-i+1) * (Y-j+1);
                 ret %= mod;
+                //cout << i << " " << j << " = " << tmp << " " << ret << endl;
             }
         }
         return (ret + 1) % mod;
@@ -128,6 +129,6 @@ public:
 int main()
 {
     LitPanels ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
