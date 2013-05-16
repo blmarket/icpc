@@ -55,6 +55,7 @@ public:
         memset(memo, -1, sizeof(memo));
         data = friendship;
 
+        memset(floyd, -1, sizeof(floyd));
         for(int i=0;i<N;i++) for(int j=0;j<N;j++) floyd[i][j] = (data[i][j] == 'Y' ? 1 : -1);
         for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(floyd[i][k]) {
             for(int j=0;j<N;j++) if(floyd[k][j]) {
