@@ -22,7 +22,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 const LL mod = 1000000007LL;
-int pow2[2000];
+int pow2[20000];
 
 LL small(int X, int Y) {
     if(X>Y) swap(X,Y);
@@ -112,7 +112,7 @@ public:
     int countPatterns(int X, int Y, int sx, int sy) 
     {
         pow2[0] = 1;
-        for(int i=1;i<2000;i++) {
+        for(int i=1;i<20000;i++) {
             pow2[i] = (pow2[i-1] * 2) % mod;
         }
         LL ret = 0;
