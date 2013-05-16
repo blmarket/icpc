@@ -86,8 +86,8 @@ public:
         int ret = -1;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             int tmp = go(i,j);
-            if(tmp == -1) continue;
             cout << i << " " << j << " = " << tmp << endl;
+            if(tmp == -1) continue;
             if(ret == -1 || ret > tmp) ret = tmp;
         }
         return ret;
