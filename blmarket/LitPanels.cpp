@@ -22,7 +22,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 const LL mod = 1000000007LL;
-int pow2[20000];
+LL pow2[20000];
 
 LL small(int X, int Y) {
     if(X>Y) swap(X,Y);
@@ -83,7 +83,6 @@ LL diagonal(int X, int Y, int sx, int sy) {
 LL cross(int X, int Y, int sx, int sy) {
     if(X >= 2*sx || Y >= 2*sy) return 0;
     LL cnt1 = sqr(pow2[2*sx-X]-1) % mod;
-    cout << cnt1 << endl;
     LL cnt2 = sqr(pow2[2*sy-Y]-1) % mod;
     LL inner = pow2[(X-2) * (Y-2) - 4 * (X-1-sx) * (Y-1-sy)];
     LL ret = (cnt1 * cnt2) % mod;
