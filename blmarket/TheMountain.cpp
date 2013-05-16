@@ -78,7 +78,7 @@ public:
             base[rowIndex[i]][columnIndex[i]] = element[i];
         }
 
-        return go(2,2);
+        go(2,2);
 
         N = n; M = m;
         int ret = -1;
