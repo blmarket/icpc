@@ -78,9 +78,9 @@ public:
             base[rowIndex[i]][columnIndex[i]] = element[i];
         }
 
+        N = n; M = m;
         go(2,2);
 
-        N = n; M = m;
         int ret = -1;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             int tmp = go(i,j);
