@@ -41,8 +41,6 @@ int fill(int a, int b) {
     if(b <= B) setmax(ret, fill(a,b-1));
     if(b >= B) setmax(ret, fill(a,b+1));
 
-    cout << a << " " << b << " = " << ret << endl;
-
     if(ret == -1) return -1;
 
     ret++;
@@ -59,12 +57,14 @@ int go(int a, int b) {
 
     if(fill(a,b) == -1) return -1;
 
+    /*
     cout << a << "," << b << " = " << endl;
     for(int i=0;i<N;i++) {
         for(int j=0;j<M;j++) cout << data[i][j] << " ";
         cout << endl;
     }
     cout << endl;
+    */
 
     int ret = 0;
     for(int i=0;i<N;i++) for(int j=0;j<M;j++) ret += data[i][j];
@@ -82,7 +82,6 @@ public:
         }
 
         N = n; M = m;
-        return go(2,2);
 
         int ret = -1;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
