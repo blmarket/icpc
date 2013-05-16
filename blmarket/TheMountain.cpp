@@ -33,6 +33,7 @@ void setmax(int &a, int b) {
 }
 
 int fill(int a, int b) {
+    cout << a << " " << b << endl;
     if(a < 0 || a >= N || b < 0 || b >= M) return 0;
 
     int ret = 0;
@@ -86,7 +87,6 @@ public:
         int ret = -1;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             int tmp = go(i,j);
-            cout << i << " " << j << " = " << tmp << endl;
             if(tmp == -1) continue;
             if(ret == -1 || ret > tmp) ret = tmp;
         }
