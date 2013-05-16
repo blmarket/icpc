@@ -36,6 +36,9 @@ int go(int a, int b) {
         int tmp2 = go(i,b);
         if(tmp1 == -2 || tmp2 == -2) continue;
         if(ret < 0 || ret > max(tmp1,tmp2) + 1) {
+            if(a == 0 && b == 1) {
+                cout << i << " : " << tmp1 << " " << tmp2 << endl;
+            }
             ret = max(tmp1,tmp2) + 1;
         }
     }
