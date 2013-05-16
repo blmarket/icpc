@@ -96,6 +96,7 @@ public:
 
         int ret = -1;
         for(int i=0;i<N;i++) { 
+            cout << i << endl;
             for(int j=0;j<M;j++) {
                 clean(i,j);
                 int tmp = go(i,j);
