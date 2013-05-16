@@ -64,8 +64,8 @@ public:
             cout << endl;
         }
 
-        for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(floyd[i][k]) {
-            for(int j=0;j<N;j++) if(floyd[k][j]) {
+        for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(floyd[i][k] != -1) {
+            for(int j=0;j<N;j++) if(floyd[k][j] != -1) {
                 if(floyd[i][j] == -1 || floyd[i][j] > floyd[i][k] + floyd[k][j]) {
                     floyd[i][j] = floyd[i][k] + floyd[k][j];
                 }
