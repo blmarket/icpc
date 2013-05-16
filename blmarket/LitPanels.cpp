@@ -73,7 +73,7 @@ LL diagonal(int X, int Y, int sx, int sy) {
     if(X < 2*sx && Y < 2 * sy) {
         intersec = (2*sx - X) * (2*sy-Y);
     }
-    cout << 2*(sx-1)*(sy-1)-intersec << endl;
+    // cout << 2*(sx-1)*(sy-1)-intersec << endl;
     LL inner = pow2[2*(sx-1)*(sy-1) - intersec];
     ret = (ret * inner) % mod;
     if(ret < 0) ret += mod;
