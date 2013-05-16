@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int base[202][202];
 int data[202][202];
+bool check[202][202];
 int N,M;
 
 int A,B;
@@ -33,8 +34,10 @@ void setmax(int &a, int b) {
 }
 
 int fill(int a, int b) {
-    cout << a << " " << b << endl;
     if(a < 0 || a >= N || b < 0 || b >= M) return 0;
+
+    if(check[a][b]) return data[a][b];
+    check[a][b] = true;
 
     int ret = 0;
     if(a <= A) setmax(ret, fill(a-1,b));
@@ -55,6 +58,7 @@ int fill(int a, int b) {
 int go(int a, int b) {
     A = a; B = b;
     memcpy(data, base, sizeof(data));
+    memset(check, 0, sizeof(check));
 
     if(fill(a,b) == -1) return -1;
 
