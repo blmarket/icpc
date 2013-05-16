@@ -26,25 +26,11 @@ vector<string> data;
 int memo[55][55];
 int floyd[55][55];
 
-int go(int a, int b) {
-    if(data[a][b] == 'Y') return 0;
-    if(memo[a][b] != -1) return memo[a][b];
-    memo[a][b] = -2;
-
-    int ret = -2;
-    for(int i=0;i<N;i++) if(i!=a && i!=b) {
-        int tmp1 = go(a,i);
-        int tmp2 = go(i,b);
-        if(tmp1 == -2 || tmp2 == -2) continue;
-        if(ret < 0 || ret > max(tmp1,tmp2) + 1) {
-            if(a == 0 && b == 1) {
-                cout << i << " : " << tmp1 << " " << tmp2 << endl;
-            }
-            ret = max(tmp1,tmp2) + 1;
-        }
-    }
-
-    return memo[a][b] = ret;
+int go(int d) {
+    if(d == 1) return 0; // already know each other
+    if(d == 2) return 1;
+    int nlink = (d+1)/3;
+    return go(d-nlink) + 1;
 }
 
 class DancingFoxes 
@@ -68,15 +54,8 @@ public:
         }
 
         if(floyd[0][1] == -1) return -1;
-        return floyd[0][1] -1;
 
-        cout << floyd[0][1] << endl;
-
-
-
-        int tmp = go(0,1);
-        if(tmp == -2) return -1;
-        return tmp;
+        return go(floyd[0][1]);
     }
 
     
