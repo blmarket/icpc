@@ -56,7 +56,7 @@ int go(int a, int b) {
 
     if(fill(a,b) == -1) return -1;
 
-    cout << a << "," << b << " = " << fill(a,b) << endl;
+    cout << a << "," << b << " = " << endl;
     for(int i=0;i<N;i++) {
         for(int j=0;j<M;j++) cout << data[i][j] << " ";
         cout << endl;
@@ -77,6 +77,8 @@ public:
         for(int i=0;i<size(rowIndex);i++) {
             base[rowIndex[i]][columnIndex[i]] = element[i];
         }
+
+        return go(2,2);
 
         N = n; M = m;
         int ret = -1;
