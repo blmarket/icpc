@@ -102,7 +102,6 @@ LL cnt(int X,int Y,int sx,int sy) {
     if(Y <= sy) {
         return thin(Y, X, sx);
     }
-    cout << cross(X,Y,sx,sy) << endl;
     LL ret = (2 * diagonal(X,Y,sx,sy) - cross(X,Y,sx,sy)) % mod;
     if(ret < 0) ret += mod;
     return ret;
