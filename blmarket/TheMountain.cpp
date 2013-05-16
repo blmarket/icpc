@@ -57,7 +57,6 @@ int fill(int a, int b) {
 
 int go(int a, int b) {
     A = a; B = b;
-    memcpy(data, base, sizeof(data));
 
     if(fill(a,b) == -1) return -1;
 
@@ -78,6 +77,7 @@ int go(int a, int b) {
 void clean(int a, int b) {
     for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 2 || abs(j-b) < 2) {
         check[i][j] = false;
+        data[i][j] = base[i][j];
     }
 }
 
@@ -92,6 +92,7 @@ public:
         }
 
         N = n; M = m;
+        memcpy(data, base, sizeof(data));
         memset(check, 0, sizeof(check));
 
         int ret = -1;
