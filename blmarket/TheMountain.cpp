@@ -56,12 +56,14 @@ int go(int a, int b) {
 
     if(fill(a,b) == -1) return -1;
 
+    /*
     cout << a << "," << b << " = " << endl;
     for(int i=0;i<N;i++) {
         for(int j=0;j<M;j++) cout << data[i][j] << " ";
         cout << endl;
     }
     cout << endl;
+    */
 
     int ret = 0;
     for(int i=0;i<N;i++) for(int j=0;j<M;j++) ret += data[i][j];
@@ -112,6 +114,6 @@ public:
 int main()
 {
     TheMountain ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
