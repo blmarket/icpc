@@ -75,7 +75,7 @@ int go(int a, int b) {
 }
 
 void clean(int a, int b) {
-    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 2 || abs(j-b) < 2) {
+    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 3 || abs(j-b) < 3) {
         check[i][j] = false;
         data[i][j] = base[i][j];
     }
