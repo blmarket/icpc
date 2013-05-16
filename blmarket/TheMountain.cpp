@@ -79,7 +79,7 @@ public:
         }
 
         N = n; M = m;
-        go(2,2);
+        return go(2,2);
 
         int ret = -1;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
