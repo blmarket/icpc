@@ -66,6 +66,10 @@ public:
                 }
             }
         }
+
+        if(floyd[0][1] == -1) return -1;
+        return floyd[0][1] -1;
+
         cout << floyd[0][1] << endl;
 
 
