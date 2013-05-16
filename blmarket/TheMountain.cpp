@@ -28,6 +28,7 @@ int N,M;
 int A,B;
 
 void setmax(int &a, int b) {
+    if(a == -1) return;
     if(b == -1 || a < b) a=b;
 }
 
