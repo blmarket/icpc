@@ -57,6 +57,10 @@ public:
 
         memset(floyd, -1, sizeof(floyd));
         for(int i=0;i<N;i++) for(int j=0;j<N;j++) floyd[i][j] = (data[i][j] == 'Y' ? 1 : -1);
+        for(int i=0;i<N;i++) {
+            for(int j=0;j<N;j++) cout << floyd[i][j] << " ";
+            cout << endl;
+        }
         for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(floyd[i][k]) {
             for(int j=0;j<N;j++) if(floyd[k][j]) {
                 if(floyd[i][j] == -1 || floyd[i][j] > floyd[i][k] + floyd[k][j]) {
