@@ -126,7 +126,7 @@ public:
 
                 ret += tmp;
                 ret %= mod;
-                cout << i << " " << j << " = " << tmp << " " << (X-i+1) * (Y-j+1) << " " << tmp * (X-i+1) * (Y-j+1) << " " << ret << endl;
+                cout << i << " " << j << " = " << tmp << " " << ret << endl;
             }
         }
         return (ret + 1) % mod;
