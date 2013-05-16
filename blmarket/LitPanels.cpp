@@ -64,6 +64,7 @@ LL thin(int X, int Y, int sy) {
 LL diagonal(int X, int Y, int sx, int sy) {
     LL ret = 0;
     for(int a=0;a<2;a++) for(int b=0;b<2;b++) {
+        cout << sy-1 << " " << sx-1 << endl;
         LL cnt1 = ((pow2[sy-1] - !a) * (pow2[sx-1] - !a)) % mod;
         LL cnt2 = ((pow2[sy-1] - !b) * (pow2[sx-1] - !b)) % mod;
         ret += (cnt1 * cnt2);
