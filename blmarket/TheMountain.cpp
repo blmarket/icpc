@@ -40,6 +40,8 @@ int fill(int a, int b) {
     if(b <= B) setmax(ret, fill(a,b-1));
     if(b >= B) setmax(ret, fill(a,b+1));
 
+    cout << a << " " << b << " = " << ret << endl;
+
     if(ret == -1) return -1;
 
     ret++;
@@ -53,8 +55,6 @@ int fill(int a, int b) {
 int go(int a, int b) {
     A = a; B = b;
     memcpy(data, base, sizeof(data));
-
-    cout << fill(2,1) << endl;
 
     if(fill(a,b) == -1) return -1;
 
