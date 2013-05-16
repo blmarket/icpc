@@ -27,14 +27,20 @@ int N,M;
 
 int A,B;
 
+void setmax(int &a, int b) {
+    if(b == -1 || a < b) a=b;
+}
+
 int fill(int a, int b) {
     if(a < 0 || a >= N || b < 0 || b >= M) return 0;
 
     int ret = 0;
-    if(a <= A) ret = max(ret, fill(a-1,b));
-    if(a >= A) ret = max(ret, fill(a+1,b));
-    if(b <= B) ret = max(ret, fill(a,b-1));
-    if(b >= B) ret = max(ret, fill(a,b+1));
+    if(a <= A) setmax(ret, fill(a-1,b));
+    if(a >= A) setmax(ret, fill(a+1,b));
+    if(b <= B) setmax(ret, fill(a,b-1));
+    if(b >= B) setmax(ret, fill(a,b+1));
+
+    if(ret == -1) return -1;
 
     ret++;
     if(data[a][b] == -1) return data[a][b] = ret;
