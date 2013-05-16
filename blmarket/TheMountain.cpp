@@ -89,10 +89,13 @@ public:
         N = n; M = m;
 
         int ret = -1;
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            int tmp = go(i,j);
-            if(tmp == -1) continue;
-            if(ret == -1 || ret > tmp) ret = tmp;
+        for(int i=0;i<N;i++) { 
+            cout << i << endl;
+            for(int j=0;j<M;j++) {
+                int tmp = go(i,j);
+                if(tmp == -1) continue;
+                if(ret == -1 || ret > tmp) ret = tmp;
+            }
         }
         return ret;
     }
@@ -121,6 +124,6 @@ public:
 int main()
 {
     TheMountain ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(6); 
 } 
 // END CUT HERE
