@@ -24,6 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<string> data;
 int memo[55][55];
+int floyd[55][55];
 
 int go(int a, int b) {
     if(data[a][b] == 'Y') return 0;
@@ -53,7 +54,19 @@ public:
     {
         memset(memo, -1, sizeof(memo));
         data = friendship;
-        N = size(data);
+
+        for(int i=0;i<N;i++) for(int j=0;j<N;j++) floyd[i][j] = (data[i][j] == 'Y' ? 1 : -1);
+        for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(floyd[i][k]) {
+            for(int j=0;j<N;j++) if(floyd[k][j]) {
+                if(floyd[i][j] == -1 || floyd[i][j] > floyd[i][k] + floyd[k][j]) {
+                    floyd[i][j] = floyd[i][k] + floyd[k][j];
+                }
+            }
+        }
+        cout << floyd[0][1] << endl;
+
+
+
         int tmp = go(0,1);
         if(tmp == -2) return -1;
         return tmp;
