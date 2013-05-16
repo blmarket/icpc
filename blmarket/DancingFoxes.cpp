@@ -26,7 +26,7 @@ vector<string> data;
 int memo[55][55];
 
 int go(int a, int b) {
-    if(data[a][b] == 'Y') return 1;
+    if(data[a][b] == 'Y') return 0;
     if(memo[a][b] != -1) return memo[a][b];
     memo[a][b] = -2;
 
