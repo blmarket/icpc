@@ -54,6 +54,8 @@ int go(int a, int b) {
     A = a; B = b;
     memcpy(data, base, sizeof(data));
 
+    cout << fill(2,1) << endl;
+
     if(fill(a,b) == -1) return -1;
 
     cout << a << "," << b << " = " << endl;
