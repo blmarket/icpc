@@ -58,6 +58,7 @@ public:
             b1 = calc(N,A,B,m1);
             b2 = calc(N,A,B,m2);
             best = max(best, max(b1,b2));
+            if(best > 0.99) return best;
             if(b1 < b2) {
                 s = m1;
             } else {
