@@ -63,7 +63,7 @@ int go(int a, int b) {
 
     cout << a << "," << b << " = " << endl;
     for(int i=0;i<N;i++) {
-        for(int j=0;j<M;j++) printf("%3d ", data[i][j]);
+        for(int j=0;j<M;j++) printf("%3d ", i==a&&j==b?-data[i][j]:data[i][j]);
         cout << endl;
     }
     cout << endl;
