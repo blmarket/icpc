@@ -38,7 +38,6 @@ public:
 
     double getProbability(int N, int A, int B) 
     {
-        cout << N << " " << A << B << endl;
         if(N == 0) return 1.0;
         if(B == 0) return 0;
         if(N == 1) {
@@ -50,6 +49,7 @@ public:
             return 1.0;
         }
 
+        cout << N << " " << A << B << endl;
         if(A == 1) {
             return (1.0 / N) + getProbability(N/2, 1, B-1) * (N-1) / N;
         }
