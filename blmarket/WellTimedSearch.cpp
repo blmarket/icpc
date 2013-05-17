@@ -66,9 +66,9 @@ public:
             b2 = calc(N,A,B,m2);
             best = max(best, max(b1,b2));
             if(b1 < b2) {
-                s = m1;
+                s = m1 + 1;
             } else {
-                e = m2;
+                e = m2 - 1;
             }
         }
 
