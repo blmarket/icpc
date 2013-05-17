@@ -76,7 +76,7 @@ int go(int a, int b) {
 }
 
 void clean(int a, int b) {
-    for(int i=0;i<N;i++) for(int j=b-1;j<=b;j++) if(j>0 && j<M) check[i][j] = false;
+    for(int i=0;i<N;i++) for(int j=b-1;j<=b;j++) if(j>=0 && j<M) check[i][j] = false;
 }
 
 class TheMountain 
