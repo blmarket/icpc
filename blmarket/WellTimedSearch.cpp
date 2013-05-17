@@ -49,7 +49,6 @@ public:
             return 1.0;
         }
 
-        cout << N << " " << A << " " << B << endl;
         if(A == 1) {
             return (1.0 / N) + getProbability(N/2, 1, B-1) * (N-1) / N;
         }
@@ -57,6 +56,7 @@ public:
         double best = getProbability(N-1, A-1, B-1) * (N-1) / N;
         int s=1,e=(N+1)/2+1;
         while(e-s > 1) {
+            cout << s << " " << e << endl;
             int m1 = (s*2+e) / 3;
             int m2 = (s+e*2) / 3;
 
