@@ -97,8 +97,6 @@ public:
         int ret = -1;
         for(int i=0;i<N;i++) { 
             for(int j=0;j<M;j++) {
-                clean(i,j);
-
                 if(i==1&&j==4) {
                     cout << "here" << endl;
                     for(int ii=0;ii<N;ii++) {
@@ -106,6 +104,8 @@ public:
                         cout << endl;
                     }
                 }
+
+                clean(i,j);
 
                 int tmp = go(i,j);
                 if(tmp == -1) continue;
