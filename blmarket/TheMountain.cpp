@@ -74,7 +74,7 @@ int go(int a, int b) {
 }
 
 void clean(int a, int b) {
-    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 33 || abs(j-b) < 33) {
+    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 3 || abs(j-b) < 3) {
         check[i][j] = false;
         data[i][j] = base[i][j];
     }
@@ -98,6 +98,15 @@ public:
         for(int i=0;i<N;i++) { 
             for(int j=0;j<M;j++) {
                 clean(i,j);
+
+                if(i==1&&j==4) {
+                    cout << "here" << endl;
+                    for(int ii=0;ii<N;ii++) {
+                        for(int jj=0;jj<M;jj++) printf("%3d ", data[ii][jj]);
+                        cout << endl;
+                    }
+                }
+
                 int tmp = go(i,j);
                 if(tmp == -1) continue;
                 if(ret == -1 || ret > tmp) ret = tmp;
