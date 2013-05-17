@@ -49,7 +49,7 @@ public:
         }
 
         if(A == 1) {
-            return 1.0 / N + getProbability(N/2, 1, B-1);
+            return (1.0 / N) + getProbability(N/2, 1, B-1) * (N-1) / N;
         }
 
         double best = getProbability(N-1, A-1, B-1) * (N-1) / N;
