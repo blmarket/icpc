@@ -58,6 +58,8 @@ public:
             int m1 = (s*2+e) / 3;
             int m2 = (s+e*2) / 3;
 
+            cout << N << " : " << m1 << " " << m2 << endl;
+
             double b1,b2;
             b1 = calc(N,A,B,m1);
             b2 = calc(N,A,B,m2);
