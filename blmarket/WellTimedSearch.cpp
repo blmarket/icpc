@@ -21,6 +21,8 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+bool asdf = true;
+
 class WellTimedSearch 
 {
 public:
@@ -39,7 +41,9 @@ public:
 
     double getProbability(int N, int A, int B) 
     {
-        bool first = (N == 123456);
+        bool first = asdf;
+        asdf = false;
+
         if(N == 0) return 1.0;
         if(B == 0) return 0;
         if(N == 1) {
@@ -66,6 +70,7 @@ public:
                 }
             }
             cout << N/2 << " " << md << " " << N-1 << endl;
+            return best;
         }
 
         double b1 = getProbability(N-1, A-1, B-1) * (N-1) / N;
