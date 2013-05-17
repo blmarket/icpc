@@ -54,6 +54,11 @@ public:
             return (1.0 / N) + getProbability(N/2, 1, B-1) * (N-1) / N;
         }
 
+        double b1 = getProbability(N-1, A-1, B-1) * (N-1) / N;
+        double b2 = getProbability(N/2, A-1, B-1) * (N-1) / N;
+        return max(b1, b2);
+
+        /*
         cout << N << " " << A << " " << B << endl;
 
         double best = getProbability(N-1, A-1, B-1) * (N-1) / N;
@@ -75,6 +80,7 @@ public:
         }
 
         return best;
+        */
     }
 
     
