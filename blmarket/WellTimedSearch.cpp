@@ -38,6 +38,7 @@ public:
 
     double getProbability(int N, int A, int B) 
     {
+        cout << N << " " << A << B << endl;
         if(N == 0) return 1.0;
         if(B == 0) return 0;
         if(N == 1) {
