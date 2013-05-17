@@ -102,7 +102,7 @@ public:
                 if(i==1&&j==4) {
                     cout << "here" << endl;
                     for(int ii=0;ii<N;ii++) {
-                        for(int jj=0;jj<M;jj++) printf("%3d ", data[ii][jj]);
+                        for(int jj=0;jj<M;jj++) printf("%3d,%d ", data[ii][jj], check[ii][jj]);
                         cout << endl;
                     }
                 }
