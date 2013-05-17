@@ -98,12 +98,11 @@ public:
         for(int i=0;i<N;i++) { 
             for(int j=0;j<M;j++) {
                 clean(i,j);
-                if(i==1&&j==4) {
-                    cout << "here" << endl;
-                    for(int ii=0;ii<N;ii++) {
-                        for(int jj=0;jj<M;jj++) printf("%3d,%d ", data[ii][jj], check[ii][jj]);
-                        cout << endl;
-                    }
+
+                cout << i << "X" << j << endl;
+                for(int ii=0;ii<N;ii++) {
+                    for(int jj=0;jj<M;jj++) printf("%3d,%d ", data[ii][jj], check[ii][jj]);
+                    cout << endl;
                 }
 
 
