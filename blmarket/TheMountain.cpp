@@ -28,6 +28,7 @@ bool check[202][202];
 int N,M;
 
 int A,B;
+int sum = 0;
 
 void setmax(int &a, int b) {
     if(a == -1) return;
@@ -49,10 +50,14 @@ int fill(int a, int b) {
     if(ret == -1) return data[a][b] = -1;
 
     ret++;
-    if(data[a][b] == -1) return data[a][b] = ret;
+    if(data[a][b] == -1) {
+        sum += ret;
+        return data[a][b] = ret;
+    }
 
     if(data[a][b] < ret) return data[a][b] = -1;
 
+    sum += data[a][b];
     return data[a][b];
 }
 
@@ -61,22 +66,17 @@ int go(int a, int b) {
 
     if(fill(a,b) == -1) return -1;
 
-    /*
-    cout << a << "," << b << " = " << endl;
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<M;j++) printf("%3d ", i==a&&j==b?-data[i][j]:data[i][j]);
-        cout << endl;
-    }
-    cout << endl;
-    */
-
     int ret = 0;
     for(int i=0;i<N;i++) for(int j=0;j<M;j++) ret += data[i][j];
+    cout << ret << " = " << sum << endl;
     return ret;
 }
 
 void clean(int a, int b) {
-    for(int i=0;i<N;i++) for(int j=b-1;j<=b+1;j++) if(j>=0 && j<M) check[i][j] = false;
+    for(int i=0;i<N;i++) for(int j=b-1;j<=b+1;j++) if(j>=0 && j<M && check[i][j]) {
+        sum -= data[i][j];
+        check[i][j] = false;
+    }
 }
 
 class TheMountain 
