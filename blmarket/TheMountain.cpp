@@ -74,7 +74,7 @@ int go(int a, int b) {
 }
 
 void clean(int a, int b) {
-    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 3 || abs(j-b) < 3) {
+    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 2 || abs(j-b) < 2) {
         check[i][j] = false;
         data[i][j] = base[i][j];
     }
@@ -96,15 +96,9 @@ public:
 
         int ret = -1;
         for(int i=0;i<N;i++) { 
+            memset(check, 0, sizeof(check));
             for(int j=0;j<M;j++) {
                 clean(i,j);
-
-                cout << i << "X" << j << endl;
-                for(int ii=0;ii<N;ii++) {
-                    for(int jj=0;jj<M;jj++) printf("%3d,%d ", data[ii][jj], check[ii][jj]);
-                    cout << endl;
-                }
-
 
                 int tmp = go(i,j);
                 if(tmp == -1) continue;
