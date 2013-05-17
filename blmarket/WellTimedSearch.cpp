@@ -29,8 +29,6 @@ public:
         double leftprob = (double)pos / N;
         double rightprob = (double)(N-1-pos) / N;
 
-        cout << pos << "," << N-1-pos << endl;
-
         double lres = getProbability(pos, max(1,A-1), B-1);
         double rres = getProbability(N-1-pos, max(1,A-1), B-1);
 
@@ -40,6 +38,7 @@ public:
 
     double getProbability(int N, int A, int B) 
     {
+        if(N == 0) return 0;
         if(B == 0) return 0;
         if(N == 1) {
             if(A == 1) return 1.0;
