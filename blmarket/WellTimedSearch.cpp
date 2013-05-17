@@ -38,7 +38,6 @@ public:
 
     double getProbability(int N, int A, int B) 
     {
-        if(N == 0) return 0;
         if(B == 0) return 0;
         if(N == 1) {
             if(A == 1) return 1.0;
