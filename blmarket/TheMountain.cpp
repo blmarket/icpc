@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include <cstring>
 #include <queue>
 #include <set>
@@ -62,7 +63,7 @@ int go(int a, int b) {
 
     cout << a << "," << b << " = " << endl;
     for(int i=0;i<N;i++) {
-        for(int j=0;j<M;j++) cout << data[i][j] << " ";
+        for(int j=0;j<M;j++) printf("%3d ", data[i][j]);
         cout << endl;
     }
     cout << endl;
