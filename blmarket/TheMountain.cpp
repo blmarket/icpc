@@ -45,7 +45,7 @@ int fill(int a, int b) {
     if(b <= B) setmax(ret, fill(a,b-1));
     if(b >= B) setmax(ret, fill(a,b+1));
 
-    if(ret == -1) return -1;
+    if(ret == -1) return data[a][b] = -1;
 
     ret++;
     if(data[a][b] == -1) return data[a][b] = ret;
