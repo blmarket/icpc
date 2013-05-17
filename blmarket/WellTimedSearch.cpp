@@ -48,6 +48,10 @@ public:
             return 1.0;
         }
 
+        if(A == 1) {
+            return 1.0 / N + getProbability(N/2, 1, B-1);
+        }
+
         double best = getProbability(N-1, A-1, B-1) * (N-1) / N;
         int s=1,e=(N+1)/2+2;
         while(e-s > 1) {
@@ -58,8 +62,6 @@ public:
             b1 = calc(N,A,B,m1);
             b2 = calc(N,A,B,m2);
             best = max(best, max(b1,b2));
-            cout << best << endl;
-            if(best > 0.99) return best;
             if(b1 < b2) {
                 s = m1;
             } else {
