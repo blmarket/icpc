@@ -38,7 +38,7 @@ int fill(int a, int b) {
     if(a < 0 || a >= N || b < 0 || b >= M) return 0;
 
     if(check[a][b]) return data[a][b];
-    check[a][b] = true;
+    check[a][b] = true; data[a][b] = base[a][b];
 
     int ret = 0;
     if(a <= A) setmax(ret, fill(a-1,b));
