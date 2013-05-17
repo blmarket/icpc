@@ -76,9 +76,7 @@ int go(int a, int b) {
 }
 
 void clean(int a, int b) {
-    for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(abs(i-a) < 2 || abs(j-b) < 2) {
-        check[i][j] = false;
-    }
+    for(int i=0;i<N;i++) for(int j=b-1;j<=b;j++) check[i][j] = false;
 }
 
 class TheMountain 
@@ -133,6 +131,6 @@ public:
 int main()
 {
     TheMountain ___test; 
-    ___test.run_test(6); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
