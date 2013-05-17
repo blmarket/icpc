@@ -39,6 +39,7 @@ public:
 
     double getProbability(int N, int A, int B) 
     {
+        bool first = (N == 123456);
         if(N == 0) return 1.0;
         if(B == 0) return 0;
         if(N == 1) {
@@ -52,6 +53,19 @@ public:
 
         if(A == 1) {
             return (1.0 / N) + getProbability(N/2, 1, B-1) * (N-1) / N;
+        }
+
+        if(first) {
+            double best = 0;
+            int md;
+            for(int i=N/2;i<=N-1;i++) {
+                double tmp = getProbability(i, A-1, B-1) * (N-1) / N;
+                if(tmp > best) {
+                    best = tmp;
+                    md = i;
+                }
+            }
+            cout << N/2 << " " << md << " " << N-1 << endl;
         }
 
         double b1 = getProbability(N-1, A-1, B-1) * (N-1) / N;
