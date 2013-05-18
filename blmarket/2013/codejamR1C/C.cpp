@@ -53,10 +53,28 @@ void process(void) {
         }
     }
     sort(V.begin(), V.end());
+
+    int ret = 0;
     for(int i=0;i<size(V);i++) {
-        cout << V[i].d << " ";
+        bool failed = false;
+        for(int j=V[i].w;j<=V[i].e;j++) {
+            bool blocked = false;
+            for(int k=0;k<i;k++) if(V[k].d < V[i].d) {
+                if(V[k].w <= j && V[k].e >= j && V[k].s >= V[i].s) {
+                    blocked = true;
+                    break;
+                }
+            }
+            if(!blocked) {
+                failed = true;
+                break;
+            }
+        }
+        if(failed) {
+            ret++;
+        }
     }
-    cout << endl;
+    cout << ret << endl;
 }
 
 int main(void)
