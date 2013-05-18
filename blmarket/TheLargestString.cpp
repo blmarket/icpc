@@ -28,15 +28,15 @@ pair<string, string> go(int spos) {
         if(s[i] > s[spos]) return go(i);
     }
 
-    if(s[spos] < t[spos]) {
-        return mp(string(1, s[spos]), string(1, t[spos]));
-    }
-
+    pair<string, string> tmp3 = mp(string(1, s[spos]), string(1, t[spos]));
     pair<string, string> tmp = go(spos + 1);
     pair<string, string> tmp2 = mp(s[spos] + tmp.first, t[spos] + tmp.second);
+
     if(tmp2.first + tmp2.second > tmp.first + tmp.second) {
+        if(tmp3.first + tmp3.second > tmp2.first + tmp2.second) return tmp3;
         return tmp2;
     } else {
+        if(tmp3.first + tmp3.second > tmp.first + tmp.second) return tmp3;
         return tmp;
     }
 }
