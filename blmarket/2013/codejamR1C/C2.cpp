@@ -55,7 +55,7 @@ void put(int pos, int a, int b, int l, int r, int s) {
             put(pos*2+1,a,mid,l,r,s);
         }
     } else {
-        printf("put child\n");
+        printf("put child %d\n", pos);
         if(arr[pos].first == true) {
             arr[pos].first = false;
             arr[pos*2].first = arr[pos*2+1].first = true;
