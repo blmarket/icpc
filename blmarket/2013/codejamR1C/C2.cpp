@@ -99,7 +99,11 @@ bool check_wall(int pos) {
     int r = lower_bound(pts.begin(), pts.end(), V[pos].e) - pts.begin();
     int s = V[pos].s;
 
-    return check(1, 0, 2097152, l, r, s);
+    bool tmp = check(1, 0, 2097152, l, r, s);
+
+    cout << l << " " << r << " " << s << " = " << tmp << endl;
+
+    return tmp;
 }
 
 void process(void) {
@@ -131,7 +135,9 @@ void process(void) {
         if(V[i].d > V[j].d) {
             insert_wall(j++);
         }
-        if(check_wall(i) == false) ret++;
+        if(check_wall(i) == false) {
+            ret++;
+        }
     }
     cout << ret << endl;
 }
