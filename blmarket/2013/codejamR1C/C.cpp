@@ -35,6 +35,7 @@ struct atk {
 };
 
 vector<atk> V;
+vector<PII> walls[2097155];
 
 void process(void) {
     V.clear();
