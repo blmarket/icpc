@@ -75,7 +75,7 @@ bool check(int pos, int a, int b, int l, int r, int s) {
     if(r > b) r = b;
     if(l >= r) return true;
 
-    cout << pos << " " << a << " " << b << " " << l << " " << r << endl;
+    printf("%d(%d)\n", pos, arr[pos].first);
 
     int mid = (a+b)/2;
     if(arr[pos].first) {
