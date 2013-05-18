@@ -27,12 +27,25 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 set<PII> cur, nex;
 
+PII move(PII cur, int a, int b) {
+    cur.first = abs(cur.first + a);
+    cur.second = abs(cur.second + b);
+    if(cur.first < cur.second) swap(cur.first, cur.second);
+    return cur;
+}
+
 void process(void) {
     cur.insert(mp(0,0));
     for(int i=1;i<=5;i++) {
         for(auto it : cur) {
-            cout << it.first << " " << it.second << endl;
+            printf("%d %d\n", it.first, it.second);
+            nex.insert(move(it, i, 0));
+            nex.insert(move(it, -i, 0));
+            nex.insert(move(it, 0, i));
+            nex.insert(move(it, 0, -i));
         }
+        printf("\n");
+        cur.swap(nex);
     }
 }
 
