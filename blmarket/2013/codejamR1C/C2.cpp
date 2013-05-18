@@ -77,6 +77,8 @@ bool check(int pos, int a, int b, int l, int r, int s) {
     if(r > b) r = b;
     if(l >= r) return true;
 
+    printf("check child %d %d %d\n", pos, a, b);
+
     int mid = (a+b)/2;
     if(arr[pos].first) {
         return arr[pos].second >= s;
