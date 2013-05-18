@@ -50,6 +50,7 @@ void process(void) {
     int x,y;
     scanf("%d %d", &x, &y);
     for(int i=1;;i++) {
+        cout << i << " : " << move(i,x,y) << endl;
         if(move(i, x, y) != -1) return;
     }
 }
