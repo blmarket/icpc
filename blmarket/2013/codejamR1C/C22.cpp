@@ -45,6 +45,7 @@ int getpts(int a) {
 }
 
 void addone(int pos, int a, int b, int l, int r, int s) {
+    cout << pos << " " << a << endl;
     if(l < a) l = a;
     if(r > b) r = b;
 
