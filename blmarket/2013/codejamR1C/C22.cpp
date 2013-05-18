@@ -45,7 +45,6 @@ int getpts(int a) {
 }
 
 void addone(int pos, int a, int b, int l, int r, int s) {
-    cout << pos << " " << a << endl;
     if(l < a) l = a;
     if(r > b) r = b;
 
@@ -131,6 +130,8 @@ void process(void) {
 
     maxsz = 1;
     while(maxsz <= size(pts)) maxsz *= 2;
+    leaf[1] = true;
+    walls[1] = 0;
 
     int ret = 0;
     int j = 0;
