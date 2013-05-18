@@ -25,28 +25,33 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-set<PII> cur, nex;
+const int dx[] = {-1,0,1,0};
+const int dy[] = {0,-1,0,1};
+const char dd[] = { 'W', 'S', 'E', 'N' };
 
-PII move(PII cur, int a, int b) {
-    cur.first = abs(cur.first + a);
-    cur.second = abs(cur.second + b);
-    if(cur.first < cur.second) swap(cur.first, cur.second);
-    return cur;
+int move(int a, int x, int y) {
+    int tt = abs(x) + abs(y);
+    int maxx = a*(a+1)/2;
+
+    if((tt&1) != (maxx&1) || maxx < tt) return -1;
+
+    for(int i=0;i<4;i++) {
+        int nx = x + a * dx[i];
+        int ny = y + a * dy[i];
+        
+        if(move(a-1, nx, ny) != -1) {
+            cout << dd[i];
+            return i;
+        }
+    }
 }
 
 void process(void) {
-    cur.insert(mp(0,0));
-    for(int i=1;i<=5;i++) {
-        nex.clear();
-        for(auto it : cur) {
-            printf("%d %d\n", it.first, it.second);
-            nex.insert(move(it, i, 0));
-            nex.insert(move(it, -i, 0));
-            nex.insert(move(it, 0, i));
-            nex.insert(move(it, 0, -i));
-        }
-        printf("\n");
-        cur.swap(nex);
+    int x,y;
+    scanf("%d %d", &x, &y);
+
+    for(int i=1;;i++) {
+        if(move(i, x, y) != -1) return;
     }
 }
 
