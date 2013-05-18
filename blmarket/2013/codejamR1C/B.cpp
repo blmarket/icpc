@@ -49,7 +49,6 @@ int move(int a, int x, int y) {
 void process(void) {
     int x,y;
     scanf("%d %d", &x, &y);
-
     for(int i=1;;i++) {
         if(move(i, x, y) != -1) return;
     }
