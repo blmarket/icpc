@@ -71,7 +71,7 @@ void put(int pos, int a, int b, int l, int r, int s) {
 }
 
 bool check(int pos, int a, int b, int l, int r, int s) {
-    cout << "check " << pos << endl;
+    cout << "check " << pos << " " << arr[pos].first << endl;
     if(l < a) l = a;
     if(r > b) r = b;
     if(l >= r) return true;
