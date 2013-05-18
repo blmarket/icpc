@@ -41,6 +41,7 @@ pair<bool, int> arr[5000000];
 void setmax(int &a, int b) { a=max(a,b); }
 
 void put(int pos, int a, int b, int l, int r, int s) {
+    cout << pos << " " << arr[pos].first << endl;
     if(l < a) l = a;
     if(r > b) r = b;
     if(l >= r) return;
@@ -71,7 +72,6 @@ void put(int pos, int a, int b, int l, int r, int s) {
 }
 
 bool check(int pos, int a, int b, int l, int r, int s) {
-    cout << "check " << pos << " " << arr[pos].first << endl;
     if(l < a) l = a;
     if(r > b) r = b;
     if(l >= r) return true;
