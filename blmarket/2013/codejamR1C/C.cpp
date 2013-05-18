@@ -72,6 +72,7 @@ void process(void) {
             }
         }
         if(failed) {
+            cout << "succ" << endl;
             ret++;
         }
     }
