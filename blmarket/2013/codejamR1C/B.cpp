@@ -27,7 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 const int dx[] = {-1,0,1,0};
 const int dy[] = {0,-1,0,1};
-const char dd[] = { 'W', 'S', 'E', 'N' };
+const char dd[] = { 'E', 'N', 'W', 'S' };
 
 int move(int a, int x, int y) {
     int tt = abs(x) + abs(y);
