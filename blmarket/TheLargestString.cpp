@@ -30,6 +30,7 @@ pair<string, string> go(int spos) {
     if(s[spos] < t[spos]) {
         return mp(string(1, s[spos]), string(1, t[spos]));
     }
+    cout << spos << endl;
 
     pair<string, string> tmp = go(spos + 1);
     pair<string, string> tmp2 = mp(s[spos] + tmp.first, t[spos] + tmp.second);
