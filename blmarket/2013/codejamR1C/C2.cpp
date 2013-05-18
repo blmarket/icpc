@@ -44,7 +44,6 @@ void setmax(int &a, int b) { a=max(a,b); }
 void put(int pos, int a, int b, int l, int r, int s) {
     if(l < a) l = a;
     if(r > b) r = b;
-    printf("put(%d,%d,%d,%d,%d)\n",pos,a,b,l,r);
     if(l >= r) return;
 
     int mid = (a+b)/2;
@@ -54,7 +53,7 @@ void put(int pos, int a, int b, int l, int r, int s) {
             setmax(arr[pos].second, s);
         } else {
             put(pos*2,a,mid,l,r,s);
-            put(pos*2+1,a,mid,l,r,s);
+            put(pos*2+1,mid,b,l,r,s);
         }
     } else {
         if(arr[pos].first == true) {
@@ -64,7 +63,7 @@ void put(int pos, int a, int b, int l, int r, int s) {
             arr[pos*2].second = arr[pos*2+1].second = arr[pos].second;
         }
         put(pos*2,a,mid,l,r,s);
-        put(pos*2+1,a,mid,l,r,s);
+        put(pos*2+1,mid,b,l,r,s);
     }
     if(arr[pos].first == true) return;
     if(arr[pos*2].first && arr[pos*2+1].first && arr[pos*2].second == arr[pos*2+1].second) {
