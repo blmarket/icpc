@@ -54,9 +54,10 @@ void process(void) {
     }
     sort(V.begin(), V.end());
 
+    cout << size(V) << endl;
+
     int ret = 0;
     for(int i=0;i<size(V);i++) {
-        cout << i << endl;
         bool failed = false;
         for(int j=V[i].w;j<=V[i].e;j++) {
             bool blocked = false;
