@@ -31,7 +31,6 @@ PII move(PII cur, int a, int b) {
     cur.first = abs(cur.first + a);
     cur.second = abs(cur.second + b);
     if(cur.first < cur.second) swap(cur.first, cur.second);
-    cout << cur.first << "," << cur.second << endl;
     return cur;
 }
 
