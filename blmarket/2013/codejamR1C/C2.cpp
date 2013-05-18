@@ -36,19 +36,70 @@ struct atk {
 
 vector<atk> V;
 vector<int> pts;
+pair<bool, int> arr[5000000];
 
-void put(int l, int r, int s) {
+void setmax(int &a, int b) { a=max(a,b); }
+
+void put(int pos, int a, int b, int l, int r, int s) {
+    if(l < a) l = a;
+    if(r > b) r = b;
+    if(l >= r) return;
+
+    int mid = (a+b)/2;
+
+    if(l == a && r == b) {
+        if(arr[pos].first == true) {
+            setmax(arr[pos].second, s);
+        } else {
+            put(pos*2,a,mid,l,r,s);
+            put(pos*2+1,a,mid,l,r,s);
+        }
+    } else {
+        if(arr[pos].first == true) {
+            arr[pos].first = false;
+            arr[pos*2].first = arr[pos*2+1].first = true;
+            arr[pos*2].second = arr[pos*2+1].second = arr[pos].second;
+        }
+        put(pos*2,a,mid,l,r,s);
+        put(pos*2+1,a,mid,l,r,s);
+    }
+    if(arr[pos].first == true) return;
+    if(arr[pos*2].first && arr[pos*2+1].first && arr[pos*2].second == arr[pos*2+1].second) {
+        arr[pos].first = true;
+        arr[pos].second = arr[pos*2].second;
+    }
+}
+
+bool check(int pos, int a, int b, int l, int r, int s) {
+    if(l < a) l = a;
+    if(r > b) r = b;
+    if(l >= r) return true;
+
+    int mid = (a+b)/2;
+    if(arr[pos].first) {
+        return arr[pos].second >= s;
+    }
+
+    bool c1,c2;
+    c1 = check(pos*2, a, mid, l, r, s);
+    c2 = check(pos*2+1, mid, b, l, r, s);
+    return c1 && c2;
 }
 
 void insert_wall(int pos) {
-    int l = V[pos].w;
-    int r = V[pos].e;
+    int l = lower_bound(pts.begin(), pts.end(), V[pos].w) - pts.begin();
+    int r = lower_bound(pts.begin(), pts.end(), V[pos].e) - pts.begin();
     int s = V[pos].s;
 
-    put(l, r, s);
+    put(1, 0, 2097152, l, r, s);
 }
 
 bool check_wall(int pos) {
+    int l = lower_bound(pts.begin(), pts.end(), V[pos].w) - pts.begin();
+    int r = lower_bound(pts.begin(), pts.end(), V[pos].e) - pts.begin();
+    int s = V[pos].s;
+
+    return check(1, 0, 2097152, l, r, s);
 }
 
 void process(void) {
@@ -72,7 +123,7 @@ void process(void) {
     sort(pts.begin(), pts.end());
     pts.erase(unique(pts.begin(), pts.end()), pts.end());
 
-    cout << size(pts) << endl;
+    arr[0] = mp(true, 0);
 
     int ret = 0;
     int j = 0;
@@ -80,7 +131,7 @@ void process(void) {
         if(V[i].d > V[j].d) {
             insert_wall(j++);
         }
-        if(check_wall(i)) ret++;
+        if(check_wall(i) == false) ret++;
     }
     cout << ret << endl;
 }
