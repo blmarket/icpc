@@ -44,6 +44,7 @@ void setmax(int &a, int b) { a=max(a,b); }
 void put(int pos, int a, int b, int l, int r, int s) {
     if(l < a) l = a;
     if(r > b) r = b;
+    printf("put(%d,%d,%d)\n",pos,l,r);
     if(l >= r) return;
 
     int mid = (a+b)/2;
