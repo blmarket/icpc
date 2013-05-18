@@ -35,9 +35,21 @@ struct atk {
 };
 
 vector<atk> V;
-vector<PII> walls[2097155];
-vector<int> ssx;
-map<int,int> sidx;
+vector<int> pts;
+
+void put(int l, int r, int s) {
+}
+
+void insert_wall(int pos) {
+    int l = V[pos].w;
+    int r = V[pos].e;
+    int s = V[pos].s;
+
+    put(l, r, s);
+}
+
+bool check_wall(int pos) {
+}
 
 void process(void) {
     V.clear();
@@ -51,20 +63,24 @@ void process(void) {
             tmp.d = d; tmp.w = w; tmp.e = e; tmp.s = s; 
 
             V.pb(tmp);
-            ssx.pb(s);
+            pts.pb(w); pts.pb(e);
 
             d += dd; w += dm; e += dm; s += ds;
         }
     }
     sort(V.begin(), V.end());
-    sort(ssx.begin(), ssx.end());
-    ssx.erase(unique(ssx.begin(), ssx.end()), ssx.end());
-    for(int i=0;i<size(ssx);i++) sidx[ssx[i]] = i + 1;
+    sort(pts.begin(), pts.end());
+    pts.erase(unique(pts.begin(), pts.end()), pts.end());
+
+    cout << size(pts) << endl;
 
     int ret = 0;
-    for(int i=0;i<size(V);i++) {
-        int idx = sidx[V[i].s];
-        if(idx == 0) throw 0;
+    int j = 0;
+    for(int i = 0;i<size(V);i++) {
+        if(V[i].d > V[j].d) {
+            insert_wall(j++);
+        }
+        if(check_wall(i)) ret++;
     }
     cout << ret << endl;
 }
