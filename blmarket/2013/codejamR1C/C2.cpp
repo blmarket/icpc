@@ -67,7 +67,7 @@ void put(int pos, int a, int b, int l, int r, int s) {
     }
     if(arr[pos].first == true) return;
     if(arr[pos*2].first && arr[pos*2+1].first && arr[pos*2].second == arr[pos*2+1].second) {
-        printf("aggregate %d\n", pos);
+        printf("aggregate %d(%d,%d)\n", pos, arr[pos*2].second, arr[pos*2+1].second);
         arr[pos].first = true;
         arr[pos].second = arr[pos*2].second;
     }
