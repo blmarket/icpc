@@ -61,7 +61,7 @@ void process(void) {
         for(int j=V[i].w;j<V[i].e;j++) {
             bool blocked = false;
             for(int k=0;k<i;k++) if(V[k].d < V[i].d) {
-                if(V[k].w <= j && V[k].e >= j && V[k].s >= V[i].s) {
+                if(V[k].w <= j && j < V[k].e && V[k].s >= V[i].s) {
                     blocked = true;
                     break;
                 }
