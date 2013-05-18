@@ -45,10 +45,12 @@ void process(void) {
         }
     }
 
-    for(int i=0;i<size(spos);i++) {
-        cout << spos[i] << " ";
+    for(int i=0;i<size(str);i++) {
+        int pos = lower_bound(spos.begin(), spos.end(), i + N) - spos.begin();
+        if(pos == size(spos)) break;
+        int rc = size(str) - spos[pos] + 1;
+        cout << rc << endl;
     }
-    cout << endl;
 }
 
 int main(void)
