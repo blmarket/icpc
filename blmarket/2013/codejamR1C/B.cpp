@@ -37,6 +37,7 @@ PII move(PII cur, int a, int b) {
 void process(void) {
     cur.insert(mp(0,0));
     for(int i=1;i<=5;i++) {
+        nex.clear();
         for(auto it : cur) {
             printf("%d %d\n", it.first, it.second);
             nex.insert(move(it, i, 0));
