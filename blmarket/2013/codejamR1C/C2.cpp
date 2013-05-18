@@ -111,6 +111,7 @@ bool check_wall(int pos) {
 
 void process(void) {
     V.clear();
+    pts.clear();
     int N;
     scanf("%d", &N);
     for(int i=0;i<N;i++) {
@@ -130,6 +131,7 @@ void process(void) {
     sort(pts.begin(), pts.end());
     pts.erase(unique(pts.begin(), pts.end()), pts.end());
 
+    maxsz = 1;
     while(maxsz <= size(pts)) maxsz*=2;
     arr[1] = mp(true, 0);
 
