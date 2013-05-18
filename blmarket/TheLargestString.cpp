@@ -20,80 +20,42 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-char findmax(string s) {
-    char maxc = s[0];
-    for(int i=1;i<size(s);i++) {
-        if(s[i] > maxc) maxc = s[i];
-    }
-    return maxc;
-}
+string s,t;
 
-int count(string s, string t, char c, int &lastidx, string &s1, string &t1) {
-    int ret = 0;
-    int cnt2 = 0;
-
-    for(int i=0;i<size(s);i++) if(s[i] == c) {
-        lastidx = i;
-        if(t[i] == c) cnt2++;
+pair<string, string> go(int spos) {
+    for(int i=spos+1;i<size(s);i++) {
+        if(s[i] > s[spos]) return go(i);
     }
 
-    for(int i=0;i<=cnt2;i++) {
-        int cur = i, cnt = 0;
-        string s2 = "", t2 = "";
-
-        for(int j=0;j<size(s);j++) if(s[j] == c) {
-            if(cur > 0 && t[j] != c) continue;
-            if(t[j] == c && cur) cur--;
-
-            s2 += s[j]; 
-            t2 += t[j];
-            cnt++;
-        }
-        if(cnt + i > ret) {
-            ret = cnt + i;
-            s1 = s2; t1 = t2;
-        }
+    if(s[spos] < t[spos]) {
+        return mp(string(1, s[spos]), string(1, t[spos]));
     }
 
-    return ret;
+    pair<string, string> tmp = go(spos + 1);
+    pair<string, string> tmp2 = mp(s[spos] + tmp.first, t[spos] + tmp.second);
+    if(tmp2.first + tmp2.second > tmp.first + tmp.second) {
+        return tmp2;
+    } else {
+        return tmp;
+    }
 }
 
 class TheLargestString 
 {
 public:
-    string find(string s, string t) 
-    {
-        if(size(s) == 0) return "";
-        char maxc = findmax(s);
+    string find(string s_, string t_) 
+    {		
+        s=s_;t=t_;
 
-        char maxt = -1;
+        go(0);
+
+        string ret = "";
         for(int i=0;i<size(s);i++) {
-            if(s[i] == maxc) {
-                if(t[i] > maxt) maxt = t[i];
-            }
+            pair<string, string> tmp = go(i);
+            string tmp2 = tmp.first + tmp.second;
+            if(ret < tmp2) ret = tmp2;
         }
-        if(maxt > maxc) return string("") + maxc + maxt;
-
-        int lastidx;
-        string s1, t1;
-        cout << count(s, t, maxc, lastidx, s1, t1) << endl;
-        s = s.substr(lastidx + 1); t = t.substr(lastidx + 1);
-
-        while(size(s)) {
-            maxc = findmax(s);
-            if(maxc < t1[0]) return s1 + t1;
-
-            for(int i=0;i<size(s);i++) {
-                if(s[i] == maxc) {
-                    s1 += s[i];
-                    t1 += t[i];
-                    lastidx = i;
-                }
-            }
-            s = s.substr(lastidx + 1);
-            t = t.substr(lastidx + 1);
-        }
-        return s1 + t1;
+        return ret;
     }
 
     
