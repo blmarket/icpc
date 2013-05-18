@@ -106,8 +106,6 @@ bool check_wall(int pos) {
 
     bool tmp = check(1, 0, maxsz, l, r, s);
 
-    cout << l << " " << r << " " << s << " = " << tmp << endl;
-
     return tmp;
 }
 
