@@ -36,6 +36,7 @@ struct atk {
 
 vector<atk> V;
 vector<int> pts;
+int maxsz = 1;
 pair<bool, int> arr[5000000];
 
 void setmax(int &a, int b) { a=max(a,b); }
@@ -92,7 +93,7 @@ void insert_wall(int pos) {
     int r = lower_bound(pts.begin(), pts.end(), V[pos].e) - pts.begin();
     int s = V[pos].s;
 
-    put(1, 0, 2097152, l, r, s);
+    put(1, 0, maxsz, l, r, s);
 }
 
 bool check_wall(int pos) {
@@ -100,7 +101,7 @@ bool check_wall(int pos) {
     int r = lower_bound(pts.begin(), pts.end(), V[pos].e) - pts.begin();
     int s = V[pos].s;
 
-    bool tmp = check(1, 0, 2097152, l, r, s);
+    bool tmp = check(1, 0, maxsz, l, r, s);
 
     cout << l << " " << r << " " << s << " = " << tmp << endl;
 
@@ -128,6 +129,7 @@ void process(void) {
     sort(pts.begin(), pts.end());
     pts.erase(unique(pts.begin(), pts.end()), pts.end());
 
+    while(maxsz <= size(pts)) maxsz*=2;
     arr[1] = mp(true, 0);
 
     int ret = 0;
