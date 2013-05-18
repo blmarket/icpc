@@ -48,7 +48,7 @@ void process(void) {
     for(int i=0;i<size(str);i++) {
         int pos = lower_bound(spos.begin(), spos.end(), i + N) - spos.begin();
         if(pos == size(spos)) break;
-        int rc = size(str) - spos[pos] + 1;
+        int rc = size(str) - spos[pos];
         cout << rc << endl;
     }
 }
