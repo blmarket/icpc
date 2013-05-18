@@ -56,7 +56,7 @@ void process(void) {
 
     int ret = 0;
     for(int i=0;i<size(V);i++) {
-        cout << V[i].w << "," << V[i].e << " " << V[i].s << endl;
+        // cout << V[i].w << "," << V[i].e << " " << V[i].s << endl;
         bool failed = false;
         for(int j=V[i].w;j<V[i].e;j++) {
             bool blocked = false;
@@ -72,7 +72,7 @@ void process(void) {
             }
         }
         if(failed) {
-            cout << "succ" << endl;
+            // cout << "succ" << endl;
             ret++;
         }
     }
