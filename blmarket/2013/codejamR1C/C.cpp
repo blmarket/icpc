@@ -54,8 +54,6 @@ void process(void) {
     }
     sort(V.begin(), V.end());
 
-    cout << size(V) << endl;
-
     int ret = 0;
     for(int i=0;i<size(V);i++) {
         bool failed = false;
