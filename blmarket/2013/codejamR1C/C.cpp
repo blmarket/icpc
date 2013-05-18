@@ -37,6 +37,7 @@ struct atk {
 vector<atk> V;
 
 void process(void) {
+    V.clear();
     int N;
     scanf("%d", &N);
     for(int i=0;i<N;i++) {
@@ -52,6 +53,10 @@ void process(void) {
         }
     }
     sort(V.begin(), V.end());
+    for(int i=0;i<size(V);i++) {
+        cout << V[i].d << " ";
+    }
+    cout << endl;
 }
 
 int main(void)
