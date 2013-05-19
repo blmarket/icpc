@@ -26,11 +26,19 @@ int dist[55][55];
 
 int memo[1<<17][55];
 
+int sn;
+int s1[55], s2[55], s3[55];
+
 class TravellingPurchasingMan 
 {
 public:
     int maxStores(int N_, vector <string> interestingStores, vector <string> roads) 
     {		
+        sn = size(interestingStores);
+        for(int i=0;i<sn;i++) {
+            istringstream sin(interestingStores[i]);
+            sin >> s1[i] >> s2[i] >> s3[i];
+        }
         N = N_;
 
         memset(dist, -1, sizeof(dist));
@@ -58,12 +66,27 @@ public:
         priority_queue<pair<int, PII> > Q;
         Q.push(mp(0, mp(0,N-1)));
 
+        int ret = 0;
         while(!Q.empty()) {
             int time = -Q.top().first;
             int pos = Q.top().second.first;
             int mask = Q.top().second.second;
             Q.pop();
+            if(memo[pos][mask] != time) continue;
+
+            if(pos < sn && time <= s2[pos] && (mask & (1<<pos) == 0)) {
+                int ntime = max(time, s1[pos]) + s3[pos];
+                int nmask = mask | (1<<pos);
+                if(memo[pos][nmask] == -1 || memo[pos][nmask] > ntime) {
+                    memo[pos][nmask] = ntime;
+                    Q.push(mp(-ntime, mp(pos, nmask)));
+                }
+            }
+
+            for(int i=0;i<N;i++) if(dist[pos][i] != -1) {
+            }
         }
+        return ret;
     }
 
     
