@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 int dist[55][55];
 
-int memo[1<<17][55];
+int memo[55][1<<17];
 
 int sn;
 int s1[55], s2[55], s3[55];
@@ -61,7 +61,7 @@ public:
         }
 
         memset(memo, -1, sizeof(memo));
-        memo[0][N-1] = 0;
+        memo[N-1][0] = 0;
 
         priority_queue<pair<int, PII> > Q;
         Q.push(mp(0, mp(N-1, 0)));
