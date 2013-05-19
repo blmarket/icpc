@@ -40,6 +40,8 @@ int enter(string line) {
         }
     }
 
+    cout << "pick " << md << " " << undos[md] << endl;
+
     cur = undos[md];
     while(size(cur) != size(line)) {
         cur += line[size(cur)];
