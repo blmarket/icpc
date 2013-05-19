@@ -84,7 +84,7 @@ public:
                 if(ret < tmp2) ret = tmp2;
             }
 
-            cout << "sn=" << sn << endl;
+            cout << "mask=" << mask << endl;
             if(pos < sn && time <= s2[pos] && (mask & (1<<pos) == 0)) {
                 int ntime = max(time, s1[pos]) + s3[pos];
                 int nmask = mask | (1<<pos);
