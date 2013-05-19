@@ -84,8 +84,8 @@ public:
                 if(ret < tmp2) ret = tmp2;
             }
 
-            cout << time << " " << s2[pos] << endl;
             if(pos < sn && time <= s2[pos] && (mask & (1<<pos) == 0)) {
+                cout << "canibuy?" << endl;
                 int ntime = max(time, s1[pos]) + s3[pos];
                 int nmask = mask | (1<<pos);
                 if(memo[pos][nmask] == -1 || memo[pos][nmask] > ntime) {
