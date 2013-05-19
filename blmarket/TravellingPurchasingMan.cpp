@@ -24,6 +24,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 int dist[55][55];
 
+int memo[1<<17][55];
+
 class TravellingPurchasingMan 
 {
 public:
@@ -50,9 +52,17 @@ public:
             }
         }
 
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<N;j++) cout << dist[i][j] << " ";
-            cout << endl;
+        memset(memo, -1, sizeof(memo));
+        memo[0][N-1] = 0;
+
+        priority_queue<pair<int, PII> > Q;
+        Q.push(mp(0, mp(0,N-1)));
+
+        while(!Q.empty()) {
+            int time = -Q.top().first;
+            int pos = Q.top().second.first;
+            int mask = Q.top().second.second;
+            Q.pop();
         }
     }
 
