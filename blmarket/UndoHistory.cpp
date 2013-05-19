@@ -48,7 +48,7 @@ int enter(string line) {
         undos.pb(cur);
     }
 
-    return mincost;
+    return mincost + 1;
 }
 
 class UndoHistory 
