@@ -47,6 +47,7 @@ int enter(string line) {
         cur += line[size(cur)];
         undos.pb(cur);
     }
+    undos.pb(cur);
 
     return mincost + 1;
 }
