@@ -73,6 +73,7 @@ public:
             int mask = Q.top().second.second;
             Q.pop();
             if(memo[pos][mask] != time) continue;
+            cout << pos << " " << mask << " = " << time << endl;
 
             { 
                 int tmp = mask, tmp2 = 0;
