@@ -61,8 +61,9 @@ public:
         undos.pb(cur);
         int ret = 0;
         for(int i=0;i<size(lines);i++) {
-            ret += enter(lines[i]);
-            cout << ret << endl;
+            int tmp = enter(lines[i]);
+            ret += tmp;
+            cout << tmp << endl;
         }
         return ret;
     }
