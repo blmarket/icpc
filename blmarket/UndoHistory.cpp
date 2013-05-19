@@ -60,6 +60,7 @@ public:
         int ret = 0;
         for(int i=0;i<size(lines);i++) {
             ret += enter(lines[i]);
+            cout << ret << endl;
         }
         return ret;
     }
