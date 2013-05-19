@@ -64,7 +64,7 @@ public:
         memo[0][N-1] = 0;
 
         priority_queue<pair<int, PII> > Q;
-        Q.push(mp(0, mp(0,N-1)));
+        Q.push(mp(0, mp(N-1, 0)));
 
         int ret = 0;
         while(!Q.empty()) {
