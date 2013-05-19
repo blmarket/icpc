@@ -74,6 +74,15 @@ public:
             Q.pop();
             if(memo[pos][mask] != time) continue;
 
+            { 
+                int tmp = mask, tmp2 = 0;
+                while(tmp) { 
+                    tmp2 += (tmp & 1);
+                    tmp >>= 1;
+                }
+                if(ret < tmp2) ret = tmp2;
+            }
+
             if(pos < sn && time <= s2[pos] && (mask & (1<<pos) == 0)) {
                 int ntime = max(time, s1[pos]) + s3[pos];
                 int nmask = mask | (1<<pos);
@@ -84,6 +93,11 @@ public:
             }
 
             for(int i=0;i<N;i++) if(dist[pos][i] != -1) {
+                int ntime = time + dist[pos][i];
+                if(memo[i][mask] == -1 || memo[i][mask] > ntime) {
+                    memo[i][mask] = ntime;
+                    Q.push(mp(-ntime, mp(i, mask)));
+                }
             }
         }
         return ret;
