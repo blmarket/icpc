@@ -36,6 +36,7 @@ void addone(double a, double b, double c) {
 
                 nex[i][j][k] = pp[i][j][k] * (N-tot) / N;
                 if(i) {
+                    cout << "here " << tot << " " << N << " " << a << endl;
                     nex[i][j][k] += pp[i-1][j][k] * tot / N * a;
                 }
                 if(j) {
