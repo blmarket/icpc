@@ -74,10 +74,11 @@ double go(int a,int b,int c) {
     double p3 = norm(a,b,c+1) / norm(a,b,c);
 
     double ex1 = go(a+1,b,c), ex2 = go(a,b+1,c), ex3 = go(a,b,c+1);
+    double ex = p1 * ex1 + p2 * ex2 + p3 * ex3;
 
-    double r1 = p1 + 3 * p3 + ex1;
-    double r2 = p2 + 3 * p1 + ex2;
-    double r3 = p3 + 3 * p2 + ex3;
+    double r1 = p1 + 3 * p3 + ex;
+    double r2 = p2 + 3 * p1 + ex;
+    double r3 = p3 + 3 * p2 + ex;
 
     nex[a][b][c] = max(max(r1,r2),r3);
     cout << a << "," << b << "," << c << " = " << p1 << " " << p2 << " " << p3 << " " << nex[a][b][c] << endl;
