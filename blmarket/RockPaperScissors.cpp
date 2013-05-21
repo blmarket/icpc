@@ -64,6 +64,7 @@ double norm(int a,int b,int c) {
 }
 
 double go(int a,int b,int c) {
+    if(pp[a][b][c] < 1e-6) return 0.0;
     int sum = a+b+c;
     if(sum == N) return 0;
     if(nex[a][b][c] >= 0) return nex[a][b][c];
