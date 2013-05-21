@@ -85,6 +85,7 @@ public:
             addone((double)rockProb[i]/300.0, (double)paperProb[i] / 300.0, (double)scissorsProb[i] / 300.0);
         }
         cout << pp[0][0][0] << endl;
+        cout << pp[1][0][0] << " " << pp[0][1][0] << " " << pp[0][0][2] << endl;
         cout << pp[2][0][0] << " : " << pp[3][0][0] << " " << pp[2][1][0] << " " << pp[2][0][1] << endl;
 
         for(int i=0;i<55;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) nex[i][j][k] = -1.0;
