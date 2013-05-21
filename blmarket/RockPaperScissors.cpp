@@ -48,6 +48,11 @@ void addone(double a, double b, double c) {
         }
     }
 
+    if(N == 3) {
+        cout << "aaa ";
+        cout << pp[2][0][0] << " " << pp[1][1][0] << endl;
+    }
+
     memcpy(pp, nex, sizeof(pp));
 }
 
