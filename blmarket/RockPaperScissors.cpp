@@ -80,6 +80,7 @@ public:
 
         N = 0;
         for(int i=0;i<size(rockProb);i++) {
+            N++;
             addone((double)rockProb[i]/300.0, (double)paperProb[i] / 300.0, (double)scissorsProb[i] / 300.0);
         }
         cout << pp[0][0][0] << endl;
