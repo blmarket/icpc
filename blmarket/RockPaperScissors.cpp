@@ -66,7 +66,9 @@ double go(int a,int b,int c) {
     double r2 = p2 + 3 * p1 + ex2;
     double r3 = p3 + 3 * p2 + ex3;
 
-    return nex[a][b][c] = max(max(r1,r2),r3);
+    nex[a][b][c] = max(max(r1,r2),r3);
+    cout << a << "," << b << "," << c << " = " << nex[a][b][c] << endl;
+    return nex[a][b][c];
 }
 
 class RockPaperScissors 
