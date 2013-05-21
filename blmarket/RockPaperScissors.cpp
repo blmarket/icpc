@@ -81,6 +81,8 @@ public:
         for(int i=0;i<size(rockProb);i++) {
             addone((double)rockProb[i]/300.0, (double)paperProb[i] / 300.0, (double)scissorsProb[i] / 300.0);
         }
+        cout << pp[0][0][0] << endl;
+
         for(int i=0;i<55;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) nex[i][j][k] = -1.0;
 
         return go(0,0,0);
