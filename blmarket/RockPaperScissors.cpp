@@ -24,6 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 double pp[55][55][55];
 double nex[55][55][55];
+long long combi[55][55];
 
 void addone(double a, double b, double c) {
     memset(nex, 0, sizeof(nex));
@@ -56,14 +57,20 @@ void addone(double a, double b, double c) {
     memcpy(pp, nex, sizeof(pp));
 }
 
+double norm(int a,int b,int c) {
+    int sum = a+b+c;
+    if(sum == 0) return 1.0;
+    return pp[a][b][c] / combi[sum][a] / combi[b+c][b];
+}
+
 double go(int a,int b,int c) {
     int sum = a+b+c;
     if(sum == N) return 0;
     if(nex[a][b][c] >= 0) return nex[a][b][c];
 
-    double p1 = pp[a+1][b][c] / pp[a][b][c];
-    double p2 = pp[a][b+1][c] / pp[a][b][c];
-    double p3 = pp[a][b][c+1] / pp[a][b][c];
+    double p1 = norm(a+1,b,c) / norm(a,b,c);
+    double p2 = norm(a,b+1,c) / norm(a,b,c);
+    double p3 = norm(a,b,c+1) / norm(a,b,c);
 
     double ex1 = go(a+1,b,c), ex2 = go(a,b+1,c), ex3 = go(a,b,c+1);
 
@@ -81,6 +88,13 @@ class RockPaperScissors
 public:
     double bestScore(vector <int> rockProb, vector <int> paperProb, vector <int> scissorsProb) 
     {
+        for(int i=0;i<55;i++) {
+            combi[i][0] = combi[i][i] = 1;
+            for(int j=1;j<i;j++) {
+                combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
+            }
+        }
+
         memset(pp, 0, sizeof(pp));
         pp[0][0][0] = 1.0;
 
