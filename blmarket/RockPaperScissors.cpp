@@ -35,16 +35,17 @@ void addone(long double a, long double b, long double c) {
                 int tot = i+j+k;
                 if(tot == 0) continue;
 
-                nex[i][j][k] = pp[i][j][k] * (N-tot) / N;
+                nex[i][j][k] = pp[i][j][k] * (N-tot);
                 if(i) {
-                    nex[i][j][k] += pp[i-1][j][k] * tot / N * a;
+                    nex[i][j][k] += pp[i-1][j][k] * tot * a;
                 }
                 if(j) {
-                    nex[i][j][k] += pp[i][j-1][k] * tot / N * b;
+                    nex[i][j][k] += pp[i][j-1][k] * tot * b;
                 }
                 if(k) {
-                    nex[i][j][k] += pp[i][j][k-1] * tot / N * c;
+                    nex[i][j][k] += pp[i][j][k-1] * tot * c;
                 }
+                nex[i][j][k] /= N;
             }
         }
     }
