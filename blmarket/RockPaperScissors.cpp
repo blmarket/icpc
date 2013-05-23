@@ -53,7 +53,7 @@ public:
         for(int i=0;i<size(rockProb);i++) {
             addone(rockProb[i], paperProb[i], scissorsProb[i]);
         }
-        cout << pp[1][1][0][0] << endl;
+        cout << pp[1][1][0][0] << " " << pp[1][0][1][0] << " " << pp[1][0][0][1] << endl;
         return 0;
     }
 
