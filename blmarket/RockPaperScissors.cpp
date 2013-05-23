@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 double pp[55][55][55][55];
+double memo[55][55][55];
 
 void addone(int aa, int bb, int cc) {
     N++;
@@ -42,6 +43,26 @@ void addone(int aa, int bb, int cc) {
     }
 }
 
+double go(int a,int b,int c) {
+    if(memo[a][b][c] >= -1e-6) return memo[a][b][c];
+    int sum = a+b+c;
+    if(sum == N) return memo[a][b][c] = 0;
+
+    double p1 = pp[N][a+1][b][c] / pp[N][a][b][c];
+    double p2 = pp[N][a][b+1][c] / pp[N][a][b][c];
+    double p3 = pp[N][a][b][c+1] / pp[N][a][b][c];
+
+    double ex = go(a+1,b,c) * p1 + go(a,b+1,c) * p2 + go(a,b,c+1) * p3;
+
+    double ex1 = p1 + p3 * 3;
+    double ex2 = p2 + p1 * 3;
+    double ex3 = p3 + p2 * 3;
+    double mex = max(ex1,ex2);
+    mex = max(mex, ex3);
+
+    return memo[a][b][c] = mex + ex;
+}
+
 class RockPaperScissors 
 {
 public:
@@ -53,10 +74,10 @@ public:
         for(int i=0;i<size(rockProb);i++) {
             addone(rockProb[i], paperProb[i], scissorsProb[i]);
         }
-        cout << pp[1][1][0][0] << " " << pp[1][0][1][0] << " " << pp[1][0][0][1] << endl;
-        cout << pp[2][1][0][0] << " " << pp[2][0][1][0] << " " << pp[2][0][0][1] << endl;
-        cout << pp[2][1][1][0] << " " << pp[2][0][1][1] << " " << pp[2][1][0][1] << endl;
-        return 0;
+
+        for(int i=0;i<55;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) memo[i][j][k] = -1;
+
+        return go(0,0,0);
     }
 
     
