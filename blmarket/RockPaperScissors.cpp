@@ -48,6 +48,8 @@ double go(int a,int b,int c) {
     int sum = a+b+c;
     if(sum == N) return memo[a][b][c] = 0;
 
+    if(pp[N][a][b][c] < 1e-6) return memo[a][b][c] = 0;
+
     double p1 = pp[N][a+1][b][c] / pp[N][a][b][c];
     double p2 = pp[N][a][b+1][c] / pp[N][a][b][c];
     double p3 = pp[N][a][b][c+1] / pp[N][a][b][c];
