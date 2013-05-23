@@ -51,7 +51,7 @@ double go(int a,int b,int c) {
     int sum = a+b+c;
     if(sum == N) return memo[a][b][c] = 0;
 
-    if(cur[a][b][c] < 1e-6) return memo[a][b][c] = 0;
+    if(cur[a][b][c] == 0) return memo[a][b][c] = 0;
 
     double p1 = cur[a+1][b][c] / cur[a][b][c];
     double p2 = cur[a][b+1][c] / cur[a][b][c];
