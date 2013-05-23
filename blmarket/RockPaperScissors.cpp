@@ -33,10 +33,10 @@ void addone(int aa, int bb, int cc) {
             for(int k=0;i+j+k<=N;k++) {
                 int sum = i+j+k;
                 if(sum == 0) continue;
-                pp[N][i][j][k] = pp[N-1][i][j][k];
-                if(i) pp[N][i][j][k] += pp[N-1][i-1][j][k] * aa / 300.0;
-                if(j) pp[N][i][j][k] += pp[N-1][i][j-1][k] * bb / 300.0;
-                if(k) pp[N][i][j][k] += pp[N-1][i][j][k-1] * cc / 300.0;
+                pp[N][i][j][k] = pp[N-1][i][j][k] / N * (N - sum);
+                if(i) pp[N][i][j][k] += pp[N-1][i-1][j][k] * i / N * aa / 300.0;
+                if(j) pp[N][i][j][k] += pp[N-1][i][j-1][k] * j / N * bb / 300.0;
+                if(k) pp[N][i][j][k] += pp[N-1][i][j][k-1] * k / N * cc / 300.0;
             }
         }
     }
