@@ -54,6 +54,7 @@ public:
             addone(rockProb[i], paperProb[i], scissorsProb[i]);
         }
         cout << pp[1][1][0][0] << " " << pp[1][0][1][0] << " " << pp[1][0][0][1] << endl;
+        cout << pp[2][1][0][0] << " " << pp[2][0][1][0] << " " << pp[2][0][0][1] << endl;
         return 0;
     }
 
