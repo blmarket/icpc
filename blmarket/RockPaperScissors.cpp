@@ -22,25 +22,28 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
-double pp[55][55][55][55];
+double cur[55][55][55], nex[55][55][55];
 double memo[55][55][55];
 
 void addone(int aa, int bb, int cc) {
     N++;
-    pp[N][0][0][0] = 1.0;
+    memset(nex, 0, sizeof(nex));
+    nex[0][0][0] = 1.0;
 
     for(int i=0;i<=N;i++) {
         for(int j=0;i+j<=N;j++) {
             for(int k=0;i+j+k<=N;k++) {
                 int sum = i+j+k;
                 if(sum == 0) continue;
-                pp[N][i][j][k] = pp[N-1][i][j][k] / N * (N - sum);
-                if(i) pp[N][i][j][k] += pp[N-1][i-1][j][k] * i / N * aa / 300.0;
-                if(j) pp[N][i][j][k] += pp[N-1][i][j-1][k] * j / N * bb / 300.0;
-                if(k) pp[N][i][j][k] += pp[N-1][i][j][k-1] * k / N * cc / 300.0;
+                nex[i][j][k] = cur[i][j][k] / N * (N - sum);
+                if(i) nex[i][j][k] += cur[i-1][j][k] * i / N * aa / 300.0;
+                if(j) nex[i][j][k] += cur[i][j-1][k] * j / N * bb / 300.0;
+                if(k) nex[i][j][k] += cur[i][j][k-1] * k / N * cc / 300.0;
             }
         }
     }
+
+    memcpy(cur, nex, sizeof(cur));
 }
 
 double go(int a,int b,int c) {
@@ -48,11 +51,11 @@ double go(int a,int b,int c) {
     int sum = a+b+c;
     if(sum == N) return memo[a][b][c] = 0;
 
-    if(pp[N][a][b][c] < 1e-6) return memo[a][b][c] = 0;
+    if(cur[a][b][c] < 1e-6) return memo[a][b][c] = 0;
 
-    double p1 = pp[N][a+1][b][c] / pp[N][a][b][c];
-    double p2 = pp[N][a][b+1][c] / pp[N][a][b][c];
-    double p3 = pp[N][a][b][c+1] / pp[N][a][b][c];
+    double p1 = cur[a+1][b][c] / cur[a][b][c];
+    double p2 = cur[a][b+1][c] / cur[a][b][c];
+    double p3 = cur[a][b][c+1] / cur[a][b][c];
 
     double ex = go(a+1,b,c) * p1 + go(a,b+1,c) * p2 + go(a,b,c+1) * p3;
 
@@ -70,9 +73,9 @@ class RockPaperScissors
 public:
     double bestScore(vector <int> rockProb, vector <int> paperProb, vector <int> scissorsProb) 
     {
-        memset(pp, 0, sizeof(pp));
+        memset(cur, 0, sizeof(cur));
         N = 0;
-        pp[0][0][0][0] = 1.0;
+        cur[0][0][0] = 1.0;
         for(int i=0;i<size(rockProb);i++) {
             addone(rockProb[i], paperProb[i], scissorsProb[i]);
         }
