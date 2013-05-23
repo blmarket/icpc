@@ -63,6 +63,8 @@ double go(int a,int b,int c) {
     double ex2 = p2 + p1 * 3;
     double ex3 = p3 + p2 * 3;
     double mex = max(ex1,ex2);
+    cout << p1 << " " << p2 << " " << p3 << " " << p1+p2+p3 << " " << mex << endl;
+
     mex = max(mex, ex3);
 
     return memo[a][b][c] = mex + ex;
