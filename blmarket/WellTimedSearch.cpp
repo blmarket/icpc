@@ -45,7 +45,6 @@ long double go(int N, int A, int B) {
             tmp *= 2;
             if(tmp >= N) {
                 prob = prob * (N-1) / N;
-                cerr << prob << endl;
                 N--; A--; B--;
                 onemore = true;
                 break;
@@ -53,7 +52,7 @@ long double go(int N, int A, int B) {
         }
         if(!onemore) break;
     }
-    cout << prob << endl;
+    cout << prob << " " << N << " " << A << " " << B << endl;
     if(prob < 1.0) return prob * go(N, A, B);
 
     long double ret = 0;
