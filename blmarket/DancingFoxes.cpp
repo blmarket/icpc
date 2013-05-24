@@ -22,15 +22,14 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
-vector<string> data;
-int memo[55][55];
-int floyd[55][55];
+int dist[55][55];
 
 int go(int d) {
-    if(d == 1) return 0; // already know each other
+    if(d == 1) return 0;
     if(d == 2) return 1;
-    int nlink = (d+1)/3;
-    return go(d-nlink) + 1;
+    if(d == 3) return 2;
+    int nc = (d+1)/3;
+    return go(d - nc) + 1;
 }
 
 class DancingFoxes 
@@ -38,24 +37,19 @@ class DancingFoxes
 public:
     int minimalDays(vector <string> friendship) 
     {
-        memset(memo, -1, sizeof(memo));
-        data = friendship;
-        N = size(data);
+        N = size(friendship);
+        memset(dist, -1, sizeof(dist));
+        for(int i=0;i<N;i++) for(int j=0;j<N;j++) dist[i][j] = friendship[i][j] == 'Y' ? 1 : -1;
 
-        memset(floyd, -1, sizeof(floyd));
-        for(int i=0;i<N;i++) for(int j=0;j<N;j++) floyd[i][j] = (data[i][j] == 'Y' ? 1 : -1);
-
-        for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(floyd[i][k] != -1) {
-            for(int j=0;j<N;j++) if(floyd[k][j] != -1) {
-                if(floyd[i][j] == -1 || floyd[i][j] > floyd[i][k] + floyd[k][j]) {
-                    floyd[i][j] = floyd[i][k] + floyd[k][j];
-                }
+        for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(dist[i][k] != -1) {
+            for(int j=0;j<N;j++) if(dist[k][j] != -1) {
+                if(dist[i][j] == -1 || dist[i][j] > dist[i][k] + dist[k][j]) dist[i][j] = dist[i][k] + dist[k][j];
             }
         }
 
-        if(floyd[0][1] == -1) return -1;
+        cout << dist[0][1];
 
-        return go(floyd[0][1]);
+        return go(dist[0][1]);
     }
 
     
