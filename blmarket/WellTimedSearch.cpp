@@ -51,6 +51,7 @@ public:
                     break;
                 }
             }
+            if(sum + t1 >= N) sum = N - t1;
             cerr << i << " " << sum << endl;
             if(sum > maxx) maxx = sum;
         }
