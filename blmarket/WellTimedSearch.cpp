@@ -30,7 +30,9 @@ int go(int a, int b) {
         return b-1;
     }
     int p = (a+1) / 2;
-    return p + go(p, b-1);
+    int tmp = go(p, b-1);
+    if(tmp == -1) return -1;
+    return p + tmp;
 }
 
 class WellTimedSearch 
