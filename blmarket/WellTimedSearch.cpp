@@ -55,7 +55,7 @@ long double go(int N, int A, int B) {
 
     long double ret = 0;
     int md = 0;
-    for(int i=max(N/2-2,0);i<=(N/2);i++) {
+    for(int i=0;i<=(N/2);i+=N/2) {
         long double p1 = (long double)i / N;
         long double p2 = (long double)(N-1-i) / N;
         long double tmp = p1 * go(i, A-1, B-1) + p2 * go(N-1-i, A-1, B-1);
