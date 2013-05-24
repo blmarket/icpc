@@ -39,7 +39,7 @@ long double go(int N, int A, int B) {
     while(true) {
         int tmp = 1;
         bool onemore = false;
-        for(int i=0;i<A;i++) {
+        for(int i=0;i<A-1;i++) {
             tmp *= 2;
             if(tmp >= N) {
                 N--; A--; B--;
