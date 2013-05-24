@@ -52,6 +52,7 @@ long double go(int N, int A, int B) {
         }
         if(!onemore) break;
     }
+    cout << prob << endl;
     if(prob < 1.0) return prob * go(N, A, B);
 
     long double ret = 0;
@@ -99,6 +100,6 @@ public:
 int main()
 {
     WellTimedSearch ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
