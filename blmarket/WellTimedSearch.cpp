@@ -37,6 +37,8 @@ class WellTimedSearch
 public:
     double getProbability(int N, int A, int B) 
     {
+        go(300, 7);
+        return 0;
         int maxx = 0;
         for(int i=1;i<=N;i++) {
             int t1 = go(i, A);
