@@ -21,7 +21,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int go(int a, int b) {
-    cout << a << " " << b << endl;
+    cerr << a << " " << b << endl;
     if(b == 1) {
         if(a == 1) return 0;
         return -1;
@@ -38,7 +38,7 @@ class WellTimedSearch
 public:
     double getProbability(int N, int A, int B) 
     {
-        go(300, 7);
+        cerr << go(300, 7) << endl;
         return 0;
         int maxx = 0;
         for(int i=1;i<=N;i++) {
