@@ -36,6 +36,20 @@ long double go(int N, int A, int B) {
         }
     }
 
+    while(true) {
+        int tmp = 1;
+        bool onemore = false;
+        for(int i=0;i<A;i++) {
+            tmp *= 2;
+            if(tmp >= N) {
+                N--; A--; B--;
+                onemore = true;
+                break;
+            }
+        }
+        if(!onemore) break;
+    }
+
     long double ret = 0;
     int md = 0;
     for(int i=0;i<=(N/2);i++) {
