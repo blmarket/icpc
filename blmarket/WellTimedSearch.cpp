@@ -23,7 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int firstN = -1;
 
 long double go(int N, int A, int B) {
-    if(N == 0) return 0;
+    if(N < A) return 0;
     long double px = 1.0 / N;
     if(B == 1) return px;
     if(A == 1) {
@@ -74,7 +74,7 @@ class WellTimedSearch
 public:
     long double getProbability(int N, int A, int B) 
     {
-        firstN = N + 1;
+        firstN = N;
         return go(N, A, B);
     }
 
