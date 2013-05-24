@@ -25,7 +25,7 @@ int N;
 int dist[55][55];
 
 int go(int d) {
-    cout << d << endl;
+    if(d == -1) return -1;
     if(d == 1) return 0;
     if(d == 2) return 1;
     if(d == 3) return 2;
