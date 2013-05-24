@@ -21,6 +21,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int go(int a, int b) {
+    cout << a << " " << b << endl;
     if(b == 1) {
         if(a == 1) return 0;
         return -1;
