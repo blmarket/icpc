@@ -44,7 +44,7 @@ long double go(int N, int A, int B) {
         for(int i=0;i<A-1;i++) {
             tmp *= 2;
             if(tmp >= N) {
-                cout << "here" << endl;
+                cerr << "here" << endl;
                 prob = prob * (N-1) / N;
                 N--; A--; B--;
                 onemore = true;
