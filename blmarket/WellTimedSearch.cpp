@@ -46,7 +46,7 @@ long double go(int N, int A, int B) {
         if(ret < tmp) { 
             ret = tmp;
             md = i;
-        }
+        } else break;
     }
     if(N == firstN) cout << N << " " << A << " " << B << " = " << ret << "(" << md << ")" << endl;
     return ret;
