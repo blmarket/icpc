@@ -51,6 +51,7 @@ public:
                     break;
                 }
             }
+            cout << i << " " << sum << endl;
             if(sum > maxx) maxx = sum;
         }
         return (double)maxx / N;
