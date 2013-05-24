@@ -36,10 +36,9 @@ double go(int N, int A, int B) {
 
     double ret = 0;
     int md = 0;
-    for(int i=0;i<=(N/2)+1;i++) {
+    for(int i=0;i<=(N/2);i++) {
         double p1 = (double)i / N;
         double p2 = (double)(N-1-i) / N;
-        cout << p1 << " " << go(i,A-1,B-1) << ", " << p2 << " " << go(N-1-i, A-1, B-1) << endl;
         double tmp = p1 * go(i, A-1, B-1) + p2 * go(N-1-i, A-1, B-1);
         if(ret < tmp) { 
             ret = tmp;
