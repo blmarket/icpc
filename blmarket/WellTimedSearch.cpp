@@ -40,7 +40,6 @@ long double go(int N, int A, int B) {
     while(true) {
         int tmp = 1;
         bool onemore = false;
-        double prob = 1 - px;
         for(int i=0;i<A-1;i++) {
             tmp *= 2;
             if(tmp >= N) {
