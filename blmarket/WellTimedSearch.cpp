@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdio>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,85 +20,40 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-bool asdf = true;
+double go(int N, int A, int B) {
+    double px = 1.0 / N;
+    if(B == 1) return px;
+    if(A == 1) {
+        double p1 = (double)(N / 2) / N;
+        if(N % 2 == 1) {
+            return px + 2 * p1 * go(N/2, 1, B-1);
+        } else {
+            double p2 = (double)(N-N/2-1) / N;
+            return px + p1 * go(N/2, 1, B-1) + go(N-1-N/2, 1, B-1);
+        }
+    }
+
+    double ret = 0;
+    int md = 0;
+    for(int i=0;i<=(N/2)+1;i++) {
+        double p1 = (double)i / N;
+        double p2 = (double)(N-1-i) / N;
+        double tmp = p1 * go(i, A-1, B-1) + p2 * go(N-1-i, A-1, B-1);
+        if(ret < tmp) { 
+            ret = tmp;
+            md = i;
+        }
+    }
+    cout << N << " " << A << " " << B << " = " << ret << "(" << md << ")" << endl;
+    return ret;
+}
 
 class WellTimedSearch 
 {
 public:
-    double calc(int N, int A, int B, int pos) {
-        double ret = (A==1 ? 1.0/N : 0);
-
-        double leftprob = (double)pos / N;
-        double rightprob = (double)(N-1-pos) / N;
-
-        double lres = getProbability(pos, max(1,A-1), B-1);
-        double rres = getProbability(N-1-pos, max(1,A-1), B-1);
-
-        ret += leftprob * lres + rightprob * rres;
-        return ret;
-    }
-
     double getProbability(int N, int A, int B) 
     {
-        bool first = asdf;
-        asdf = false;
-
-        if(N == 0) return 1.0;
-        if(B == 0) return 0;
-        if(N == 1) {
-            if(A == 1) return 1.0;
-            return 0.0;
-        }
-        if(N == 2) {
-            if(A == 2 || B == 1) return 0.5;
-            return 1.0;
-        }
-
-        if(A == 1) {
-            return (1.0 / N) + getProbability(N/2, 1, B-1) * (N-1) / N;
-        }
-
-        if(first) {
-            double best = 0;
-            int md;
-            for(int i=N/2;i<=N-1;i++) {
-                double tmp = getProbability(i, A-1, B-1) * (N-1) / N;
-                if(tmp > best) {
-                    best = tmp;
-                    md = i;
-                }
-            }
-            cout << N/2 << " " << md << " " << N-1 << endl;
-            return best;
-        }
-
-        double b1 = getProbability(N-1, A-1, B-1) * (N-1) / N;
-        double b2 = getProbability(N/2, A-1, B-1) * (N-1) / N;
-        return max(b1, b2);
-
-        /*
-        cout << N << " " << A << " " << B << endl;
-
-        double best = getProbability(N-1, A-1, B-1) * (N-1) / N;
-        int s=1,e=(N+1)/2+1;
-        while(e-s > 1) {
-            int m1 = (s*2+e) / 3;
-            int m2 = (s+e*2) / 3;
-            // printf("%d %d %d %d\n",s,m1,m2,e);
-
-            double b1,b2;
-            b1 = calc(N,A,B,m1);
-            b2 = calc(N,A,B,m2);
-            best = max(best, max(b1,b2));
-            if(b1 < b2) {
-                s = m1 + 1;
-            } else {
-                e = m2 - 1;
-            }
-        }
-
-        return best;
-        */
+        return go(N, A, B);
     }
 
     
