@@ -74,7 +74,7 @@ class WellTimedSearch
 public:
     long double getProbability(int N, int A, int B) 
     {
-        firstN = N;
+        firstN = N + 1;
         return go(N, A, B);
     }
 
