@@ -26,7 +26,7 @@ double go(int N, int A, int B) {
     if(B == 1) return px;
     if(A == 1) {
         double p1 = (double)(N / 2) / N;
-        cout << p1 << endl;
+        cout << N << " " << p1 << endl;
         if(N % 2 == 1) {
             return px + 2 * p1 * go(N/2, 1, B-1);
         } else {
