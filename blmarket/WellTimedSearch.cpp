@@ -52,7 +52,7 @@ long double go(int N, int A, int B) {
         }
         if(!onemore) break;
     }
-    cout << prob << " " << N << " " << A << " " << B << endl;
+    cerr << prob << " " << N << " " << A << " " << B << endl;
     if(prob < 1.0) return prob * go(N, A, B);
 
     long double ret = 0;
