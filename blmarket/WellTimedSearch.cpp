@@ -21,7 +21,6 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int go(int a, int b) {
-    cerr << a << " " << b << endl;
     if(b == 1) {
         if(a == 1) return 0;
         return -1;
@@ -55,7 +54,6 @@ public:
                 }
             }
             if(sum + t1 >= N) sum = N - t1;
-            cerr << i << " " << sum << endl;
             if(sum > maxx) maxx = sum;
         }
         return (double)maxx / N;
