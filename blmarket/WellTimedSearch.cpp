@@ -52,6 +52,7 @@ long double go(int N, int A, int B) {
         }
         if(!onemore) break;
     }
+    if(prob < 1.0) return prob * go(N, A, B);
 
     long double ret = 0;
     int md = 0;
