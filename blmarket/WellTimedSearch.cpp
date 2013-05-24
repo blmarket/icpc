@@ -36,12 +36,15 @@ long double go(int N, int A, int B) {
         }
     }
 
+    double prob = 1.0;
     while(true) {
         int tmp = 1;
         bool onemore = false;
+        double prob = 1 - px;
         for(int i=0;i<A-1;i++) {
             tmp *= 2;
             if(tmp >= N) {
+                prob = prob * (N-1) / N;
                 N--; A--; B--;
                 onemore = true;
                 break;
@@ -63,7 +66,7 @@ long double go(int N, int A, int B) {
         } else break;
     }
     if(N == firstN) cout << N << " " << A << " " << B << " = " << ret << "(" << md << ")" << endl;
-    return ret;
+    return prob * ret;
 }
 
 class WellTimedSearch 
