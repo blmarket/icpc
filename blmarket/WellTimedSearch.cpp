@@ -46,7 +46,7 @@ public:
             for(int j=A;j<B;j++) {
                 cur *= 2;
                 sum += cur;
-                if(sum + t1 > N) {
+                if(sum + t1 >= N) {
                     sum = N - t1;
                     break;
                 }
