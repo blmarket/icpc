@@ -39,6 +39,7 @@ double go(int N, int A, int B) {
     for(int i=0;i<=(N/2)+1;i++) {
         double p1 = (double)i / N;
         double p2 = (double)(N-1-i) / N;
+        cout << p1 << " " << go(i,A-1,B-1) << ", " << p2 << " " << go(N-1-i, A-1, B-1) << endl;
         double tmp = p1 * go(i, A-1, B-1) + p2 * go(N-1-i, A-1, B-1);
         if(ret < tmp) { 
             ret = tmp;
@@ -77,6 +78,6 @@ public:
 int main()
 {
     WellTimedSearch ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
