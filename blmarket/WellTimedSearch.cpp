@@ -45,7 +45,7 @@ double go(int N, int A, int B) {
             md = i;
         }
     }
-    // cout << N << " " << A << " " << B << " = " << ret << "(" << md << ")" << endl;
+    cout << N << " " << A << " " << B << " = " << ret << "(" << md << ")" << endl;
     return ret;
 }
 
