@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -89,6 +90,7 @@ public:
         sort(p1.begin(), p1.end());
         sort(p2.begin(), p2.end());
 
+        memset(memo, -1, sizeof(memo));
         for(int i=0;i<N;i++) {
             memo[i][i] = go(p1[i].first, p1[i].second);
             for(int j=i+1;j<N;j++) {
