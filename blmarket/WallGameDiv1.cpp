@@ -98,6 +98,10 @@ public:
         for(int i=N-2;i>=0;i--) {
             calc(cost[i]);
             cur.swap(nex);
+            for(int i=0;i<M;i++) {
+                cout << cur[i] << " ";
+            }
+            cout << endl;
         }
 
         int ret = cur[0] + cost[0][0];
