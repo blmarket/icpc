@@ -94,8 +94,7 @@ public:
         int ret = 0;
         for(int i=0;i<N;i++) {
             int tmp = go(p1[i].first, p1[i].second);
-            cout << memo[i] << endl;
-            if(memo[i] == -1 || memo[i] > tmp) memo[i] = tmp;
+            if(tmp != -1 && (memo[i] == -1 || memo[i] > tmp)) memo[i] = tmp;
             cout << p1[i].first << " " << p1[i].second << " = " << memo[i] << endl;
             if(memo[i] == -1) return -1;
 
