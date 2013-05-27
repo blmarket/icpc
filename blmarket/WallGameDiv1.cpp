@@ -74,7 +74,7 @@ void calc(const string &c) {
 
     for(int i=0;i<M;i++) {
         nex[i] += c[i];
-        int tmp = go(i, i+1, true);
+        int tmp = go(i, i+1, true) + cur[i];
         if(tmp > nex[i]) nex[i] = tmp;
     }
 }
