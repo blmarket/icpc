@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -22,7 +23,61 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N,M;
 vector<string> cost;
-vector<int> cur;
+vector<int> cur, nex;
+
+int memo[55][55][2];
+int sum[55];
+
+int cc(int s, int e) {
+    if(s<=e) return sum[e+1] - sum[s+1];
+    return sum[s] - sum[e];
+}
+
+int go(int s, int e, bool left) {
+    if(s == 0 && e == M) return -1;
+    if(memo[s][e][left] != -1) return memo[s][e][left];
+
+    int pos = left ? s : e;
+
+    int np1 = s-1;
+    int np2 = e+1;
+    int ret = -1;
+    if(np1 >= 0) {
+        int tmp = cc(pos, np1);
+        int tmp2 = cur[np1];
+        int tmp3 = go(np1, e, true);
+
+        ret = max(tmp2, tmp3) + tmp;
+    }
+
+    if(np2 < M) {
+        int tmp = cc(pos, np2);
+        int tmp2 = cur[np2];
+        int tmp3 = go(s, np2, false);
+
+        int tmp4 = max(tmp2, tmp3) + tmp;
+        if(ret == -1 || ret > tmp4) ret = tmp4;
+    }
+
+    return memo[s][e][left] = ret;
+}
+
+void calc(const string &c) {
+    nex = cur;
+    memset(memo, -1, sizeof(memo));
+    memset(sum, 0, sizeof(sum));
+
+    sum[0] = 0;
+    for(int i=0;i<M;i++) {
+        sum[i+1] = sum[i] + c[i];
+    }
+
+    for(int i=0;i<M;i++) {
+        nex[i] += c[i];
+        int tmp = go(i, i+1, true);
+        if(tmp > nex[i]) nex[i] = tmp;
+    }
+}
 
 class WallGameDiv1 
 {
@@ -38,6 +93,11 @@ public:
         cur.resize(M);
         for(int i=0;i<M;i++) {
             cur[i] = cost.back()[i];
+        }
+
+        for(int i=N-2;i>=0;i--) {
+            calc(cost[i]);
+            cur.swap(nex);
         }
 
         return 0;
