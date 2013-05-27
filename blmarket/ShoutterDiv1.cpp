@@ -24,6 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<int> s,t;
 vector<PII> p1,p2;
+int rend, bend;
 
 string merge(const VS &a) {
     string ret;
@@ -58,6 +59,7 @@ int go(int left, int right) {
         tmp++;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
+    cout << left << " " << right << " = " << ret << endl;
     return memo[key] = ret;
 }
 
@@ -86,6 +88,7 @@ public:
                 return -1;
             }
             ret += tmp;
+            cout << memo.size() << endl;
         }
         return ret;
     }
