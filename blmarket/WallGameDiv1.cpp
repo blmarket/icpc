@@ -37,7 +37,7 @@ int go(int s, int e, bool left) {
     if(s == 0 && e == M) return -1;
     if(memo[s][e][left] != -1) return memo[s][e][left];
 
-    int pos = left ? s : e;
+    int pos = left ? s : e - 1;
 
     int np1 = s-1;
     int np2 = e;
@@ -53,7 +53,7 @@ int go(int s, int e, bool left) {
     if(np2 < M) {
         int tmp = cc(pos, np2);
         int tmp2 = cur[np2];
-        int tmp3 = go(s, np2, false);
+        int tmp3 = go(s, np2 + 1, false);
 
         int tmp4 = max(tmp2, tmp3) + tmp;
         if(ret == -1 || ret > tmp4) ret = tmp4;
