@@ -70,6 +70,7 @@ public:
         build(s1000, s100, s10, s1, s);
         build(t1000, t100, t10, t1, t);
         N = size(s);
+        p1.clear(); p2.clear();
         for(int i=0;i<N;i++) {
             p1.pb(mp(s[i], t[i]));
             p2.pb(mp(-t[i], -s[i]));
@@ -110,6 +111,6 @@ public:
 int main()
 {
     ShoutterDiv1 ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
