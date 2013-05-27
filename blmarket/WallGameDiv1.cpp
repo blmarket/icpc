@@ -99,7 +99,6 @@ public:
         }
 
         for(int i=N-2;i>=0;i--) {
-            if(i == 0) debug = true;
             calc(cost[i]);
             cur.swap(nex);
             for(int i=0;i<M;i++) {
@@ -178,6 +177,6 @@ public:
 int main()
 {
     WallGameDiv1 ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
