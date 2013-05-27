@@ -59,7 +59,7 @@ int go(int left, int right) {
         tmp++;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
-    cout << left << " " << right << " = " << ret << endl;
+    if((memo.size() % 1000) == 0) cout << memo.size() << endl;
     return memo[key] = ret;
 }
 
