@@ -100,8 +100,10 @@ public:
             cur.swap(nex);
         }
 
-        int ret = cur[0];
-        for(int i=1;i<M;i++) ret = min(ret, cur[i] + cost[0][i]);
+        int ret = cur[0] + cost[0][0];
+        for(int i=1;i<M;i++) {
+            ret = min(ret, cur[i] + cost[0][i]);
+        }
         return ret;
     }
 
