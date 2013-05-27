@@ -87,6 +87,10 @@ public:
         sort(p1.begin(), p1.end());
         sort(p2.begin(), p2.end());
 
+        for(int i=0;i<N;i++) {
+            cout << p1[i].first << " " << p1[i].second << endl;
+        }
+
         int ret = 0;
         for(int i=0;i<N;i++) {
             int tmp = go(p1[i].first, p1[i].second);
