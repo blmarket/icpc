@@ -40,7 +40,7 @@ int go(int s, int e, bool left) {
     int pos = left ? s : e;
 
     int np1 = s-1;
-    int np2 = e+1;
+    int np2 = e;
     int ret = -1;
     if(np1 >= 0) {
         int tmp = cc(pos, np1);
