@@ -104,9 +104,9 @@ public:
             cout << endl;
         }
 
-        int ret = cur[0] + cost[0][0];
+        int ret = cur[0];
         for(int i=1;i<M;i++) {
-            ret = min(ret, cur[i] + cost[0][i]);
+            ret = min(ret, cur[i]);
         }
         return ret;
     }
