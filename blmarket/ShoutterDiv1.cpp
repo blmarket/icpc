@@ -88,7 +88,6 @@ public:
                 return -1;
             }
             ret += tmp;
-            cout << memo.size() << endl;
         }
         return ret;
     }
