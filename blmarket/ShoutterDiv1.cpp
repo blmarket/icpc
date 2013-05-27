@@ -96,7 +96,7 @@ public:
             int tmp = go(p1[i].first, p1[i].second);
             for(int j=0;j<i;j++) {
                 if(p1[i].first <= p1[j].second) {
-                    int tmp2 = go(p1[j].first, p1[i].second);
+                    int tmp2 = go(p1[j].first, max(p1[j].second, p1[i].second));
                     if(tmp2 == -1) continue;
                     tmp2++;
                     if(tmp == -1 || tmp > tmp2) tmp = tmp2;
@@ -104,7 +104,7 @@ public:
             }
             for(int j=i+1;j<N;j++) {
                 if(p1[j].first <= p1[i].second) {
-                    int tmp2 = go(p1[i].first, p1[j].second);
+                    int tmp2 = go(min(p1[j].first, p1[i].first), p1[j].second);
                     if(tmp2 == -1) continue;
                     tmp2++;
                     if(tmp == -1 || tmp > tmp2) tmp = tmp2;
