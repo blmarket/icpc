@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -11,7 +10,6 @@
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
-#define ALL(x) (x).begin(), (x).end()
 
 using namespace std;
 
@@ -24,64 +22,94 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 vector<int> s,t;
+vector<PII> p1, p2;
 
-string merge(const VS &a) {
-    string ret;
-    for(int i=0;i<size(a);i++) ret += a[i];
-    return ret;
-}
+void build(VS a, VS b, VS c, VS d, VI &ret) {
+    string aa,bb,cc,dd;
+    for(int i=0;i<size(a);i++) aa += a[i];
+    for(int i=0;i<size(b);i++) bb += b[i];
+    for(int i=0;i<size(c);i++) cc += c[i];
+    for(int i=0;i<size(d);i++) dd += d[i];
 
-void build(VS a1000, VS a100, VS a10, VS a1, vector<int> &ret) {
-    string b1000, b100, b10, b1;
-    b1000 = merge(a1000); b100 = merge(a100); b10 = merge(a10); b1 = merge(a1);
-    ret.clear();
-    for(int i=0;i<size(b1000);i++) {
-        ret.pb((b1000[i]-'0') * 1000 + (b100[i] - '0') * 100 + (b10[i] - '0') * 10 + (b1[i] - '0'));
+    ret.resize(size(aa));
+    for(int i=0;i<size(aa);i++) {
+        ret[i] = (aa[i]-'0')*1000 + (bb[i]-'0')*100 + (cc[i]-'0')*10 + (dd[i]-'0');
     }
 }
 
-map<PII, int> memo;
-vector<int> pts;
-short gor[5005][5005];
-short gol[5005][5005];
+int go2(int s, int e) {
+    int ne = e;
+    int ret = 0;
+    for(int i=0;i<N;i++) {
+        if(p2[i].first < s) continue;
+        if(p2[i].first > e) {
+            if(p2[i].first > ne) return -1;
+            e = ne;
+            ret++;
+        }
+        ne = max(ne, p2[i].second);
+    }
+    return ret;
+}
+
+int go(int s, int e) {
+    int ne = e;
+    int ret = 0;
+    for(int i=0;i<N;i++) {
+        if(p1[i].first < s) continue;
+        if(p1[i].first > e) {
+            if(p1[i].first > ne) return -1;
+            e = ne;
+            ret++;
+        }
+        ne = max(ne, p1[i].second);
+    }
+
+    int rr = go2(-e, -s);
+    if(rr == -1) return -1;
+    return rr + ret;
+}
 
 class ShoutterDiv1 
 {
 public:
     int count(vector <string> s1000, vector <string> s100, vector <string> s10, vector <string> s1, vector <string> t1000, vector <string> t100, vector <string> t10, vector <string> t1) 
-    {
-        memo.clear();
+    {		
         build(s1000, s100, s10, s1, s);
         build(t1000, t100, t10, t1, t);
+
         N = size(s);
-
+        p1.resize(N); p2.resize(N);
         for(int i=0;i<N;i++) {
-            pts.pb(s[i]);
-            pts.pb(t[i]);
+            p1[i] = mp(s[i], t[i]);
+            p2[i] = mp(-t[i], -s[i]);
         }
-        sort(ALL(pts));
-        pts.erase(unique(ALL(pts)), pts.end());
+        sort(p1.begin(), p1.end());
+        sort(p2.begin(), p2.end());
 
+        int ret = 0;
         for(int i=0;i<N;i++) {
-            s[i] = lower_bound(ALL(pts), s[i]) - pts.begin();
-            t[i] = lower_bound(ALL(pts), t[i]) - pts.begin();
-        }
-
-        memset(gor, -1, sizeof(gor));
-        memset(gol, -1, sizeof(gol));
-        for(int i=0;i<N;i++) {
-            for(int j=s[i];j<t[i];j++) {
-                if(gor[j][j+1] == -1 || gor[j][j+1] < t[i]) gor[j][j+1] = t[i];
-                if(gol[j][j+1] == -1 || gol[j][j+1] > s[i]) gol[j][j+1] = s[i];
+            int tmp = go(p1[i].first, p1[i].second);
+            for(int j=0;j<i;j++) {
+                if(p1[i].first <= p1[j].second) {
+                    int tmp2 = go(p1[j].first, p1[i].second);
+                    if(tmp2 == -1) continue;
+                    tmp2++;
+                    if(tmp == -1 || tmp > tmp2) tmp = tmp2;
+                }
             }
-        }
-
-        for(int i=2;i<=size(pts);i++) {
-            for(int j=0;j+i<=size(pts);j++) {
-                gor[j][j+i] = max(gor[j][j+i-1], gor[j+i-1][j+i]);
-                gol[j][j+i] = min(gol[j][j+i-1], gol[j+i-1][j+i]);
+            for(int j=i+1;j<N;j++) {
+                if(p1[j].first <= p1[i].second) {
+                    int tmp2 = go(p1[i].first, p1[j].second);
+                    if(tmp2 == -1) continue;
+                    tmp2++;
+                    if(tmp == -1 || tmp > tmp2) tmp = tmp2;
+                }
             }
+            if(tmp == -1) return -1;
+            ret += tmp;
         }
+        return ret;
     }
 
     
