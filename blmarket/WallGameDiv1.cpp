@@ -100,7 +100,9 @@ public:
             cur.swap(nex);
         }
 
-        return 0;
+        int ret = cur[0];
+        for(int i=1;i<M;i++) ret = min(ret, cur[i]);
+        return ret;
     }
 
     
