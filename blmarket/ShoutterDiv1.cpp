@@ -80,7 +80,10 @@ public:
         int ret = 0;
         for(int i=0;i<N;i++) {
             int tmp = go(s[i], t[i]);
-            if(tmp == -1) return -1;
+            if(tmp == -1) {
+                cout << i << " " << s[i] << " " << t[i] << endl;
+                return -1;
+            }
             ret += tmp;
         }
         return ret;
@@ -107,6 +110,6 @@ public:
 int main()
 {
     ShoutterDiv1 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
