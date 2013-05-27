@@ -100,7 +100,10 @@ public:
 
             for(int j=i+1;j<N;j++) {
                 if(p1[j].second < p1[i].second) {
-                    if(memo[j] == -1 || memo[j] > memo[i] + 1) memo[j] = memo[i] + 1;
+                    if(memo[j] == -1 || memo[j] > memo[i] + 1) {
+                        cout << "memo[" << j << " = " << memo[i] +1 << endl;
+                        memo[j] = memo[i] + 1;
+                    }
                 }
             }
             ret += memo[i];
