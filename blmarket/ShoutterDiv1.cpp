@@ -95,6 +95,8 @@ public:
         for(int i=0;i<N;i++) {
             int tmp = go(p1[i].first, p1[i].second);
             if(memo[i] == -1 || memo[i] > tmp) memo[i] = tmp;
+            if(memo[i] == -1) return -1;
+
             for(int j=i+1;j<N;j++) {
                 if(p1[j].second < p1[i].second) {
                     if(memo[j] == -1 || memo[j] > memo[i] + 1) memo[j] = memo[i] + 1;
