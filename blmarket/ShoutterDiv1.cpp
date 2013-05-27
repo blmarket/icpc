@@ -55,6 +55,7 @@ int go(int left, int right) {
         int tr = max(right, t[i]);
         int tmp = go(tl, tr);
         if(tmp == -1) return -1;
+        tmp++;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
     return memo[key] = ret;
