@@ -100,6 +100,7 @@ public:
                     if(memo[j] == -1 || memo[j] > memo[i] + 1) memo[j] = memo[i] + 1;
                 }
             }
+            cout << p1[i].first << " " << p1[i].second << " = " << memo[i] << endl;
             ret += memo[i];
         }
         return ret;
@@ -126,6 +127,6 @@ public:
 int main()
 {
     ShoutterDiv1 ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
