@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -23,8 +24,6 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 vector<int> s,t;
-vector<PII> p1,p2;
-int rend, bend;
 
 string merge(const VS &a) {
     string ret;
@@ -42,26 +41,9 @@ void build(VS a1000, VS a100, VS a10, VS a1, vector<int> &ret) {
 }
 
 map<PII, int> memo;
-
-int go(int left, int right) {
-    if(right >= p1.back().first && -left >= p2.back().first) return 0;
-    PII key = mp(left, right);
-    if(memo.count(key)) return memo[key];
-
-    int ret = -1;
-    for(int i=0;i<N;i++) {
-        if(s[i] > right || t[i] < left) continue;
-        if(t[i] <= right && s[i] >= left) continue;
-        int tl = min(left, s[i]);
-        int tr = max(right, t[i]);
-        int tmp = go(tl, tr);
-        if(tmp == -1) return -1;
-        tmp++;
-        if(ret == -1 || ret > tmp) ret = tmp;
-    }
-    if((memo.size() % 1000) == 0) cout << memo.size() << endl;
-    return memo[key] = ret;
-}
+vector<int> pts;
+short gor[5005][5005];
+short gol[5005][5005];
 
 class ShoutterDiv1 
 {
@@ -72,24 +54,34 @@ public:
         build(s1000, s100, s10, s1, s);
         build(t1000, t100, t10, t1, t);
         N = size(s);
-        p1.clear(); p2.clear();
-        for(int i=0;i<N;i++) {
-            p1.pb(mp(s[i], t[i]));
-            p2.pb(mp(-t[i], -s[i]));
-        }
-        sort(p1.begin(), p1.end());
-        sort(p2.begin(), p2.end());
 
-        int ret = 0;
         for(int i=0;i<N;i++) {
-            int tmp = go(s[i], t[i]);
-            if(tmp == -1) {
-                cout << i << " " << s[i] << " " << t[i] << endl;
-                return -1;
-            }
-            ret += tmp;
+            pts.pb(s[i]);
+            pts.pb(t[i]);
         }
-        return ret;
+        sort(ALL(pts));
+        pts.erase(unique(ALL(pts)), pts.end());
+
+        for(int i=0;i<N;i++) {
+            s[i] = lower_bound(ALL(pts), s[i]) - pts.begin();
+            t[i] = lower_bound(ALL(pts), t[i]) - pts.begin();
+        }
+
+        memset(gor, -1, sizeof(gor));
+        memset(gol, -1, sizeof(gol));
+        for(int i=0;i<N;i++) {
+            for(int j=s[i];j<t[i];j++) {
+                if(gor[j][j+1] == -1 || gor[j][j+1] < t[i]) gor[j][j+1] = t[i];
+                if(gol[j][j+1] == -1 || gol[j][j+1] > s[i]) gol[j][j+1] = s[i];
+            }
+        }
+
+        for(int i=2;i<=size(pts);i++) {
+            for(int j=0;j+i<=size(pts);j++) {
+                gor[j][j+i] = max(gor[j][j+i-1], gor[j+i-1][j+i]);
+                gol[j][j+i] = min(gol[j][j+i-1], gol[j+i-1][j+i]);
+            }
+        }
     }
 
     
