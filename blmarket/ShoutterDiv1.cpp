@@ -95,13 +95,11 @@ public:
         for(int i=0;i<N;i++) {
             int tmp = go(p1[i].first, p1[i].second);
             if(tmp != -1 && (memo[i] == -1 || memo[i] > tmp)) memo[i] = tmp;
-            cout << p1[i].first << " " << p1[i].second << " = " << memo[i] << endl;
             if(memo[i] == -1) return -1;
 
             for(int j=i+1;j<N;j++) {
                 if(p1[j].second < p1[i].second) {
                     if(memo[j] == -1 || memo[j] > memo[i] + 1) {
-                        cout << "memo[" << j << " = " << memo[i] +1 << endl;
                         memo[j] = memo[i] + 1;
                     }
                 }
@@ -132,6 +130,6 @@ public:
 int main()
 {
     ShoutterDiv1 ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
