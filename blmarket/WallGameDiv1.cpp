@@ -58,7 +58,6 @@ int go(int s, int e, bool left) {
         int tmp3 = go(s, np2 + 1, false);
 
         int tmp4 = max(tmp2, tmp3) + tmp;
-        if(debug) cout << s << " " << e << " " << pos << " right = " << tmp4 << endl;
         if(ret == -1 || ret > tmp4) ret = tmp4;
     }
 
