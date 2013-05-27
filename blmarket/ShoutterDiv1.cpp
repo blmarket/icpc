@@ -111,6 +111,7 @@ public:
                 }
             }
             if(tmp == -1) return -1;
+            cout << p1[i].first << " " << p1[i].second << " = " << tmp << endl;
             ret += tmp;
         }
         return ret;
