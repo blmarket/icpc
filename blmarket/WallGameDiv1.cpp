@@ -101,7 +101,7 @@ public:
         }
 
         int ret = cur[0];
-        for(int i=1;i<M;i++) ret = min(ret, cur[i]);
+        for(int i=1;i<M;i++) ret = min(ret, cur[i] + cost[0][i]);
         return ret;
     }
 
