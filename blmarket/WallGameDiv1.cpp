@@ -28,6 +28,8 @@ vector<int> cur, nex;
 int memo[55][55][2];
 int sum[55];
 
+bool debug = false;
+
 int cc(int s, int e) {
     if(s<=e) return sum[e+1] - sum[s+1];
     return sum[s] - sum[e];
@@ -59,6 +61,7 @@ int go(int s, int e, bool left) {
         if(ret == -1 || ret > tmp4) ret = tmp4;
     }
 
+    if(debug) cout << s << " " << e << " " << pos << " = " << ret << endl;
     return memo[s][e][left] = ret;
 }
 
@@ -96,6 +99,7 @@ public:
         }
 
         for(int i=N-2;i>=0;i--) {
+            if(i == 0) debug = true;
             calc(cost[i]);
             cur.swap(nex);
             for(int i=0;i<M;i++) {
