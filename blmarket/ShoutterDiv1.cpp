@@ -70,6 +70,8 @@ int go(int s, int e) {
     return rr + ret;
 }
 
+short memo[2505][2505];
+
 class ShoutterDiv1 
 {
 public:
@@ -87,29 +89,25 @@ public:
         sort(p1.begin(), p1.end());
         sort(p2.begin(), p2.end());
 
+        for(int i=0;i<N;i++) {
+            memo[i][i] = go(p1[i].first, p1[i].second);
+            for(int j=i+1;j<N;j++) {
+                if(p1[j].first > p1[i].second) continue;
+                int tmp = go(min(p1[i].first, p1[j].first), p1[j].second);
+                if(tmp != -1) tmp++;
+                memo[i][j] = memo[j][i] = tmp;
+            }
+        }
+
         int ret = 0;
         for(int i=0;i<N;i++) {
-            int tmp = go(p1[i].first, p1[i].second);
-            for(int j=0;j<i;j++) {
-                if(p1[i].first <= p1[j].second) {
-                    int tmp2 = go(p1[j].first, max(p1[j].second, p1[i].second));
-                    if(tmp2 == -1) continue;
-                    tmp2++;
-                    if(tmp == -1 || tmp > tmp2) tmp = tmp2;
-                }
+            int tmp = -1;
+            for(int j=0;j<N;j++) if(memo[i][j] != -1) {
+                if(tmp == -1 || tmp > memo[i][j]) tmp = memo[i][j];
             }
-            for(int j=i+1;j<N;j++) {
-                if(p1[j].first <= p1[i].second) {
-                    int tmp2 = go(min(p1[j].first, p1[i].first), p1[j].second);
-                    if(tmp2 == -1) continue;
-                    tmp2++;
-                    if(tmp == -1 || tmp > tmp2) tmp = tmp2;
-                }
-            }
-            if(tmp == -1) return -1;
-            // cout << p1[i].first << " " << p1[i].second << " = " << tmp << endl;
             ret += tmp;
         }
+
         return ret;
     }
 
