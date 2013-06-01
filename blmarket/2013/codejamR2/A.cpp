@@ -58,6 +58,7 @@ void process(void) {
                     int minf = min(f[i], f[j]);
                     ret += minf * (cost - cost2);
                     if(f[i] == f[j]) {
+                        cout << "here" << endl;
                         swap(e[i], s[j]);
                     } else {
                         f[i] -= minf;
