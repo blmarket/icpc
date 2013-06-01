@@ -69,6 +69,7 @@ void process(void) {
                 }
             }
         }
+        cout << M << " " << action << endl;
         if(!action) break;
     }
     cout << ret << endl;
