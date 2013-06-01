@@ -67,10 +67,9 @@ void process(void) {
                         }
                         M++;
                     }
+                    cout << s[i] << " " << e[i] << " " << f[i] << endl;
                 }
             }
-
-            cout << s[i] << " " << e[i] << " " << f[i] << endl;
         }
         if(!action) break;
     }
