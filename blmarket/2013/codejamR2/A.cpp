@@ -35,6 +35,8 @@ void process(void) {
 
     long long ret = 0;
 
+    cout << N << " " << M << endl;
+
     while(true) {
         bool action = false;
 
