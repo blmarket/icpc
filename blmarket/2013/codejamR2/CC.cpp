@@ -38,14 +38,10 @@ void process(void) {
     for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) {
         if(A[i] >= A[j]) {
             flow[j][i] = 1;
-        } else {
-            flow[i][j] = 1;
-        }
+        } 
         if(B[j] >= B[i]) {
             flow[i][j] = 1;
-        } else {
-            flow[j][i] = 1;
-        }
+        } 
         if(flow[i][j] && flow[j][i]) {
             cout << "ERROR " << i << " " << j << endl;
         }
@@ -54,6 +50,18 @@ void process(void) {
     bool used[2004] = {0};
     memset(ret, 0, sizeof(ret));
     for(int pp=1;pp<=N;pp++) {
+        int candi = 0;
+        for(int i=0;i<N;i++) if(used[i] == false) {
+            bool fail = false;
+            for(int j=0;j<N;j++) if(used[j] == false && flow[j][i]) {
+                fail = true; break;
+            }
+            if(!fail) {
+                cout << i << " ";
+            }
+        }
+        cout << endl;
+
         for(int i=0;i<N;i++) if(used[i] == false) {
             bool fail = false;
             for(int j=0;j<N;j++) if(used[j] == false && flow[j][i]) {
