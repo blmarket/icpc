@@ -29,10 +29,10 @@ int s[1000005], e[1000005], f[1000005];
 
 void process(void) {
     scanf("%d %d", &N, &M);
-    cout << N << M << endl;
     for(int i=0;i<M;i++) {
         scanf("%d %d %d", &s[i], &e[i], &f[i]);
     }
+    cout << N << " " << M << endl;
 
     long long ret = 0;
 
