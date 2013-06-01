@@ -42,8 +42,19 @@ void process(void) {
         if(B[j] >= B[i]) {
             flow[i][j] = 1;
         } 
-        if(flow[i][j] && flow[j][i]) {
-            cout << "ERROR " << i << " " << j << endl;
+    }
+
+    for(int i=N-1;i>=0;i--) for(int j=i-1;j>=0;j--) {
+        if(A[i] == A[j] + 1) {
+            flow[j][i] = 1;
+            break;
+        }
+    }
+
+    for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) {
+        if(B[i] == B[j] + 1) {
+            flow[j][i] = 1;
+            break;
         }
     }
 
