@@ -56,20 +56,29 @@ void process(void) {
         return;
     }
 
-    for(int i=0;i<nn;i++) {
-        if(getworst(nn, i) >= p) {
-            cout << i-1 << " ";
-            break;
+    long long s=0, e=nn;
+    while(s+1<e) {
+        long long m = (s+e) / 2;
+        if(getworst(nn, m) >= p) {
+            e = m;
+        } else {
+            s = m+1;
         }
     }
 
-    for(int i=0;i<nn;i++) {
-        //cout << i << " best = " << getbest(nn, i) << " " << p << endl;
-        if(getbest(nn, i) >= p) {
-            cout << i-1 << endl;
-            break;
+    cout << e-1 << " ";
+
+    s=0, e=nn;
+
+    while(s+1<e) {
+        long long m = (s+e) / 2;
+        if(getbest(nn, m) >= p) {
+            e = m;
+        } else {
+            s = m+1;
         }
     }
+    cout << e-1 << endl;
 }
 
 int main(void)
