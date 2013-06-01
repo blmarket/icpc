@@ -74,6 +74,7 @@ void process(void) {
                 }
             }
         }
+        break;
         if(!action) break;
     }
     cout << ret << endl;
