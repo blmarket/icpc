@@ -61,6 +61,7 @@ void process(void) {
     bool used[2004] = {0};
     memset(ret, 0, sizeof(ret));
     for(int pp=1;pp<=N;pp++) {
+        /*
         int candi = 0;
         for(int i=0;i<N;i++) if(used[i] == false) {
             bool fail = false;
@@ -72,6 +73,7 @@ void process(void) {
             }
         }
         cout << endl;
+        */
 
         for(int i=0;i<N;i++) if(used[i] == false) {
             bool fail = false;
