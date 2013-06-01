@@ -57,7 +57,7 @@ void process(void) {
     }
 
     long long s=0, e=nn;
-    while(s+1<e) {
+    while(s<e) {
         long long m = (s+e) / 2;
         if(getworst(nn, m) >= p) {
             e = m;
@@ -70,7 +70,7 @@ void process(void) {
 
     s=0, e=nn;
 
-    while(s+1<e) {
+    while(s<e) {
         long long m = (s+e) / 2;
         if(getbest(nn, m) >= p) {
             e = m;
