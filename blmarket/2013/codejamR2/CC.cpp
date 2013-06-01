@@ -43,7 +43,7 @@ void process(void) {
             flow[i][j] = 1;
         }
         if(flow[i][j] && flow[j][i]) {
-            cout << "ERROR" << endl;
+            cout << "ERROR " << i << " " << j << endl;
         }
     }
 
