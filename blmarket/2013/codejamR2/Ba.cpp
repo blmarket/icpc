@@ -51,9 +51,23 @@ void process(void) {
     cin >> n >> p;
     nn = (1LL << n);
 
-    for(long long i=0;i<nn;i++) {
-        cout << getworst(nn, i) << endl;
-        // cout << getbest(nn, i) << endl;
+    if(p+1 == nn) {
+        cout << nn-1 << " " << nn-1 << endl;
+        return;
+    }
+
+    for(int i=0;i<n;i++) {
+        if(getworst(nn, i) >= p) {
+            cout << i-1 << " ";
+            break;
+        }
+    }
+
+    for(int i=0;i<n;i++) {
+        if(getbest(nn, i) >= p) {
+            cout << i-1 << endl;
+            break;
+        }
     }
 }
 
