@@ -70,9 +70,7 @@ void process(void) {
                 }
             }
 
-            for(int j=0;j<M;j++) {
-                cout << s[j] << " " << e[j] << " " << f[j] << endl;
-            }
+            cout << s[i] << " " << e[i] << " " << f[i] << endl;
         }
         if(!action) break;
     }
