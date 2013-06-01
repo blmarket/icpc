@@ -28,17 +28,22 @@ vector<int> go(vector<PII> V) {
     int n = size(V);
     vector<int> ret(size(V), -1);
 
+    bool first = true;
     int cnt = 0;
     while(cnt < n) {
         for(int i=n-1;i>=0;i--) {
             if(V[i].first == 0) continue;
             if(V[i].first == 1) {
                 ret[i] = ++cnt;
+                if(ret[i] != V[i].second) {
+                    cout << "ERROR" << endl;
+                }
                 V[i].first = 0;
             } else {
                 V[i].first--;
             }
         }
+        first = false;
     }
     return ret;
 }
