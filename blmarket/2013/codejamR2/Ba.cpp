@@ -51,7 +51,7 @@ void process(void) {
     cin >> n >> p;
     nn = (1LL << n);
 
-    if(p+1 == nn) {
+    if(p == nn) {
         cout << nn-1 << " " << nn-1 << endl;
         return;
     }
