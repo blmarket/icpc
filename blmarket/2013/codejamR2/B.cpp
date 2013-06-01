@@ -26,9 +26,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 long long nn;
-long long p;
 
-long long go2(void) {
+long long go2(long long p) {
     if(nn == p) return nn-1;
     long long mincut = nn - p;
 
@@ -43,7 +42,7 @@ long long go2(void) {
     }
 }
 
-long long go1(void) {
+long long go1(long long p) {
     if(nn == p) return nn-1;
     long long mincut = nn - p;
     int ret = 1;
@@ -56,10 +55,11 @@ long long go1(void) {
 }
 
 void process(void) {
+    long long p;
     cin >> n >> p;
     nn = (1LL << n);
 
-    cout << go1() << " " << nn-1 - go2() << endl;
+    cout << go2(nn - p) << " " << nn - 1 - go2(p) << endl;
 }
 
 int main(void)
