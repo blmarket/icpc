@@ -64,6 +64,7 @@ void process(void) {
     }
 
     for(int i=0;i<n;i++) {
+        cout << "best = " << getbest(nn, i) << endl;
         if(getbest(nn, i) >= p) {
             cout << i-1 << endl;
             break;
