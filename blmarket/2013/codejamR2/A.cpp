@@ -32,7 +32,6 @@ void process(void) {
     for(int i=0;i<M;i++) {
         scanf("%d %d %d", &s[i], &e[i], &f[i]);
     }
-    cout << N << " " << M << endl;
 
     long long ret = 0;
 
@@ -70,6 +69,7 @@ void process(void) {
                     }
                 }
             }
+            cout << M << endl;
         }
         if(!action) break;
     }
