@@ -57,7 +57,7 @@ vector<int> go(vector<PII> V) {
                 for(int j=0;j<n;j++) printf("%3d ", V[j].second);
                 printf("\n");
                 for(int j=0;j<n;j++) printf("%3d ", ret[j]);
-                printf("\n");
+                printf("\n\n");
             }
         }
     }
