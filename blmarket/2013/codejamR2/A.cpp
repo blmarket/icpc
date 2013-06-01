@@ -37,6 +37,11 @@ void process(void) {
 
     while(true) {
         bool action = false;
+        for(int i=0;i<M;i++) {
+            cout << s[i] << " " << e[i] << " " << f[i] << endl;
+        }
+        cout << endl;
+
         for(int i=0;i<M;i++) if(f[i]) {
             for(int j=i+1;j<M;j++) if(f[j]) {
                 if(e[i] < s[j] || e[j] < s[i]) continue;
@@ -48,7 +53,6 @@ void process(void) {
                 int nd2 = e[j] - s[i];
                 long long cost2 = nd1 * N - (nd1-1) * nd1 / 2 + nd2 * N - (nd2-1) * nd2 / 2;
 
-                cout << cost << " " << cost2 << endl;
                 if(cost2 < cost) {
                     action = true;
                     int minf = min(f[i], f[j]);
