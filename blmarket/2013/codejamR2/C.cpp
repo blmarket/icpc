@@ -39,7 +39,7 @@ vector<int> go(vector<PII> V) {
                 for(int j=i-1;j>=0;j--) if(ret[j] == -1) {
                     if(V[j].second <= tgt) { 
                         tgt = max(tgt, V[j].second + 1);
-                        V[j].second--;
+                        V[j].second = max(1, V[j].second-1);
                     }
                 }
 
@@ -47,7 +47,7 @@ vector<int> go(vector<PII> V) {
                 for(int j=i+1;j<n;j++) if(ret[j] == -1) {
                     if(V[j].first <= tgt) {
                         tgt = max(tgt, V[j].first + 1);
-                        V[j].first--;
+                        V[j].first = max(1, V[j].first-1);
                     }
                 }
 
