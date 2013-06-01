@@ -61,6 +61,7 @@ void process(void) {
                 fail = true; break;
             }
             if(!fail) {
+                cout << i << " = " << pp << endl;
                 used[i] = true;
                 ret[i] = pp;
                 break;
