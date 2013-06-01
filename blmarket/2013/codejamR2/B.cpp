@@ -59,7 +59,7 @@ void process(void) {
     cin >> n >> p;
     nn = (1LL << n);
 
-    cout << go2(nn - p) << " " << nn - 1 - go2(p) << endl;
+    cout << go2(nn - p) - 1 << " " << nn - 1 - go2(p) << endl;
 }
 
 int main(void)
