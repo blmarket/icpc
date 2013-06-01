@@ -36,7 +36,7 @@ vector<int> go(vector<PII> V) {
             if(V[i].first == 1) {
                 ret[i] = ++cnt;
                 if(first && ret[i] != V[i].second) {
-                    cout << "ERROR" << endl;
+                    cout << "ERROR " << size(V) << endl;
                 }
                 V[i].first = 0;
             } else {
