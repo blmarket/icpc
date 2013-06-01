@@ -57,6 +57,10 @@ vector<int> go(vector<PII> V) {
 
                 setsecond(0, i, 2);
                 setfirst(i, n, 2);
+
+                for(int i=0;i<n;i++) printf("%3d ", V[i].first); printf("\n");
+                for(int i=0;i<n;i++) printf("%3d ", V[i].second); printf("\n");
+                for(int i=0;i<n;i++) printf("%3d ", ret[i]); printf("\n\n");
                 break;
             }
         }
