@@ -25,7 +25,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, M;
-int s[1000005], e[1000005], f[1000005];
+int s[10000005], e[10000005], f[10000005];
 
 void process(void) {
     scanf("%d %d", &N, &M);
