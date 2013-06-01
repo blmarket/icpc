@@ -66,7 +66,7 @@ void process(void) {
     */
 
     for(int i=0;i<n;i++) {
-        cout << i << " best = " << getbest(nn, i) << endl;
+        cout << i << " best = " << getbest(nn, i) << " " << p << endl;
         if(getbest(nn, i) >= p) {
             cout << i-1 << endl;
             break;
