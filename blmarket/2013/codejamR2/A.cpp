@@ -48,6 +48,7 @@ void process(void) {
                 int nd2 = e[j] - s[i];
                 long long cost2 = nd1 * N - (nd1-1) * nd1 / 2 + nd2 * N - (nd2-1) * nd2 / 2;
 
+                cout << cost << " " << cost2 << endl;
                 if(cost2 < cost) {
                     action = true;
                     int minf = min(f[i], f[j]);
@@ -69,7 +70,6 @@ void process(void) {
                 }
             }
         }
-        cout << M << " " << action << endl;
         if(!action) break;
     }
     cout << ret << endl;
