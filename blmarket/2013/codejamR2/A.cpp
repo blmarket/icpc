@@ -35,7 +35,7 @@ void process(void) {
 
     long long ret = 0;
 
-    while(true) {
+    for(int tt=0;tt<2;tt++) {
         bool action = false;
         for(int i=0;i<M;i++) {
             cout << s[i] << " " << e[i] << " " << f[i] << endl;
@@ -74,7 +74,6 @@ void process(void) {
                 }
             }
         }
-        break;
         if(!action) break;
     }
     cout << ret << endl;
