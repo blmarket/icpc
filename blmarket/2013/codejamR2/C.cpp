@@ -35,29 +35,28 @@ vector<int> go(vector<PII> V) {
                 ret[i] = ++cnt;
                 V[i].first = V[i].second = -1;
 
-                int tgt = 2;
-                for(int j=i-1;j>=0;j--) if(ret[j] == -1) {
-                    if(V[j].second <= tgt) { 
-                        tgt = max(tgt, V[j].second + 1);
-                        V[j].second = max(1, V[j].second-1);
+                function<void(int,int,int)> setsecond = [&](int s, int e, int tgt) {
+                    for(int j=s;j<e;j++) if(ret[j] == -1) {
+                        if(V[j].second == tgt) {
+                            V[j].second--;
+                            setsecond(s, j, tgt + 1);
+                            return;
+                        }
                     }
-                }
+                };
 
-                tgt = 2;
-                for(int j=i+1;j<n;j++) if(ret[j] == -1) {
-                    if(V[j].first <= tgt) {
-                        tgt = max(tgt, V[j].first + 1);
-                        V[j].first = max(1, V[j].first-1);
+                function<void(int,int,int)> setfirst = [&](int s, int e, int tgt) {
+                    for(int j=e-1;j>s;j--) if(ret[j] == -1) {
+                        if(V[j].first == tgt) {
+                            V[j].first--;
+                            setfirst(j, e, tgt + 1);
+                            return;
+                        }
                     }
-                }
+                };
 
-                // for(int j=0;j<n;j++) printf("%3d ", V[j].first);
-                // printf("\n");
-                // for(int j=0;j<n;j++) printf("%3d ", V[j].second);
-                // printf("\n");
-                // for(int j=0;j<n;j++) printf("%3d ", ret[j]);
-                // printf("\n\n");
-
+                setsecond(0, i, 2);
+                setfirst(i, n, 2);
                 break;
             }
         }
