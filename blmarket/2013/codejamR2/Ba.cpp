@@ -26,6 +26,15 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 
+long long getworst(long long nn, long long a) {
+    if(a == 0) return 0;
+    if(a & 1) {
+        return (nn/2) + getworst(nn / 2, a / 2);
+    } else {
+        return (nn/2) + getworst(nn / 2, (a-1) / 2);
+    }
+}
+
 long long getbest(long long nn, long long a) {
     if(a == nn-1) return nn-1;
 
@@ -43,7 +52,8 @@ void process(void) {
     nn = (1LL << n);
 
     for(long long i=0;i<nn;i++) {
-        cout << getbest(nn, i) << endl;
+        cout << getworst(nn, i) << endl;
+        // cout << getbest(nn, i) << endl;
     }
 }
 
