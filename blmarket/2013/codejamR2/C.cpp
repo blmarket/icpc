@@ -51,6 +51,8 @@ vector<int> go(vector<PII> V) {
                     }
                 }
 
+                break;
+
 
                 for(int j=0;j<n;j++) printf("%3d ", V[j].first);
                 printf("\n");
