@@ -47,6 +47,11 @@ void process(void) {
         }
     }
 
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) cout << flow[i][j] << " ";
+        cout << endl;
+    }
+
     bool used[2004] = {0};
     for(int pp=1;pp<=N;pp++) {
         for(int i=0;i<N;i++) if(used[i] == false) {
