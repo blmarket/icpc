@@ -30,6 +30,7 @@ int flow[2004][2004];
 int ret[2004];
 
 void process(void) {
+    cout << endl;
     cin >> N;
     for(int i=0;i<N;i++) cin >> A[i];
     for(int i=0;i<N;i++) cin >> B[i];
