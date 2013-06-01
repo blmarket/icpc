@@ -35,12 +35,8 @@ void process(void) {
 
     long long ret = 0;
 
-    for(int tt=0;tt<2;tt++) {
+    while(true) {
         bool action = false;
-        for(int i=0;i<M;i++) {
-            cout << s[i] << " " << e[i] << " " << f[i] << endl;
-        }
-        cout << endl;
 
         for(int i=0;i<M;i++) if(f[i]) {
             for(int j=i+1;j<M;j++) if(f[j]) {
@@ -58,7 +54,6 @@ void process(void) {
                     int minf = min(f[i], f[j]);
                     ret += minf * (cost - cost2);
                     if(f[i] == f[j]) {
-                        cout << "here" << endl;
                         swap(e[i], e[j]);
                     } else {
                         f[i] -= minf;
