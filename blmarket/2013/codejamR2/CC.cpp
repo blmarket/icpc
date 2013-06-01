@@ -54,10 +54,11 @@ void process(void) {
     }
 
     bool used[2004] = {0};
+    memset(ret, 0, sizeof(ret));
     for(int pp=1;pp<=N;pp++) {
         for(int i=0;i<N;i++) if(used[i] == false) {
             bool fail = false;
-            for(int j=0;j<N;j++) if(flow[j][i]) {
+            for(int j=0;j<N;j++) if(used[j] == false && flow[j][i]) {
                 fail = true; break;
             }
             if(!fail) {
