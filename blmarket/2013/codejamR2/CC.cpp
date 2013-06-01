@@ -39,7 +39,7 @@ void process(void) {
         if(A[i] >= A[j]) {
             flow[j][i] = 1;
         }
-        if(B[j] >= A[i]) {
+        if(B[j] >= B[i]) {
             flow[i][j] = 1;
         }
         if(flow[i][j] && flow[j][i]) {
