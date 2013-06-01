@@ -72,6 +72,7 @@ void process(void) {
         }
         if(!action) break;
     }
+    cerr << M << endl;
     cout << ret << endl;
 }
 
