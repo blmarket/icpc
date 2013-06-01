@@ -40,7 +40,7 @@ vector<int> go(vector<PII> V) {
                         if(V[j].second == tgt) {
                             V[j].second--;
                             setsecond(s, j, tgt + 1);
-                            return;
+                            s = j;
                         }
                     }
                 };
@@ -50,7 +50,7 @@ vector<int> go(vector<PII> V) {
                         if(V[j].first == tgt) {
                             V[j].first--;
                             setfirst(j, e, tgt + 1);
-                            return;
+                            e = j;
                         }
                     }
                 };
