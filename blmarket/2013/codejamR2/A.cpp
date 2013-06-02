@@ -69,7 +69,7 @@ void process(void) {
     while(true) {
         bool change = false;
         for(int i=0;i<size(ss);i++, cerr << i << endl) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
-            for(int ii=0;ii<size(ss);ii++) {
+            for(int ii=i+1;ii<size(ss);ii++) {
                 if(ee[j] < ss[ii]) continue;
                 if(arr[i][j] == 0) break;
                 for(int jj=0;jj<size(ee);jj++) if(arr[ii][jj]) {
