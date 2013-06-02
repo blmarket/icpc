@@ -53,16 +53,6 @@ void process(void) {
 
     LL ret = 0;
     while(true) {
-        /*
-        for(int i=0;i<size(ss);i++) {
-            for(int j=0;j<size(ee);j++) {
-                cout << arr[i][j] << " ";
-            }
-            cout << endl;
-        }
-        cout << " = " << ret << endl;
-        */
-
         auto debug = [&]() {
             LL nex = 0;
             for(int i=0;i<size(ss);i++) {
@@ -75,6 +65,7 @@ void process(void) {
             }
             cout << cur - nex << " " << ret << endl;
         };
+        debug();
 
         bool change = false;
         for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
@@ -92,7 +83,6 @@ void process(void) {
                     long long p4 = ee[j] - ss[ii];
                     LL c2 = p3*(p3-1) + p4 * (p4-1);
                     if(c2 > c1) {
-                        debug();
                         change = true;
                         int minf = min(arr[i][j], arr[ii][jj]);
                         ret += (c2 - c1) * minf;
