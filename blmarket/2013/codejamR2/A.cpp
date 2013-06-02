@@ -60,9 +60,11 @@ void process(void) {
 
         bool change = false;
         for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
-            for(int ii=i;ii<size(ss);ii++) if(ss[ii] <= ee[j]) {
+            for(int ii=0;ii<size(ss);ii++) {
+                if(ee[j] < ss[ii]) continue;
                 if(arr[i][j] == 0) break;
                 for(int jj=0;jj<size(ee);jj++) if(arr[ii][jj]) {
+                    if(ee[jj] < ss[i]) continue;
                     if(arr[i][j] == 0) break;
                     long long p1 = ee[j] - ss[i];
                     long long p2 = ee[jj] - ss[ii];
