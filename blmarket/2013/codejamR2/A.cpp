@@ -52,7 +52,7 @@ void process(void) {
     while(true) {
         bool change = false;
         for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
-            for(int ii=i+1;ii<size(ss);ii++) if(ss[ii] <= ee[j]) {
+            for(int ii=i;ii<size(ss);ii++) if(ss[ii] <= ee[j]) {
                 if(arr[i][j] == 0) break;
                 for(int jj=0;jj<size(ee);jj++) if(arr[ii][jj]) {
                     if(arr[i][j] == 0) break;
