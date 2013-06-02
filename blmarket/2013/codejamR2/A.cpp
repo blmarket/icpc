@@ -49,26 +49,31 @@ void process(void) {
     }
 
     LL ret = 0;
-    for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
-        for(int ii=i+1;ii<size(ss);ii++) if(ss[ii] <= ee[j]) {
-            if(arr[i][j] == 0) break;
-            for(int jj=0;jj<size(ee);jj++) if(arr[ii][jj]) {
+    while(true) {
+        bool change = false;
+        for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
+            for(int ii=i+1;ii<size(ss);ii++) if(ss[ii] <= ee[j]) {
                 if(arr[i][j] == 0) break;
-                long long p1 = ee[j] - ss[i];
-                long long p2 = ee[jj] - ss[ii];
-                LL c1 = p1*(p1-1) + p2*(p2-1);
+                for(int jj=0;jj<size(ee);jj++) if(arr[ii][jj]) {
+                    if(arr[i][j] == 0) break;
+                    long long p1 = ee[j] - ss[i];
+                    long long p2 = ee[jj] - ss[ii];
+                    LL c1 = p1*(p1-1) + p2*(p2-1);
 
-                long long p3 = ee[jj] - ss[i];
-                long long p4 = ee[j] - ss[ii];
-                LL c2 = p3*(p3-1) + p4 * (p4-1);
-                if(c2 > c1) {
-                    int minf = min(arr[i][j], arr[ii][jj]);
-                    ret += (c2 - c1) * minf;
-                    arr[i][j] -= minf; arr[ii][jj] -= minf;
-                    arr[i][jj] += minf; arr[ii][j] += minf;
+                    long long p3 = ee[jj] - ss[i];
+                    long long p4 = ee[j] - ss[ii];
+                    LL c2 = p3*(p3-1) + p4 * (p4-1);
+                    if(c2 > c1) {
+                        change = true;
+                        int minf = min(arr[i][j], arr[ii][jj]);
+                        ret += (c2 - c1) * minf;
+                        arr[i][j] -= minf; arr[ii][jj] -= minf;
+                        arr[i][jj] += minf; arr[ii][j] += minf;
+                    }
                 }
             }
         }
+        if(!change) break;
     }
 
     cout << ret/2 << endl;
