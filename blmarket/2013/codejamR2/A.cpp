@@ -88,6 +88,14 @@ void process(void) {
         if(!change) break;
     }
 
+    for(int i=0;i<size(ss);i++) {
+        for(int j=0;j<size(ee);j++) {
+            if(arr[i][j]) {
+                cout << ss[i] << " " << ee[j] << " = " << arr[i][j] << endl;
+            }
+        }
+    }
+
     cout << ret/2 << endl;
 }
 
