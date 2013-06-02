@@ -48,7 +48,7 @@ void process(void) {
         cur += dist * (dist-1) * f[i];
         int p1 = lower_bound(ALL(ss), s[i]) - ss.begin();
         int p2 = lower_bound(ALL(ee), e[i]) - ee.begin();
-        cout << s[i] << " " << ss[p1] << " and " << e[i] << " " << ee[p2] << endl;
+        cout << "a " << p1 << " " << p2 << " = " << f[i] << endl;
         arr[p1][p2] = f[i];
     }
 
