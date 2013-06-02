@@ -92,6 +92,7 @@ void process(void) {
                     long long p4 = ee[j] - ss[ii];
                     LL c2 = p3*(p3-1) + p4 * (p4-1);
                     if(c2 > c1) {
+                        debug();
                         change = true;
                         int minf = min(arr[i][j], arr[ii][jj]);
                         ret += (c2 - c1) * minf;
