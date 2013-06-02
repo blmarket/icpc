@@ -63,6 +63,19 @@ void process(void) {
         cout << " = " << ret << endl;
         */
 
+        auto debug = [&]() {
+            LL nex = 0;
+            for(int i=0;i<size(ss);i++) {
+                for(int j=0;j<size(ee);j++) {
+                    if(arr[i][j]) {
+                        LL dist = ee[j] - ss[i];
+                        nex += dist * (dist-1) * arr[i][j];
+                    }
+                }
+            }
+            cout << cur - nex << " " << ret << endl;
+        };
+
         bool change = false;
         for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
             for(int ii=0;ii<size(ss);ii++) {
@@ -81,23 +94,14 @@ void process(void) {
                     if(c2 > c1) {
                         change = true;
                         int minf = min(arr[i][j], arr[ii][jj]);
-                        ret += (c2 - c1) * (LL)minf;
+                        ret += (c2 - c1) * minf;
                         arr[i][j] -= minf; arr[ii][jj] -= minf;
                         arr[i][jj] += minf; arr[ii][j] += minf;
+                        debug();
                     }
                 }
             }
         }
-        LL nex = 0;
-        for(int i=0;i<size(ss);i++) {
-            for(int j=0;j<size(ee);j++) {
-                if(arr[i][j]) {
-                    LL dist = ee[j] - ss[i];
-                    nex += dist * (dist-1) * arr[i][j];
-                }
-            }
-        }
-        cout << cur - nex << " " << ret << endl;
 
         if(!change) break;
     }
