@@ -58,6 +58,7 @@ void process(void) {
         for(int i=0;i<size(ss);i++) {
             for(int j=0;j<size(ee);j++) {
                 if(arr[i][j]) {
+                    cout << "b " << i << " " << j << " = " << arr[i][j] << endl;
                     LL dist = ee[j] - ss[i];
                     nex += dist * (dist-1) * arr[i][j];
                 }
