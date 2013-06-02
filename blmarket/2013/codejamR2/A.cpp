@@ -45,7 +45,7 @@ void process(void) {
     memset(arr, 0, sizeof(arr));
     for(int i=0;i<M;i++) {
         LL dist = e[i] - s[i];
-        cur += dist * (dist-1);
+        cur += dist * (dist-1) * f[i];
         int p1 = lower_bound(ALL(ss), s[i]) - ss.begin();
         int p2 = lower_bound(ALL(ee), e[i]) - ee.begin();
         arr[p1][p2] = f[i];
@@ -97,7 +97,7 @@ void process(void) {
             if(arr[i][j]) {
                 cout << ss[i] << " " << ee[j] << " = " << arr[i][j] << endl;
                 LL dist = ee[j] - ss[i];
-                nex += dist * (dist-1);
+                nex += dist * (dist-1) * arr[i][j];
             }
         }
     }
