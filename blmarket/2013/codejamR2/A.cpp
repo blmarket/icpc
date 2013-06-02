@@ -48,7 +48,7 @@ void process(void) {
         cur += dist * (dist-1) * f[i];
         int p1 = lower_bound(ALL(ss), s[i]) - ss.begin();
         int p2 = lower_bound(ALL(ee), e[i]) - ee.begin();
-        arr[p1][p2] = f[i];
+        arr[p1][p2] += f[i];
     }
 
     LL ret = 0;
@@ -64,9 +64,7 @@ void process(void) {
                 }
             }
         }
-        cout << M << " " << cc << " " << cur - nex << " " << ret << endl;
     };
-    debug();
 
     while(true) {
         bool change = false;
@@ -90,9 +88,6 @@ void process(void) {
                         ret += (c2 - c1) * minf;
                         arr[i][j] -= minf; arr[ii][jj] -= minf;
                         arr[i][jj] += minf; arr[ii][j] += minf;
-
-                        cout << ss[i] << " " << ee[j] << " vs " << ss[ii] << " " << ee[jj] << " = " << minf << endl;
-                        debug();
                     }
                 }
             }
