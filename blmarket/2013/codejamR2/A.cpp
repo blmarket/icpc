@@ -93,6 +93,7 @@ void process(void) {
             }
         }
 
+        cerr << change << endl;
         if(!change) break;
     }
 
