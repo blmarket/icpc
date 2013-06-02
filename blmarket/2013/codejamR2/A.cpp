@@ -81,7 +81,7 @@ void process(void) {
                     if(c2 > c1) {
                         change = true;
                         int minf = min(arr[i][j], arr[ii][jj]);
-                        ret += (c2 - c1) * minf;
+                        ret += (c2 - c1) * (LL)minf;
                         arr[i][j] -= minf; arr[ii][jj] -= minf;
                         arr[i][jj] += minf; arr[ii][j] += minf;
                     }
