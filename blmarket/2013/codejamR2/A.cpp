@@ -54,15 +54,17 @@ void process(void) {
     LL ret = 0;
     auto debug = [&]() {
         LL nex = 0;
+        int cc = 0;
         for(int i=0;i<size(ss);i++) {
             for(int j=0;j<size(ee);j++) {
                 if(arr[i][j]) {
+                    cc++;
                     LL dist = ee[j] - ss[i];
                     nex += dist * (dist-1) * arr[i][j];
                 }
             }
         }
-        cout << cur - nex << " " << ret << endl;
+        cout << M << " " << cc << " " << cur - nex << " " << ret << endl;
     };
     debug();
 
