@@ -50,6 +50,14 @@ void process(void) {
 
     LL ret = 0;
     while(true) {
+        for(int i=0;i<size(ss);i++) {
+            for(int j=0;j<size(ee);j++) {
+                cout << arr[i][j] << " ";
+            }
+            cout << endl;
+        }
+        cout << " = " << ret << endl;
+
         bool change = false;
         for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
             for(int ii=i;ii<size(ss);ii++) if(ss[ii] <= ee[j]) {
