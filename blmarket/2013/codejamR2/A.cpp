@@ -85,7 +85,10 @@ void process(void) {
                     if(c2 > c1) {
                         change = true;
                         int minf = min(arr[i][j], arr[ii][jj]);
-                        ret += (c2 - c1) * minf;
+                        c2 -= c1;
+                        c2 %= 1000002013LL;
+                        ret += c2 * minf;
+                        ret %= 1000002013LL;
                         arr[i][j] -= minf; arr[ii][jj] -= minf;
                         arr[i][jj] += minf; arr[ii][j] += minf;
                     }
@@ -96,7 +99,13 @@ void process(void) {
         if(!change) break;
     }
 
-    cout << ret/2 << endl;
+    if(ret & 1) {
+        ret += 1000002013LL;
+    }
+    ret /= 2;
+    ret %= 1000002013LL;
+
+    cout << ret << endl;
 }
 
 int main(void)
