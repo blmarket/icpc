@@ -48,7 +48,6 @@ void process(void) {
         cur += dist * (dist-1) * f[i];
         int p1 = lower_bound(ALL(ss), s[i]) - ss.begin();
         int p2 = lower_bound(ALL(ee), e[i]) - ee.begin();
-        cout << "a " << p1 << " " << p2 << " = " << f[i] << endl;
         arr[p1][p2] = f[i];
     }
 
@@ -58,7 +57,6 @@ void process(void) {
         for(int i=0;i<size(ss);i++) {
             for(int j=0;j<size(ee);j++) {
                 if(arr[i][j]) {
-                    cout << "b " << i << " " << j << " = " << arr[i][j] << endl;
                     LL dist = ee[j] - ss[i];
                     nex += dist * (dist-1) * arr[i][j];
                 }
