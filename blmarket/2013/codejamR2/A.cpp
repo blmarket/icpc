@@ -50,6 +50,7 @@ void process(void) {
 
     LL ret = 0;
     for(int i=0;i<size(ss);i++) for(int j=0;j<size(ee);j++) if(arr[i][j]) {
+        cout << j << endl;
         for(int ii=i+1;ii<size(ss);i++) if(ss[ii] <= ee[j]) {
             if(arr[i][j] == 0) break;
             for(int jj=0;jj<size(ee);jj++) if(arr[ii][jj]) {
