@@ -41,8 +41,11 @@ void process(void) {
     sort(ss.begin(), ss.end()); ss.erase(unique(ALL(ss)), ss.end());
     sort(ee.begin(), ee.end()); ee.erase(unique(ALL(ee)), ee.end());
 
+    LL cur = 0;
     memset(arr, 0, sizeof(arr));
     for(int i=0;i<M;i++) {
+        LL dist = e[i] - s[i];
+        cur += dist * (dist-1);
         int p1 = lower_bound(ALL(ss), s[i]) - ss.begin();
         int p2 = lower_bound(ALL(ee), e[i]) - ee.begin();
         arr[p1][p2] = f[i];
@@ -88,13 +91,18 @@ void process(void) {
         if(!change) break;
     }
 
+    LL nex = 0;
     for(int i=0;i<size(ss);i++) {
         for(int j=0;j<size(ee);j++) {
             if(arr[i][j]) {
                 cout << ss[i] << " " << ee[j] << " = " << arr[i][j] << endl;
+                LL dist = ee[j] - ss[i];
+                nex += dist * (dist-1);
             }
         }
     }
+    
+    cout << cur - nex << " " << ret << endl;
 
     cout << ret/2 << endl;
 }
