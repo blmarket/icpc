@@ -97,6 +97,8 @@ void process(void) {
                         ret += (c2 - c1) * minf;
                         arr[i][j] -= minf; arr[ii][jj] -= minf;
                         arr[i][jj] += minf; arr[ii][j] += minf;
+
+                        cout << p1 << " " << p2 << " > " << c1 << " " << p3 << " " << p4 << " > " << c2 << endl;
                         debug();
                     }
                 }
