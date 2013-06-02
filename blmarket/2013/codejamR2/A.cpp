@@ -98,7 +98,7 @@ void process(void) {
                         arr[i][j] -= minf; arr[ii][jj] -= minf;
                         arr[i][jj] += minf; arr[ii][j] += minf;
 
-                        cout << p1 << " " << p2 << " > " << c1 << " " << p3 << " " << p4 << " > " << c2 << endl;
+                        cout << p1 << " " << p2 << " > " << c1 << " " << p3 << " " << p4 << " > " << c2 << " " << minf << endl;
                         debug();
                     }
                 }
