@@ -88,21 +88,19 @@ void process(void) {
                 }
             }
         }
-        if(!change) break;
-    }
-
-    LL nex = 0;
-    for(int i=0;i<size(ss);i++) {
-        for(int j=0;j<size(ee);j++) {
-            if(arr[i][j]) {
-                cout << ss[i] << " " << ee[j] << " = " << arr[i][j] << endl;
-                LL dist = ee[j] - ss[i];
-                nex += dist * (dist-1) * arr[i][j];
+        LL nex = 0;
+        for(int i=0;i<size(ss);i++) {
+            for(int j=0;j<size(ee);j++) {
+                if(arr[i][j]) {
+                    LL dist = ee[j] - ss[i];
+                    nex += dist * (dist-1) * arr[i][j];
+                }
             }
         }
+        cout << cur - nex << " " << ret << endl;
+
+        if(!change) break;
     }
-    
-    cout << cur - nex << " " << ret << endl;
 
     cout << ret/2 << endl;
 }
