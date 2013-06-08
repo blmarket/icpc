@@ -70,8 +70,8 @@ public:
         }
         cout << cnts << endl;
 
-        for(int i=2;i<=N;i++)
-            cnts /= i;
+        cnts /= N * (N-1);
+
         
         cout << cnts << endl;
         return cnts;
