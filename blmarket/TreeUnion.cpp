@@ -32,10 +32,9 @@ void build(vector<string> &vs, int tgt[][305]) {
     int i = 0;
     while(sin >> tmp) {
         tgt[i+1][tmp] = tgt[tmp][i+1] = 1;
+        i++;
     }
     N = i;
-
-    cout << N << endl;
 
     for(int k=0;k<N;k++) for(int i=0;i<N;i++) if(tgt[i][k] != -1) {
         for(int j=0;j<N;j++) if(tgt[k][j] != -1) {
