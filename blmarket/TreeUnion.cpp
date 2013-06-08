@@ -22,9 +22,10 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int dist1[305][305], dist2[305][305];
+int dd1[305], dd2[305];
 int N;
 
-void build(vector<string> &vs, int tgt[][305]) {
+void build(vector<string> &vs, int tgt[][305], int *rr) {
     string str;
     for(int i=0;i<size(vs);i++) str += vs[i];
     istringstream sin(str);
@@ -44,12 +45,12 @@ void build(vector<string> &vs, int tgt[][305]) {
         }
     }
 
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) {
-            cout << tgt[i][j] << " ";
-        }
-        cout << endl;
+    for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) {
+        rr[tgt[i][j]]++;
     }
+
+    for(int i=0;i<N;i++)
+        cout << rr[i] << " ";
     cout << endl;
 }
 
@@ -60,8 +61,9 @@ public:
     {
         memset(dist1, -1, sizeof(dist1));
         memset(dist2, -1, sizeof(dist2));
-        build(tree1, dist1);
-        build(tree2, dist2);
+        memset(dd1, 0, sizeof(dd1)); memset(dd2, 0, sizeof(dd2));
+        build(tree1, dist1, dd1);
+        build(tree2, dist2, dd2);
     }
 
     
