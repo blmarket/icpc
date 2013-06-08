@@ -47,7 +47,10 @@ bool go(int pos, map<int, int> &cur, string &ret) {
     if(size(t1)) t1 = "-" + t1;
     cur[cons[pos]]--;
     r2 = go(pos+1, cur, t2);
-    if(size(t2)) t2 = "+" + t2;
+    if(size(t2)) {
+        t2 = "+" + t2;
+        for(int i=0;i<L;i++) t2[i] = '+';
+    }
     cur[cons[pos]]++;
 
     if(!r1 || !r2) {
