@@ -44,8 +44,10 @@ bool go(int pos, map<int, int> &cur, string &ret) {
     string t1, t2;
     bool r1,r2;
     r1 = go(pos+1, cur, t1);
+    if(size(t1)) t1 = "-" + t1;
     cur[cons[pos]]--;
     r2 = go(pos+1, cur, t2);
+    if(size(t2)) t2 = "+" + t2;
     cur[cons[pos]]++;
 
     if(!r1 || !r2) {
