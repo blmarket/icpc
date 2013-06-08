@@ -32,6 +32,15 @@ bool go(int pos, map<int, int> &cur, string &ret) {
         return false;
     }
 
+    if(pos+L == N) {
+        if(cur[cons[pos]]) {
+            ret = string(L, '+');
+        } else {
+            ret = string(L, '-');
+        }
+        return true;
+    }
+
     string t1, t2;
     bool r1,r2;
     r1 = go(pos+1, cur, t1);
