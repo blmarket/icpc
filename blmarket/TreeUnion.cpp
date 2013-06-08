@@ -67,8 +67,12 @@ public:
             if(tt < 1) break;
             cnts += dd1[i] * dd2[tt] * 2;
         }
+
+        for(int i=2;i<=N;i++)
+            cnts /= i;
         
         cout << cnts << endl;
+        return cnts;
     }
 
     
