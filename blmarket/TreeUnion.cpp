@@ -65,6 +65,7 @@ public:
         for(int i=1;i<N;i++) if(dd1[i]) {
             int tt = K - 2 - i;
             if(tt < 1) break;
+            cout << i << " : " << dd1[i] << " " << dd2[tt] << endl;
             cnts += dd1[i] * dd2[tt] * 2;
         }
 
@@ -73,6 +74,7 @@ public:
         
         cout << cnts << endl;
         return cnts;
+
     }
 
     
