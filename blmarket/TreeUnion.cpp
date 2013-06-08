@@ -66,7 +66,7 @@ public:
             int tt = K - 2 - i;
             if(tt < 1) break;
             cout << i << " : " << dd1[i] << " " << dd2[tt] << endl;
-            cnts += dd1[i] * dd2[tt] * 2;
+            cnts += (long double)dd1[i] * dd2[tt] * 2;
         }
         cout << cnts << endl;
 
