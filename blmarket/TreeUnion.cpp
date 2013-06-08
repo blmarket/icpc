@@ -48,10 +48,6 @@ void build(vector<string> &vs, int tgt[][305], int *rr) {
     for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) {
         rr[tgt[i][j]]++;
     }
-
-    for(int i=0;i<N;i++)
-        cout << rr[i] << " ";
-    cout << endl;
 }
 
 class TreeUnion 
@@ -64,6 +60,15 @@ public:
         memset(dd1, 0, sizeof(dd1)); memset(dd2, 0, sizeof(dd2));
         build(tree1, dist1, dd1);
         build(tree2, dist2, dd2);
+
+        long double cnts = 0;
+        for(int i=1;i<N;i++) if(dd1[i]) {
+            int tt = K - 2 - i;
+            if(tt < 1) break;
+            cnts += dd1[i] * dd2[tt] * 2;
+        }
+        
+        cout << cnts << endl;
     }
 
     
