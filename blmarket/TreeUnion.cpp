@@ -72,8 +72,6 @@ public:
 
         cnts /= N * (N-1);
 
-        
-        cout << cnts << endl;
         return cnts;
 
     }
