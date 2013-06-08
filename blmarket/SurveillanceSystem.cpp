@@ -23,13 +23,12 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N, L;
 int cons[55];
 
-bool go(int pos, map<int, int> &cur, string &ret) {
-    map<int, int> tmp;
-    for(int i=pos;i+L<=N;i++) tmp[cons[i]]++;
-
-    foreach(it, cur) if(it->second < 0 || it->second > tmp[it->first]) {
-        ret = "";
-        return false;
+bool go(int pos, VI &cur, VI &rem, string &ret) {
+    for(int i=0;i<=L;i++) {
+        if(cur[i] < 0 || cur[i] > rem[i]) {
+            ret = "";
+            return false;
+        }
     }
 
     if(pos+L == N) {
@@ -43,15 +42,17 @@ bool go(int pos, map<int, int> &cur, string &ret) {
 
     string t1, t2;
     bool r1,r2;
-    r1 = go(pos+1, cur, t1);
+    rem[cons[pos]]--;
+    r1 = go(pos+1, cur, rem, t1);
     if(size(t1)) t1 = "-" + t1;
     cur[cons[pos]]--;
-    r2 = go(pos+1, cur, t2);
+    r2 = go(pos+1, cur, rem, t2);
     if(size(t2)) {
         t2 = "+" + t2;
         for(int i=0;i<L;i++) t2[i] = '+';
     }
     cur[cons[pos]]++;
+    rem[cons[pos]]++;
 
     if(!r1 || !r2) {
         ret = t1 + t2;
@@ -74,15 +75,17 @@ public:
     {
         N = size(containers);
         L = L_;
+        VI rem(L+1, 0);
+        VI cur = rem;
         for(int i=0;i+L<=N;i++) {
             cons[i] = 0;
             for(int j=i;j<i+L;j++) cons[i] += (containers[j] == 'X');
+            rem[cons[i]]++;
         }
-        map<int, int> cur;
         for(int i=0;i<size(reports);i++) cur[reports[i]]++;
 
         string ret;
-        go(0, cur, ret);
+        go(0, cur, rem, ret);
         return ret;
     }
 
