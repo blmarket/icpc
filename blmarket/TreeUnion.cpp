@@ -68,6 +68,7 @@ public:
             cout << i << " : " << dd1[i] << " " << dd2[tt] << endl;
             cnts += dd1[i] * dd2[tt] * 2;
         }
+        cout << cnts << endl;
 
         for(int i=2;i<=N;i++)
             cnts /= i;
