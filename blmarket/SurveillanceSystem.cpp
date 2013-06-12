@@ -20,73 +20,28 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int N, L;
-int cons[55];
-
-bool go(int pos, VI &cur, VI &rem, string &ret) {
-    for(int i=0;i<=L;i++) {
-        if(cur[i] < 0 || cur[i] > rem[i]) {
-            ret = "";
-            return false;
-        }
-    }
-
-    if(pos+L == N) {
-        if(cur[cons[pos]]) {
-            ret = string(L, '+');
-        } else {
-            ret = string(L, '-');
-        }
-        return true;
-    }
-
-    string t1, t2;
-    bool r1,r2;
-    rem[cons[pos]]--;
-    r1 = go(pos+1, cur, rem, t1);
-    if(size(t1)) t1 = "-" + t1;
-    cur[cons[pos]]--;
-    r2 = go(pos+1, cur, rem, t2);
-    if(size(t2)) {
-        t2 = "+" + t2;
-        for(int i=0;i<L;i++) t2[i] = '+';
-    }
-    cur[cons[pos]]++;
-    rem[cons[pos]]++;
-
-    if(!r1 || !r2) {
-        ret = t1 + t2;
-        return true;
-    }
-
-    ret = t1;
-    for(int i=0;i<size(ret);i++) {
-        if(ret[i] == '?') continue;
-        if(ret[i] == t2[i]) continue;
-        ret[i] = '?';
-    }
-    return true;
-}
+int sum[55];
+vector<int> rrs;
 
 class SurveillanceSystem 
 {
 public:
-    string getContainerInfo(string containers, vector <int> reports, int L_) 
+    string getContainerInfo(string str, vector <int> reports, int L) 
     {
-        N = size(containers);
-        L = L_;
-        VI rem(L+1, 0);
-        VI cur = rem;
-        for(int i=0;i+L<=N;i++) {
-            cons[i] = 0;
-            for(int j=i;j<i+L;j++) cons[i] += (containers[j] == 'X');
-            rem[cons[i]]++;
-        }
-        for(int i=0;i<size(reports);i++) cur[reports[i]]++;
+        sum[0] = 0;
+        for(int i=0;i<size(str);i++) sum[i+1] = sum[i] + (str[i]=='X');
 
-        string ret;
-        go(0, cur, rem, ret);
-        return ret;
+        rrs.clear();
+        for(int i=0;i<size(str);i++) {
+            if(i+L > size(str)) break;
+            rrs.pb(sum[i+L] - sum[i]);
+        }
+
+        for(int i=0;i<size(rrs);i++)
+            cout << rrs[i] << " ";
+        cout << endl;
+
+        return "";
     }
 
     
