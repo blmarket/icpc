@@ -53,6 +53,7 @@ public:
                 others[rrs[j]]++;
             }
 
+            cout << i << " " << left << " " << endl;
             bool chk = false;
             for(int j=left;j<size(rrs);j++) {
                 if(target[rrs[j]]) { // can be here.
