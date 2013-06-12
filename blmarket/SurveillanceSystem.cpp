@@ -35,7 +35,9 @@ public:
         for(int i=0;i<size(str);i++) {
             if(i+L > size(str)) break;
             rrs.pb(sum[i+L] - sum[i]);
+            cout << rrs.back() << " ";
         }
+        cout << endl;
 
         map<int,int> target;
         for(int i=0;i<size(reports);i++) target[reports[i]]++;
