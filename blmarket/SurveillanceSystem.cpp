@@ -40,7 +40,7 @@ public:
         map<int,int> target;
         for(int i=0;i<size(reports);i++) target[reports[i]]++;
 
-        string ret(size(str), '-');
+        string ret(size(str), '?');
         for(int i=0;i<size(str);i++) {
             // skip list : [i-L+1 ~ i]
             int left = max(0, i-L+1);
