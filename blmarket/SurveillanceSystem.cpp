@@ -54,7 +54,7 @@ public:
             }
 
             bool chk = false;
-            for(int j=left;j<=i;j++) {
+            for(int j=left;j<size(rrs);j++) {
                 if(target[rrs[j]]) { // can be here.
                     chk = true;
                 }
