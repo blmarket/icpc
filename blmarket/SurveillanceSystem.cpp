@@ -51,6 +51,16 @@ public:
                 others[rrs[j]]++;
             }
 
+            bool chk = false;
+            for(int j=left;j<=i;j++) {
+                if(target[rrs[j]]) { // can be here.
+                    chk = true;
+                }
+            }
+            if(!chk) {
+                ret[i] = '-';
+            }
+
             foreach(it, target) { 
                 if(others[it->first] < it->second) { // should be in.
                     ret[i] = '+';
