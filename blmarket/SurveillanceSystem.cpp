@@ -37,11 +37,29 @@ public:
             rrs.pb(sum[i+L] - sum[i]);
         }
 
-        for(int i=0;i<size(rrs);i++)
-            cout << rrs[i] << " ";
-        cout << endl;
+        map<int,int> target;
+        for(int i=0;i<size(reports);i++) target[reports[i]]++;
 
-        return "";
+        string ret(size(str), '?');
+        for(int i=0;i<size(str);i++) {
+            // skip list : [i-L+1 ~ i]
+            int left = max(0, i-L+1);
+            map<int,int> others;
+            others.clear();
+            for(int j=0;j<size(rrs);j++) {
+                if(j >= left && j <= i) continue;
+                others[rrs[j]]++;
+            }
+
+            foreach(it, target) { 
+                if(others[it->first] < it->second) { // should be in.
+                    ret[i] = str[i];
+                    break;
+                }
+            }
+        }
+
+        return ret;
     }
 
     
