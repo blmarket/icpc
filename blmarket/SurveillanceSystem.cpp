@@ -53,13 +53,15 @@ public:
                 others[rrs[j]]++;
             }
 
-            cout << i << " " << left << " " << endl;
+            cout << i << " " << left << " : ";
             bool chk = false;
             for(int j=left;j<size(rrs);j++) {
+                cout << rrs[j] << " ";
                 if(target[rrs[j]]) { // can be here.
                     chk = true;
                 }
             }
+            cout << endl;
             if(!chk) {
                 ret[i] = '-';
             }
