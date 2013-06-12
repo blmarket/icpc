@@ -55,7 +55,7 @@ public:
 
             cout << i << " " << left << " : ";
             bool chk = false;
-            for(int j=left;j<min(i, size(rrs));j++) {
+            for(int j=left;j<min(i+1, size(rrs));j++) {
                 cout << rrs[j] << " ";
                 if(target[rrs[j]]) { // can be here.
                     chk = true;
