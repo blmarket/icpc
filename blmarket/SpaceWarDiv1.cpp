@@ -38,6 +38,7 @@ bool check(long long fati) {
         while(tocut) {
             long long cc = min(ff, tocut);
             ff -= cc; tocut -= cc;
+            if(tocut == 0) break;
             if(ff == 0) {
                 it++;
                 ff = fati;
