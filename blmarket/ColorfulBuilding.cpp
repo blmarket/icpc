@@ -67,9 +67,9 @@ public:
             int ii = min(i, L);
             for(int j=0;j<=ii;j++) {
                 if(j+(N-i) < L) continue;
-                for(int k=0;k<=cc;k++) {
+                int kk = min(cc, i+1);
+                for(int k=0;k<=kk;k++) {
                     if(cur[p1][j][k]) {
-                        cout << j << " " << k << endl;
                         // select
                         int ncnt = j + (k != cs[i]);
                         long long &t1 = cur[p2][ncnt][cs[i]];
