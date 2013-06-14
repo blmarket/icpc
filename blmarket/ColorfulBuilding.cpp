@@ -52,6 +52,7 @@ public:
         eod[0] = 2;
 
         for(int i=1;i<N;i++) {
+            if(i%50 == 0) cout << i << " " << eod[i-1] << endl;
             int more = N-i;
 
             long long mul = 1;
@@ -67,6 +68,8 @@ public:
                 mul *= j;
                 mul %= mod;
             }
+
+            if(eod[i] > L) eod[i] = L + 1;
         }
 
         long long mul = 1;
