@@ -61,7 +61,7 @@ public:
                     int nk = k + (myc[j] != myc[i]);
                     dyna[i][nk] += mul * dyna[j][k];
                     dyna[i][nk] %= mod;
-                } else break;
+                }
                 mul *= j;
                 mul %= mod;
             }
