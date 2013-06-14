@@ -56,7 +56,7 @@ public:
 
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
-                for(int k=1;k<eod[j];k++) {
+                for(int k=max(1, L-more);k<eod[j];k++) {
                     if(dyna[j][k]) {
                         int nk = k + (myc[j] != myc[i]);
                         dyna[i][nk] += mul * dyna[j][k];
