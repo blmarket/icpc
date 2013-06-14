@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const int mod = 1000000009;
 
 int N;
-long long cur[1300][1300], nex[1300][1300];
+long long cur[2][1300][1300];
 
 map<pair<char, char>, int> mapper;
 vector<int> cs;
@@ -56,36 +56,38 @@ public:
         cout << endl;
 
         memset(cur, 0, sizeof(cur));
-        cur[0][0] = 1;
+        cur[0][0][0] = 1;
 
         int cc = size(mapper);
 
 
         for(int i=0;i<N;i++) {
-            memset(nex, 0, sizeof(nex));
+            int p1 = (i%2);
+            int p2 = !p1;
+            memset(cur[p2], 0, sizeof(cur[0]));
             for(int j=0;j<=i;j++) {
                 for(int k=0;k<=cc;k++) {
-                    if(cur[j][k]) {
+                    if(cur[p1][j][k]) {
                         // select
                         int ncnt = j + (k != cs[i]);
-                        long long &t1 = nex[ncnt][cs[i]];
-                        t1 += cur[j][k]; t1 %= mod;
+                        long long &t1 = cur[p2][ncnt][cs[i]];
+                        t1 += cur[p1][j][k]; t1 %= mod;
 
                         if(i+1 < N) {
                             // omit
-                            long long &t2 = nex[j][k];
-                            t2 += cur[j][k] * (N-1-i);
+                            long long &t2 = cur[p2][j][k];
+                            t2 += cur[p1][j][k] * (N-1-i);
                             t2 %= mod;
                         }
                     }
                 }
             }
-            memcpy(cur, nex, sizeof(cur));
         }
 
+        int pp = (N%2);
         long long ret = 0;
         for(int i=1;i<=N;i++) {
-            ret += cur[L][i];
+            ret += cur[pp][L][i];
             ret %= mod;
         }
 
