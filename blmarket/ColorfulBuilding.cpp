@@ -32,6 +32,8 @@ class ColorfulBuilding
 public:
     int count(vector <string> color1, vector <string> color2, int L) 
     {		
+        mapper.clear();
+        cs.clear();
         string c1,c2;
         for(int i=0;i<size(color1);i++) c1 += color1[i];
         for(int i=0;i<size(color2);i++) c2 += color2[i];
