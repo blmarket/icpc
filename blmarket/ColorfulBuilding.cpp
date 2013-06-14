@@ -25,6 +25,7 @@ const int mod = 1000000009;
 
 int myc[1300];
 long long dyna[1300][1300];
+int eod[1300];
 
 class ColorfulBuilding 
 {
@@ -48,20 +49,20 @@ public:
         reverse(myc, myc+N);
         memset(dyna, 0, sizeof(dyna));
         dyna[0][1] = 1;
+        eod[0] = 2;
 
         for(int i=1;i<N;i++) {
             int more = N-i;
 
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
-                bool h1 = false;
-                for(int k=1;k<N;k++) {
+                for(int k=1;k<eod[j];k++) {
                     if(dyna[j][k]) {
-                        h1 = true;
                         int nk = k + (myc[j] != myc[i]);
                         dyna[i][nk] += mul * dyna[j][k];
                         dyna[i][nk] %= mod;
-                    } else if(h1) break;
+                        eod[i] = max(eod[i], nk + 1);
+                    } 
                 }
                 mul *= j;
                 mul %= mod;
