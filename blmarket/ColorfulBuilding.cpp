@@ -66,6 +66,7 @@ public:
             memset(cur[p2], 0, sizeof(cur[0]));
             int ii = min(i, L);
             for(int j=0;j<=ii;j++) {
+                if(j+(N-i) < L) continue;
                 for(int k=0;k<=cc;k++) {
                     if(cur[p1][j][k]) {
                         // select
