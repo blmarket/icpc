@@ -68,17 +68,14 @@ public:
                             // select
                             int ncnt = j + (k != cs[i]);
                             //cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
-                            long long mul = 1;
-                            for(int ll=0;ll<=l;ll++) {
-                                long long &t1 = nex[ncnt][cs[i]][l-ll];
-                                t1 += cur[j][k][l] * mul; t1 %= mod;
-                                mul *= l-ll; mul %= mod;
-                            }
+                            long long &t1 = nex[ncnt][cs[i]][0];
+                            t1 += cur[j][k][l]; t1 %= mod;
 
                             if(i+1 < N) {
                                 // omit
-                                long long &t2 = nex[j][k][l+1];
-                                t2 += cur[j][k][l]; t2 %= mod;
+                                long long &t2 = nex[j][k][0];
+                                t2 += cur[j][k][l] * (N-1-i);
+                                t2 %= mod;
                             }
                         }
                     }
