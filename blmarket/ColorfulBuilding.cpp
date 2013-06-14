@@ -36,7 +36,7 @@ public:
         for(int i=0;i<size(color1);i++) c1 += color1[i];
         for(int i=0;i<size(color2);i++) c2 += color2[i];
 
-        N = size(color1);
+        N = size(c1);
         for(int i=0;i<N;i++) {
             pair<char, char> key = mp(c1[i], c2[i]);
             int vv = mapper.size() + 1;
