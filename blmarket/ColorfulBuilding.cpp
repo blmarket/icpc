@@ -52,6 +52,7 @@ public:
         dyna[0][1] = 1;
 
         for(int i=1;i<N;i++) {
+            if((i%50) == 0) cout << i << endl;
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
                 for(int k=0;k<N;k++) if(dyna[j][k]) {
