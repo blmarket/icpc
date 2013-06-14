@@ -62,6 +62,7 @@ public:
         int cc = size(mapper);
 
         for(int i=0;i<N;i++) {
+            cout << i << endl;
             nex.clear();
             foreach(it, cur) {
                 int j = it->first.first;
