@@ -66,7 +66,6 @@ public:
                     if(cur[j][k]) {
                         // select
                         int ncnt = j + (k != cs[i]);
-                        //cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
                         long long &t1 = nex[ncnt][cs[i]];
                         t1 += cur[j][k]; t1 %= mod;
 
@@ -80,7 +79,6 @@ public:
                 }
             }
             memcpy(cur, nex, sizeof(cur));
-            cout << endl;
         }
 
         long long ret = 0;
