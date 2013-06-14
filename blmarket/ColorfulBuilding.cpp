@@ -75,6 +75,7 @@ public:
                 ret %= mod;
             }
             mul *= i;
+            mul %= mod;
         }
 
         return ret;
