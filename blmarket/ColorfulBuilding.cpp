@@ -74,7 +74,7 @@ public:
                                 t1 += cur[j][k][l] * mul; t1 %= mod;
                                 mul *= l-ll; mul %= mod;
 
-                                cout << "->" << ncnt << " " << cs[i] << " " << l-ll << t1 << endl;
+                                cout << "->" << ncnt << " " << cs[i] << " " << l-ll << " = " << t1 << endl;
                             }
 
                             if(i+1 < N) {
