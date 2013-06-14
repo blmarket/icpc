@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -20,7 +21,10 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+const int mod = 1000000009;
+
 int myc[1300];
+long long dyna[1300][1300];
 
 class ColorfulBuilding 
 {
@@ -38,12 +42,29 @@ public:
 
         for(int i=0;i<N;i++) {
             pair<char, char> key = mp(c1[i], c2[i]);
-            myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin() + 1;
+            myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin();
             cout << myc[i] << " ";
         }
         cout << endl;
 
-        return 0;
+        reverse(myc, myc+N);
+        memset(dyna, 0, sizeof(dyna));
+        dyna[0][myc[0]] = 1;
+
+        for(int i=1;i<N;i++) {
+            long long mul = 1;
+            for(int j=i-1;j>=0;j--) {
+                for(int k=0;k<1300;k++) if(dyna[j][k]) {
+                    int nk = k + (myc[j] != myc[i]);
+                    dyna[i][nk] += mul * dyna[j][k];
+                    dyna[i][nk] %= mod;
+                }
+                mul *= j;
+                mul %= mod;
+            }
+        }
+
+        return dyna[N-1][L];
     }
 
     
