@@ -69,7 +69,7 @@ public:
         long long ret = 0;
         if(L == 1) ret = 1;
 
-        for(int i=1;i<N;i++) {
+        for(int i=N-1;i>=0;i--) {
             if(dyna[i][L]) {
                 cout << i << " " <<  L << " with " << mul << endl;
                 ret += dyna[i][L] * mul;
