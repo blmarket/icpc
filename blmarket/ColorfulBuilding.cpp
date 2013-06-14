@@ -65,7 +65,16 @@ public:
             }
         }
 
-        return dyna[N-1][L];
+        long long mul = 1;
+        long long ret = 0;
+        if(L == 1) ret = 1;
+
+        for(int i=1;i<N;i++) {
+            ret += dyna[i][L] * mul;
+            mul *= i;
+        }
+
+        return ret;
     }
 
     
