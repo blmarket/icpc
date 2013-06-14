@@ -45,7 +45,7 @@ bool check(long long fati) {
             if(it >= size(own)) return false;
         }
 
-        cout << it << " " << ff << endl;
+        cout << fati << " : " << it << " " << ff << endl;
     }
     return true;
 }
