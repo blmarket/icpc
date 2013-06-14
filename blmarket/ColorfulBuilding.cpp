@@ -72,6 +72,7 @@ public:
             if(dyna[i][L]) {
                 cout << i << " " <<  L << " with " << mul << endl;
                 ret += dyna[i][L] * mul;
+                ret %= mod;
             }
             mul *= i;
         }
