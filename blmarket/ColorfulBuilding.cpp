@@ -71,13 +71,13 @@ public:
                         // select
                         int ncnt = j + (k != cs[i]);
                         long long &t1 = cur[p2][ncnt][cs[i]];
-                        t1 += cur[p1][j][k]; t1 %= mod;
+                        t1 += cur[p1][j][k]; if(t1 >=mod) t1 %= mod;
 
                         if(i+1 < N) {
                             // omit
                             long long &t2 = cur[p2][j][k];
                             t2 += cur[p1][j][k] * (N-1-i);
-                            t2 %= mod;
+                            if(t2 >= mod) t2 %= mod;
                         }
                     }
                 }
