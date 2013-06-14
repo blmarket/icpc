@@ -21,8 +21,10 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+const int mod = 1000000009;
+
 int N;
-long long cur[40][40][40], nex[40][40][40];
+long long cur[50][50][50], nex[50][50][50];
 
 map<pair<char, char>, int> mapper;
 vector<int> cs;
@@ -39,6 +41,8 @@ public:
         for(int i=0;i<size(color2);i++) c2 += color2[i];
 
         N = size(c1);
+        if(N >= 50) return 0; // FIXME: remove
+
         for(int i=0;i<N;i++) {
             pair<char, char> key = mp(c1[i], c2[i]);
             int vv = mapper.size() + 1;
@@ -53,7 +57,42 @@ public:
         cout << endl;
 
         memset(cur, 0, sizeof(cur));
-        return 0;
+        cur[0][0][0] = 1;
+
+        for(int i=0;i<N;i++) {
+            memset(nex, 0, sizeof(nex));
+            for(int j=0;j<=i;j++) {
+                for(int k=0;k<size(mapper);k++) {
+                    for(int l=0;l<i;l++) {
+                        if(cur[j][k][l]) {
+                            // select
+                            int ncnt = j + (k != cs[i]);
+                            long long mul = 1;
+                            for(int ll=0;ll<=l;ll++) {
+                                long long &t1 = nex[ncnt][cs[i]][l-ll];
+                                t1 += cur[j][k][l] * mul; t1 %= mod;
+                                mul *= l-ll; mul %= mod;
+                            }
+
+                            if(i+1 < N) {
+                                // omit
+                                long long &t2 = nex[j][k][l+1];
+                                t2 += cur[j][k][l]; t2 %= mod;
+                            }
+                        }
+                    }
+                }
+            }
+            memcpy(cur, nex, sizeof(cur));
+        }
+
+        long long ret = 0;
+        for(int i=1;i<=N;i++) {
+            ret += cur[L][i][0];
+            ret %= mod;
+        }
+
+        return ret;
     }
 
     
@@ -194,6 +233,6 @@ public:
 int main()
 {
     ColorfulBuilding ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
