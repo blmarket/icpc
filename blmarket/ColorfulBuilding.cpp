@@ -43,9 +43,7 @@ public:
         for(int i=0;i<N;i++) {
             pair<char, char> key = mp(c1[i], c2[i]);
             myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin();
-            cout << myc[i] << " ";
         }
-        cout << endl;
 
         reverse(myc, myc+N);
         memset(dyna, 0, sizeof(dyna));
@@ -54,7 +52,6 @@ public:
         for(int i=1;i<N;i++) {
             int more = N-i;
 
-            if((i%50) == 0) cout << i << endl;
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
                 for(int k=max(L-more, 1);k<N;k++) if(dyna[j][k]) {
