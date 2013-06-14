@@ -70,7 +70,10 @@ public:
         if(L == 1) ret = 1;
 
         for(int i=1;i<N;i++) {
-            ret += dyna[i][L] * mul;
+            if(dyna[i][L]) {
+                cout << i << " " <<  L << " with " << mul << endl;
+                ret += dyna[i][L] * mul;
+            }
             mul *= i;
         }
 
