@@ -65,19 +65,20 @@ public:
             int p1 = (i%2);
             int p2 = !p1;
             memset(cur[p2], 0, sizeof(cur[0]));
+            cout << i*cc << endl;
             for(int j=0;j<=i;j++) {
                 for(int k=0;k<=cc;k++) {
                     if(cur[p1][j][k]) {
                         // select
                         int ncnt = j + (k != cs[i]);
                         long long &t1 = cur[p2][ncnt][cs[i]];
-                        t1 += cur[p1][j][k]; if(t1 >=mod) t1 %= mod;
+                        t1 += cur[p1][j][k]; t1 %= mod;
 
                         if(i+1 < N) {
                             // omit
                             long long &t2 = cur[p2][j][k];
                             t2 += cur[p1][j][k] * (N-1-i);
-                            if(t2 >= mod) t2 %= mod;
+                            t2 %= mod;
                         }
                     }
                 }
