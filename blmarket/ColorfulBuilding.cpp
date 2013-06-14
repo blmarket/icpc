@@ -52,12 +52,12 @@ public:
         dyna[0][1] = 1;
 
         for(int i=1;i<N;i++) {
-            int more = N-1-i;
+            int more = N-i;
 
             if((i%50) == 0) cout << i << endl;
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
-                for(int k=0;k<N;k++) if(dyna[j][k]) {
+                for(int k=0;k<N;k++) if(k+more >= L) if(dyna[j][k]) {
                     int nk = k + (myc[j] != myc[i]);
                     dyna[i][nk] += mul * dyna[j][k];
                     dyna[i][nk] %= mod;
