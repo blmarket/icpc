@@ -24,8 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const int mod = 1000000009;
 
 int N;
-// long long cur[2][1300][1300];
-map<pair<int, int>, long long> cur, nex;
+long long cur[2][1300][1300];
 
 map<pair<char, char>, int> mapper;
 vector<int> cs;
@@ -56,40 +55,42 @@ public:
         }
         cout << endl;
 
-        cur.clear();
-        cur[mp(0,0)] = 1;
+        memset(cur, 0, sizeof(cur));
+        cur[0][0][0] = 1;
 
         int cc = size(mapper);
 
+
         for(int i=0;i<N;i++) {
-            cout << i << " " << cur.size() << endl;
-            nex.clear();
-            foreach(it, cur) {
-                int j = it->first.first;
-                int k = it->first.second;
+            int p1 = (i%2);
+            int p2 = !p1;
+            memset(cur[p2], 0, sizeof(cur[0]));
+            for(int j=0;j<=i;j++) {
+                for(int k=0;k<=cc;k++) {
+                    if(cur[p1][j][k]) {
+                        // select
+                        int ncnt = j + (k != cs[i]);
+                        long long &t1 = cur[p2][ncnt][cs[i]];
+                        t1 += cur[p1][j][k]; t1 %= mod;
 
-                if(j > L) continue;
-
-                int ncnt = j + (k != cs[i]);
-                long long &t1 = nex[mp(ncnt, cs[i])];
-
-                t1 += it->second; t1 %= mod;
-
-                if(i+1 < N) {
-                    long long &t2 = nex[mp(j,k)];
-                    t2 += it->second * (N-1-i);
-                    t2 %= mod;
+                        if(i+1 < N) {
+                            // omit
+                            long long &t2 = cur[p2][j][k];
+                            t2 += cur[p1][j][k] * (N-1-i);
+                            t2 %= mod;
+                        }
+                    }
                 }
             }
-            cur.swap(nex);
         }
 
+        int pp = (N%2);
         long long ret = 0;
-        foreach(it, cur) {
-            if(it->first.first != L) continue;
-            ret += it->second;
-            if(ret >= mod) ret -= mod;
+        for(int i=1;i<=N;i++) {
+            ret += cur[pp][L][i];
+            ret %= mod;
         }
+
         return ret;
     }
 
