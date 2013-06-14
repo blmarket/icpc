@@ -41,7 +41,6 @@ public:
         for(int i=0;i<size(color2);i++) c2 += color2[i];
 
         N = size(c1);
-        if(N >= 50) return 0; // FIXME: remove
 
         for(int i=0;i<N;i++) {
             pair<char, char> key = mp(c1[i], c2[i]);
@@ -228,6 +227,6 @@ public:
 int main()
 {
     ColorfulBuilding ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
