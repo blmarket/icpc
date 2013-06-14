@@ -32,14 +32,12 @@ public:
         for(int i=0;i<size(color2);i++) c2 += color2[i];
         
         int N = size(c1);
-        vector<string> cs;
-        for(int i=0;i<N;i++) cs.pb(string() + c1[i] + c2[i]);
+        vector<pair<char, char> > cs;
+        for(int i=0;i<N;i++) cs.pb(mp(c1[i], c2[i]));
         sort(cs.begin(), cs.end()); cs.erase(unique(cs.begin(), cs.end()));
 
         for(int i=0;i<N;i++) {
-            string key;
-            key.clear(); key += c1[i] + c2[i];
-            cout << key << endl;
+            pair<char, char> key = mp(c1[i], c2[i]);
             myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin();
             cout << myc[i] << " ";
         }
