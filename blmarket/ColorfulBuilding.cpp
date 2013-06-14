@@ -67,7 +67,7 @@ public:
                         if(cur[j][k][l]) {
                             // select
                             int ncnt = j + (k != cs[i]);
-                            cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
+                            //cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
                             long long mul = 1;
                             for(int ll=0;ll<=l;ll++) {
                                 long long &t1 = nex[ncnt][cs[i]][l-ll];
@@ -235,6 +235,6 @@ public:
 int main()
 {
     ColorfulBuilding ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
