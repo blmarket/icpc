@@ -67,6 +67,8 @@ public:
                 int j = it->first.first;
                 int k = it->first.second;
 
+                if(j > L) continue;
+
                 int ncnt = j + (k != cs[i]);
                 long long &t1 = nex[mp(ncnt, cs[i])];
 
