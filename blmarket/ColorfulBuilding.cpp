@@ -54,7 +54,7 @@ public:
         for(int i=1;i<N;i++) {
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
-                for(int k=0;k<1300;k++) if(dyna[j][k]) {
+                for(int k=0;k<N;k++) if(dyna[j][k]) {
                     int nk = k + (myc[j] != myc[i]);
                     dyna[i][nk] += mul * dyna[j][k];
                     dyna[i][nk] %= mod;
