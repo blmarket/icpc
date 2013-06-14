@@ -85,7 +85,6 @@ public:
                 }
             }
             memcpy(cur, nex, sizeof(cur));
-            cout << cur[2][2][1] << endl;
             cout << endl;
         }
 
