@@ -60,11 +60,11 @@ public:
 
         int cc = size(mapper);
 
-
         for(int i=0;i<N;i++) {
             int p1 = (i%2);
             int p2 = !p1;
             memset(cur[p2], 0, sizeof(cur[0]));
+            int ii = min(i, L);
             for(int j=0;j<=i;j++) {
                 for(int k=0;k<=cc;k++) {
                     if(cur[p1][j][k]) {
