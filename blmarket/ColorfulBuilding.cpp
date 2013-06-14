@@ -69,6 +69,7 @@ public:
                 if(j+(N-i) < L) continue;
                 for(int k=0;k<=cc;k++) {
                     if(cur[p1][j][k]) {
+                        cout << j << " " << k << endl;
                         // select
                         int ncnt = j + (k != cs[i]);
                         long long &t1 = cur[p2][ncnt][cs[i]];
