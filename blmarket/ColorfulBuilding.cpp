@@ -24,7 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const int mod = 1000000009;
 
 int N;
-long long cur[50][50][50], nex[50][50][50];
+long long cur[1300][1300], nex[1300][1300];
 
 map<pair<char, char>, int> mapper;
 vector<int> cs;
@@ -57,26 +57,24 @@ public:
         cout << endl;
 
         memset(cur, 0, sizeof(cur));
-        cur[0][0][0] = 1;
+        cur[0][0] = 1;
 
         for(int i=0;i<N;i++) {
             memset(nex, 0, sizeof(nex));
             for(int j=0;j<=i;j++) {
                 for(int k=0;k<=size(mapper);k++) {
-                    for(int l=0;l<=i;l++) {
-                        if(cur[j][k][l]) {
-                            // select
-                            int ncnt = j + (k != cs[i]);
-                            //cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
-                            long long &t1 = nex[ncnt][cs[i]][0];
-                            t1 += cur[j][k][l]; t1 %= mod;
+                    if(cur[j][k]) {
+                        // select
+                        int ncnt = j + (k != cs[i]);
+                        //cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
+                        long long &t1 = nex[ncnt][cs[i]];
+                        t1 += cur[j][k]; t1 %= mod;
 
-                            if(i+1 < N) {
-                                // omit
-                                long long &t2 = nex[j][k][0];
-                                t2 += cur[j][k][l] * (N-1-i);
-                                t2 %= mod;
-                            }
+                        if(i+1 < N) {
+                            // omit
+                            long long &t2 = nex[j][k];
+                            t2 += cur[j][k] * (N-1-i);
+                            t2 %= mod;
                         }
                     }
                 }
@@ -87,7 +85,7 @@ public:
 
         long long ret = 0;
         for(int i=1;i<=N;i++) {
-            ret += cur[L][i][0];
+            ret += cur[L][i];
             ret %= mod;
         }
 
