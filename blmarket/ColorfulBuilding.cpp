@@ -65,9 +65,9 @@ public:
                 for(int k=0;k<size(mapper);k++) {
                     for(int l=0;l<=i;l++) {
                         if(cur[j][k][l]) {
-                            cout << j << " " << k << " " << l << " = " << cur[j][k][l] << endl;
                             // select
                             int ncnt = j + (k != cs[i]);
+                            cout << j << " " << k << " " << l << " = " << cur[j][k][l] << " : " << ncnt << endl;
                             long long mul = 1;
                             for(int ll=0;ll<=l;ll++) {
                                 long long &t1 = nex[ncnt][cs[i]][l-ll];
