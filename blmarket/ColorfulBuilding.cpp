@@ -38,7 +38,7 @@ public:
 
         for(int i=0;i<N;i++) {
             pair<char, char> key = mp(c1[i], c2[i]);
-            myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin();
+            myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin() + 1;
             cout << myc[i] << " ";
         }
         cout << endl;
