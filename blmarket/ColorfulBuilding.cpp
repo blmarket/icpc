@@ -39,6 +39,7 @@ public:
         for(int i=0;i<N;i++) {
             string key;
             key.clear(); key += c1[i] + c2[i];
+            cout << key << endl;
             myc[i] = lower_bound(cs.begin(), cs.end(), key) - cs.begin();
             cout << myc[i] << " ";
         }
