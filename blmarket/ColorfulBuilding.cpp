@@ -57,7 +57,7 @@ public:
             if((i%50) == 0) cout << i << endl;
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
-                for(int k=0;k<N;k++) if(k+more >= L) if(dyna[j][k]) {
+                for(int k=max(L-more, 0);k<N;k++) if(dyna[j][k]) {
                     int nk = k + (myc[j] != myc[i]);
                     dyna[i][nk] += mul * dyna[j][k];
                     dyna[i][nk] %= mod;
@@ -73,7 +73,6 @@ public:
 
         for(int i=N-1;i>=0;i--) {
             if(dyna[i][L]) {
-                cout << i << " " <<  L << " with " << mul << endl;
                 ret += dyna[i][L] * mul;
                 ret %= mod;
             }
