@@ -55,8 +55,7 @@ public:
             long long mul = 1;
             for(int j=i-1;j>=0;j--) {
                 bool h1 = false;
-                for(int k=max(L-more, 1);k<N;k++) {
-                    cout << dyna[j][k] << " ";
+                for(int k=1;k<N;k++) {
                     if(dyna[j][k]) {
                         h1 = true;
                         int nk = k + (myc[j] != myc[i]);
@@ -64,7 +63,6 @@ public:
                         dyna[i][nk] %= mod;
                     } else if(h1) break;
                 }
-                cout << endl;
                 mul *= j;
                 mul %= mod;
             }
