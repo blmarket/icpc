@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,80 +20,28 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-const int mod = 1000000009;
-
-int N;
-long long cur[2][1300][1300];
-
-map<pair<char, char>, int> mapper;
-vector<int> cs;
+int myc[1300];
 
 class ColorfulBuilding 
 {
 public:
     int count(vector <string> color1, vector <string> color2, int L) 
     {		
-        mapper.clear();
-        cs.clear();
         string c1,c2;
         for(int i=0;i<size(color1);i++) c1 += color1[i];
         for(int i=0;i<size(color2);i++) c2 += color2[i];
-
-        N = size(c1);
-
-        for(int i=0;i<N;i++) {
-            pair<char, char> key = mp(c1[i], c2[i]);
-            int vv = mapper.size() + 1;
-            if(mapper.count(key)) {
-                vv = mapper[key];
-            } else {
-                mapper[key] = vv;
-            }
-            cs.pb(vv);
-            cout << vv << " ";
-        }
-        cout << endl;
-
-        memset(cur, 0, sizeof(cur));
-        cur[0][0][0] = 1;
-
-        int cc = size(mapper);
+        
+        int N = size(c1);
+        vector<string> cs;
+        for(int i=0;i<N;i++) cs.pb(string() + c1[i] + c2[i]);
+        sort(cs.begin(), cs.end()); cs.erase(unique(cs.begin(), cs.end()));
 
         for(int i=0;i<N;i++) {
-            int p1 = (i%2);
-            int p2 = !p1;
-            memset(cur[p2], 0, sizeof(cur[0]));
-            int ii = min(i, L);
-            if((i%10) == 0) cout << i << endl;
-            for(int j=0;j<=ii;j++) {
-                if(j+(N-i) < L) continue;
-                int kk = min(cc, i+1);
-                for(int k=0;k<=kk;k++) {
-                    if(cur[p1][j][k]) {
-                        // select
-                        int ncnt = j + (k != cs[i]);
-                        long long &t1 = cur[p2][ncnt][cs[i]];
-                        t1 += cur[p1][j][k]; t1 %= mod;
-
-                        if(i+1 < N) {
-                            // omit
-                            long long &t2 = cur[p2][j][k];
-                            t2 += cur[p1][j][k] * (N-1-i);
-                            t2 %= mod;
-                        }
-                    }
-                }
-            }
+            string key;
+            key.clear(); key += c1[i] + c2[i];
         }
 
-        int pp = (N%2);
-        long long ret = 0;
-        for(int i=1;i<=N;i++) {
-            ret += cur[pp][L][i];
-            ret %= mod;
-        }
-
-        return ret;
+        return 0;
     }
 
     
@@ -235,6 +182,6 @@ public:
 int main()
 {
     ColorfulBuilding ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
