@@ -49,7 +49,7 @@ public:
 
         reverse(myc, myc+N);
         memset(dyna, 0, sizeof(dyna));
-        dyna[0][myc[0]] = 1;
+        dyna[0][1] = 1;
 
         for(int i=1;i<N;i++) {
             long long mul = 1;
