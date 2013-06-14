@@ -68,6 +68,7 @@ public:
             for(int j=0;j<=ii;j++) {
                 if(j+(N-i) < L) continue;
                 int kk = min(cc, i+1);
+                cout << i << " " << j << " " << kk << endl;
                 for(int k=0;k<=kk;k++) {
                     if(cur[p1][j][k]) {
                         // select
