@@ -62,6 +62,8 @@ public:
         sort(own.begin(), own.end());
         sort(E.begin(), E.end());
 
+        if(own.back() < E.back().first) return -1;
+
         long long sum = 0;
         for(int i=0;i<size(enemyCount);i++) {
             sum += enemyCount[i];
