@@ -46,7 +46,7 @@ bool check(long long fati) {
             if(it >= size(own)) return false;
         }
 
-        cout << fati << " : " << it << " " << ff << endl;
+        // cout << fati << " : " << it << " " << ff << endl;
     }
     return true;
 }
@@ -105,6 +105,6 @@ public:
 int main()
 {
     SpaceWarDiv1 ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
