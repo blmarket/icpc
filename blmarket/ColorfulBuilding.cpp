@@ -56,8 +56,8 @@ public:
             for(int j=i-1;j>=0;j--) {
                 for(int k=0;k<N;k++) if(dyna[j][k]) {
                     int nk = k + (myc[j] != myc[i]);
-                    cout << j << " " << k << " -> " << i << " " << nk << " with " << mul << endl;
                     dyna[i][nk] += mul * dyna[j][k];
+                    cout << j << " " << k << " -> " << i << " " << nk << " with " << mul << " = " << dyna[i][nk] << endl;
                     dyna[i][nk] %= mod;
                 }
                 mul *= j;
