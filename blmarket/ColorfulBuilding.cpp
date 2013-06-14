@@ -62,7 +62,7 @@ public:
         for(int i=0;i<N;i++) {
             memset(nex, 0, sizeof(nex));
             for(int j=0;j<=i;j++) {
-                for(int k=0;k<size(mapper);k++) {
+                for(int k=0;k<=size(mapper);k++) {
                     for(int l=0;l<=i;l++) {
                         if(cur[j][k][l]) {
                             // select
