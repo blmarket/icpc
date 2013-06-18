@@ -64,7 +64,9 @@ public:
             sum += prob[i][j] - '0';
         }
 
-        return calc(0,0);
+        double ret = calc(0,0);
+        cout << memo.size() << endl;
+        return ret;
     }
 
     
