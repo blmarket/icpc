@@ -51,7 +51,7 @@ pair<int, bool> go(int pos, int parent) {
         have ^= key.second;
     }
 
-    cout << pos << " : " << ret << " " << have << endl;
+    // cout << pos << " : " << ret << " " << have << endl;
 
     return mp(ret, have);
 }
