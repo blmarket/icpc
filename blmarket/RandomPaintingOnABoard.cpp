@@ -48,8 +48,8 @@ double calc(int rs, int cs) {
 
     double p = (double)(sum - oth) / sum;
 
-    // cout << bitset<10>(rs) << " " << bitset<10>(cs) << " = " << tot / p << endl;
-    if((size(memo) % 10000) == 0) cout << size(memo) << endl;
+    cout << bitset<10>(rs) << " " << bitset<10>(cs) << " = " << tot / p << endl;
+    // if((size(memo) % 10000) == 0) cout << size(memo) << endl;
     return memo[key] = tot / p;
 }
 
