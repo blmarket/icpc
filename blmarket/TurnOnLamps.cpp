@@ -38,6 +38,23 @@ public:
             cout << data[i].first << "," << data[i].second << " ";
         }
         cout << endl;
+
+        int N = size(data) + 1;
+        while(true) {
+            int deg[55];
+            memset(deg, 0, sizeof(deg));
+            for(int i=0;i<size(data);i++) if(data[i].second < 4) {
+                deg[i+1]++;
+                deg[data[i].first]++;
+            }
+
+            for(int i=0;i<N;i++) {
+                cout << deg[i] << " ";
+            }
+            cout << endl;
+
+            break;
+        }
     }
 
     
