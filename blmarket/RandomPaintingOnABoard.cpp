@@ -66,7 +66,6 @@ public:
         }
 
         double ret = calc(0,0);
-        cout << memo.size() << endl;
         return ret;
     }
 
