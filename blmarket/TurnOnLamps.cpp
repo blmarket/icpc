@@ -21,27 +21,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int deg[55];
+vector<pair<int, int> > data;
 
 class TurnOnLamps 
 {
 public:
     int minimize(vector <int> roads, string initState, string isImportant) 
     {
-        int N = size(roads) + 1;
-        memset(deg, 0, sizeof(deg));
-
+        data.clear();
         for(int i=0;i<size(roads);i++) {
-            deg[i+1]++;
-            deg[roads[i]]++;
+            int state = initState[i] == '1' + 2 * (isImportant[i] == '1');
+            data.pb(mp(roads[i], state));
         }
 
-        for(int i=0;i<N;i++) {
-            cout << deg[i] << " ";
+        for(int i=0;i<size(data);i++) {
+            cout << data[i].first << "," << data[i].second << " ";
         }
         cout << endl;
-
-        return 0;
     }
 
     
