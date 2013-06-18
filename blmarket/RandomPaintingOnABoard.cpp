@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bitset>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -46,6 +47,8 @@ double calc(int rs, int cs) {
     if(oth == sum) return 0;
 
     double p = (double)(sum - oth) / sum;
+
+    cout << bitset<10>(rs) << " " << bitset<10>(cs) << " = " << tot / p << endl;
     return memo[key] = tot / p;
 }
 
