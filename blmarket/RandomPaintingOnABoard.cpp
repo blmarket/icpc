@@ -48,6 +48,7 @@ double calc(int rs, int cs) {
 
     double p = (double)(sum - oth) / sum;
 
+    cout << bitset<10>(rs) << " " << bitset<10>(cs) << " = " << tot / p << endl;
     return memo[key] = tot / p;
 }
 
@@ -98,6 +99,6 @@ public:
 int main()
 {
     RandomPaintingOnABoard ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
