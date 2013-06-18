@@ -29,6 +29,7 @@ class TravelOnMars
 public:
     int minTimes(vector <int> range, int startCity, int endCity) 
     {		
+        N = size(range);
         memset(mindist, -1, sizeof(mindist));
         mindist[startCity] = 0;
 
