@@ -30,7 +30,7 @@ public:
     {
         data.clear();
         for(int i=0;i<size(roads);i++) {
-            int state = initState[i] == '1' + 2 * (isImportant[i] == '1');
+            int state = (initState[i] == '1') + 2 * (isImportant[i] == '1');
             data.pb(mp(roads[i], state));
         }
 
