@@ -43,6 +43,7 @@ double calc(int rs, int cs) {
 
         tot += p1 * e1;
     }
+    if(oth == sum) return 0;
 
     double p = (double)(sum - oth) / sum;
     return memo[key] = tot / p;
