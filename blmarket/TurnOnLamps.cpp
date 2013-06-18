@@ -23,21 +23,35 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<pair<int, int> > data;
 
-int go(int pos, int parent) {
+pair<int, bool> go(int pos, int parent) {
     vector<int> childs;
+    vector<int> states;
     for(int i=0;i<size(data);i++) {
         if(i+1 == pos || data[i].first == pos) {
             int oth = i+1+data[i].first-pos;
             if(oth == parent) continue;
             childs.pb(oth);
+            states.pb(data[i].second);
         }
     }
 
-    cout << pos << " : ";
-    for(int i=0;i<size(childs);i++) cout << childs[i] << " ";
-    cout << endl;
-    for(int i=0;i<size(childs);i++) go(childs[i], pos);
-    return 0;
+    int ret = 0;
+    bool have = false;
+    for(int i=0;i<size(childs);i++) {
+        pair<int, bool> key = go(childs[i], pos);
+        if(states[i] == 3) {
+            key.first += key.second;
+            key.second = false;
+        } else if(states[i] == 2) {
+            key.second = true;
+        }
+
+        ret += key.first;
+        ret += (have && key.second);
+        have ^= key.second;
+    }
+
+    return mp(ret, have);
 }
 
 class TurnOnLamps 
@@ -57,7 +71,7 @@ public:
         cout << endl;
 
         int N = size(data);
-        return go(N, -1);
+        return go(N, -1).first;
     }
 
     
