@@ -51,6 +51,8 @@ pair<int, bool> go(int pos, int parent) {
         have ^= key.second;
     }
 
+    cout << pos << " : " << ret << " " << have << endl;
+
     return mp(ret, have);
 }
 
@@ -64,11 +66,6 @@ public:
             int state = (initState[i] == '1') + 2 * (isImportant[i] == '1');
             data.pb(mp(roads[i], state));
         }
-
-        for(int i=0;i<size(data);i++) {
-            cout << data[i].first << "," << data[i].second << " ";
-        }
-        cout << endl;
 
         int N = size(data);
         return go(N, -1).first;
