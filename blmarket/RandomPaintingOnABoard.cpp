@@ -48,7 +48,6 @@ double calc(int rs, int cs) {
 
     double p = (double)(sum - oth) / sum;
 
-    cout << bitset<10>(rs) << " " << bitset<10>(cs) << " = " << tot / p << endl;
     return memo[key] = tot / p;
 }
 
@@ -57,6 +56,7 @@ class RandomPaintingOnABoard
 public:
     double expectedSteps(vector <string> prob_) 
     {
+        memo.clear();
         prob = prob_;
         sum = 0;
         for(int i=0;i<size(prob);i++) for(int j=0;j<size(prob[i]);j++) {
