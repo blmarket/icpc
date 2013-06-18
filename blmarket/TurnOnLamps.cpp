@@ -56,7 +56,7 @@ public:
         }
         cout << endl;
 
-        int N = size(data) + 1;
+        int N = size(data);
         return go(N, -1);
     }
 
