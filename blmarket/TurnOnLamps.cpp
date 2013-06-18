@@ -68,7 +68,8 @@ public:
         }
 
         int N = size(data);
-        return go(N, -1).first;
+        pair<int, bool> ret = go(N, -1);
+        return ret.first + ret.second;
     }
 
     
