@@ -23,6 +23,23 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<pair<int, int> > data;
 
+int go(int pos, int parent) {
+    vector<int> childs;
+    for(int i=0;i<size(data);i++) {
+        if(i+1 == pos || data[i].first == pos) {
+            int oth = i+1+data[i].first-pos;
+            if(oth == parent) continue;
+            childs.pb(oth);
+        }
+    }
+
+    cout << pos << " : ";
+    for(int i=0;i<size(childs);i++) cout << childs[i] << " ";
+    cout << endl;
+    for(int i=0;i<size(childs);i++) go(childs[i], pos);
+    return 0;
+}
+
 class TurnOnLamps 
 {
 public:
@@ -40,21 +57,7 @@ public:
         cout << endl;
 
         int N = size(data) + 1;
-        while(true) {
-            int deg[55];
-            memset(deg, 0, sizeof(deg));
-            for(int i=0;i<size(data);i++) if(data[i].second < 4) {
-                deg[i+1]++;
-                deg[data[i].first]++;
-            }
-
-            for(int i=0;i<N;i++) {
-                cout << deg[i] << " ";
-            }
-            cout << endl;
-
-            break;
-        }
+        return go(N, -1);
     }
 
     
