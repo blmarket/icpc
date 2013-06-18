@@ -41,10 +41,8 @@ public:
             Q.pop();
 
             int r = range[pos];
-            cout << pos << " " << r << endl;
             for(int i=-r;i<=r;i++) {
                 int nn = (pos + i + N) % N;
-                cout << nn << endl;
                 if(mindist[nn] == -1) {
                     mindist[nn] = mindist[pos] + 1;
                     Q.push(nn);
