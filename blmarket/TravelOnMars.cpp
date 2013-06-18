@@ -39,9 +39,8 @@ public:
             int pos = Q.front();
             Q.pop();
 
-            cout << pos << endl;
-
             int r = range[pos];
+            cout << pos << " " << r << endl;
             for(int i=-r;i<=r;i++) {
                 int nn = (pos + i + N) % N;
                 cout << nn << endl;
