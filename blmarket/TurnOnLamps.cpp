@@ -28,7 +28,20 @@ class TurnOnLamps
 public:
     int minimize(vector <int> roads, string initState, string isImportant) 
     {
+        int N = size(roads) + 1;
         memset(deg, 0, sizeof(deg));
+
+        for(int i=0;i<size(roads);i++) {
+            deg[i+1]++;
+            deg[roads[i]]++;
+        }
+
+        for(int i=0;i<N;i++) {
+            cout << deg[i] << " ";
+        }
+        cout << endl;
+
+        return 0;
     }
 
     
