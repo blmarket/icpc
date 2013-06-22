@@ -68,7 +68,6 @@ public:
                 }
             }
 
-            cout << ret << endl;
             bool fail = false;
             for(int i=0;i<M;i++) if(B[i] == 0) { fail=true; break; }
             if(fail) continue;
@@ -76,7 +75,7 @@ public:
             for(int j=0;j<(1<<M);j++) EE[j] = -1;
             EE[(1<<M)-1] = 0;
             double tmp = calc(0);
-            ret += tmp * (cnt&1)?1:-1;
+            ret += tmp * ((cnt&1)?1:-1);
             cout << tmp << " " << ret << endl;
         }
         return fabs(ret);
