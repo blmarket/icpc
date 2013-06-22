@@ -38,6 +38,8 @@ double calc(int state) {
         ret += (double)B[i] / total * calc(state | (1<<i));
     }
     ret /= (double)total / (total - nsame);
+
+    cout << state << " = " << ret << endl;
     return EE[state] = ret;
 }
 
