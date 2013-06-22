@@ -76,7 +76,6 @@ public:
             EE[(1<<M)-1] = 0;
             double tmp = calc(0);
             ret += tmp * ((cnt&1)?1:-1);
-            cout << tmp << " " << ret << endl;
         }
         return fabs(ret);
     }
@@ -113,6 +112,6 @@ public:
 int main()
 {
     RandomPaintingOnABoard ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
