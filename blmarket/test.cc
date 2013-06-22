@@ -26,4 +26,17 @@ double old(int a) {
 
 int main(void) {
     cout << old(0) << endl;
+
+    int ways[10] = {0};
+    ways[0] = 1;
+    for(int i=0;i<N;i++) {
+        for(int j=sum-arr[i];j>=0;j--) {
+            ways[j+arr[i]] -= ways[j];
+        }
+    }
+
+    for(int i=0;i<=sum;i++) {
+        cout << ways[i] << " ";
+    }
+    cout << endl;
 }
