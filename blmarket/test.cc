@@ -4,8 +4,8 @@
 using namespace std;
 
 int N = 3;
-int arr[] = {1,1,1};
-int sum = 3;
+int arr[] = {1,2,3};
+int sum = 6;
 
 map<int, double> memo;
 double old(int a) {
