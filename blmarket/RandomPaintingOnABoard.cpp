@@ -75,8 +75,8 @@ public:
             for(int j=0;j<(1<<M);j++) EE[j] = -1;
             EE[(1<<M)-1] = 0;
             double tmp = calc(0);
-            cout << tmp << endl;
             ret += tmp * (cnt&1)?1:-1;
+            cout << tmp << " " << ret << endl;
         }
         return fabs(ret);
     }
