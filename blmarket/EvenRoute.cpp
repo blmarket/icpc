@@ -25,14 +25,10 @@ class EvenRoute
 public:
     string isItPossible(vector <int> x, vector <int> y, int wantedParity) 
     {		
-        int px = 0, py = 0;
-        bool par = false;
         for(int i=0;i<size(x);i++) {
-            par ^= abs(x[i] - px);
-            par ^= abs(y[i] - py);
-            px = x[i]; py = y[i];
+            int tt = abs(x[i] + y[i]) % 2;
+            if(tt == wantedParity) return "CAN";
         }
-        if(par == wantedParity) return "CAN";
         return "CANNOT";
     }
 
