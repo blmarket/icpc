@@ -3,9 +3,9 @@
 
 using namespace std;
 
-int N = 1;
-int arr[] = {1};
-int sum = 1;
+int N = 2;
+int arr[] = {1,1};
+int sum = 2;
 
 map<int, double> memo;
 double old(int a) {
