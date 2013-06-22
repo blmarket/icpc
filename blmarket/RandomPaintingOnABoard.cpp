@@ -68,6 +68,7 @@ public:
                 }
             }
 
+            cout << ret << endl;
             bool fail = false;
             for(int i=0;i<M;i++) if(B[i] == 0) { fail=true; break; }
             if(fail) continue;
