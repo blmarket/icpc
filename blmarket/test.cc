@@ -35,8 +35,11 @@ int main(void) {
         }
     }
 
+    double ret = 0;
     for(int i=0;i<=sum;i++) {
         cout << ways[i] << " ";
+        ret += ways[i] * (double)sum / (sum - i);
     }
     cout << endl;
+    cout << ret << endl;
 }
