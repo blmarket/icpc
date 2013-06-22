@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstring>
+#include <cmath>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -20,8 +22,8 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-vector<int> moves;
 vector<int> degs;
+int F = 0, B = 0;
 
 class TurtleSpy 
 {
@@ -38,11 +40,37 @@ public:
             } else if(a == "left") {
                 degs.pb(-b);
             } else if(a == "forward") {
-                moves.pb(b);
+                F += b;
             } else {
-                moves.pb(-b);
+                B += b;
             }
         }
+
+        bool avail[360] = {0};
+        avail[0] = true;
+        for(int i=0;i<size(degs);i++) {
+            bool nex[360];
+            memset(nex, 0, sizeof(nex));
+            for(int j=0;j<360;j++) if(avail[j]) {
+                nex[j] = true;
+                int jj = (j + degs[i] + 360) % 360;
+                nex[jj] = true;
+            }
+            memcpy(avail, nex, sizeof(nex));
+        }
+
+        int mdiff = 180;
+        for(int i=0;i<360;i++) if(avail[i]) {
+            int dd = abs(180 - i);
+            if(mdiff > dd) mdiff = dd;
+        }
+
+        double D = (double)(180 - mdiff) / 180 * 3.1415926535;
+
+        double xx = F + B * cos(D);
+        double yy = B * sin(D);
+
+        return hypot(xx,yy);
     }
 
     
