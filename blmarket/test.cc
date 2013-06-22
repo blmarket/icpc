@@ -9,6 +9,7 @@ int sum = 6;
 
 map<int, double> memo;
 double old(int a) {
+    if(a+1 == (1<<N)) return 0;
     if(memo.count(a)) return memo[a];
     int sc = 0;
     double exp = 0;
