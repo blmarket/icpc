@@ -1,5 +1,6 @@
 #include <iostream>
-#include <bitset>
+#include <cmath>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,52 +22,57 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int sum = 0;
-vector<string> prob;
-map<PII, double> memo;
+int N,M;
+int A[22][22];
+int total = 0;
+int B[22];
+double EE[1<<21];
 
-double calc(int rs, int cs) {
-    PII key = mp(rs, cs);
-    if(memo.count(key)) return memo[key];
-
-    int oth = 0;
-    double tot = 1;
-    for(int i=0;i<size(prob);i++) for(int j=0;j<size(prob[i]);j++) if(prob[i][j] != '0') {
-        if((rs & (1<<i)) && (cs & (1<<j))) {
-            oth += prob[i][j] - '0';
-            continue;
-        }
-        int rrs = rs | (1<<i);
-        int ccs = cs | (1<<j);
-
-        double p1 = (double)(prob[i][j] - '0') / sum;
-        double e1 = calc(rrs, ccs);
-
-        tot += p1 * e1;
+double calc(int state) {
+    if(EE[state] >= 0) return EE[state];
+    int nsame = 0;
+    double ret = 1;
+    for(int i=0;i<M;i++) if(state & (1<<i)) {
+        nsame += B[i];
+    } else {
+        ret += (double)B[i] / total * calc(state | (1<<i));
     }
-    if(oth == sum) return 0;
-
-    double p = (double)(sum - oth) / sum;
-
-    cout << bitset<10>(rs) << " " << bitset<21>(cs) << " = " << tot / p << endl;
-    // if((size(memo) % 10000) == 0) cout << size(memo) << endl;
-    return memo[key] = tot / p;
+    ret /= (double)total / (total - nsame);
+    return EE[state] = ret;
 }
 
 class RandomPaintingOnABoard 
 {
 public:
-    double expectedSteps(vector <string> prob_) 
+    double expectedSteps(vector <string> prob) 
     {
-        memo.clear();
-        prob = prob_;
-        sum = 0;
-        for(int i=0;i<size(prob);i++) for(int j=0;j<size(prob[i]);j++) {
-            sum += prob[i][j] - '0';
+        N = size(prob); M = size(prob[0]);
+        if(N <= M) {
+            for(int i=0;i<N;i++) for(int j=0;j<M;j++) A[i][j] = prob[i][j] - '0';
+        } else {
+            for(int i=0;i<N;i++) for(int j=0;j<M;j++) A[j][i] = prob[i][j] - '0';
+            swap(N, M);
         }
+        total = 0;
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) total += A[i][j];
 
-        double ret = calc(0,0);
-        return ret;
+        double ret = 0;
+        for(int i=0;i<(1<<N);i++) {
+            int cnt = 0;
+            memset(B, 0, sizeof(B));
+            for(int j=0;j<N;j++) if(i & (1<<j)) {
+                cnt++;
+                for(int k=0;k<M;k++) {
+                    B[k] += A[j][k];
+                }
+            }
+
+            for(int j=0;j<(1<<M);j++) EE[j] = -1;
+            EE[(1<<M)-1] = 0;
+            double tmp = calc(0);
+            ret += tmp * (cnt&1)?1:-1;
+        }
+        return fabs(ret);
     }
 
     
@@ -101,6 +107,6 @@ public:
 int main()
 {
     RandomPaintingOnABoard ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
