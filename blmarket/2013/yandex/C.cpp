@@ -1,50 +1,42 @@
 #include <iostream>
-#include <algorithm>
-#include <cstring>
-#include <cstdio>
-#include <sstream>
-#include <numeric>
-#include <iterator>
-#include <queue>
-#include <set>
-#include <map>
 #include <vector>
+#include <cstdio>
 
-#define mp make_pair
 #define pb push_back
-#define sqr(x) ((x)*(x))
-#define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
 using namespace std;
 
-typedef vector<int> VI;
-typedef vector<VI> VVI;
-typedef vector<string> VS;
-typedef pair<int,int> PII;
+template<typename T> int size(const T &a) { return a.size(); }
 
-template<typename T> int size(const T &a) { return a.size(); } 
+int n;
 
-long long sol(long long n) {
-    long long xs = 0;
-    for(int i=1;i<=n;i++) {
-        xs ^= i;
+long long sol2() {
+    int x1;
+    switch(n % 4) {
+        case 0:
+            x1 = n;
+            break;
+        case 1:
+            return n;
+        case 2:
+            x1 = n + 1;
+            break;
+        case 3:
+            return 0;
     }
-    if(xs == 0) {
-        return 0;
+
+    long long bigbit = 1;
+    while(bigbit <= x1) {
+        bigbit <<= 1;
     }
-    if(xs == 1) {
-        return n;
-    }
-    long long tt = 1;
-    while(tt <= xs) tt <<= 1;
-    tt >>= 1;
-    return n - tt + 1;
+    bigbit >>= 1;
+    return n - bigbit + 1;
 }
 
-int main(void)
-{
-    long long n;
-    cin >> n;
-    cout << n*(n+1)/2 << " " << sol(n) << endl;
-    return 0;
+int main(void) {
+    scanf("%d", &n);
+    long long r1 = n;
+    r1 = r1*(r1+1) / 2;
+
+    cout << r1 << " " << sol2() << endl;
 }
