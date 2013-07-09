@@ -29,7 +29,6 @@ long long sol(long long n) {
     for(int i=1;i<=n;i++) {
         xs ^= i;
     }
-    cout << n << " " << xs << endl;
     if(xs == 0) {
         return 0;
     }
