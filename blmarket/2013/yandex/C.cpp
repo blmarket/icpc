@@ -38,6 +38,6 @@ long long sol() {
 int main(void)
 {
     cin >> n;
-    cout << n*(n+1)/2 << " " << sol() << endl;
+    // cout << n*(n+1)/2 << " " << sol() << endl;
     return 0;
 }
