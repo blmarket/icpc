@@ -24,9 +24,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-long long n;
-
-long long sol() {
+long long sol(long long n) {
     long long xs = 0;
     for(int i=1;i<=n;i++) {
         xs ^= i;
@@ -37,7 +35,11 @@ long long sol() {
 
 int main(void)
 {
+    long long n;
     cin >> n;
+    for(int i=1;i<=100;i++) {
+        sol(i);
+    }
     // cout << n*(n+1)/2 << " " << sol() << endl;
     return 0;
 }
