@@ -39,6 +39,7 @@ long long sol(long long n) {
     long long tt = 1;
     while(tt <= xs) tt <<= 1;
     tt >>= 1;
+    cout << tt << endl;
     return n - tt;
 }
 
