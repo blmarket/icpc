@@ -48,6 +48,8 @@ public:
 
         reverse(myc, myc+N);
         memset(dyna, 0, sizeof(dyna));
+        memset(skip, 0, sizeof(skip));
+
         dyna[0][1] = 1;
         eod[0] = 2;
 

@@ -65,7 +65,7 @@ public:
             if(mdiff > dd) mdiff = dd;
         }
 
-        double D = (double)mdiff / 180 * 3.1415926535;
+        double D = (double)mdiff / 180 * M_PI;
 
         cout << F << " " << B << " " << D << endl;
 
