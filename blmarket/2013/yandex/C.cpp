@@ -32,6 +32,9 @@ long long sol(long long n) {
     if(xs == 0) {
         return 0;
     }
+    if(xs == 1) {
+        return n;
+    }
     cout << n << " " << xs << endl;
     return 0;
 }
