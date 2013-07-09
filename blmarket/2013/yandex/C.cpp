@@ -44,10 +44,7 @@ long long sol(long long n) {
 int main(void)
 {
     long long n;
-    // cin >> n;
-    for(int i=1;i<=100;i++) {
-        sol(i);
-    }
-    // cout << n*(n+1)/2 << " " << sol() << endl;
+    cin >> n;
+    cout << n*(n+1)/2 << " " << sol(n) << endl;
     return 0;
 }
