@@ -34,7 +34,6 @@ public:
                 combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
             }
         }
-        cout << combi[50][25] << endl;
 
         for(int i=0;i<55;i++) ds[i].clear();
 
@@ -45,10 +44,11 @@ public:
 
         for(int i=0;i<55;i++) sort(ds[i].begin(), ds[i].end());
 
-        map<pair<int, int>, int> cur, next;
+        map<pair<int, int>, long long> cur, next;
         cur[mp(0, K)] = 1;
         for(int i=0;i<size(found);i++) {
             vector<int> &dd = ds[found[i]];
+            next.clear();
 
             foreach(it, cur) {
                 int least = it->first.first;
@@ -59,10 +59,20 @@ public:
                 for(int j=0;j<size(dd);j++) {
                     for(int k=1;k<=left;k++) {
                         int ncombi = combi[size(dd) - j - 1][k - 1];
+
+                        int nl = min(least, dd[j]);
+                        int nleft = left - k;
+                        next[mp(nl, nleft)] += it->second * ncombi;
                     }
                 }
             }
+            cur.swap(next);
         }
+        
+        foreach(it, cur) {
+            cout << it->first.first << "," << it->first.second << " = " << it->second << endl;
+        }
+        return 0;
     }
 
     
