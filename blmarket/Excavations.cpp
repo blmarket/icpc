@@ -51,7 +51,7 @@ public:
         for(int i=0;i<size(found);i++) {
             vector<int> &dd = ds[found[i]];
 
-            for(map<pair<int, int>, int>::const_iterator it = cur.begin(); it != cur.end(); ++it) {
+            foreach(it, cur) {
                 int least = it->first.first;
                 int left = it->first.second;
 
