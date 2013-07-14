@@ -21,6 +21,8 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> ds[55];
+bool used[55];
+vector<int> unused;
 long long combi[55][55];
 
 class Excavations 
@@ -42,12 +44,12 @@ public:
             ds[kind[i]].pb(depth[i]);
         }
 
-        for(int i=0;i<55;i++) sort(ds[i].begin(), ds[i].end());
-
         map<pair<int, int>, long long> cur, next;
         cur[mp(0, K)] = 1;
         for(int i=0;i<size(found);i++) {
+            used[found[i]] = true;
             vector<int> &dd = ds[found[i]];
+            sort(dd.begin(), dd.end());
             next.clear();
 
             foreach(it, cur) {
@@ -72,6 +74,17 @@ public:
         foreach(it, cur) {
             cout << it->first.first << "," << it->first.second << " = " << it->second << endl;
         }
+
+        unused.clear();
+        for(int i=0;i<55;i++) if(!used[i]) {
+            for(int j=0;j<size(ds[i]);j++) {
+                unused.pb(ds[i][j]);
+            }
+        }
+        sort(unused.begin(), unused.end());
+
+        for(int i=0;i<size(unused);i++) cout << unused[i] << " ";
+        cout << endl;
         return 0;
     }
 
