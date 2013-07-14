@@ -20,18 +20,50 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+vector<int> ds[55];
+int combi[55][55];
+
 class Excavations 
 {
 public:
     long long count(vector <int> kind, vector <int> depth, vector <int> found, int K) 
     {
-        int n = size(kind);
-        for(int i=0;i<n;i++) {
+        for(int i=0;i<55;i++) {
+            combi[i][0] = combi[i][i] = 1;
+            for(int j=i+1;j<i;j++) {
+                combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
+            }
         }
 
-        auto v = [&](int a) -> int {
-            return 1;
-        };
+        cout << combi[50][25] << endl;
+
+        for(int i=0;i<55;i++) ds[i].clear();
+
+        int n = size(kind);
+        for(int i=0;i<n;i++) {
+            ds[kind[i]].pb(depth[i]);
+        }
+
+        for(int i=0;i<55;i++) sort(ds[i].begin(), ds[i].end());
+
+        map<pair<int, int>, int> cur, next;
+        cur[mp(0, K)] = 1;
+        for(int i=0;i<size(found);i++) {
+            vector<int> &dd = ds[found[i]];
+
+            for(map<pair<int, int>, int>::const_iterator it = cur.begin(); it != cur.end(); ++it) {
+                int least = it->first.first;
+                int left = it->first.second;
+
+                if(left == 0) continue;
+
+                for(int j=0;j<size(dd);j++) {
+                    for(int k=1;k<=left;k++) {
+                        int ncombi = combi[size(dd) - j - 1][k - 1];
+                    }
+                }
+            }
+        }
     }
 
     
