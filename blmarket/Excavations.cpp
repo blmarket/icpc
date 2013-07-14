@@ -35,8 +35,6 @@ public:
             }
         }
 
-        cout << combi[50][25] << endl;
-
         for(int i=0;i<55;i++) ds[i].clear();
 
         int n = size(kind);
