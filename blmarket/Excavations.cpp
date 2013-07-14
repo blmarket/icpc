@@ -60,7 +60,7 @@ public:
                     for(int k=1;k<=left;k++) {
                         int ncombi = combi[size(dd) - j - 1][k - 1];
 
-                        int nl = min(least, dd[j]);
+                        int nl = max(least, dd[j]);
                         int nleft = left - k;
                         next[mp(nl, nleft)] += it->second * ncombi;
                     }
