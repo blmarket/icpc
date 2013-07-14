@@ -71,9 +71,11 @@ public:
             cur.swap(next);
         }
         
+        /*
         foreach(it, cur) {
             cout << it->first.first << "," << it->first.second << " = " << it->second << endl;
         }
+        */
 
         unused.clear();
         for(int i=0;i<55;i++) if(!used[i]) {
