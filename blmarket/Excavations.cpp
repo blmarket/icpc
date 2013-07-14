@@ -79,9 +79,6 @@ public:
         }
         sort(unused.begin(), unused.end());
 
-        for(int i=0;i<size(unused);i++) cout << unused[i] << " ";
-        cout << endl;
-
         long long ret = 0;
         foreach(it, cur) {
             int least = it->first.first;
