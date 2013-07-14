@@ -60,7 +60,7 @@ public:
 
                 for(int j=0;j<size(dd);j++) {
                     for(int k=1;k<=left;k++) {
-                        int ncombi = combi[size(dd) - j - 1][k - 1];
+                        long long ncombi = combi[size(dd) - j - 1][k - 1];
 
                         int nl = max(least, dd[j]);
                         int nleft = left - k;
@@ -71,12 +71,6 @@ public:
             cur.swap(next);
         }
         
-        /*
-        foreach(it, cur) {
-            cout << it->first.first << "," << it->first.second << " = " << it->second << endl;
-        }
-        */
-
         unused.clear();
         for(int i=0;i<55;i++) if(!used[i]) {
             for(int j=0;j<size(ds[i]);j++) {
@@ -87,7 +81,22 @@ public:
 
         for(int i=0;i<size(unused);i++) cout << unused[i] << " ";
         cout << endl;
-        return 0;
+
+        long long ret = 0;
+        foreach(it, cur) {
+            int least = it->first.first;
+            int left = it->first.second;
+            if(left == 0) {
+                ret += it->second;
+                continue;
+            }
+
+            int idx = upper_bound(unused.begin(), unused.end(), least) - unused.begin();
+            long long ncombi = combi[size(unused) - idx][left];
+            ret += ncombi * it->second;
+        }
+
+        return ret;
     }
 
     
