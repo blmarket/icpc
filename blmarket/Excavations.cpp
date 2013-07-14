@@ -29,10 +29,10 @@ public:
     long long count(vector <int> kind, vector <int> depth, vector <int> found, int K) 
     {
         for(int i=0;i<55;i++) {
+            cout << i << endl;
             combi[i][0] = combi[i][i] = 1;
             for(int j=i+1;j<i;j++) {
                 combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
-                cout << i << " " << j << " = " << combi[i][j] << endl;
             }
         }
 
