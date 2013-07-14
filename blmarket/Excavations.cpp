@@ -21,7 +21,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> ds[55];
-int combi[55][55];
+long long combi[55][55];
 
 class Excavations 
 {
@@ -34,6 +34,7 @@ public:
                 combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
             }
         }
+        cout << combi[50][25] << endl;
 
         for(int i=0;i<55;i++) ds[i].clear();
 
