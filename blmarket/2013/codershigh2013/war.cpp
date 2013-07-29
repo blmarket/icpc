@@ -51,7 +51,7 @@ void process(void) {
             }
             last[pos] = tmp;
         };
-        go(0);
+        go(1);
     };
     build_prefix();
 
