@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+if [ ! -n "$1" ]; then
+    make
+else
+    g++ -std=c++11 -O2 $1 -o a.exe
+fi
+git add $1 
+set +e
+git commit -m "--Empty Message--" > /dev/null
+if [ ! -n "$2" ]; then
+    time ./a.exe
+else
+    time ./a.exe < $2
+fi
