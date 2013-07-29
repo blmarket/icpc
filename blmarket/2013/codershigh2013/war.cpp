@@ -80,7 +80,6 @@ void process(void) {
     xoxo(2);
 
     function<int(int)> get = [&](int pos) -> int {
-        cout << pos << endl;
         function<int(int,int,int)> go = [&](int pos, int left, int right) -> int {
             if(final[pos]) return colors[pos];
             if(pos < (left+right)/2) return go(pos*2, left, (left+right)/2);
@@ -97,6 +96,7 @@ void process(void) {
             xoxo(a);
         } else {
             scanf("%d", &b);
+            cout << a << " " << b << endl;
             cout << get(a) << " " << get(b) << endl;
         }
     }
