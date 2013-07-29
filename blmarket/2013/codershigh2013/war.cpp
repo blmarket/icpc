@@ -86,10 +86,12 @@ void process(void) {
     };
     xoxo(2);
 
-    function<int(int)> get = [&](int pos) -> int {
+    function<int(int)> get = [&](int hehe) -> int {
         function<int(int,int,int)> go = [&](int pos, int left, int right) -> int {
-            if(final[pos]) return colors[pos];
-            if(pos < (left+right)/2) return go(pos*2, left, (left+right)/2);
+            if(final[pos]) {
+                return colors[pos];
+            }
+            if(hehe < (left+right)/2) return go(pos*2, left, (left+right)/2);
             return go(pos*2+1, (left+right)/2, right);
         };
         return go(1, 0, SZ);
