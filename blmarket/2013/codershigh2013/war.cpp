@@ -88,8 +88,6 @@ void process(void) {
         return go(1, 0, 65536);
     };
 
-    return;
-
     for(int i=0;i<q;i++) {
         char cmd;
         int a,b;
