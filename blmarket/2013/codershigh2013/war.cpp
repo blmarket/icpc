@@ -35,7 +35,7 @@ bool goup(int a) {
 
 void process(void) {
     scanf("%d %d", &n, &q);
-    for(int i=0;i<n;i++) {
+    for(int i=0;i<n-2;i++) {
         int a,b;
         scanf("%d %d", &a, &b);
         master[b] = a;
