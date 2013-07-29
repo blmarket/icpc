@@ -62,7 +62,7 @@ void process(void) {
     function<void(int)> xoxo = [&](int pos) {
         int a = idx[pos], b = last[pos];
         function<void(int,int,int)> go = [&](int pos, int left, int right) {
-            cout << left << " " << right << " " << a << " " << b << endl;
+            if(right <= a || left >= b) return;
             if(final[pos] && left >= a && right <= b) { // in the range.
                 colors[pos] = !colors[pos];
                 return;
