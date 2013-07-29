@@ -80,6 +80,11 @@ void process(void) {
 
             go(pos*2, left, (left+right)/2);
             go(pos*2+1, (left+right)/2, right);
+
+            if(final[pos*2] && final[pos*2+1] && colors[pos*2] == colors[pos*2+1]) {
+                final[pos] = true;
+                colors[pos] = colors[pos*2];
+            }
         };
 
         go(1, 0, SZ);
