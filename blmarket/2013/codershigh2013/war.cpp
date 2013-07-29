@@ -23,12 +23,15 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
+template<typename T> std::function<T> wrapper(std::function<T> &a) { return a; }
+
+#define SZ 8
 
 VI childs[50005];
 int idx[50005];
 int last[50005];
-bool colors[131072];
-bool final[131072];
+bool colors[SZ*2];
+bool final[SZ*2];
 
 bool flag[50005];
 int n,q;
@@ -79,7 +82,7 @@ void process(void) {
             go(pos*2+1, (left+right)/2, right);
         };
 
-        go(1, 0, 65536);
+        go(1, 0, SZ);
     };
     xoxo(2);
 
@@ -89,7 +92,7 @@ void process(void) {
             if(pos < (left+right)/2) return go(pos*2, left, (left+right)/2);
             return go(pos*2+1, (left+right)/2, right);
         };
-        return go(1, 0, 65536);
+        return go(1, 0, SZ);
     };
 
     for(int i=0;i<q;i++) {
