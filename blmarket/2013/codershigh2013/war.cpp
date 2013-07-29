@@ -64,7 +64,7 @@ void process(void) {
 
     function<void(int)> xoxo = [&](int pos) {
         int a = idx[pos], b = last[pos];
-        cout << "flip " << a << " " << b << endl;
+        // cout << "flip " << a << " " << b << endl;
         function<void(int,int,int)> go = [&](int pos, int left, int right) {
             if(right <= a || left >= b) return;
             if(final[pos] && left >= a && right <= b) { // in the range.
@@ -94,7 +94,7 @@ void process(void) {
     function<int(int)> get = [&](int hehe) -> int {
         function<int(int,int,int)> go = [&](int pos, int left, int right) -> int {
             if(final[pos]) {
-                cout << hehe << " -> " << left << " : " << right << " -> " << colors[pos] << endl;
+                // cout << hehe << " -> " << left << " : " << right << " -> " << colors[pos] << endl;
                 return colors[pos];
             }
             if(hehe < (left+right)/2) return go(pos*2, left, (left+right)/2);
@@ -104,10 +104,10 @@ void process(void) {
     };
 
     for(int i=0;i<q;i++) {
-        for(int i=1;i<SZ*2;i++) {
-            cout << colors[i] << "(" << final[i] << ") ";
-        }
-        cout << endl;
+        // for(int i=1;i<SZ*2;i++) {
+        //     cout << colors[i] << "(" << final[i] << ") ";
+        // }
+        // cout << endl;
         char cmd;
         int a,b;
         scanf(" %c %d", &cmd, &a);
@@ -115,7 +115,7 @@ void process(void) {
             xoxo(a);
         } else {
             scanf("%d", &b);
-            cout << get(idx[a]) << " " << get(idx[b]) << endl;
+            cout << (get(idx[a]) == get(idx[b]) ? "Ally" : "Enemy") << endl;
         }
     }
 }
