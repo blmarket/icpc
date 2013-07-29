@@ -48,6 +48,7 @@ void process(void) {
         char cmd;
         int a, b;
         scanf(" %c %d", &cmd, &a);
+        cout << cmd << " " << a << endl;
         if(cmd == 'T') {
             flag[a] = !flag[a];
             continue;
