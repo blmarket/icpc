@@ -93,6 +93,7 @@ void process(void) {
         int a,b;
         scanf(" %c %d", &cmd, &a);
         if(cmd == 'T') {
+            cout << a << endl;
             xoxo(a);
         } else {
             scanf("%d", &b);
