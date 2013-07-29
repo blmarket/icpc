@@ -96,6 +96,10 @@ void process(void) {
     };
 
     for(int i=0;i<q;i++) {
+        for(int i=0;i<SZ*2;i++) {
+            cout << colors[i] << "(" << final[i] << ") ";
+        }
+        cout << endl;
         char cmd;
         int a,b;
         scanf(" %c %d", &cmd, &a);
