@@ -43,7 +43,7 @@ void process(void) {
 
     childs[0].pb(1);
     auto build_prefix = [&]() {
-        int tmp;
+        int tmp = 0;
         function<void(int)> go = [&](int pos) {
             idx[pos] = tmp++;
             for(int c : childs[pos]) {
