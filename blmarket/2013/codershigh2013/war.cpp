@@ -55,7 +55,9 @@ void process(void) {
     };
     build_prefix();
 
-    cout << idx[0] << " " << last[0] << endl;
+    for(int i=0;i<n;i++) {
+        cout << i << " : " << idx[i] << " " << last[i] << endl;
+    }
 }
 
 int main(void)
