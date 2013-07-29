@@ -115,7 +115,7 @@ void process(void) {
             xoxo(a);
         } else {
             scanf("%d", &b);
-            cout << get(a) << " " << get(b) << endl;
+            cout << get(idx[a]) << " " << get(idx[b]) << endl;
         }
     }
 }
