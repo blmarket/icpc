@@ -25,7 +25,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 template<typename T> std::function<T> wrapper(std::function<T> &a) { return a; }
 
-#define SZ 8
+#define SZ 65536
 
 VI childs[50005];
 int idx[50005];
