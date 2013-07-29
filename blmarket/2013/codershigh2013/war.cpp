@@ -27,6 +27,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 VI childs[50005];
 int idx[50005];
 int last[50005];
+bool colors[131072];
+bool final[131072];
 
 bool flag[50005];
 int n,q;
@@ -55,8 +57,47 @@ void process(void) {
     };
     build_prefix();
 
-    for(int i=1;i<=n;i++) {
-        cout << i << " : " << idx[i] << " " << last[i] << endl;
+    final[1] = true;
+
+    function<void(int)> xoxo = [&](int pos) {
+        int a = idx[pos], b = last[pos];
+        function<void(int,int,int)> go = [&](int pos, int left, int right) {
+            if(final[pos] && left >= a && right <= b) { // in the range.
+                colors[pos] = !colors[pos];
+                return;
+            }
+            if(final[pos]) { // it was final.
+                final[pos*2] = final[pos*2+1] = true;
+                colors[pos*2] = colors[pos*2+1] = colors[pos];
+                final[pos] = false;
+            }
+            go(pos*2, left, (left+right)/2);
+            go(pos*2+1, (left+right)/2, right);
+        };
+
+        go(1, 0, 65536);
+    };
+    xoxo(2);
+
+    function<int(int)> get = [&](int pos) -> int {
+        function<int(int,int,int)> go = [&](int pos, int left, int right) -> int {
+            if(final[pos]) return colors[pos];
+            if(pos < (left+right)/2) return go(pos*2, left, (left+right)/2);
+            return go(pos*2+1, (left+right)/2, right);
+        };
+        return go(1, 0, 65536);
+    };
+
+    for(int i=0;i<q;i++) {
+        char cmd;
+        int a,b;
+        scanf(" %c %d", &cmd, &a);
+        if(cmd == 'T') {
+            xoxo(a);
+        } else {
+            scanf("%d", &b);
+            cout << get(a) << " " << get(b) << endl;
+        }
     }
 }
 
