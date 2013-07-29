@@ -24,42 +24,38 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-int master[50005];
+VI childs[50005];
+int idx[50005];
+int last[50005];
+
 bool flag[50005];
 int n,q;
 
-bool goup(int a) {
-    if(a == 1 || a == 2) return flag[a];
-    return flag[a] ^ goup(master[a]);
-}
-
 void process(void) {
     scanf("%d %d", &n, &q);
+    for(int i=0;i<n;i++) childs[i].clear();
+
     for(int i=0;i<n-2;i++) {
         int a,b;
         scanf("%d %d", &a, &b);
-        master[b] = a;
+        childs[a].pb(b);
     }
 
-    memset(flag, 0, sizeof(flag));
-    flag[1] = true;
-
-    for(int i=0;i<q;i++) {
-        char cmd;
-        int a, b;
-        scanf(" %c %d", &cmd, &a);
-        if(cmd == 'T') {
-            flag[a] = !flag[a];
-            continue;
-        } else {
-            scanf("%d", &b);
-            if(goup(a) == goup(b)) {
-                cout << "Ally" << endl;
-            } else {
-                cout << "Enemy" << endl;
+    childs[0].pb(1);
+    auto build_prefix = [&]() {
+        int tmp;
+        function<void(int)> go = [&](int pos) {
+            idx[pos] = tmp++;
+            for(int c : childs[pos]) {
+                go(c);
             }
-        }
-    }
+            last[pos] = tmp;
+        };
+        go(0);
+    };
+    build_prefix();
+
+    cout << idx[0] << " " << last[0] << endl;
 }
 
 int main(void)
