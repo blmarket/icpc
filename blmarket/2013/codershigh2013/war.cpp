@@ -33,7 +33,7 @@ int n,q;
 
 void process(void) {
     scanf("%d %d", &n, &q);
-    for(int i=0;i<n;i++) childs[i].clear();
+    for(int i=1;i<=n;i++) childs[i].clear();
 
     for(int i=0;i<n-2;i++) {
         int a,b;
@@ -41,7 +41,7 @@ void process(void) {
         childs[a].pb(b);
     }
 
-    childs[0].pb(1);
+    childs[1].pb(2);
     auto build_prefix = [&]() {
         int tmp = 0;
         function<void(int)> go = [&](int pos) {
@@ -55,7 +55,7 @@ void process(void) {
     };
     build_prefix();
 
-    for(int i=0;i<n;i++) {
+    for(int i=1;i<=n;i++) {
         cout << i << " : " << idx[i] << " " << last[i] << endl;
     }
 }
