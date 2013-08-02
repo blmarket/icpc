@@ -36,6 +36,7 @@ int go(int pos, int used, int now) {
         int begins = max(nnow - i - stretch, 0);
 
         int tmp = go(pos+1, used + i, nnow - i);
+        cout << stretch << " " << begins << endl;
         cout << i << " = " << tmp << endl;
         if(tmp >= 0) {
             tmp += begins * (begins + 1) / 2;
