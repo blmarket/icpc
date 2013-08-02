@@ -36,7 +36,7 @@ public:
             }
         }
 
-        cout << area << endl;
+        cout << area << endl << endl;
 
         int nc = W-1;
         for(int i=1;;i++) {
