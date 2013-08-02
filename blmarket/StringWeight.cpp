@@ -30,11 +30,11 @@ int go(int pos, int used, int now) {
     // now: current using window.
     int usable = 26 - used;
     if(usable < 26 && L[pos] > usable) return memo[pos][used][now] = -2; // unable to finish it.
-    int nnow = max(now, L[pos]);
+    int nnow = max(now, min(26, L[pos]));
 
     int ret = -2;
 
-    for(int i=0;i<=L[pos];i++) { // end them here.
+    for(int i=0;i<=min(26, L[pos]);i++) { // end them here.
         int stretch = max(now - i, 0);
         int begins = max(nnow - i - stretch, 0);
         int ends = min(i, now);
