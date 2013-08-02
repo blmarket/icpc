@@ -34,13 +34,12 @@ int go(int pos, int used, int now) {
     for(int i=0;i<=L[pos];i++) { // end them here.
         int stretch = max(now - i, 0);
         int begins = max(nnow - i - stretch, 0);
+        int ends = max(i, now);
 
         int tmp = go(pos+1, used + i, nnow - i);
-        cout << stretch << " " << begins << endl;
-        cout << i << " = " << tmp << endl;
         if(tmp >= 0) {
             tmp += begins * (begins + 1) / 2;
-            tmp += i * (i+1) / 2;
+            tmp += ends * (ends + 1) / 2;
             tmp += stretch * L[pos];
             if(ret == -1 || ret > tmp) {
                 cout << pos << " " << used << " " << now << " : " << i << " = " << tmp << endl;
