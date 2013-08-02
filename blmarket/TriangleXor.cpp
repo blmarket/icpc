@@ -29,8 +29,10 @@ public:
         double area = 0;
         for(int i=1;i<=W;i++) {
             double xpos = (double)W * i / (W + i);
-            cout << xpos << endl;
-            area = (double)xpos / 2 - area;
+            double px = (double)W * (i-1) / (W + i - 1);
+            if((i%2) == 1) {
+                area += (double)(xpos-px) / 2;
+            }
         }
         if((W%2)==0) {
             ret += (double)W / 4;
