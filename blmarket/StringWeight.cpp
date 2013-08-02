@@ -37,7 +37,6 @@ int go(int pos, int used, int now) {
         int ends = min(i, now);
 
         int tmp = go(pos+1, used + i, nnow - i);
-        cout << i << " = " << tmp << " " << begins << ends << stretch << endl;
         if(tmp >= 0) {
             tmp += begins * (begins + 1) / 2;
             tmp += ends * (ends + 1) / 2;
