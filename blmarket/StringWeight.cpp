@@ -52,6 +52,7 @@ public:
     int getMinimum(vector <int> L_)
     {
         L = L_;
+        return go(0, 0, 0);
     }
 
     
