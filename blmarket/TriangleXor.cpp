@@ -42,7 +42,7 @@ public:
             if(nc <= 0) break;
             double y1 = (double)i / (W + i);
             double y0 = (double)(i-1) / (W + i-1);
-            cout << y1 << " " << y0 << " " << nc << endl;
+            // cout << y1 << " " << y0 << " " << nc << endl;
             ret += (y1-y0) / 2 * nc * W / (W + (i+1)/2);
             if((i%2) == 0) nc -= 2;
         }
