@@ -45,6 +45,7 @@ int go(int pos, int used, int now) {
     }
 
     cout << pos << " " << used << " " << now << " = " << ret << endl;
+    return ret;
 }
 
 class StringWeight 
