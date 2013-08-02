@@ -25,14 +25,14 @@ class TriangleXor
 public:
     int theArea(int W) 
     {
-        double ret = 0;
-        double area = 0;
+        long double ret = 0;
+        long double area = 0;
         for(int i=1;i<=W;i++) {
-            double xpos = (double)W * i / (W + i);
-            double px = (double)W * (i-1) / (W + i - 1);
+            long double xpos = (long double)W * i / (W + i);
+            long double px = (long double)W * (i-1) / (W + i - 1);
             if((i%2) == 1) {
                 cout << xpos << " " << px << endl;
-                area += (double)(xpos-px) / 2;
+                area += (long double)(xpos-px) / 2;
             }
         }
 
@@ -41,16 +41,16 @@ public:
         int nc = W-1;
         for(int i=1;;i++) {
             if(nc <= 0) break;
-            double y1 = (double)i / (W + i);
-            double y0 = (double)(i-1) / (W + i-1);
-            double xspace = (double)W / (W+(i+1)/2);
+            long double y1 = (long double)i / (W + i);
+            long double y0 = (long double)(i-1) / (W + i-1);
+            long double xspace = (long double)W / (W+(i+1)/2);
             cout << y1 << " " << y0 << " " << nc << " " << xspace << endl;
             ret += (y1-y0) / 2.0 * nc * W / (W + (i+1)/2);
             if((i%2) == 0) nc -= 2;
         }
 
         if((W%2)==0) {
-            ret += (double)W / 4;
+            ret += (long double)W / 4;
         }
         ret += area * 2;
         cout << area << " " << ret << endl;
