@@ -44,6 +44,9 @@ int go(int pos, int used, int now) {
             tmp += begins * (begins + 1) / 2;
             tmp += ends * (ends - 1) / 2;
             tmp += stretch * L[pos];
+            if(stretch == 0 && L[pos] > 26) {
+                tmp += L[pos] - 26;
+            }
             if(ret == -2 || ret > tmp) {
                 // cout << pos << " " << used << " " << now << " : " << i << " = " << tmp << endl;
                 ret = tmp;
@@ -52,7 +55,6 @@ int go(int pos, int used, int now) {
     }
 
     if(ret != -2) cout << pos << " " << used << " " << now << " = " << ret << endl;
-    if(L[pos] > 26 && (pos == 0 || pos+1 == size(L))) ret += L[pos] - 26;
     return memo[pos][used][now] = ret;
 }
 
@@ -67,26 +69,11 @@ public:
     }
 
     
-// BEGIN CUT HERE
-	public:
-	void run_test(int Case) { if ((Case == -1) || (Case == 0)) test_case_0(); if ((Case == -1) || (Case == 1)) test_case_1(); if ((Case == -1) || (Case == 2)) test_case_2(); if ((Case == -1) || (Case == 3)) test_case_3(); if ((Case == -1) || (Case == 4)) test_case_4(); }
-	private:
-	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
-	void verify_case(int Case, const int &Expected, const int &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
-	void test_case_0() { int Arr0[] = {1}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 0; verify_case(0, Arg1, getMinimum(Arg0)); }
-	void test_case_1() { int Arr0[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1; verify_case(1, Arg1, getMinimum(Arg0)); }
-	void test_case_2() { int Arr0[] = {26, 2, 2}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 8; verify_case(2, Arg1, getMinimum(Arg0)); }
-	void test_case_3() { int Arr0[] = {25, 25, 25, 25}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1826; verify_case(3, Arg1, getMinimum(Arg0)); }
-	void test_case_4() { int Arr0[] = {14, 6, 30, 2, 5, 61}; vector <int> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 1229; verify_case(4, Arg1, getMinimum(Arg0)); }
-
-// END CUT HERE
 
 };
 
-// BEGIN CUT HERE
-int main()
-{
-    StringWeight ___test; 
-    ___test.run_test(-1); 
-} 
-// END CUT HERE
+
+
+// Powered by FileEdit
+// Powered by TZTester 1.01 [25-Feb-2003]
+// Powered by CodeProcessor
