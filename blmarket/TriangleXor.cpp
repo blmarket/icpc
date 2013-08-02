@@ -79,6 +79,6 @@ public:
 int main()
 {
     TriangleXor ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
