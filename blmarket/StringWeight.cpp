@@ -45,7 +45,7 @@ int go(int pos, int used, int now) {
             tmp += ends * (ends + 1) / 2;
             tmp += stretch * L[pos];
             if(ret == -2 || ret > tmp) {
-                cout << pos << " " << used << " " << now << " : " << i << " = " << tmp << endl;
+                // cout << pos << " " << used << " " << now << " : " << i << " = " << tmp << endl;
                 ret = tmp;
             }
         }
