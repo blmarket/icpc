@@ -25,13 +25,18 @@ class TriangleXor
 public:
     int theArea(int W) 
     {
+        double ret = 0;
         double area = 0;
         for(int i=1;i<=W;i++) {
             double xpos = (double)W * i / (W + i);
             area = (double)xpos / 2 - area;
         }
+        if((W%2)==0) {
+            ret += (double)W / 4;
+        }
+        ret += area * 2;
         cout << area << endl;
-        return area;
+        return ret;
     }
 
     
