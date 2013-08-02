@@ -43,7 +43,7 @@ public:
             if(nc <= 0) break;
             long double y1 = (long double)i / (W + i);
             long double y0 = (long double)(i-1) / (W + i-1);
-            long double xspace = (long double)W / (W+2*((i+1)/2));
+            long double xspace = (long double)W / (W+1+2*(i/2));
             long double sum = (y1-y0) / 2.0 * nc * xspace;
             cout << y1 << " " << y0 << " " << nc << " " << xspace << " = " << sum << endl;
             ret += sum;
