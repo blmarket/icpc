@@ -51,7 +51,7 @@ int go(int pos, int used, int now) {
         }
     }
 
-    cout << pos << " " << used << " " << now << " = " << ret << endl;
+    if(ret != -2) cout << pos << " " << used << " " << now << " = " << ret << endl;
     if(L[pos] > 26) ret += L[pos] - 26;
     return memo[pos][used][now] = ret;
 }
