@@ -28,7 +28,7 @@ int go(int pos, int used, int now) {
     if(memo[pos][used][now] != -1) return memo[pos][used][now];
     if(pos == size(L)) return memo[pos][used][now] = 0;
     // now: current using window.
-    int usable = 26-used;
+    int usable = 26 - used;
     if(usable < 26 && L[pos] > usable) return memo[pos][used][now] = -2; // unable to finish it.
     int nnow = max(now, L[pos]);
 
@@ -52,6 +52,7 @@ int go(int pos, int used, int now) {
     }
 
     cout << pos << " " << used << " " << now << " = " << ret << endl;
+    if(L[pos] > 26) ret += L[pos] - 26;
     return memo[pos][used][now] = ret;
 }
 
