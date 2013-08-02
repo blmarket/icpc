@@ -32,11 +32,11 @@ int go(int pos, int used, int now) {
     int ret = -1;
 
     for(int i=0;i<=L[pos];i++) { // end them here.
-        cout << i << endl;
         int stretch = max(now - i, 0);
         int begins = max(nnow - i - stretch, 0);
 
         int tmp = go(pos+1, used + i, nnow - i);
+        cout << i << " = " << tmp << endl;
         if(tmp >= 0) {
             tmp += begins * (begins + 1) / 2;
             tmp += i * (i+1) / 2;
