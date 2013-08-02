@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,15 +22,17 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 VI L;
+int memo[30][30][30];
 
 int go(int pos, int used, int now) {
-    if(pos == size(L)) return 0;
+    if(memo[pos][used][now] != -1) return memo[pos][used][now];
+    if(pos == size(L)) return memo[pos][used][now] = 0;
     // now: current using window.
     int usable = 26-used;
-    if(usable < 26 && L[pos] > usable) return -1; // unable to finish it.
+    if(usable < 26 && L[pos] > usable) return memo[pos][used][now] = -2; // unable to finish it.
     int nnow = max(now, L[pos]);
 
-    int ret = -1;
+    int ret = -2;
 
     for(int i=0;i<=L[pos];i++) { // end them here.
         int stretch = max(now - i, 0);
@@ -49,7 +52,7 @@ int go(int pos, int used, int now) {
     }
 
     cout << pos << " " << used << " " << now << " = " << ret << endl;
-    return ret;
+    return memo[pos][used][now] = ret;
 }
 
 class StringWeight 
@@ -57,6 +60,7 @@ class StringWeight
 public:
     int getMinimum(vector <int> L_)
     {
+        memset(memo, -1, sizeof(memo));
         L = L_;
         return go(0, 0, 0);
     }
