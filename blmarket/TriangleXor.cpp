@@ -35,7 +35,7 @@ public:
             ret += (double)W / 4;
         }
         ret += area * 2;
-        cout << area << endl;
+        cout << area << " " << ret << endl;
         return ret;
     }
 
