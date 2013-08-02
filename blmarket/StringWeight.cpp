@@ -40,7 +40,10 @@ int go(int pos, int used, int now) {
             tmp += begins * (begins + 1) / 2;
             tmp += i * (i+1) / 2;
             tmp += stretch * L[pos];
-            if(ret == -1 || ret > tmp) ret = tmp;
+            if(ret == -1 || ret > tmp) {
+                cout << pos << " " << used << " " << now << " : " << i << " = " << tmp << endl;
+                ret = tmp;
+            }
         }
     }
 
