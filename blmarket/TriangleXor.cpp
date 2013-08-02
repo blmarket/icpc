@@ -31,6 +31,7 @@ public:
             double xpos = (double)W * i / (W + i);
             double px = (double)W * (i-1) / (W + i - 1);
             if((i%2) == 1) {
+                cout << xpos << " " << px << endl;
                 area += (double)(xpos-px) / 2;
             }
         }
