@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 VI L;
 
 int go(int pos, int used, int now) {
+    if(pos == size(L)) return 0;
     // now: current using window.
     int usable = 26-used;
     if(usable < 26 && L[pos] > usable) return -1; // unable to finish it.
@@ -76,6 +77,6 @@ public:
 int main()
 {
     StringWeight ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
