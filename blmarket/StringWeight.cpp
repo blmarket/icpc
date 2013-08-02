@@ -32,6 +32,7 @@ int go(int pos, int used, int now) {
     int ret = -1;
 
     for(int i=0;i<=L[pos];i++) { // end them here.
+        cout << i << endl;
         int stretch = max(now - i, 0);
         int begins = max(nnow - i - stretch, 0);
 
