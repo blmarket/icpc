@@ -21,35 +21,50 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+struct ks {
+    ks(int r, int g, int w):r(r),g(g),w(w) {}
+    int r,g,w;
+    bool operator<(const ks &rhs) const {
+        if(r != rhs.r) return r < rhs.r;
+        if(g != rhs.g) return g < rhs.g;
+        return w < rhs.w;
+    }
+};
+
 int N;
-bool avail[1<<12];
-int nkeys[1<<12][3];
+set<ks> nk[1<<12];
+vector <int> doorR, doorG, roomR, roomG, roomW;
+
+int go(int state, const ks &cur) {
+    if(nk[state].count(cur)) return -1;
+    nk[state].insert(cur);
+
+    int ret = 0;
+    for(int i=0;i<N;i++) if(!(state & (1<<i))) {
+        int r1 = max(0, doorR[i] - cur.r);
+        int r2 = max(0, doorG[i] - cur.g);
+        if(r1 + r2 <= cur.w) { // ok to open
+            ks nex = cur;
+            nex.r = max(0, nex.r - doorR[i]);
+            nex.g = max(0, nex.g - doorG[i]);
+            nex.w -= (r1+r2);
+            int tmp = go(state | (1<<i), nex);
+            if(ret < tmp) ret = tmp;
+        }
+    }
+    return ret;
+}
 
 class KeyDungeonDiv1 
 {
 public:
-    int maxKeys(vector <int> doorR, vector <int> doorG, vector <int> roomR, vector <int> roomG, vector <int> roomW, vector <int> keys) 
+    int maxKeys(vector <int> doorR_, vector <int> doorG_, vector <int> roomR_, vector <int> roomG_, vector <int> roomW_, vector <int> keys) 
     {
+        doorR = doorR_; doorG = doorG_; roomR = roomR_; roomG = roomG_; roomW = roomW_; 
         N = size(doorR);
-        memset(avail, 0, sizeof(avail));
-        avail[0] = true;
-        nkeys[0][0] = keys[0]; nkeys[0][1] = keys[1]; nkeys[0][2] = keys[2];
+        ks cur = ks(keys[0], keys[1], keys[2]);
 
-        queue<int> Q;
-        Q.push(0);
-        while(!Q.empty()) {
-            int pos = Q.front();
-            Q.pop();
-        }
-
-        int ret = 0;
-        for(int i=0;i<(1<<12);i++) {
-            if(avail[i]) {
-                int tmp = nkeys[i][0] + nkeys[i][1] + nkeys[i][2];
-                ret = max(ret, tmp);
-            }
-        }
-        return ret;
+        return go(0, cur);
     }
 
     
