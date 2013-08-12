@@ -39,7 +39,7 @@ int go(int state, const ks &cur) {
     if(nk[state].count(cur)) return -1;
     nk[state].insert(cur);
 
-    int ret = 0;
+    int ret = cur.r + cur.g + cur.w;
     for(int i=0;i<N;i++) if(!(state & (1<<i))) {
         int r1 = max(0, doorR[i] - cur.r);
         int r2 = max(0, doorG[i] - cur.g);
