@@ -39,7 +39,6 @@ int naver(int x, int y) {
     int ret = 0;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
-        cout << nx << " " << ny << " " << isWall(nx,ny) << endl;
         ret += !isWall(nx, ny);
     }
     return ret;
@@ -53,7 +52,6 @@ public:
         field = field_;
         N = size(field); M = size(field[0]);
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            cout << i << " " << j << " = " << naver(i,j) << endl;
             if(naver(i,j) > 2) {
                 cout << i << " " << j << endl;
             }
