@@ -41,6 +41,15 @@ public:
             int pos = Q.front();
             Q.pop();
         }
+
+        int ret = 0;
+        for(int i=0;i<(1<<12);i++) {
+            if(avail[i]) {
+                int tmp = nkeys[i][0] + nkeys[i][1] + nkeys[i][2];
+                ret = max(ret, tmp);
+            }
+        }
+        return ret;
     }
 
     
