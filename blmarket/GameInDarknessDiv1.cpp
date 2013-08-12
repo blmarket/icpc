@@ -71,6 +71,7 @@ int compnaver(int x, int y) {
 }
 
 int dist(int px, int py, int sx, int sy, int ex, int ey) {
+    if(sx == px && sy == py) return -1;
     if(sx == ex && sy == ey) return 0;
     for(int i=0;i<4;i++) {
         int nx = sx + dx[i], ny = sy + dy[i];
