@@ -58,6 +58,7 @@ public:
                 cout << i << " " << j << endl;
             }
         }
+        return "";
     }
 
     
