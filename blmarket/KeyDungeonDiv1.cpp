@@ -39,7 +39,7 @@ int go(int state, const ks &cur) {
     if(nk[state].count(cur)) return -1;
     nk[state].insert(cur);
 
-    cout << state << " : " << cur.r << " " << cur.g << " " << cur.w << endl;
+    // cout << state << " : " << cur.r << " " << cur.g << " " << cur.w << endl;
     int ret = cur.r + cur.g + cur.w;
     for(int i=0;i<N;i++) if(!(state & (1<<i))) {
         int r1 = max(0, doorR[i] - cur.r);
