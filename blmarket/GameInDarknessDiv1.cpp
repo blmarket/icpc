@@ -39,6 +39,7 @@ int naver(int x, int y) {
     int ret = 0;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
+        cout << nx << " " << ny << endl;
         ret += !isWall(nx, ny);
     }
     return ret;
