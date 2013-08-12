@@ -46,9 +46,9 @@ int go(int state, const ks &cur) {
         int r2 = max(0, doorG[i] - cur.g);
         if(r1 + r2 <= cur.w) { // ok to open
             ks nex = cur;
-            nex.r = max(0, nex.r - doorR[i]);
-            nex.g = max(0, nex.g - doorG[i]);
-            nex.w -= (r1+r2);
+            nex.r = max(0, nex.r - doorR[i]) + roomR[i];
+            nex.g = max(0, nex.g - doorG[i]) + roomG[i];
+            nex.w += -(r1+r2) + roomW[i];
             int tmp = go(state | (1<<i), nex);
             if(ret < tmp) ret = tmp;
         }
