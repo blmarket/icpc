@@ -25,6 +25,7 @@ vector<string> field;
 int N,M;
 int dx[] = {-1,0,0,1};
 int dy[] = {0,-1,1,0};
+int bx,by,ax,ay;
 
 bool check(int x, int y) {
     return x>=0 && y>=0 && x<N && y<M;
@@ -69,6 +70,19 @@ int compnaver(int x, int y) {
     return ret;
 }
 
+int dist(int sx, int sy, int ex, int ey) {
+    if(sx == ex && sy == ey) return 0;
+    for(int i=0;i<4;i++) {
+        int nx = sx + dx[i], ny = sy + dy[i];
+        if(isWall(nx, ny)) continue;
+        if(field[nx][ny] == '.') { // no overtake alice.
+            int tmp = dist(nx, ny, ex, ey);
+            if(tmp != -1) return tmp + 1;
+        }
+    }
+    return -1;
+}
+
 class GameInDarknessDiv1 
 {
 public:
@@ -77,8 +91,16 @@ public:
         field = field_;
         N = size(field); M = size(field[0]);
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+            if(field[i][j] == 'A') {
+                ax = i, ay = j;
+            } else if(field[i][j] == 'B') {
+                bx = i, by = j;
+            }
+        }
+
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(compnaver(i,j) > 2) {
-                cout << i << " " << j << endl;
+                cout << i << " " << j << " " << dist(ax,ay,i,j) << " " << dist(bx,by,i,j) << endl;
             }
         }
         return "";
