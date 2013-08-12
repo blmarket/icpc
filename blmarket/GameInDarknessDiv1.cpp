@@ -53,6 +53,7 @@ public:
         field = field_;
         N = size(field); M = size(field[0]);
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+            cout << i << " " << j << " = " << naver(i,j) << endl;
             if(naver(i,j) > 2) {
                 cout << i << " " << j << endl;
             }
