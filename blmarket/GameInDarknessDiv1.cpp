@@ -70,13 +70,12 @@ int compnaver(int x, int y) {
     return ret;
 }
 
-int dist(int sx, int sy, int ex, int ey) {
-    cout << sx << " " << sy << endl;
+int dist(int px, int py, int sx, int sy, int ex, int ey) {
     if(sx == ex && sy == ey) return 0;
     for(int i=0;i<4;i++) {
         int nx = sx + dx[i], ny = sy + dy[i];
         if(isWall(nx, ny)) continue;
-        int tmp = dist(nx, ny, ex, ey);
+        int tmp = dist(sx, sy, nx, ny, ex, ey);
         if(tmp != -1) return tmp + 1;
     }
     return -1;
@@ -99,7 +98,7 @@ public:
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(compnaver(i,j) > 2) {
-                cout << i << " " << j << " " << dist(ax,ay,i,j) << " " << dist(bx,by,i,j) << endl;
+                cout << i << " " << j << " " << dist(-1,-1,ax,ay,i,j) << " " << dist(-1,-1,bx,by,i,j) << endl;
             }
         }
         return "";
