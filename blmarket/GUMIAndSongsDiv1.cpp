@@ -45,6 +45,7 @@ public:
                 int cnt = 0;
                 for(int k=0;k<size(VV);k++) {
                     if(ela < VV[k]) break;
+                    ela -= VV[k];
                     cnt++;
                 }
                 ret = max(ret, cnt);
