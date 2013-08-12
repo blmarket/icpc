@@ -71,6 +71,7 @@ int compnaver(int x, int y) {
 }
 
 int dist(int sx, int sy, int ex, int ey) {
+    cout << sx << " " << sy << endl;
     if(sx == ex && sy == ey) return 0;
     for(int i=0;i<4;i++) {
         int nx = sx + dx[i], ny = sy + dy[i];
