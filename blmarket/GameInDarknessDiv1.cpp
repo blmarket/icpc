@@ -99,7 +99,9 @@ public:
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(compnaver(i,j) > 2) {
-                cout << i << " " << j << " " << dist(-1,-1,ax,ay,i,j) << " " << dist(-1,-1,bx,by,i,j) << endl;
+                int da = dist(-1,-1,ax,ay,i,j), db = dist(-1,-1,bx,by,i,j);
+                if(da <= db + 1) continue;
+                cout << i << " " << j << " " << da << " " << db << endl;
             }
         }
         return "";
