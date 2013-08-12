@@ -36,10 +36,23 @@ bool isWall(int x, int y) {
 }
 
 int naver(int x, int y) {
+    if(isWall(x,y)) return 0;
     int ret = 0;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
         ret += !isWall(nx, ny);
+    }
+    return ret;
+}
+
+int removesingle(int x, int y) {
+    int ret = 0;
+    if(isWall(x,y)) return 0;
+    for(int i=0;i<4;i++) {
+        int nx = x + dx[i], ny = y + dy[i];
+        if(!isWall(nx, ny) && naver(nx, ny) > 1) {
+            ret++;
+        }
     }
     return ret;
 }
