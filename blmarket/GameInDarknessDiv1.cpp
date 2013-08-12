@@ -104,7 +104,7 @@ public:
                 cout << i << " " << j << " " << da << " " << db << endl;
             }
         }
-        return "";
+        return "Alice wins";
     }
 
     
