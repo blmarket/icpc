@@ -75,10 +75,8 @@ int dist(int sx, int sy, int ex, int ey) {
     for(int i=0;i<4;i++) {
         int nx = sx + dx[i], ny = sy + dy[i];
         if(isWall(nx, ny)) continue;
-        if(field[nx][ny] == '.') { // no overtake alice.
-            int tmp = dist(nx, ny, ex, ey);
-            if(tmp != -1) return tmp + 1;
-        }
+        int tmp = dist(nx, ny, ex, ey);
+        if(tmp != -1) return tmp + 1;
     }
     return -1;
 }
