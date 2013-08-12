@@ -71,10 +71,10 @@ int compnaver(int x, int y) {
 }
 
 int dist(int px, int py, int sx, int sy, int ex, int ey) {
-    if(sx == px && sy == py) return -1;
     if(sx == ex && sy == ey) return 0;
     for(int i=0;i<4;i++) {
         int nx = sx + dx[i], ny = sy + dy[i];
+        if(nx == px && ny == py) continue;
         if(isWall(nx, ny)) continue;
         int tmp = dist(sx, sy, nx, ny, ex, ey);
         if(tmp != -1) return tmp + 1;
