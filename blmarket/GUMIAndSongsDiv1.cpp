@@ -21,8 +21,6 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-map<PII, int> cur, nex;
-
 class GUMIAndSongsDiv1 
 {
 public:
@@ -32,32 +30,25 @@ public:
         for(int i=0;i<size(tone);i++) {
             V.pb(mp(tone[i], duration[i]));
         }
-        sort(V.begin(), V.end());
-
-        cur.clear();
-        cur[mp(0,0)] = 0;
-
-        for(int i=0;i<size(V);i++) {
-            nex = cur;
-            foreach(it, cur) {
-                int cur_tone = it->first.first;
-                int cur_songs = it->first.second;
-                int cur_time = it->second;
-
-                int nex_time = cur_time + V[i].first - cur_tone + V[i].second;
-                if(nex_time > T) continue;
-                int nex_songs = cur_songs + 1;
-                PII key = mp(V[i].first, nex_songs);
-                if(nex.count(key) == 0 || nex[key] > nex_time) {
-                    nex[key] = nex_time;
-                }
-            }
-            cur.swap(nex);
-        }
-
         int ret = 0;
-        foreach(it, cur) {
-            ret = max(ret, it->first.second);
+        sort(V.begin(), V.end());
+        for(int i=0;i<size(V);i++) {
+            for(int j=i;j<size(V);j++) {
+                int td = V[j].first - V[i].first;
+                vector<int> VV;
+                VV.clear();
+                for(int k=i;k<=j;k++) {
+                    VV.pb(V[k].second);
+                }
+                sort(VV.begin(), VV.end());
+                int ela = T - td;
+                int cnt = 0;
+                for(int k=0;k<size(VV);k++) {
+                    if(ela < VV[k]) break;
+                    cnt++;
+                }
+                ret = max(ret, cnt);
+            }
         }
         return ret;
     }
