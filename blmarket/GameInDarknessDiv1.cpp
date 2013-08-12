@@ -45,14 +45,26 @@ int naver(int x, int y) {
     return ret;
 }
 
-int removesingle(int x, int y) {
+bool go(int x, int y, int px, int py, int &cur) {
+    cur += 1;
+    if(cur >= 3) return true;
+    for(int i=0;i<4;i++) {
+        int nx = x + dx[i], ny = y + dy[i];
+        if(nx == px && ny == py) continue;
+        if(isWall(nx, ny)) continue;
+        if(go(nx, ny, x, y, cur)) return true;
+    }
+    return false;
+}
+
+int compnaver(int x, int y) {
     int ret = 0;
     if(isWall(x,y)) return 0;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
-        if(!isWall(nx, ny) && naver(nx, ny) > 1) {
-            ret++;
-        }
+        if(isWall(nx,ny)) continue;
+        int tmp = 0;
+        if(go(nx,ny,x,y,tmp)) ret++;
     }
     return ret;
 }
@@ -65,7 +77,7 @@ public:
         field = field_;
         N = size(field); M = size(field[0]);
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            if(naver(i,j) > 2) {
+            if(compnaver(i,j) > 2) {
                 cout << i << " " << j << endl;
             }
         }
