@@ -38,6 +38,7 @@ int ways(int x, int y) {
 int ad,bd = 0;
 
 int dfs(int x, int y, int px, int py, int dist) {
+    cout << x << " " << y << endl;
     int ret = dist;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
