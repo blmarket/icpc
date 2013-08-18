@@ -23,63 +23,40 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<string> field;
 int N,M;
-int dx[] = {-1,0,0,1};
-int dy[] = {0,-1,1,0};
-int bx,by,ax,ay;
+int ax,ay,bx,by;
+const int dx[] = {-1,0,0,1};
+const int dy[] = {0,-1,1,0};
 
-bool check(int x, int y) {
-    return x>=0 && y>=0 && x<N && y<M;
-}
-
-bool isWall(int x, int y) {
-    if(!check(x,y)) return true;
-    return field[x][y] == '#';
-}
-
-int naver(int x, int y) {
-    if(isWall(x,y)) return 0;
+bool chk(int x, int y) { return x>=0 && y>=0 && x<N && y<M; }
+bool wall(int x, int y) { return chk(x,y) || field[x][y] == '#'; }
+int ways(int x, int y) {
     int ret = 0;
-    for(int i=0;i<4;i++) {
-        int nx = x + dx[i], ny = y + dy[i];
-        ret += !isWall(nx, ny);
-    }
+    for(int i=0;i<4;i++) if(!wall(x+dx[i], y+dy[i])) ret++;
     return ret;
 }
 
-bool go(int x, int y, int px, int py, int &cur) {
-    cur += 1;
-    if(cur >= 3) return true;
-    for(int i=0;i<4;i++) {
-        int nx = x + dx[i], ny = y + dy[i];
-        if(nx == px && ny == py) continue;
-        if(isWall(nx, ny)) continue;
-        if(go(nx, ny, x, y, cur)) return true;
-    }
-    return false;
-}
+int ad,bd = 0;
 
-int compnaver(int x, int y) {
+int dfs(int x, int y, int px, int py) {
     int ret = 0;
-    if(isWall(x,y)) return 0;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
-        if(isWall(nx,ny)) continue;
-        int tmp = 0;
-        if(go(nx,ny,x,y,tmp)) ret++;
+        if(nx == px && ny == py) continue;
+        int tmp = dfs(nx,ny,x,y);
+        ret = max(ret, tmp);
     }
-    return ret;
+    return ret + 1;
 }
 
-int dist(int px, int py, int sx, int sy, int ex, int ey) {
-    if(sx == ex && sy == ey) return 0;
+bool calc(int x, int y) {
+    int holes = 0;
     for(int i=0;i<4;i++) {
-        int nx = sx + dx[i], ny = sy + dy[i];
-        if(nx == px && ny == py) continue;
-        if(isWall(nx, ny)) continue;
-        int tmp = dist(sx, sy, nx, ny, ex, ey);
-        if(tmp != -1) return tmp + 1;
+        int nx = x + dx[i], ny = y + dy[i];
+        if(wall(nx,ny)) continue;
+        int md = dfs(nx, ny, x, y);
+        if(md > 2) holes++;
     }
-    return -1;
+    if(holes > 1) return true;
 }
 
 class GameInDarknessDiv1 
@@ -90,18 +67,13 @@ public:
         field = field_;
         N = size(field); M = size(field[0]);
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            if(field[i][j] == 'A') {
-                ax = i, ay = j;
-            } else if(field[i][j] == 'B') {
-                bx = i, by = j;
-            }
+            if(field[i][j] == 'A') { ax=i;ay=j; }
+            if(field[i][j] == 'B') { bx=i;by=j; }
         }
 
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            if(compnaver(i,j) > 2) {
-                int da = dist(-1,-1,ax,ay,i,j), db = dist(-1,-1,bx,by,i,j);
-                if(da <= db + 1) continue;
-                cout << i << " " << j << " " << da << " " << db << endl;
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(!wall(i,j)) {
+            if(ways(i,j) > 2) { // hiding place
+                if(calc(i,j)) return "Bob wins";
             }
         }
         return "Alice wins";
