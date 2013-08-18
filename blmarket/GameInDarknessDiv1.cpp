@@ -62,6 +62,7 @@ bool calc(int x, int y) {
         cout << "ad=" << ad << " " << bd << endl;
         return true;
     }
+    return false;
 }
 
 class GameInDarknessDiv1 
