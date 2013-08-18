@@ -38,6 +38,8 @@ int ways(int x, int y) {
 int ad,bd = 0;
 
 int dfs(int x, int y, int px, int py, int dist) {
+    if(x == ax && y == ay) ad = dist;
+    if(x == bx && y == by) bd = dist;
     int ret = dist;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
@@ -56,7 +58,7 @@ bool calc(int x, int y) {
         int md = dfs(nx, ny, x, y, 1);
         if(md > 2) holes++;
     }
-    if(holes > 1) return true;
+    if(holes > 1 && ad > bd + 1) return true;
 }
 
 class GameInDarknessDiv1 
