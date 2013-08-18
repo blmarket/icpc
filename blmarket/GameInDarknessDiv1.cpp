@@ -59,7 +59,7 @@ bool calc(int x, int y) {
         if(md > 2) holes++;
     }
     if(holes > 1 && ad > bd + 1) {
-        cout << ad << " " << bd << endl;
+        cout << "ad=" << ad << " " << bd << endl;
         return true;
     }
 }
