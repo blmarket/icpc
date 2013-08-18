@@ -37,15 +37,15 @@ int ways(int x, int y) {
 
 int ad,bd = 0;
 
-int dfs(int x, int y, int px, int py) {
-    int ret = 0;
+int dfs(int x, int y, int px, int py, int dist) {
+    int ret = dist;
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
         if(nx == px && ny == py) continue;
-        int tmp = dfs(nx,ny,x,y);
+        int tmp = dfs(nx,ny,x,y, dist + 1);
         ret = max(ret, tmp);
     }
-    return ret + 1;
+    return ret;
 }
 
 bool calc(int x, int y) {
@@ -53,7 +53,7 @@ bool calc(int x, int y) {
     for(int i=0;i<4;i++) {
         int nx = x + dx[i], ny = y + dy[i];
         if(wall(nx,ny)) continue;
-        int md = dfs(nx, ny, x, y);
+        int md = dfs(nx, ny, x, y, 1);
         if(md > 2) holes++;
     }
     if(holes > 1) return true;
@@ -66,7 +66,6 @@ public:
     {
         field = field_;
         N = size(field); M = size(field[0]);
-        cout << N << M << endl;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(field[i][j] == 'A') { ax=i;ay=j; }
             if(field[i][j] == 'B') { bx=i;by=j; }
