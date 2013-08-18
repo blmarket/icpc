@@ -57,7 +57,8 @@ a:
                     if(equil(i,j, cells[i][k] == cells[j][k]) == false) return vector<string>();
                 }
             }
-        } while(update == true);
+            cout << update << endl;
+        } while(update);
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(cells[i][j] == '?') cells[i][j] = 'N';
