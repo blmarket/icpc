@@ -28,7 +28,7 @@ const int dx[] = {-1,0,0,1};
 const int dy[] = {0,-1,1,0};
 
 bool chk(int x, int y) { return x>=0 && y>=0 && x<N && y<M; }
-bool wall(int x, int y) { return chk(x,y) || field[x][y] == '#'; }
+bool wall(int x, int y) { return !chk(x,y) || field[x][y] == '#'; }
 int ways(int x, int y) {
     int ret = 0;
     for(int i=0;i<4;i++) if(!wall(x+dx[i], y+dy[i])) ret++;
@@ -72,7 +72,6 @@ public:
         }
 
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
-            cout << i << " " << j << " = " << wall(i,j) << endl;
             if(!wall(i,j)) {
                 cout << i << " " << j << " = " << ways(i,j) << endl;
                 if(ways(i,j) > 2) { // hiding place
