@@ -40,6 +40,7 @@ public:
             for(int j=i+1;j<N;j++) {
                 int same = 0;
                 cout << i << " " << j << endl;
+                cout << cells[i][1] << " " << cells[j][1] << endl;
                 for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
                     int tmp = (cells[i][k] == cells[j][k]) ? 1 : -1;
                     if(same == 0) same = tmp;
