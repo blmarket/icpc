@@ -66,6 +66,7 @@ public:
     {
         field = field_;
         N = size(field); M = size(field[0]);
+        cout << N << M << endl;
         for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
             if(field[i][j] == 'A') { ax=i;ay=j; }
             if(field[i][j] == 'B') { bx=i;by=j; }
