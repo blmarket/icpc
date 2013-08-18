@@ -28,43 +28,56 @@ char apply(int same, char k) {
     return 'N';
 }
 
+vector<string> cells;
+int N,M;
+
+bool nullify() {
+    for(int i=0;i<N;i++) {
+        for(int j=i+1;j<N;j++) {
+            int same = 0;
+            for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
+                int tmp = (cells[i][k] == cells[j][k]) ? 1 : -1;
+                if(same == 0) same = tmp;
+                if(same != tmp) return false;
+            }
+
+            if(same == 0) continue;
+            for(int k=0;k<M;k++) {
+                if(cells[i][k] == '?') cells[i][k] = apply(same, cells[j][k]);
+            }
+        }
+
+        for(int j=i+1;j<N;j++) {
+            int same = 0;
+            for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
+                int tmp = (cells[i][k] == cells[j][k]) ? 1 : -1;
+                if(same == 0) same = tmp;
+                break;
+            }
+            if(same == 0) continue;
+            for(int k=0;k<M;k++) if(cells[j][k] == '?') {
+                cells[j][k] = apply(same, cells[i][k]);
+            }
+        }
+    }
+    return true;
+}
+
 class ThreeColorability 
 {
 public:
-    vector <string> lexSmallest(vector <string> cells) 
+    vector <string> lexSmallest(vector <string> cells_) 
     {		
-        int N = size(cells);
-        int M = size(cells[0]);
+        cells = cells_;
+        N = size(cells);
+        M = size(cells[0]);
 
-        for(int i=0;i<N;i++) {
-            for(int j=i+1;j<N;j++) {
-                int same = 0;
-                for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
-                    int tmp = (cells[i][k] == cells[j][k]) ? 1 : -1;
-                    if(same == 0) same = tmp;
-                    if(same != tmp) return vector<string>();
-                }
-
-                if(same == 0) continue;
-                for(int k=0;k<M;k++) {
-                    if(cells[i][k] == '?') cells[i][k] = apply(same, cells[j][k]);
-                }
-            }
-
-            for(int j=i+1;j<N;j++) {
-                int same = 0;
-                for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
-                    int tmp = (cells[i][k] == cells[j][k]) ? 1 : -1;
-                    if(same == 0) same = tmp;
-                    break;
-                }
-                if(same == 0) continue;
-                for(int k=0;k<M;k++) if(cells[j][k] == '?') {
-                    cells[j][k] = apply(same, cells[i][k]);
-                }
-            }
+a:
+        if(!nullify()) return vector<string>();
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(cells[i][j] == '?') {
+            cells[i][j] = 'N';
+            goto a;
         }
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(cells[i][j] == '?') cells[i][j] = 'N';
         return cells;
     }
 
