@@ -39,13 +39,13 @@ public:
         for(int i=0;i<N;i++) {
             for(int j=i+1;j<N;j++) {
                 int same = 0;
-                cout << i << " " << j << endl;
                 for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
                     int tmp = (cells[i][k] == cells[j][k]) ? 1 : -1;
                     if(same == 0) same = tmp;
                     if(same != tmp) return vector<string>();
                 }
 
+                if(same == 0) continue;
                 for(int k=0;k<M;k++) {
                     if(cells[i][k] == '?') cells[i][k] = apply(same, cells[j][k]);
                 }
