@@ -58,7 +58,7 @@ bool calc(int x, int y) {
         int md = dfs(nx, ny, x, y, 1);
         if(md > 2) holes++;
     }
-    if(holes > 1 && ad > bd + 1) {
+    if(holes > 2 && ad > bd + 1) {
         cout << "ad=" << ad << " " << bd << endl;
         return true;
     }
