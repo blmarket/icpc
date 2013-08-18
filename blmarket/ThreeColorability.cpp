@@ -22,6 +22,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 char apply(int same, char k) {
+    if(k == '?') return '?';
     if(same == 1) return k;
     if(k == 'N') return 'Z';
     return 'N';
@@ -48,6 +49,7 @@ public:
                     if(cells[i][k] == '?') cells[i][k] = apply(same, cells[j][k]);
                 }
             }
+
             for(int j=i+1;j<N;j++) {
                 int same = 0;
                 for(int k=0;k<M;k++) if(cells[i][k] != '?' && cells[j][k] != '?') {
