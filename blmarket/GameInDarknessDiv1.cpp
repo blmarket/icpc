@@ -71,11 +71,14 @@ public:
             if(field[i][j] == 'B') { bx=i;by=j; }
         }
 
-        for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(!wall(i,j)) {
-            cout << i << " " << j << " = " << ways(i,j) << endl;
-            if(ways(i,j) > 2) { // hiding place
-                cout << i << " " << j << endl;
-                if(calc(i,j)) return "Bob wins";
+        for(int i=0;i<N;i++) for(int j=0;j<M;j++) {
+            cout << i << " " << j << " = " << wall(i,j) << endl;
+            if(!wall(i,j)) {
+                cout << i << " " << j << " = " << ways(i,j) << endl;
+                if(ways(i,j) > 2) { // hiding place
+                    cout << i << " " << j << endl;
+                    if(calc(i,j)) return "Bob wins";
+                }
             }
         }
         return "Alice wins";
