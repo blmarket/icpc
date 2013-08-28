@@ -20,11 +20,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-map<string, int> memo;
-
-string cut(const string &a) {
-    return a.substr(1, a.size() - 2);
-}
+map<pair<string, int>, int> memo;
 
 string convert(const string &a, char b, char c, int &cost) {
     string ret = a;
@@ -38,21 +34,29 @@ string convert(const string &a, char b, char c, int &cost) {
     return ret;
 }
 
+int go(const string &S, int pos) {
+    pair<string, int> key = mp(S, pos);
+    if(memo.count(key)) return memo[key];
+
+    int bpos = size(S) - 1 - pos;
+    if(pos >= bpos) return 0;
+
+    if(S[pos] == S[bpos]) return go(S, pos+1);
+    int t1, t2, t3, t4;
+    t1 = go(convert(S, S[pos], S[bpos], t2), pos+1);
+    t3 = go(convert(S, S[bpos], S[pos], t4), pos+1);
+
+    int ret = min(t1+t2, t3+t4);
+    return memo[key] = ret;
+}
+
 class GooseTattarrattatDiv1 
 {
 public:
     int getmin(string S) 
     {		
         if(size(S) <= 1) return 0;
-        if(memo.count(S)) return memo[S];
-        if(S[0] == S.back()) return getmin(cut(S));
-
-        int t1, t2, t3, t4;
-        t1 = getmin(cut(convert(S, S[0], S.back(), t2)));
-        t3 = getmin(cut(convert(S, S.back(), S[0], t4)));
-
-        int ret = min(t1+t2, t3+t4);
-        return memo[S] = ret;
+        return go(S, 0);
     }
 
     
