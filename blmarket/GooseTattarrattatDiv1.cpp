@@ -49,6 +49,7 @@ int go(const string &S, int pos) {
     t3 = go(convert(S, S[bpos], S[pos], t4), pos+1);
 
     int ret = min(t1+t2, t3+t4);
+    cout << S << " " << pos << " = " << ret << endl;
     return memo[key] = ret;
 }
 
