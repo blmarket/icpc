@@ -20,54 +20,15 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-map<pair<string, int>, int> memo;
-
-string convert(const string &a, char b, char c, int &cost) {
-    cost = 0;
-    if(b == c) return a;
-    string ret = a;
-    for(int i=0;i<size(a);i++) {
-        if(a[i] == b) {
-            cost++;
-            ret[i] = c;
-        }
-    }
-    return ret;
-}
-
-// {"aaabbbcxyyopqrorrqoxyxcbaaddd"}
-
-int go(const string &S, int pos) {
-    pair<string, int> key = mp(S, pos);
-    if(memo.count(key)) return memo[key];
-
-    int bpos = size(S) - 1 - pos;
-    if(pos >= bpos) return 0;
-
-    if(S[pos] == S[bpos]) return go(S, pos+1);
-
-    int ret = -1;
-    for(char i='a';i<='z';i++) {
-        int t1,t2,t3;
-        string tmp = convert(S, S[pos], i, t1);
-        tmp = convert(tmp, S[bpos], i, t2);
-        t3 = go(tmp, pos+1);
-        if(ret == -1 || ret > (t1+t2+t3)) {
-            ret = t1+t2+t3;
-        }
-    }
-
-    //cout << S.substr(0, pos) << " " << S.substr(pos, bpos+1-pos) << " " << S.substr(bpos+1) << " " << pos << " = " << ret << endl;
-    return memo[key] = ret;
-}
-
 class GooseTattarrattatDiv1 
 {
 public:
     int getmin(string S) 
-    {		
-        if(size(S) <= 1) return 0;
-        return go(S, 0);
+    {
+        for(int i=0;i<size(S)/2;i++) {
+            cout << S[i] << " " << S[size(S)-1-i] << endl;
+        }
+        return 0;
     }
 
     
