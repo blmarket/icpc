@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -20,15 +21,40 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int gn[26];
+int sz[26];
+
 class GooseTattarrattatDiv1 
 {
 public:
     int getmin(string S) 
     {
-        for(int i=0;i<size(S)/2;i++) {
-            cout << S[i] << " " << S[size(S)-1-i] << endl;
+        for(int i=0;i<26;i++) gn[i] = i;
+
+        memset(sz, 0, sizeof(sz));
+        for(int i=0;i<size(S);i++) {
+            sz[S[i]-'a']++;
         }
-        return 0;
+
+        for(int i=0;i<size(S)/2;i++) {
+            int g1 = S[i] - 'a';
+            int g2 = S[size(S) - 1 - i] - 'a';
+
+            if(gn[g1] == gn[g2]) continue;
+            int s = gn[g2];
+            for(int i=0;i<26;i++) if(gn[i] == s) gn[i] = gn[g1];
+        }
+
+        int ret = 0;
+        for(int i=0;i<26;i++) {
+            int total = 0, maxx = 0;
+            for(int j=0;j<26;j++) if(gn[j] == i) {
+                total += sz[j];
+                maxx = max(maxx, sz[j]);
+            }
+            ret += (total - maxx);
+        }
+        return ret;
     }
 
     
