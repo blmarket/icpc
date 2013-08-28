@@ -34,6 +34,8 @@ string convert(const string &a, char b, char c, int &cost) {
     return ret;
 }
 
+// {"aaabbbcxyyopqrorrqoxyxcbaaddd"}
+
 int go(const string &S, int pos) {
     pair<string, int> key = mp(S, pos);
     if(memo.count(key)) return memo[key];
