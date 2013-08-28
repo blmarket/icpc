@@ -21,6 +21,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 string ss;
+string t[300];
 
 class FlippingBitsDiv1 
 {
@@ -31,10 +32,14 @@ public:
         for(int i=0;i<size(S);i++) ss += S[i];
 
         for(int i=0;i<M;i++) {
+            t[i].clear();
             for(int j=i;j<size(ss);j+=M) {
-                cout << ss[j];
+                t[i] += ss[j];
             }
-            cout << endl;
+        }
+
+        for(int k=0;k<size(t[M-1]);k++) {
+            cout << k << endl;
         }
         return 0;
     }
