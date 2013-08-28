@@ -57,7 +57,7 @@ int go(const string &S, int pos) {
         }
     }
 
-    cout << S.substr(0, pos) << " " << S.substr(pos, bpos+1-pos) << " " << S.substr(bpos+1) << " " << pos << " = " << ret << endl;
+    //cout << S.substr(0, pos) << " " << S.substr(pos, bpos+1-pos) << " " << S.substr(bpos+1) << " " << pos << " = " << ret << endl;
     return memo[key] = ret;
 }
 
