@@ -46,7 +46,7 @@ int go(char a, char b) {
     for(int i=0;i<size(graph);i++) links[i].clear();
 
     for(int i=0;i<size(graph);i++) if(color[i] == a) {
-        for(int j=0;j<size(graph[i]);j++) if(color[j] == b) {
+        for(int j=0;j<size(graph[i]);j++) if(graph[i][j] == 'Y') if(color[j] == b) {
             links[i].pb(j);
         }
     }
