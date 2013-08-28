@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,7 +22,10 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 string ss;
-string t[300];
+string t[305];
+
+int dd[305][2][305];
+int dsum[305][2];
 
 class FlippingBitsDiv1 
 {
@@ -38,8 +42,19 @@ public:
             }
         }
 
-        for(int k=0;k<size(t[M-1]);k++) {
-            cout << k << endl;
+        memset(dd, 0, sizeof(dd));
+        int l = size(t[0]);
+
+        for(int i=1;i<l;i++) {
+            for(int j=0;j<M;j++) {
+                if(t[j].size() >= i) break;
+                int cc;
+                // assume nonflip
+
+
+                // assume flip
+
+            }
         }
         return 0;
     }
