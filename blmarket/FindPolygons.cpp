@@ -29,13 +29,10 @@ public:
         for(int i=1;i<=L;i++) {
             if(L % (2*i)) continue;
             cout << i << " " << L/2/i << endl;
-            for(int j=1;j<i;j++) {
-                int sum = 2*i*(i+j);
-                if(sum > L) break;
-                if(sum == L) {
-                    cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
-                }
-            }
+            int j = i-(L/2/i);
+            if(j < 0) continue;
+            cout << i << " " << j << endl;
+            cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
         }
         return 0;
     }
