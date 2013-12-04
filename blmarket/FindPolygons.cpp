@@ -27,6 +27,7 @@ public:
     {		
         for(int i=1;i<100;i++) {
             for(int j=1;j<i;j++) {
+                if(2*i*j > 5000 || i*i+j*j > 5000) break;
                 cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
             }
         }
