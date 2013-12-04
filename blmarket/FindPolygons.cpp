@@ -28,6 +28,7 @@ public:
     {		
         for(int i=1;i<5000;i++) {
             for(int j=1;j<i;j++) {
+                if(i*i+j*j > L) break;
                 cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
             }
         }
