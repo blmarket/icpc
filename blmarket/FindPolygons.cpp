@@ -26,19 +26,50 @@ class FindPolygons
 public:
     double minimumPolygon(int L) 
     {		
-        double ret = -1;
-        vector<PII> V;
+        int ret = -1;
+        vector<pair<PII, int> > V;
         for(int i=1;i<5000;i++) {
             for(int j=1;j<i;j++) {
                 if(i*i+j*j > L) break;
                 int p1 = i*i-j*j;
                 int p2 = 2*i*j;
                 if(p1 > p2) swap(p1, p2);
-                V.pb(mp(p1, p2));
+                if(i*i*2 + 2*i*j == L) {
+                    if(ret < 0 || ret > (i*i+j*j - p1)) {
+                        ret = i*i+j*j - p1;
+                    }
+                }
+                V.pb(mp(mp(p1, p2), i*i+j*j));
             }
         }
         sort(V.begin(), V.end());
-        cout << V.size() << endl;
+        for(int i=0;i<size(V);i++) {
+            int l1 = V[i].second;
+            for(int j=i+1;j<size(V);j++) {
+                int l2 = V[j].second;
+                if(l1+l2 >= L) break;
+                int dst = L - l1 - l2;
+                int tmp = max(max(l1, l2), dst) - min(min(l1, l2), dst);
+                if(ret >= 0 && tmp > ret) continue;
+
+                int p1 = abs(V[i].first.first - V[j].first.first);
+                int p2 = abs(V[i].first.second - V[j].first.second);
+                if(p1 > p2) swap(p1, p2);
+                int idx = lower_bound(V.begin(), V.end(), mp(mp(p1, p2), 0)) - V.begin();
+                if(idx < size(V) && V[idx].first.first == p1 && V[idx].first.second == p2 && V[idx].second == dst) {
+                    ret = tmp;
+                }
+
+                p1 = abs(V[i].first.second - V[j].first.first);
+                p2 = abs(V[i].first.first - V[j].first.second);
+                if(p1 > p2) swap(p1, p2);
+                idx = lower_bound(V.begin(), V.end(), mp(mp(p1, p2), 0)) - V.begin();
+                if(idx < size(V) && V[idx].first.first == p1 && V[idx].first.second == p2 && V[idx].second == dst) {
+                    ret = tmp;
+                }
+            }
+        }
+        if(ret != -1) return ret;
         if((L%4) == 0) return 0;
         if((L%2) == 0) {
             return 1.0;
