@@ -29,7 +29,9 @@ public:
         for(int i=1;i<=L;i++) {
             if(L % (2*i)) continue;
             cout << i << " " << L/2/i << endl;
-            int j = i-(L/2/i);
+            int ss = (L/2/i);
+            cout << "tmp " << i << " " << ss << endl;
+            int j = ss - i;
             if(j < 0) continue;
             cout << i << " " << j << endl;
             cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
