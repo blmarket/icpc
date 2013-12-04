@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -26,7 +27,8 @@ public:
     double minimumPolygon(int L) 
     {		
         for(int i=1;i<100;i++) {
-            cout << sqr(i+819) - sqr(i) << endl;
+            int tmp = sqr(i+819) - sqr(i);
+            cout << tmp << " " << sqrt((double)tmp) << endl;
         }
 
         if(L%2) return -1.0;
