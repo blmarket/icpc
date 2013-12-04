@@ -49,7 +49,7 @@ public:
         if(A != 0) qs.pb(1);
         sort(qs.rbegin(), qs.rend());
 
-        int cc = qs[0] - 1;
+        long long cc = (long long)B * qs[0] - 1;
         int ret = size(qs);
         int cut = 1;
         while(cc) {
