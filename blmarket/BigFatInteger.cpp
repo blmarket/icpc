@@ -50,7 +50,7 @@ public:
         sort(qs.rbegin(), qs.rend());
 
         int cc = qs[0] - 1;
-        int ret = 1;
+        int ret = size(qs);
         int cut = 1;
         while(cc) {
             if(cc >= cut) {
