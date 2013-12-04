@@ -51,7 +51,6 @@ public:
                 int dst = L - l1 - l2;
                 int tmp = max(max(l1, l2), dst) - min(min(l1, l2), dst);
                 if(ret >= 0 && tmp > ret) continue;
-                cout << l1 << " " << l2 << " " << dst << endl;
 
                 int p1 = abs(V[i].first.first - V[j].first.first);
                 int p2 = abs(V[i].first.second - V[j].first.second);
