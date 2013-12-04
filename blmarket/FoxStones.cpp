@@ -27,6 +27,7 @@ class FoxStones
 public:
     int getCount(int N, int M, vector <int> sx, vector <int> sy) 
     {		
+        cnts.clear();
         for(int i=1;i<=N;i++) {
             for(int j=1;j<=M;j++) {
                 VI tmp;
