@@ -26,12 +26,18 @@ class FindPolygons
 public:
     double minimumPolygon(int L) 
     {		
+        set<PII> S;
         for(int i=1;i<5000;i++) {
             for(int j=1;j<i;j++) {
                 if(i*i+j*j > L) break;
+                int p1 = i*i-j*j;
+                int p2 = 2*i*j;
+                if(p1 > p2) swap(p1, p2);
+                S.insert(mp(p1, p2));
                 cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
             }
         }
+        cout << S.size() << endl;
         return 0;
         for(int i=1;i<1600;i++) {
             int tmp = sqr(i+819) - sqr(i);
