@@ -60,6 +60,30 @@ public:
                     if(V[idx].second == dst) ret = tmp;
                 }
 
+                p1 = abs(V[i].first.first + V[j].first.first);
+                p2 = abs(V[i].first.second - V[j].first.second);
+                if(p1 > p2) swap(p1, p2);
+                idx = lower_bound(V.begin(), V.end(), mp(mp(p1, p2), 0)) - V.begin();
+                if(idx < size(V) && V[idx].first.first == p1 && V[idx].first.second == p2) {
+                    if (V[idx].second == dst) ret = tmp;
+                }
+
+                p1 = abs(V[i].first.first - V[j].first.first);
+                p2 = abs(V[i].first.second + V[j].first.second);
+                if(p1 > p2) swap(p1, p2);
+                idx = lower_bound(V.begin(), V.end(), mp(mp(p1, p2), 0)) - V.begin();
+                if(idx < size(V) && V[idx].first.first == p1 && V[idx].first.second == p2) {
+                    if (V[idx].second == dst) ret = tmp;
+                }
+
+                p1 = abs(V[i].first.first + V[j].first.first);
+                p2 = abs(V[i].first.second + V[j].first.second);
+                if(p1 > p2) swap(p1, p2);
+                idx = lower_bound(V.begin(), V.end(), mp(mp(p1, p2), 0)) - V.begin();
+                if(idx < size(V) && V[idx].first.first == p1 && V[idx].first.second == p2) {
+                    if (V[idx].second == dst) ret = tmp;
+                }
+
                 p1 = abs(V[i].first.second - V[j].first.first);
                 p2 = abs(V[i].first.first - V[j].first.second);
                 if(p1 > p2) swap(p1, p2);
