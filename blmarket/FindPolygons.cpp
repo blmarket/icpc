@@ -117,6 +117,7 @@ public:
                 }
             }
         }
+        cout << ret << endl;
         if(ret != -1) return ret;
         if((L%4) == 0) return 0;
         if((L%2) == 0) {
