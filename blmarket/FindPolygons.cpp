@@ -26,6 +26,16 @@ class FindPolygons
 public:
     double minimumPolygon(int L) 
     {		
+        for(int i=1;i<5000;i++) {
+            for(int j=1;j<i;j++) {
+                int sum = i*i-j*j + 2*i*j + i*i+j*j;
+                if(sum == L) {
+                    cout << i << " " << j << endl;
+                }
+            }
+        }
+
+        return 0;
         for(int i=1;i<1600;i++) {
             int tmp = sqr(i+819) - sqr(i);
             cout << i << " " << tmp << " " << sqrt((double)tmp) << endl;
