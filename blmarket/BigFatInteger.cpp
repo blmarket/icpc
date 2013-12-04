@@ -27,6 +27,7 @@ class BigFatInteger
 public:
     int minOperations(int A, int B) 
     {
+        primes.clear();
         VI qs;
         for(int i=2;i*i <= A;i++) {
             bool fail = false;
@@ -44,7 +45,6 @@ public:
                 A /= i;
             }
             if(cnt == 0) continue;
-            cout << cnt << " " << A << endl;
             qs.pb(cnt);
         }
         if(A != 0) qs.pb(1);
