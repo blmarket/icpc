@@ -49,6 +49,7 @@ public:
                 int l2 = V[j].second;
                 if(l1+l2 >= L) break;
                 int dst = L - l1 - l2;
+                cout << l1 << " " << l2 << " " << dst << endl;
                 int tmp = max(max(l1, l2), dst) - min(min(l1, l2), dst);
                 if(ret >= 0 && tmp > ret) continue;
 
