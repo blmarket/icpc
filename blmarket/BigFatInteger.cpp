@@ -48,6 +48,8 @@ public:
         }
         if(A != 0) qs.pb(1);
         sort(qs.rbegin(), qs.rend());
+        for(int i=0;i<size(qs);i++) cout << qs[i] << " ";
+        cout << endl;
 
         long long cc = (long long)B * qs[0] - 1;
         int ret = size(qs);
