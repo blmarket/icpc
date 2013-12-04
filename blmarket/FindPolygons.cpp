@@ -34,7 +34,6 @@ public:
                 int p2 = 2*i*j;
                 if(p1 > p2) swap(p1, p2);
                 S.insert(mp(p1, p2));
-                cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
             }
         }
         cout << S.size() << endl;
