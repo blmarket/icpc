@@ -27,6 +27,8 @@ public:
     {		
         if(L%2) return -1.0;
         for(int i=1;i<=L;i++) {
+            if(L % (2*i)) continue;
+            cout << i << " " << L/2/i << endl;
             for(int j=1;j<i;j++) {
                 int sum = 2*i*(i+j);
                 if(sum > L) break;
