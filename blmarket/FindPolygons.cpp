@@ -30,6 +30,7 @@ public:
             for(int j=1;j<i;j++) {
                 if(i*i+j*j > 5000) break;
                 int sum = 2*i*(i+j);
+                cout << sum << endl;
                 if(sum == L) {
                     cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
                 }
