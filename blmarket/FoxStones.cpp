@@ -21,12 +21,14 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 map<VI, int> cnts;
+long long mod = 1000000009LL;
 
 class FoxStones 
 {
 public:
     int getCount(int N, int M, vector <int> sx, vector <int> sy) 
     {		
+        long long ret = 1;
         cnts.clear();
         for(int i=1;i<=N;i++) {
             for(int j=1;j<=M;j++) {
@@ -40,10 +42,14 @@ public:
             }
         }
         for(auto &it : cnts) {
+            for(int i=2;i<=it.second;i++) {
+                ret *= i;
+                if(ret > mod) ret %= mod;
+            }
             cout << it.second << " ";
         }
         cout << endl;
-        return 0;
+        return ret;
     }
 
     
