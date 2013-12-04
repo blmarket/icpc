@@ -33,7 +33,7 @@ public:
             cout << "tmp " << i << " " << ss << endl;
             int j = ss - i;
             if(j < 0) continue;
-            cout << i << " " << j << endl;
+            cout << "so " << i << " " << j << endl;
             cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
         }
         return 0;
