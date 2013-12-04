@@ -44,6 +44,7 @@ public:
         for(j=i;seq[j] < seq[j-1] && j < size(seq);j++) {
             if(seq[j]-seq[j-1] != seq[i]-seq[i-1]) return "NO";
         }
+        if(j < size(seq)) return "NO";
         return "YES";
     }
 
