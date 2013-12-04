@@ -47,7 +47,7 @@ public:
             if(cnt == 0) continue;
             qs.pb(cnt);
         }
-        if(A != 0) qs.pb(1);
+        if(A != 1) qs.pb(1);
         sort(qs.rbegin(), qs.rend());
 
         for(int i=0;i<size(qs);i++) cout << qs[i] << " ";
