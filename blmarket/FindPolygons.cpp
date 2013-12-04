@@ -28,13 +28,9 @@ public:
     {		
         for(int i=1;i<5000;i++) {
             for(int j=1;j<i;j++) {
-                int sum = i*i-j*j + 2*i*j + i*i+j*j;
-                if(sum == L) {
-                    cout << i << " " << j << endl;
-                }
+                cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
             }
         }
-
         return 0;
         for(int i=1;i<1600;i++) {
             int tmp = sqr(i+819) - sqr(i);
@@ -75,6 +71,6 @@ public:
 int main()
 {
     FindPolygons ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
