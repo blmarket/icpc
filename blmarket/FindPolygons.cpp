@@ -29,6 +29,7 @@ public:
         for(int i=1;i<1000;i++) {
             for(int j=1;j<i;j++) {
                 int sum = 2*i*(i+j);
+                if(sum > L) break;
                 if(sum == L) {
                     cout << i*i-j*j << " " << 2*i*j << " " << i*i+j*j << endl;
                 }
