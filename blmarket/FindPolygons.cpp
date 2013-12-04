@@ -66,7 +66,7 @@ public:
                 if(p1 > p2) swap(p1, p2);
                 idx = lower_bound(V.begin(), V.end(), mp(mp(p1, p2), 0)) - V.begin();
                 if(idx < size(V) && V[idx].first.first == p1 && V[idx].first.second == p2) {
-                    cout << "here2" << V[idx].second << " " << dst << endl;
+                    cout << "here2 " << V[idx].second << " " << dst << endl;
                     if (V[idx].second == dst) ret = tmp;
                 }
             }
