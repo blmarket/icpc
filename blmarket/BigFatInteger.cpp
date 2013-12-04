@@ -47,12 +47,21 @@ public:
             qs.pb(cnt);
         }
         if(A != 0) qs.pb(1);
-        sort(qs.begin(), qs.end());
+        sort(qs.rbegin(), qs.rend());
 
-        for(int i=0;i<size(qs);i++) {
-            cout << qs[i] << " ";
+        int cc = qs[0] - 1;
+        int ret = 1;
+        int cut = 1;
+        while(cc) {
+            if(cc >= cut) {
+                cc -= cut;
+                cut *= 2;
+                ret++;
+            } else {
+                return ret + 1;
+            }
         }
-        cout << endl;
+        return ret;
     }
 
     
