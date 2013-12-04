@@ -26,7 +26,7 @@ public:
     double minimumPolygon(int L) 
     {		
         if(L%2) return -1.0;
-        for(int i=1;i<1000;i++) {
+        for(int i=1;i<=L;i++) {
             for(int j=1;j<i;j++) {
                 int sum = 2*i*(i+j);
                 if(sum > L) break;
