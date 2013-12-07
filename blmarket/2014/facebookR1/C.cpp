@@ -42,7 +42,6 @@ int go(int a, int b) {
 
 int memo[510][510];
 int go2(int a, int b) {
-    cout << a << " " << b << endl;
     if(memo[a][b] != -1) return memo[a][b];
 
     int ret = 1;
@@ -75,6 +74,7 @@ int go2(int a, int b) {
         }
         ret = max(ret, mr);
     }
+    cout << a << " " << b << " = " << ret << endl;
     return memo[a][b] = ret;
 }
 
