@@ -43,6 +43,7 @@ void solve(int dataId)
         if(num < pow) break;
         num -= pow;
     }
+    cout << num << endl;
 
     while(num) {
         ret += str[num % size(str)];
