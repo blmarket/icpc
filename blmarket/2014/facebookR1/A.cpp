@@ -36,6 +36,14 @@ void solve(int dataId)
 {
     string ret;
     num--;
+    long long pow = 1;
+
+    for(int i=1;;i++) {
+        pow *= size(str);
+        if(num < pow) break;
+        num -= pow;
+    }
+
     while(num) {
         ret += str[num % size(str)];
         num /= size(str);
