@@ -55,7 +55,7 @@ int go2(int a, int b) {
                 mr = max(mr, maxr[aa][bb+1]);
             }
             if(aa == 0 || data[aa-1][bb] == '#') {
-                cout << "break here" << endl;
+                cout << "break here : " << aa << endl;
                 break;
             }
             aa--;
