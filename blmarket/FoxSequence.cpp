@@ -37,6 +37,7 @@ public:
         }
         while(j < size(seq) && seq[j] == seq[j-1]) j++;
         if(j == size(seq)) return "NO";
+        if(seq[j] <= seq[j-1]) return "NO";
         for(i=j;seq[i] > seq[i-1] && i < size(seq);i++) {
             if(seq[i]-seq[i-1] != seq[j] - seq[j-1]) return "NO";
         }
