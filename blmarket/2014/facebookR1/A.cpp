@@ -38,13 +38,14 @@ void solve(int dataId)
     num--;
     long long pow = 1;
 
-    for(int i=1;;i++) {
+    int i;
+    for(i=1;;i++) {
         pow *= size(str);
         if(num < pow) break;
         num -= pow;
     }
 
-    while(num) {
+    while(i--) {
         ret += str[num % size(str)];
         num /= size(str);
     }
