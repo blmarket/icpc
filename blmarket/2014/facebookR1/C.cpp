@@ -32,49 +32,25 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N,M;
 char data[510][510];
 
-bool r[2][510][510];
-const int dx[2][2] = { { 1, 0 }, { -1, 0 } };
-const int dy[2][2] = { { 0, 1 }, { 0, -1 } };
+int maxr[510][510];
 
-void run(int x, int y, int m) {
-    r[m][x][y] = true;
-    for(int i=0;i<2;i++) {
-        int nx = x + dx[m][i];
-        int ny = y + dy[m][i];
-        if(nx < 0 || ny < 0 || nx >= N || ny >= M || data[nx][ny] == '#') continue;
-        if(!r[m][nx][ny]) run(nx, ny, m);
-    }
+int go(int a, int b) {
+    if(a >= N || b >= M || data[a][b] == '#') return 0;
+    if(maxr[a][b]) return maxr[a][b];
+    return maxr[a][b] = max(go(a+1,b), go(a,b+1)) + 1;
 }
 
 // do time-consuming job here
 void solve(int dataId)
 {
-    memset(r, 0, sizeof(r));
-    run(0, 0, 0);
-    run(N-1, M-1, 1);
-
-    int ret = 0;
-    for(int i=1;i<N-1;i++) {
-        for(int j=0;j<M;j++) if(r[1][i][j]) {
-            for(int k=j+1;k<M;k++) {
-                if(data[i][k] == '#') break;
-                if(r[0][i][k]) ret = max(ret, k-j);
-            }
+    memset(maxr, 0, sizeof(maxr));
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<M;j++) {
+            go(i, j);
+            cout << maxr[i][j] << " ";
         }
+        cout << endl;
     }
-
-    for(int i=1;i<M-1;i++) {
-        for(int j=0;j<N;j++) if(r[1][j][i]) {
-            for(int k=j+1;k<N;k++) {
-                if(data[k][i] == '#') break;
-                if(r[0][k][i]) ret = max(ret, k-j);
-            }
-        }
-    }
-
-    cout << ret << endl;
-
-    printf("Case #%d: %d\n", dataId, N+M-1+ret);
 }
 
 // do data input here. don't use stdin methods in solve function.
