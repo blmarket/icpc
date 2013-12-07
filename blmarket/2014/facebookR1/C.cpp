@@ -39,7 +39,7 @@ void solve(int dataId)
 {
     memset(build1, -1, sizeof(build1));
     queue<tuple<int, int> > Q;
-    build1[N-1][M-1] = 0;
+    build1[N-1][M-1] = 1;
     Q.push(make_tuple(N-1, M-1));
     while(!Q.empty()) {
         int x,y;
