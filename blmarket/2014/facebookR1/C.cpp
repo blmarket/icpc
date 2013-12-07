@@ -50,12 +50,11 @@ int go2(int a, int b) {
         int aa = a;
         int bb = b+1;
         int mr = maxr[a][bb];
-        while(true) {
+        for(int i=0;;i++) {
             if(bb+1 < M && data[aa][bb+1] != '#') {
-                mr = max(mr, maxr[aa][bb+1]);
+                mr = max(mr, maxr[aa][bb+1] + i);
             }
             if(aa == 0 || data[aa-1][bb] == '#') {
-                cout << "break here : " << aa << endl;
                 break;
             }
             aa--;
@@ -68,9 +67,9 @@ int go2(int a, int b) {
         int aa = a+1;
         int bb = b;
         int mr = maxr[aa][b];
-        while(true) {
+        for(int i=0;;i++) {
             if(aa+1 < N && data[aa+1][bb] != '#') {
-                mr = max(mr, maxr[aa+1][bb]);
+                mr = max(mr, maxr[aa+1][bb] + i);
             }
             if(bb == 0 || data[aa][bb-1] == '#') break;
             bb--;
