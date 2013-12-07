@@ -74,7 +74,7 @@ int go2(int a, int b) {
         }
         ret = max(ret, mr);
     }
-    // cout << a << " " << b << " = " << ret << endl;
+    cout << a << " " << b << " = " << ret << endl;
     return memo[a][b] = ret;
 }
 
