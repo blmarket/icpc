@@ -46,6 +46,7 @@ void solve(int dataId)
     }
 
     while(i--) {
+        cerr << num << endl;
         ret += str[num % size(str)];
         num /= size(str);
     }
