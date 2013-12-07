@@ -53,11 +53,26 @@ void solve(int dataId)
     run(0, 0, 0);
     run(N-1, M-1, 1);
 
-    for(int i=0;i<N;i++) cout << data[i] << endl;
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<M;j++) cout << r[0][i][j];
-        cout << endl;
+    int ret = 0;
+    for(int i=1;i<N-1;i++) {
+        for(int j=0;j<M;j++) if(r[1][i][j]) {
+            for(int k=j+1;k<M;k++) {
+                if(data[i][k] == '#') break;
+                if(r[0][i][k]) ret = max(ret, k-j);
+            }
+        }
     }
+
+    for(int i=1;i<M-1;i++) {
+        for(int j=0;j<N;j++) if(r[1][j][i]) {
+            for(int k=j+1;k<N;k++) {
+                if(data[k][i] == '#') break;
+                if(r[0][k][i]) ret = max(ret, k-j);
+            }
+        }
+    }
+
+    printf("Case #%d: %d\n", dataId, N+M-1+ret);
 }
 
 // do data input here. don't use stdin methods in solve function.
