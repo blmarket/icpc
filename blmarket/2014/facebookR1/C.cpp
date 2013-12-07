@@ -1,4 +1,5 @@
 #include <iostream>
+#include <tuple>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <cstdlib>
@@ -31,10 +32,19 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N,M;
 char data[510][510];
 
+int build1[510][510];
+
 // do time-consuming job here
 void solve(int dataId)
 {
-    for(int i=0;i<N;i++) cout << data[i] << endl;
+    queue<tuple<int, int> > Q;
+    build1[N-1][M-1] = 0;
+    Q.push(make_tuple(N-1, M-1));
+    while(!Q.empty()) {
+        int x,y;
+        tie(x,y) = Q.front();
+        Q.pop();
+    }
 }
 
 // do data input here. don't use stdin methods in solve function.
