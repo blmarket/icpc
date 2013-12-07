@@ -41,7 +41,7 @@ void run(int x, int y, int m) {
     for(int i=0;i<2;i++) {
         int nx = x + dx[m][i];
         int ny = y + dy[m][i];
-        if(nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
+        if(nx < 0 || ny < 0 || nx >= N || ny >= M || data[nx][ny] == '#') continue;
         if(!r[m][nx][ny]) run(nx, ny, m);
     }
 }
