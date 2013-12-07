@@ -74,7 +74,7 @@ int go2(int a, int b) {
         }
         ret = max(ret, mr);
     }
-    cout << a << " " << b << " = " << ret << endl;
+    // cout << a << " " << b << " = " << ret << endl;
     return memo[a][b] = ret;
 }
 
@@ -85,8 +85,10 @@ void solve(int dataId)
     memset(memo, -1, sizeof(memo));
     for(int i=0;i<N;i++) {
         for(int j=0;j<M;j++) {
+            cout << maxr[i][j] << " ";
             go(i, j);
         }
+        cout << endl;
     }
 
     printf("Case #%d: %d\n", dataId, go2(0, 0));
