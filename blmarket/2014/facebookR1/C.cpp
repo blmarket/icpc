@@ -37,6 +37,7 @@ int build1[510][510];
 // do time-consuming job here
 void solve(int dataId)
 {
+    memset(build1, -1, sizeof(build1));
     queue<tuple<int, int> > Q;
     build1[N-1][M-1] = 0;
     Q.push(make_tuple(N-1, M-1));
@@ -44,6 +45,21 @@ void solve(int dataId)
         int x,y;
         tie(x,y) = Q.front();
         Q.pop();
+        if(x && data[x-1][y] == '.' && build1[x-1][y] == -1) {
+            build1[x-1][y] = build1[x][y] + 1;
+            Q.push(make_tuple(x-1,y));
+        }
+        if(y && data[x][y-1] == '.' && build1[x][y-1] == -1) {
+            build1[x][y-1] = build1[x][y] + 1;
+            Q.push(make_tuple(x,y-1));
+        }
+    }
+    for(int i=0;i<N;i++) {
+        cout << data[i] << endl;
+    }
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<M;j++) cout << build1[i][j] << " ";
+        cout << endl;
     }
 }
 
