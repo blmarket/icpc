@@ -27,10 +27,12 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+// do time-consuming job here
 void solve(int dataId)
 {
 }
 
+// do data input here. don't use stdin methods in solve function.
 void process(int dataId)
 {
 }
