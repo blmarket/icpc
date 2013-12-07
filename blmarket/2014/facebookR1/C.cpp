@@ -88,9 +88,9 @@ void solve(int dataId)
     for(int i=0;i<N;i++) {
         for(int j=0;j<M;j++) {
             go(i, j);
-            cout << maxr[i][j] << " ";
+            // cout << maxr[i][j] << " ";
         }
-        cout << endl;
+        // cout << endl;
     }
 
     printf("Case #%d: %d\n", dataId, go2(0, 0));
