@@ -52,7 +52,7 @@ int go2(int a, int b) {
         int mr = maxr[a][bb];
         for(int i=0;;i++) {
             if(bb+1 < M && data[aa][bb+1] != '#') {
-                mr = max(mr, maxr[aa][bb+1] + i);
+                mr = max(mr, maxr[aa][bb+1] + i + 2);
             }
             if(aa == 0 || data[aa-1][bb] == '#') {
                 break;
@@ -69,7 +69,7 @@ int go2(int a, int b) {
         int mr = maxr[aa][b];
         for(int i=0;;i++) {
             if(aa+1 < N && data[aa+1][bb] != '#') {
-                mr = max(mr, maxr[aa+1][bb] + i);
+                mr = max(mr, maxr[aa+1][bb] + i + 2);
             }
             if(bb == 0 || data[aa][bb-1] == '#') break;
             bb--;
