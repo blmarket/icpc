@@ -28,14 +28,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+string str;
+long long num;
+
 // do time-consuming job here
 void solve(int dataId)
 {
+    string ret;
+    while(num) {
+        ret += str[num % size(str)];
+        num /= size(str);
+    }
+    reverse(ret.begin(), ret.end());
+    printf("Case #%d: %s\n", dataId, ret.c_str());
 }
 
 // do data input here. don't use stdin methods in solve function.
 void process(int dataId)
 {
+    cin >> str >> num;
 }
 
 class ForkSolver {
