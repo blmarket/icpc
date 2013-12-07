@@ -40,8 +40,8 @@ void solve(int dataId)
 
     int i;
     for(i=1;;i++) {
+        if(num / size(str) < pow) break;
         pow *= size(str);
-        if(num < pow) break;
         num -= pow;
     }
 
