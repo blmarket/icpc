@@ -37,7 +37,7 @@ int maxr[510][510];
 int go(int a, int b) {
     if(a >= N || b >= M || data[a][b] == '#') return -1;
     if(maxr[a][b]) return maxr[a][b];
-    return maxr[a][b] = max(go(a+1,b), go(a,b+1)) + 1;
+    return maxr[a][b] = max(0, max(go(a+1,b), go(a,b+1))) + 1;
 }
 
 int memo[510][510];
