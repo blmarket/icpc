@@ -30,19 +30,24 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, K, C;
 
-int go() {
-    int kk = K % N;
-    int base = K / N;
-    if(base * N >= C) {
+int go(int n) {
+    int kk = K % n;
+    int base = K / n;
+    if(base * n >= C) {
         return C;
     }
-    return (N-kk) + C;
+    return (n-kk) + C;
 }
 
 // do time-consuming job here
 void solve(int dataId)
 {
-    printf("Case #%d: %d\n", dataId, go());
+    int ret = -1;
+    for(int i=N;i>=1;i--) {
+        int tmp = go(i) + (N-i);
+        if(ret == -1 || ret > tmp) ret = tmp;
+    }
+    printf("Case #%d: %d\n", dataId, ret);
 }
 
 // do data input here. don't use stdin methods in solve function.
