@@ -32,33 +32,30 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N,M;
 char data[510][510];
 
-int build1[510][510];
+bool r[2][510][510];
+const int dx[2][2] = { { 1, 0 }, { -1, 0 } };
+const int dy[2][2] = { { 0, 1 }, { 0, -1 } };
+
+void run(int x, int y, int m) {
+    r[m][x][y] = true;
+    for(int i=0;i<2;i++) {
+        int nx = x + dx[m][i];
+        int ny = y + dy[m][i];
+        if(nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
+        if(!r[m][nx][ny]) run(nx, ny, m);
+    }
+}
 
 // do time-consuming job here
 void solve(int dataId)
 {
-    memset(build1, -1, sizeof(build1));
-    queue<tuple<int, int> > Q;
-    build1[N-1][M-1] = 1;
-    Q.push(make_tuple(N-1, M-1));
-    while(!Q.empty()) {
-        int x,y;
-        tie(x,y) = Q.front();
-        Q.pop();
-        if(x && data[x-1][y] == '.' && build1[x-1][y] == -1) {
-            build1[x-1][y] = build1[x][y] + 1;
-            Q.push(make_tuple(x-1,y));
-        }
-        if(y && data[x][y-1] == '.' && build1[x][y-1] == -1) {
-            build1[x][y-1] = build1[x][y] + 1;
-            Q.push(make_tuple(x,y-1));
-        }
-    }
+    memset(r, 0, sizeof(r));
+    run(0, 0, 0);
+    run(N-1, M-1, 1);
+
+    for(int i=0;i<N;i++) cout << data[i] << endl;
     for(int i=0;i<N;i++) {
-        cout << data[i] << endl;
-    }
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<M;j++) cout << build1[i][j] << " ";
+        for(int j=0;j<M;j++) cout << r[0][i][j];
         cout << endl;
     }
 }
