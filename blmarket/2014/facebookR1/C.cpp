@@ -72,6 +72,8 @@ void solve(int dataId)
         }
     }
 
+    cout << ret << endl;
+
     printf("Case #%d: %d\n", dataId, N+M-1+ret);
 }
 
