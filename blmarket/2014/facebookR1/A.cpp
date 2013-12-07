@@ -35,6 +35,7 @@ long long num;
 void solve(int dataId)
 {
     string ret;
+    num--;
     while(num) {
         ret += str[num % size(str)];
         num /= size(str);
