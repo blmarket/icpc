@@ -63,7 +63,7 @@ int main(void)
         char buffer[8192];
         waitpid(solver.outfds[i].first, &status, 0);
         ssize_t sz;
-        while(sz = read(solver.outfds[i].second, buffer, sizeof(buffer)))
+        while((sz = read(solver.outfds[i].second, buffer, sizeof(buffer))))
         {
             ssize_t iter = 0, outsz;
 
