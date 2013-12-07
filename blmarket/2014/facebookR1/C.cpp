@@ -35,22 +35,60 @@ char data[510][510];
 int maxr[510][510];
 
 int go(int a, int b) {
-    if(a >= N || b >= M || data[a][b] == '#') return 0;
+    if(a >= N || b >= M || data[a][b] == '#') return -1;
     if(maxr[a][b]) return maxr[a][b];
     return maxr[a][b] = max(go(a+1,b), go(a,b+1)) + 1;
+}
+
+int memo[510][510];
+int go2(int a, int b) {
+    if(memo[a][b] != -1) return memo[a][b];
+
+    int ret = 1;
+    if(b+1 < M && data[a][b+1] != '#') {
+        ret = max(ret, go2(a,b+1) + 1);
+        int aa = a;
+        int bb = b+1;
+        int mr = maxr[a][bb];
+        while(true) {
+            if(bb+1 < M && data[aa][bb+1] != '#') {
+                mr = max(mr, maxr[aa][bb+1]);
+            }
+            if(aa == 0 || data[aa-1][bb] == '#') break;
+            aa--;
+        }
+        ret = max(ret, mr);
+    }
+
+    if(a+1 < N && data[a+1][b] != '#') {
+        ret = max(ret, go2(a+1,b) + 1);
+        int aa = a+1;
+        int bb = b;
+        int mr = maxr[aa][b];
+        while(true) {
+            if(aa+1 < N && data[aa+1][bb] != '#') {
+                mr = max(mr, maxr[aa+1][bb]);
+            }
+            if(bb == 0 || data[aa][bb-1] == '#') break;
+            bb--;
+        }
+        ret = max(ret, mr);
+    }
+    return memo[a][b] = ret;
 }
 
 // do time-consuming job here
 void solve(int dataId)
 {
     memset(maxr, 0, sizeof(maxr));
+    memset(memo, -1, sizeof(memo));
     for(int i=0;i<N;i++) {
         for(int j=0;j<M;j++) {
             go(i, j);
-            cout << maxr[i][j] << " ";
         }
-        cout << endl;
     }
+
+    go2(0, 0);
 }
 
 // do data input here. don't use stdin methods in solve function.
