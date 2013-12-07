@@ -88,7 +88,7 @@ void solve(int dataId)
         }
     }
 
-    go2(0, 0);
+    printf("Case #%d: %d\n", dataId, go2(0, 0));
 }
 
 // do data input here. don't use stdin methods in solve function.
