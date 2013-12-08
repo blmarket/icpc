@@ -41,6 +41,7 @@ void solve(int dataId)
         int t1 = (V[i] + (K-1)) / K;
         if(t1 == 0) t1 = 1;
         base += t1 * K - V[i];
+        if(t1 == 1) continue;
         V2.pb((V[i] + (K-1)) / K);
     }
     
