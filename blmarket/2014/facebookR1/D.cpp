@@ -30,6 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N,K;
 VI V, V2;
+VI primes;
 
 // do time-consuming job here
 void solve(int dataId)
@@ -66,6 +67,14 @@ public:
 
 int main(void)
 {
+    primes.pb(2);
+    for(int i=3;i<200;i+=2) {
+        bool kk = false;
+        for(int j=0;j<size(primes);j++) {
+            if((i % primes[j]) == 0) { kk = true; break; }
+        }
+        if(!kk) primes.pb(i);
+    }
     int N;
     cin >> N;
     solver.outfds.resize(N+1);
