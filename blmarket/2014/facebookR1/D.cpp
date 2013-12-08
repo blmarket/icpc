@@ -34,6 +34,41 @@ int N,K;
 VI V, V2;
 VI primes;
 
+vector<int> used;
+
+int go(int pos, int sv, int cut) {
+    if(pos == size(V2)) {
+        return 0;
+    }
+    if(sv < V2[pos]) sv = V2[pos];
+
+    int ret = cut;
+    for(int i=0;i<min(cut, 10);i++, sv++) {
+        int tmp = sv;
+        bool gogo = true;
+        for(int j=0;j<size(primes);j++) {
+            if((tmp % primes[j]) == 0 && used[j]) {
+                gogo = false;
+                break;
+            }
+            while((tmp % primes[j])) {
+                tmp /= primes[j];
+            }
+        }
+        if(!gogo) {
+            continue;
+        }
+        for(int j=0;j<size(primes);j++) {
+            if((tmp % primes[j]) == 0) {
+                used[j] = 1;
+            }
+        }
+        int chk = go(pos+1, sv + 1, ret) + sv - V2[pos];
+        if(ret > chk) ret = chk;
+    }
+    return ret;
+}
+
 // do time-consuming job here
 void solve(int dataId)
 {
@@ -57,6 +92,9 @@ void solve(int dataId)
         cout << V2[i] << " ";
     }
     cout << endl;
+
+    used = vector<int>(size(primes), 0);
+    if(size(V2)) base += go(0, V2[0], 10000) * K;
 
     printf("Case #%d: %d\n", dataId, base);
 }
