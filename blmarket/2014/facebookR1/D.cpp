@@ -37,6 +37,11 @@ VI primes;
 vector<int> used;
 
 int go(int pos, int sv, int cut) {
+    cout << pos << " " << sv << endl;
+    for(int i=0;i<10;i++) {
+        cout << used[i] << " ";
+    }
+    cout << endl;
     if(pos == size(V2)) {
         return 0;
     }
