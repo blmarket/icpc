@@ -122,6 +122,7 @@ void solve(int dataId)
         }
         int tmp = sink;
         while(tmp != src) {
+            cout << back[tmp] << " -> " << tmp << endl;
             mod_flow(back[tmp], tmp, -1);
             mod_flow(tmp, back[tmp], 1);
             tmp = back[tmp];
