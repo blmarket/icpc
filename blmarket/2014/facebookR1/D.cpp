@@ -57,6 +57,7 @@ int go(int pos, int sv, int cut) {
                 tmp /= primes[j];
             }
         }
+        cout << "chk " << pos << " " << gogo << endl;
         if(!gogo) {
             continue;
         }
