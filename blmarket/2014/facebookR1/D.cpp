@@ -64,10 +64,6 @@ int go(int pos, int sv, int cut) {
                 used[j] = 1;
             }
         }
-        // cout << sv << " : ";
-        // for(int j=0;j<10;j++)
-        //     cout << used[j] << " ";
-        // cout << endl;
         int chk = go(pos+1, sv + 1, ret) + sv - V2[pos];
         if(ret > chk) ret = chk;
 
