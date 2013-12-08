@@ -38,16 +38,18 @@ VI primes;
 void solve(int dataId)
 {
     int base = 0;
+    bool haszero = false;
     V2.clear();
     for(int i=0;i<N;i++) {
         int t1 = (V[i] + (K-1)) / K;
-        if(t1 == 0) t1 = 1;
+        if(t1 == 0) {
+            if(haszero) t1 = 1;
+            haszero = true;
+        }
         base += t1 * K - V[i];
-        cout << t1*K << endl;
-        if(t1 == 1) continue;
+        if(t1 <= 1) continue;
         V2.pb((V[i] + (K-1)) / K);
     }
-    cout << "base! = " << base << endl;
 
     function<int(int, int)> calc_price = [&](int now, int prime) -> int {
         return ((now + (prime-1)) / prime * prime) - now;
