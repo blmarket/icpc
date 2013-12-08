@@ -50,6 +50,7 @@ void solve(int dataId)
         if(t1 <= 1) continue;
         V2.pb((V[i] + (K-1)) / K);
     }
+    if(size(V2) && haszero) base += K;
 
     sort(V2.begin(), V2.end());
     for(int i=0;i<size(V2);i++) {
