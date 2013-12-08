@@ -101,7 +101,7 @@ void solve(int dataId)
         Q.push(src);
         while(!Q.empty()) {
             int pos = Q.front();
-            cout << pos << " " << mincost[pos] << endl;
+            cout << pos << " " << mincost[pos] << " " << size(flows[pos]) << endl;
             Q.pop();
             for(int i=0;i<size(flows[pos]);i++) {
                 int a, b;
@@ -157,7 +157,6 @@ int main(void)
         if(!kk) primes.pb(i);
         if(size(primes) > 200) break;
     }
-    cout << primes.back() << endl;
     int N;
     cin >> N;
     solver.outfds.resize(N+1);
