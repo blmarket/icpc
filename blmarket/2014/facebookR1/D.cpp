@@ -52,6 +52,7 @@ void solve(int dataId)
     }
     if(size(V2) && haszero) base += K;
 
+    cout << size(primes) << endl;
     sort(V2.begin(), V2.end());
     for(int i=0;i<size(V2);i++) {
         cout << V2[i] << " ";
