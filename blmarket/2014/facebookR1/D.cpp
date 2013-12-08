@@ -43,7 +43,7 @@ int go(int pos, int sv, int cut) {
     if(sv < V2[pos]) sv = V2[pos];
 
     int ret = cut;
-    for(int i=0;i<min(cut, 20);i++, sv++) {
+    for(int i=0;i<min(cut, 10);i++, sv++) {
         int tmp = sv;
         bool gogo = true;
         for(int j=0;j<size(primes);j++) {
