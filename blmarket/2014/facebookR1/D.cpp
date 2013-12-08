@@ -149,14 +149,15 @@ public:
 int main(void)
 {
     primes.pb(2);
-    for(int i=3;i<200;i+=2) {
+    for(int i=3;i<20000;i+=2) {
         bool kk = false;
         for(int j=0;j<size(primes);j++) {
             if((i % primes[j]) == 0) { kk = true; break; }
         }
         if(!kk) primes.pb(i);
+        if(size(primes) > 200) break;
     }
-    cout << size(primes) << endl;
+    cout << primes.back() << endl;
     int N;
     cin >> N;
     solver.outfds.resize(N+1);
