@@ -19,7 +19,7 @@
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
 // set concurrent running childs. set 1 to debug.
-#define MULTI 1
+#define MULTI 3
 
 using namespace std;
 
@@ -204,7 +204,7 @@ void ForkSolver::_solve(int dataId)
         if(dup2(pipefd[1], 1) == -1) perror("dup2");
         if(close(pipefd[1]) == -1) perror("close");
         solve(dataId);
-        // fprintf(stderr, "%d\n", dataId);
+        fprintf(stderr, "%d\n", dataId);
         exit(0); // force exit
     }
 }
