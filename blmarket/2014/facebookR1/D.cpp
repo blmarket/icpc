@@ -66,6 +66,7 @@ int go(int pos, int sv, int cut) {
         int chk = go(pos+1, sv + 1, ret) + sv - V2[pos];
         if(ret > chk) ret = chk;
     }
+    cout << pos << " = " << ret << endl;
     return ret;
 }
 
