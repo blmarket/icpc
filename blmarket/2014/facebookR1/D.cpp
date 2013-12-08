@@ -42,8 +42,6 @@ int go(int pos, int sv, int cut) {
     }
     if(sv < V2[pos]) sv = V2[pos];
 
-    cout << "here " << pos << " " << sv << " " << cut << endl;
-
     int ret = cut;
     for(int i=0;i<min(cut, 10);i++, sv++) {
         int tmp = sv;
@@ -66,12 +64,9 @@ int go(int pos, int sv, int cut) {
                 used[j] = 1;
             }
         }
-        cout << "advance with " << pos << " " << sv << endl;
-        for(int j=0;j<10;j++)
-            cout << used[j] << " ";
-        cout << endl;
         int chk = go(pos+1, sv + 1, ret) + sv - V2[pos];
         if(ret > chk) ret = chk;
+
         for(int j=0;j<size(primes);j++) {
             if((tmp % primes[j]) == 0) {
                 used[j] = 0;
