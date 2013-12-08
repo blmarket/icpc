@@ -56,6 +56,7 @@ int go(int pos, int sv, int cut) {
             }
         }
         if(!gogo) {
+            cout << sv << " fails" << endl;
             continue;
         }
         tmp = sv;
