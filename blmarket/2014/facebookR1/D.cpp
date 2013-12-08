@@ -42,6 +42,8 @@ int go(int pos, int sv, int cut) {
     }
     if(sv < V2[pos]) sv = V2[pos];
 
+    cout << "here " << pos << " " << sv << " " << cut << endl;
+
     int ret = cut;
     for(int i=0;i<min(cut, 10);i++, sv++) {
         int tmp = sv;
