@@ -73,6 +73,7 @@ int go(int pos, int sv, int cut) {
             }
         }
     }
+    cout << pos << " " << sv << " = " << ret << endl;
     return ret;
 }
 
