@@ -52,7 +52,6 @@ void solve(int dataId)
     }
     if(size(V2) && haszero) base += K;
 
-    cout << size(primes) << endl;
     sort(V2.begin(), V2.end());
     for(int i=0;i<size(V2);i++) {
         cout << V2[i] << " ";
@@ -92,7 +91,7 @@ int main(void)
             if((i % primes[j]) == 0) { kk = true; break; }
         }
         if(!kk) primes.pb(i);
-        if(size(primes) > 200) break;
+        if(size(primes) > 120) break;
     }
     int N;
     cin >> N;
