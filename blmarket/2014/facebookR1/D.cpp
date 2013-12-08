@@ -115,8 +115,14 @@ void solve(int dataId)
                 }
             }
         }
+        int tmp = sink;
+        while(tmp != src) {
+            mod_flow(back[tmp], tmp, -1);
+            mod_flow(tmp, back[tmp], 1);
+            tmp = back[tmp];
+        }
         cout << mincost[sink] << endl;
-        return 0;
+        return mincost[sink];
     };
 
     for(int i=0;i<size(V2);i++) {
