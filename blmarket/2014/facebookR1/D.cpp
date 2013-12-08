@@ -93,10 +93,11 @@ void solve(int dataId)
     n1++;
 
     auto try_flow = [&]() -> int {
-        VI mincost(n1, 0);
+        VI mincost(n1, 99999);
         VI back(n1, -1);
 
         queue<int> Q;
+        mincost[src] = 0;
         Q.push(src);
         while(!Q.empty()) {
             int pos = Q.front();
@@ -104,8 +105,17 @@ void solve(int dataId)
             for(int i=0;i<size(flows[pos]);i++) {
                 int a, b;
                 tie(a,b) = flows[pos][i];
+                if(!b) continue;
+                int nc = mincost[pos] + cost[pos][a];
+                if(mincost[a] > nc) {
+                    mincost[a] = nc;
+                    back[a] = pos;
+                    Q.push(pos);
+                }
             }
         }
+        cout << mincost[sink] << endl;
+        return 0;
     };
 
     for(int i=0;i<size(V2);i++) {
