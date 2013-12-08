@@ -35,13 +35,18 @@ VI primes;
 // do time-consuming job here
 void solve(int dataId)
 {
+    int base = 0;
     V2.clear();
     for(int i=0;i<N;i++) {
+        int t1 = (V[i] + (K-1)) / K;
+        if(t1 == 0) t1 = 1;
+        base += t1 * K - V[i];
         V2.pb((V[i] + (K-1)) / K);
     }
     
     for(int i=0;i<size(V2);i++) cout << V2[i] << " ";
     cout << endl;
+    cout << base << endl;
 }
 
 // do data input here. don't use stdin methods in solve function.
