@@ -125,6 +125,7 @@ void solve(int dataId)
         return mincost[sink];
     };
 
+    cout << "base = " << base << endl;
     for(int i=0;i<size(V2);i++) {
         base += try_flow();
     }
