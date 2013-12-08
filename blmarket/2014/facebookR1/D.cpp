@@ -60,6 +60,7 @@ int go(int pos, int sv, int cut) {
         if(!gogo) {
             continue;
         }
+        tmp = sv;
         for(int j=0;j<size(primes);j++) {
             if((tmp % primes[j]) == 0) {
                 used[j] = 1;
