@@ -156,6 +156,7 @@ int main(void)
         }
         if(!kk) primes.pb(i);
     }
+    cout << size(primes) << endl;
     int N;
     cin >> N;
     solver.outfds.resize(N+1);
