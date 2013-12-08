@@ -101,7 +101,7 @@ void solve(int dataId)
         Q.push(src);
         while(!Q.empty()) {
             int pos = Q.front();
-            cout << pos << " " << mincost[pos] << " " << size(flows[pos]) << endl;
+            // cout << pos << " " << mincost[pos] << " " << size(flows[pos]) << endl;
             Q.pop();
             for(int i=0;i<size(flows[pos]);i++) {
                 int a, b;
