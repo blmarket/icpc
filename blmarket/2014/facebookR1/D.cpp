@@ -108,11 +108,10 @@ void solve(int dataId)
                 tie(a,b) = flows[pos][i];
                 if(!b) continue;
                 int nc = mincost[pos] + cost[pos][a];
-                cout << "nc = "<< nc << " " << mincost[a] << endl;
                 if(mincost[a] > nc) {
                     mincost[a] = nc;
                     back[a] = pos;
-                    Q.push(pos);
+                    Q.push(a);
                 }
             }
         }
