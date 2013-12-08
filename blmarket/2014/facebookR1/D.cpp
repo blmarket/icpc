@@ -52,7 +52,10 @@ void solve(int dataId)
     }
 
     sort(V2.begin(), V2.end());
-    __gcd(V2[0], V2[1]);
+    for(int i=0;i<size(V2);i++) {
+        cout << V2[i] << " ";
+    }
+    cout << endl;
 
     printf("Case #%d: %d\n", dataId, base);
 }
