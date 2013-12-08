@@ -18,7 +18,8 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
-#define MULTI 2
+// set concurrent running childs. set 1 to debug.
+#define MULTI 1
 
 using namespace std;
 
