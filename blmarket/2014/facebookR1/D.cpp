@@ -51,90 +51,9 @@ void solve(int dataId)
         V2.pb((V[i] + (K-1)) / K);
     }
 
-    function<int(int, int)> calc_price = [&](int now, int prime) -> int {
-        return ((now + (prime-1)) / prime * prime) - now;
-    };
+    sort(V2.begin(), V2.end());
+    __gcd(V2[0], V2[1]);
 
-    int n1 = size(primes);
-    int cost[300][300];
-    vector<PII> flows[300];
-
-    function<bool(int, int)> get_flow = [&](int a, int b) -> bool {
-        for(int i=0;i<size(flows[a]);i++) {
-            if(get<0>(flows[a][i]) == b) return get<1>(flows[a][i]);
-        }
-        return false;
-    };
-
-    function<void(int, int, int)> mod_flow = [&](int a, int b, int c) {
-        for(int i=0;i<size(flows[a]);i++) {
-            if(get<0>(flows[a][i]) == b) {
-                get<1>(flows[a][i]) += c;
-                return;
-            }
-        }
-        flows[a].pb(mp(b,c));
-    };
-
-    memset(cost, 0, sizeof(cost));
-
-    for(int i=0;i<size(V2);i++) {
-        for(int j=0;j<size(primes);j++) {
-            mod_flow(n1, j, 1);
-            cost[n1][j] = calc_price(V2[i], primes[j]);
-            cost[j][n1] = -cost[n1][j];
-        }
-        n1++;
-    }
-    for(int i=0;i<size(V2);i++) {
-        mod_flow(n1, size(primes)+i, 1);
-    }
-    int src = n1;
-    n1++;
-    for(int i=0;i<size(primes);i++) {
-        mod_flow(i, n1, 1);
-    }
-    int sink = n1;
-    n1++;
-
-    auto try_flow = [&]() -> int {
-        VI mincost(n1, 99999);
-        VI back(n1, -1);
-
-        queue<int> Q;
-        mincost[src] = 0;
-        Q.push(src);
-        while(!Q.empty()) {
-            int pos = Q.front();
-            // cout << pos << " " << mincost[pos] << " " << size(flows[pos]) << endl;
-            Q.pop();
-            for(int i=0;i<size(flows[pos]);i++) {
-                int a, b;
-                tie(a,b) = flows[pos][i];
-                if(!b) continue;
-                int nc = mincost[pos] + cost[pos][a];
-                if(mincost[a] > nc) {
-                    mincost[a] = nc;
-                    back[a] = pos;
-                    Q.push(a);
-                }
-            }
-        }
-        int tmp = sink;
-        while(tmp != src) {
-            cout << back[tmp] << " -> " << tmp << endl;
-            mod_flow(back[tmp], tmp, -1);
-            mod_flow(tmp, back[tmp], 1);
-            tmp = back[tmp];
-        }
-        cout << mincost[sink] << endl;
-        return mincost[sink];
-    };
-
-    cout << "base = " << base << endl;
-    for(int i=0;i<size(V2);i++) {
-        base += try_flow();
-    }
     printf("Case #%d: %d\n", dataId, base);
 }
 
