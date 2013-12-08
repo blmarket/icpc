@@ -48,6 +48,7 @@ int go(int pos, int sv, int cut) {
         bool gogo = true;
         for(int j=0;j<size(primes);j++) {
             if((tmp % primes[j]) == 0 && used[j]) {
+                cout << sv << " fails with " << j << endl;
                 gogo = false;
                 break;
             }
@@ -56,7 +57,6 @@ int go(int pos, int sv, int cut) {
             }
         }
         if(!gogo) {
-            cout << sv << " fails" << endl;
             continue;
         }
         tmp = sv;
