@@ -1,4 +1,5 @@
 #include <iostream>
+#include <tuple>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <cstdlib>
@@ -12,7 +13,7 @@
 #include <map>
 #include <vector>
 
-#define mp make_pair
+#define mp make_tuple
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
@@ -24,7 +25,7 @@ using namespace std;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
-typedef pair<int,int> PII;
+typedef tuple<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
@@ -44,10 +45,73 @@ void solve(int dataId)
         if(t1 == 1) continue;
         V2.pb((V[i] + (K-1)) / K);
     }
-    
-    for(int i=0;i<size(V2);i++) cout << V2[i] << " ";
-    cout << endl;
-    cout << base << endl;
+
+    function<int(int, int)> calc_price = [&](int now, int prime) -> int {
+        return ((now + (prime-1)) / prime * prime) - now;
+    };
+
+    int n1 = size(primes);
+    int cost[300][300];
+    vector<PII> flows[300];
+
+    function<bool(int, int)> get_flow = [&](int a, int b) -> bool {
+        for(int i=0;i<size(flows[a]);i++) {
+            if(get<0>(flows[a][i]) == b) return get<1>(flows[a][i]);
+        }
+        return false;
+    };
+
+    function<void(int, int, int)> mod_flow = [&](int a, int b, int c) {
+        for(int i=0;i<size(flows[a]);i++) {
+            if(get<0>(flows[a][i]) == b) {
+                get<1>(flows[a][i]) += c;
+                return;
+            }
+        }
+        flows[a].pb(mp(b,c));
+    };
+
+    memset(cost, 0, sizeof(cost));
+
+    for(int i=0;i<size(V2);i++) {
+        for(int j=0;j<size(primes);j++) {
+            mod_flow(n1, j, 1);
+            cost[n1][j] = calc_price(V2[i], primes[j]);
+            cost[j][n1] = -cost[n1][j];
+        }
+        n1++;
+    }
+    for(int i=0;i<size(V2);i++) {
+        mod_flow(n1, size(primes)+i, 1);
+    }
+    int src = n1;
+    n1++;
+    for(int i=0;i<size(primes);i++) {
+        mod_flow(i, n1, 1);
+    }
+    int sink = n1;
+    n1++;
+
+    auto try_flow = [&]() -> int {
+        VI mincost(n1, 0);
+        VI back(n1, -1);
+
+        queue<int> Q;
+        Q.push(src);
+        while(!Q.empty()) {
+            int pos = Q.front();
+            Q.pop();
+            for(int i=0;i<size(flows[pos]);i++) {
+                int a, b;
+                tie(a,b) = flows[pos][i];
+            }
+        }
+    };
+
+    for(int i=0;i<size(V2);i++) {
+        base += try_flow();
+    }
+    printf("Case #%d: %d\n", dataId, base);
 }
 
 // do data input here. don't use stdin methods in solve function.
