@@ -46,6 +46,7 @@ void solve(int dataId)
         if(t1 == 1) continue;
         V2.pb((V[i] + (K-1)) / K);
     }
+    cout << "base! = " << base << endl;
 
     function<int(int, int)> calc_price = [&](int now, int prime) -> int {
         return ((now + (prime-1)) / prime * prime) - now;
