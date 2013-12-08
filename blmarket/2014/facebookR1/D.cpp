@@ -100,10 +100,6 @@ void solve(int dataId)
     if(size(V2) && haszero) base += K;
 
     sort(V2.begin(), V2.end());
-    for(int i=0;i<size(V2);i++) {
-        cerr << V2[i] << " ";
-    }
-    cerr << endl;
 
     used = vector<int>(size(primes), 0);
     if(size(V2)) base += go(0, V2[0], 10000) * K;
