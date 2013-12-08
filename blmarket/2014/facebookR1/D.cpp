@@ -63,6 +63,7 @@ int go(int pos, int sv, int cut) {
                 used[j] = 1;
             }
         }
+        cout << "advance with " << pos << " " << sv << endl;
         int chk = go(pos+1, sv + 1, ret) + sv - V2[pos];
         if(ret > chk) ret = chk;
         for(int j=0;j<size(primes);j++) {
