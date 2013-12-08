@@ -50,7 +50,6 @@ int go(int pos, int sv, int cut) {
         bool gogo = true;
         for(int j=0;j<size(primes);j++) {
             if((tmp % primes[j]) == 0 && used[j]) {
-                cout << "fail cuz " << primes[j] << endl;
                 gogo = false;
                 break;
             }
@@ -67,6 +66,9 @@ int go(int pos, int sv, int cut) {
             }
         }
         cout << "advance with " << pos << " " << sv << endl;
+        for(int j=0;j<10;j++)
+            cout << used[j] << " ";
+        cout << endl;
         int chk = go(pos+1, sv + 1, ret) + sv - V2[pos];
         if(ret > chk) ret = chk;
         for(int j=0;j<size(primes);j++) {
