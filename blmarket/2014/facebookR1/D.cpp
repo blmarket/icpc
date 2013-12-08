@@ -48,11 +48,10 @@ int go(int pos, int sv, int cut) {
         bool gogo = true;
         for(int j=0;j<size(primes);j++) {
             if((tmp % primes[j]) == 0 && used[j]) {
-                cout << sv << " fails with " << j << " " << primes[j] << " " << tmp << endl;
                 gogo = false;
                 break;
             }
-            while((tmp % primes[j])) {
+            while((tmp % primes[j]) == 0) {
                 tmp /= primes[j];
             }
         }
