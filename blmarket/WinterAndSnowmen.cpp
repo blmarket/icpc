@@ -47,13 +47,12 @@ public:
                     if(j <= N) {
                         int nb = b;
                         if(j & (1<<i)) nb ^= 1;
-                        cout << (a^i) << " " << nb << " increase" << endl;
-                        add(nex[a ^ i][nb], cur[a][b]);
+                        add(nex[a ^ j][nb], cur[a][b]);
                     }
                     if(j <= M) {
                         int nb = b;
                         if(j & (1<<i)) nb ^= 2;
-                        add(nex[a ^ i][nb], cur[a][b]);
+                        add(nex[a ^ j][nb], cur[a][b]);
                     }
                 }
                 for(int a=0;a<2048;a++) for(int b=0;b<4;b++) add(cur[a][b], nex[a][b]);
