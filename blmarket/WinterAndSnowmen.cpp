@@ -47,6 +47,7 @@ public:
                     if(j <= N) {
                         int nb = b;
                         if(j & (1<<i)) nb ^= 1;
+                        cout << (a^i) << " " << nb << " increase" << endl;
                         add(nex[a ^ i][nb], cur[a][b]);
                     }
                     if(j <= M) {
