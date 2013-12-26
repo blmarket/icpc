@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -20,7 +21,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int st[2][2048][2048];
+int st[1000][2048][2048];
 int mod = 1000000007;
 
 void add(int &a, int b) {
@@ -37,6 +38,7 @@ public:
         st[1][0][0] = 1;
         int nn = max(N, M);
         for(int i=1;i<=nn;i++) {
+            cout << i << endl;
             int now = (i%2);
             int nex = !now;
             memset(st[nex], 0, sizeof(st[nex]));
