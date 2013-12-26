@@ -21,7 +21,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int st[100][2048][2048];
+int st[2][2048][2048];
 int mod = 1000000007;
 
 void add(int &a, int b) {
