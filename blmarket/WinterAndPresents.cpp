@@ -37,7 +37,7 @@ public:
                 mino += max(0, i - apple[j]);
             }
             cout << i << " " << mina << " " << mino << endl;
-            ret += i + 1 - mina - mino;
+            ret += (i * 2) - mina - mino;
         }
         return ret;
     }
