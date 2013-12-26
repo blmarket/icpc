@@ -52,6 +52,13 @@ public:
                 }
             }
         }
+        long long ret = 0;
+        int then = (nn+1)%2;
+        for(int i=0;i<2048;i++) for(int j=0;j<i;j++) {
+            ret += st[then][i][j];
+        }
+        ret %= mod;
+        return ret;
     }
 
     
