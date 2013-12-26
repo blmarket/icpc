@@ -40,8 +40,10 @@ public:
             int now = (i%2);
             int nex = !now;
             memset(st[nex], 0, sizeof(st[nex]));
+            cout << i << endl;
             for(int j=0;j<2048;j++) for(int k=0;k<2048;k++) if(st[now][j][k]) {
                 int tt = st[now][j][k];
+                cout << j << " " << k << " = " << tt << endl;
                 add(st[nex][j][k], tt);
 
                 if(i <= N) {
