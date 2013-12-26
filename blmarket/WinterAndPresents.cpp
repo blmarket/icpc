@@ -29,15 +29,15 @@ public:
         for(int i=0;i<size(apple);i++) {
             if(minc > apple[i] + orange[i]) minc = apple[i] + orange[i];
         }
+        long long ret = 0;
         for(int i=1;i<=minc;i++) {
             int mina = 0, mino = 0;
             for(int j=0;j<size(apple);j++) {
                 if(orange[j] < i) mina += (i - orange[j]);
                 mino += max(0, i - apple[j]);
             }
-            cout << mina << " " << mino << endl;
+            ret += i - mina - mino;
         }
-        long long ret = 0;
         return ret;
     }
 
