@@ -56,7 +56,7 @@ public:
         }
         long long ret = 0;
         int then = (nn+1)%2;
-        for(int i=0;i<2048;i++) for(int j=0;j<i;j++) {
+        for(int i=0;i<2048;i++) for(int j=i+1;j<2048;j++) {
             if(st[then][i][j])
                 cout << i << " " << j << " = " << st[then][i][j] << endl;
             ret += st[then][i][j];
