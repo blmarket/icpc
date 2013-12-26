@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,47 +20,45 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int st[2][2048][2048];
-int mod = 1000000007;
+const int mod = 1000000007;
 
 void add(int &a, int b) {
     a += b;
-    if(a>=mod) a-= mod;
+    if(a >= mod) a -= mod;
 }
 
 class WinterAndSnowmen 
 {
 public:
     int getNumber(int N, int M) 
-    {		
-        memset(st, 0, sizeof(st));
-        st[1][0][0] = 1;
-        int nn = max(N, M);
-        for(int i=1;i<=nn;i++) {
-            cout << i << endl;
-            int now = (i%2);
-            int nex = !now;
-            memset(st[nex], 0, sizeof(st[nex]));
-            for(int j=0;j<2048;j++) for(int k=0;k<2048;k++) if(st[now][j][k]) {
-                int tt = st[now][j][k];
-                // cout << j << " " << k << " = " << tt << endl;
-                add(st[nex][j][k], tt);
-
-                if(i <= N) {
-                    add(st[nex][j^i][k], tt);
+    {
+        long long ret = 0;
+        int mm = max(N, M);
+        for(int i=0;i<=11;i++) {
+            int cur[2048][4], nex[2048][4];
+            memset(cur, 0, sizeof(cur));
+            cur[0][0] = 1;
+            for(int j=1;j<=mm;j++) {
+                memset(nex, 0, sizeof(nex));
+                for(int a=0;a<2048;a++) for(int b=0;b<4;b++) if(cur[a][b]) {
+                    if(j <= N) {
+                        int nb = b;
+                        if(j & (1<<i)) nb ^= 1;
+                        add(nex[a ^ i][nb], cur[a][b]);
+                    }
+                    if(j <= M) {
+                        int nb = b;
+                        if(j & (1<<i)) nb ^= 2;
+                        add(nex[a ^ i][nb], cur[a][b]);
+                    }
                 }
-                if(i <= M) {
-                    add(st[nex][j][k^i], tt);
-                }
+                for(int a=0;a<2048;a++) for(int b=0;b<4;b++) add(cur[a][b], nex[a][b]);
+            }
+            for(int a=0;a<2048;a++) {
+                if((a >> i) == 1) ret += cur[a][1];
             }
         }
-        long long ret = 0;
-        int then = (nn+1)%2;
-        for(int i=0;i<2048;i++) for(int j=i+1;j<2048;j++) {
-            ret += st[then][i][j];
-        }
-        ret %= mod;
-        return ret;
+        return ret % mod;
     }
 
     
