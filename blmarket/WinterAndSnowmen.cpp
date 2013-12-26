@@ -58,7 +58,7 @@ public:
                 for(int a=0;a<2048;a++) for(int b=0;b<4;b++) add(cur[a][b], nex[a][b]);
             }
             for(int a=0;a<2048;a++) {
-                if((a >> i) == 1) ret += cur[a][1];
+                if((a >> i) == 1) ret += cur[a][2];
             }
         }
         return ret % mod;
