@@ -43,7 +43,7 @@ public:
             cout << i << endl;
             for(int j=0;j<2048;j++) for(int k=0;k<2048;k++) if(st[now][j][k]) {
                 int tt = st[now][j][k];
-                cout << j << " " << k << " = " << tt << endl;
+                // cout << j << " " << k << " = " << tt << endl;
                 add(st[nex][j][k], tt);
 
                 if(i <= N) {
@@ -57,6 +57,7 @@ public:
         long long ret = 0;
         int then = (nn+1)%2;
         for(int i=0;i<2048;i++) for(int j=0;j<i;j++) {
+            cout << i << " " << j << " = " << st[then][i][j] << endl;
             ret += st[then][i][j];
         }
         ret %= mod;
