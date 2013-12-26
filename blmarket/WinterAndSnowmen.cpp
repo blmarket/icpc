@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -41,6 +42,7 @@ public:
             for(int j=1;j<=mm;j++) {
                 memset(nex, 0, sizeof(nex));
                 for(int a=0;a<2048;a++) for(int b=0;b<4;b++) if(cur[a][b]) {
+                    cout << a << " " << b << " = " << cur[a][b] << endl;
                     if(j <= N) {
                         int nb = b;
                         if(j & (1<<i)) nb ^= 1;
