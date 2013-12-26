@@ -36,7 +36,7 @@ public:
                 if(orange[j] < i) mina += (i - orange[j]);
                 mino += max(0, i - apple[j]);
             }
-            // cout << i << " " << mina << " " << mino << endl;
+            cout << i << " " << mina << " " << mino << endl;
             ret += i + 1 - mina - mino;
         }
         return ret;
