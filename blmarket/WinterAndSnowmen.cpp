@@ -39,6 +39,7 @@ public:
             int cur[2048][4], nex[2048][4];
             memset(cur, 0, sizeof(cur));
             cur[0][0] = 1;
+            cout << i << endl;
             for(int j=1;j<=mm;j++) {
                 memset(nex, 0, sizeof(nex));
                 for(int a=0;a<2048;a++) for(int b=0;b<4;b++) if(cur[a][b]) {
