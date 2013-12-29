@@ -34,13 +34,13 @@ bool chk(int a, int b) {
             continue;
         }
         
-        if(V[i].second >= b) {
+        if(V[i].second >= b && c1 < N) {
             c1++;
         } else {
             y2 = min(y2, V[i].second);
         }
     }
-    if(c1 >= N) {
+    if(c1 == N) {
         long long tmp = (long long)V[0].first * b + (long long)V[a].first * y2;
         cout << a << " " << b << " = " << tmp << endl;
         ret = max(ret, tmp);
