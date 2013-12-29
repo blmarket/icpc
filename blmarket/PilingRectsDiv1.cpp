@@ -106,6 +106,8 @@ public:
             }
         }
 
+        cout << "." << endl;
+
         for(int i=1;i<=N;i++) {
             int s=1;
             int e = 1000000005;
