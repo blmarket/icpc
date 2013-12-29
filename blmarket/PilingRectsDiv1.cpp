@@ -49,6 +49,31 @@ bool chk(int a, int b) {
     return false;
 }
 
+bool chk2(int a, int b) {
+    int c1 = 1;
+    int y2 = V[0].second;
+    if(V[a].second < b) return false;
+    for(int i=0;i<N*2;i++) {
+        if(i < a) {
+            y2 = min(y2, V[i].second);
+            continue;
+        }
+
+        if(V[i].second >= b && c1 < N) { 
+            c1++;
+        } else {
+            y2 = min(y2, V[i].second);
+        }
+    }
+    if(c1 == N) {
+        long long tmp = (long long)V[0].first * b + (long long)V[a].first * y2;
+        // cout << a << " " << b << " = " << tmp << endl;
+        ret = max(ret, tmp);
+        return true;
+    }
+    return false;
+}
+
 class PilingRectsDiv1 
 {
 public:
@@ -76,6 +101,19 @@ public:
                     s = m;
                 } else {
                     e = m;
+                }
+            }
+        }
+
+        for(int i=1;i<=N;i++) {
+            int s=1;
+            int e = 1000000005;
+            while(s+1<e) {
+                int m = (s+e)/2;
+                if(chk2(i,m)) {
+                    s=m;
+                } else {
+                    e=m;
                 }
             }
         }
