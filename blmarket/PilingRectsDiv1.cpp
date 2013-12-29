@@ -66,7 +66,7 @@ bool chk2(int a, int b) {
         }
     }
     if(c1 == N) {
-        long long tmp = (long long)V[0].first * b + (long long)V[a].first * y2;
+        long long tmp = (long long)V[0].first * y2 + (long long)V[a].first * b;
         // cout << a << " " << b << " = " << tmp << endl;
         ret = max(ret, tmp);
         return true;
