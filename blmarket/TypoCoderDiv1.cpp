@@ -44,6 +44,7 @@ class TypoCoderDiv1
 public:
     int getmax(vector <int> D, int X) 
     {
+        memo.clear();
         V = D;
         return go(0, X);
     }
@@ -71,6 +72,6 @@ public:
 int main()
 {
     TypoCoderDiv1 ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
