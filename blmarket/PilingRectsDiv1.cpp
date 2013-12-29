@@ -91,10 +91,11 @@ public:
         }
         sort(V.begin(), V.end());
 
+        int s = 1;
+        int e = 1000000005;
         for(int i=1;i<=N;i++) {
+            s = 1;
             // cout << i << endl;
-            int s = 1;
-            int e = 1000000005;
             while(s+1<e) {
                 int m = (s+e)/2;
                 if(chk(i, m)) {
