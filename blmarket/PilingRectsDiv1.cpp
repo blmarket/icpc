@@ -50,7 +50,7 @@ bool chk(int a, int b) {
 }
 
 bool chk2(int a, int b) {
-    int c1 = 1;
+    int c1 = 0;
     int y2 = V[0].second;
     if(V[a].second < b) return false;
     for(int i=0;i<N*2;i++) {
