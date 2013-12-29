@@ -54,6 +54,7 @@ public:
             if(chk(m)) s = m;
             else e = m;
         }
+        cout << s << endl;
         return 0;
     }
 
