@@ -38,6 +38,7 @@ bool chk(int m) {
         }
     }
     if(c1 < N) return false;
+    cout << m << " " << l1 << " and " << ss << " " << l2 << endl;
     long long tmp = ((long long)ss * l2) + (long long)m * l1;
     if(ret < tmp) ret = tmp;
     return true;
