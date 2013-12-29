@@ -42,7 +42,7 @@ bool chk(int a, int b) {
     }
     if(c1 == N) {
         long long tmp = (long long)V[0].first * b + (long long)V[a].first * y2;
-        cout << a << " " << b << " = " << tmp << endl;
+        // cout << a << " " << b << " = " << tmp << endl;
         ret = max(ret, tmp);
         return true;
     }
