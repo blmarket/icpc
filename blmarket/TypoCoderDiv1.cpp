@@ -37,7 +37,7 @@ int go(int pos, int rating) {
     if(memo.count(key)) return memo[key];
     int t1 = go(pos+1, rating + V[pos]);
     int t2 = go(pos+1, max(0, rating - V[pos]));
-    cout << pos << " " << rating << " = " << max(t1, t2);
+    cout << pos << " " << rating << " = " << max(t1, t2) << endl;
     return memo[key] = max(t1, t2);
 }
 
@@ -73,6 +73,6 @@ public:
 int main()
 {
     TypoCoderDiv1 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
