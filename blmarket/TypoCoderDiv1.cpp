@@ -30,7 +30,7 @@ int go(int pos, int rating) {
     }
     if(rating >= 2200) {
         if(rating - V[pos] >= 2200) return -1;
-        return go(pos+1, rating - V[pos]) + 1;
+        return go(pos+1, max(0, rating - V[pos])) + 1;
     }
     PII key = mp(pos, rating);
     if(memo.count(key)) return memo[key];
