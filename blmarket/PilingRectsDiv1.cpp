@@ -27,21 +27,12 @@ long long ret = -1;
 
 bool chk(int m) {
     int c1 = 0;
-    int l1 = 1000000005;
-    int l2 = 1000000005;
     for(int i=0;i<size(XS);i++) {
-        if(min(XS[i], YS[i]) >= m) {
+        if(XS[i] >= m) {
             c1++;
-            l1 = min(l1, max(XS[i], YS[i]));
-        } else {
-            l2 = min(l2, max(XS[i], YS[i]));
         }
     }
-    if(c1 < N) return false;
-    cout << m << " " << l1 << " and " << ss << " " << l2 << endl;
-    long long tmp = ((long long)ss * l2) + (long long)m * l1;
-    if(ret < tmp) ret = tmp;
-    return true;
+    return c1 >= N;
 }
 
 class PilingRectsDiv1 
@@ -62,6 +53,8 @@ public:
         ss = XS[0];
         for(int i=0;i<size(XS);i++) ss = min(ss, XS[i]);
         for(int i=0;i<size(YS);i++) ss = min(ss, YS[i]);
+
+        for(int i=0;i<size(XS);i++) if(XS[i] > YS[i]) swap(XS[i], YS[i]);
 
         long long s=1, e=1000000000;
         while(s+1<e) {
