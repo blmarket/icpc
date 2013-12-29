@@ -20,49 +20,61 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-vector<int> XS,YS;
 int N;
-int ss;
+vector<PII> V;
 long long ret = -1;
 
-bool chk(int m) {
+bool chk(int a, int b) {
     int c1 = 0;
-    for(int i=0;i<size(XS);i++) {
-        if(XS[i] >= m) {
+    int y2 = V[a].second;
+    for(int i=0;i<N*2;i++) if(i != a) {
+        if(i < a) {
             c1++;
+            if(V[i].second < b) return false;
+            continue;
+        }
+        
+        if(V[i].second >= b) {
+            c1++;
+        } else {
+            y2 = min(y2, V[i].second);
         }
     }
-    return c1 >= N;
+    if(c1 >= N) {
+        long long tmp = (long long)V[0].first * b + (long long)V[a].first * y2;
+        ret = max(ret, tmp);
+        return true;
+    }
+    return false;
 }
 
 class PilingRectsDiv1 
 {
 public:
-    long long getmax(int N_, vector <int> XS_, vector <int> YS_, int XA, int XB, int XC, int YA, int YB, int YC) 
-    {		
-        XS = XS_;
-        YS = YS_;
+    long long getmax(int N_, vector <int> XS, vector <int> YS, int XA, int XB, int XC, int YA, int YB, int YC) 
+    {
         N = N_;
-        while(size(XS) < 2*N) {
-            XS.pb(((long long)XS.back() * XA + XB) % XC + 1);
+        int n2 = N * 2;
+        while(size(XS) < n2) XS.pb(((long long)XS.back() * XA + XB) % XC + 1);
+        while(size(YS) < n2) YS.pb(((long long)YS.back() * YA + YB) % YC + 1);
+        for(int i=0;i<n2;i++) {
+            if(XS[i] > YS[i]) swap(XS[i], YS[i]);
+            V.pb(mp(XS[i], YS[i]));
         }
-        while(size(YS) < 2*N) {
-            YS.pb(((long long)YS.back() * YA + YB) % YC + 1);
+        sort(V.begin(), V.end());
+
+        for(int i=1;i<n2;i++) {
+            int s = 1;
+            int e = 1000000005;
+            while(s+1<e) {
+                int m = (s+e)/2;
+                if(chk(i, m)) {
+                    s = m;
+                } else {
+                    e = m;
+                }
+            }
         }
-
-        ss = XS[0];
-        for(int i=0;i<size(XS);i++) ss = min(ss, XS[i]);
-        for(int i=0;i<size(YS);i++) ss = min(ss, YS[i]);
-
-        for(int i=0;i<size(XS);i++) if(XS[i] > YS[i]) swap(XS[i], YS[i]);
-
-        long long s=1, e=1000000000;
-        while(s+1<e) {
-            long long m = (s+e) / 2;
-            if(chk(m)) s = m;
-            else e = m;
-        }
-        cout << s << endl;
         return ret;
     }
 
