@@ -26,7 +26,6 @@ VI V;
 
 int go(int pos, int rating) {
     if(pos == size(V)) {
-        if(rating >= 2200) return -1;
         return 0;
     }
     if(rating >= 2200) {
@@ -35,7 +34,7 @@ int go(int pos, int rating) {
     }
     PII key = mp(pos, rating);
     if(memo.count(key)) return memo[key];
-    int t1 = go(pos+1, rating + V[pos]);
+    int t1 = go(pos+1, rating + V[pos]) + (rating + V[pos] >= 2200);
     int t2 = go(pos+1, max(0, rating - V[pos]));
     cout << pos << " " << rating << " = " << max(t1, t2) << endl;
     return memo[key] = max(t1, t2);
