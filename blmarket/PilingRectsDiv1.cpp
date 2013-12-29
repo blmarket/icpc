@@ -104,7 +104,6 @@ public:
                     e = m;
                 }
             }
-            cout << i << " " << s << endl;
         }
 
         for(int i=1;i<=N;i++) {
