@@ -65,7 +65,8 @@ public:
         }
         sort(V.begin(), V.end());
 
-        for(int i=1;i<n2;i++) {
+        for(int i=1;i<=N;i++) {
+            cout << i << endl;
             int s = 1;
             int e = 1000000005;
             while(s+1<e) {
