@@ -54,6 +54,7 @@ class PilingRectsDiv1
 public:
     long long getmax(int N_, vector <int> XS, vector <int> YS, int XA, int XB, int XC, int YA, int YB, int YC) 
     {
+        ret = -1;
         V.clear();
         N = N_;
         int n2 = N * 2;
