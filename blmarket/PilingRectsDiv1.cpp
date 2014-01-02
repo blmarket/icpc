@@ -69,6 +69,22 @@ public:
             y1 = min(y1, V[i].second);
         }
 
+        S1.clear();
+        for(int i=1;i<N*2;i++) S1.insert(V[i].second);
+        auto it2 = S1.rbegin();
+        for(int i=0;i<N;i++) ++it2;
+
+        x1 = V[0].first;
+        for(int i=1;i<=N;i++) {
+            long long x2 = V[i].first;
+            
+            long long tmp;
+            tmp = x1 * (*S1.begin()) + x2 * (*it2);
+            ret = max(ret, tmp);
+            
+            if(*it2 <= V[i].second) it2++;
+        }
+
         return ret;
     }
 
