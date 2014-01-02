@@ -54,9 +54,13 @@ public:
             long long x2 = V[i].first;
 
             auto jt = S1.find(V[i].second);
-            cout << (it == S1.end()) << " " << *it << " " << *jt << endl;
 
-            long long tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
+            long long tmp;
+            if (it == S1.end()) {
+                tmp = x1 * y1;
+            } else {
+                tmp = x1 * min(y1, *it);
+            }
             ret = max(ret, tmp);
 
             if(*it >= *jt) ++it;
