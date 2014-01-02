@@ -80,7 +80,6 @@ public:
             
             long long tmp;
             tmp = x1 * (*S1.begin()) + x2 * min(V[i].second, (*it2));
-            cout << i << " " << (*S1.begin()) << " " << x2 << " " << (*it2) << " = " << tmp << endl;
             ret = max(ret, tmp);
             
             if(*it2 <= V[i].second) it2++;
@@ -111,6 +110,6 @@ public:
 int main()
 {
     PilingRectsDiv1 ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
