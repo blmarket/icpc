@@ -79,7 +79,7 @@ public:
             long long x2 = V[i].first;
             
             long long tmp;
-            tmp = x1 * (*S1.begin()) + x2 * min(V[i].second, (*it2));
+            tmp = x1 * min(V[0].second, (*S1.begin())) + x2 * min(V[i].second, (*it2));
             ret = max(ret, tmp);
             
             if(*it2 <= V[i].second) it2++;
