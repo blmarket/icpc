@@ -72,7 +72,7 @@ public:
         S1.clear();
         for(int i=1;i<N*2;i++) S1.insert(V[i].second);
         auto it2 = S1.rbegin();
-        for(int i=0;i<N;i++) ++it2;
+        for(int i=0;i<N-1;i++) ++it2;
 
         x1 = V[0].first;
         for(int i=1;i<=N;i++) {
