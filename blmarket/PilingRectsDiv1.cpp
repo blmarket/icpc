@@ -20,106 +20,49 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int N;
-vector<PII> V;
-long long ret = -1;
-
-bool chk(int a, int b) {
-    int c1 = 0;
-    int y2 = V[a].second;
-    for(int i=0;i<N*2;i++) if(i != a) {
-        if(i < a) {
-            c1++;
-            if(V[i].second < b) return false;
-            continue;
-        }
-        
-        if(V[i].second >= b && c1 < N) {
-            c1++;
-        } else {
-            y2 = min(y2, V[i].second);
-        }
-    }
-    if(c1 == N) {
-        long long tmp = (long long)V[0].first * b + (long long)V[a].first * y2;
-        // cout << a << " " << b << " = " << tmp << endl;
-        ret = max(ret, tmp);
-        return true;
-    }
-    return false;
-}
-
-bool chk2(int a, int b) {
-    int c1 = 0;
-    int y2 = V[0].second;
-    if(V[a].second < b) return false;
-    for(int i=0;i<N*2;i++) {
-        if(i < a) {
-            y2 = min(y2, V[i].second);
-            continue;
-        }
-
-        if(V[i].second >= b && c1 < N) { 
-            c1++;
-        } else {
-            y2 = min(y2, V[i].second);
-        }
-    }
-    if(c1 == N) {
-        long long tmp = (long long)V[0].first * y2 + (long long)V[a].first * b;
-        // cout << a << " " << b << " = " << tmp << endl;
-        ret = max(ret, tmp);
-        return true;
-    }
-    return false;
-}
-
 class PilingRectsDiv1 
 {
 public:
-    long long getmax(int N_, vector <int> XS, vector <int> YS, int XA, int XB, int XC, int YA, int YB, int YC) 
+    long long getmax(int N, vector <int> XS, vector <int> YS, int XA, int XB, int XC, int YA, int YB, int YC) 
     {
-        ret = -1;
-        V.clear();
-        N = N_;
-        int n2 = N * 2;
-        while(size(XS) < n2) XS.pb(((long long)XS.back() * XA + XB) % XC + 1);
-        while(size(YS) < n2) YS.pb(((long long)YS.back() * YA + YB) % YC + 1);
-        for(int i=0;i<n2;i++) {
+        while(size(XS) < N*2) {
+            XS.pb(((long long)XS.back() * XA + XB) % XC + 1);
+        }
+        while(size(YS) < N*2) {
+            YS.pb(((long long)YS.back() * YA + YB) % YC + 1);
+        }
+
+        vector<PII> V;
+
+        multiset<int> S1;
+
+        for(int i=0;i<N*2;i++) {
             if(XS[i] > YS[i]) swap(XS[i], YS[i]);
             V.pb(mp(XS[i], YS[i]));
         }
         sort(V.begin(), V.end());
 
-        int s = 1;
-        int e = 1000000005;
+        for(int i=1;i<N*2;i++) S1.insert(V[i].second);
+        auto it = S1.begin();
+        for(int i=0;i<N;i++) ++it;
+
+        long long ret = -1;
+
+        long long x1 = V[0].first;
+        int y1 = V[0].second;
         for(int i=1;i<=N;i++) {
-            s = 1;
-            // cout << i << endl;
-            while(s+1<e) {
-                int m = (s+e)/2;
-                if(chk(i, m)) {
-                    s = m;
-                } else {
-                    e = m;
-                }
-            }
+            long long x2 = V[i].first;
+
+            auto jt = S1.find(V[i].second);
+            if(*it >= *jt) ++it;
+
+            long long tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
+            ret = max(ret, tmp);
+            S1.erase(jt);
+            // and...
+            y1 = min(y1, V[i].second);
         }
 
-        cout << "." << endl;
-
-        for(int i=1;i<=N;i++) {
-            int s=1;
-            int e = 1000000005;
-            while(s+1<e) {
-                int m = (s+e)/2;
-                if(chk2(i,m)) {
-                    s=m;
-                } else {
-                    e=m;
-                }
-            }
-        }
         return ret;
     }
 
