@@ -54,6 +54,7 @@ public:
             long long x2 = V[i].first;
 
             auto jt = S1.find(V[i].second);
+            cout << (it == S1.end()) << " " << *it << " " << *jt << endl;
             if(*it >= *jt) ++it;
 
             long long tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
@@ -88,6 +89,6 @@ public:
 int main()
 {
     PilingRectsDiv1 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
