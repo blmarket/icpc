@@ -57,13 +57,13 @@ public:
 
             long long tmp;
             if (it == S1.end()) {
-                tmp = x1 * y1;
+                tmp = x1 * y1 + x2 * (*S1.begin());
             } else {
-                tmp = x1 * min(y1, *it);
+                tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
+                if(*it >= *jt) ++it;
             }
             ret = max(ret, tmp);
 
-            if(*it >= *jt) ++it;
             S1.erase(jt);
             // and...
             y1 = min(y1, V[i].second);
