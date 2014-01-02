@@ -55,10 +55,11 @@ public:
 
             auto jt = S1.find(V[i].second);
             cout << (it == S1.end()) << " " << *it << " " << *jt << endl;
-            if(*it >= *jt) ++it;
 
             long long tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
             ret = max(ret, tmp);
+
+            if(*it >= *jt) ++it;
             S1.erase(jt);
             // and...
             y1 = min(y1, V[i].second);
