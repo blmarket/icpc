@@ -57,7 +57,7 @@ public:
                 int k = j + i;
                 cout << i << " " << k << " " << S[j] << " " << S[k-1] << endl;
                 double &tgt = palins[j][k];
-                const double &pp = palins[j+1][k-2];
+                const double &pp = palins[j+1][k-1];
                 if(S[j] == '?' || S[k-1] == '?') {
                     tgt += pp / 26;
                 } else {
