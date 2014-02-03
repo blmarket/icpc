@@ -55,7 +55,7 @@ public:
         for(int i=3;i<=size(S);i++) {
             for(int j=0;j+i<=size(S);j++) {
                 int k = j + i;
-                cout << i << " " << k << endl;
+                cout << i << " " << k << " " << S[j] << " " << S[k-1] << endl;
                 double &tgt = palins[j][k];
                 const double &pp = palins[j+1][k-2];
                 if(S[j] == '?' || S[k-1] == '?') {
