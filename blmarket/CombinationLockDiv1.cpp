@@ -34,12 +34,6 @@ int go(int a, int b) {
     PII key = mp(a,b);
     if(memo.count(key)) return memo[key];
 
-    if(b == 0) {
-        int t1 = go(a+1, dd[a]) + dd[a];
-        int t2 = go(a+1, -10 + dd[a]) + 10 - dd[a];
-        return memo[key] = min(t1, t2);
-    }
-
     int t1, t2;
 
     int bb = max(0, b);
