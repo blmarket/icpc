@@ -55,14 +55,12 @@ public:
         for(int i=3;i<=size(S);i++) {
             for(int j=0;j+i<=size(S);j++) {
                 int k = j + i;
-                cout << i << " " << k << " " << S[j] << " " << S[k-1] << endl;
                 double &tgt = palins[j][k];
                 const double &pp = palins[j+1][k-1];
                 if(S[j] == '?' || S[k-1] == '?') {
                     tgt += pp / 26;
                 } else {
                     if(S[j] == S[k-1]) {
-                        cout << "HERE " << pp << endl;
                         tgt = pp;
                     } else {
                         tgt = 0;
@@ -96,6 +94,6 @@ public:
 int main()
 {
     PalindromicSubstringsDiv1 ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
