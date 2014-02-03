@@ -36,6 +36,7 @@ public:
             cout << diff << " ";
         }
         cout << endl;
+        return 0;
     }
 
     
