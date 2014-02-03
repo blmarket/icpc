@@ -62,6 +62,7 @@ public:
                     tgt += pp / 26;
                 } else {
                     if(S[j] == S[k-1]) {
+                        cout << "HERE " << pp << endl;
                         tgt = pp;
                     } else {
                         tgt = 0;
