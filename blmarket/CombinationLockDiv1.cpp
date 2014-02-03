@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,22 +22,53 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 string pp, qq;
+int dd[2505];
+
+map<PII, int> memo;
+
+int go(int a, int b) {
+    if(a == size(pp)) {
+        return 0;
+    }
+
+    PII key = mp(a,b);
+    if(memo.count(key)) return memo[key];
+
+    if(b == 0) {
+        int t1 = go(a+1, dd[a]) + dd[a];
+        int t2 = go(a+1, -10 + dd[a]) + 10 - dd[a];
+        return memo[key] = min(t1, t2);
+    }
+
+    int t1, t2;
+
+    int bb = max(0, b);
+    t1 = go(a+1, dd[a]) + max(0, dd[a] - bb);
+
+    bb = max(0, -b);
+    t2 = go(a+1, -10 + dd[a]) + max(0, 10-dd[a]-bb);
+
+    return memo[key] = min(t1, t2);
+}
 
 class CombinationLockDiv1 
 {
 public:
     int minimumMoves(vector <string> P, vector <string> Q) 
     {
+        memo.clear(); pp.clear(); qq.clear();
+        memset(dd, 0, sizeof(dd));
+
         for(int i=0;i<size(P);i++) pp += P[i];
         for(int i=0;i<size(Q);i++) qq += Q[i];
 
         for(int i=0;i<size(pp);i++) {
             int diff = qq[i] - pp[i];
             if(diff < 0) diff += 10;
-            cout << diff << " ";
+            dd[i] = diff;
         }
-        cout << endl;
-        return 0;
+
+        return go(0, 0);
     }
 
     
