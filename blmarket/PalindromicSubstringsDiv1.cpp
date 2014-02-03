@@ -29,6 +29,8 @@ class PalindromicSubstringsDiv1
 public:
     double expectedPalindromes(vector <string> S1, vector <string> S2) 
     {		
+        memset(palins, 0, sizeof(palins));
+        S.clear();
         for(int i=0;i<size(S1);i++) S += S1[i];
         for(int i=0;i<size(S2);i++) S += S2[i];
 
@@ -94,6 +96,6 @@ public:
 int main()
 {
     PalindromicSubstringsDiv1 ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
