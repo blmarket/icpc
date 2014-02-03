@@ -52,6 +52,8 @@ public:
             ret += palins[i][i+2];
         }
 
+        cout << ret << endl;
+
         for(int i=3;i<=size(S);i++) {
             for(int j=0;j+i<=size(S);j++) {
                 int k = j + i;
