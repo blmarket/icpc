@@ -53,6 +53,8 @@ long long process(int a, int b) {
 
     long long ret = 0;
 
+    cout << a << " " << b << " = " << tmp << " " << hit << endl;
+
     if(hit >= 0) {
         int sb = (b - minB + 1);
         ret += tmp * sb;
