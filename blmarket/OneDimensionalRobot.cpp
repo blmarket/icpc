@@ -204,6 +204,6 @@ public:
 int main()
 {
     OneDimensionalRobot ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
