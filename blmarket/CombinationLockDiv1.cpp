@@ -38,26 +38,23 @@ int go(int a, int b) {
         for(int i=max(0, b-9);i<b;i++) {
             if(i != d[a]) continue;
             int tmp = go(a+1, i);
-            if(ret < tmp) ret = tmp;
+            if(ret > tmp) ret = tmp;
         }
         for(int i=b;i<b+10;i++) {
             if((i%10) != d[a]) continue;
             int tmp = go(a+1, i) + (i-b);
-            if(a == 2) {
-                cout << "here " << i-b << " " << tmp << endl;
-            }
-            if(ret < tmp) ret = tmp;
+            if(ret > tmp) ret = tmp;
         }
     } else {
         for(int i=min(0, b+9);i>b;i--) {
             if((i + 100000)%10 != d[a]) continue;
             int tmp = go(a+1, i);
-            if(ret < tmp) ret = tmp;
+            if(ret > tmp) ret = tmp;
         }
         for(int i=b;i>b-10;i--) {
             if((i+100000)%10 != d[a]) continue;
             int tmp = go(a+1, i) + (b-i);
-            if(ret < tmp) ret = tmp;
+            if(ret > tmp) ret = tmp;
         }
     }
 
