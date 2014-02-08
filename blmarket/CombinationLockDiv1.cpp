@@ -23,48 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int d[2505];
 int n;
 
-map<PII, int> memo;
-
-int go(int a, int b) {
-    if(a == n) return 0;
-    PII key = mp(a,b);
-    if(memo.count(key)) return memo[key];
-
-    int ret = go(a+1, d[a]) + d[a];
-    int r2 = go(a+1, -10+d[a]) + 10-d[a];
-    if(ret > r2) ret = r2;
-
-    if(b > 0) {
-        for(int i=max(0, b-9);i<b;i++) {
-            if(i%10 != d[a]) continue;
-            int tmp = go(a+1, i);
-            if(ret > tmp) ret = tmp;
-            break;
-        }
-        for(int i=b;i<b+10;i++) {
-            if((i%10) != d[a]) continue;
-            int tmp = go(a+1, i) + (i-b);
-            if(ret > tmp) ret = tmp;
-            break;
-        }
-    } else {
-        for(int i=min(0, b+9);i>b;i--) {
-            if((i + 100000)%10 != d[a]) continue;
-            int tmp = go(a+1, i);
-            if(ret > tmp) ret = tmp;
-            break;
-        }
-        for(int i=b;i>b-10;i--) {
-            if((i+100000)%10 != d[a]) continue;
-            int tmp = go(a+1, i) + (b-i);
-            if(ret > tmp) ret = tmp;
-            break;
-        }
-    }
-
-    // cout << a << " " << b << " = " << ret << endl;
-    return memo[key] = ret;
-}
+int dp[2][2][2505];
 
 class CombinationLockDiv1 
 {
@@ -76,13 +35,47 @@ public:
         for(int i=0;i<size(Q);i++) qq += Q[i];
 
         n = size(pp);
-        memo.clear();
         for(int i=0;i<n;i++) d[i] = (pp[i] - qq[i] + 10) % 10;
 
-        for(int i=0;i<n;i++) cout << d[i] << " ";
-        cout << endl;
+        memset(dp, -1, sizeof(dp));
 
-        return go(0, 0);
+        dp[0][0][0] = d[0];
+        dp[0][1][0] = 10-d[0];
+
+        int lm = min(d[0], 10-d[0]);
+
+        for(int i=1;i<n;i++) {
+            int cur = i%2;
+            int prev = !cur;
+
+            memset(dp[cur], -1, sizeof(dp[cur]));
+
+            dp[cur][0][0] = lm + d[i];
+            dp[cur][1][0] = lm + (10-d[i]);
+
+            lm = min(dp[cur][0][0], dp[cur][1][0]);
+
+            for(int j=0;j<2;j++) {
+                int pi, ci;
+                if(j == 0) {
+                    pi = d[i-1];
+                    ci = d[i];
+                } else {
+                    pi = 10 - d[i-1];
+                    ci = 10 - d[i];
+                }
+
+                for(int k=0;k<2500;k++) {
+                    int cii = ci + 10 * k;
+                    for(int l=max(0, k-1);l<=k+1;l++) if(dp[prev][j][l] != -1) {
+                        int pii = pi + 10 * l;
+                        int tmp = dp[prev][j][l] + max(0, cii - pii);
+                        if(dp[cur][j][k] == -1 || dp[cur][j][k] > tmp) dp[cur][j][k] = tmp;
+                    }
+                    lm = min(lm, dp[cur][j][k]);
+                }
+            }
+        }
     }
 
     
