@@ -46,7 +46,7 @@ public:
                     rr[j][k] += aa;
                     if(rr[j][k] < -minA-j) rr[j][k] = -minA-j;
                     if(rr[j][k] > minB+k) rr[j][k] = minB+k;
-                    cout << rr[j][k] << " ";
+                    printf("%4d", rr[j][k]);
                 }
                 cout << endl;
             }
