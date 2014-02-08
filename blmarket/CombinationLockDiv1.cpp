@@ -20,23 +20,6 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-
-/*
- * Problem: 475
- * Test Case: 12
- * Succeeded: No
- * Execution Time: 10 ms
- * Args:
- * {{"4412418167031360587403146933365311425441936961077"}, {"8733406822463469353946356056711090437786504862201"}}
- *
- * Expected:
- * 28
- *
- * Received:
- * 36
- *
- */
-
 int d[2505];
 int n;
 
@@ -56,22 +39,26 @@ int go(int a, int b) {
             if(i%10 != d[a]) continue;
             int tmp = go(a+1, i);
             if(ret > tmp) ret = tmp;
+            break;
         }
         for(int i=b;i<b+10;i++) {
             if((i%10) != d[a]) continue;
             int tmp = go(a+1, i) + (i-b);
             if(ret > tmp) ret = tmp;
+            break;
         }
     } else {
         for(int i=min(0, b+9);i>b;i--) {
             if((i + 100000)%10 != d[a]) continue;
             int tmp = go(a+1, i);
             if(ret > tmp) ret = tmp;
+            break;
         }
         for(int i=b;i>b-10;i--) {
             if((i+100000)%10 != d[a]) continue;
             int tmp = go(a+1, i) + (b-i);
             if(ret > tmp) ret = tmp;
+            break;
         }
     }
 
