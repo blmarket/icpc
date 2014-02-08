@@ -43,7 +43,6 @@ public:
         dp[0][1][0] = 10-d[0];
 
         int lm = min(d[0], 10-d[0]);
-        cout << lm << endl;
 
         for(int i=1;i<n;i++) {
             int cur = i%2;
@@ -73,6 +72,7 @@ public:
                         int tmp = dp[prev][j][l] + max(0, cii - pii);
                         if(dp[cur][j][k] == -1 || dp[cur][j][k] > tmp) dp[cur][j][k] = tmp;
                     }
+                    if(dp[cur][j][k] == -1) break;
                     lm = min(lm, dp[cur][j][k]);
                 }
             }
