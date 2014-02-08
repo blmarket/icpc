@@ -21,66 +21,61 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int rr[5005][5005];
 string cmds;
+int minA, minB;
 
-int go(int a, int b) {
+int go(int a, int b, int &hit) {
+    hit = 0;
     int ret = 0;
     for(int i=0;i<size(cmds);i++) {
         if(cmds[i] == 'R') {
             ret++;
-            if(ret > b) ret = b;
+            if(ret > b) {
+                ret = b;
+                hit = 1;
+            }
         } else {
             ret--;
-            if(ret < -a) ret = -a;
+            if(ret < -a) {
+                ret = -a;
+                hit = -1;
+            }
         }
     }
     return ret;
 }
 
-void bs(int a, int s, int e) {
-    if(s+1 == e) return;
-    if(rr[a][e] == rr[a][s] + (e-s-1)) {
-        for(int i=s+1;i<e;i++) rr[a][i] = rr[a][i-1] + 1;
-        return;
-    }
-    if(rr[a][e] == rr[a][s]) {
-        for(int i=s+1;i<e;i++) rr[a][i] = rr[a][s];
-        return;
-    }
+long long process(int a, int b) {
+    if(a < minA || b < minB) return 0;
 
-    int m = (s+e)/2;
-    rr[a][m] = go(a,m);
-    bs(a, s, m);
-    bs(a, m, e);
+    int hit;
+    int tmp = go(a, b, hit);
+
+    long long ret = 0;
+
+    if(hit >= 0) {
+        int sb = (b - minB + 1);
+        ret += tmp * sb;
+        return ret + process(a-1, b);
+    } else {
+        int sa = (a - minA + 1);
+        ret += tmp * sa;
+        return ret + process(a, b-1);
+    }
 }
 
 class OneDimensionalRobot 
 {
 public:
-    long long theSum(vector <string> commands1, vector <string> commands2, int minA, int maxA, int minB, int maxB) 
+    long long theSum(vector <string> commands1, vector <string> commands2, int minA_, int maxA, int minB_, int maxB) 
     {		
+        minA = minA_;
+        minB = minB_;
         cmds.clear();
         for(int i=0;i<size(commands1);i++) cmds += commands1[i];
         for(int i=0;i<size(commands2);i++) cmds += commands2[i];
 
-        memset(rr, -1, sizeof(rr));
-
-        long long ret = 0;
-        for(int i=minA;i<=maxA;i++) {
-            rr[i][minB] = go(i, minB);
-            rr[i][maxB] = go(i, maxB);
-
-            bs(i, minB, maxB);
-
-            for(int j=minB;j<=maxB;j++) {
-                // cout << rr[i][j] << " ";
-                ret += rr[i][j];
-            }
-            cout << endl;
-        }
-
-        return ret;
+        return process(maxA, maxB);
     }
 
     
