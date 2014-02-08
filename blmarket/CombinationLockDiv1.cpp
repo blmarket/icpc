@@ -95,8 +95,6 @@ public:
         for(int i=0;i<n;i++) cout << d[i] << " ";
         cout << endl;
 
-        cout << d[24] << " " << go(24, 30) << endl;
-
         return go(0, 0);
     }
 
