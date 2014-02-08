@@ -74,12 +74,12 @@ public:
             bs(i, minB, maxB);
 
             for(int j=minB;j<=maxB;j++) {
-                cout << rr[i-minA][j-minB] << " ";
+                cout << rr[i][j] << " ";
+                ret += rr[i][j];
             }
             cout << endl;
         }
 
-        for(int i=0;i<(maxA-minA+1);i++) for(int j=0;j<(maxB-minB+1);j++) ret += rr[i][j];
         return ret;
     }
 
