@@ -43,6 +43,7 @@ public:
         dp[0][1][0] = 10-d[0];
 
         int lm = min(d[0], 10-d[0]);
+        cout << lm << endl;
 
         for(int i=1;i<n;i++) {
             int cur = i%2;
