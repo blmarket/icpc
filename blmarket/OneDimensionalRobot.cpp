@@ -77,6 +77,14 @@ public:
         for(int i=0;i<size(commands1);i++) cmds += commands1[i];
         for(int i=0;i<size(commands2);i++) cmds += commands2[i];
 
+        for(int i=minA;i<=maxA;i++) {
+            for(int j=minB;j<=maxB;j++) {
+                int tmp;
+                cout << go(i,j,tmp) << " ";
+            }
+            cout << endl;
+        }
+
         return process(maxA, maxB);
     }
 
