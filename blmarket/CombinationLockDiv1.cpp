@@ -42,10 +42,10 @@ int go(int a, int b) {
         }
         for(int i=b;i<b+10;i++) {
             if((i%10) != d[a]) continue;
-            if(a == 2) {
-                cout << "here " << i-b << endl;
-            }
             int tmp = go(a+1, i) + (i-b);
+            if(a == 2) {
+                cout << "here " << i-b << " " << tmp << endl;
+            }
             if(ret < tmp) ret = tmp;
         }
     } else {
