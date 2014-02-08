@@ -30,13 +30,13 @@ int go(int a, int b, int &hit) {
     for(int i=0;i<size(cmds);i++) {
         if(cmds[i] == 'R') {
             ret++;
-            if(ret > b) {
+            if(ret >= b) {
                 ret = b;
                 hit = 1;
             }
         } else {
             ret--;
-            if(ret < -a) {
+            if(ret <= -a) {
                 ret = -a;
                 hit = -1;
             }
@@ -55,7 +55,7 @@ long long process(int a, int b) {
 
     cout << a << " " << b << " = " << tmp << " " << hit << endl;
 
-    if(hit <= 0) {
+    if(hit >= 0) {
         int sb = (b - minB + 1);
         ret += tmp * sb;
         return ret + process(a-1, b);
