@@ -23,6 +23,43 @@ template<typename T> int size(const T &a) { return a.size(); }
 int d[2505];
 int n;
 
+map<PII, int> memo;
+
+int go(int a, int b) {
+    if(a == n) return 0;
+    PII key = mp(a,b);
+    if(memo.count(key)) return memo[key];
+
+    int ret = go(a+1, d[a]) + d[a];
+    int r2 = go(a+1, -10+d[a]) + 10-d[a];
+    if(ret > r2) ret = r2;
+
+    if(b > 0) {
+        for(int i=max(0, b-9);i<b;i++) {
+            if(i != d[a]) continue;
+            int tmp = go(a+1, i);
+            if(ret < tmp) ret = tmp;
+        }
+        for(int i=b;i<b+10;i++) {
+            if((i%10) != d[a]) continue;
+            int tmp = go(a+1, i) + (i-b);
+            if(ret < tmp) ret = tmp;
+        }
+    } else {
+        for(int i=min(0, b+9);i>b;i--) {
+            if((i + 100000)%10 != d[a]) continue;
+            int tmp = go(a+1, i);
+            if(ret < tmp) ret = tmp;
+        }
+        for(int i=b;i>b-10;i--) {
+            if((i+100000)%10 != d[a]) continue;
+            int tmp = go(a+1, i) + (b-i);
+            if(ret < tmp) ret = tmp;
+        }
+    }
+    return memo[key] = ret;
+}
+
 class CombinationLockDiv1 
 {
 public:
@@ -33,12 +70,13 @@ public:
         for(int i=0;i<size(Q);i++) qq += Q[i];
 
         n = size(pp);
+        memo.clear();
         for(int i=0;i<n;i++) d[i] = (pp[i] - qq[i] + 10) % 10;
 
         for(int i=0;i<n;i++) cout << d[i] << " ";
         cout << endl;
-        
-        return 0;
+
+        return go(0, 0);
     }
 
     
