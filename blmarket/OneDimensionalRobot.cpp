@@ -38,6 +38,23 @@ int go(int a, int b) {
     return ret;
 }
 
+void bs(int a, int s, int e) {
+    if(s+1 == e) return;
+    if(rr[a][e] == rr[a][s] + (e-s-1)) {
+        for(int i=s+1;i<e;i++) rr[a][i] = rr[a][i-1] + 1;
+        return;
+    }
+    if(rr[a][e] == rr[a][s]) {
+        for(int i=s+1;i<e;i++) rr[a][i] = rr[a][s];
+        return;
+    }
+
+    int m = (s+e)/2;
+    rr[a][m] = go(a,m);
+    bs(a, s, m);
+    bs(a, m, e);
+}
+
 class OneDimensionalRobot 
 {
 public:
@@ -51,8 +68,12 @@ public:
 
         long long ret = 0;
         for(int i=minA;i<=maxA;i++) {
+            rr[i][minB] = go(i, minB);
+            rr[i][maxB] = go(i, maxB);
+
+            bs(i, minB, maxB);
+
             for(int j=minB;j<=maxB;j++) {
-                rr[i-minA][j-minB] = go(i,j);
                 cout << rr[i-minA][j-minB] << " ";
             }
             cout << endl;
