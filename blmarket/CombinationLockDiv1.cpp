@@ -32,7 +32,6 @@ int go(int a, int b) {
 
     int ret = go(a+1, d[a]) + d[a];
     int r2 = go(a+1, -10+d[a]) + 10-d[a];
-    cout << a << " " << b << " = " << ret << endl;
     if(ret > r2) ret = r2;
 
     if(b > 0) {
@@ -58,6 +57,8 @@ int go(int a, int b) {
             if(ret < tmp) ret = tmp;
         }
     }
+
+    cout << a << " " << b << " = " << ret << endl;
     return memo[key] = ret;
 }
 
