@@ -74,8 +74,10 @@ public:
             bs(i, minB, maxB);
 
             for(int j=minB;j<=maxB;j++) {
+                cout << rr[i][j] << " ";
                 ret += rr[i][j];
             }
+            cout << endl;
         }
 
         return ret;
@@ -205,6 +207,6 @@ public:
 int main()
 {
     OneDimensionalRobot ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
