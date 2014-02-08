@@ -38,8 +38,8 @@ public:
         int sB = maxB - minB + 1;
 
         for(int i=0;i<size(cmds);i++) {
-            int aa = 1;
-            if(cmds[i] == 'L') aa = -1;
+            int aa = -1;
+            if(cmds[i] == 'L') aa = 1;
             
             for(int j=0;j<sA;j++) {
                 for(int k=0;k<sB;k++) {
