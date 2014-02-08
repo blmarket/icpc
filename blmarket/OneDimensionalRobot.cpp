@@ -50,6 +50,7 @@ public:
                 }
                 cout << endl;
             }
+            cout << endl;
         }
 
         long long ret = 0;
