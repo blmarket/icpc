@@ -74,7 +74,7 @@ public:
             bs(i, minB, maxB);
 
             for(int j=minB;j<=maxB;j++) {
-                cout << rr[i][j] << " ";
+                // cout << rr[i][j] << " ";
                 ret += rr[i][j];
             }
             cout << endl;
