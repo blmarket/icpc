@@ -22,39 +22,43 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int rr[5005][5005];
+string cmds;
+
+int go(int a, int b) {
+    int ret = 0;
+    for(int i=0;i<size(cmds);i++) {
+        if(cmds[i] == 'R') {
+            ret++;
+            if(ret > b) ret = b;
+        } else {
+            ret--;
+            if(ret < -a) ret = -a;
+        }
+    }
+    return ret;
+}
 
 class OneDimensionalRobot 
 {
 public:
     long long theSum(vector <string> commands1, vector <string> commands2, int minA, int maxA, int minB, int maxB) 
     {		
-        string cmds;
+        cmds.clear();
         for(int i=0;i<size(commands1);i++) cmds += commands1[i];
         for(int i=0;i<size(commands2);i++) cmds += commands2[i];
 
-        memset(rr, 0, sizeof(rr));
+        memset(rr, -1, sizeof(rr));
 
-        int sA = maxA - minA + 1;
-        int sB = maxB - minB + 1;
-
-        for(int i=0;i<size(cmds);i++) {
-            int aa = -1;
-            if(cmds[i] == 'L') aa = 1;
-            
-            for(int j=0;j<sA;j++) {
-                for(int k=0;k<sB;k++) {
-                    rr[j][k] += aa;
-                    if(rr[j][k] < -minA-j) rr[j][k] = -minA-j;
-                    if(rr[j][k] > minB+k) rr[j][k] = minB+k;
-                    printf("%4d", rr[j][k]);
-                }
-                cout << endl;
+        long long ret = 0;
+        for(int i=minA;i<=maxA;i++) {
+            for(int j=minB;j<=maxB;j++) {
+                rr[i-minA][j-minB] = go(i,j);
+                cout << rr[i-minA][j-minB] << " ";
             }
             cout << endl;
         }
 
-        long long ret = 0;
-        for(int i=0;i<sA;i++) for(int j=0;j<sB;j++) ret += rr[i][j];
+        for(int i=0;i<(maxA-minA+1);i++) for(int j=0;j<(maxB-minB+1);j++) ret += rr[i][j];
         return ret;
     }
 
