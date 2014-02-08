@@ -58,7 +58,7 @@ int go(int a, int b) {
         }
     }
 
-    cout << a << " " << b << " = " << ret << endl;
+    // cout << a << " " << b << " = " << ret << endl;
     return memo[key] = ret;
 }
 
