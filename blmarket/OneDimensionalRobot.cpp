@@ -78,6 +78,15 @@ public:
                 if(chk[i][j] == false) {
                     rr[i][j] = go(i,j, left, right);
                     chk[i][j] = true;
+                    if(!left && !right) {
+                        for(int k=i;k<=maxA;k++) {
+                            for(int l=j;l<=maxB;l++) {
+                                rr[k][l] = rr[i][j];
+                                rr[k][l] = true;
+                            }
+                        }
+                    }
+
                     if(!right) {
                         for(int k=j+1;k<=maxB;k++) {
                             rr[i][k] = rr[i][j];
