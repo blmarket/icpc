@@ -60,6 +60,7 @@ public:
                 int pos = lmost[0];
                 if(pos < -a) pos = -a;
 
+                cout << i << " " << pos << endl;
                 while(i < n) {
                     cout << i << " " << pos << endl;
                     pos += lmost[i] + rmost[i];
