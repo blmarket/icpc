@@ -81,7 +81,7 @@ public:
             for(int j=minB;j<=maxB;j++) {
                 int tmp;
                 int rr = go(i,j,tmp);
-                printf("%d(%d) ", rr, tmp);
+                printf("%4d ", tmp);
             }
             cout << endl;
         }
