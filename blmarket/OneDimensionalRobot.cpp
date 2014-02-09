@@ -80,7 +80,6 @@ public:
                     chk[i][j] = true;
 
                     if(!left && !right) {
-                        cout << i << " " << j << " " << endl;
                         for(int k=i;k<=maxA;k++) {
                             for(int l=j;l<=maxB;l++) {
                                 rr[k][l] = rr[i][j];
@@ -109,9 +108,7 @@ public:
         for(int i=minA;i<=maxA;i++) {
             for(int j=minB;j<=maxB;j++) {
                 ret += rr[i][j];
-                cout << rr[i][j] << " ";
             }
-            cout << endl;
         }
         return ret;
     }
