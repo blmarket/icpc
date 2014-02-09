@@ -56,9 +56,16 @@ public:
         long long ret = 0;
         for(int a=minA;a<=maxA;a++) {
             for(int b=minB;b<=maxB;b++) {
-                int i = li[0];
-                int pos = lmost[0];
+                int i, pos;
+                if(li[0] < ri[0]) {
+                    i = li[0];
+                    pos = lmost[0];
+                } else {
+                    i = ri[0];
+                    pos = rmost[0];
+                }
                 if(pos < -a) pos = -a;
+                if(pos > b) pos = b;
 
                 cout << i << " " << pos << endl;
                 while(i < n) {
