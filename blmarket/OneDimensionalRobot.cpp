@@ -67,9 +67,7 @@ public:
                 if(pos < -a) pos = -a;
                 if(pos > b) pos = b;
 
-                cout << i << " " << pos << endl;
                 while(i < n) {
-                    cout << i << " " << pos << endl;
                     pos += lmost[i] + rmost[i];
                     if(pos < -a) pos = -a;
                     if(pos > b) pos = b;
@@ -206,6 +204,6 @@ public:
 int main()
 {
     OneDimensionalRobot ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
