@@ -79,12 +79,12 @@ public:
                     rr[i][j] = go(i,j, left, right);
                     chk[i][j] = true;
 
-                    if(!left && !right && false) {
+                    if(!left && !right) {
                         cout << i << " " << j << " " << endl;
                         for(int k=i;k<=maxA;k++) {
                             for(int l=j;l<=maxB;l++) {
                                 rr[k][l] = rr[i][j];
-                                rr[k][l] = true;
+                                chk[k][l] = true;
                             }
                         }
                     }
