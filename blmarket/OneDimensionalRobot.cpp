@@ -24,6 +24,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 string cmds;
 int minA, minB;
 int rr[5005][5005];
+bool chk[5005][5005];
 
 int go(int a, int b, bool &left, bool &right) {
     left = right = false;
@@ -57,13 +58,26 @@ public:
         for(int i=0;i<size(commands1);i++) cmds += commands1[i];
         for(int i=0;i<size(commands2);i++) cmds += commands2[i];
 
+        memset(chk, 0, sizeof(chk));
+
         bool left, right;
-        memset(rr, 55, sizeof(rr));
         for(int i=minA;i<=maxA;i++) {
             rr[i][minB] = go(i, minB, left, right);
+            chk[i][minB] = true;
+
             if(left && right) {
                 for(int j=0;i-j >= minA;j++) {
                     rr[i-j][minB+j] = rr[i][minB] + j;
+                    chk[i-j][minB+j] = true;
+                }
+            } 
+        }
+
+        for(int i=minA;i<=maxA;i++) {
+            for(int j=minB;j<=maxB;j++) {
+                if(chk[i][j] == false) {
+                    rr[i][j] = go(i,j, left, right);
+                    chk[i][j] = true;
                 }
             }
         }
