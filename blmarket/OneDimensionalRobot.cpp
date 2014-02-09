@@ -78,15 +78,27 @@ public:
                 if(chk[i][j] == false) {
                     rr[i][j] = go(i,j, left, right);
                     chk[i][j] = true;
+                    if(!right) {
+                        for(int k=j+1;k<=maxB;k++) {
+                            rr[i][k] = rr[i][j];
+                            chk[i][k] = true;
+                        }                            
+                    }
+                    if(!left) {
+                        for(int k=i+1;k<=maxA;k++) {
+                            rr[k][j] = rr[i][j];
+                            chk[k][j] = true;
+                        }
+                    }
                 }
             }
         }
 
+        long long ret = 0;
         for(int i=minA;i<=maxA;i++) {
-            for(int j=minB;j<=maxB;j++) cout << rr[i][j] << " ";
-            cout << endl;
+            for(int j=minB;j<=maxB;j++) ret += rr[i][j];
         }
-        return 0;
+        return ret;
     }
 
     
