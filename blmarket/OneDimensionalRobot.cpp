@@ -80,7 +80,8 @@ public:
         for(int i=minA;i<=maxA;i++) {
             for(int j=minB;j<=maxB;j++) {
                 int tmp;
-                cout << go(i,j,tmp) << " ";
+                int rr = go(i,j,tmp);
+                printf("%d(%d) ", rr, tmp);
             }
             cout << endl;
         }
