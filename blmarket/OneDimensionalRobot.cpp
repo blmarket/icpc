@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <numeric>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,96 +21,16 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-string cmds;
-int minA, minB;
-int rr[5005][5005];
-bool chk[5005][5005];
-
-int go(int a, int b, bool &left, bool &right) {
-    left = right = false;
-    int ret = 0;
-    for(int i=0;i<size(cmds);i++) {
-        if(cmds[i] == 'R') {
-            ret++;
-            if(ret > b) {
-                ret = b;
-                right = true;
-            }
-        } else {
-            ret--;
-            if(ret < -a) {
-                ret = -a;
-                left = true;
-            }
-        }
-    }
-    return ret;
-}
+string cmd;
 
 class OneDimensionalRobot 
 {
 public:
-    long long theSum(vector <string> commands1, vector <string> commands2, int minA_, int maxA, int minB_, int maxB) 
-    {		
-        minA = minA_;
-        minB = minB_;
-        cmds.clear();
-        for(int i=0;i<size(commands1);i++) cmds += commands1[i];
-        for(int i=0;i<size(commands2);i++) cmds += commands2[i];
-
-        memset(chk, 0, sizeof(chk));
-
-        bool left, right;
-        for(int i=minA;i<=maxA;i++) {
-            rr[i][minB] = go(i, minB, left, right);
-            chk[i][minB] = true;
-
-            if(left && right) {
-                for(int j=0;i-j >= minA;j++) {
-                    rr[i-j][minB+j] = rr[i][minB] + j;
-                    chk[i-j][minB+j] = true;
-                }
-            } 
-        }
-
-        for(int i=minA;i<=maxA;i++) {
-            for(int j=minB;j<=maxB;j++) {
-                if(chk[i][j] == false) {
-                    rr[i][j] = go(i,j, left, right);
-                    chk[i][j] = true;
-
-                    if(!left && !right) {
-                        for(int k=i;k<=maxA;k++) {
-                            for(int l=j;l<=maxB;l++) {
-                                rr[k][l] = rr[i][j];
-                                chk[k][l] = true;
-                            }
-                        }
-                    }
-
-                    if(!right) {
-                        for(int k=j+1;k<=maxB;k++) {
-                            rr[i][k] = rr[i][j];
-                            chk[i][k] = true;
-                        }                            
-                    }
-                    if(!left) {
-                        for(int k=i+1;k<=maxA;k++) {
-                            rr[k][j] = rr[i][j];
-                            chk[k][j] = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        long long ret = 0;
-        for(int i=minA;i<=maxA;i++) {
-            for(int j=minB;j<=maxB;j++) {
-                ret += rr[i][j];
-            }
-        }
-        return ret;
+    long long theSum(vector <string> commands1, vector <string> commands2, int minA, int maxA, int minB, int maxB) 
+    {
+        cmd = accumulate(commands1.begin(), commands1.end(), string()) + accumulate(commands2.begin(), commands2.end(), string());
+        cout << cmd.size() << endl;
+        return 0;
     }
 
     
@@ -128,7 +48,7 @@ public:
  "RLRRRLLLRLRRLRLLLRLLLLRRRLLRLRRLRRRRRLRLLLLLRLLRLR",
  "LLRLRRRLRLLLRLLRRLRLRLRLRRRLLRRRLRRRLRLRLRRLLRLRLR",
  "LRRRRRLLLRLLRRLLRRRRLLLLRRRRLRRRLLLRRLLRRRRRRLLRLR",
- "LRLLRLRLLLLRLLLRLLRRRRLRRLLLLRRRLRRLRLRRLLLRLRLRLR"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); string Arr1[] = {}; vector <string> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arg2 = 1; int Arg3 = 34; int Arg4 = 1; int Arg5 = 34; long long Arg6 = -1417089LL; verify_case(3, Arg6, theSum(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5)); }
+ "LRLLRLRLLLLRLLLRLLRRRRLRRLLLLRRRLRRLRLRRLLLRLRLRLR"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); string Arr1[] = {}; vector <string> Arg1(Arr1, Arr1 + (sizeof(Arr1) / sizeof(Arr1[0]))); int Arg2 = 1; int Arg3 = 608; int Arg4 = 1; int Arg5 = 608; long long Arg6 = -1417089LL; verify_case(3, Arg6, theSum(Arg0, Arg1, Arg2, Arg3, Arg4, Arg5)); }
 	void test_case_4() { string Arr0[] = {"LRRRRRLRRRLLLRLLLLRLRLLLRLLRLLRRLRRLRRLLRLLLRLLLLL",
  "RRRLRLRRLLLRLLRRRRLLLRLRLRRLLLRLRRLLRLRLRLLLRLRLLR",
  "RLLLLLRLRRLLLRRRLLRLRLLRRLLLLRRLRLRLRRRLRRLRRLLRLL",
