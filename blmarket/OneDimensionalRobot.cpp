@@ -56,11 +56,12 @@ public:
         cmds.clear();
         for(int i=0;i<size(commands1);i++) cmds += commands1[i];
         for(int i=0;i<size(commands2);i++) cmds += commands2[i];
+
         bool left, right;
         memset(rr, 55, sizeof(rr));
         for(int i=minA;i<=maxA;i++) {
             rr[i][minB] = go(i, minB, left, right);
-            if(left && right) {
+            if(left && right && false) {
                 for(int j=minA;j<=i;j++) {
                     rr[j][minB+i-minA] = rr[i][minB] + i - minA;
                 }
@@ -71,6 +72,7 @@ public:
             for(int j=minB;j<=maxB;j++) cout << rr[i][j] << " ";
             cout << endl;
         }
+        return 0;
     }
 
     
