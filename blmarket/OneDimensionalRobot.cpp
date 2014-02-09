@@ -61,7 +61,7 @@ public:
         memset(rr, 55, sizeof(rr));
         for(int i=minA;i<=maxA;i++) {
             rr[i][minB] = go(i, minB, left, right);
-            if(left && right && false) {
+            if(left && right) {
                 for(int j=minA;j<=i;j++) {
                     rr[j][minB+i-minA] = rr[i][minB] + i - minA;
                 }
