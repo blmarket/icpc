@@ -107,7 +107,11 @@ public:
 
         long long ret = 0;
         for(int i=minA;i<=maxA;i++) {
-            for(int j=minB;j<=maxB;j++) ret += rr[i][j];
+            for(int j=minB;j<=maxB;j++) {
+                ret += rr[i][j];
+                cout << rr[i][j] << " ";
+            }
+            cout << endl;
         }
         return ret;
     }
