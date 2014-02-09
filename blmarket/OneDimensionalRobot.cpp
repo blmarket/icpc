@@ -23,47 +23,27 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 string cmds;
 int minA, minB;
+int rr[5005][5005];
 
-int go(int a, int b, int &hit) {
-    hit = 0;
+int go(int a, int b, bool &left, bool &right) {
+    left = right = false;
     int ret = 0;
     for(int i=0;i<size(cmds);i++) {
         if(cmds[i] == 'R') {
             ret++;
             if(ret > b) {
                 ret = b;
-                hit = 1;
+                right = true;
             }
         } else {
             ret--;
             if(ret < -a) {
                 ret = -a;
-                hit = -1;
+                left = true;
             }
         }
     }
     return ret;
-}
-
-long long process(int a, int b) {
-    if(a < minA || b < minB) return 0;
-
-    int hit;
-    int tmp = go(a, b, hit);
-
-    long long ret = 0;
-
-    // cout << a << " " << b << " = " << tmp << " " << hit << endl;
-
-    if(hit <= 0) {
-        int sb = (b - minB + 1);
-        ret += tmp * sb;
-        return ret + process(a-1, b);
-    } else {
-        int sa = (a - minA + 1);
-        ret += tmp * sa;
-        return ret + process(a, b-1);
-    }
 }
 
 class OneDimensionalRobot 
@@ -76,19 +56,21 @@ public:
         cmds.clear();
         for(int i=0;i<size(commands1);i++) cmds += commands1[i];
         for(int i=0;i<size(commands2);i++) cmds += commands2[i];
-
+        bool left, right;
+        memset(rr, 55, sizeof(rr));
         for(int i=minA;i<=maxA;i++) {
-            for(int j=minB;j<=maxB;j++) {
-                int tmp;
-                int rr = go(i,j,tmp);
-                // printf("%4d ", tmp);
-                // printf("%d(%d) ", rr, tmp);
-                printf("%3d ", rr);
+            rr[i][minB] = go(i, minB, left, right);
+            if(left && right) {
+                for(int j=minA;j<=i;j++) {
+                    rr[j][minB+i-minA] = rr[i][minB];
+                }
             }
-            cout << endl;
         }
 
-        return process(maxA, maxB);
+        for(int i=minA;i<=maxA;i++) {
+            for(int j=minB;j<=maxB;j++) cout << rr[i][j] << " ";
+            cout << endl;
+        }
     }
 
     
