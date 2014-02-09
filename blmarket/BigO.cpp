@@ -38,7 +38,7 @@ public:
             for(int j=0;j<n;j++) if(gg[i][j]) {
                 if(mm[j][i]) cnt++;
             }
-            if(cnt > 2) return -1;
+            if(cnt >= 2) return -1;
         }
         return 0;
     }
