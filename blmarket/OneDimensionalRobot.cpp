@@ -61,6 +61,7 @@ public:
                 if(pos < -a) pos = -a;
 
                 while(i < n) {
+                    cout << i << " " << pos << endl;
                     pos += lmost[i] + rmost[i];
                     if(pos < -a) pos = -a;
                     if(pos > b) pos = b;
