@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -22,13 +23,26 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 bool gg[55][55];
 bool mm[55][55];
+int cnt[55];
+
+int n;
+
+int go(int a) {
+    if(cnt[a] != -1) return cnt[a];
+    int ret = 0;
+    for(int i=0;i<n;i++) if(mm[i][i]) if(mm[a][i] && !mm[i][a]) {
+        int tmp = go(i) + 1;
+        if(ret < tmp) ret = tmp;
+    }
+    return cnt[a] = ret;
+}
 
 class BigO 
 {
 public:
     int minK(vector <string> graph) 
     {
-        int n = size(graph);
+        n = size(graph);
         for(int i=0;i<n;i++) for(int j=0;j<n;j++) gg[i][j] = mm[i][j] = (graph[i][j] == 'Y');
 
         for(int k=0;k<n;k++) for(int i=0;i<n;i++) if(mm[i][k]) for(int j=0;j<n;j++) if(mm[k][j]) mm[i][j] = true;
@@ -40,7 +54,15 @@ public:
             }
             if(cnt >= 2) return -1;
         }
-        return 0;
+
+        memset(cnt, -1, sizeof(cnt));
+
+        int ret = 0;
+        for(int i=0;i<n;i++) if(cnt[i] == -1 && mm[i][i]) {
+            int tmp = go(i);
+            ret = max(ret, tmp);
+        }
+        return ret;
     }
 
     
