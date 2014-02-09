@@ -82,7 +82,8 @@ public:
                 int tmp;
                 int rr = go(i,j,tmp);
                 // printf("%4d ", tmp);
-                printf("%d(%d) ", rr, tmp);
+                // printf("%d(%d) ", rr, tmp);
+                printf("%3d ", rr);
             }
             cout << endl;
         }
