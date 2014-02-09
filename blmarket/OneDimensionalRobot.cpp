@@ -62,7 +62,7 @@ public:
             rr[i][minB] = go(i, minB, left, right);
             if(left && right) {
                 for(int j=minA;j<=i;j++) {
-                    rr[j][minB+i-minA] = rr[i][minB];
+                    rr[j][minB+i-minA] = rr[i][minB] + i - minA;
                 }
             }
         }
