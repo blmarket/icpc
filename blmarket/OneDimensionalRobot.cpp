@@ -78,6 +78,7 @@ public:
                 if(chk[i][j] == false) {
                     rr[i][j] = go(i,j, left, right);
                     chk[i][j] = true;
+
                     if(!left && !right) {
                         for(int k=i;k<=maxA;k++) {
                             for(int l=j;l<=maxB;l++) {
@@ -234,6 +235,6 @@ public:
 int main()
 {
     OneDimensionalRobot ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
