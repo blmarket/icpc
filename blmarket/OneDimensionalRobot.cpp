@@ -79,7 +79,7 @@ public:
                     rr[i][j] = go(i,j, left, right);
                     chk[i][j] = true;
 
-                    if(!left && !right) {
+                    if(!left && !right && false) {
                         cout << i << " " << j << " " << endl;
                         for(int k=i;k<=maxA;k++) {
                             for(int l=j;l<=maxB;l++) {
