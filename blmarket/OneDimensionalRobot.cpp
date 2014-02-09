@@ -22,6 +22,8 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 string cmd;
+int rmost[5005], ri[5005];
+int lmost[5005], li[5005];
 
 class OneDimensionalRobot 
 {
@@ -29,8 +31,46 @@ public:
     long long theSum(vector <string> commands1, vector <string> commands2, int minA, int maxA, int minB, int maxB) 
     {
         cmd = accumulate(commands1.begin(), commands1.end(), string()) + accumulate(commands2.begin(), commands2.end(), string());
-        cout << cmd.size() << endl;
-        return 0;
+        int n = size(cmd);
+
+        rmost[n] = lmost[n] = 0;
+        ri[n] = li[n] = n;
+
+        for(int i=n-1;i>=0;i--) {
+            int dd = cmd[i] == 'R' ? 1 : -1;
+            ri[i] = ri[i+1];
+            li[i] = li[i+1];
+            rmost[i] = rmost[i+1] + dd;
+            lmost[i] = lmost[i+1] + dd;
+
+            if(lmost[i] > 0) {
+                lmost[i] = 0;
+                li[i] = i;
+            }
+            if(rmost[i] < 0) {
+                rmost[i] = 0;
+                ri[i] = i;
+            }
+        }
+
+        long long ret = 0;
+        for(int a=minA;a<=maxA;a++) {
+            for(int b=minB;b<=maxB;b++) {
+                int i = li[0];
+                int pos = lmost[0];
+                if(pos < -a) pos = -a;
+
+                while(i < n) {
+                    pos += lmost[i] + rmost[i];
+                    if(pos < -a) pos = -a;
+                    if(pos > b) pos = b;
+                    i = max(li[i], ri[i]);
+                }
+                ret += pos;
+            }
+        }
+
+        return ret;
     }
 
     
