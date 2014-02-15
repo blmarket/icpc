@@ -77,6 +77,10 @@ public:
             cout << go(i) << " ";
         }
         cout << endl;
+        for(int i=K;i<=K*3;i++) {
+            cout << go(i) << " ";
+        }
+        cout << endl;
 
         int ret = go(s);
         for(int i=s+1;i<=e;i++) {
