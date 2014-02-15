@@ -39,6 +39,8 @@ int go(int a) {
 
     if(cnt == 0) return memo[a] = 1;
 
+    cout << a << " " << cnt << endl;
+
     long long tmp = (cnt + 1);
     tmp = (tmp * go(a+1)) % mod;
     return memo[a] = tmp;
@@ -49,6 +51,7 @@ class YetAnotherORProblem
 public:
     int countSequences(vector<long long> R_) 
     {
+        memo.clear();
         R = R_;
 
         return go(0);
