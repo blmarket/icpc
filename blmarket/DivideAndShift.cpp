@@ -29,8 +29,11 @@ int go(int n, int m) {
 
     int ret = (m-1);
     if(ret < 0) ret += n;
+
     int tmp = (n - m + 1);
     if(ret > tmp) ret = tmp;
+
+    cout << ret << endl;
 
     for(int i=0;i<size(primes);i++) {
         if(n % primes[i] == 0) {
