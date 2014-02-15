@@ -72,7 +72,7 @@ public:
 };
 
 int main(void) {
-    for(int i=0;i<20;i++) {
+    for(int i=0;i<30;i++) {
         PackingBallsDiv1 aa;
         int a,b,c,d;
         a = rand() % 6; a += 1;
