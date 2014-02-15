@@ -64,6 +64,7 @@ public:
             }
         }
 
+        cout << "here" << endl;
         int ret = go(s);
         for(int i=s+1;i<=e;i++) {
             int tmp = go(i);
