@@ -45,8 +45,31 @@ public:
 
         sort(V, V+K);
 
-        cout << go(0) << " " << go(V[K-1]) << endl;
-        return 0;
+        int s = 0;
+        int e = V[K-1];
+
+        while(s + 10 < e) {
+            int m1 = (s*2 + e) / 3;
+            int m2 = (s + e*2) / 3;
+            
+            int k1 = go(m1);
+            int k2 = go(m2);
+
+            if(k1 == k2) return k1;
+
+            if(k1 < k2) {
+                e = m2;
+            } else {
+                s = m1;
+            }
+        }
+
+        int ret = go(s);
+        for(int i=s+1;i<=e;i++) {
+            int tmp = go(i);
+            if(ret > tmp) ret = tmp;
+        }
+        return ret;
     }
 
     
