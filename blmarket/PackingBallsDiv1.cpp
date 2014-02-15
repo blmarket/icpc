@@ -49,17 +49,9 @@ public:
         for(int i=0;i<=K;i++) {
             int tmp = go(i);
             if(ret > tmp) ret = tmp;
-            // cout << go(i) << " ";
+            cout << go(i) << " ";
         }
-       // cout << endl;
-       // for(int i=K;i<=K*2;i++) {
-       //     cout << go(i) << " ";
-       // }
-       // cout << endl;
-       // for(int i=K*2;i<=K*3;i++) {
-       //     cout << go(i) << " ";
-       // }
-       // cout << endl;
+        cout << endl;
 
         return ret;
     }
@@ -84,6 +76,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
