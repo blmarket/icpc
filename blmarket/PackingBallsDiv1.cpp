@@ -45,31 +45,10 @@ public:
 
         sort(V, V+K);
 
-        int s = 0;
-        int e = V[K-1];
-
-        while(s + 2000 < e) {
-            cout << s << " " << e << " = " << go(s) << " " << go(e) << endl;
-            int m1 = (s*2 + e) / 3;
-            int m2 = (s + e*2) / 3;
-            
-            int k1 = go(m1);
-            int k2 = go(m2);
-
-            if(k1 == k2) {
-                s = k1;
-                e = k2;
-                continue;
-            }
-
-            if(k1 < k2) {
-                e = m2;
-            } else {
-                s = m1;
-            }
-        }
-
+        int ret = go(0);
         for(int i=0;i<=K;i++) {
+            int tmp = go(i);
+            if(ret > tmp) ret = tmp;
             cout << go(i) << " ";
         }
         cout << endl;
@@ -82,13 +61,6 @@ public:
         }
         cout << endl;
 
-        int ret = go(s);
-        for(int i=s+1;i<=e;i++) {
-            int tmp = go(i);
-            cout << tmp << " ";
-            if(ret > tmp) ret = tmp;
-        }
-        cout << endl;
         return ret;
     }
 
