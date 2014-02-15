@@ -49,9 +49,7 @@ public:
         for(int i=0;i<=K;i++) {
             int tmp = go(i);
             if(ret > tmp) ret = tmp;
-            cout << go(i) << " ";
         }
-        cout << endl;
 
         vector<int> VV;
         for(int i=0;i<K;i++) VV.pb(V[i] % K);
@@ -95,6 +93,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
