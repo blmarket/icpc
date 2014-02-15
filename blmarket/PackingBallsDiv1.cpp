@@ -56,8 +56,9 @@ public:
             int k2 = go(m2);
 
             if(k1 == k2) {
-                cout << m1 << " " << m2 << " = " << k1 << " " << k2 << endl;
-                return k1;
+                s = k1;
+                e = k2;
+                continue;
             }
 
             if(k1 < k2) {
