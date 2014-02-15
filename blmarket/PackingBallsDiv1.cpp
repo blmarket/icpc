@@ -49,17 +49,17 @@ public:
         for(int i=0;i<=K;i++) {
             int tmp = go(i);
             if(ret > tmp) ret = tmp;
-            cout << go(i) << " ";
+            // cout << go(i) << " ";
         }
-        cout << endl;
-        for(int i=K;i<=K*2;i++) {
-            cout << go(i) << " ";
-        }
-        cout << endl;
-        for(int i=K*2;i<=K*3;i++) {
-            cout << go(i) << " ";
-        }
-        cout << endl;
+       // cout << endl;
+       // for(int i=K;i<=K*2;i++) {
+       //     cout << go(i) << " ";
+       // }
+       // cout << endl;
+       // for(int i=K*2;i<=K*3;i++) {
+       //     cout << go(i) << " ";
+       // }
+       // cout << endl;
 
         return ret;
     }
