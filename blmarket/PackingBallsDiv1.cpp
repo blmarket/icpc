@@ -55,7 +55,10 @@ public:
             int k1 = go(m1);
             int k2 = go(m2);
 
-            if(k1 == k2) return k1;
+            if(k1 == k2) {
+                cout << m1 << " " << m2 << " = " << k1 << " " << k2 << endl;
+                return k1;
+            }
 
             if(k1 < k2) {
                 e = m2;
@@ -64,7 +67,6 @@ public:
             }
         }
 
-        cout << "here" << endl;
         int ret = go(s);
         for(int i=s+1;i<=e;i++) {
             int tmp = go(i);
@@ -93,6 +95,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
