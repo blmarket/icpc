@@ -40,7 +40,6 @@ public:
         K = K_;
         V[0] = A;
         for(int i=1;i<K;i++) {
-            cout << V[i-1] << " ";
             V[i] = ((long long)V[i-1] * B + C) % D + 1;
         }
 
