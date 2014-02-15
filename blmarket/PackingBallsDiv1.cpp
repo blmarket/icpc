@@ -21,26 +21,32 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int V[100005];
+int K;
+priority_queue<PII> Q;
+
+int go(int nvar) {
+    int ret = 0;
+    for(int i=0;i<K;i++) if(V[i] > nvar) {
+        ret += (V[i] - nvar + K - 1) / K;
+    }
+    return nvar + ret;
+}
 
 class PackingBallsDiv1 
 {
 public:
-    int minPacks(int K, int A, int B, int C, int D) 
+    int minPacks(int K_, int A, int B, int C, int D) 
     {		
+        K = K_;
         V[0] = A;
         for(int i=1;i<K;i++) {
             V[i] = ((long long)V[i-1] * B + C) % D + 1;
         }
 
         sort(V, V+K);
-        int ret = -1;
-        for(int i=0;i<K;i++) {
-            int tmp = V[i] + (K-1-i);
-            if(ret == -1 || ret > tmp) ret = tmp;
-            cout << V[i] << " ";
-        }
-        cout << endl;
-        return ret;
+
+        cout << go(0) << " " << go(V[K-1]) << endl;
+        return 0;
     }
 
     
