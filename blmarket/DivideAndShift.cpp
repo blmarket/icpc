@@ -39,6 +39,8 @@ int go(int n, int m) {
             if(ret > tmp) ret = tmp;
         }
     }
+
+    cout << n << " " << m << " = " << ret << endl;
     return memo[n] = ret;
 }
 
