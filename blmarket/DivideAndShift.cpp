@@ -28,6 +28,7 @@ int go(int n, int m) {
     if(memo.count(n)) return memo[n];
 
     int ret = (m-1);
+    if(ret < 0) ret += n;
     int tmp = (n - m + 1);
     if(ret > tmp) ret = tmp;
 
