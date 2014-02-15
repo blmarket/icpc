@@ -25,12 +25,11 @@ vector<int> primes;
 map<int, int> memo;
 
 int go(int n, int m) {
+    if(n == 1) return 0;
     if(memo.count(n)) return memo[n];
 
-    int ret = (m - 1);
-    if(ret < 0) ret += n;
-
-    int tmp = (n - m + 1) % n;
+    int ret = m;
+    int tmp = (n - m);
     if(ret > tmp) ret = tmp;
 
     for(int i=0;i<size(primes);i++) {
@@ -51,6 +50,7 @@ class DivideAndShift
 public:
     int getLeast(int N, int M) 
     {		
+        M--;
         primes.clear();
         primes.pb(2);
         for(int i=3;i*i<=N;i+=2) {
