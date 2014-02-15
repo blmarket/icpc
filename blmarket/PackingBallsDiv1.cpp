@@ -57,22 +57,22 @@ public:
         for(int i=0;i<K;i++) VV.pb(V[i] % K);
 
         sort(VV.begin(), VV.end());
+        int minn = 99999;
+        int mx = 0;
         int dff = 0;
         int lp = 0;
         for(int i=0;i<size(VV);i++) {
             dff--;
-            cout << lp << " " << dff << " ";
+            if(dff < minn) {
+                minn = dff;
+                mx = lp;
+            }
             if(VV[i] == lp) continue;
             dff += (VV[i] - lp);
             lp = VV[i];
         }
-        cout << endl;
 
-
-
-
-
-        return ret;
+        return go(mx);
     }
 
     
