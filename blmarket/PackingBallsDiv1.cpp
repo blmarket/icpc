@@ -54,7 +54,7 @@ public:
         cout << endl;
 
         vector<int> VV;
-        for(int i=0;i<K;i++) VV[i] = V[i] % K;
+        for(int i=0;i<K;i++) VV.pb(V[i] % K);
 
         sort(VV.begin(), VV.end());
         for(int i=0;i<size(VV);i++) {
