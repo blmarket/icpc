@@ -77,7 +77,7 @@ public:
             cout << go(i) << " ";
         }
         cout << endl;
-        for(int i=K;i<=K*3;i++) {
+        for(int i=K*2;i<=K*3;i++) {
             cout << go(i) << " ";
         }
         cout << endl;
