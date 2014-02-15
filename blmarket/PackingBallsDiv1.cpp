@@ -33,10 +33,14 @@ public:
         }
 
         sort(V, V+K);
-        for(int i=0;i<K;i++)
+        int ret = -1;
+        for(int i=0;i<K;i++) {
+            int tmp = V[i] + (K-1-i);
+            if(ret == -1 || ret > tmp) ret = tmp;
             cout << V[i] << " ";
+        }
         cout << endl;
-
+        return ret;
     }
 
     
