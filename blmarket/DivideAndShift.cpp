@@ -22,6 +22,26 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> primes;
 
+map<int, int> memo;
+
+int go(int n, int m) {
+    if(memo.count(n)) return memo[n];
+
+    int ret = (m-1);
+    int tmp = (n - m + 1);
+    if(ret > tmp) ret = tmp;
+
+    for(int i=0;i<size(primes);i++) {
+        if(n % primes[i] == 0) {
+            int sp = n / primes[i];
+            int mm = m % sp;
+            int tmp = go(sp, mm);
+            if(ret > tmp) ret = tmp;
+        }
+    }
+    return memo[n] = ret;
+}
+
 class DivideAndShift 
 {
 public:
@@ -46,7 +66,8 @@ public:
             }
         }
         cout << endl;
-        return 0;
+
+        return go(N, M);
     }
 
     
