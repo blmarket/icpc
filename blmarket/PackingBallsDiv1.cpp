@@ -57,10 +57,19 @@ public:
         for(int i=0;i<K;i++) VV.pb(V[i] % K);
 
         sort(VV.begin(), VV.end());
+        int dff = 0;
+        int lp = 0;
         for(int i=0;i<size(VV);i++) {
-            cout << VV[i] << " ";
+            dff--;
+            cout << dff << " ";
+            if(VV[i] == lp) continue;
+            dff += (VV[i] - lp);
+            lp = VV[i];
         }
         cout << endl;
+
+
+
 
 
         return ret;
