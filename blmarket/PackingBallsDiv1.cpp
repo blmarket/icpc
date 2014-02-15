@@ -45,12 +45,6 @@ public:
 
         sort(V, V+K);
 
-        int ret = go(0);
-        for(int i=0;i<=K;i++) {
-            int tmp = go(i);
-            if(ret > tmp) ret = tmp;
-        }
-
         vector<int> VV;
         for(int i=0;i<K;i++) VV.pb(V[i] % K);
 
@@ -60,7 +54,6 @@ public:
         int dff = 0;
         int lp = 0;
 
-        cout << "here" << endl;
         for(int i=0;i<size(VV);i++) {
             dff--;
             if(dff < minn) {
