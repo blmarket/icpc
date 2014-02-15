@@ -27,10 +27,10 @@ map<int, int> memo;
 int go(int n, int m) {
     if(memo.count(n)) return memo[n];
 
-    int ret = (m-1);
+    int ret = (m - 1);
     if(ret < 0) ret += n;
 
-    int tmp = (n - m + 1);
+    int tmp = (n - m + 1) % n;
     if(ret > tmp) ret = tmp;
 
     for(int i=0;i<size(primes);i++) {
