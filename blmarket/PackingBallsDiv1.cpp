@@ -37,9 +37,7 @@ public:
         for(int i=0;i<K;i++) {
             int tmp = V[i] + (K-1-i);
             if(ret == -1 || ret > tmp) ret = tmp;
-            cout << V[i] << " ";
         }
-        cout << endl;
         return ret;
     }
 
@@ -63,6 +61,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
