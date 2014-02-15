@@ -61,7 +61,7 @@ public:
         int lp = 0;
         for(int i=0;i<size(VV);i++) {
             dff--;
-            cout << dff << " ";
+            cout << lp << " " << dff << " ";
             if(VV[i] == lp) continue;
             dff += (VV[i] - lp);
             lp = VV[i];
