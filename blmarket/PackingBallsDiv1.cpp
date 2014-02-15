@@ -46,7 +46,7 @@ public:
         sort(V, V+K);
 
         int ret = go(0);
-        for(int i=20000;i<=30000;i++) {
+        for(int i=30000;i<=40000;i++) {
             int tmp = go(i);
             if(ret > tmp) ret = tmp;
             // cout << go(i) << " ";
