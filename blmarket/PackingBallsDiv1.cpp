@@ -60,6 +60,7 @@ public:
         int dff = 0;
         int lp = 0;
 
+        cout << "here" << endl;
         for(int i=0;i<size(VV);i++) {
             dff--;
             if(dff < minn) {
