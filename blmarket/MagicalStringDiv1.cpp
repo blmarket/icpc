@@ -37,7 +37,7 @@ public:
 
             maxx = max(maxx, min(c1, c2));
         }
-        return size(S) - maxx * 2;
+        return maxx * 2;
     }
 
     
