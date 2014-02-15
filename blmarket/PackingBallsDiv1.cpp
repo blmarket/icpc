@@ -69,6 +69,11 @@ public:
             }
         }
 
+        for(int i=0;i<=K;i++) {
+            cout << go(i) << " ";
+        }
+        cout << endl;
+
         int ret = go(s);
         for(int i=s+1;i<=e;i++) {
             int tmp = go(i);
