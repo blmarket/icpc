@@ -59,6 +59,7 @@ public:
         int mx = 0;
         int dff = 0;
         int lp = 0;
+
         for(int i=0;i<size(VV);i++) {
             dff--;
             if(dff < minn) {
@@ -93,6 +94,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
