@@ -33,13 +33,11 @@ int go(int n, int m) {
     int tmp = (n - m + 1);
     if(ret > tmp) ret = tmp;
 
-    cout << ret << endl;
-
     for(int i=0;i<size(primes);i++) {
         if(n % primes[i] == 0) {
             int sp = n / primes[i];
             int mm = m % sp;
-            int tmp = go(sp, mm);
+            int tmp = go(sp, mm) + 1;
             if(ret > tmp) ret = tmp;
         }
     }
