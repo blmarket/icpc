@@ -72,8 +72,10 @@ public:
         int ret = go(s);
         for(int i=s+1;i<=e;i++) {
             int tmp = go(i);
+            cout << tmp << " ";
             if(ret > tmp) ret = tmp;
         }
+        cout << endl;
         return ret;
     }
 
@@ -97,6 +99,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
