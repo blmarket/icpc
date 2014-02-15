@@ -48,7 +48,7 @@ public:
         int s = 0;
         int e = V[K-1];
 
-        while(s + K*2 < e) {
+        while(s + 200000 < e) {
             cout << s << " " << e << " = " << go(s) << " " << go(e) << endl;
             int m1 = (s*2 + e) / 3;
             int m2 = (s + e*2) / 3;
