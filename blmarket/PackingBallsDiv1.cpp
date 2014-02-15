@@ -49,6 +49,7 @@ public:
         int e = V[K-1];
 
         while(s + 10 < e) {
+            cout << s << " " << e << " = " << go(s) << " " << go(e) << endl;
             int m1 = (s*2 + e) / 3;
             int m2 = (s + e*2) / 3;
             
