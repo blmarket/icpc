@@ -33,21 +33,10 @@ public:
         }
 
         sort(V, V+K);
-
-        V[K] = -1;
-        int cnt = 0;
-        vector<int> ss;
-        for(int i=0;i<K;i++) {
-            cnt++;
-            if(V[i] != V[i+1]) {
-                ss.pb(cnt);
-                cnt = 0;
-            }
-        }
-        for(int i=0;i<size(ss);i++) {
-            cout << ss[i] << " ";
-        }
+        for(int i=0;i<K;i++)
+            cout << V[i] << " ";
         cout << endl;
+
     }
 
     
