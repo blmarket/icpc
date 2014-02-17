@@ -56,6 +56,10 @@ bool go(int a, double s, double e) {
         vector<bool> visit = vector<bool>(nc, false);
         if(!try_flow(bb, bf, visit, i)) return false;
     }
+
+    cout << a << " : ";
+    for(int i=0;i<size(bf);i++) cout << bf[i] << "-" << i << " ";
+    cout << endl;
     return true;
 }
 
