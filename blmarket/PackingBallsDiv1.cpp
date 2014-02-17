@@ -35,10 +35,6 @@ public:
             V.pb(tmp);
         }
 
-        for(int i=0;i<size(V);i++)
-            cout << V[i] << " ";
-        cout << endl;
-
         int ret = 0;
         for(int i=0;i<size(V);i++) {
             ret += (V[i] / K);
@@ -75,6 +71,6 @@ public:
 int main()
 {
     PackingBallsDiv1 ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
