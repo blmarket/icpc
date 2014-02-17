@@ -57,7 +57,7 @@ bool go(int a, double s, double e) {
         if(!try_flow(bb, bf, visit, i)) return false;
     }
 
-    cout << a << " : ";
+    cout << a << " : " << s << " " << e << " : ";
     for(int i=0;i<size(bf);i++) cout << bf[i] << "-" << i << " ";
     cout << endl;
     return true;
