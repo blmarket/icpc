@@ -20,72 +20,56 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int V[100005];
-int K;
-priority_queue<PII> Q;
-
-int go(int nvar) {
-    int ret = 0;
-    for(int i=0;i<K;i++) if(V[i] > nvar) {
-        ret += (V[i] - nvar + K - 1) / K;
-    }
-    return nvar + ret;
-}
-
 class PackingBallsDiv1 
 {
 public:
-    int minPacks(int K_, int A, int B, int C, int D) 
-    {		
-        K = K_;
-        V[0] = A;
+    int minPacks(int K, int A, int B, int C, int D) 
+    {
+        vector<int> V;
+        V.pb(A);
         for(int i=1;i<K;i++) {
-            V[i] = ((long long)V[i-1] * B + C) % D + 1;
+            long long tmp = V.back();
+            tmp = tmp * B + C;
+            tmp %= D;
+            V.pb(tmp);
         }
 
-        sort(V, V+K);
-
-        vector<int> VV;
-        for(int i=0;i<K;i++) VV.pb(V[i] % K);
-
-        sort(VV.begin(), VV.end());
-        int minn = 99999;
-        int mx = 0;
-        int dff = 0;
-        int lp = 0;
-
-        for(int i=0;i<size(VV);i++) {
-            cout << VV[i] << " ";
-            dff--;
-            if(dff < minn) {
-                minn = dff;
-                mx = lp;
-            }
-            if(VV[i] == lp) continue;
-            dff += (VV[i] - lp);
-            lp = VV[i];
+        int ret = 0;
+        for(int i=0;i<size(V);i++) {
+            ret += (V[i] / K);
+            V[i] %= K;
         }
-        cout << endl;
 
-        return go(mx);
+        sort(V.begin(), V.end());
+
+        int rr = size(V);
+        for(int i=0;i<size(V);i++) {
+            int tmp = V[i] + (size(V)-1-i);
+            if(rr > tmp) rr = tmp;
+        }
+        return ret + rr;
     }
+
+    
+// BEGIN CUT HERE
+	public:
+	void run_test(int Case) { if ((Case == -1) || (Case == 0)) test_case_0(); if ((Case == -1) || (Case == 1)) test_case_1(); if ((Case == -1) || (Case == 2)) test_case_2(); if ((Case == -1) || (Case == 3)) test_case_3(); }
+	private:
+	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
+	void verify_case(int Case, const int &Expected, const int &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
+	void test_case_0() { int Arg0 = 3; int Arg1 = 4; int Arg2 = 2; int Arg3 = 5; int Arg4 = 6; int Arg5 = 4; verify_case(0, Arg5, minPacks(Arg0, Arg1, Arg2, Arg3, Arg4)); }
+	void test_case_1() { int Arg0 = 1; int Arg1 = 58; int Arg2 = 23; int Arg3 = 39; int Arg4 = 93; int Arg5 = 58; verify_case(1, Arg5, minPacks(Arg0, Arg1, Arg2, Arg3, Arg4)); }
+	void test_case_2() { int Arg0 = 23; int Arg1 = 10988; int Arg2 = 5573; int Arg3 = 4384; int Arg4 = 100007; int Arg5 = 47743; verify_case(2, Arg5, minPacks(Arg0, Arg1, Arg2, Arg3, Arg4)); }
+	void test_case_3() { int Arg0 = 100000; int Arg1 = 123456789; int Arg2 = 234567890; int Arg3 = 345678901; int Arg4 = 1000000000; int Arg5 = 331988732; verify_case(3, Arg5, minPacks(Arg0, Arg1, Arg2, Arg3, Arg4)); }
+
+// END CUT HERE
+
 };
 
-int main(void) {
-    for(int i=0;i<30;i++) {
-        PackingBallsDiv1 aa;
-        int a,b,c,d;
-        a = rand() % 6; a += 1;
-        b = rand() % 555; b += 1;
-        c = rand() % 3;
-        d = rand() % 666; d += a;
-        aa.minPacks(6, a,b,c,d);
-        cout << a << " " << b << " " << c << " " << d << endl;
-    }
-}
-
-
-
-// Powered by FileEdit
-// Powered by TZTester 1.01 [25-Feb-2003]
-// Powered by CodeProcessor
+// BEGIN CUT HERE
+int main()
+{
+    PackingBallsDiv1 ___test; 
+    ___test.run_test(-1); 
+} 
+// END CUT HERE
