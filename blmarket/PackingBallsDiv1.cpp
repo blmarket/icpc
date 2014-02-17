@@ -31,6 +31,7 @@ public:
             long long tmp = V.back();
             tmp = tmp * B + C;
             tmp %= D;
+            tmp += 1;
             V.pb(tmp);
         }
 
