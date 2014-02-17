@@ -36,7 +36,7 @@ bool try_flow(vector<vector<bool> > &flow, vector<int> &back, vector<bool> &visi
 }
 
 bool go(int a, double s, double e) {
-    if((int)s == (int)e) return true;
+    if((int)(s+1e-6) == (int)(e-1e-6)) return true;
 
     int nc = child[a].size();
 
