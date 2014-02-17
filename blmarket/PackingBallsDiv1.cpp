@@ -34,6 +34,10 @@ public:
             V.pb(tmp);
         }
 
+        for(int i=0;i<size(V);i++)
+            cout << V[i] << " ";
+        cout << endl;
+
         int ret = 0;
         for(int i=0;i<size(V);i++) {
             ret += (V[i] / K);
