@@ -40,6 +40,8 @@ bool go(int a, double s, double e) {
 
     int nc = child[a].size();
 
+    if(nc <= 1) return false;
+
     vector<vector<bool> > bb(nc, vector<bool>(nc, false));
 
     for(int i=0;i<nc;i++) {
