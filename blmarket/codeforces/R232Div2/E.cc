@@ -11,12 +11,11 @@ int reducer[30005];
 int main(void) {
     int n;
     scanf("%d", &n);
-    for(int i=1;i<n;i++) scanf("%d", &tree[i]);
+    for(int i=2;i<=n;i++) scanf("%d", &tree[i]);
 
     int m;
     scanf("%d", &m);
     for(int i=0;i<m;i++) {
-        cout << i << endl;
         int op;
         scanf("%d", &op);
         if(op == 1) {
@@ -31,7 +30,7 @@ int main(void) {
 
             for(int j=0;;j++) {
                 ret += number[a] - reducer[a] * j;
-                if(a == 0) break;
+                if(a == 1) break;
             }
 
             ret %= 1000000007;
