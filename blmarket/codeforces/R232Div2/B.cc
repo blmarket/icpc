@@ -11,7 +11,7 @@ int main(void) {
         int a,b,c;
         scanf("%d %d %d", &a, &b, &c);
         int div = a / b;
-        if(c * div >= a) {
+        if((long long)c * div >= a) {
             printf("Yes\n");
         } else {
             printf("No\n");
