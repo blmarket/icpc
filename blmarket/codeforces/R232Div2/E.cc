@@ -31,6 +31,7 @@ int main(void) {
             for(int j=0;;j++) {
                 ret += number[a] - reducer[a] * j;
                 if(a == 1) break;
+                a = tree[a];
             }
 
             ret %= 1000000007;
