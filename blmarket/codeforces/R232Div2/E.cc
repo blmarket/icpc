@@ -16,6 +16,7 @@ int main(void) {
     int m;
     scanf("%d", &m);
     for(int i=0;i<m;i++) {
+        cout << i << endl;
         int op;
         scanf("%d", &op);
         if(op == 1) {
