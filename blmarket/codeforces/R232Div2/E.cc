@@ -35,7 +35,7 @@ int main(void) {
             }
 
             ret %= 1000000007;
-            printf("%lld\n", ret);
+            cout << ret << endl;
         }
     }
 
