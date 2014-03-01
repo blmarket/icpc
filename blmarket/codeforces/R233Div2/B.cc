@@ -57,8 +57,6 @@ int main(void) {
     int c1 = 0, c2 = 0;
     for(int i=1;i<=n;i++) c1 += used1[i], c2 += used2[i];
 
-    cout << c1 << " " << c2 << endl;
-
     printf("%.12lf\n", go(c1, c2));
 
     return 0;
