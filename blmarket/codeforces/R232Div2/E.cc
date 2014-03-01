@@ -36,6 +36,7 @@ void addseg(int *arr, int val, int s, int e) {
     func = [&](int pos, int a, int b) {
         if(a >= e || b <= s) return;
         if(a >= s && b <= e) {
+            cout << "adding " << pos << " " << val << endl;
             arr[pos] += val;
             return;
         }
