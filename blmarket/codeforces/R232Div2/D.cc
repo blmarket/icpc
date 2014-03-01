@@ -15,6 +15,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 typedef pair<int, int> PII;
 
 long long gcd(long long a, long long b) {
+    cout << a << " " << b <<endl;
     if(a<b) swap(a,b);
     if(b==0) return a;
     return gcd(b, a%b);
@@ -70,8 +71,6 @@ int main(void) {
         int nn2;
         for(nn=n+1;isprime(nn) == false;++nn);
         for(nn2=n;isprime(nn2) == false;--nn2);
-
-        cout << nn << " " << nn2 << endl;
 
         frac ret = frac(1,2);
         ret += frac(-1, nn);
