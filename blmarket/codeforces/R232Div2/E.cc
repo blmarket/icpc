@@ -36,7 +36,7 @@ void addseg(int *arr, int val, int s, int e) {
     func = [&](int pos, int a, int b) {
         if(a >= e || b <= s) return;
         if(a >= s && b <= e) {
-            cout << "adding " << pos << " " << val << endl;
+            // cout << "adding " << pos << " " << val << endl;
             arr[pos] += val;
             return;
         }
@@ -58,9 +58,6 @@ int main(void) {
     }
 
     go(1);
-    for(int i=1;i<=n;i++) {
-        cout << ranges[i].first << "," << ranges[i].second << endl;
-    }
 
     int m;
     scanf("%d", &m);
@@ -79,7 +76,7 @@ int main(void) {
             long long sum = 0;
 
             do {
-                cout << pos << " " << seg1[pos] << " " << seg2[pos] << endl;
+                // cout << pos << " " << seg1[pos] << " " << seg2[pos] << endl;
                 sum += seg1[pos];
                 sum -= seg2[pos] * depth[a];
                 pos /= 2;
