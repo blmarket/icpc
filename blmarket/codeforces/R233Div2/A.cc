@@ -37,7 +37,9 @@ int main(void) {
     }
 
     if(a == 0 || b <= 1) {
-        cout << arr1[a] - arr2[b] << endl;
+        long long tmp = (long long)a*a - (long long)b*b;
+        cout << tmp << endl;
+        cout << string(a, 'o') << string(b, 'x') << endl;
         return 0;
     }
 
@@ -56,6 +58,17 @@ int main(void) {
     if(rx == -1) {
         cout << string(a, 'o') << string(b, 'x') << endl;
     } else {
+        int big = a-rx+2;
+        int av = b / rx;
+        int ax = b % rx;
+        bool first = true;
+        for(int i=0;i<rx;i++) {
+            if(i < ax) cout << 'x';
+            cout << string(av, 'x');
+            if(first) cout << string(big, 'o');
+            else cout << 'o';
+        }
+        cout << string(av, 'x') << endl;
     }
     return 0;
 }
