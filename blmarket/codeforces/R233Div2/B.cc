@@ -36,7 +36,7 @@ double go(int a, int b) {
     double pp4 = (1.0-p1) * (1.0-p2);
     double s4 = go(a+1, b+1);
 
-    double rr = (pp2*s2 + pp3*s3 + pp4*s4) / (1.0 - pp1);
+    double rr = (1.0 + pp2*s2 + pp3*s3 + pp4*s4) / (1.0 - pp1);
     return memo[a][b] = rr;
 }
 
