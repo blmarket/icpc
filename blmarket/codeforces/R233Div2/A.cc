@@ -47,7 +47,6 @@ int main(void) {
     int rx = -1;
     for(int i=2;i<=b;i++) {
         int na = i - 1;
-        cout << i << " " << arr1[na] << " " << arr2[i] << endl;
         long long tmp = arr1[na] - arr2[i];
         if(ret < tmp) {
             ret = tmp;
@@ -59,6 +58,7 @@ int main(void) {
     if(rx == -1) {
         cout << string(a, 'o') << string(b, 'x') << endl;
     } else {
+        cout << rx << endl;
         int big = a-rx+2;
         int av = b / rx;
         int ax = b % rx;
