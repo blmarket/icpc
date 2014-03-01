@@ -30,7 +30,7 @@ struct frac {
         long long uu = up * (dd / down) + rhs.up * (dd / rhs.down);
         up = uu;
         down = dd;
-        long long gg = gcd(up, down);
+        long long gg = gcd(abs(up), down);
         up /= gg;
         down /= gg;
         return *this;
