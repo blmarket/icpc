@@ -66,7 +66,6 @@ int main(void) {
             ret = (ret * inv[i]) % mod;
             mx--;
         }
-        cout << it.second << " " << n << " " << ret << endl;
     }
 
     cout << ret << endl;
