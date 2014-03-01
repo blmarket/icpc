@@ -37,6 +37,7 @@ int main(void) {
     }
 
     cout << arr1[1] << endl;
+    cout << arr2[1] << endl;
 
     if(a == 0 || b <= 1) {
         cout << arr1[a] - arr2[b] << endl;
