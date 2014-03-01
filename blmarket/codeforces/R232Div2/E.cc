@@ -32,7 +32,9 @@ PII go(int a) {
 
 void addseg(int *arr, int val, int s, int e) {
     function<void(int, int, int)> func;
+
     func = [&](int pos, int a, int b) {
+        if(a >= e || b <= s) return;
         if(a >= s && b <= e) {
             arr[pos] += val;
             return;
