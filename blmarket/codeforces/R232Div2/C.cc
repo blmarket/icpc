@@ -60,7 +60,7 @@ int main(void) {
 
     long long ret = 1;
     for(auto &it : px) {
-        int mx = it.second + n - 1;
+        int mx = it.second + n;
         cout << mx << " " << n << endl;
         while(mx) {
             ret = (ret * mx) % mod;
