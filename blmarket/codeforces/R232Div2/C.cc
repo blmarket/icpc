@@ -53,6 +53,7 @@ int main(void) {
         int tmp;
         scanf("%d", &tmp);
         for(int j=0;j<size(primes);j++) {
+            if(tmp < primes[j]) break;
             while(tmp % primes[j] == 0) {
                 tmp /= primes[j];
                 np[j]++;
