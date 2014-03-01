@@ -78,6 +78,7 @@ int main(void) {
             long long sum = 0;
 
             do {
+                cout << pos << " " << seg1[pos] << " " << seg2[pos] << endl;
                 sum += seg1[pos];
                 sum -= seg2[pos] * depth[a];
                 pos /= 2;
