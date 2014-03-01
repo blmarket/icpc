@@ -61,12 +61,12 @@ int main(void) {
     long long ret = 1;
     for(auto &it : px) {
         int mx = it.second + n - 1;
-        cout << it.second << " " << n << endl;
         while(mx) {
             ret = (ret * mx) % mod;
             mx--;
         }
         for(int i=2;i<n;i++) ret = (ret * inv[i]) % mod;
+        cout << it.second << " " << n << " " << ret << endl;
     }
 
     cout << ret << endl;
