@@ -52,10 +52,12 @@ int main(void) {
         for(nn=n+1;isprime(nn) == false;++nn);
         for(nn2=n;isprime(nn2) == false;--nn2);
 
+        cout << "1/2" << " - 1/" << nn << endl;
         cout << nn2 << " " << nn << endl;
 
-
-        cout << "1/2" << " - 1/" << nn << endl;
+        while(nn > n) {
+            cout << "-" <<  nn2 << " " << nn << endl;
+        }
     }
     
     return 0;
