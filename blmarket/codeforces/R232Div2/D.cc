@@ -68,7 +68,6 @@ int main(void) {
         frac ret = frac(1,2);
         ret += frac(-1, nn);
 
-        cout << ret.up << "/" << ret.down << endl;
         ret += frac(-(nn-n-1), nn2 * nn);
         cout << ret.up << "/" << ret.down << endl;
     }
