@@ -31,6 +31,7 @@ struct frac {
         up = uu;
         down = dd;
         long long gg = gcd(abs(up), down);
+        cout << gg << endl;
         up /= gg;
         down /= gg;
         return *this;
