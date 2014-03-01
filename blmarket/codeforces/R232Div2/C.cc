@@ -23,26 +23,10 @@ map<int, int> px;
 
 long long inv[505];
 
-vector<long long> memo[505];
-
-long long go(int a, int b) {
-    if(a == 1) return 1;
-    if(memo[a].size() <= b) memo[a].resize(b+1, -1);
-    if(memo[a][b] != -1) return memo[a][b];
-
-    long long ret = 0;
-    for(int i=0;i<=b;i++) {
-        ret += go(a-1, b-i);
-        if(ret > mod) ret -= mod;
-    }
-    return memo[a][b] = ret;
-}
-
 int main(void) {
     inv[1] = 1;
     for(int i=2;i<=500;i++) {
         inv[i] = ((long long)(mod / i + 1) * inv[i - (mod % i)]) % mod;
-        cout << inv[i] << " ";
     }
 
     primes.pb(2);
@@ -76,8 +60,12 @@ int main(void) {
 
     long long ret = 1;
     for(auto &it : px) {
-        // cout << it.first << " " << it.second << endl;
-        ret = (ret * go(n, it.second)) % mod;
+        int mx = it.second + n - 1;
+        while(mx) {
+            ret = (ret * mx) % mod;
+            mx--;
+        }
+        for(int i=2;i<=n;i++) ret = (ret * inv[i]) % mod;
     }
 
     cout << ret << endl;
