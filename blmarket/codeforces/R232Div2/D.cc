@@ -14,6 +14,20 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 typedef pair<int, int> PII;
 
+struct frac {
+    long long up;
+    long long down;
+
+    frac(long long up, long long down):up(up), down(down) {};
+    frac& operator+=(const frac &rhs) {
+        long long dd = down * rhs.down / __gcd(down, rhs.down);
+        long long uu = up * (dd / down) + rhs.up * (dd / rhs.down);
+        up = uu;
+        down = dd;
+        return *this;
+    }
+};
+
 int mod = 1000000007;
 
 int n;
