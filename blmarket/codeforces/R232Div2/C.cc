@@ -14,10 +14,19 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 typedef pair<int, int> PII;
 
+int mod = 1000000007;
+
 int n;
 vector<int> primes;
 vector<int> np;
 map<int, int> px;
+
+vector<long long> memo[505];
+
+long long go(int a, int b) {
+    if(memo[a].size() <= b) memo[a].resize(b+1, -1);
+    if(memo[a][b] != -1) return memo[a][b];
+}
 
 int main(void) {
     primes.pb(2);
@@ -48,9 +57,12 @@ int main(void) {
 
     for(int i=0;i<size(primes);i++) if(np[i]) px[primes[i]] = np[i];
 
+    long long ret = 1;
     for(auto &it : px) {
-        cout << it.first << " " << it.second << endl;
+        ret = (ret * go(n, it.second)) % mod;
     }
+
+    cout << ret << endl;
 
     return 0;
 }
