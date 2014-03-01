@@ -55,7 +55,7 @@ int main(void) {
         cout << "1/2" << " - 1/" << nn << endl;
         cout << nn2 << " " << nn << endl;
 
-        while(nn > n) {
+        while(nn > n+1) {
             cout << "-" << nn2 << " " << nn << endl;
             nn--;
         }
