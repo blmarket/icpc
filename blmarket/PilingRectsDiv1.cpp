@@ -43,29 +43,27 @@ public:
         sort(V.begin(), V.end());
 
         for(int i=1;i<N*2;i++) S1.insert(V[i].second);
-        auto it = S1.begin();
-        for(int i=0;i<N;i++) ++it;
+        auto it = S1.rbegin();
+        for(int i=1;i<N;i++) ++it;
 
         long long ret = -1;
 
         long long x1 = V[0].first;
         int y1 = V[0].second;
-        for(int i=1;i<=N;i++) {
+        for(int i=1;i<N;i++) {
             long long x2 = V[i].first;
 
-            auto jt = S1.find(V[i].second);
-
             long long tmp;
-            if (it == S1.end()) {
-                tmp = x1 * y1 + x2 * (*S1.begin());
+            if(*it <= V[i].second) {
+                ++it;
+                tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
+                --it;
             } else {
                 tmp = x1 * min(y1, *it) + x2 * (*S1.begin());
-                if(*it >= *jt) ++it;
             }
+
             ret = max(ret, tmp);
 
-            S1.erase(jt);
-            // and...
             y1 = min(y1, V[i].second);
         }
 

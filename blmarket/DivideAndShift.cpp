@@ -35,6 +35,7 @@ int go(int n, int m) {
     for(int i=0;i<size(primes);i++) {
         if(n % primes[i] == 0) {
             int sp = n / primes[i];
+            cout << "sp = " << sp << endl;
             int mm = m % sp;
             int tmp = go(sp, mm) + 1;
             if(ret > tmp) ret = tmp;
@@ -53,7 +54,7 @@ public:
         M--;
         primes.clear();
         primes.pb(2);
-        for(int i=3;i*i<=N;i+=2) {
+        for(int i=3;i<=N;i+=2) {
             bool hp = false;
             for(int j=0;j<size(primes);j++) {
                 if(primes[j] * primes[j] > i) break;

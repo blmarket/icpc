@@ -51,6 +51,7 @@ class YetAnotherORProblem
 public:
     int countSequences(vector<long long> R_) 
     {
+        sort(R.rbegin(), R.rend());
         memo.clear();
         R = R_;
 

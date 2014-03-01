@@ -68,7 +68,7 @@ int main(void) {
         if(op == 1) {
             int a,b,c;
             scanf("%d %d %d", &a, &b, &c);
-            addseg(seg1, b + c * depth[a], ranges[a].first, ranges[a].second);
+            addseg(seg1, ((long long)c * depth[a] + b) % mod, ranges[a].first, ranges[a].second);
             addseg(seg2, c, ranges[a].first, ranges[a].second);
         } else {
             int a;
@@ -79,10 +79,10 @@ int main(void) {
             do {
                 // cout << pos << " " << seg1[pos] << " " << seg2[pos] << endl;
                 sum += seg1[pos];
-                sum -= seg2[pos] * depth[a];
+                sum -= (long long)seg2[pos] * depth[a];
+                sum %= mod;
                 pos /= 2;
             } while(pos > 1);
-            sum %= mod;
             if(sum < 0) sum += mod;
             cout << sum << endl;
         }
