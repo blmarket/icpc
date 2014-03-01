@@ -36,15 +36,12 @@ int main(void) {
         arr2[i] = (long long)ax * (av+1) * (av+1) + (long long)(i-ax) * av * av;
     }
 
-    cout << arr1[1] << endl;
-    cout << arr2[1] << endl;
-
     if(a == 0 || b <= 1) {
         cout << arr1[a] - arr2[b] << endl;
         return 0;
     }
 
-    long long ret = arr1[1] + arr2[1];
+    long long ret = arr1[1] - arr2[1];
     for(int i=2;i<=b;i++) {
         int na = i - 1;
         long long tmp = arr1[na] - arr2[i];
