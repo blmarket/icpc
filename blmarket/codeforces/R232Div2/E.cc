@@ -75,7 +75,7 @@ int main(void) {
         } else {
             int a;
             scanf("%d", &a);
-            int pos = 262144 + ranges[a].first;
+            int pos = 524288 + ranges[a].first;
             long long sum = 0;
 
             do {
