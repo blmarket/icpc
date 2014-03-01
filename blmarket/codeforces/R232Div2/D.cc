@@ -15,9 +15,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 typedef pair<int, int> PII;
 
 long long gcd(long long a, long long b) {
-    cout << a << " " << b << endl;
-    if(a<b) swap(a,b);
-    if(b==0) return a;
+    // if(a<b) swap(a,b);
+    if(a == 0 || b==0) return a+b;
     return gcd(b, a%b);
 }
 
