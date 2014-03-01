@@ -60,6 +60,7 @@ int main(void) {
 
     long long ret = 1;
     for(auto &it : px) {
+        ret = 1;
         int mx = it.second + n - 1;
         while(mx) {
             ret = (ret * mx) % mod;
