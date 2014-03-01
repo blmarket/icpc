@@ -18,10 +18,6 @@ int mod = 1000000007;
 
 int n;
 vector<int> primes;
-vector<int> np;
-map<int, int> px;
-
-long long inv[505];
 
 bool isprime(int nn) {
     for(int j=0;j<size(primes);j++) {
