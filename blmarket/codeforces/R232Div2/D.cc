@@ -43,7 +43,7 @@ int main(void) {
         for(;;nn++) {
             bool isprime = true;
             for(int j=0;j<size(primes);j++) {
-                if(primes[j] >= nn) break;
+                if(primes[j] * primes[j] >= nn) break;
                 if(nn % primes[j] == 0) { isprime = false; break; }
             }
             if(isprime) break;
