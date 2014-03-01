@@ -68,6 +68,7 @@ int main(void) {
 
     long long ret = 1;
     for(auto &it : px) {
+        cout << it.first << " " << it.second << endl;
         ret = (ret * go(n, it.second)) % mod;
     }
 
