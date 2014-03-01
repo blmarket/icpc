@@ -24,6 +24,9 @@ struct frac {
         long long uu = up * (dd / down) + rhs.up * (dd / rhs.down);
         up = uu;
         down = dd;
+        long long gg = __gcd(up, down);
+        up /= gg;
+        down /= gg;
         return *this;
     }
 };
@@ -62,8 +65,10 @@ int main(void) {
         for(nn=n+1;isprime(nn) == false;++nn);
         for(nn2=n;isprime(nn2) == false;--nn2);
 
-        cout << "1/2" << " - 1/" << nn << endl;
-        cout << nn2 << " " << nn << endl;
+        frac ret = frac(1,2);
+        ret += frac(-1, nn);
+
+        cout << ret.up << "/" << ret.down << endl;
 
         while(nn > n+1) {
             cout << "-" << nn2 << " " << nn << endl;
