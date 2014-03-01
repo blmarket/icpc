@@ -30,7 +30,6 @@ struct frac {
         long long uu = up * (dd / down) + rhs.up * (dd / rhs.down);
         up = uu;
         down = dd;
-        cout << up << " " << down << endl;
         long long gg = gcd(abs(up), down);
         up /= gg;
         down /= gg;
@@ -75,6 +74,7 @@ int main(void) {
         frac ret = frac(1,2);
         ret += frac(-1, nn);
 
+        cout << ret.up << "/" << ret.down << endl;
         ret += frac(-(nn-n-1), nn2 * nn);
         cout << ret.up << "/" << ret.down << endl;
     }
