@@ -23,6 +23,7 @@ double memo[2005][2005];
 
 double go(int a, int b) {
     if(a > n || b > n) return 0;
+    if(a == n && b == n) return 0;
     if(memo[a][b] > -0.1) return memo[a][b];
 
     double p1 = (double)a / n;
