@@ -41,7 +41,7 @@ int main(void) {
                 np[j]++;
             }
         }
-        if(tmp) {
+        if(tmp > 1) {
             px[tmp] += 1;
         }
     }
