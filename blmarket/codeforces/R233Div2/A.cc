@@ -42,12 +42,20 @@ int main(void) {
     }
 
     long long ret = arr1[1] - arr2[1];
+    int rx = -1;
     for(int i=2;i<=b;i++) {
         int na = i - 1;
         long long tmp = arr1[na] - arr2[i];
-        if(ret < tmp) ret = tmp;
+        if(ret < tmp) {
+            ret = tmp;
+            rx = i;
+        }
     }
 
     cout << ret << endl;
+    if(rx == -1) {
+        cout << string(a, 'o') << string(b, 'x') << endl;
+    } else {
+    }
     return 0;
 }
