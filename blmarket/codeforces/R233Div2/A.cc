@@ -23,7 +23,9 @@ int main(void) {
     ostringstream ost;
     for(int i=p-k;i<=p+k;i++) {
         if(i < 1 || i >n) continue;
-        ost << i << " ";
+        if(i == p) {
+            ost << "(" << i << ") ";
+        } else ost << i << " ";
     }
     if(p-k > 1) cout << "<< ";
     cout << ost.str();
