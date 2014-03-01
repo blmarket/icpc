@@ -71,7 +71,8 @@ int main(void) {
         cout << ret.up << "/" << ret.down << endl;
 
         while(nn > n+1) {
-            cout << "-" << nn2 << " " << nn << endl;
+            ret += frac(-1, nn2 * nn);
+            cout << ret.up << "/" << ret.down << endl;
             nn--;
         }
     }
