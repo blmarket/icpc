@@ -83,7 +83,7 @@ int main(void) {
                 pos /= 2;
             } while(pos > 1);
             sum %= mod;
-            if(sum < mod) sum += mod;
+            if(sum < 0) sum += mod;
             cout << sum << endl;
         }
     }
