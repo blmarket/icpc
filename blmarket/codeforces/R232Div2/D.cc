@@ -23,6 +23,14 @@ map<int, int> px;
 
 long long inv[505];
 
+bool isprime(int nn) {
+    for(int j=0;j<size(primes);j++) {
+        if(primes[j] * primes[j] > nn) return true;
+        if(nn % primes[j] == 0) return false;
+    }
+    return true;
+}
+
 int main(void) {
     primes.pb(2);
     for(int i=3;i<=100000;i+=2) {
@@ -39,15 +47,14 @@ int main(void) {
     for(int i=0;i<t;i++) {
         int n;
         scanf("%d", &n);
-        int nn = n + 1;
-        for(;;nn++) {
-            bool isprime = true;
-            for(int j=0;j<size(primes);j++) {
-                if(primes[j] * primes[j] > nn) break;
-                if(nn % primes[j] == 0) { isprime = false; break; }
-            }
-            if(isprime) break;
-        }
+        int nn;
+        int nn2;
+        for(nn=n+1;isprime(nn) == false;++nn);
+        for(nn2=n;isprime(nn2) == false;--nn2);
+
+        cout << nn2 << " " << nn << endl;
+
+
         cout << "1/2" << " - 1/" << nn << endl;
     }
     
