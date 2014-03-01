@@ -39,7 +39,7 @@ int main(void) {
     for(int i=0;i<t;i++) {
         int n;
         scanf("%d", &n);
-        int nn = n;
+        int nn = n + 1;
         for(;;nn++) {
             bool isprime = true;
             for(int j=0;j<size(primes);j++) {
