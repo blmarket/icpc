@@ -28,7 +28,7 @@ struct frac {
     frac& operator+=(const frac &rhs) {
 
         cout << up << "/" << down << " + " << rhs.up << "/" << rhs.down << endl;
-        long long dd = down * rhs.down / gcd(down, rhs.down);
+        long long dd = down / gcd(down, rhs.down) * rhs.down;
         long long uu = up * (dd / down) + rhs.up * (dd / rhs.down);
         up = uu;
         down = dd;
