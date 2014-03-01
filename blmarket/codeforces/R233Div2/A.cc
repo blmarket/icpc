@@ -62,7 +62,7 @@ int main(void) {
         int av = b / rx;
         int ax = b % rx;
         bool first = true;
-        for(int i=1;i<rx;i++) {
+        for(int i=0;i<rx-1;i++) {
             if(i < ax) cout << 'x';
             cout << string(av, 'x');
             if(first) cout << string(big, 'o');
