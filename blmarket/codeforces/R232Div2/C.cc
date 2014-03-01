@@ -65,7 +65,6 @@ int main(void) {
             ret = (ret * mx) % mod;
             mx--;
         }
-        cout << mx << " " << n << endl;
         for(int i=2;i<=n;i++) ret = (ret * inv[i]) % mod;
     }
 
