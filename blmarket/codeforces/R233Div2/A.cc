@@ -61,7 +61,7 @@ int main(void) {
         int big = a-rx+2;
         int av = b / rx;
         int ax = b % rx;
-        cout << av << " " << ax << endl;
+        cout << b << " " << rx << endl;
         bool first = true;
         for(int i=0;i<rx;i++) {
             if(i < ax) cout << 'x';
