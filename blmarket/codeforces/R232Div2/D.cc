@@ -71,6 +71,8 @@ int main(void) {
         for(nn=n+1;isprime(nn) == false;++nn);
         for(nn2=n;isprime(nn2) == false;--nn2);
 
+        cout << nn << " " << nn2 << endl;
+
         frac ret = frac(1,2);
         ret += frac(-1, nn);
 
