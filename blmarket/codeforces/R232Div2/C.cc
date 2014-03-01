@@ -21,6 +21,8 @@ vector<int> primes;
 vector<int> np;
 map<int, int> px;
 
+long long inv[505];
+
 vector<long long> memo[505];
 
 long long go(int a, int b) {
@@ -37,6 +39,12 @@ long long go(int a, int b) {
 }
 
 int main(void) {
+    inv[1] = 1;
+    for(int i=2;i<=500;i++) {
+        inv[i] = ((long long)(mod / i + 1) * inv[i - (mod % i)]) % mod;
+        cout << inv[i] << " ";
+    }
+
     primes.pb(2);
     for(int i=3;i<=100000;i+=2) {
         bool pp = true;
