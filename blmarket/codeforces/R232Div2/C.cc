@@ -24,8 +24,16 @@ map<int, int> px;
 vector<long long> memo[505];
 
 long long go(int a, int b) {
+    if(a == 1) return 1;
     if(memo[a].size() <= b) memo[a].resize(b+1, -1);
     if(memo[a][b] != -1) return memo[a][b];
+
+    long long ret = 0;
+    for(int i=0;i<=b;i++) {
+        ret += go(a-1, b-i);
+        if(ret > mod) ret -= mod;
+    }
+    return memo[a][b] = ret;
 }
 
 int main(void) {
