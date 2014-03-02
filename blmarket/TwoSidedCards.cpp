@@ -61,6 +61,8 @@ long long gg(int pos, int place) {
     cout << nf << " " << bb << " " << ret << endl;
 
     long long mul = nc * inv[2] + 1;
+
+    cout << (nc*inv[2])%mod << endl;
     mul %= mod;
     ret = (ret * mul) % mod;
 
