@@ -118,6 +118,6 @@ public:
 int main()
 {
     TwoSidedCards ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
