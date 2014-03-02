@@ -37,6 +37,9 @@ public:
             cout << memo[i] << " ";
             if(i % 5 == 0) cout << endl;
         }
+
+        n %= 5;
+        if(n == 0 || n == 2) return "Hanako";
         return "Taro";
     }
 
