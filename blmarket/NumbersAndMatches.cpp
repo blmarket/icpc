@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -24,11 +25,32 @@ const int nums[10][7] = { { 1,1,1,0,1,1,1 }, {0,0,1,0,0,1,1}, {1,0,1,1,1,0,1}, {
 int nmove[10][10];
 int ndiff[10][10];
 
+string num;
+int memo[20][130][220];
+
+long long go(int pos, int life, int remain) {
+    if(life < 0) return 0;
+    if(pos == size(num)) {
+        return remain == 110;
+    }
+
+    if(memo[pos][life][remain] != -1) return memo[pos][life][remain];
+
+    for(int i=0;i<10;i++) {
+    }
+}
+
 class NumbersAndMatches 
 {
 public:
     long long differentNumbers(long long N, int K) 
     {		
+        memset(memo, -1, sizeof(memo));
+
+        ostringstream ost;
+        ost << N;
+        num = ost.str();
+
         for(int i=0;i<10;i++) {
             for(int j=0;j<10;j++) {
                 int nadd = 0;
@@ -43,10 +65,11 @@ public:
         }
 
         for(int i=0;i<10;i++) {
-            for(int j=0;j<10;j++) cout << nmove[i][j] << " ";
+            for(int j=0;j<10;j++) cout << ndiff[i][j] << " ";
             cout << endl;
         }
-        return 0;
+
+        return go(0, K, 110);
     }
 
     
