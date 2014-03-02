@@ -52,7 +52,7 @@ long long gg(int pos, int place) {
         return ret;
     }
 
-    int tt = ng[pos];
+    long long tt = ng[pos];
     long long nc = tt * (tt-1);
 
     long long mul = nc * inv[2] + 1;
