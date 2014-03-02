@@ -36,6 +36,7 @@ int go(int a) {
 }
 
 long long gg(int pos, int place) {
+    cout << pos << " " << place << endl;
     if(pos == size(ng)) return 1;
     long long nf = 1;
     long long bb = gg(pos+1, place - ng[pos]);
