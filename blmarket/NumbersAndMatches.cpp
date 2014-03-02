@@ -21,6 +21,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/**
+ *
+ * Problem: 500
+ * Test Case: 43
+ * Succeeded: No
+ * Execution Time: 7 ms
+ * Args:
+ * {58866962718526, 18}
+ *
+ * Expected:
+ * 2796495743545
+ *
+ * Received:
+ * 472033849
+ *
+ */
+
 const int nums[10][7] = { { 1,1,1,0,1,1,1 }, {0,0,1,0,0,1,1}, {1,0,1,1,1,0,1}, {1,0,1,1,0,1,1}, {0,1,1,1,0,1,0}, {1,1,0,1,0,1,1}, {1,1,0,1,1,1,1}, {1,0,1,0,0,1,0}, {1,1,1,1,1,1,1}, {1,1,1,1,0,1,1} };
 int nmove[10][10];
 int ndiff[10][10];
@@ -29,6 +46,9 @@ string num;
 int memo[20][130][220];
 
 long long go(int pos, int life, int remain) {
+    if(remain < 0 || remain > 200) {
+        cout << "NO" << endl;
+    }
     if(life < 0) return 0;
     if(pos == size(num)) {
         return remain == 110;
@@ -42,7 +62,7 @@ long long go(int pos, int life, int remain) {
         // cout << sp << " " << i << " " << nmove[sp][i] << " " << ndiff[sp][i] << endl;
         ret += go(pos+1, life - nmove[sp][i], remain + ndiff[sp][i]);
     }
-    // cout << pos << " " << life << " " << remain << " = " << ret << endl;
+    cout << pos << " " << life << " " << remain << " = " << ret << endl;
     return memo[pos][life][remain] = ret;
 }
 
@@ -84,7 +104,7 @@ public:
 	void test_case_1() { long long Arg0 = 23LL; int Arg1 = 1; long long Arg2 = 4LL; verify_case(1, Arg2, differentNumbers(Arg0, Arg1)); }
 	void test_case_2() { long long Arg0 = 66LL; int Arg1 = 2; long long Arg2 = 15LL; verify_case(2, Arg2, differentNumbers(Arg0, Arg1)); }
 	void test_case_3() { long long Arg0 = 888888888LL; int Arg1 = 100; long long Arg2 = 1LL; verify_case(3, Arg2, differentNumbers(Arg0, Arg1)); }
-	void test_case_4() { long long Arg0 = 444444444444444444LL; int Arg1 = 2; long long Arg2 = 1LL; verify_case(4, Arg2, differentNumbers(Arg0, Arg1)); }
+	void test_case_4() { long long Arg0 = 58866962718526LL; int Arg1 = 18; long long Arg2 = 1LL; verify_case(4, Arg2, differentNumbers(Arg0, Arg1)); }
 
 // END CUT HERE
 
