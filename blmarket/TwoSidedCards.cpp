@@ -21,9 +21,13 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+const int mod = 1000000007;
+
 int han[55];
 bool visit[55];
+int inv[55];
 int n;
+vector<int> ng;
 
 int go(int a) {
     if(visit[a]) return 0;
@@ -31,26 +35,59 @@ int go(int a) {
     return go(han[a]) + 1;
 }
 
+long long gg(int pos, int place) {
+    long long nf = 1;
+    long long bb = gg(pos+1, place - ng[pos]);
+
+    long long ret = 0;
+
+    for(int i=0;i<ng[pos];i++) {
+        nf *= (place - i);
+    }
+
+    ret = (nf * bb) % mod;
+
+    if(ng[pos] == 1) {
+        return ret;
+    }
+
+    int tt = ng[pos];
+    int nc = tt * (tt-1) / 2;
+
+    ret *= (1 + (long long)nc * inv[2]);
+    ret %= mod;
+    return ret;
+}
+
 class TwoSidedCards 
 {
 public:
     int theCount(vector <int> taro, vector <int> hanako) 
     {
+        inv[1] = 1;
+        for(int i=2;i<55;i++) {
+            inv[i] = ((long long)(mod / i + 1) * inv[i - (mod % i)]) % mod;
+        }
+
         for(int i=0;i<size(taro);i++) {
             han[taro[i]] = hanako[i];
         }
         n = size(taro);
 
         memset(visit, 0, sizeof(visit));
+        ng.clear();
 
-        vector<int> ng;
         for(int i=1;i<=n;i++) if(!visit[i]) {
-            ng.pb(go(i));
+            int tmp = go(i);
+            ng.pb(tmp);
         }
-        
-        for(int i=0;i<size(ng);i++) cout << ng[i] << " ";
-        cout << endl;
-        return 0;
+
+        long long nf = 1;
+        for(int i=1;i<=n;i++) {
+            nf = (nf * i) % mod;
+        }
+
+        return gg(0, n);
     }
 
     
