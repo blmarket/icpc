@@ -41,6 +41,7 @@ long long go(int pos, int life, int remain) {
     for(int i=0;i<10;i++) {
         ret += go(pos+1, life - nmove[sp][i], remain + ndiff[sp][i]);
     }
+    cout << pos << " " << life << " " << remain << " = " << ret << endl;
     return memo[pos][life][remain] = ret;
 }
 
@@ -92,6 +93,6 @@ public:
 int main()
 {
     NumbersAndMatches ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
