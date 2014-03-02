@@ -31,7 +31,11 @@ public:
             for(i = 1;i*i<N;i++);
             return i;
         };
-        cout << aa() << endl;
+
+        long long xpos = aa();
+        int dist = xpos*xpos - N;
+
+        cout << dist << endl;
     }
 
     
