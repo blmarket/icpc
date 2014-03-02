@@ -62,7 +62,7 @@ long long go(int pos, int life, int remain) {
         // cout << sp << " " << i << " " << nmove[sp][i] << " " << ndiff[sp][i] << endl;
         ret += go(pos+1, life - nmove[sp][i], remain + ndiff[sp][i]);
     }
-    // cout << pos << " " << life << " " << remain << " = " << ret << endl;
+    cout << pos << " " << life << " " << remain << " = " << ret << endl;
     return memo[pos][life][remain] = ret;
 }
 
