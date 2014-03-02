@@ -70,6 +70,7 @@ public:
         inv[1] = 1;
         for(int i=2;i<55;i++) {
             inv[i] = ((long long)(mod / i + 1) * inv[i - (mod % i)]) % mod;
+            cout << inv[i] << " ";
         }
 
         for(int i=0;i<size(taro);i++) {
