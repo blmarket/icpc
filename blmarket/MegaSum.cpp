@@ -40,7 +40,7 @@ public:
             ypos = dist;
         } else {
             ypos = xpos;
-            xpos -= (dist - xpos);
+            xpos -= (dist - xpos + 1);
         }
 
         cout << xpos << " " << ypos << endl;
