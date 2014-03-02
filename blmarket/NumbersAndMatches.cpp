@@ -68,11 +68,6 @@ public:
             }
         }
 
-        for(int i=0;i<10;i++) {
-            for(int j=0;j<10;j++) cout << ndiff[i][j] << " ";
-            cout << endl;
-        }
-
         return go(0, K, 110);
     }
 
