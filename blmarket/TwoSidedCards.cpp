@@ -47,6 +47,7 @@ public:
         
         for(int i=0;i<size(ng);i++) cout << ng[i] << " ";
         cout << endl;
+        return 0;
     }
 
     
