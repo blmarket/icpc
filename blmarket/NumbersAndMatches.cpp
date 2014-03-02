@@ -39,7 +39,7 @@ long long go(int pos, int life, int remain) {
     long long ret = 0;
     int sp = num[pos] - '0';
     for(int i=0;i<10;i++) {
-        cout << sp << " " << i << endl;
+        cout << sp << " " << i << " " << nmove[sp][i] << " " << ndiff[sp][i] << endl;
         ret += go(pos+1, life - nmove[sp][i], remain + ndiff[sp][i]);
     }
     cout << pos << " " << life << " " << remain << " = " << ret << endl;
