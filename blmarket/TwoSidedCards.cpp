@@ -45,6 +45,7 @@ long long gg(int pos, int place) {
     for(int i=0;i<ng[pos];i++) {
         nf *= (place - i);
         nf %= mod;
+        cout << i << " " << place << " " << nf << endl;
     }
 
     ret = (nf * bb) % mod;
@@ -118,6 +119,6 @@ public:
 int main()
 {
     TwoSidedCards ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
