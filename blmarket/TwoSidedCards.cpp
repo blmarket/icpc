@@ -53,9 +53,8 @@ long long gg(int pos, int place) {
     }
 
     int tt = ng[pos];
-    int nc = tt * (tt-1) / 2;
+    int nc = tt * (tt-1);
 
-    cout << nc << endl;
     ret *= (1 + (long long)nc * inv[2]);
     ret %= mod;
     cout << pos << " " << place << " = " << ret << endl;
