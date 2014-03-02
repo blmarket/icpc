@@ -43,8 +43,8 @@ long long gg(int pos, int place) {
     long long ret = 0;
 
     for(int i=0;i<ng[pos];i++) {
-        cout << nf << " " << place << " " << i << endl;
         nf *= (place - i);
+        nf %= mod;
     }
 
     ret = (nf * bb) % mod;
