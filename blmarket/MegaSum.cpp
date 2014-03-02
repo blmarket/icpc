@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -25,9 +26,12 @@ class MegaSum
 public:
     int calculate(long long N) 
     {
-        auto aa = [&]() {
-            return 0;
+        function<long long()> aa = [&]() -> long long {
+            long long i;
+            for(i = 1;i*i<N;i++);
+            return i;
         };
+        cout << aa() << endl;
     }
 
     
