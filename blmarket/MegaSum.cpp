@@ -35,7 +35,15 @@ public:
         long long xpos = aa();
         int dist = xpos*xpos - N;
 
-        cout << dist << endl;
+        int ypos;
+        if(dist < xpos) {
+            ypos = dist;
+        } else {
+            ypos = xpos;
+            xpos -= (dist - xpos);
+        }
+
+        cout << xpos << " " << ypos << endl;
         return 0;
     }
 
