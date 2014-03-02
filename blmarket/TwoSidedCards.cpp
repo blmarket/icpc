@@ -53,7 +53,7 @@ long long gg(int pos, int place) {
     }
 
     int tt = ng[pos];
-    int nc = tt * (tt-1);
+    long long nc = tt * (tt-1);
 
     long long mul = nc * inv[2] + 1;
     mul %= mod;
@@ -70,7 +70,6 @@ public:
         inv[1] = 1;
         for(int i=2;i<55;i++) {
             inv[i] = ((long long)(mod / i + 1) * inv[i - (mod % i)]) % mod;
-            cout << inv[i] << " ";
         }
 
         for(int i=0;i<size(taro);i++) {
