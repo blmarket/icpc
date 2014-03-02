@@ -45,10 +45,10 @@ long long gg(int pos, int place) {
     for(int i=0;i<ng[pos];i++) {
         nf *= (place - i);
         nf %= mod;
-        cout << i << " " << place << " " << nf << endl;
     }
 
     ret = (nf * bb) % mod;
+    cout << nf << " " << bb << " " << ret << endl;
 
     if(ng[pos] == 1) {
         return ret;
