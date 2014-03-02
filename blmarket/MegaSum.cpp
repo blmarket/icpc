@@ -36,6 +36,7 @@ public:
         int dist = xpos*xpos - N;
 
         cout << dist << endl;
+        return 0;
     }
 
     
