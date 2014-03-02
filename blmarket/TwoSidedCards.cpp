@@ -36,7 +36,6 @@ int go(int a) {
 }
 
 long long gg(int pos, int place) {
-    cout << pos << " " << place << endl;
     if(pos == size(ng)) return 1;
     long long nf = 1;
     long long bb = gg(pos+1, place - ng[pos]);
@@ -58,6 +57,7 @@ long long gg(int pos, int place) {
 
     ret *= (1 + (long long)nc * inv[2]);
     ret %= mod;
+    cout << pos << " " << place << " = " << ret << endl;
     return ret;
 }
 
@@ -115,6 +115,6 @@ public:
 int main()
 {
     TwoSidedCards ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
