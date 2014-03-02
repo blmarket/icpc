@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -39,6 +40,8 @@ public:
             han[taro[i]] = hanako[i];
         }
         n = size(taro);
+
+        memset(visit, 0, sizeof(visit));
 
         vector<int> ng;
         for(int i=1;i<=n;i++) if(!visit[i]) {
