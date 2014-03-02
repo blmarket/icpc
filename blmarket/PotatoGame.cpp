@@ -35,6 +35,7 @@ public:
             else if(i>= 16 && memo[i-16] == 0) memo[i] = 1;
             else if(i>= 64 && memo[i-64] == 0) memo[i] = 1;
             cout << memo[i] << " ";
+            if(i % 5 == 0) cout << endl;
         }
         return "Taro";
     }
