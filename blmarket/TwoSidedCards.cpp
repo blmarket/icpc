@@ -25,7 +25,7 @@ const int mod = 1000000007;
 
 int han[55];
 bool visit[55];
-int inv[55];
+long long inv[55];
 int n;
 vector<int> ng;
 
