@@ -46,6 +46,7 @@ public:
             for(int j=0;j<10;j++) cout << nmove[i][j] << " ";
             cout << endl;
         }
+        return 0;
     }
 
     
