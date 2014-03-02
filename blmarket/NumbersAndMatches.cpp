@@ -36,8 +36,12 @@ long long go(int pos, int life, int remain) {
 
     if(memo[pos][life][remain] != -1) return memo[pos][life][remain];
 
+    long long ret = 0;
+    int sp = num[pos] - '0';
     for(int i=0;i<10;i++) {
+        ret += go(pos+1, life - nmove[sp][i], remain + ndiff[sp][i]);
     }
+    return memo[pos][life][remain] = ret;
 }
 
 class NumbersAndMatches 
