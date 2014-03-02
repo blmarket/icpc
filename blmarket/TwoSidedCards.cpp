@@ -85,8 +85,10 @@ public:
 
         for(int i=1;i<=n;i++) if(!visit[i]) {
             int tmp = go(i);
+            cout << tmp << " ";
             ng.pb(tmp);
         }
+        cout << endl;
 
         long long nf = 1;
         for(int i=1;i<=n;i++) {
@@ -119,6 +121,6 @@ public:
 int main()
 {
     TwoSidedCards ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
