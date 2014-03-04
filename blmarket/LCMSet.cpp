@@ -38,7 +38,6 @@ bool chk(vector<int> &a, int d, int t) {
 bool build(vector<int> &a, int t) {
     bool ret = true;
     for(int i=0;i<size(primes);i++) {
-        cout << t << " " << i << endl;
         int tt = 0;
         while(t % primes[i] == 0) {
             t /= primes[i];
@@ -46,7 +45,7 @@ bool build(vector<int> &a, int t) {
         }
         ret |= chk(a, primes[i], tt);
     }
-    ret |= chk(a, t, 1);
+    if(t > 1) ret |= chk(a, t, 1);
     return ret;
 }
 
