@@ -38,6 +38,7 @@ bool chk(vector<int> &a, int d, int t) {
 bool build(vector<int> &a, int t) {
     bool ret = true;
     for(int i=0;i<size(primes);i++) {
+        cout << t << endl;
         int tt = 0;
         while(t % primes[i] == 0) {
             t /= primes[i];
