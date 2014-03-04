@@ -22,6 +22,33 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> primes;
 
+bool chk(vector<int> &a, int d, int t) {
+    for(int i=0;i<size(a);i++) {
+        int tmp = a[i];
+        int tt = 0;
+        while(tmp % d == 0) {
+            tmp /= d;
+            tt++;
+        }
+        if(tt == t) return true;
+    }
+    return false;
+}
+
+bool build(vector<int> &a, int t) {
+    bool ret = true;
+    for(int i=0;i<size(primes);i++) {
+        int tt = 0;
+        while(t % primes[i] == 0) {
+            t /= primes[i];
+            tt++;
+        }
+        ret |= chk(a, primes[i], tt);
+    }
+    ret |= chk(a, t, 1);
+    return ret;
+}
+
 class LCMSet 
 {
 public:
@@ -37,7 +64,13 @@ public:
             }
             if(isp) primes.pb(i);
         }
-        cout << primes.size() << endl;
+
+        for(int i=0;i<size(A);i++) {
+            if(build(B, A[i]) == false) return "Not equal";
+        }
+        for(int i=0;i<size(B);i++) {
+            if(build(A, B[i]) == false) return "Not equal";
+        }
         return "Equal";
     }
 
