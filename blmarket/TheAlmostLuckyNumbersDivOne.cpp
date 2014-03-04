@@ -24,6 +24,7 @@ long long aa, bb;
 long long ret = 0;
 
 void gen(int a, int b, long long cur) {
+    if(cur > bb) return;
     if(a == 0) {
         cout << cur << endl;
         if(cur >= aa && cur <= bb) ret++;
