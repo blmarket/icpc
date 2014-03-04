@@ -27,6 +27,7 @@ class LCMSet
 public:
     string equal(vector <int> A, vector <int> B) 
     {		
+        primes.clear();
         primes.pb(2);
         for(int i=3;i<=100000;i+=2) {
             bool isp = true;
