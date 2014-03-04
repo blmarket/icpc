@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<int> primes;
 
 bool chk(vector<int> &a, int d, int t) {
+    cout << d << " " << t << endl;
     for(int i=0;i<size(a);i++) {
         int tmp = a[i];
         int tt = 0;
@@ -66,6 +67,7 @@ public:
         }
 
         cout << build(A, B[0]) << endl;
+        return "";
 
         for(int i=0;i<size(A);i++) {
             if(build(B, A[i]) == false) return "Not equal";
@@ -99,6 +101,6 @@ public:
 int main()
 {
     LCMSet ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
