@@ -66,9 +66,6 @@ public:
             if(isp) primes.pb(i);
         }
 
-        cout << build(A, B[0]) << endl;
-        return "";
-
         for(int i=0;i<size(A);i++) {
             if(build(B, A[i]) == false) return "Not equal";
         }
