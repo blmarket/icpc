@@ -22,31 +22,12 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> primes;
 
-bool chk(vector<int> &a, int d, int t) {
-    for(int i=0;i<size(a);i++) {
-        int tmp = a[i];
-        int tt = 0;
-        while(tmp % d == 0) {
-            tmp /= d;
-            tt++;
-        }
-        if(tt == t) return true;
-    }
-    return false;
-}
-
 bool build(vector<int> &a, int t) {
-    bool ret = true;
-    for(int i=0;i<size(primes);i++) {
-        int tt = 0;
-        while(t % primes[i] == 0) {
-            t /= primes[i];
-            tt++;
-        }
-        if(tt) ret &= chk(a, primes[i], tt);
+    int tmp = t;
+    for(int i=0;i<size(a);i++) if(t % a[i] == 0) {
+        tmp = tmp / __gcd(tmp, a[i]);
     }
-    if(t > 1) ret &= chk(a, t, 1);
-    return ret;
+    return tmp == 1;
 }
 
 class LCMSet 
