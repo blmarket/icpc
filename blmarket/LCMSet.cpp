@@ -44,9 +44,9 @@ bool build(vector<int> &a, int t) {
             t /= primes[i];
             tt++;
         }
-        ret |= chk(a, primes[i], tt);
+        if(tt) ret &= chk(a, primes[i], tt);
     }
-    if(t > 1) ret |= chk(a, t, 1);
+    if(t > 1) ret &= chk(a, t, 1);
     return ret;
 }
 
