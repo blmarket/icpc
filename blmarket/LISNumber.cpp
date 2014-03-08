@@ -53,7 +53,7 @@ public:
 
             for(int j=0;j<=K;j++) {
                 for(int k=j;k<=j+it;k++) {
-                    if(j < it) continue;
+                    if(k < it) continue;
                     cout << j << " " << k << " : " << dyna[cur][j] << endl;
                     long long c1 = combi[j][it];
                     long long c2 = h(j+1, k - j);
