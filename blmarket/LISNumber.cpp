@@ -56,6 +56,7 @@ public:
                     if(k < it) continue;
                     long long c1 = combi[j][it];
                     long long c2 = h(j+1, k - j);
+                    cout << c1 << " " << c2 << endl;
                     c1 = (c1 * c2) % mod;
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
                     sum %= mod;
