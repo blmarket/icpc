@@ -61,9 +61,13 @@ public:
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
                     sum %= mod;
                     dyna[nex][k] = sum;
-                    cout << j << " " << k << " : " << dyna[cur][j] << " " << dyna[nex][k] << endl;
                 }
             }
+            for(int j=0;j<=20;j++) {
+                cout << dyna[nex][j] << " ";
+            }
+            cout << endl;
+
             ret = dyna[nex][K];
         }
         return ret;
