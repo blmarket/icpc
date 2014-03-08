@@ -48,10 +48,12 @@ public:
                 return dist(a) < dist(b);
             };
             sort(V.begin(), V.end(), func);
+            for(int j=0;j<size(V);j++) {
+                cout << V[j].first << "," << V[j].second << " ";
+            }
+            cout << endl;
         }
 
-        for(int i=0;i<size(ds);i++) cout << ds[i] << " ";
-        cout << endl;
         return 0;
     }
 
