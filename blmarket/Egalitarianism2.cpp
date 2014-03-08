@@ -94,7 +94,7 @@ public:
             }
 
             double ret = sqrt(sqsum / (n-1) - sqr(sum / (n-1)));
-            cout << m << " = " << ret << endl;
+            // cout << m << " = " << ret << endl;
             return ret;
         };
 
