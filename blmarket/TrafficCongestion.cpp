@@ -27,7 +27,7 @@ class TrafficCongestion
 public:
     int theMinCars(int treeHeight) 
     {		
-        if(treeHeight == 0) return 1;
+        if(treeHeight <= 1) return 1;
         if(memo[treeHeight] != 0) return memo[treeHeight];
 
         return memo[treeHeight] = 1 + theMinCars(treeHeight - 2) * 2;
