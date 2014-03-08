@@ -41,10 +41,10 @@ public:
         }
 
         memset(dyna, 0, sizeof(dyna));
-        dyna[0][0] = 1;
+        dyna[1][cardsnum.back()] = 1;
 
         int ret;
-        for(int i=0;i<size(cardsnum);i++) {
+        for(int i=1;i<size(cardsnum);i++) {
             int it = *(cardsnum.rbegin() + i);
             int cur = i%2;
             int nex = 1-cur;
@@ -57,7 +57,7 @@ public:
                     if(k < it) continue;
                     int ng = k - j;
                     long long c1 = combi[j][it - ng];
-                    long long c2 = h(j+1, k-j);
+                    long long c2 = h(j, k-j);
                     c1 = (c1 * c2) % mod;
                     cout << j << " " << k << " = " << c1 * dyna[cur][j] << endl;
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
