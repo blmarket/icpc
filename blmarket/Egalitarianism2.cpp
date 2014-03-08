@@ -71,6 +71,7 @@ public:
                 if(getg(V[j].first) == getg(V[j].second)) continue;
                 gun(V[j].first, V[j].second);
                 double d = dist(V[j]);
+                cout << d << " ";
                 cnt++;
                 sqsum += d*d;
                 sum += d;
@@ -81,6 +82,7 @@ public:
             sum /= n-1;
             sum *= sum;
             double tmp = sqrt(sqsum - sum);
+            cout << " = " << tmp << endl;
             if(ret < 0 || ret > tmp) ret = tmp;
         }
 
