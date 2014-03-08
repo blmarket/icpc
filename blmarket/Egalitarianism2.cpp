@@ -40,8 +40,12 @@ public:
         sort(ds.begin(), ds.end());
 
         for(int i=0;i<size(ds);i++) {
+            auto dist = [&](PII a) {
+                auto d1 = hypot(x[a.first] - x[a.second], y[a.first] - y[a.second]);
+                return sqr(d1 - ds[i]);
+            };
             auto func = [&](PII a, PII b) {
-                return false;
+                return dist(a) < dist(b);
             };
             sort(V.begin(), V.end(), func);
         }
