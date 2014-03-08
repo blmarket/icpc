@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include <cmath>
 #include <queue>
 #include <set>
@@ -37,6 +38,13 @@ public:
         }
 
         sort(ds.begin(), ds.end());
+
+        for(int i=0;i<size(ds);i++) {
+            auto func = [&](PII a, PII b) {
+                return false;
+            };
+            sort(V.begin(), V.end(), func);
+        }
 
         for(int i=0;i<size(ds);i++) cout << ds[i] << " ";
         cout << endl;
