@@ -50,6 +50,7 @@ public:
 
         sort(ds.begin(), ds.end());
 
+        double ret = -1;
         for(int i=0;i<size(ds);i++) {
             auto dist = [&](PII a) {
                 auto d1 = hypot(x[a.first] - x[a.second], y[a.first] - y[a.second]);
@@ -79,10 +80,11 @@ public:
             sqsum /= n-1;
             sum /= n-1;
             sum *= sum;
-            cout << sqrt(sqsum - sum) << endl;
+            double tmp = sqrt(sqsum - sum);
+            if(ret < 0 || ret > tmp) ret = tmp;
         }
 
-        return 0;
+        return ret;
     }
 
     
