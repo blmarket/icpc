@@ -29,23 +29,37 @@ public:
         auto dist = [&](int a, int b) -> double {
             return hypot(x[a] - x[b], y[a] - y[b]);
         };
-        vector<pair<double, PII> > V;
+        vector<tuple<double, int, int> > V;
         int n = size(x);
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
                 double d = dist(i, j);
-                V.pb(mp(d, mp(i,j)));
+                V.pb(make_tuple(d,i,j));
             }
         }
 
         vector<double> ds;
-        for(int i=0;i<size(V);i++) ds.pb(V[i].first);
+        for(int i=0;i<size(V);i++) ds.pb(get<0>(V[i]));
         sort(ds.begin(), ds.end());
+
+        auto chk = [&](double m) -> double {
+            auto cmp = [&](const tuple<double, int, int> &a, const tuple<double, int, int> &b) -> bool {
+                double d1 = get<0>(a);
+                double d2 = get<0>(b);
+
+                return sqr(d1 - m) < sqr(d2 - m);
+            };
+
+            sort(V.begin(), V.end(), cmp);
+            return 0;
+        };
+
+        double ret = 100000000;
         for(int i=0;i<size(ds);i++) {
-            cout << ds[i] << " ";
+            double tmp = chk(ds[i]);
+            if(ret > tmp) ret = tmp;
         }
-        cout << endl;
-        return 0;
+        return ret;
     }
 
     
