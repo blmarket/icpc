@@ -36,7 +36,7 @@ public:
             }
         }
 
-        
+        sort(ds.begin(), ds.end());
 
         for(int i=0;i<size(ds);i++) cout << ds[i] << " ";
         cout << endl;
