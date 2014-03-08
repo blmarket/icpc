@@ -30,7 +30,7 @@ public:
         memo[0] = memo[1] = 1;
 
         for(int i=2;i<=treeHeight;i++) {
-            memo[i] = 1 + memo[i-2] * 2;
+            memo[i] = 1 + memo[i-2] + memo[i-1];
         }
 
         return memo[treeHeight];
