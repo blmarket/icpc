@@ -37,6 +37,7 @@ public:
 
         for(int i=0;i<size(ds);i++) cout << ds[i] << " ";
         cout << endl;
+        return 0;
     }
 
     
