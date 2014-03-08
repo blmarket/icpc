@@ -53,6 +53,7 @@ public:
             for(int j=0;j<=K;j++) {
                 for(int k=j;k<=j+it;k++) {
                     if(j < it) continue;
+                    cout << j << " " << k << endl;
                     long long c1 = combi[j][it];
                     long long c2 = h(j+1, k - j);
                     c1 = (c1 * c2) % mod;
