@@ -26,7 +26,7 @@ int dyna[2][1300];
 int combi[1300][1300];
 
 int h(int a, int b) {
-    return combi[a+b-1][a];
+    return combi[a+b-1][b];
 }
 
 class LISNumber 
