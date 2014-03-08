@@ -49,6 +49,7 @@ public:
             int nex = 1-cur;
 
             memset(dyna[nex], 0, sizeof(dyna[nex]));
+            cout << "turn " << i << endl;
 
             for(int j=0;j<=K;j++) {
                 for(int k=j;k<=j+it;k++) {
