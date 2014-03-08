@@ -50,7 +50,24 @@ public:
                 return sqr(d1 - m) < sqr(d2 - m);
             };
 
+            int gn[55];
             sort(V.begin(), V.end(), cmp);
+
+            for(int i=0;i<n;i++) gn[i] = i;
+
+            function<int(int)> getg = [&](int a) {
+                if(gn[a] == a) return a;
+                return gn[a] = getg(gn[a]);
+            };
+
+            vector<double> ds;
+
+            for(int i=0;i<size(V);i++) {
+                double d;
+                int n1, n2;
+                tie(d, n1, n2) = V[i];
+                if(getg(n1) == getg(n2)) continue;
+            }
             return 0;
         };
 
@@ -58,6 +75,10 @@ public:
         for(int i=0;i<size(ds);i++) {
             double tmp = chk(ds[i]);
             if(ret > tmp) ret = tmp;
+            if(i+1 <size(ds)) {
+                tmp = chk((ds[i] + ds[i+1]) / 2);
+                if(ret > tmp) ret = tmp;
+            }
         }
         return ret;
     }
