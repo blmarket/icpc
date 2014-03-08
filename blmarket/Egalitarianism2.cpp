@@ -22,6 +22,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/*
+ *
+ * Problem: 550
+ * Test Case: 21
+ * Succeeded: No
+ * Execution Time: 65 ms
+ * Args:
+ * {{-3, -3, 2, -5, -5, 10, -8, -7, 2, -3, 3, 9, -6, 4, -2, -1, 0, 3, 1}, {6, -4, -6, -1, -6, -5, -6, 4, -1, -5, -5, -6, 0, 4, 5, 2, -6, 1, 3}}
+ *
+ * Expected:
+ * 0.3174988430662238
+ *
+ * Received:
+ * 0.323380729157
+ *
+ */
+
 int gn[55];
 
 int getg(int a) {
@@ -49,7 +66,12 @@ public:
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
                 V.pb(mp(i,j));
-                ds.pb(sqrt(sqr((long long)x[i]-x[j]) + sqr((long long)y[i] - y[j])));
+            }
+        }
+
+        for(int i=0;i<size(V);i++) {
+            for(int j=i+1;j<size(V);j++) {
+                ds.pb((dist(V[i]) + dist(V[j])) / 2.0);
             }
         }
 
@@ -72,6 +94,7 @@ public:
                 if(getg(V[j].first) == getg(V[j].second)) continue;
                 gun(V[j].first, V[j].second);
                 double d = dist(V[j]);
+                cout << d << " ";
                 cnt++;
                 sqsum += d*d;
                 sum += d;
@@ -82,6 +105,7 @@ public:
             sum /= n-1;
             sum *= sum;
             double tmp = sqrt(sqsum - sum);
+            cout << " = " << tmp << endl;
             if(ret < 0 || ret > tmp) ret = tmp;
         }
 
@@ -110,6 +134,6 @@ public:
 int main()
 {
     Egalitarianism2 ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
