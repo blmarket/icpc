@@ -55,7 +55,8 @@ public:
 
             for(int i=0;i<n;i++) gn[i] = i;
 
-            function<int(int)> getg = [&](int a) {
+            function<int(int)> getg;
+            getg = [&](int a) {
                 if(gn[a] == a) return a;
                 return gn[a] = getg(gn[a]);
             };
