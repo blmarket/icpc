@@ -32,7 +32,12 @@ public:
         memo[0] = memo[1] = 1;
 
         for(int i=2;i<=treeHeight;i++) {
-            memo[i] = (1 + memo[i-2] + memo[i-1]) % mod;
+            if(i % 2) {
+                memo[i] = (memo[i-1] * 2) - 1;
+            } else {
+                memo[i] = (memo[i-1] * 2) + 1;
+            }
+            memo[i] %= mod;
         }
 
         return memo[treeHeight];
