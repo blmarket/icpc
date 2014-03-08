@@ -66,16 +66,17 @@ public:
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
                 V.pb(mp(i,j));
-            }
-        }
-
-        for(int i=0;i<size(V);i++) {
-            for(int j=i+1;j<size(V);j++) {
-                ds.pb((dist(V[i]) + dist(V[j])) / 2.0);
+                ds.pb(dist(V.back()));
             }
         }
 
         sort(ds.begin(), ds.end());
+        ds.pb(ds.back());
+
+        for(int i=0;i+1<size(ds);i++) {
+            ds[i] = (ds[i] + ds[i+1]) / 2;
+        }
+
 
         double ret = -1;
         for(int i=0;i<size(ds);i++) {
@@ -94,7 +95,7 @@ public:
                 if(getg(V[j].first) == getg(V[j].second)) continue;
                 gun(V[j].first, V[j].second);
                 double d = dist(V[j]);
-                cout << d << " ";
+                //cout << d << " ";
                 cnt++;
                 sqsum += d*d;
                 sum += d;
@@ -105,7 +106,7 @@ public:
             sum /= n-1;
             sum *= sum;
             double tmp = sqrt(sqsum - sum);
-            cout << " = " << tmp << endl;
+            //cout << " = " << tmp << endl;
             if(ret < 0 || ret > tmp) ret = tmp;
         }
 
