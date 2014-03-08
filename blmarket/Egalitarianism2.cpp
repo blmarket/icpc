@@ -76,7 +76,7 @@ public:
 
             cout << m << " " << sqsum << " " << sum << endl;
 
-            double ret = sqsum / (n-1) - sqr(sum / (n-1));
+            double ret = sqrt(sqsum / (n-1) - sqr(sum / (n-1)));
             return ret;
         };
 
