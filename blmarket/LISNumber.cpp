@@ -34,6 +34,7 @@ class LISNumber
 public:
     int count(vector <int> cardsnum, int K) 
     {
+        combi[0][0] = 1;
         for(int i=1;i<1300;i++) {
             combi[i][0] = combi[i][i] = 1;
             for(int j=1;j<i;j++) combi[i][j] = (combi[i-1][j-1] + combi[i-1][j]) % mod;
@@ -54,9 +55,8 @@ public:
             for(int j=0;j<=K;j++) {
                 for(int k=j;k<=j+it;k++) {
                     if(k < it) continue;
-                    long long c1 = combi[j][it];
+                    long long c1 = combi[j][it-k];
                     long long c2 = h(j+1, k - j);
-                    cout << c1 << " " << c2 << endl;
                     c1 = (c1 * c2) % mod;
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
                     sum %= mod;
