@@ -26,13 +26,17 @@ public:
     double minStdev(vector <int> x, vector <int> y) 
     {
         int n = size(x);
+        vector<long long> ds;
+        vector<PII> V;
         for(int i=0;i<n;i++) {
-            for(int j=0;j<n;j++) {
-                cout << sqr(abs(x[i] - x[j])) + sqr(abs(y[i] - y[j])) << " ";
+            for(int j=i+1;j<n;j++) {
+                V.pb(mp(i,j));
+                ds.pb(sqr((long long)x[i]-x[j]) + sqr((long long)y[i] - y[j]));
             }
-            cout << endl;
         }
-        return 0;
+
+        for(int i=0;i<size(ds);i++) cout << ds[i] << " ";
+        cout << endl;
     }
 
     
@@ -57,6 +61,6 @@ public:
 int main()
 {
     Egalitarianism2 ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
