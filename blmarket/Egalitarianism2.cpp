@@ -61,15 +61,21 @@ public:
                 return gn[a] = getg(gn[a]);
             };
 
-            vector<double> ds;
+            double sqsum = 0;
+            double sum = 0;
 
             for(int i=0;i<size(V);i++) {
                 double d;
                 int n1, n2;
                 tie(d, n1, n2) = V[i];
                 if(getg(n1) == getg(n2)) continue;
+                gn[getg(n1)] = gn[getg(n2)];
+                sqsum += d*d;
+                sum += d;
             }
-            return 0;
+
+            double ret = sqsum / (n-1) - sqr(sum / (n-1));
+            return ret;
         };
 
         double ret = 100000000;
