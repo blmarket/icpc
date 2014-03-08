@@ -26,6 +26,7 @@ int dyna[2][1300];
 int combi[1300][1300];
 
 int h(int a, int b) {
+    cout << "H " << a << " " << b << endl;
     return combi[a+b-1][b];
 }
 
@@ -56,7 +57,7 @@ public:
                 for(int k=j;k<=j+it;k++) {
                     if(k < it) continue;
                     long long c1 = combi[j][it-k];
-                    long long c2 = h(j+1, k - j);
+                    long long c2 = h(j+1, k-j);
                     cout << j << " " << k << " : " << c1 << " " << c2 << " : " << dyna[cur][j] << " " << dyna[nex][k] << endl;
                     c1 = (c1 * c2) % mod;
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
