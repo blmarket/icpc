@@ -54,13 +54,13 @@ public:
             for(int j=0;j<=K;j++) {
                 for(int k=j;k<=j+it;k++) {
                     if(k < it) continue;
-                    cout << j << " " << k << " : " << dyna[cur][j] << endl;
                     long long c1 = combi[j][it];
                     long long c2 = h(j+1, k - j);
                     c1 = (c1 * c2) % mod;
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
                     sum %= mod;
                     dyna[nex][k] = sum;
+                    cout << j << " " << k << " : " << dyna[cur][j] << " " << dyna[nex][k] << endl;
                 }
             }
             ret = dyna[nex][K];
