@@ -55,7 +55,8 @@ public:
             for(int j=0;j<=K;j++) {
                 for(int k=j;k<=j+it;k++) {
                     if(k < it) continue;
-                    long long c1 = combi[j][it-k];
+                    int ng = k - j;
+                    long long c1 = combi[j][it - ng];
                     long long c2 = h(j+1, k-j);
                     cout << j << " " << k << " : " << c1 << " " << c2 << " : " << dyna[cur][j] << " " << dyna[nex][k] << endl;
                     c1 = (c1 * c2) % mod;
