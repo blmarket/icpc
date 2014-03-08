@@ -114,6 +114,6 @@ public:
 int main()
 {
     Egalitarianism2 ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
