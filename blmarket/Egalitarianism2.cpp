@@ -41,6 +41,11 @@ public:
         int n = size(x);
         vector<double> ds;
         vector<PII> V;
+        auto dist = [&](PII a) -> double {
+            auto d1 = hypot(x[a.first] - x[a.second], y[a.first] - y[a.second]);
+            return d1;
+        };
+
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
                 V.pb(mp(i,j));
@@ -52,12 +57,8 @@ public:
 
         double ret = -1;
         for(int i=0;i<size(ds);i++) {
-            auto dist = [&](PII a) {
-                auto d1 = hypot(x[a.first] - x[a.second], y[a.first] - y[a.second]);
-                return sqr(d1 - ds[i]);
-            };
             auto func = [&](PII a, PII b) {
-                return dist(a) < dist(b);
+                return sqr(ds[i] - dist(a)) < sqr(ds[i] - dist(b));
             };
 
             sort(V.begin(), V.end(), func);
