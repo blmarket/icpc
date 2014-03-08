@@ -57,11 +57,11 @@ public:
                     if(k < it) continue;
                     long long c1 = combi[j][it-k];
                     long long c2 = h(j+1, k - j);
+                    cout << j << " " << k << " : " << c1 << " " << c2 << " : " << dyna[cur][j] << " " << dyna[nex][k] << endl;
                     c1 = (c1 * c2) % mod;
                     long long sum = dyna[nex][k] + c1 * dyna[cur][j];
                     sum %= mod;
                     dyna[nex][k] = sum;
-                    cout << j << " " << k << " : " << dyna[cur][j] << " " << dyna[nex][k] << endl;
                 }
             }
             for(int j=0;j<=20;j++) {
