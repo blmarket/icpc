@@ -21,6 +21,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+
+/**
+ *
+ * Problem: 550
+ * Test Case: 21
+ * Succeeded: No
+ * Execution Time: 10 ms
+ * Args:
+ * {{-3, -3, 2, -5, -5, 10, -8, -7, 2, -3, 3, 9, -6, 4, -2, -1, 0, 3, 1}, {6, -4, -6, -1, -6, -5, -6, 4, -1, -5, -5, -6, 0, 4, 5, 2, -6, 1, 3}}
+ *
+ * Expected:
+ * 0.3174988430662238
+ *
+ * Received:
+ * 0.321394833888
+ *
+ *
+ */
+
 class Egalitarianism2 
 {
 public:
@@ -75,6 +94,7 @@ public:
             }
 
             double ret = sqrt(sqsum / (n-1) - sqr(sum / (n-1)));
+            cout << m << " = " << ret << endl;
             return ret;
         };
 
@@ -82,8 +102,10 @@ public:
         for(int i=0;i<size(ds);i++) {
             double tmp = chk(ds[i]);
             if(ret > tmp) ret = tmp;
-            if(i+1 <size(ds)) {
-                tmp = chk((ds[i] + ds[i+1]) / 2);
+        }
+        for(int i=0;i<size(ds);i++) {
+            for(int j=i+1;j<size(ds);j++) {
+                double tmp = chk((ds[i] + ds[j]) / 2);
                 if(ret > tmp) ret = tmp;
             }
         }
