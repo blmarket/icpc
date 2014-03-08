@@ -22,6 +22,17 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+int gn[55];
+
+int getg(int a) {
+    if(a == gn[a]) return a;
+    return gn[a] = getg(gn[a]);
+}
+
+void gun(int a, int b) {
+    gn[gn[a]] = gn[b];
+}
+
 class Egalitarianism2 
 {
 public:
@@ -47,11 +58,28 @@ public:
             auto func = [&](PII a, PII b) {
                 return dist(a) < dist(b);
             };
+
             sort(V.begin(), V.end(), func);
+
+            double sqsum = 0;
+            double sum = 0;
+            int cnt = 0;
+
+            for(int j=0;j<n;j++) gn[j] = j;
             for(int j=0;j<size(V);j++) {
-                cout << V[j].first << "," << V[j].second << " ";
+                if(getg(V[j].first) == getg(V[j].second)) continue;
+                gun(V[j].first, V[j].second);
+                double d = dist(V[j]);
+                cnt++;
+                sqsum += d*d;
+                sum += d;
+                if(cnt == n-1) break;
             }
-            cout << endl;
+
+            sqsum /= n-1;
+            sum /= n-1;
+            sum *= sum;
+            cout << sqrt(sqsum - sum) << endl;
         }
 
         return 0;
