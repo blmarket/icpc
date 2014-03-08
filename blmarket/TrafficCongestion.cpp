@@ -22,6 +22,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int memo[1000005];
 
+int mod = 1000000007;
+
 class TrafficCongestion 
 {
 public:
@@ -30,7 +32,7 @@ public:
         memo[0] = memo[1] = 1;
 
         for(int i=2;i<=treeHeight;i++) {
-            memo[i] = 1 + memo[i-2] + memo[i-1];
+            memo[i] = (1 + memo[i-2] + memo[i-1]) % mod;
         }
 
         return memo[treeHeight];
