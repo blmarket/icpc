@@ -1,5 +1,4 @@
 #include <iostream>
-#include <functional>
 #include <cmath>
 #include <queue>
 #include <set>
@@ -22,95 +21,30 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-/*
- *
- * Problem: 550
- * Test Case: 21
- * Succeeded: No
- * Execution Time: 65 ms
- * Args:
- * {{-3, -3, 2, -5, -5, 10, -8, -7, 2, -3, 3, 9, -6, 4, -2, -1, 0, 3, 1}, {6, -4, -6, -1, -6, -5, -6, 4, -1, -5, -5, -6, 0, 4, 5, 2, -6, 1, 3}}
- *
- * Expected:
- * 0.3174988430662238
- *
- * Received:
- * 0.323380729157
- *
- */
-
-int gn[55];
-
-int getg(int a) {
-    if(a == gn[a]) return a;
-    return gn[a] = getg(gn[a]);
-}
-
-void gun(int a, int b) {
-    gn[gn[a]] = gn[b];
-}
-
 class Egalitarianism2 
 {
 public:
     double minStdev(vector <int> x, vector <int> y) 
     {
-        int n = size(x);
-        vector<double> ds;
-        vector<PII> V;
-        auto dist = [&](PII a) -> double {
-            auto d1 = hypot(x[a.first] - x[a.second], y[a.first] - y[a.second]);
-            return d1;
+        auto dist = [&](int a, int b) -> double {
+            return hypot(x[a] - x[b], y[a] - y[b]);
         };
-
+        vector<pair<double, PII> > V;
+        int n = size(x);
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
-                V.pb(mp(i,j));
-                ds.pb(dist(V.back()));
+                double d = dist(i, j);
+                V.pb(mp(d, mp(i,j)));
             }
         }
 
-        sort(ds.begin(), ds.end());
-        ds.pb(ds.back());
-
-        for(int i=0;i+1<size(ds);i++) {
-            ds[i] = (ds[i] + ds[i+1]) / 2;
-        }
-
-
-        double ret = -1;
+        vector<double> ds;
+        for(int i=0;i<size(V);i++) ds.pb(V[i].first);
         for(int i=0;i<size(ds);i++) {
-            auto func = [&](PII a, PII b) {
-                return sqr(ds[i] - dist(a)) < sqr(ds[i] - dist(b));
-            };
-
-            sort(V.begin(), V.end(), func);
-
-            double sqsum = 0;
-            double sum = 0;
-            int cnt = 0;
-
-            for(int j=0;j<n;j++) gn[j] = j;
-            for(int j=0;j<size(V);j++) {
-                if(getg(V[j].first) == getg(V[j].second)) continue;
-                gun(V[j].first, V[j].second);
-                double d = dist(V[j]);
-                //cout << d << " ";
-                cnt++;
-                sqsum += d*d;
-                sum += d;
-                if(cnt == n-1) break;
-            }
-
-            sqsum /= n-1;
-            sum /= n-1;
-            sum *= sum;
-            double tmp = sqrt(sqsum - sum);
-            //cout << " = " << tmp << endl;
-            if(ret < 0 || ret > tmp) ret = tmp;
+            cout << ds[i] << " ";
         }
-
-        return ret;
+        cout << endl;
+        return 0;
     }
 
     
@@ -135,6 +69,6 @@ public:
 int main()
 {
     Egalitarianism2 ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
