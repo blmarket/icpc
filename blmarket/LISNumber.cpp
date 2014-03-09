@@ -20,7 +20,7 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int mod =  1000000007;
+long long mod =  1000000007LL;
 int combi[1300][1300];
 
 int h(int a, int b) { 
