@@ -21,35 +21,39 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/*
+ * Problem: 500
+ * Test Case: 2
+ * Succeeded: No
+ * Execution Time: 3 ms
+ * Args:
+ * {{"2 3", "1", "1"}}
+ *
+ * Expected:
+ * -1
+ *
+ *  Received:
+ *  2
+ */
+
 vector<int> links[55];
+bool reach[55][55];
 
-int visit[55];
-bool infi;
-
-int go(int a) {
-    int ret = 0;
-    visit[a] = 1;
-
-    for(auto it : links[a]) {
-        if(visit[it]) {
-            if(ret > 0 || visit[a] == 2) {
-                infi = true;
-                return 0;
-            }
-            ret = 1;
-            visit[a] = 2;
-        } else {
-            if(visit[a] == 2) {
-                infi = true;
-                return 0;
-            }
-            ret += go(it);
-            if(visit[it] == 2) visit[a] = 2;
+bool chkinf(int a) {
+    if(reach[a][a]) {
+        if(links[a].size() > 1) return true;
+        int tmp = links[a][0];
+        while(tmp != a) {
+            if(links[tmp].size() > 1) return true;
+            tmp = links[tmp][0];
         }
+        return false;
     }
 
-    visit[a] = 0;
-    return ret;
+    for(int i=0;i<size(links[a]);i++) {
+        if(chkinf(links[a][i])) return true;
+    }
+    return false;
 }
 
 class MonsterFarm 
@@ -58,21 +62,25 @@ public:
     int numMonsters(vector <string> tra) 
     {
         int n = size(tra);
+        memset(reach, 0, sizeof(reach));
         for(int i=0;i<n;i++) {
             istringstream sin(tra[i]);
             int tmp;
             links[i].clear();
             while(sin >> tmp) {
                 links[i].pb(tmp-1);
+                reach[i][tmp] = true;
             }
         }
 
-        memset(visit, 0, sizeof(visit));
+        for(int k=0;k<n;k++) {
+            for(int i=0;i<n;i++) if(reach[i][k]) {
+                for(int j=0;j<n;j++) if(reach[k][j]) reach[i][j] = true;
+            }
+        }
 
-        infi = false;
-        int tmp = go(0);
-        if(infi) return -1;
-        return tmp;
+        if(chkinf(0)) return -1;
+        return 0;
     }
 
     
