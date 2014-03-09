@@ -46,6 +46,7 @@ public:
         if(k == 0) {
             return cnt(c);
         }
+        return cnt(c);
     }
 
     
