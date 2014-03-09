@@ -58,11 +58,10 @@ public:
             int now = cs[i];
 
             for(int j=1;j<1300;j++) if(dyna[cur][j]) {
-                int nbad = sum - j;
                 for(int k=0;k<=j;k++) {
                     if(k > now) break;
                     long long n1 = combi[j][k];
-                    long long n2 = h(nbad + now - k, now - k);
+                    long long n2 = h(sum + 1 - j + k, now - k);
                     // cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << " " << nbad + now - k << endl;
                     n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
 
