@@ -41,12 +41,14 @@ public:
         string c = S;
         while(size(c) < 50 && k) {
             c = build(c);
+            k--;
         }
 
         if(k == 0) {
             cout << c << endl;
             return cnt(c);
         }
+        cout << c << " " << k << endl;
         return cnt(c);
     }
 
