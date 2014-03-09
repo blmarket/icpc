@@ -55,10 +55,14 @@ public:
 
             memset(dyna[nex], 0, sizeof(dyna[nex]));
 
+            for(int j=0;j<=20;j++) {
+                cout << dyna[cur][j] << " ";
+            }
+            cout << endl;
+
             int now = cs[i];
 
             for(int j=1;j<=K;j++) if(dyna[cur][j]) {
-                cout << i << " " << j << " =X  " << dyna[cur][j] << endl;
                 int nbad = sum - j;
                 for(int k=0;k<=j;k++) {
                     if(k > now) break;
