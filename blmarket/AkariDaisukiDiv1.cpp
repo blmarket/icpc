@@ -24,10 +24,10 @@ const int mod = 1000000007;
 
 int pow2(int a) {
     long long ret = 1;
-    int tt = 2;
+    long long tt = 2;
     while(a) {
         if(a & 1) ret = (ret * tt) % mod;
-        tt = (tt * 2) % mod;
+        tt = (tt * tt) % mod;
         a /= 2;
     }
     return ret;
