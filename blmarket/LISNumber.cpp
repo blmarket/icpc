@@ -55,11 +55,6 @@ public:
             int cur = 1-nex;
             memset(dyna[nex], 0, sizeof(dyna[nex]));
 
-            for(int j=0;j<=20;j++) {
-                cout << dyna[cur][j] << " ";
-            }
-            cout << endl;
-
             int now = cs[i];
 
             for(int j=1;j<=K;j++) if(dyna[cur][j]) {
@@ -68,17 +63,12 @@ public:
                     if(k > now) break;
                     long long n1 = combi[j][k];
                     long long n2 = h(nbad + now - k, now - k);
-                    cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << " " << nbad + now - k << endl;
+                    // cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << " " << nbad + now - k << endl;
                     n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
 
                     addmod(dyna[nex][j + now - k], n1);
                 }
             }
-
-            for(int j=0;j<=20;j++) {
-                cout << dyna[nex][j] << " ";
-            }
-            cout << endl;
 
             ret = dyna[nex][K];
 
