@@ -58,7 +58,7 @@ public:
             int now = cs[i];
 
             for(int j=1;j<1300;j++) if(dyna[cur][j]) {
-                int nbad = sum - j;
+                int nbad = sum - j + 1;
                 for(int k=0;k<=j;k++) {
                     if(k > now) break;
                     long long n1 = combi[j][k];
