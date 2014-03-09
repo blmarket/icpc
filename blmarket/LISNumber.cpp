@@ -78,6 +78,7 @@ public:
             ret = dyna[nex][K];
 
             sum += cs[i];
+            break;
         }
         return ret;
     }
