@@ -39,7 +39,7 @@ public:
         };
 
         string c = S;
-        while(size(c) < 50 && k) {
+        while(size(c) < 1000 && k) {
             c = build(c);
             k--;
         }
