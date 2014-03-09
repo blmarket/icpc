@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,44 +22,33 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> links[55];
-int D[2][55];
+bool visit[55];
 
-const int mod = 1000000007;
+int go(int a) {
+    visit[a] = true;
+
+    for(const auto &it : links[a]) {
+    }
+}
 
 class MonsterFarm 
 {
 public:
     int numMonsters(vector <string> tra) 
-    {		
+    {
         int n = size(tra);
         for(int i=0;i<n;i++) {
-            links[i].clear();
             istringstream sin(tra[i]);
             int tmp;
+            links[i].clear();
             while(sin >> tmp) {
-                links[i].pb(tmp - 1);
-            }
-            D[0][i] = 1;
-        }
-
-        int ld = -1;
-        for(int i=0;i<550;i++) {
-            int cur = i%2;
-            int nex = 1-cur;
-            if(D[cur][0] != D[nex][0]) ld = i;
-            for(int j=0;j<n;j++) {
-                D[nex][j] = 0;
-                for(int k=0;k<size(links[j]);k++) {
-                    D[nex][j] += D[cur][links[j][k]];
-                    if(D[nex][j] >= mod) D[nex][j] -= mod;
-                }
+                links[i].pb(tmp-1);
             }
         }
 
-        cout << ld << endl;
-        if(ld > 50) return -1;
+        memset(visit, 0, sizeof(visit));
 
-        return D[0][0];
+        go(0);
     }
 
     
