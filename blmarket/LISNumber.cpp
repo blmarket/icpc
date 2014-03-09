@@ -45,6 +45,7 @@ public:
             }
         }
         int dyna[2][1300];
+        memset(dyna, 0, sizeof(dyna));
         reverse(cs.begin(), cs.end());
         dyna[0][cs[0]] = 1;
         int sum = cs[0];
@@ -52,8 +53,6 @@ public:
         for(int i=1;i<size(cs);i++) {
             int nex = (i%2);
             int cur = 1-nex;
-
-            memset(dyna[nex], 0, sizeof(dyna[nex]));
 
             for(int j=0;j<=20;j++) {
                 cout << dyna[cur][j] << " ";
