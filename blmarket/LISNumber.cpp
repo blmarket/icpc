@@ -81,6 +81,8 @@ public:
             cout << endl;
 
             ret = dyna[nex][K];
+
+            sum += cs[i];
         }
         return ret;
     }
