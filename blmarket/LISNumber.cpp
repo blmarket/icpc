@@ -62,7 +62,7 @@ public:
                 for(int k=0;k<=j;k++) {
                     if(k > now) break;
                     long long n1 = combi[j][k];
-                    long long n2 = h(nbad + now - k, now - k);
+                    long long n2 = h(nbad + k, now - k);
                     cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << " " << nbad + now - k << endl;
                     n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
 
