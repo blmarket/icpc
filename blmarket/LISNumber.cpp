@@ -58,7 +58,7 @@ public:
             int now = cs[i];
 
             for(int j=1;j<=K;j++) if(dyna[cur][j]) {
-                cout << i << " " << j << " = " << dyna[cur][j] << endl;
+                cout << i << " " << j << " =X  " << dyna[cur][j] << endl;
                 int nbad = sum - j;
                 for(int k=0;k<=j;k++) {
                     if(k > now) break;
