@@ -42,6 +42,7 @@ public:
             int tmp = go(i, M, P);
             if(flag) tmp = -tmp;
             ret = (ret + tmp) % mod;
+            flag = !flag;
         }
         if(ret < 0) ret += mod;
         return ret;
