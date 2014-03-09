@@ -55,6 +55,7 @@ public:
             for(int j=0;j+1<size(V);j++) {
                 if(V[j].first == V[j+1].first) {
                     while(j+1 < size(V) && V[j].first == V[j+1].first) {
+                        cout << V[j].first.first << " ," << V[j].first.second << endl;
                         V.erase(V.begin() + j+1);
                     }
                     V.erase(V.begin() + j);
@@ -87,6 +88,6 @@ public:
 int main()
 {
     AntsMeet ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(1); 
 } 
 // END CUT HERE
