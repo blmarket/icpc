@@ -44,6 +44,7 @@ public:
         }
 
         if(k == 0) {
+            cout << c << endl;
             return cnt(c);
         }
         return cnt(c);
