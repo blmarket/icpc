@@ -22,15 +22,34 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> links[55];
-bool visit[55];
+
+int visit[55];
+bool infi;
 
 int go(int a) {
-    visit[a] = true;
+    int ret = 0;
+    visit[a] = 1;
 
-    for(const auto &it : links[a]) {
+    for(auto it : links[a]) {
+        if(visit[it]) {
+            if(ret > 0 || visit[a] == 2) {
+                infi = true;
+                return 0;
+            }
+            ret = 1;
+            visit[a] = 2;
+        } else {
+            if(visit[a] == 2) {
+                infi = true;
+                return 0;
+            }
+            ret += go(it);
+            if(visit[it] == 2) visit[a] = 2;
+        }
     }
 
-    return 0;
+    visit[a] = 0;
+    return ret;
 }
 
 class MonsterFarm 
@@ -50,7 +69,10 @@ public:
 
         memset(visit, 0, sizeof(visit));
 
-        return go(0);
+        infi = false;
+        int tmp = go(0);
+        if(infi) return -1;
+        return tmp;
     }
 
     
