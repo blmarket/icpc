@@ -22,6 +22,16 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 const int mod = 1000000007;
 
+int pow2(int a) {
+    long long ret = 1;
+    int tt = 2;
+    while(a) {
+        if(a & 1) ret = (ret * tt) % mod;
+        tt = (tt * 2) % mod;
+    }
+    return ret;
+}
+
 class AkariDaisukiDiv1 
 {
 public:
@@ -53,8 +63,9 @@ public:
 
         string bs = c.substr(0, 50);
         string es = c.substr(size(c) - 50);
-        int cc = cnt(c);
+        long long cc = cnt(c);
 
+        int tmp;
         for(int i=0;i<55;i++) {
             cc = (cc * 2) % mod;
 
@@ -62,7 +73,7 @@ public:
             string m1 = es.substr(size(es) - size(F) + 1) + Akari;
             string m2 = Akari + bs.substr(0, size(F) - 1);
             string ees = es.substr(size(es) - size(F) + 1) + Daisuki;
-            int tmp = cnt(bbs) + cnt(m1) + cnt(m2) + cnt(ees);
+            tmp = cnt(bbs) + cnt(m1) + cnt(m2) + cnt(ees);
             cc += tmp;
             cc %= mod;
 
@@ -75,7 +86,12 @@ public:
             es = es.substr(size(es) - 50);
         }
 
-        return cnt(c);
+        int p2 = pow2(k);
+        cc += tmp;
+        cc = (cc * p2) % mod;
+        cc -= tmp;
+        if(cc < 0) cc += mod;
+        return cc;
     }
 
     
