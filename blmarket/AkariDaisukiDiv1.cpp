@@ -49,14 +49,11 @@ public:
             return cnt(c);
         }
 
-        cout << k << " " << " " << cnt(c) << endl;
-        c = build(c); k--;
-        cout << k << " " << " " << cnt(c) << endl;
-        c = build(c); k--;
-        cout << k << " " << " " << cnt(c) << endl;
-        c = build(c); k--;
-        cout << k << " " << " " << cnt(c) << endl;
-        c = build(c); k--;
+        string bs = c.substr(0, 50);
+        string es = c.substr(size(c) - 50);
+        int cc = cnt(c);
+
+        cout << bs << " " << es << " " << cc << " " << k << endl;
         return cnt(c);
     }
 
