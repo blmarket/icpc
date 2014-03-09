@@ -53,6 +53,7 @@ public:
         for(int i=1;i<size(cs);i++) {
             int nex = (i%2);
             int cur = 1-nex;
+            memset(dyna[nex], 0, sizeof(dyna[nex]));
 
             for(int j=0;j<=20;j++) {
                 cout << dyna[cur][j] << " ";
