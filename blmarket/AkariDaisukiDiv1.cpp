@@ -88,6 +88,7 @@ public:
         }
 
         int p2 = pow2(k);
+        cout << p2 << endl;
         cc += tmp;
         cc = (cc * p2) % mod;
         cc -= tmp;
