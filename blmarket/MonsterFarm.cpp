@@ -56,6 +56,18 @@ bool chkinf(int a) {
     return false;
 }
 
+int memo[55];
+
+int getc(int a) {
+    if(reach[a][a]) return 1;
+    if(memo[a] != -1) return memo[a];
+    int ret = 0;
+    for(int i=0;i<size(links[a]);i++) {
+        ret += getc(links[a][i]);
+    }
+    return memo[a] = ret;
+}
+
 class MonsterFarm 
 {
 public:
@@ -80,7 +92,8 @@ public:
         }
 
         if(chkinf(0)) return -1;
-        return 0;
+        memset(memo, -1, sizeof(memo));
+        return getc(0);
     }
 
     
