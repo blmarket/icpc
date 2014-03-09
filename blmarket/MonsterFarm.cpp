@@ -23,6 +23,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<int> links[55];
 int D[2][55];
 
+const int mod = 1000000007;
+
 class MonsterFarm 
 {
 public:
@@ -43,18 +45,17 @@ public:
         for(int i=0;i<550;i++) {
             int cur = i%2;
             int nex = 1-cur;
-            if(D[cur][0] != D[nex][0]) ld = max(ld, i);
-            if(D[cur][0] > 1000000) ld = 500;
+            if(D[cur][0] != D[nex][0]) ld = i;
             for(int j=0;j<n;j++) {
                 D[nex][j] = 0;
                 for(int k=0;k<size(links[j]);k++) {
                     D[nex][j] += D[cur][links[j][k]];
+                    if(D[nex][j] >= mod) D[nex][j] -= mod;
                 }
             }
         }
 
         cout << ld << endl;
-
         if(ld > 50) return -1;
 
         return D[0][0];
