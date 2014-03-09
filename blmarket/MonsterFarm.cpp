@@ -40,6 +40,7 @@ vector<int> links[55];
 bool reach[55][55];
 
 bool chkinf(int a) {
+    cout << a << endl;
     if(reach[a][a]) {
         if(links[a].size() > 1) return true;
         int tmp = links[a][0];
