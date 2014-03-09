@@ -19,6 +19,21 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+/**
+ * Problem: 550
+ * Test Case: 5
+ * Succeeded: No
+ * Execution Time: 5 ms
+ * Args:
+ * {"a", "a", "a", "b", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", 25}
+ *
+ * Expected:
+ * 1
+ *
+ * Received:
+ * 0
+ *
+ */
 
 const int mod = 1000000007;
 
@@ -68,13 +83,14 @@ public:
 
         int tmp;
         for(int i=0;i<55;i++) {
+            cout << bs << " " << es << endl;
+            cout << F << endl;
             cc = (cc * 2) % mod;
 
             string bbs = Waai + bs.substr(0, size(F) - 1);
-            string m1 = es.substr(size(es) - size(F) + 1) + Akari;
-            string m2 = Akari + bs.substr(0, size(F) - 1);
+            string mid = es.substr(size(es) - size(F) + 1) + Akari + bs.substr(0, size(F) - 1);
             string ees = es.substr(size(es) - size(F) + 1) + Daisuki;
-            tmp = cnt(bbs) + cnt(m1) + cnt(m2) + cnt(ees);
+            tmp = cnt(bbs) + cnt(mid) + cnt(ees);
             cc += tmp;
             cc %= mod;
 
