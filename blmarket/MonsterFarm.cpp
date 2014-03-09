@@ -39,11 +39,11 @@ public:
             D[0][i] = 1;
         }
 
-        bool chk = false;
-        for(int i=0;i<55;i++) {
+        int ld = -1;
+        for(int i=0;i<550;i++) {
             int cur = i%2;
             int nex = 1-cur;
-            chk = false;
+            if(D[cur][0] != D[nex][0]) ld = i;
             for(int j=0;j<n;j++) {
                 D[nex][j] = 0;
                 for(int k=0;k<size(links[j]);k++) {
@@ -52,7 +52,8 @@ public:
             }
         }
 
-        if(chk) return -1;
+        if(ld > 50) return -1;
+
         return D[0][0];
     }
 
