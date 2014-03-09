@@ -43,7 +43,7 @@ public:
 
         vector<pair<PII, int> > V;
         for(int i=0;i<size(x);i++) {
-            V.pb(mp(mp(x[i], y[i]), direction[i]));
+            V.pb(mp(mp(x[i] * 2, y[i] * 2), direction[i]));
         }
 
         for(int i=0;i<5000;i++) {
