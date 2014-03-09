@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -21,58 +20,57 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int mod = 1000000007;
-int dyna[2][1300];
+int mod =  1000000007;
 int combi[1300][1300];
 
-int h(int a, int b) {
-    return combi[a+b-1][b];
+int h(int a, int b) { return combi[a+b-1][b]; }
+
+void addmod(int &a, int b) {
+    a += b;
+    if(a >= mod) a -= mod;
 }
 
 class LISNumber 
 {
 public:
-    int count(vector <int> cardsnum, int K) 
+    int count(vector <int> cs, int K) 
     {
-        combi[0][0] = 1;
-        for(int i=1;i<1300;i++) {
+        for(int i=0;i<1300;i++) {
             combi[i][0] = combi[i][i] = 1;
-            for(int j=1;j<i;j++) combi[i][j] = (combi[i-1][j-1] + combi[i-1][j]) % mod;
+            for(int j=1;j<i;j++) {
+                combi[i][j] = (combi[i-1][j-1] + combi[i-1][j]) % mod;
+            }
         }
-
-        memset(dyna, 0, sizeof(dyna));
-        dyna[1][cardsnum.back()] = 1;
-
-        int ret;
-        for(int i=1;i<size(cardsnum);i++) {
-            int it = *(cardsnum.rbegin() + i);
-            int cur = i%2;
-            int nex = 1-cur;
+        int dyna[2][1300];
+        reverse(cs.begin(), cs.end());
+        dyna[0][cs[0]] = 1;
+        int sum = cs[0];
+        for(int i=1;i<size(cs);i++) {
+            int nex = (i%2);
+            int cur = 1-nex;
 
             memset(dyna[nex], 0, sizeof(dyna[nex]));
-            cout << "turn " << i << endl;
 
-            for(int j=0;j<=K;j++) {
-                for(int k=j;k<=j+it;k++) {
-                    if(k < it) continue;
-                    int ng = k - j;
-                    long long c1 = combi[j][it - ng];
-                    long long c2 = h(j, k-j);
-                    c1 = (c1 * c2) % mod;
-                    cout << j << " " << k << " = " << c1 * dyna[cur][j] << endl;
-                    long long sum = dyna[nex][k] + c1 * dyna[cur][j];
-                    sum %= mod;
-                    dyna[nex][k] = sum;
+            int now = cs[i];
+
+            for(int j=1;j<=K;j++) if(dyna[cur][j]) {
+                int nbad = sum - j;
+                for(int k=0;k<=j;k++) {
+                    if(k > now) break;
+                    long long n1 = combi[j][k];
+                    long long n2 = h(nbad + now - k, now - k);
+
+                    n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
+
+                    addmod(dyna[nex][j + now - k], n1);
                 }
             }
+
             for(int j=0;j<=20;j++) {
                 cout << dyna[nex][j] << " ";
             }
             cout << endl;
-
-            ret = dyna[nex][K];
         }
-        return ret;
     }
 
     
@@ -99,6 +97,6 @@ public:
 int main()
 {
     LISNumber ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
