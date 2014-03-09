@@ -23,7 +23,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 int mod =  1000000007;
 int combi[1300][1300];
 
-int h(int a, int b) { return combi[a+b-1][b]; }
+int h(int a, int b) { 
+    cout << "H" << a << " " << b << endl;
+    return combi[a+b-1][b]; 
+}
 
 void addmod(int &a, int b) {
     a += b;
