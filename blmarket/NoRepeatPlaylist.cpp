@@ -28,22 +28,33 @@ int go(int a, int b, int c) {
         int nc = max(a-i, a-b);
         ret = (ret * nc) % mod;
     }
-    cout << a << " " << b << " " << c << " = " << ret << endl;
     return ret;
 }
+
+int inv[105];
 
 class NoRepeatPlaylist 
 {
 public:
     int numPlaylists(int N, int M, int P) 
     {
-        int ret = 0;
+        inv[1] = 1;
+        for(int i=2;i<105;i++) {
+            inv[i] = ((long long)(mod / i + 1) * inv[i - (mod % i)]) % mod;
+        }
+        long long ret = 0;
         bool flag = false;
+        long long mul = 1;
         for(int i=N;i>=1;i--) {
             int tmp = go(i, M, P);
             if(flag) tmp = -tmp;
-            ret = (ret + tmp) % mod;
+            ret = (ret + mul * tmp) % mod;
             flag = !flag;
+
+            mul = mul * i;
+            mul %= mod;
+            mul = mul * inv[N - i + 1];
+            mul %= mod;
         }
         if(ret < 0) ret += mod;
         return ret;
