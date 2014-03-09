@@ -79,7 +79,6 @@ public:
             cc %= mod;
 
             k--;
-            cout << k << " " << cc << " " << tmp << endl;
             if(k == 0) return cc;
 
             bs = (Waai + bs).substr(0, 50);
