@@ -63,14 +63,14 @@ public:
                     if(k > now) break;
                     long long n1 = combi[j][k];
                     long long n2 = h(nbad + now - k, now - k);
-                    // cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << " " << nbad + now - k << endl;
+                    cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << " " << nbad + now - k << endl;
                     n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
 
                     addmod(dyna[nex][j + now - k], n1);
                 }
             }
 
-            for(int j=10;j<=30;j++) {
+            for(int j=0;j<=30;j++) {
                 cout << dyna[nex][j] << " ";
             }
             cout << endl;
