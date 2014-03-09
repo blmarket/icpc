@@ -70,7 +70,7 @@ public:
                 }
             }
 
-            for(int j=0;j<=20;j++) {
+            for(int j=10;j<=30;j++) {
                 cout << dyna[nex][j] << " ";
             }
             cout << endl;
