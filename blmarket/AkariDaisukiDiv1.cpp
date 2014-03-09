@@ -28,6 +28,7 @@ int pow2(int a) {
     while(a) {
         if(a & 1) ret = (ret * tt) % mod;
         tt = (tt * 2) % mod;
+        a /= 2;
     }
     return ret;
 }
