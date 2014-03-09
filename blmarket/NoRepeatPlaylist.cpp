@@ -28,6 +28,7 @@ int go(int a, int b, int c) {
         int nc = max(a-i, a-b);
         ret = (ret * nc) % mod;
     }
+    cout << a << " " << b << " " << c << " = " << ret << endl;
     return ret;
 }
 
