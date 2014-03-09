@@ -63,6 +63,8 @@ public:
 
                     n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
 
+                    cout << j << " " << k << " = " << n1 << endl;
+
                     addmod(dyna[nex][j + now - k], n1);
                 }
             }
