@@ -29,6 +29,8 @@ int go(int a) {
 
     for(const auto &it : links[a]) {
     }
+
+    return 0;
 }
 
 class MonsterFarm 
@@ -48,7 +50,7 @@ public:
 
         memset(visit, 0, sizeof(visit));
 
-        go(0);
+        return go(0);
     }
 
     
