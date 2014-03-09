@@ -69,11 +69,6 @@ public:
                 }
             }
 
-            for(int j=0;j<=30;j++) {
-                cout << dyna[nex][j] << " ";
-            }
-            cout << endl;
-
             ret = dyna[nex][K];
 
             sum += cs[i];
