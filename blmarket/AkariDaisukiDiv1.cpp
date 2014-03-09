@@ -48,7 +48,15 @@ public:
             cout << c << endl;
             return cnt(c);
         }
-        cout << c << " " << k << endl;
+
+        cout << k << " " << c << " " << cnt(c) << endl;
+        c = build(c); k--;
+        cout << k << " " << c << " " << cnt(c) << endl;
+        c = build(c); k--;
+        cout << k << " " << c << " " << cnt(c) << endl;
+        c = build(c); k--;
+        cout << k << " " << c << " " << cnt(c) << endl;
+        c = build(c); k--;
         return cnt(c);
     }
 
