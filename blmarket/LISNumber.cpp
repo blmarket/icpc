@@ -68,7 +68,7 @@ public:
                     long long n1 = combi[j][k];
                     long long n2 = h(nbad + now - k, now - k);
 
-                    cout << j << " " << k << " = " << n1 << " " << n2 << endl;
+                    cout << j << " " << k << "(" << j+now-k << ") = " << n1 << " " << n2 << endl;
                     n1 = (((n1*n2) % mod) * dyna[cur][j]) % mod;
 
                     addmod(dyna[nex][j + now - k], n1);
