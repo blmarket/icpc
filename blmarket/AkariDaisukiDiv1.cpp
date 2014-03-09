@@ -55,18 +55,19 @@ public:
         string es = c.substr(size(c) - 50);
         int cc = cnt(c);
 
-        for(int i=0;i<50;i++) {
+        for(int i=0;i<55;i++) {
             cc = (cc * 2) % mod;
 
             string bbs = Waai + bs.substr(0, size(F) - 1);
             string m1 = es.substr(size(es) - size(F) + 1) + Akari;
             string m2 = Akari + bs.substr(0, size(F) - 1);
             string ees = es.substr(size(es) - size(F) + 1) + Daisuki;
-            cc += cnt(bbs) + cnt(m1) + cnt(m2) + cnt(ees);
+            int tmp = cnt(bbs) + cnt(m1) + cnt(m2) + cnt(ees);
+            cc += tmp;
             cc %= mod;
 
             k--;
-            cout << k << " " << cc << endl;
+            cout << k << " " << cc << " " << tmp << endl;
             if(k == 0) return cc;
 
             bs = (Waai + bs).substr(0, 50);
