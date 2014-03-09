@@ -49,7 +49,7 @@ public:
         reverse(cs.begin(), cs.end());
         dyna[0][cs[0]] = 1;
         int sum = cs[0];
-        int ret;
+        int ret = dyna[0][K];
         for(int i=1;i<size(cs);i++) {
             int nex = (i%2);
             int cur = 1-nex;
