@@ -20,37 +20,40 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int n;
 vector<int> links[55];
-bool visit[55];
-
-bool go(int a) {
-    if(visit[a]) return true;
-    visit[a] = true;
-    for(int i=0;i<size(links[a]);i++) {
-        if(go(links[a][i])) return true;
-    }
-    visit[a] = false;
-    return false;
-}
+int D[2][55];
 
 class MonsterFarm 
 {
 public:
-    int numMonsters(vector <string> transforms) 
+    int numMonsters(vector <string> tra) 
     {		
-        for(int i=0;i<55;i++) links[i].clear();
-
-        for(int i=0;i<size(transforms);i++) {
-            istringstream sin(transforms[i]);
+        int n = size(tra);
+        for(int i=0;i<n;i++) {
+            links[i].clear();
+            istringstream sin(tra[i]);
             int tmp;
             while(sin >> tmp) {
-                links[i].pb(tmp-1);
+                links[i].pb(tmp - 1);
+            }
+            D[0][i] = 1;
+        }
+
+        bool chk = false;
+        for(int i=0;i<55;i++) {
+            int cur = i%2;
+            int nex = 1-cur;
+            chk = false;
+            for(int j=0;j<n;j++) {
+                D[nex][j] = 0;
+                for(int k=0;k<size(links[j]);k++) {
+                    D[nex][j] += D[cur][links[j][k]];
+                }
             }
         }
 
-        if(go(0)) return -1;
-        return 0;
+        if(chk) return -1;
+        return D[0][0];
     }
 
     
