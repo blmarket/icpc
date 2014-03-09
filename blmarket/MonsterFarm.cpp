@@ -40,7 +40,6 @@ vector<int> links[55];
 bool reach[55][55];
 
 bool chkinf(int a) {
-    cout << a << " " << reach[a][a] << endl;
     if(reach[a][a]) {
         if(links[a].size() > 1) return true;
         int tmp = links[a][0];
@@ -70,7 +69,7 @@ public:
             links[i].clear();
             while(sin >> tmp) {
                 links[i].pb(tmp-1);
-                reach[i][tmp] = true;
+                reach[i][tmp-1] = true;
             }
         }
 
