@@ -49,13 +49,13 @@ public:
             return cnt(c);
         }
 
-        cout << k << " " << c << " " << cnt(c) << endl;
+        cout << k << " " << " " << cnt(c) << endl;
         c = build(c); k--;
-        cout << k << " " << c << " " << cnt(c) << endl;
+        cout << k << " " << " " << cnt(c) << endl;
         c = build(c); k--;
-        cout << k << " " << c << " " << cnt(c) << endl;
+        cout << k << " " << " " << cnt(c) << endl;
         c = build(c); k--;
-        cout << k << " " << c << " " << cnt(c) << endl;
+        cout << k << " " << " " << cnt(c) << endl;
         c = build(c); k--;
         return cnt(c);
     }
