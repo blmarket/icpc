@@ -52,6 +52,8 @@ public:
             }
         }
 
+        cout << ld << endl;
+
         if(ld > 50) return -1;
 
         return D[0][0];
