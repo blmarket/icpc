@@ -20,6 +20,8 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+const int mod = 1000000007;
+
 class AkariDaisukiDiv1 
 {
 public:
@@ -53,7 +55,25 @@ public:
         string es = c.substr(size(c) - 50);
         int cc = cnt(c);
 
-        cout << bs << " " << es << " " << cc << " " << k << endl;
+        for(int i=0;i<50;i++) {
+            cc = (cc * 2) % mod;
+
+            string bbs = Waai + bs.substr(0, size(F) - 1);
+            string m1 = es.substr(size(es) - size(F) + 1) + Akari;
+            string m2 = Akari + bs.substr(0, size(F) - 1);
+            string ees = es.substr(size(es) - size(F) + 1) + Daisuki;
+            cc += cnt(bbs) + cnt(m1) + cnt(m2) + cnt(ees);
+            cc %= mod;
+
+            k--;
+            cout << k << " " << cc << endl;
+            if(k == 0) return cc;
+
+            bs = (Waai + bs).substr(0, 50);
+            es = (es + Daisuki);
+            es = es.substr(size(es) - 50);
+        }
+
         return cnt(c);
     }
 
