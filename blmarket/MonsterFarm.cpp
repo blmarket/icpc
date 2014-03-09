@@ -43,7 +43,7 @@ public:
         for(int i=0;i<550;i++) {
             int cur = i%2;
             int nex = 1-cur;
-            if(D[cur][0] != D[nex][0]) ld = i;
+            if(D[cur][0] != D[nex][0]) ld = max(ld, i);
             if(D[cur][0] > 1000000) ld = 500;
             for(int j=0;j<n;j++) {
                 D[nex][j] = 0;
