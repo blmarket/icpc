@@ -31,10 +31,9 @@ public:
             return s;
         };
         for(int i=0;i<size(X);i++) S.insert(go(X[i]));
-        for(auto it : S) cout << it << " "; cout << endl;
         set<int> SS(X.begin(),X.end());
-        for(auto it : SS) cout << it << " "; cout << endl;
-        return SS.size() - S.size();
+        for(auto it : S) SS.erase(it);
+        return SS.size();
     }
 
     
