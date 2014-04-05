@@ -41,12 +41,13 @@ public:
         for(int i=0;i<size(C);i++) {
             int cur = i %2;
             int nex = !cur;
-            if(C[i] == 'B') {
+
+            memset(memo[nex], 0, sizeof(memo[nex]));
+            if(C[i] == 'B' || C[i] == 'W') {
                 memcpy(memo[nex], memo[cur], sizeof(memo[0]));
                 continue;
             }
 
-            memset(memo[nex], 0, sizeof(memo[nex]));
 
             for(int j=0;j<=M;j++) {
                 for(int k=0;k<M;k++) if(memo[cur][j][k]) {
