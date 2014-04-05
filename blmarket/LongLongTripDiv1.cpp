@@ -35,6 +35,7 @@ public:
             }
         }
         if(d == -1) return "Impossible";
+        d *= 2;
 
         memset(md, -1, sizeof(md));
         md[0][0] = 0;
