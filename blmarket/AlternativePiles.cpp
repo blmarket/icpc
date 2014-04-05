@@ -42,12 +42,12 @@ public:
             int cur = i %2;
             int nex = !cur;
 
-            memset(memo[nex], 0, sizeof(memo[nex]));
             if(C[i] == 'B' || C[i] == 'W') {
                 memcpy(memo[nex], memo[cur], sizeof(memo[0]));
-                continue;
+            } else {
+                memset(memo[nex], 0, sizeof(memo[nex]));
             }
-
+            if(C[i] == 'B') continue;
 
             for(int j=0;j<=M;j++) {
                 for(int k=0;k<M;k++) if(memo[cur][j][k]) {
