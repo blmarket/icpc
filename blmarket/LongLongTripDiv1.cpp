@@ -64,7 +64,6 @@ public:
         }
 
         int tt = md[N-1][T%d];
-        cout << tt << endl;
         if(tt == -1 || tt > T) return "Impossible";
         return "Possible";
     }
@@ -91,6 +90,6 @@ public:
 int main()
 {
     LongLongTripDiv1 ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
