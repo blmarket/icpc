@@ -44,6 +44,8 @@ public:
                 for(int k=0;k+K < size(ys);k++) {
                     int sz2 = ys[k+K-1] - ys[k] + 2;
 
+                    cout << sz1 << " " << sz2 << endl;
+
                     long long tmp = max(sz2, sz1);
                     tmp *= tmp;
                     if(ret < 0 || ret > tmp) ret = tmp;
