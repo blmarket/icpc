@@ -40,11 +40,8 @@ public:
                 sort(ys.begin(), ys.end());
                 int sz1 = xs[j] - xs[i] + 2;
                 if(size(ys) < K) continue;
-                cout << size(ys) << endl;
                 for(int k=0;k+K <= size(ys);k++) {
                     int sz2 = ys[k+K-1] - ys[k] + 2;
-
-                    cout << sz1 << " " << sz2 << endl;
 
                     long long tmp = max(sz2, sz1);
                     tmp *= tmp;
@@ -76,6 +73,6 @@ public:
 int main()
 {
     MinimumSquare ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
