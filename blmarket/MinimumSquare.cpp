@@ -41,7 +41,7 @@ public:
                 int sz1 = xs[j] - xs[i] + 2;
                 if(size(ys) < K) continue;
                 cout << size(ys) << endl;
-                for(int k=0;k+K < size(ys);k++) {
+                for(int k=0;k+K <= size(ys);k++) {
                     int sz2 = ys[k+K-1] - ys[k] + 2;
 
                     cout << sz1 << " " << sz2 << endl;
