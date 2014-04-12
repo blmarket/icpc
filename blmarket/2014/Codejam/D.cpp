@@ -40,6 +40,7 @@ int go1() {
         }
         it--;
     }
+    return 0;
 }
 
 int go2() {
