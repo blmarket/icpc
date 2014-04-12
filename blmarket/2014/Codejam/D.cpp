@@ -37,6 +37,7 @@ int go1() {
     vector<double> V(arr1, arr1+N);
     for(int i=0;i<N;i++) {
         auto it = lower_bound(V.begin(), V.end(), arr2[i]);
+        cout << arr2[i] << " " << *it << endl;
         if(it == V.end()) return ret;
         V.erase(it);
     }
