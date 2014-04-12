@@ -33,20 +33,14 @@ double arr1[1024];
 double arr2[1024];
 
 int go1() {
-    int it = N-1;
+    int ret = 0;
+    vector<double> V(arr1, arr1+N);
     for(int i=0;i<N;i++) {
-        cout << arr1[i] << " ";
+        auto it = lower_bound(V.begin(), V.end(), arr2[i]);
+        if(it == V.end()) return ret;
+        V.erase(it);
     }
-    cout << endl;
-    for(int i=0;i<N;i++) cout << arr2[i] << " ";
-    cout << endl;
-    for(int i=0;i<N;i++) {
-        if(arr1[i] > arr2[it]) {
-            return N - i;
-        }
-        it--;
-    }
-    return 0;
+    return ret;
 }
 
 int go2() {
