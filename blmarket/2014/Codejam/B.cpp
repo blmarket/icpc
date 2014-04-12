@@ -103,6 +103,7 @@ void solve(int dataId)
             return;
         }
         ret[0][0] = 2;
+        if(RR * CC == M) ret[0][0] = 0;
         for(int i=0;i<RR;i++) {
             for(int j=0;j<CC;j++) {
                 switch(ret[j][i]) {
