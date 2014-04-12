@@ -53,7 +53,7 @@ int go2() {
         ret++;
         V.erase(it);
     }
-    return ret;
+    return N - ret;
 }
 
 void solve(int dataId)
