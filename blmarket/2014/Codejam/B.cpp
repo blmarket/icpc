@@ -80,8 +80,8 @@ bool go(int R, int C, int free) {
         free -= 2;
     }
     if(free == 0) return true;
-    for(int i=3;i<R;i++) {
-        for(int j=3;j<C;j++) {
+    for(int i=2;i<R;i++) {
+        for(int j=2;j<C;j++) {
             if(ret[i][j]) {
                 ret[i][j] = 1;
                 free--;
