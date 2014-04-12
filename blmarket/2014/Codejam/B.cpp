@@ -33,11 +33,12 @@ int ret[55][55];
 
 bool go(int R, int C, int free) {
     if(free == 0) return true;
+    if(free == 1) {
+        ret[0][0] = 2;
+        return true;
+    }
 
     if(C == 1) {
-        if(R > 1 && free == 1) {
-            return false;
-        }
         for(int i=0;i<free;i++) {
             ret[i][0] = 1;
         }
