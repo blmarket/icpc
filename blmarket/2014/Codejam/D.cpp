@@ -35,6 +35,12 @@ double arr2[1024];
 int go1() {
     int it = N-1;
     for(int i=0;i<N;i++) {
+        cout << arr1[i] << " ";
+    }
+    cout << endl;
+    for(int i=0;i<N;i++) cout << arr2[i] << " ";
+    cout << endl;
+    for(int i=0;i<N;i++) {
         if(arr1[i] > arr2[it]) {
             return N - i;
         }
