@@ -52,6 +52,7 @@ bool go(int R, int C, int free) {
         ret[0][0] = 2;
         return true;
     }
+    cout << "FREE = " << free << endl;
 
     if(free < 4 || free == 5 || free == 7) return false;
     ret[0][0] = ret[0][1] = ret[1][0] = ret[1][1] = 1;
