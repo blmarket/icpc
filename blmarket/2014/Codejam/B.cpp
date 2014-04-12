@@ -52,7 +52,6 @@ bool go(int R, int C, int free) {
         ret[0][0] = 2;
         return true;
     }
-    cout << "FREE = " << free << endl;
 
     if(free < 4 || free == 5 || free == 7) return false;
     ret[0][0] = ret[0][1] = ret[1][0] = ret[1][1] = 1;
@@ -68,12 +67,6 @@ bool go(int R, int C, int free) {
         ret[2][2] = 1;
         free--;
     }
-
-    for(int i=0;i<R;i++) {
-        for(int j=0;j<C;j++) cout << ret[i][j] << " ";
-        cout << endl;
-    }
-    cout << free << endl;
 
     for(int i=3;i<R;i++) {
         if(free == 0) return true;
