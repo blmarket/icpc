@@ -69,6 +69,10 @@ bool go(int R, int C, int free) {
         free--;
     }
 
+    for(int i=0;i<R;i++) {
+        for(int j=0;j<C;j++) cout << ret[i][j] << " ";
+        cout << endl;
+    }
     cout << free << endl;
 
     for(int i=3;i<R;i++) {
