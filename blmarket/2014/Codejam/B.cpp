@@ -69,6 +69,8 @@ bool go(int R, int C, int free) {
         free--;
     }
 
+    cout << free << endl;
+
     for(int i=3;i<R;i++) {
         if(free == 0) return true;
         ret[i][0] = ret[i][1] = 1;
