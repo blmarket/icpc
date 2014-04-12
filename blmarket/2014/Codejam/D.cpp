@@ -47,7 +47,7 @@ int go1() {
 int go2() {
     int ret = 0;
     vector<double> V(arr2, arr2+N);
-    for(int i=0;i<N;i++) {
+    for(int i=N-1;i>=0;i--) {
         auto it = lower_bound(V.begin(), V.end(), arr1[i]);
         if(it == V.end()) return ret;
         ret++;
