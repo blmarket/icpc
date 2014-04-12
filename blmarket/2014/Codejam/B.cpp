@@ -85,16 +85,11 @@ bool go(int R, int C, int free) {
         ret[0][i] = ret[1][i] = 1;
         free -= 2;
     }
-    for(int i=0;i<R;i++) {
-        for(int j=0;j<C;j++) cout << ret[i][j] << " ";
-        cout << endl;
-    }
-    cout << free << endl;
 
     if(free == 0) return true;
     for(int i=2;i<R;i++) {
         for(int j=2;j<C;j++) {
-            if(ret[i][j]) {
+            if(ret[i][j] == 0) {
                 ret[i][j] = 1;
                 free--;
                 if(free == 0) break;
