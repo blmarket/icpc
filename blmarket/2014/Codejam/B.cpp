@@ -88,7 +88,10 @@ void solve(int dataId)
     printf("Case #%d:\n", dataId);
     memset(ret, 0, sizeof(ret));
     if(RR < CC) {
-        go(CC, RR, RR*CC - M);
+        if(go(CC, RR, RR*CC - M) == false) {
+            printf("Impossible\n");
+            return;
+        }
         ret[0][0] = 2;
         for(int i=0;i<RR;i++) {
             for(int j=0;j<CC;j++) {
@@ -107,7 +110,10 @@ void solve(int dataId)
             printf("\n");
         }
     } else {
-        go(RR, CC, RR*CC - M);
+        if(go(RR, CC, RR*CC - M) == false) {
+            printf("Impossible\n");
+            return;
+        }
         ret[0][0] = 2;
         for(int i=0;i<RR;i++) {
             for(int j=0;j<CC;j++) {
