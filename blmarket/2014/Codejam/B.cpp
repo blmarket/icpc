@@ -56,10 +56,18 @@ bool go(int R, int C, int free) {
     if(free < 4 || free == 5 || free == 7) return false;
     ret[0][0] = ret[0][1] = ret[1][0] = ret[1][1] = 1;
     free -= 4;
+    if(free == 0) return true;
+    ret[2][0] = ret[2][1] = 1;
+    free -= 2;
+    if(free == 0) return true;
+    ret[0][2] = ret[1][2] = 1;
+    free -= 2;
+    if(free == 0) return true;
     if(free % 2 == 1) {
-        for(int i=0;i<3;i++) ret[i][2] = ret[2][i] = 1;
-        free -= 5;
+        ret[2][2] = 1;
+        free--;
     }
+
     for(int i=3;i<R;i++) {
         if(free == 0) return true;
         ret[i][0] = ret[i][1] = 1;
@@ -71,12 +79,13 @@ bool go(int R, int C, int free) {
         free -= 2;
     }
     if(free == 0) return true;
-    free++;
     for(int i=3;i<R;i++) {
         for(int j=3;j<C;j++) {
-            ret[i][j] = 1;
-            free--;
-            if(free == 0) break;
+            if(ret[i][j]) {
+                ret[i][j] = 1;
+                free--;
+                if(free == 0) break;
+            }
         }
         if(free == 0) break;
     }
