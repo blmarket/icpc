@@ -73,8 +73,9 @@ public:
 
         int ret = 1;
         for(auto &a : M) {
-            cout << a.first << " " << a.second << " = " << unkn(a.second, a.first) << endl;
-            ret = max(ret, unkn(a.second, a.first));
+            int tmp = unkn(a.second, a.first);
+            cout << a.first << " " << a.second << " = " << tmp << endl;
+            ret = max(ret, tmp);
         }
         return ret;
     }
