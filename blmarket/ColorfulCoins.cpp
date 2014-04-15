@@ -37,7 +37,7 @@ public:
         for(auto &a : M) {
             cout << a.first << " " << a.second << endl;
         }
-        return 0;
+        return ret;
     }
 
     
