@@ -44,7 +44,7 @@ int know(int num, long long ng) {
     if(num == 1) return 0;
     int gs = (num + ng - 1) / ng;
     int ret = know(gs, ng) + 1;
-    cout << ng << " " << num << " = " << ret << endl;
+    cout << "known " << ng << " " << num << " = " << ret << endl;
     return ret;
 }
 
@@ -52,11 +52,13 @@ int unkn(int num, long long ng) {
     if(num == 0) return 0;
     if(num == 1) return 1;
     int gs = (num + ng - 1) / ng;
+    int ret = 0;
     if(num % ng == 0) {
-        return unkn(gs, ng) + 1;
+        ret = unkn(gs, ng) + 1;
     } else {
-        return max(know(gs, ng), unkn(gs-1, ng)) + 1;
+        ret = max(know(gs, ng), unkn(gs-1, ng)) + 1;
     }
+    cout << "unkn  " << ng << " " << num << " = " << ret << endl;
 }
 
 class ColorfulCoins 
