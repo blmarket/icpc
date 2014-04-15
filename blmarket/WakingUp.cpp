@@ -34,6 +34,8 @@ public:
                     cur += volume[j];
                 }
             }
+            cout << cur << endl;
+            if(i >=50) break;
             if(cur > ret) ret = cur;
         }
         int tmp = ret;
