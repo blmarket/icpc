@@ -47,6 +47,7 @@ int know(int num, long long ng) {
 }
 
 int unkn(int num, long long ng) {
+    if(num == 0) return 0;
     if(num == 1) return 1;
     int gs = (num + ng - 1) / ng;
     if(num % ng == 0) {
