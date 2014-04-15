@@ -24,7 +24,7 @@ map<long long, int> M;
 
 int go(long long dim, int kk) {
     if(kk == 1) return 0;
-    return go((dim+kk-1)/kk, kk) + 1;
+    return go(dim, (dim+kk-1)/dim) + 1;
 }
 
 class ColorfulCoins 
