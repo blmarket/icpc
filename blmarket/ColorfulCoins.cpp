@@ -32,7 +32,7 @@ class ColorfulCoins
 public:
     int minQueries(vector<long long> values) 
     {		
-        cout << go(4,2) << endl;
+        cout << go(2,4) << endl;
         sort(values.begin(), values.end());
         for(int i=0;i+1<size(values);i++) {
             long long dim = values[i+1] / values[i];
