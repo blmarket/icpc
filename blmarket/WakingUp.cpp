@@ -25,6 +25,12 @@ class WakingUp
 public:
     int maxSleepiness(vector <int> period, vector <int> start, vector <int> volume, int D) 
     {		
+        double sum = -D;
+        for(int i=0;i<size(period);i++) {
+            sum += (double)volume[i] / period[i];
+        }
+        if(sum >= 1e-6) return -1;
+
         int ret = 0;
         int cur = 0;
         for(int i=1;i<500000;i++) {
