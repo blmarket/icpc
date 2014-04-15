@@ -34,7 +34,6 @@ public:
                     cur += volume[j];
                 }
             }
-            cout << cur << endl;
             if(cur > ret) ret = cur;
         }
         int tmp = ret;
@@ -48,7 +47,7 @@ public:
             if(cur > ret) ret = cur;
         }
         if(ret > tmp) return -1;
-        return ret;
+        return -ret;
     }
 
     
