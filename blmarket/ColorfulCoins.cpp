@@ -22,6 +22,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 map<long long, int> M;
 
+int go(long long dim, int kk) {
+    if(kk == 1) return 0;
+    return go((dim+kk-1)/kk, kk) + 1;
+}
+
 class ColorfulCoins 
 {
 public:
@@ -35,7 +40,7 @@ public:
 
         int ret = 1;
         for(auto &a : M) {
-            cout << a.first << " " << a.second << endl;
+            ret = max(ret, 1+go(a.first, a.second));
         }
         return ret;
     }
