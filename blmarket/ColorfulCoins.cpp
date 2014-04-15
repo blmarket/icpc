@@ -32,6 +32,7 @@ class ColorfulCoins
 public:
     int minQueries(vector<long long> values) 
     {		
+        M.clear();
         sort(values.begin(), values.end());
         for(int i=0;i+1<size(values);i++) {
             long long dim = values[i+1] / values[i];
