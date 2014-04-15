@@ -59,6 +59,7 @@ int unkn(int num, long long ng) {
         ret = max(know(gs, ng), unkn(gs-1, ng)) + 1;
     }
     cout << "unkn  " << ng << " " << num << " = " << ret << endl;
+    return ret;
 }
 
 class ColorfulCoins 
