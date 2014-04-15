@@ -34,8 +34,6 @@ public:
                     cur += volume[j];
                 }
             }
-            cout << cur << endl;
-            if(i >=50) break;
             if(cur > ret) ret = cur;
         }
         int tmp = ret;
@@ -49,7 +47,7 @@ public:
             if(cur > ret) ret = cur;
         }
         if(ret > tmp) return -1;
-        return -ret;
+        return ret;
     }
 
     
@@ -73,6 +71,6 @@ public:
 int main()
 {
     WakingUp ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
