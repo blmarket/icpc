@@ -30,6 +30,8 @@ public:
             sum += (double)volume[i] / period[i];
         }
         if(sum >= 1e-6) return -1;
+        cout << "here" << endl;
+
 
         int ret = 0;
         int cur = 0;
@@ -42,17 +44,6 @@ public:
             }
             if(cur > ret) ret = cur;
         }
-        int tmp = ret;
-        for(int i=0;i<500000;i++) {
-            cur -= D;
-            for(int j=0;j<size(period);j++) {
-                if(i >= start[j] && (i - start[j]) % period[j] == 0) {
-                    cur += volume[j];
-                }
-            }
-            if(cur > ret) ret = cur;
-        }
-        if(ret > tmp) return -1;
         return ret;
     }
 
