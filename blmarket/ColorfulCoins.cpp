@@ -43,7 +43,9 @@ map<long long, int> M;
 int know(int num, long long ng) {
     if(num == 1) return 0;
     int gs = (num + ng - 1) / ng;
-    return know(gs, ng) + 1;
+    int ret = know(gs, ng) + 1;
+    cout << ng << " " << num << " = " << ret << endl;
+    return ret;
 }
 
 int unkn(int num, long long ng) {
