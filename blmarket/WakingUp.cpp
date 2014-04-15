@@ -25,9 +25,9 @@ class WakingUp
 public:
     int maxSleepiness(vector <int> period, vector <int> start, vector <int> volume, int D) 
     {		
-        int ret = -1;
+        int ret = -99999999;
         int cur = 0;
-        for(int i=0;i<50;i++) {
+        for(int i=0;i<5000000;i++) {
             cur -= D;
             for(int j=0;j<size(period);j++) {
                 if(i >= start[j] && (i - start[j]) % period[j] == 0) {
