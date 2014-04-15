@@ -41,7 +41,6 @@ public:
 
         int ret = 1;
         for(auto &a : M) {
-            cout << a.first << " " << a.second << " = " << go(a.first, a.second) << endl;
             ret = max(ret, 1+go(a.first, a.second));
         }
         return ret;
