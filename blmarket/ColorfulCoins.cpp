@@ -48,7 +48,7 @@ public:
             for(int i=0;;i++) {
                 pow *= it.first;
                 if(i+1 > ret) ret = i+1;
-                if(pow > acc) {
+                if(pow >= acc) {
                     break;
                 }
             }
