@@ -37,6 +37,23 @@ public:
             cout << it.first << " " << it.second << " - ";
         }
         cout << endl;
+
+        int ret = 1;
+        int acc = 1;
+
+        for(auto it : M) {
+            acc += it.second;
+
+            long long pow = 1;
+            for(int i=0;;i++) {
+                pow *= it.first;
+                if(i+1 > ret) ret = i+1;
+                if(pow > acc) {
+                    break;
+                }
+            }
+        }
+        return ret;
     }
 
     
