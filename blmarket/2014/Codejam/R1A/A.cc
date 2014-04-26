@@ -25,11 +25,23 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef vector<long long> VLL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, L;
 long long arr1[200], arr2[200];
+
+long long go(VLL &v1, VLL &v2) {
+    for(int i=0;i<L;i++) {
+        int c1 = 0, c2 = 0;
+        for(int j=0;j<N;j++) {
+            c1 += (v1[j]>>i)&1;
+            c2 += (v2[j]>>i)&1;
+        }
+        if(c1 != c2) return -1;
+    }
+}
 
 void solve(int dataId)
 {
@@ -48,7 +60,13 @@ void solve(int dataId)
         printf("0\n");
         return;
     }
-    cout << "here" << endl;
+
+    vector<long long> V1(arr1, arr1+N), V2(arr2, arr2+N);
+    long long ret = go(V1, V2);
+    if(ret == -1) {
+        cout << "NOT POSSIBLE" << endl;
+        return;
+    }
 }
 
 void process(int dataId)
