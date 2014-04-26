@@ -65,7 +65,7 @@ long long go(VLL &v1, VLL &v2) {
         long long tmp1 = go(n1[0], n2[0]) | go(n1[1], n2[1]);
         return ret | tmp1;
     }
-    return 0;
+    return ret;
 }
 
 void solve(int dataId)
