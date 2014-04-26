@@ -90,6 +90,7 @@ void solve(int dataId)
 
 void process(int dataId)
 {
+    cout << "PROCESS" << endl;
     scanf("%d %d", &N, &L);
 
     auto reads = [&](long long *arr) {
