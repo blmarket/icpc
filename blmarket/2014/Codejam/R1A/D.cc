@@ -25,7 +25,7 @@ int main(void) {
             }
         }
         cout << nswap << endl;
-        if(nswap < 992) {
+        if(nswap < 993) {
             cout << "BAD" << endl;
             bc++;
         } else {
