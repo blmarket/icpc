@@ -17,7 +17,7 @@ int main(void) {
         }
         printf("Case #%d: ", i+1);
         cout << same << endl;
-        if(same > 50) {
+        if(same > 1) {
             printf("BAD\n");
         } else {
             printf("GOOD\n");
