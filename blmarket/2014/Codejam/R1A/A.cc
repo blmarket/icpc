@@ -85,7 +85,7 @@ void solve(int dataId)
         cout << "NOT POSSIBLE" << endl;
         return;
     }
-    __builtin_popcount(ret);
+    cout << __builtin_popcount(ret) << endl;
 }
 
 void process(int dataId)
