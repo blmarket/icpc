@@ -83,7 +83,6 @@ void solve(int dataId)
         cout << "NOT POSSIBLE" << endl;
         return;
     }
-    cout << "HERE" << endl;
     cout << ret << endl;
 }
 
