@@ -62,6 +62,7 @@ long long go(VLL &v1, VLL &v2) {
 
 void solve(int dataId)
 {
+    fprintf(stderr, "OUTPUT\n");
     cout << "HERE" << N << endl;
     printf("Case #%d: ", dataId);
     sort(arr1, arr1+N);
@@ -183,7 +184,6 @@ void ForkSolver::_solve(int dataId)
         if(close(pipefd[0]) == -1) perror("close");
         if(dup2(pipefd[1], 1) == -1) perror("dup2");
         if(close(pipefd[1]) == -1) perror("close");
-        fprintf(stderr, "Start solve\n");
         solve(dataId);
         fprintf(stderr, "%d\n", dataId);
         exit(0); // force exit
