@@ -61,6 +61,7 @@ long long go(VLL &v1, VLL &v2) {
 
 void solve(int dataId)
 {
+    cout << "HERE" << endl;
     printf("Case #%d: ", dataId);
     sort(arr1, arr1+N);
     sort(arr2, arr2+N);
