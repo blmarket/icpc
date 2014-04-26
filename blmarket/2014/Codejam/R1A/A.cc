@@ -33,6 +33,14 @@ long long arr1[200], arr2[200];
 
 void solve(int dataId)
 {
+    printf("Case #%d: ", dataId);
+    sort(arr1, arr1+N);
+    sort(arr2, arr2+N);
+
+    if(vector<long long>(arr1, arr1+N) == vector<long long>(arr2, arr2 + N)) {
+        printf("0\n");
+        return;
+    }
 }
 
 void process(int dataId)
@@ -50,16 +58,6 @@ void process(int dataId)
             arr[i] = tmp2;
         }
     };
-
-    reads(arr1);
-    reads(arr2);
-
-    for(int i=0;i<N;i++) {
-        cout << arr1[i] << " ";
-    }
-    cout << endl;
-    for(int i=0;i<N;i++) cout << arr2[i] << " ";
-    cout << endl;
 }
 
 class ForkSolver {
