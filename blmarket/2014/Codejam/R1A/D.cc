@@ -17,17 +17,15 @@ int main(void) {
         }
         printf("Case #%d: ", i+1);
 
-        vector<int> sums;
-
-        bool bad = false;
-        for(int j=0;j<5;j++) {
-            long long sum = 0;
-            for(int k=j*200;k<(j+1)*200;k++)
-                sum += arr[k];
-            cout << sum << " ";
-            sums.push_back(sum);
+        int nswap = 0;
+        for(int j=0;j<N;j++) {
+            while(arr[j] != j) {
+                nswap++;
+                swap(arr[j], arr[arr[j]]);
+            }
         }
-        if(sums.back() > 103000) {
+        cout << nswap << endl;
+        if(1) {
             cout << "BAD" << endl;
             bc++;
         } else {
