@@ -16,7 +16,7 @@ int main(void) {
             if(j == arr[j]) same++;
         }
         printf("Case #%d: ", i+1);
-        if(same > 100) {
+        if(same > 50) {
             printf("BAD\n");
         } else {
             printf("GOOD\n");
