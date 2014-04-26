@@ -20,7 +20,7 @@ int main(void) {
             for(int k=j*200;k<(j+1)*200;k++)
                 sum += arr[k];
             cout << sum << " ";
-            if(sum > 110000 || sum < 90000) {
+            if(sum > 108000 || sum < 92000) {
                 bad = true;
             }
         }
