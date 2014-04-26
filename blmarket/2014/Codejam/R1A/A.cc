@@ -33,7 +33,6 @@ int N, L;
 long long arr1[200], arr2[200];
 
 long long go(VLL &v1, VLL &v2) {
-    fprintf(stderr, "%d %d\n", v1.size(), v2.size());
     long long ret = 0;
     for(int i=0;i<L;i++) {
         VLL n1[2], n2[2];
