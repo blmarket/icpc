@@ -66,6 +66,9 @@ void process(int dataId)
             arr[i] = tmp2;
         }
     };
+
+    reads(arr1);
+    reads(arr2);
 }
 
 class ForkSolver {
