@@ -90,7 +90,6 @@ void solve(int dataId)
 
 void process(int dataId)
 {
-    cout << "PROCESS" << endl;
     scanf("%d %d", &N, &L);
 
     auto reads = [&](long long *arr) {
@@ -134,7 +133,7 @@ int main(void)
         char buffer[8192];
         waitpid(solver.outfds[i].first, &status, 0);
         ssize_t sz;
-        while((sz = read(solver.outfds[i].second, buffer, sizeof(buffer))))
+        while(sz = read(solver.outfds[i].second, buffer, sizeof(buffer)))
         {
             ssize_t iter = 0, outsz;
 
@@ -184,6 +183,7 @@ void ForkSolver::_solve(int dataId)
         if(close(pipefd[0]) == -1) perror("close");
         if(dup2(pipefd[1], 1) == -1) perror("dup2");
         if(close(pipefd[1]) == -1) perror("close");
+        fprintf(stderr, "Start solve\n");
         solve(dataId);
         fprintf(stderr, "%d\n", dataId);
         exit(0); // force exit
