@@ -62,7 +62,6 @@ long long go(VLL &v1, VLL &v2) {
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
-    cout << "HERE" << endl;
     sort(arr1, arr1+N);
     sort(arr2, arr2+N);
 
@@ -84,6 +83,7 @@ void solve(int dataId)
         cout << "NOT POSSIBLE" << endl;
         return;
     }
+    cout << "HERE" << endl;
     cout << ret << endl;
 }
 
