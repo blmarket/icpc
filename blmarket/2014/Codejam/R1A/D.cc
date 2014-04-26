@@ -27,7 +27,7 @@ int main(void) {
             cout << sum << " ";
             sums.push_back(sum);
         }
-        if(bad) {
+        if(sums.back() > 103000) {
             cout << "BAD" << endl;
             bc++;
         } else {
