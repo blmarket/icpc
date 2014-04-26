@@ -55,7 +55,7 @@ long long go(VLL &v1, VLL &v2) {
             n2[0].swap(n2[1]);
         }
 
-        fprintf(stderr, "%d %d, %d %d\n", n1[0].size(), n1[1].size(), n2[0].size(), n2[1].size());
+        fprintf(stderr, "%d %d, %d %d, %d %d\n", c1, c2, n1[0].size(), n1[1].size(), n2[0].size(), n2[1].size());
 
         long long tmp1 = go(n1[0], n2[0]) | go(n1[1], n2[1]);
         return ret | tmp1;
