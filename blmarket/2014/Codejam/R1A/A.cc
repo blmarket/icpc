@@ -67,6 +67,10 @@ void solve(int dataId)
     sort(arr1, arr1+N);
     sort(arr2, arr2+N);
 
+    for(int i=0;i<N;i++) {
+        cout << arr1[i] << " " << arr2[i] << endl;
+    }
+
     bool same = true;
     for(int i=0;i<N;i++) {
         if(arr1[i] != arr2[i]) {
