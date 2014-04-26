@@ -35,11 +35,6 @@ long long arr1[200], arr2[200];
 long long go(VLL &v1, VLL &v2) {
     long long ret = 0;
 
-    for(int i=0;i<size(v1);i++) {
-        cout << v1[i] << " " << v2[i] << endl;
-    }
-    cout << endl;
-
     for(int i=0;i<L;i++) {
         VLL n1[2], n2[2];
         n1[0].clear(); n1[1].clear();
@@ -54,8 +49,6 @@ long long go(VLL &v1, VLL &v2) {
         if(c1 != c2 && c1 != (v1.size()-c2)) return -1;
         if(c1 != c2) ret |= (1LL << i);
         if(c1*2 == N || c1 == 0 || c1 == v1.size()) continue;
-
-        fprintf(stderr, "%d %d, %d %d, %d %d\n", c1, c2, n1[0].size(), n1[1].size(), n2[0].size(), n2[1].size());
 
         if(n1[0].size() != n2[0].size()) {
             ret = (1LL << i);
