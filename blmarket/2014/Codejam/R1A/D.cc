@@ -14,12 +14,19 @@ int main(void) {
             cin >> arr[j];
         }
         printf("Case #%d: ", i+1);
+        bool bad = false;
         for(int j=0;j<10;j++) {
             long long sum = 0;
             for(int k=j*100;k<(j+1)*100;k++)
                 sum += arr[k];
-            cout << sum << " ";
+            if(sum > 55000 || sum < 45000) {
+                bad = true;
+            }
         }
-        cout << endl;
+        if(bad) {
+            cout << "BAD" << endl;
+        } else {
+            cout << "GOOD" << endl;
+        }
     }
 }
