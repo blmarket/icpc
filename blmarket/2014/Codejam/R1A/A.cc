@@ -34,6 +34,12 @@ long long arr1[200], arr2[200];
 
 long long go(VLL &v1, VLL &v2) {
     long long ret = 0;
+    for(int i=0;i<size(v1);i++) {
+        cout << v1[i] << " " << v2[i] << endl;
+    }
+    cout << endl;
+
+
     for(int i=0;i<L;i++) {
         VLL n1[2], n2[2];
         n1[0].clear(); n1[1].clear();
@@ -66,10 +72,6 @@ void solve(int dataId)
     printf("Case #%d: ", dataId);
     sort(arr1, arr1+N);
     sort(arr2, arr2+N);
-
-    for(int i=0;i<N;i++) {
-        cout << arr1[i] << " " << arr2[i] << endl;
-    }
 
     bool same = true;
     for(int i=0;i<N;i++) {
