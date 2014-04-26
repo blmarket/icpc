@@ -7,6 +7,7 @@ int arr[1024];
 int main(void) {
     int T;
     cin >> T;
+    int bc = 0;
     for(int i=0;i<T;i++) {
         int N;
         cin >> N;
@@ -26,8 +27,10 @@ int main(void) {
         }
         if(bad) {
             cout << "BAD" << endl;
+            bc++;
         } else {
             cout << "GOOD" << endl;
         }
     }
+    cout << bc << endl;
 }
