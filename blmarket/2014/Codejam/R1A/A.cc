@@ -34,6 +34,9 @@ long long arr1[200], arr2[200];
 
 long long go(VLL &v1, VLL &v2) {
     fprintf(stderr, "%d %d\n", v1.size(), v2.size());
+    if(v1.size() != v2.size()) {
+        throw "Runtimeerror";
+    }
 
     long long ret = 0;
     for(int i=0;i<L;i++) {
