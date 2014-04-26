@@ -33,7 +33,7 @@ int N, L;
 long long arr1[200], arr2[200];
 
 long long go(VLL &v1, VLL &v2) {
-    cout << v1.size() << " " << v2.size() << endl;
+    fprintf(stderr, "%d %d\n", v1.size(), v2.size());
     long long ret = 0;
     for(int i=0;i<L;i++) {
         VLL n1[2], n2[2];
@@ -79,7 +79,6 @@ void solve(int dataId)
         return;
     }
 
-    fprintf(stderr, "OUTPUT %d\n", N);
     vector<long long> V1(arr1, arr1+N), V2(arr2, arr2+N);
     long long ret = go(V1, V2);
     if(ret == -1) {
