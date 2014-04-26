@@ -41,6 +41,7 @@ long long go(VLL &v1, VLL &v2) {
         }
         if(c1 != c2) return -1;
     }
+    return 0;
 }
 
 void solve(int dataId)
