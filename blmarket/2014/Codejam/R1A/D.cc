@@ -10,17 +10,16 @@ int main(void) {
     for(int i=0;i<T;i++) {
         int N;
         cin >> N;
-        int same = 0;
         for(int j=0;j<N;j++) {
             cin >> arr[j];
-            if(j == arr[j]) same++;
         }
         printf("Case #%d: ", i+1);
-        // cout << same << endl;
-        if(same > 1) {
-            printf("BAD\n");
-        } else {
-            printf("GOOD\n");
+        for(int j=0;j<10;j++) {
+            int sum = 0;
+            for(int k=(j-1)*100;k<j*100;k++)
+                sum += arr[k];
+            cout << sum << " ";
         }
+        cout << endl;
     }
 }
