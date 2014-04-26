@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -15,15 +16,16 @@ int main(void) {
             cin >> arr[j];
         }
         printf("Case #%d: ", i+1);
+
+        vector<int> sums;
+
         bool bad = false;
         for(int j=0;j<5;j++) {
             long long sum = 0;
             for(int k=j*200;k<(j+1)*200;k++)
                 sum += arr[k];
             cout << sum << " ";
-            if(sum > 105000 || sum < 95000) {
-                bad = true;
-            }
+            sums.push_back(sum);
         }
         if(bad) {
             cout << "BAD" << endl;
