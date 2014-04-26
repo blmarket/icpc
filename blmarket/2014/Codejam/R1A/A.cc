@@ -33,6 +33,7 @@ int N, L;
 long long arr1[200], arr2[200];
 
 long long go(VLL &v1, VLL &v2) {
+    cout << v1.size() << " " << v2.size() << endl;
     long long ret = 0;
     for(int i=0;i<L;i++) {
         VLL n1[2], n2[2];
