@@ -39,6 +39,7 @@ long long go(VLL &v1, VLL &v2) {
             c1 += (v1[j]>>i)&1;
             c2 += (v2[j]>>i)&1;
         }
+        cout << i << " " << c1 << " " << c2 << endl;
         if(c1 != c2) return -1;
     }
     return 0;
