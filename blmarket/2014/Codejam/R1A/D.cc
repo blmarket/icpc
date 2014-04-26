@@ -32,5 +32,5 @@ int main(void) {
             cout << "GOOD" << endl;
         }
     }
-    cout << bc << endl;
+    cerr << bc << endl;
 }
