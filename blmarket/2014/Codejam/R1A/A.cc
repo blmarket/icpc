@@ -41,14 +41,14 @@ long long go(VLL &v1, VLL &v2) {
         n1[0].clear(); n1[1].clear();
         n2[0].clear(); n2[1].clear();
         int c1 = 0, c2 = 0;
-        for(int j=0;j<N;j++) {
+        for(int j=0;j<v1.size();j++) {
             n1[(v1[j]>>i)&1].pb(v1[j]);
             n2[(v2[j]>>i)&1].pb(v2[j]);
             c1 += (v1[j]>>i)&1;
             c2 += (v2[j]>>i)&1;
         }
-        if(c1 != c2 && c1 != (N-c2)) return -1;
-        if(c1*2 == N || c1 == 0 || c1 == N) continue;
+        if(c1 != c2 && c1 != (v1.size()-c2)) return -1;
+        if(c1*2 == N || c1 == 0 || c1 == v1.size()) continue;
 
         if(n1[0].size() != n2[0].size()) {
             ret = (1LL << i);
