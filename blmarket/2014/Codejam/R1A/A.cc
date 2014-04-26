@@ -78,9 +78,9 @@ void solve(int dataId)
         return;
     }
 
-    vector<long long> V1(arr1, arr1+N), V2(arr2, arr2+N);
     cout << "HERE" << endl;
-    cout << flush;
+
+    vector<long long> V1(arr1, arr1+N), V2(arr2, arr2+N);
     long long ret = go(V1, V2);
     if(ret == -1) {
         cout << "NOT POSSIBLE" << endl;
