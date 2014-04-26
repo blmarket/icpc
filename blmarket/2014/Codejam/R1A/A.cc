@@ -33,13 +33,28 @@ int N, L;
 long long arr1[200], arr2[200];
 
 long long go(VLL &v1, VLL &v2) {
+    long long ret = 0;
     for(int i=0;i<L;i++) {
+        VLL n1[2], n2[2];
+        n1[0].clear(); n1[1].clear();
+        n2[0].clear(); n2[1].clear();
         int c1 = 0, c2 = 0;
         for(int j=0;j<N;j++) {
+            n1[(v1[j]>>i)&1].pb(v1[j]);
+            n2[(v2[j]>>i)&1].pb(v2[j]);
             c1 += (v1[j]>>i)&1;
             c2 += (v2[j]>>i)&1;
         }
-        if(c1 != c2 && c1 != (N-c2) ) return -1;
+        if(c1 != c2 && c1 != (N-c2)) return -1;
+        if(c1*2 == N) continue;
+
+        if(n1[0].size() != n2[0].size()) {
+            ret = (1LL << i);
+            n2[0].swap(n2[1]);
+        }
+
+        long long tmp1 = go(n1[0], n2[0]) | go(n1[1], n2[1]);
+        return ret | tmp1;
     }
     return 0;
 }
@@ -68,6 +83,7 @@ void solve(int dataId)
         cout << "NOT POSSIBLE" << endl;
         return;
     }
+    cout << ret << endl;
 }
 
 void process(int dataId)
