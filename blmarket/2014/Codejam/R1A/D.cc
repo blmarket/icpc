@@ -24,7 +24,7 @@ int main(void) {
                 swap(arr[j], arr[arr[j]]);
             }
         }
-        cout << nswap << endl;
+        cerr << nswap << endl;
         if(nswap < 993) {
             cout << "BAD" << endl;
             bc++;
