@@ -37,10 +37,18 @@ void solve(int dataId)
     sort(arr1, arr1+N);
     sort(arr2, arr2+N);
 
-    if(vector<long long>(arr1, arr1+N) == vector<long long>(arr2, arr2 + N)) {
+    bool same = true;
+    for(int i=0;i<N;i++) {
+        if(arr1[i] != arr2[i]) {
+            same = false;
+            break;
+        }
+    }
+    if(same) {
         printf("0\n");
         return;
     }
+    cout << "here" << endl;
 }
 
 void process(int dataId)
