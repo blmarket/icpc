@@ -53,6 +53,13 @@ void process(int dataId)
 
     reads(arr1);
     reads(arr2);
+
+    for(int i=0;i<N;i++) {
+        cout << arr1[i] << " ";
+    }
+    cout << endl;
+    for(int i=0;i<N;i++) cout << arr2[i] << " ";
+    cout << endl;
 }
 
 class ForkSolver {
