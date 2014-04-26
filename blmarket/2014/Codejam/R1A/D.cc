@@ -15,10 +15,11 @@ int main(void) {
         }
         printf("Case #%d: ", i+1);
         bool bad = false;
-        for(int j=0;j<10;j++) {
+        for(int j=0;j<5;j++) {
             long long sum = 0;
-            for(int k=j*100;k<(j+1)*100;k++)
+            for(int k=j*200;k<(j+1)*200;k++)
                 sum += arr[k];
+            cout << sum << " ";
             if(sum > 55000 || sum < 45000) {
                 bad = true;
             }
