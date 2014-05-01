@@ -38,15 +38,22 @@ void solve(int dataId)
 
     sort(arr2.begin(), arr2.end());
 
+    int ret = -1;
     for(int i=0;i<(1<<L);i++) {
         for(int j=0;j<N;j++) {
             arr1[j] ^= i;
         }
         sort(arr1.begin(), arr1.end());
         if(arr1 == arr2) {
-            cout << i << endl;
+            int cnt = __builtin_popcount(i);
+            if(ret < 0 || ret > cnt) ret = cnt;
         }
     }
+    if(ret == -1) {
+        cout << "NOT POSSIBLE" << endl;
+        return;
+    }
+    cout << ret << endl;
 }
 
 void process(int dataId)
