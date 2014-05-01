@@ -82,6 +82,12 @@ void solve(int dataId)
     vector<long long> V1(arr1, arr1+N), V2(arr2, arr2+N);
     long long ret = go(V1, V2);
     cout << ret << endl;
+    for(int i=0;i<size(V1);i++) {
+        cout << (V1[i] ^ ret) << " ";
+    }
+    cout << " : ";
+    for(int i=0;i<size(V2);i++) cout << V2[i] << " ";
+    cout << endl;
     if(ret == -1) {
         cout << "NOT POSSIBLE" << endl;
         return;
