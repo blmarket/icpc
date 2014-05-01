@@ -41,6 +41,7 @@ int main(void) {
 
     int T;
     scanf("%d", &T);
+    int bc = 0;
     for(int i=0;i<T;i++) {
         int n;
         scanf("%d", &n);
@@ -50,6 +51,13 @@ int main(void) {
             scanf("%d", &tmp);
             pp *= prob[0][j][tmp] * 1000;
         }
-        cout << pp << endl;
+        printf("Case #%d: ", T);
+        if(pp > 1) {
+            printf("BAD\n");
+            bc++;
+        } else {
+            printf("GOOD\n");
+        }
     }
+    cerr << bc << endl;
 }
