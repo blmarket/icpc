@@ -48,6 +48,9 @@ void solve(int dataId)
             int cnt = __builtin_popcount(i);
             if(ret < 0 || ret > cnt) ret = cnt;
         }
+        for(int j=0;j<N;j++) {
+            arr1[j] ^= i;
+        }
     }
     if(ret == -1) {
         cout << "NOT POSSIBLE" << endl;
