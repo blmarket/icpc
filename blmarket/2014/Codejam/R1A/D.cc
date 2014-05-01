@@ -45,6 +45,7 @@ int main(void) {
         }
         cout << endl;
     }
+    return 0;
 
     int T;
     scanf("%d", &T);
