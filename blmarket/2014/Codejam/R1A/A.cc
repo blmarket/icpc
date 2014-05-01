@@ -30,69 +30,31 @@ typedef vector<long long> VLL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, L;
-long long arr1[200], arr2[200];
-
-long long go(VLL &v1, VLL &v2) {
-    long long ret = 0;
-
-    for(int i=0;i<L;i++) {
-        VLL n1[2], n2[2];
-        n1[0].clear(); n1[1].clear();
-        n2[0].clear(); n2[1].clear();
-        int c1 = 0, c2 = 0;
-        for(int j=0;j<v1.size();j++) {
-            n1[(v1[j]>>i)&1].pb(v1[j]);
-            n2[(v2[j]>>i)&1].pb(v2[j]);
-            c1 += (v1[j]>>i)&1;
-            c2 += (v2[j]>>i)&1;
-        }
-        if(c1 != c2 && c1 != (v1.size()-c2)) return -1;
-        if(c1 != c2) ret |= (1LL << i);
-        if(c1*2 == N || c1 == 0 || c1 == v1.size()) continue;
-
-        if(n1[0].size() != n2[0].size()) {
-            ret = (1LL << i);
-            n2[0].swap(n2[1]);
-        }
-
-        long long tmp1 = go(n1[0], n2[0]) | go(n1[1], n2[1]);
-        return ret | tmp1;
-    }
-    return ret;
-}
+vector<long long> arr1, arr2;
 
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
-    sort(arr1, arr1+N);
-    sort(arr2, arr2+N);
 
-    bool same = true;
-    for(int i=0;i<N;i++) {
-        if(arr1[i] != arr2[i]) {
-            same = false;
-            break;
+    sort(arr2.begin(), arr2.end());
+
+    for(int i=0;i<(1<<L);i++) {
+        for(int j=0;j<N;j++) {
+            arr1[j] ^= i;
+        }
+        sort(arr1.begin(), arr1.end());
+        if(arr1 == arr2) {
+            cout << i << endl;
         }
     }
-    if(same) {
-        printf("0\n");
-        return;
-    }
-
-    vector<long long> V1(arr1, arr1+N), V2(arr2, arr2+N);
-    long long ret = go(V1, V2);
-    if(ret == -1) {
-        cout << "NOT POSSIBLE" << endl;
-        return;
-    }
-    cout << __builtin_popcount(ret) << endl;
 }
 
 void process(int dataId)
 {
     scanf("%d %d", &N, &L);
 
-    auto reads = [&](long long *arr) {
+    auto reads = [&](VLL &arr) {
+        arr.clear();
         char tmp[1024];
         for(int i=0;i<N;i++) {
             scanf(" %s", tmp);
@@ -100,7 +62,7 @@ void process(int dataId)
             for(int j=0;j<L;j++) if(tmp[j] == '1') {
                 tmp2 |= (1LL<<j);
             }
-            arr[i] = tmp2;
+            arr.pb(tmp2);
         }
     };
 
