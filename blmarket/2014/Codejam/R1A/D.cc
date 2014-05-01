@@ -36,7 +36,7 @@ int main(void) {
         //     }
         // }
 
-        for(int j=0;j<1000;j++) {
+        for(int j=0;j<1;j++) {
             for(int k=0;k<1000;k++) {
                 cout << prob[nex][j][k] << " ";
             }
