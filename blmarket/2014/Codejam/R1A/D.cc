@@ -28,6 +28,12 @@ int main(void) {
                 prob[nex][na][b] += 0.001 * prob[cur][a][b];
             }
         }
-        cout << i << endl;
+
+        for(int j=0;j<1000;j++) {
+            for(int k=0;k<1000;k++) {
+                cout << prob[nex][j][k] << " ";
+            }
+            cout << endl;
+        }
     }
 }
