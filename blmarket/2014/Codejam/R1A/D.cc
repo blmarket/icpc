@@ -37,13 +37,13 @@ int main(void) {
         //         prob[nex][na][b] += 0.001 * prob[cur][a][b];
         //     }
         // }
+    }
 
-        for(int j=0;j<1;j++) {
-            for(int k=0;k<1000;k++) {
-                cout << prob[nex][j][k] << " ";
-            }
-            cout << endl;
+    int nex = 1;
+    for(int j=0;j<1;j++) {
+        for(int k=0;k<1000;k++) {
+            cout << prob[nex][j][k] << " ";
         }
-        break;
+        cout << endl;
     }
 }
