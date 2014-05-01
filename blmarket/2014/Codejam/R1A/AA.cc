@@ -55,6 +55,8 @@ long long go(VLL &v1, VLL &v2) {
             n2[0].swap(n2[1]);
         }
 
+        cerr << "BIT" << i << endl << flush;
+
         long long tmp1 = go(n1[0], n2[0]) | go(n1[1], n2[1]);
         return ret | tmp1;
     }
