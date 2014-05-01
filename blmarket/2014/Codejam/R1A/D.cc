@@ -39,11 +39,17 @@ int main(void) {
         // }
     }
 
-    int nex = 1;
-    for(int j=0;j<1;j++) {
-        for(int k=0;k<1000;k++) {
-            cout << prob[nex][j][k] << " ";
+    int T;
+    scanf("%d", &T);
+    for(int i=0;i<T;i++) {
+        int n;
+        scanf("%d", &n);
+        double pp = 1;
+        for(int j=0;j<n;j++) {
+            int tmp;
+            scanf("%d", &tmp);
+            pp *= prob[0][j][tmp] * 1000;
         }
-        cout << endl;
+        cout << pp << endl;
     }
 }
