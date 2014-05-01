@@ -3,34 +3,31 @@
 
 using namespace std;
 
-int arr[1024];
+double prob[2][1024][1024];
 
 int main(void) {
-    int T;
-    cin >> T;
-    int bc = 0;
-    for(int i=0;i<T;i++) {
-        int N;
-        cin >> N;
-        for(int j=0;j<N;j++) {
-            cin >> arr[j];
-        }
-        printf("Case #%d: ", i+1);
+    for(int i=0;i<1000;i++) {
+        prob[0][i][i] = 1.0;
+    }
 
-        int nswap = 0;
-        for(int j=0;j<N;j++) {
-            while(arr[j] != j) {
-                nswap++;
-                swap(arr[j], arr[arr[j]]);
+    for(int i=0;i<1000;i++) {
+        int cur = (i%2);
+        int nex = (1-cur);
+
+        memset(prob[nex], 0, sizeof(prob[0]));
+
+        // for(int j=0;j<1000;j++) for(int k=0;k<1000;k++) prob[nex][j][k] = prob[cur][j][k] * 0.999;
+
+        for(int j=0;j<1000;j++) {
+
+            for(int a=0;a<1000;a++) for(int b=0;b<1000;b++) {
+                int na = a;
+                if(a == i || a == j) {
+                    na = (i+j-a);
+                }
+                prob[nex][na][b] += 0.001 * prob[cur][a][b];
             }
         }
-        cerr << nswap << endl;
-        if(nswap < 993) {
-            cout << "BAD" << endl;
-            bc++;
-        } else {
-            cout << "GOOD" << endl;
-        }
+        cout << i << endl;
     }
-    cerr << bc << endl;
 }
