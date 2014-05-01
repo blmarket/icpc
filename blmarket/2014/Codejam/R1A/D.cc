@@ -39,6 +39,13 @@ int main(void) {
         // }
     }
 
+    for(int i=0;i<1000;i++) {
+        for(int j=0;j<1000;j++) {
+            cout << prob[0][i][j] << " ";
+        }
+        cout << endl;
+    }
+
     int T;
     scanf("%d", &T);
     int bc = 0;
