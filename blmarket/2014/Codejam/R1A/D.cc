@@ -51,7 +51,7 @@ int main(void) {
             scanf("%d", &tmp);
             pp *= prob[0][j][tmp] * 1000;
         }
-        printf("Case #%d: ", T);
+        printf("Case #%d: ", i+1);
         if(pp > 1.5) {
             printf("BAD\n");
             bc++;
