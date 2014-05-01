@@ -51,7 +51,7 @@ long long go(VLL &v1, VLL &v2) {
         if(c1*2 == N || c1 == 0 || c1 == v1.size()) continue;
 
         if(n1[0].size() != n2[0].size()) {
-            ret = (1LL << i);
+            ret |= (1LL << i);
             n2[0].swap(n2[1]);
         }
 
