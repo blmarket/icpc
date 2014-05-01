@@ -42,5 +42,6 @@ int main(void) {
             }
             cout << endl;
         }
+        break;
     }
 }
