@@ -49,6 +49,7 @@ long long go(VLL &v1, VLL &v2) {
         cerr << i << " : " << c1 << " " << c2 << " " << v1.size() << endl;
 
         if(c1 != c2 && c1 != (v1.size()-c2)) return -1;
+        if(c1 == 0 || c1 == v1.size()) continue;
 
         if(c1 == c2) {
             ret = go(n1[0], n2[0]) | go(n1[1], n2[1]) | ret;
