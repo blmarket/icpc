@@ -52,7 +52,7 @@ int main(void) {
             pp *= prob[0][j][tmp] * 1000;
         }
         printf("Case #%d: ", T);
-        if(pp > 1) {
+        if(pp > 1.5) {
             printf("BAD\n");
             bc++;
         } else {
