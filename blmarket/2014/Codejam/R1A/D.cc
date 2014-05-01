@@ -16,6 +16,8 @@ int main(void) {
 
         memset(prob[nex], 0, sizeof(prob[0]));
 
+        for(int j=0;j<1000;j++) prob[nex][i][j] = prob[cur][i][j];
+
         for(int j=0;j<1000;j++) if(j != i) {
             for(int k=0;k<1000;k++) {
                 prob[nex][j][k] += prob[cur][j][k] * 0.999 + prob[cur][i][k] * 0.001;
