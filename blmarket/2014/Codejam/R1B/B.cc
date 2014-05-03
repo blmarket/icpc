@@ -30,44 +30,49 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long A,B,K;
 
-vector<PII> es(long long a) {
-    vector<PII> ret;
-    for(int i=0;i<31;i++) {
-        if(a & (1LL<<i)) {
-            ret.pb(mp(a & ~((1LL<<(i+1))-1), i));
+long long memo[2][2][2][40];
+
+long long go(bool lta, bool ltb, bool ltk, int pos) {
+    if(pos == -1) return 1;
+
+    long long &ret = memo[lta][ltb][ltk][pos];
+    if(ret != -1) return ret;
+
+    int cur = (1 << pos);
+    ret = 0;
+
+    // can take 1 from A
+    if(lta || (A&cur)) {
+        // take 1 from B
+        if(ltb || (B & cur)) {
+            if(ltk || (K & cur)) {
+                ret += go(lta, ltb, ltk, pos - 1);
+            }
         }
+
+        ret += go(lta, ltb || (B & cur), ltk || (K & cur), pos - 1);
     }
+
+    if(ltb || (B & cur)) {
+        ret += go(lta || (A & cur), ltb, ltk || (K & cur), pos - 1);
+    }
+
+    ret += go(lta || (A & cur), ltb || (B & cur), ltk || (K & cur), pos - 1);
+
     return ret;
 }
 
 void solve(int dataId)
 {
+    memset(memo, -1, sizeof(memo));
     printf("Case #%d: ", dataId);
-
-    vector<PII> va, vb;
-    va = es(A);
-    vb = es(B);
-
-    long long ret = 0;
-    for(int i=0;i<size(va);i++) {
-        for(int j=0;j<size(vb);j++) {
-            long long big = va[i].first & vb[j].first;
-            int dgts = min(va[i].second, vb[j].second);
-            cout << big << " " << dgts << endl;
-            if(big >= K) continue;
-            if(big | ((1LL<<dgts)-1) < K) {
-                ret += (1LL << dgts);
-            } else {
-                cout << "HERE" << endl;
-            }
-        }
-    }
-    cout << ret << endl;
+    go(false, false, false, 1<<30);
 }
 
 void process(int dataId)
 {
     cin >> A >> B >> K;
+    A--; B--; K--;
 }
 
 class ForkSolver {
