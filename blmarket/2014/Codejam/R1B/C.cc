@@ -118,7 +118,7 @@ void solve(int dataId)
 void process(int dataId)
 {
     cin >> n >> m;
-    for(int i=0;i<n;i++) links[i+1].clear();
+    for(int i=0;i<n;i++) links[i].clear();
     for(int i=0;i<n;i++) cin >> label[i];
     for(int i=0;i<m;i++) {
         int a,b;
