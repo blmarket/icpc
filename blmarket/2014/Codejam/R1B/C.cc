@@ -39,16 +39,23 @@ void solve(int dataId)
     vector<int> V;
     for(int i=0;i<n;i++) V.pb(i);
 
+    string ret;
     do {
+        ostringstream ost;
+        ost << label[V[0]];
         bool fail = false;
         for(int i=1;i<size(V);i++) {
+            ost << label[V[i]];
             vector<int> &l = links[V[i-1]];
             if(find(l.begin(), l.end(), V[i]) == l.end()) {
                 fail = true;
                 break;
             }
         }
+        string tmp = ost.str();
+        if(ret == "" || ret > tmp) ret = tmp;
     } while(next_permutation(V.begin(), V.end()));
+    cout << ret << endl;
 }
 
 void process(int dataId)
