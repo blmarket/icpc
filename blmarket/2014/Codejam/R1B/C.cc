@@ -63,6 +63,9 @@ void go(int a, vector<int> &stack) {
     visited[a] = true;
     stack.pb(a);
 
+    for(int i=0;i<size(stack);i++) cout << stack[i] << " ";
+    cout << endl;
+
     vector<pair<int, PII> > candis;
     vector<bool> copy_visited = visited;
 
