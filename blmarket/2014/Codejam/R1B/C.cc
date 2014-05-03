@@ -59,6 +59,7 @@ bool solvable(vector<int> &stack) {
 }
 
 void go(int a, vector<int> &stack) {
+    cout << a << " " << stack.size() << endl;
     ost << label[a];
     visited[a] = true;
     stack.pb(a);
@@ -109,7 +110,6 @@ void solve(int dataId)
     vector<int> V;
     visited.clear();
     visited.resize(n+1);
-    cout << "here" << endl;
     go(mm, V);
     cout << ost.str() << endl;
 }
