@@ -52,6 +52,7 @@ void solve(int dataId)
                 break;
             }
         }
+        if(fail) continue;
         string tmp = ost.str();
         if(ret == "" || ret > tmp) ret = tmp;
     } while(next_permutation(V.begin(), V.end()));
