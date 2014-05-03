@@ -45,7 +45,6 @@ void solve(int dataId)
         ost << label[V[0]];
         bool fail = false;
         for(int i=1;i<size(V);i++) {
-            cout << i << endl;
             ost << label[V[i]];
             vector<int> &l = links[V[i-1]];
             if(find(l.begin(), l.end(), V[i]) == l.end()) {
