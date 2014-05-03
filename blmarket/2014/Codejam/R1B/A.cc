@@ -30,12 +30,28 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 vector<string> V;
+int arr[1024][1024];
 
-string comp(const string &a) {
+string comp(int idx, const string &a) {
     string ret;
     ret += a[0];
+    arr[idx][0] = 1;
+    int j = 0;
     for(int i=1;i<size(a);i++) {
-        if(a[i] != a[i-1]) ret += a[i];
+        if(a[i] != a[i-1]) {
+            ret += a[i];
+            ++j;
+        }
+        arr[idx][j]++;
+    }
+    return ret;
+}
+
+int go(const vector<int> &VV) {
+    int mid = VV[VV.size() / 2];
+    int ret = 0;
+    for(int i=0;i<size(VV);i++) {
+        ret += abs(VV[i] - mid);
     }
     return ret;
 }
@@ -44,16 +60,25 @@ void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
 
-    string c0 = comp(V[0]);
+    string c0 = comp(0, V[0]);
     for(int i=1;i<size(V);i++) {
-        string tmp = comp(V[i]);
+        string tmp = comp(i, V[i]);
         if(tmp != c0) {
             cout << "Fegla Won" << endl;
             return;
         }
     }
 
-    cout << 0 << endl;
+    int ret = 0;
+    for(int i=0;i<size(c0);i++) {
+        vector<int> VV;
+        VV.clear();
+        for(int j=0;j<n;j++) VV.pb(arr[j][i]);
+        sort(VV.begin(), VV.end());
+        ret += go(VV);
+    }
+
+    cout << ret << endl;
 }
 
 void process(int dataId)
