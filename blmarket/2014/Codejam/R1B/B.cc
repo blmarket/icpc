@@ -33,6 +33,7 @@ long long A,B,K;
 long long memo[2][2][2][40];
 
 long long go(bool lta, bool ltb, bool ltk, int pos) {
+    cout << lta << " " << ltb << " " << ltk << " " << pos << endl;
     if(pos == -1) return 1;
 
     long long &ret = memo[lta][ltb][ltk][pos];
