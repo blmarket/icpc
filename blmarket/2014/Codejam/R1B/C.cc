@@ -43,16 +43,21 @@ void solve(int dataId)
     do {
         ostringstream ost;
         ost << label[V[0]];
-        bool fail = false;
+        vector<int> stak;
+        stak.pb(V[0]);
         for(int i=1;i<size(V);i++) {
             ost << label[V[i]];
-            vector<int> &l = links[V[i-1]];
-            if(find(l.begin(), l.end(), V[i]) == l.end()) {
-                fail = true;
-                break;
+            while(stak.size() > 0){
+                vector<int> &l = links[stak.back()];
+                if(find(l.begin(), l.end(), V[i]) != l.end()) {
+                    break;
+                }
+                stak.pop_back();
             }
+            if(stak.size() == 0) break;
+            stak.pb(V[i]);
         }
-        if(fail) continue;
+        if(stak.size() == 0) continue;
         string tmp = ost.str();
         if(ret == "" || ret > tmp) ret = tmp;
     } while(next_permutation(V.begin(), V.end()));
