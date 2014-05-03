@@ -30,25 +30,33 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long A,B,K;
 
+vector<PII> es(long long a) {
+    vector<PII> ret;
+    for(int i=0;i<31;i++) {
+        if(a & (1LL<<i)) {
+            ret.pb(mp(a & ~((1LL<<i)-1), i));
+        }
+    }
+    return ret;
+}
+
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
-    long long ret = 0;
 
-    for(int i=0;i<=A;i++) {
-        for(int j=0;j<=B;j++) {
-            if((i&j) <= K) ret++;
-        }
+    vector<PII> va, vb;
+    va = es(A);
+    vb = es(B);
+
+    for(int i=0;i<size(va);i++) {
+        cout << va[i].first << "," << va[i].second << " ";
     }
-
-    cout << ret << endl;
-    
+    cout << endl;
 }
 
 void process(int dataId)
 {
     cin >> A >> B >> K;
-    A--; B--; K--;
 }
 
 class ForkSolver {
