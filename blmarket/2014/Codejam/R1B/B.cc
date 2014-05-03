@@ -66,7 +66,7 @@ void solve(int dataId)
 {
     memset(memo, -1, sizeof(memo));
     printf("Case #%d: ", dataId);
-    go(false, false, false, 1<<30);
+    cout << go(false, false, false, 1<<30) << endl;
 }
 
 void process(int dataId)
