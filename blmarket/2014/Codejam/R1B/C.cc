@@ -68,7 +68,7 @@ void go(int a, vector<int> &stack) {
 
     vector<int> V = stack;
     while(V.size()) {
-        for(int i=0;i<n;i++) if(!copy_visited[i]) if(ff[a][i]) {
+        for(int i=0;i<n;i++) if(!copy_visited[i]) if(ff[V.back()][i]) {
             copy_visited[i] = true;
             candis.pb(mp(label[i], mp(i, size(V))));
         }
