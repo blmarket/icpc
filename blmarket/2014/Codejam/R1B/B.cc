@@ -33,11 +33,9 @@ long long A,B,K;
 long long memo[2][2][2][40];
 
 long long go(bool lta, bool ltb, bool ltk, int pos) {
-    cout << lta << " " << ltb << " " << ltk << " " << pos << endl;
     if(pos == -1) return 1;
 
     long long &ret = memo[lta][ltb][ltk][pos];
-    cout << ret << endl;
     if(ret != -1) return ret;
 
     int cur = (1 << pos);
@@ -68,7 +66,7 @@ void solve(int dataId)
 {
     memset(memo, -1, sizeof(memo));
     printf("Case #%d: ", dataId);
-    cout << go(false, false, false, 1<<30) << endl;
+    cout << go(false, false, false, 30) << endl;
 }
 
 void process(int dataId)
