@@ -76,10 +76,10 @@ void go(int a, vector<int> &stack) {
         if(!solvable(V)) break;
     }
     
-    for(int i=0;i<size(stack);i++) {
-        cout << label[stack[i]] << " ";
-    }
-    cout << ": " << size(candis) << endl;
+    // for(int i=0;i<size(stack);i++) {
+    //     cout << label[stack[i]] << " ";
+    // }
+    // cout << ": " << size(candis) << endl;
 
     if(candis.size() == 0) return;
     sort(candis.begin(), candis.end());
