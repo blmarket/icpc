@@ -76,10 +76,6 @@ void go(int a, vector<int> &stack) {
         if(!solvable(V)) break;
     }
 
-    for(int i=0;i<size(stack);i++) cout << label[stack[i]] << " ";
-    cout << candis.size() << endl;
-    cout << "HERE" << ff[4][3] << " " << copy_visited[3] << endl;
-
     if(candis.size() == 0) return;
     sort(candis.begin(), candis.end());
     int npos = candis[0].second.first;
