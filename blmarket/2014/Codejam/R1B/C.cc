@@ -78,7 +78,7 @@ void go(int a, vector<int> &stack) {
 
     for(int i=0;i<size(stack);i++) cout << label[stack[i]] << " ";
     cout << candis.size() << endl;
-    cout << ff[4][1] << endl;
+    cout << ff[4][3] << endl;
 
     if(candis.size() == 0) return;
     sort(candis.begin(), candis.end());
