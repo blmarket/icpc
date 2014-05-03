@@ -53,6 +53,7 @@ void solve(int dataId)
         for(int j=0;j<size(vb);j++) {
             long long big = va[i].first & vb[j].first;
             int dgts = min(va[i].second, vb[j].second);
+            cout << big << " " << dgts << endl;
             if(big >= K) continue;
             if(big | ((1LL<<dgts)-1) < K) {
                 ret += (1LL << dgts);
