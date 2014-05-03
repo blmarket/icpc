@@ -37,6 +37,7 @@ long long go(bool lta, bool ltb, bool ltk, int pos) {
     if(pos == -1) return 1;
 
     long long &ret = memo[lta][ltb][ltk][pos];
+    cout << ret << endl;
     if(ret != -1) return ret;
 
     int cur = (1 << pos);
