@@ -34,7 +34,7 @@ vector<PII> es(long long a) {
     vector<PII> ret;
     for(int i=0;i<31;i++) {
         if(a & (1LL<<i)) {
-            ret.pb(mp(a & ~((1LL<<i)-1), i));
+            ret.pb(mp(a & ~((1LL<<(i+1))-1), i));
         }
     }
     return ret;
