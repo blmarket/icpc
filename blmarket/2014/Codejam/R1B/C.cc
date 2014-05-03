@@ -109,6 +109,7 @@ void solve(int dataId)
     vector<int> V;
     visited.clear();
     visited.resize(n+1);
+    cout << "here" << endl;
     go(mm, V);
     cout << ost.str() << endl;
 }
