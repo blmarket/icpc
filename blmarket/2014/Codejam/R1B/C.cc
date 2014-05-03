@@ -87,8 +87,7 @@ void go(int a, vector<int> &stack) {
     int nstack = candis[0].second.second;
     stack.resize(nstack);
 
-    ff[stack.back()][npos] = 0;
-    ff[npos][stack.back()] = 0;
+    for(int i=0;i<n;i++) ff[i][npos] = 0;
 
     go(npos, stack);
 }
