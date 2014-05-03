@@ -63,9 +63,6 @@ void go(int a, vector<int> &stack) {
     visited[a] = true;
     stack.pb(a);
 
-    for(int i=0;i<size(stack);i++) cout << label[stack[i]] << " ";
-    cout << endl;
-
     vector<pair<int, PII> > candis;
     vector<bool> copy_visited = visited;
 
@@ -78,6 +75,9 @@ void go(int a, vector<int> &stack) {
         V.pop_back();
         if(!solvable(V)) break;
     }
+
+    for(int i=0;i<size(stack);i++) cout << label[stack[i]] << " ";
+    cout << candis.size() << endl;
 
     if(candis.size() == 0) return;
     sort(candis.begin(), candis.end());
