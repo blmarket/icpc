@@ -32,36 +32,85 @@ int n, m;
 int label[55];
 vector<int> links[55];
 
+int ff[55][55];
+int tt[55][55];
+vector<bool> visited;
+
+ostringstream ost;
+
+bool solvable(vector<int> &stack) {
+    memcpy(tt, ff, sizeof(tt));
+    for(int k=0;k<n;k++) {
+        for(int i=0;i<n;i++) if(tt[i][k]) {
+            for(int j=0;j<n;j++) if(tt[k][j]) {
+                tt[i][j] = 1;
+            }
+        }
+    }
+
+    for(int i=0;i<n;i++) if(!visited[i]) {
+        bool good = false;
+        for(int j=0;j<size(stack);j++) {
+            if(tt[stack[j]][i]) { good = true; break; }
+        }
+        if(!good) return false;
+    }
+    return true;
+}
+
+void go(int a, vector<int> &stack) {
+    ost << label[a];
+    visited[a] = true;
+    stack.pb(a);
+
+    vector<pair<int, PII> > candis;
+    vector<bool> copy_visited = visited;
+
+    vector<int> V = stack;
+    while(V.size()) {
+        for(int i=0;i<n;i++) if(!copy_visited[i]) if(ff[a][i]) {
+            copy_visited[i] = true;
+            candis.pb(mp(label[i], mp(i, size(V))));
+        }
+        V.pop_back();
+        if(!solvable(V)) break;
+    }
+
+    sort(candis.begin(), candis.end());
+    int npos = candis[0].second.first;
+    int nstack = candis[0].second.second;
+    stack.resize(nstack);
+
+    ff[stack.back()][npos] = 0;
+    ff[npos][stack.back()] = 0;
+
+    go(npos, stack);
+}
+
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
 
-    vector<int> V;
-    for(int i=0;i<n;i++) V.pb(i);
-
-    string ret;
-    do {
-        ostringstream ost;
-        ost << label[V[0]];
-        vector<int> stak;
-        stak.pb(V[0]);
-        for(int i=1;i<size(V);i++) {
-            ost << label[V[i]];
-            while(stak.size() > 0){
-                vector<int> &l = links[stak.back()];
-                if(find(l.begin(), l.end(), V[i]) != l.end()) {
-                    break;
-                }
-                stak.pop_back();
-            }
-            if(stak.size() == 0) break;
-            stak.pb(V[i]);
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<size(links[i]);j++) {
+            ff[i][links[i][j]] = 1;
         }
-        if(stak.size() == 0) continue;
-        string tmp = ost.str();
-        if(ret == "" || ret > tmp) ret = tmp;
-    } while(next_permutation(V.begin(), V.end()));
-    cout << ret << endl;
+    }
+
+    int minlabel = 999999;
+    int mm = -1;
+    for(int i=0;i<n;i++) {
+        if(minlabel > label[i]) {
+            minlabel = label[i];
+            mm = i;
+        }
+    }
+
+    vector<int> V;
+    visited.clear();
+    visited.resize(n+1);
+    go(mm, V);
+    cout << ost.str() << endl;
 }
 
 void process(int dataId)
