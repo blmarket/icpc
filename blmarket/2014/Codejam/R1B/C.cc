@@ -59,8 +59,6 @@ bool solvable(vector<int> &stack) {
 }
 
 void go(int a, vector<int> &stack) {
-    cout << a << " " << stack.size() << endl;
-
     ost << label[a];
     visited[a] = true;
     stack.pb(a);
@@ -78,8 +76,8 @@ void go(int a, vector<int> &stack) {
         if(!solvable(V)) break;
     }
 
-    sort(candis.begin(), candis.end());
     if(candis.size() == 0) return;
+    sort(candis.begin(), candis.end());
     int npos = candis[0].second.first;
     int nstack = candis[0].second.second;
     stack.resize(nstack);
