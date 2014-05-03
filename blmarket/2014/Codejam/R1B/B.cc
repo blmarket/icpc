@@ -48,10 +48,20 @@ void solve(int dataId)
     va = es(A);
     vb = es(B);
 
+    long long ret = 0;
     for(int i=0;i<size(va);i++) {
-        cout << va[i].first << "," << va[i].second << " ";
+        for(int j=0;j<size(vb);j++) {
+            long long big = va[i].first & vb[j].first;
+            int dgts = min(va[i].second, vb[j].second);
+            if(big >= K) continue;
+            if(big | ((1LL<<dgts)-1) < K) {
+                ret += (1LL << dgts);
+            } else {
+                cout << "HERE" << endl;
+            }
+        }
     }
-    cout << endl;
+    cout << ret << endl;
 }
 
 void process(int dataId)
