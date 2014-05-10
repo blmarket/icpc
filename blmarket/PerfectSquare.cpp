@@ -75,6 +75,7 @@ public:
         }
 
         vector<set<int> > vc;
+        int nz;
         for(int i=0;i<n;i++) {
             for(int j=0;j<n;j++) {
                 for(int k=i+1;k<n;k++) {
@@ -83,7 +84,11 @@ public:
                         xxor(tmp, vv[k][j]);
                         xxor(tmp, vv[i][l]);
                         xxor(tmp, vv[k][l]);
-                        vc.pb(tmp);
+                        if(tmp.size() == 0) {
+                            nz++;
+                        } else {
+                            vc.pb(tmp);
+                        }
                     }
                 }
             }
@@ -100,6 +105,7 @@ public:
             }
             cout << endl;
         }
+        cout << "nz = " << nz << endl;
 
         return 0;
     }
