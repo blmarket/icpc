@@ -74,10 +74,33 @@ public:
             xxor(base, vv[i][i]);
         }
 
+        vector<set<int> > vc;
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) {
+                for(int k=i+1;k<n;k++) {
+                    for(int l=j+1;l<n;l++) {
+                        set<int> tmp = vv[i][j];
+                        xxor(tmp, vv[k][j]);
+                        xxor(tmp, vv[i][l]);
+                        xxor(tmp, vv[k][l]);
+                        vc.pb(tmp);
+                    }
+                }
+            }
+        }
+
         for(auto it : base) {
             cout << it << " ";
         }
         cout << endl;
+
+        for(int i=0;i<size(vc);i++) {
+            for(auto it : vc[i]) {
+                cout << it << " ";
+            }
+            cout << endl;
+        }
+
         return 0;
     }
 
