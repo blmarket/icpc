@@ -104,8 +104,11 @@ public:
             }
         }
         if(diag.size()) return 0;
-        cout << c0 << endl;
-        return 1;
+        long long ret = 1;
+        for(int i=0;i<c0;i++) {
+            ret = (ret * 2) % 1000000007LL;
+        }
+        return ret;
     }
 
     
