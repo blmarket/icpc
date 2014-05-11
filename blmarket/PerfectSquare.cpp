@@ -20,94 +20,31 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-set<int> vv[22][22];
-vector<int> primes;
-
-void ryze(int a, set<int> &ret) {
-    ret.clear();
-    for(int i=0;i<size(primes);i++) {
-        int cnt = 0;
-        while((a % primes[i]) == 0) {
-            a /= primes[i];
-            cnt++;
-        }
-        if(cnt&1) {
-            ret.insert(primes[i]);
-        }
-    }
-    if(a) ret.insert(a);
-}
-
-void xxor(set<int> &a, const set<int> &b) {
-    for(int it : b) {
-        auto jt = a.find(it);
-        if(jt != a.end()) a.erase(jt); else a.insert(it);
-    }
-}
+int xx[22][22];
+VI primes;
 
 class PerfectSquare 
 {
 public:
     int ways(vector <int> x) 
-    {
+    {		
         int n;
         for(n=1;n*n < size(x);n++);
+        for(int i=0;i<size(x);i++) xx[i/n][i%n] = x[i];
 
         primes.pb(2);
-        for(int i=3;i<100005;i+=2) {
-            bool divi = false;
+        for(int i=3;i<100000;i+=2) {
+            bool fail = false;
             for(int j=0;j<size(primes);j++) {
-                if(primes[j] * primes[j] > i) break;
-                if((i % primes[j]) == 0) {
-                    divi = true; break;
-                }
+                if(primes[j]*primes[j] > i) break;
+                if(i % primes[j] == 0) { fail = true; break; }
             }
-            if(!divi) primes.pb(i);
+            if(!fail) primes.pb(i);
         }
 
-        for(int i=0;i<size(x);i++) {
-            ryze(x[i], vv[i/n][i%n]);
-        }
-
-        set<int> base;
-        for(int i=0;i<n;i++) {
-            xxor(base, vv[i][i]);
-        }
-
-        vector<set<int> > vc;
-        int nz;
-        for(int i=0;i<n;i++) {
-            for(int j=0;j<n;j++) {
-                for(int k=i+1;k<n;k++) {
-                    for(int l=j+1;l<n;l++) {
-                        set<int> tmp = vv[i][j];
-                        xxor(tmp, vv[k][j]);
-                        xxor(tmp, vv[i][l]);
-                        xxor(tmp, vv[k][l]);
-                        if(tmp.size() == 0) {
-                            nz++;
-                        } else {
-                            vc.pb(tmp);
-                        }
-                    }
-                }
-            }
-        }
-
-        for(auto it : base) {
-            cout << it << " ";
-        }
+        for(auto it : primes) cout << it << " ";
         cout << endl;
 
-        for(int i=0;i<size(vc);i++) {
-            for(auto it : vc[i]) {
-                cout << it << " ";
-            }
-            cout << endl;
-        }
-        cout << "nz = " << nz << endl;
-
-        return 0;
     }
 
     
