@@ -8,6 +8,7 @@
 
 #define mp make_pair
 #define pb push_back
+#define eb emplace_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
@@ -22,6 +23,31 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int xx[22][22];
 VI primes;
+
+void xxor(set<int> &a, set<int> b) {
+    for(auto it : b) {
+        auto jt = a.find(it);
+        if(jt == a.end()) {
+            a.insert(it);
+        } else {
+            a.erase(jt);
+        }
+    }
+}
+
+set<int> ryze(int a) {
+    set<int> ret;
+    for(int i=0;i<size(primes);i++) {
+        int cnt = 0;
+        while((a % primes[i]) == 0) {
+            cnt++;
+            a /= primes[i];
+        }
+        if(cnt&1) ret.insert(primes[i]);
+    }
+    if(a > 1) ret.insert(a);
+    return ret;
+}
 
 class PerfectSquare 
 {
@@ -43,8 +69,21 @@ public:
             if(!fail) primes.pb(i);
         }
 
-        for(auto it : primes) cout << it << " ";
-        cout << endl;
+        vector<set<int> > vs;
+        for(int i=0;i+1<n;i++) {
+            for(int j=0;j+1<n;j++) {
+                auto t1 = ryze(xx[i][j]);
+                auto t2 = ryze(xx[i][j+1]);
+                auto t3 = ryze(xx[i+1][j]);
+                auto t4 = ryze(xx[i+1][j+1]);
+                xxor(t1, t2);
+                xxor(t1, t3);
+                xxor(t1, t4);
+                vs.eb(t1);
+            }
+        }
+
+        return 0;
     }
 
     
