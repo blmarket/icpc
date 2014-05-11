@@ -69,6 +69,12 @@ public:
             if(!fail) primes.pb(i);
         }
 
+        set<int> diag;
+        for(int i=0;i<n;i++) {
+            auto tmp = ryze(xx[i][i]);
+            xxor(diag, tmp);
+        }
+
         vector<set<int> > vs;
         for(int i=0;i+1<n;i++) {
             for(int j=0;j+1<n;j++) {
@@ -83,7 +89,23 @@ public:
             }
         }
 
-        return 0;
+        int c0 = 0;
+        for(int i=0;i<size(vs);i++) {
+            if(vs[i].size() == 0) {
+                c0++;
+            } else {
+                int fs = *(vs[i].begin());
+                for(int j=i+1;j<size(vs);j++) {
+                    if(vs[j].count(fs)) {
+                        xxor(vs[j], vs[i]);
+                    }
+                }
+                if(diag.count(fs)) xxor(diag, vs[i]);
+            }
+        }
+        if(diag.size()) return 0;
+        cout << c0 << endl;
+        return 1;
     }
 
     
