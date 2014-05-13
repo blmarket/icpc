@@ -37,7 +37,7 @@ void solve(int dataId)
         printf("impossible\n");
         return;
     }
-    int depth = 0;
+    int depth = 1;
 
     while(P < Q/2) {
         depth++;
