@@ -108,6 +108,7 @@ public:
                     if(is[l] < i) tmp3 += L;
                 }
 
+                cout << i << " - " << tmp2 << " " << tmp3 << endl;
                 tmp += min(tmp2, tmp3);
             }
 
