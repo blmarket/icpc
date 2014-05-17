@@ -97,8 +97,6 @@ public:
                 tmp += (L - V[k].first);
             }
 
-            cout << i << " : " << j << " " << k << " " << tmp << endl;
-
             if(j < k) {
                 int tmp2 = 0, tmp3 = 0;
                 for(int l=j;l<=k;l++) {
@@ -108,7 +106,6 @@ public:
                     if(is[l] < i) tmp3 += L;
                 }
 
-                cout << i << " - " << tmp2 << " " << tmp3 << endl;
                 tmp += min(tmp2, tmp3);
             }
 
