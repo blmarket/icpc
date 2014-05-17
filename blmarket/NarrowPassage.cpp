@@ -62,7 +62,7 @@ public:
         cout << endl;
 
         for(int i=0;i<size(V);i++)
-            cout << (i == is[i]) << " ";
+            cout << (i == is[i] ? i : -1) << " ";
         cout << endl;
 
         int ret = -1;
