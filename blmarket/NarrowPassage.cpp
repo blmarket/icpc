@@ -37,6 +37,7 @@ public:
             cout << (ai==bi) << " ";
         }
         cout << endl;
+        return 0;
     }
 
     
