@@ -40,6 +40,7 @@ public:
                 }
             }
         }
+        swap(arr[0][0], arr[1][1]);
         int ret = 16;
         for(int i=0;i<5;i++) {
             for(int j=0;j<5;j++) {
