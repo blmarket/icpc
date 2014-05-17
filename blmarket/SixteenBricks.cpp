@@ -37,12 +37,13 @@ public:
         arr[3][2] = height[14];
         arr[1][2] = height[13];
         arr[2][1] = height[12];
+
         int jj = 4;
         int kk = 11;
 
         for(int i=0;i<4;i++) {
             for(int j=0;j<4;j++) {
-                if(arr[i][j] == 0) {
+                if(arr[i+1][j+1] == 0) {
                     if((i&1) == (j&1)) {
                         arr[i+1][j+1] = height[jj++];
                     } else {
