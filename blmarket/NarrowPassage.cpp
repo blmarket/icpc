@@ -97,6 +97,8 @@ public:
                 tmp += (L - V[k].first);
             }
 
+            cout << i << " : " << tmp << endl;
+
             if(j < k) {
                 tmp = 1000;
                 cout << "HERE" << endl;
