@@ -40,7 +40,7 @@ public:
                 }
             }
         }
-        int ret = 32;
+        int ret = 16;
         for(int i=0;i<5;i++) {
             for(int j=0;j<5;j++) {
                 ret += abs(arr[i][j+1] - arr[i][j]);
