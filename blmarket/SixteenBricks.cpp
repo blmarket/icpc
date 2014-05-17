@@ -31,10 +31,10 @@ public:
         memset(arr, 0, sizeof(arr));
         int jj = 2;
         int kk = size(height) - 3;
-        arr[1][1] = height[0];
-        arr[2][2] = height[1];
-        arr[1][2] = height[15];
-        arr[2][1] = height[14];
+        arr[2][2] = height[0];
+        arr[3][3] = height[1];
+        arr[2][3] = height[15];
+        arr[3][2] = height[14];
         for(int i=0;i<4;i++) {
             for(int j=0;j<4;j++) {
                 if(i == 0 || i == 3 || j == 0 || j == 3) {
@@ -46,6 +46,8 @@ public:
                 }
             }
         }
+
+
         int ret = 16;
         for(int i=0;i<5;i++) {
             for(int j=0;j<5;j++) {
