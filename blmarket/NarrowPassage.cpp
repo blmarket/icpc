@@ -37,7 +37,7 @@ public:
         for(int i=0;i<size(a);i++) V.pb(mp(a[i], b[i]));
         sort(V.begin(), V.end());
         for(int i=0;i<size(V);i++) {
-            cout << V[i].first << "-" << V[i].second << " ";
+            cout << V[i].second << " ";
         }
         cout << endl;
         as = a, bs = b;
