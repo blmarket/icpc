@@ -98,6 +98,7 @@ public:
             }
 
             if(j < k) {
+                cout << "HERE" << endl;
             }
 
             for(;j;j--) { tmp += V[j].second; }
