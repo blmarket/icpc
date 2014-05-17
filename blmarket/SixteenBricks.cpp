@@ -54,7 +54,8 @@ public:
         }
 
         swap(arr[4][1], arr[4][3]);
-        // swap(arr[2][1], arr[3][4]);
+        swap(arr[1][1], arr[4][2]);
+        swap(arr[1][4], arr[4][3]);
         for(int i=1;i<=4;i++) {
             for(int j=1;j<=4;j++) cout << arr[i][j] << " ";
             cout << endl;
