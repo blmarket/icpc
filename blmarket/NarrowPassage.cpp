@@ -97,6 +97,8 @@ public:
                 tmp += (L - V[k].first);
             }
 
+            cout << i << " " << j << " " << k << endl;
+
             if(j < k) {
                 int tmp2 = 0, tmp3 = 0;
                 for(int l=j;l<=k;l++) {
