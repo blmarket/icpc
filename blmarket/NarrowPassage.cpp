@@ -22,22 +22,40 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int idx(vector<int> &V, int t) { return lower_bound(V.begin(), V.end(), t) - V.begin(); }
 
+vector<int> a,b,as,bs;
+vector<PII> V;
+
+int trial(int s, int e, bool left) {
+}
+
 class NarrowPassage 
 {
 public:
-    int minDist(int L, vector <int> a, vector <int> b) 
+    int minDist(int L, vector <int> a_, vector <int> b_) 
     {
-        vector<int> as = a, bs = b;
+        a=a_;b=b_;
+        for(int i=0;i<size(a);i++) V.pb(mp(a[i], b[i]));
+        sort(V.begin(), V.end());
+        for(int i=0;i<size(V);i++) {
+            cout << V[i].first << "-" << V[i].second << " ";
+        }
+        cout << endl;
+        as = a, bs = b;
         sort(as.begin(), as.end());
         sort(bs.begin(), bs.end());
+
+        int ret = trial(0, a.size(), false);
 
         for(int i=0;i<size(a);i++) {
             int ai = idx(as, a[i]);
             int bi = idx(bs, b[i]);
             cout << (ai==bi) << " ";
+
+            int tmp = trial(0, i+1, true) + trial(i+1, a.size(), false);
+            if(ret > tmp) ret = tmp;
         }
         cout << endl;
-        return 0;
+        return ret;
     }
 
     
