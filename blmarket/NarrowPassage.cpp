@@ -112,10 +112,8 @@ public:
                 tmp += min(tmp2, tmp3);
             }
 
-            for(--j;j>=0;j--) { tmp += V[j].second; }
-            for(++k;k<size(V);k++) { tmp += (L - V[k].second); }
-
-            cout << i << " : " << j << " " << k << " " << tmp << endl;
+            for(int l=0;l<i;l++) tmp += V[l].second;
+            for(int l=i;l<size(V);l++) tmp += (L - V[l].second);
 
             if(ret == -1 || ret > tmp) ret = tmp;
         }
