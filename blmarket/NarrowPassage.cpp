@@ -112,6 +112,8 @@ public:
             for(int l=0;l<i;l++) tmp += V[l].second;
             for(int l=i;l<size(V);l++) tmp += (L - V[l].second);
 
+            cout << i << " " << tmp << endl;
+
             if(ret == -1 || ret > tmp) ret = tmp;
         }
 
