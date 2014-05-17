@@ -61,14 +61,11 @@ public:
         }
         cout << endl;
 
-        for(int i=0;i<size(V);i++)
-            cout << (i == is[i] ? i : -1) << " ";
-        cout << endl;
-
         int ret = -1;
 
         for(int i=0;i<size(V);i++) {
             int tmp = trial(0, i, true) + trial(i, a.size(), false);
+            cout << i << " " << tmp << endl;
             if(ret == -1 || ret > tmp) ret = tmp;
         }
 
@@ -135,6 +132,6 @@ public:
 int main()
 {
     NarrowPassage ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
