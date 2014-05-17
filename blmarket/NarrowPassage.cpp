@@ -104,8 +104,8 @@ public:
                 cout << "HERE" << endl;
             }
 
-            for(;j;j--) { tmp += V[j].second; }
-            for(;k<size(V);k++) { tmp += (L - V[k].second); }
+            for(--j;j>=0;j--) { tmp += V[j].second; }
+            for(++k;k<size(V);k++) { tmp += (L - V[k].second); }
 
             if(ret == -1 || ret > tmp) ret = tmp;
         }
