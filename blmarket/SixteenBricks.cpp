@@ -29,18 +29,23 @@ public:
         sort(height.rbegin(), height.rend());
         int arr[6][6];
         memset(arr, 0, sizeof(arr));
-        int jj = 0;
-        int kk = size(height) - 1;
+        int jj = 2;
+        int kk = size(height) - 3;
+        arr[1][1] = height[0];
+        arr[2][2] = height[1];
+        arr[1][2] = height[15];
+        arr[2][1] = height[14];
         for(int i=0;i<4;i++) {
             for(int j=0;j<4;j++) {
-                if((i&1) == (j&1)) {
-                    arr[i+1][j+1] = height[jj++];
-                } else {
-                    arr[i+1][j+1] = height[kk--];
+                if(i == 0 || i == 3 || j == 0 || j == 3) {
+                    if((i&1) == (j&1)) {
+                        arr[i+1][j+1] = height[jj++];
+                    } else {
+                        arr[i+1][j+1] = height[kk--];
+                    }
                 }
             }
         }
-        swap(arr[0][0], arr[1][1]);
         int ret = 16;
         for(int i=0;i<5;i++) {
             for(int j=0;j<5;j++) {
