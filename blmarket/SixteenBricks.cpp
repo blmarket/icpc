@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -26,25 +27,24 @@ public:
     int maximumSurface(vector <int> height) 
     {		
         sort(height.rbegin(), height.rend());
-        int arr[4][4];
+        int arr[6][6];
+        memset(arr, 0, sizeof(arr));
         int jj = 0;
         int kk = size(height) - 1;
         for(int i=0;i<4;i++) {
             for(int j=0;j<4;j++) {
                 if((i&1) == (j&1)) {
-                    arr[i][j] = height[jj++];
+                    arr[i+1][j+1] = height[jj++];
                 } else {
-                    arr[i][j] = height[kk--];
+                    arr[i+1][j+1] = height[kk--];
                 }
-                cout << arr[i][j] << " ";
             }
-            cout << endl;
         }
         int ret = 32;
-        for(int i=0;i<4;i++) {
-            for(int j=0;j<4;j++) {
-                if(j+1<4) ret += abs(arr[i][j+1] - arr[i][j]);
-                if(i+1<4) ret += abs(arr[i+1][j] - arr[i][j]);
+        for(int i=0;i<5;i++) {
+            for(int j=0;j<5;j++) {
+                ret += abs(arr[i][j+1] - arr[i][j]);
+                ret += abs(arr[i+1][j] - arr[i][j]);
             }
         }
 
