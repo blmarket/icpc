@@ -57,7 +57,9 @@ public:
         for(int i=0;i<size(V);i++) {
             int bi = idx(bs, V[i].second);
             is.pb(bi);
+            cout << bi << " ";
         }
+        cout << endl;
 
         int ret = -1;
 
