@@ -97,7 +97,7 @@ public:
                 tmp += (L - V[k].first);
             }
 
-            cout << i << " : " << tmp << endl;
+            cout << i << " : " << j << " " << k << " " << tmp << endl;
 
             if(j < k) {
                 tmp = 1000;
