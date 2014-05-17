@@ -26,7 +26,26 @@ public:
     int maximumSurface(vector <int> height) 
     {		
         sort(height.rbegin(), height.rend());
-        int ret = 16 + height[0] * 4 + height[1] * 4 + height[2] * 4 + height[3] * 4;
+        int arr[4][4];
+        int jj = 0;
+        int kk = size(height) - 1;
+        for(int i=0;i<4;i++) {
+            for(int j=0;j<4;j++) {
+                if((i&1) == (j&1)) {
+                    arr[i][j] = height[jj++];
+                } else {
+                    arr[i][j] = height[kk--];
+                }
+            }
+        }
+        int ret = 32;
+        for(int i=0;i<4;i++) {
+            for(int j=0;j<4;j++) {
+                if(j+1<4) ret += abs(arr[i][j+1] - arr[i][j]);
+                if(i+1<4) ret += abs(arr[i+1][j] - arr[i][j]);
+            }
+        }
+
         return ret;
     }
 
