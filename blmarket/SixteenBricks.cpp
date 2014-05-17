@@ -53,6 +53,8 @@ public:
             }
         }
 
+        swap(arr[4][1], arr[4][3]);
+
 
         int ret = 16;
         for(int i=0;i<5;i++) {
