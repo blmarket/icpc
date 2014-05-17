@@ -100,8 +100,15 @@ public:
             cout << i << " : " << j << " " << k << " " << tmp << endl;
 
             if(j < k) {
-                tmp = 1000;
-                cout << "HERE" << endl;
+                int tmp2 = 0, tmp3 = 0;
+                for(int l=j;l<=k;l++) {
+                    tmp2 += V[l].first;
+                    if(is[l] >= i) tmp2 += L;
+                    tmp3 += (L - V[l].first);
+                    if(is[l] < i) tmp3 += L;
+                }
+
+                tmp += min(tmp2, tmp3);
             }
 
             for(--j;j>=0;j--) { tmp += V[j].second; }
