@@ -61,6 +61,10 @@ public:
         }
         cout << endl;
 
+        for(int i=0;i<size(V);i++)
+            cout << (i == is[i]) << " ";
+        cout << endl;
+
         int ret = -1;
 
         for(int i=0;i<size(V);i++) {
