@@ -63,12 +63,6 @@ public:
 
         int ret = -1;
 
-        for(int i=0;i<size(V);i++) {
-            int tmp = trial(0, i, true) + trial(i, a.size(), false);
-            cout << i << " " << tmp << endl;
-            if(ret == -1 || ret > tmp) ret = tmp;
-        }
-
         int pi = 999;
         int sum = 0;
         for(int i=0;i<size(V);i++) {
