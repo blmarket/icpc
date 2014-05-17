@@ -96,8 +96,8 @@ public:
 
             cout << tmp2 << endl;
 
-            int tmp = 0;
             for(int j=0;j<=size(V);j++) {
+                int tmp = 0;
                 for(int k=0;k<j;k++) {
                     tmp += V[k].first;
                     if(is[k] >= i) tmp += L;
