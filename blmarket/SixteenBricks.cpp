@@ -26,7 +26,7 @@ public:
     int maximumSurface(vector <int> height) 
     {		
         sort(height.rbegin(), height.rend());
-        int ret = 16 + height[0] * 2 + height[1] * 2 + height[2] * 2 + height[3] * 2;
+        int ret = 16 + height[0] * 4 + height[1] * 4 + height[2] * 4 + height[3] * 4;
         return ret;
     }
 
