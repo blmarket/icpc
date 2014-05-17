@@ -87,7 +87,7 @@ public:
             sum = 0;
         }
 
-        for(int i=0;i<size(V);i++) {
+        for(int i=0;i<=size(V);i++) {
             int tmp = 0;
             int j, k;
             for(j=0;j<size(V)&&is[j]<i;j++) {
