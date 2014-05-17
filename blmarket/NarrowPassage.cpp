@@ -36,14 +36,16 @@ public:
         a=a_;b=b_;
         for(int i=0;i<size(a);i++) V.pb(mp(a[i], b[i]));
         sort(V.begin(), V.end());
-        for(int i=0;i<size(V);i++) {
-            cout << V[i].second << " ";
-        }
-        cout << endl;
 
         as = a, bs = b;
         sort(as.begin(), as.end());
         sort(bs.begin(), bs.end());
+
+        for(int i=0;i<size(V);i++) {
+            int bi = idx(bs, V[i].second);
+            cout << bi << " ";
+        }
+        cout << endl;
 
         return 0;
 
