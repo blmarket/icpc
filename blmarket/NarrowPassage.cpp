@@ -34,6 +34,7 @@ public:
     int minDist(int L, vector <int> a_, vector <int> b_) 
     {
         a=a_;b=b_;
+        V.clear();
         for(int i=0;i<size(a);i++) V.pb(mp(a[i], b[i]));
         sort(V.begin(), V.end());
 
