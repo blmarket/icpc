@@ -36,7 +36,9 @@ public:
                 } else {
                     arr[i][j] = height[kk--];
                 }
+                cout << arr[i][j] << " ";
             }
+            cout << endl;
         }
         int ret = 32;
         for(int i=0;i<4;i++) {
