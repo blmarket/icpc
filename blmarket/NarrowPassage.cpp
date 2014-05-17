@@ -98,6 +98,7 @@ public:
             }
 
             if(j < k) {
+                tmp = 1000;
                 cout << "HERE" << endl;
             }
 
