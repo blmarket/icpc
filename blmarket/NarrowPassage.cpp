@@ -40,9 +40,12 @@ public:
             cout << V[i].second << " ";
         }
         cout << endl;
+
         as = a, bs = b;
         sort(as.begin(), as.end());
         sort(bs.begin(), bs.end());
+
+        return 0;
 
         int ret = trial(0, a.size(), false);
 
