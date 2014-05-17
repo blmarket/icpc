@@ -94,8 +94,6 @@ public:
                 else tmp2 += (L - V[j].second);
             }
 
-            cout << tmp2 << endl;
-
             for(int j=0;j<=size(V);j++) {
                 int tmp = 0;
                 for(int k=0;k<j;k++) {
