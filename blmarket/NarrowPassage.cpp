@@ -88,35 +88,26 @@ public:
         }
 
         for(int i=0;i<=size(V);i++) {
+            int tmp2 = 0;
+            for(int j=0;j<size(V);j++) {
+                if(is[j] < i) tmp2 += V[j].second;
+                else tmp2 += (L - V[j].second);
+            }
+
             int tmp = 0;
-            int j, k;
-            for(j=0;j<size(V)&&is[j]<i;j++) {
-                tmp += V[j].first;
-            }
-            for(k=size(V)-1;k>=0&&is[k]>=i;k--) {
-                tmp += (L - V[k].first);
-            }
-
-            cout << i << " " << j << " " << k << endl;
-
-            if(j < k) {
-                int tmp2 = 0, tmp3 = 0;
-                for(int l=j;l<=k;l++) {
-                    tmp2 += V[l].first;
-                    if(is[l] >= i) tmp2 += L;
-                    tmp3 += (L - V[l].first);
-                    if(is[l] < i) tmp3 += L;
+            for(int j=0;j<=size(V);j++) {
+                for(int k=0;k<j;k++) {
+                    tmp += V[k].first;
+                    if(is[k] >= i) tmp += L;
+                }
+                for(int k=j;k<size(V);k++) {
+                    tmp += (L - V[k].first);
+                    if(is[k] < i) tmp += L;
                 }
 
-                tmp += min(tmp2, tmp3);
+                int t3 = tmp + tmp2;
+                if(ret == -1 || ret > t3) ret = t3;
             }
-
-            for(int l=0;l<i;l++) tmp += V[l].second;
-            for(int l=i;l<size(V);l++) tmp += (L - V[l].second);
-
-            cout << i << " " << tmp << endl;
-
-            if(ret == -1 || ret > tmp) ret = tmp;
         }
 
         return ret;
