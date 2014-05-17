@@ -82,6 +82,7 @@ public:
                     sum += abs(V[i].first - V[i].second);
                     int tmp = trial(0, min(pi, i), true) + trial(i+1, a.size(), false) + sum;
                     if(ret == -1 || ret > tmp) ret = tmp;
+                    pi = i;
                 }
             } 
             pi = 999;
