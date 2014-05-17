@@ -23,16 +23,26 @@ template<typename T> int size(const T &a) { return a.size(); }
 int idx(vector<int> &V, int t) { return lower_bound(V.begin(), V.end(), t) - V.begin(); }
 
 vector<int> a,b,as,bs;
+int L;
 vector<PII> V;
 
 int trial(int s, int e, bool left) {
+    int ee = 0;
+    if(!left) ee = L;
+
+    int ret = 0;
+    for(int i=s;i<e;i++) {
+        ret += abs(ee - V[i].first) + abs(ee - V[i].second);
+    }
+    return ret;
 }
 
 class NarrowPassage 
 {
 public:
-    int minDist(int L, vector <int> a_, vector <int> b_) 
+    int minDist(int L_, vector <int> a_, vector <int> b_) 
     {
+        L = L_;
         a=a_;b=b_;
         V.clear();
         for(int i=0;i<size(a);i++) V.pb(mp(a[i], b[i]));
@@ -42,25 +52,36 @@ public:
         sort(as.begin(), as.end());
         sort(bs.begin(), bs.end());
 
+        vector<int> is;
+
         for(int i=0;i<size(V);i++) {
             int bi = idx(bs, V[i].second);
-            cout << bi << " ";
+            is.pb(bi);
         }
-        cout << endl;
 
-        return 0;
+        int ret = -1;
 
-        int ret = trial(0, a.size(), false);
-
-        for(int i=0;i<size(a);i++) {
-            int ai = idx(as, a[i]);
-            int bi = idx(bs, b[i]);
-            cout << (ai==bi) << " ";
-
-            int tmp = trial(0, i+1, true) + trial(i+1, a.size(), false);
-            if(ret > tmp) ret = tmp;
+        int pi = 999;
+        int sum = 0;
+        for(int i=0;i<size(V);i++) {
+            if(i == is[i]) {
+                bool fail = false;
+                for(int j=0;j<i;j++) {
+                    if(is[j] > i) {
+                        fail = true;
+                        break;
+                    }
+                }
+                if(!fail) {
+                    sum += abs(V[i].first - V[i].second);
+                    int tmp = trial(0, min(pi, i), true) + trial(i+1, a.size(), false) + sum;
+                    if(ret == -1 || ret > tmp) ret = tmp;
+                }
+            } 
+            pi = 999;
+            sum = 0;
         }
-        cout << endl;
+
         return ret;
     }
 
