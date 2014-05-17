@@ -88,10 +88,22 @@ public:
         }
 
         for(int i=0;i<size(V);i++) {
+            int tmp = 0;
             int j, k;
-            for(j=0;j<size(V)&&is[j]<i;j++);
-            for(k=size(V)-1;k>=0&&is[k]>=i;k--);
-            cout << j << " " << k << endl;
+            for(j=0;j<size(V)&&is[j]<i;j++) {
+                tmp += V[j].first;
+            }
+            for(k=size(V)-1;k>=0&&is[k]>=i;k--) {
+                tmp += (L - V[k].first);
+            }
+
+            if(j < k) {
+            }
+
+            for(;j;j--) { tmp += V[j].second; }
+            for(;k<size(V);k++) { tmp += (L - V[k].second); }
+
+            if(ret == -1 || ret > tmp) ret = tmp;
         }
 
         return ret;
