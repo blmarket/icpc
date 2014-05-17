@@ -87,6 +87,13 @@ public:
             sum = 0;
         }
 
+        for(int i=0;i<size(V);i++) {
+            int j, k;
+            for(j=0;j<size(V)&&is[j]<i;j++);
+            for(k=size(V)-1;k>=0&&is[k]>=i;k--);
+            cout << j << " " << k << endl;
+        }
+
         return ret;
     }
 
@@ -126,6 +133,6 @@ public:
 int main()
 {
     NarrowPassage ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
