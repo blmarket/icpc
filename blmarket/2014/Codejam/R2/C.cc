@@ -80,7 +80,6 @@ void solve(int dataId)
     int ret = 0;
     for(int i=0;i<W;i++) {
         if(back[i][0].first == -1) continue;
-        back[i][0] = mp(-1, -1);
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) {
             ret++;
