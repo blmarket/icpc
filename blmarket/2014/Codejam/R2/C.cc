@@ -61,6 +61,9 @@ bool try_flow(int x, int y) {
         if(ret == 2 && bx == 4 && by == 2) {
             nx = 5, ny = 2;
         }
+        if(ret == 2 && bx == 5 && by == 1) {
+            nx = 6, ny = 1;
+        }
         if(nx == x && ny == y) continue;
         if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
 
