@@ -38,39 +38,24 @@ int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
-    // cout << x << " " << y << " " << used[5][2] << endl;
-    if(x == -1 || y == -1) return false;
-    if(y == H-1 && used[x][y] == false) {
-        used[x][y] = true;
-        return true;
-    }
-
+    if(y == H-1) return true;
     if(visit[x][y]) return false;
     visit[x][y] = true;
+    int bx = x, by = y;
+    if(used[x][y]) { // take back edge.
+        if(back[x][y].first == -1) return false;
+        tie(bx, by) = back[x][y];
+    }
 
     for(int i=0;i<4;i++) {
-        int nx = x + dx[i];
-        int ny = y + dy[i];
-        if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+        int nx = bx + dx[i];
+        int ny = by + dy[i];
+        if(nx == x && ny == y) continue;
 
-        int px, py;
-        tie(px, py) = back[nx][ny];
-
-        if(!used[nx][ny]) {
-            if(try_flow(nx, ny)) {
-                used[x][y] = true;
-                back[nx][ny] = mp(x, y);
-                cout << "<-" << x << " " << y << " ";
-                return true;
-            }
-        } else {
-            if(try_flow(px, py)) {
-                used[x][y] = true;
-                back[nx][ny] = mp(x, y);
-                // back[px][py] = mp(nx, ny);
-                cout << "<-" << x << " " << y << " ";
-                return true;
-            }
+        if(try_flow(nx, ny)) {
+            back[nx][ny] = mp(bx, by);
+            used[x][y] = true;
+            return true;
         }
     }
     return false;
@@ -82,19 +67,7 @@ void solve(int dataId)
     int ret = 0;
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
-        if(back[i][0].first == -1) continue;
-
-        int x = i;
-        int y = 0;
-        if(used[i][0]) {
-            tie(x,y) = back[i][0];
-        }
-
-        if(try_flow(x, y)) {
-            ret++;
-            cout << endl;
-            if(ret == 3) break;
-        }
+        if(try_flow(i, 0)) ret++;
     }
     for(int i=H-1;i>=0;i--) {
         for(int j=0;j<W;j++) {
