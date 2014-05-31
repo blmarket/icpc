@@ -44,7 +44,9 @@ int vnode(int x, int y) {
 void xx(int a) {
     int x = (a / 2) / 505;
     int y = (a / 2) % 505;
-    cout << x << " " << y << " " << (a%2) << endl;
+    cout << x << " " << y << " " << (a%2) << " : ";
+    for(int i=0;i<size(links[a]);i++) cout << links[a][i] << " ";
+    cout << endl;
 }
 
 bool try_flow(int a) {
