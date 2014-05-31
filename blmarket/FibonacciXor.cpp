@@ -48,10 +48,11 @@ long long F(long long x) {
         long long ret = 0;
         long long tt = fbs[pos-2];
         if(tt & 1) {
-            ret = (1LL << (pos-1));
+            ret = (1LL << (pos-1)) % (1000000007);
         }
 
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
+        ret %= 1000000007;
         cout << x << " = " << ret << endl;
         return memo[x] = ret;
     } else {
@@ -59,9 +60,10 @@ long long F(long long x) {
         long long cnt = (x - fbs[pos]);
         long long ret = 0;
         if(cnt & 1) {
-            ret = (1LL << pos);
+            ret = (1LL << pos) % 1000000007;
         }
         ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
+        ret %= 1000000007;
         cout << x << " = " << ret << endl;
         return memo[x] = ret;
     }
