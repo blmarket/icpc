@@ -79,8 +79,8 @@ public:
         }
 
         cout << F(B+1) << " " << F(A+1) << endl;
-
         long long tmp = F(B+1) ^ F(A+1);
+        cout << tmp << endl;
         return (tmp % 1000000007);
     }
 
