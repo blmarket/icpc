@@ -91,7 +91,7 @@ void solve(int dataId)
         if(try_flow(x, y)) {
             ret++;
             cout << endl;
-            if(ret == 2) break;
+            if(ret == 3) break;
         }
     }
     for(int i=H-1;i>=0;i--) {
