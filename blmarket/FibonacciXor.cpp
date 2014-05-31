@@ -53,7 +53,6 @@ bitset<200> F(long long x) {
         }
 
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
-        cout << x << " = " << ret << endl;
         return memo[x] = ret;
     } else {
         pos--;
@@ -63,7 +62,6 @@ bitset<200> F(long long x) {
             ret[pos] = 1;
         }
         ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
-        // cout << x << " = " << ret << endl;
         return memo[x] = ret;
     }
 }
