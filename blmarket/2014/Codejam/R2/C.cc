@@ -69,6 +69,7 @@ void solve(int dataId)
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
     }
+    cout << ret << endl;
     for(int i=H-1;i>=0;i--) {
         for(int j=0;j<W;j++) {
             if(!used[j][i]) {
