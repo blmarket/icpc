@@ -42,7 +42,7 @@ bool try_flow(int x, int y) {
         used[x][y] = true;
         return true;
     }
-    cout << "HERE" << endl;
+
     if(visit[x][y]) return false;
     visit[x][y] = true;
 
@@ -53,11 +53,19 @@ bool try_flow(int x, int y) {
 
         int px, py;
         tie(px, py) = back[nx][ny];
-        if(!used[nx][ny] || try_flow(px, py)) {
-            used[nx][ny] = true;
-            back[nx][ny] = mp(x, y);
-            cout << " <- " << x << " " << y << " ";
-            return true;
+
+        if(!used[nx][ny]) {
+            if(try_flow(nx, ny)) {
+                used[nx][ny] = true;
+                back[nx][ny] = mp(x, y);
+                return true;
+            }
+        } else {
+            if(try_flow(px, py)) {
+                used[nx][ny] = true;
+                back[nx][ny] = mp(x, y);
+                return true;
+            }
         }
     }
     return false;
