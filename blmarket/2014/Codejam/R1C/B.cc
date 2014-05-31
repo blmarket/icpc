@@ -51,7 +51,7 @@ void solve(int dataId)
         bool fail = false;
         while(tmp.size() > 0) {
             bool diff = false;
-            int lpos = -1;
+            int lpos = 1;
             for(int i=1;i<size(tmp);i++) {
                 if(tmp[i] == tmp[0]) {
                     if(diff) { fail = true; break; }
@@ -60,7 +60,7 @@ void solve(int dataId)
                     lpos = i;
                 }
             }
-            cout << lpos << endl;
+            cout << tmp.size() << " " << lpos << endl;
             if(fail) break;
             tmp = tmp.substr(lpos);
         }
