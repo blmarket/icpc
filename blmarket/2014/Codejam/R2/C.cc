@@ -41,8 +41,14 @@ int vnode(int x, int y) {
     return (x * 505 + y) * 2;
 }
 
+void xx(int a) {
+    int x = (a / 2) / 505;
+    int y = (a / 2) % 505;
+    cout << x << " " << y << " " << (a%2) << endl;
+}
+
 bool try_flow(int a) {
-    cout << a << endl;
+    xx(a);
     return false;
     if(a == 23) {
         cout << "HERE" << endl;
