@@ -41,14 +41,25 @@ void solve(int dataId)
 
     long long ret = 0;
     do {
-        bool chk = true;
-        for(int i=0;i+1 < size(V);i++) {
-            if(data[V[i]].back() != data[V[i+1]][0]) {
-                chk = false;
-                break;
-            }
+        string tmp;
+        for(int i=0;i<size(V);i++) {
+            tmp += V[i];
         }
-        if(chk) ret++;
+
+        bool fail = false;
+        while(tmp.size() > 0) {
+            bool diff = false;
+            for(int i=1;i<size(tmp);i++) {
+                if(tmp[i] == tmp[0]) {
+                    if(diff) { fail = true; break; }
+                } else {
+                    diff = true;
+                }
+            }
+            if(fail) break;
+            tmp = tmp.substr(1);
+        }
+        if(!fail) ret++;
     } while(next_permutation(V.begin(), V.end()));
     cout << ret << endl;
 }
