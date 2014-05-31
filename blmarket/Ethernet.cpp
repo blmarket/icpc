@@ -66,7 +66,7 @@ public:
         }
 
         cout << go(0) << endl;
-        return ret;
+        return ret + 1;
     }
 
     
