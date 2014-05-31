@@ -38,6 +38,7 @@ int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
+    cout << x << " " << y << " " << used[5][2] << endl;
     if(x == -1 || y == -1) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
