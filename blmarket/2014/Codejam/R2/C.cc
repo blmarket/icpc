@@ -42,7 +42,6 @@ int vnode(int x, int y) {
 }
 
 bool try_flow(int a) {
-    cout << a << endl;
     if(a == sink) return true;
     if(visit[a]) return false;
     visit[a] = true;
@@ -77,8 +76,10 @@ void solve(int dataId)
     }
 
     for(int i=0;i<W;i++) {
+        cout << vnode(i, H+1)+1 << " ";
         links[vnode(i, H+1)+1].pb(sink);
     }
+    cout << endl;
 
     int ret = 0;
     for(int i=0;i<W;i++) {
