@@ -82,7 +82,13 @@ void solve(int dataId)
         memset(visit, 0, sizeof(visit));
         if(back[i][0].first == -1) continue;
 
-        if(try_flow(i, 0)) {
+        int x = i;
+        int y = 0;
+        if(used[i][0]) {
+            tie(x,y) = back[i][0];
+        }
+
+        if(try_flow(x, y)) {
             ret++;
             cout << endl;
             if(ret == 2) break;
