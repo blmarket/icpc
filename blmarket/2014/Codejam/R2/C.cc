@@ -60,6 +60,7 @@ bool try_flow(int x, int y) {
         if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
 
         if(try_flow(nx, ny)) {
+            cout << x << " " << y << " | " << bx << " " << by << " -> " << nx << " " << ny << endl;
             back[nx][ny] = mp(bx, by);
             used[x][y] = true;
             return true;
