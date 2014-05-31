@@ -85,6 +85,7 @@ void solve(int dataId)
         if(try_flow(i, 0)) {
             ret++;
             cout << endl;
+            break;
         }
     }
     for(int i=H-1;i>=0;i--) {
