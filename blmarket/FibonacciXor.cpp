@@ -34,37 +34,35 @@ void print(long long a) {
     }
 }
 
-map<long long, long long> memo;
+map<long long, bitset<200> > memo;
 
-long long F(long long x) {
-    if(x == 1) return 0;
-    if(x == 2) return 1;
-    if(x == 3) return 3;
+bitset<200> F(long long x) {
+    if(x == 1) return bitset<200>(0);
+    if(x == 2) return bitset<200>(1);
+    if(x == 3) return bitset<200>(3);
 
     if(memo.count(x)) return memo[x];
 
     int pos = lower_bound(fbs, fbs + 79, x) - fbs;
 
     if(fbs[pos] == x) {
-        long long ret = 0;
+        bitset<200> ret;
         long long tt = fbs[pos-2];
         if(tt & 1) {
-            ret = modd[pos-1];
+            ret[pos-1] = 1;
         }
 
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
-        ret %= 1000000007;
-        cout << x << " = " << bitset<10>(ret) << endl;
+        cout << x << " = " << ret << endl;
         return memo[x] = ret;
     } else {
         pos--;
         long long cnt = (x - fbs[pos]);
-        long long ret = 0;
+        bitset<200> ret;
         if(cnt & 1) {
-            ret = modd[pos];
+            ret[pos] = 1;
         }
         ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
-        ret %= 1000000007;
         // cout << x << " = " << ret << endl;
         return memo[x] = ret;
     }
@@ -83,9 +81,10 @@ public:
             modd[i] = (modd[i-1] * 2) % 1000000007;
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
+        cout << F(B+1) << endl;
 
-        long long tmp = F(B+1) ^ F(A);
-        return (tmp % 1000000007);
+        // long long tmp = F(B+1) ^ F(A);
+        // return (tmp % 1000000007);
     }
 
     
