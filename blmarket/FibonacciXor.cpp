@@ -54,7 +54,7 @@ long long F(long long x) {
 
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
         ret %= 1000000007;
-        cout << x << " = " << ret << endl;
+        cout << x << " = " << bitset<10>(ret) << endl;
         return memo[x] = ret;
     } else {
         pos--;
@@ -65,7 +65,7 @@ long long F(long long x) {
         }
         ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
         ret %= 1000000007;
-        cout << x << " = " << ret << endl;
+        // cout << x << " = " << ret << endl;
         return memo[x] = ret;
     }
 }
