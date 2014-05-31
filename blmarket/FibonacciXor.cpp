@@ -46,8 +46,10 @@ public:
         }
         cout << (long long)(1e15) << endl;
 
-        print(A);
-        print(B);
+        for(int i=0;i<100;i++) {
+            print(i);
+        }
+
     }
 
     
