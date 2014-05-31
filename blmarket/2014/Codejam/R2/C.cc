@@ -38,7 +38,6 @@ int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
-    cout << "HERE" << endl;
     if(y == H-1) return true;
     if(visit[x][y]) return false;
     visit[x][y] = true;
@@ -70,6 +69,7 @@ void solve(int dataId)
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
+        cout << ret << endl;
     }
 
     for(int i=H-1;i>=0;i--) {
