@@ -58,6 +58,7 @@ class Ethernet
 public:
     int connect(vector <int> parent, vector <int> dist, int maxDist_) 
     {
+        ret = 0;
         maxDist = maxDist_;
         for(int i=0;i<55;i++) childs[i].clear();
         for(int i=0;i<size(parent);i++) {
