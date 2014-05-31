@@ -64,7 +64,7 @@ bool try_flow(int x, int y) {
         if(try_flow(nx, ny)) {
             back[nx][ny] = mp(bx, by);
             used[x][y] = true;
-            // cout << x << " " << y << " | " << bx << " " << by << " -> " << nx << " " << ny << " updating " << endl;
+            cout << x << " " << y << " | " << bx << " " << by << " -> " << nx << " " << ny << " updating " << endl;
             return true;
         }
     }
