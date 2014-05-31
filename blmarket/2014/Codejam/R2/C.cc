@@ -85,6 +85,12 @@ void solve(int dataId)
             cout << endl;
         }
     }
+    for(int i=H-1;i>=0;i--) {
+        for(int j=0;j<W;j++)
+            cout << used[j][i] << " ";
+        cout << endl;
+    }
+
     cout << ret << endl;
 }
 
