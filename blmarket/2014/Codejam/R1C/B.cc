@@ -51,15 +51,17 @@ void solve(int dataId)
         bool fail = false;
         while(tmp.size() > 0) {
             bool diff = false;
+            int lpos = -1;
             for(int i=1;i<size(tmp);i++) {
                 if(tmp[i] == tmp[0]) {
                     if(diff) { fail = true; break; }
                 } else {
                     diff = true;
+                    lpos = i;
                 }
             }
             if(fail) break;
-            tmp = tmp.substr(1);
+            tmp = tmp.substr(lpos);
         }
         //cout << !fail << endl;
         if(!fail) ret++;
