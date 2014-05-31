@@ -40,6 +40,7 @@ bool try_flow(int x, int y) {
     if(x == -1 || y == -1) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
+        cout << "HERE" << endl;
         return true;
     }
 
