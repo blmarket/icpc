@@ -85,8 +85,8 @@ void solve(int dataId)
     }
 
     for(int i=0;i<W;i++) {
-        cout << vnode(i, H+1)+1 << " ";
-        links[vnode(i, H+1)+1].pb(sink);
+        cout << vnode(i, H-1)+1 << " ";
+        links[vnode(i, H-1)+1].pb(sink);
     }
     cout << endl;
 
