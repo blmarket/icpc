@@ -20,19 +20,34 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+long long fbs[100];
+
+void print(long long a) {
+    for(int i=79;i>=0;i--) {
+        if(fbs[i] <= a) {
+            cout << 1;
+            a -= fbs[i];
+        } else {
+            cout << 0;
+        }
+    }
+    cout << endl;
+}
+
 class FibonacciXor 
 {
 public:
     int find(long long A, long long B) 
     {		
-        long long fbs[10000];
         fbs[0] = 0;
         fbs[1] = 1;
         for(int i=2;i<80;i++) {
             fbs[i] = fbs[i-2] + fbs[i-1];
-            cout << fbs[i] << endl;
         }
         cout << (long long)(1e15) << endl;
+
+        print(A);
+        print(B);
     }
 
     
