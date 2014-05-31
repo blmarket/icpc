@@ -82,7 +82,6 @@ void solve(int dataId)
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) {
             ret++;
-            cout << endl;
         }
     }
     cout << ret << endl;
