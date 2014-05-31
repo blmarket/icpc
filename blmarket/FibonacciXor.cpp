@@ -28,7 +28,7 @@ public:
         long long fbs[10000];
         fbs[0] = 0;
         fbs[1] = 1;
-        for(int i=2;i<100;i++) {
+        for(int i=2;i<80;i++) {
             fbs[i] = fbs[i-2] + fbs[i-1];
             cout << fbs[i] << endl;
         }
