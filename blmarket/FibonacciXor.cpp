@@ -85,13 +85,12 @@ public:
         long long ret = 0;
         for(int i=0;i<80;i++) {
             if(tmp[i]) {
-                ret ^= modd[i];
+                ret = (ret + modd[i]) % 1000000007;
             }
         }
 
-
         cout << F(B+1) << endl;
-        return 0;
+        return ret;
 
         // long long tmp = F(B+1) ^ F(A);
         // return (tmp % 1000000007);
