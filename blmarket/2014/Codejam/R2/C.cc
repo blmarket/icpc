@@ -66,6 +66,7 @@ void solve(int dataId)
     printf("Case #%d: ", dataId);
     int ret = 0;
     for(int i=0;i<W;i++) {
+        back[i][0] = mp(-1, -1);
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
     }
