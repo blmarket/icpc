@@ -79,7 +79,6 @@ void solve(int dataId)
         back[i][0] = mp(-1, -1);
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
-        cout << endl;
     }
     cout << ret << endl;
 }
