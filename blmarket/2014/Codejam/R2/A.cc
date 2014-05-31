@@ -53,7 +53,7 @@ void solve(int dataId)
         }
 
         jt--;
-        cout << it << " " << V[jt] << " : ";
+        // cout << it << " " << V[jt] << " : ";
 
         if(it + V[jt] > X) {
             ret += size(V);
