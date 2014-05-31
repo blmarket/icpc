@@ -40,6 +40,8 @@ long long F(long long x) {
     if(x == 2) return 2;
     if(x == 3) return 4;
 
+    cout << x << endl;
+
     if(memo.count(x)) return memo[x];
 
     int pos = lower_bound(fbs, fbs + 79, x) - fbs;
