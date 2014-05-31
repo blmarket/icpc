@@ -44,9 +44,7 @@ long long F(long long x) {
 
     int pos = lower_bound(fbs, fbs + 79, x) - fbs;
 
-    cout << x << " " << pos << endl;
     if(fbs[pos] == x) {
-        cout << "HERE" << endl;
         long long ret = 0;
         int tt = fbs[pos-2];
         if(tt & 1) {
@@ -56,7 +54,6 @@ long long F(long long x) {
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
         return memo[x] = ret;
     } else {
-        cout << "NO" << endl;
         int cnt = (x - fbs[pos]);
         long long ret = 0;
         if(cnt & 1) {
@@ -77,9 +74,11 @@ public:
         for(int i=2;i<80;i++) {
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
+        
+        F(5);
 
-        long long tmp = F(B+1) ^ F(A+1);
-        return (tmp % 1000000007);
+        // long long tmp = F(B+1) ^ F(A+1);
+        // return (tmp % 1000000007);
     }
 
     
