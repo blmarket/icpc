@@ -52,6 +52,7 @@ long long F(long long x) {
         }
 
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
+        cout << x << " = " << ret << endl;
         return memo[x] = ret;
     } else {
         int cnt = (x - fbs[pos]);
@@ -60,6 +61,7 @@ long long F(long long x) {
             ret = (1LL << pos);
         }
         ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
+        cout << x << " = " << ret << endl;
         return memo[x] = ret;
     }
 }
@@ -76,6 +78,7 @@ public:
         }
         
         F(5);
+        return 0;
 
         // long long tmp = F(B+1) ^ F(A+1);
         // return (tmp % 1000000007);
