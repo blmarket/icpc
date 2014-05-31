@@ -38,10 +38,16 @@ int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
-    if(y == H-1) return true;
     if(visit[x][y]) return false;
     visit[x][y] = true;
     int bx = x, by = y;
+
+    if(y == H-1) {
+        if(used[x][y]) return false;
+        used[x][y] = true;
+        return true;
+    }
+
     if(used[x][y]) { // take back edge.
         if(back[x][y].first == -1) return false;
         tie(bx, by) = back[x][y];
