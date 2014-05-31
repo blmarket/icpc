@@ -46,7 +46,7 @@ long long F(long long x) {
 
     if(fbs[pos] == x) {
         long long ret = 0;
-        int tt = fbs[pos-2];
+        long long tt = fbs[pos-2];
         if(tt & 1) {
             ret = (1LL << (pos-1));
         }
@@ -56,7 +56,7 @@ long long F(long long x) {
         return memo[x] = ret;
     } else {
         pos--;
-        int cnt = (x - fbs[pos]);
+        long long cnt = (x - fbs[pos]);
         long long ret = 0;
         if(cnt & 1) {
             ret = (1LL << pos);
