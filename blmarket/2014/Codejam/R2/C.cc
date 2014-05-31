@@ -37,7 +37,6 @@ int dx[4] = {-1,0,0,1};
 int dy[4] = {0,-1,1,0};
 
 bool try_flow(int x, int y) {
-    cout << "search " << x << " " << y << endl;
     if(x == -1 || y == -1) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
@@ -59,14 +58,14 @@ bool try_flow(int x, int y) {
             if(try_flow(nx, ny)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
-                cout << "<-" << x << " " << y << " ";
+                // cout << "<-" << x << " " << y << " ";
                 return true;
             }
         } else {
             if(try_flow(px, py)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
-                cout << "<-" << x << " " << y << " ";
+                // cout << "<-" << x << " " << y << " ";
                 return true;
             }
         }
