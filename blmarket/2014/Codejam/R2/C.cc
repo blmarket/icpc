@@ -70,6 +70,7 @@ void solve(int dataId)
             for(int k=0;k<4;k++) {
                 int nx = i + dx[k];
                 int ny = j + dy[k];
+                if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
                 links[v1+1].pb(vnode(nx, ny));
             }
         }
