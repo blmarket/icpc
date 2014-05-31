@@ -46,6 +46,7 @@ long long F(long long x) {
 
     cout << x << " " << pos << endl;
     if(fbs[pos] == x) {
+        cout << "HERE" << endl;
         long long ret = 0;
         int tt = fbs[pos-2];
         if(tt & 1) {
@@ -55,6 +56,7 @@ long long F(long long x) {
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
         return memo[x] = ret;
     } else {
+        cout << "NO" << endl;
         int cnt = (x - fbs[pos]);
         long long ret = 0;
         if(cnt & 1) {
