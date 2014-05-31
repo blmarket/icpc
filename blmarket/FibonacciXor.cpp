@@ -33,6 +33,36 @@ void print(long long a) {
     }
 }
 
+map<long long, long long> memo;
+
+long long F(long long x) {
+    if(x == 1) return 1;
+    if(x == 2) return 2;
+    if(x == 3) return 4;
+
+    if(memo.count(x)) return memo[x];
+
+    int pos = lower_bound(fbs, fbs + 79, x) - fbs;
+    if(fbs[pos] == x) {
+        long long ret = 0;
+        int tt = fbs[pos-2];
+        if(tt & 1) {
+            ret = (1LL << (pos-1));
+        }
+
+        ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
+        return memo[x] = ret;
+    } else {
+        int cnt = (x - fbs[pos]);
+        long long ret = 0;
+        if(cnt & 1) {
+            ret = (1LL << pos);
+        }
+        ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
+        return memo[x] = ret;
+    }
+}
+
 class FibonacciXor 
 {
 public:
@@ -43,13 +73,9 @@ public:
         for(int i=2;i<80;i++) {
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
-        cout << (long long)(1e15) << endl;
 
-        for(int i=0;i<100;i++) {
-            print(i);
-            cout << " = " << i << endl;
-        }
-
+        long long tmp = F(B+1) ^ F(A+1);
+        return (tmp % 1000000007);
     }
 
     
