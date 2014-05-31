@@ -41,6 +41,7 @@ public:
         }
 
         go(0);
+        return 0;
     }
 
     
