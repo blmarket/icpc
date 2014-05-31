@@ -35,7 +35,7 @@ bool visit[105][505];
 
 int dx[4] = {-1,0,0,1};
 int dy[4] = {0,-1,1,0};
-const char *dir = "<^V>";
+const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
     if(x == -1 || y == -1) return false;
