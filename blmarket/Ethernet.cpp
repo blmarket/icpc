@@ -27,6 +27,7 @@ PII go(int a) {
         int cc, cd;
         tie(cc, cd) = childs[a][i];
     }
+    return mp(0, 0);
 }
 
 class Ethernet 
