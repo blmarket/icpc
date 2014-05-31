@@ -49,10 +49,6 @@ void xx(int a) {
 
 bool try_flow(int a) {
     xx(a);
-    return false;
-    if(a == 23) {
-        cout << "HERE" << endl;
-    }
     if(a == sink) return true;
     if(visit[a]) return false;
     visit[a] = true;
