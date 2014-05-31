@@ -32,7 +32,7 @@ public:
             fbs[i] = fbs[i-2] + fbs[i-1];
             cout << fbs[i] << endl;
         }
-        cout << 1e15 << endl;
+        cout << (long long)(1e15) << endl;
     }
 
     
