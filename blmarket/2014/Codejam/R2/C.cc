@@ -78,7 +78,7 @@ void solve(int dataId)
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
         cout << back[4][1].first << " " << back[4][1].second << endl;
-        if(ret == 3) break;
+        if(ret == 2) break;
     }
 
     cout << endl;
