@@ -54,15 +54,14 @@ void solve(int dataId)
             int lpos = 1;
             for(int i=1;i<size(tmp);i++) {
                 if(tmp[i] == tmp[0]) {
+                    lpos = i+1;
                     if(diff) { fail = true; break; }
                 } else {
                     diff = true;
-                    lpos = i;
                 }
             }
             if(fail) break;
             tmp = tmp.substr(lpos);
-            cout << tmp << endl;
         }
         cout << !fail << endl;
         if(!fail) ret++;
