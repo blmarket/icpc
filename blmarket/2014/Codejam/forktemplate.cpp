@@ -28,45 +28,13 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-pair<int, VVI> in1, in2;
-
 void solve(int dataId)
 {
-    auto &s1 = in1.second[in1.first-1];
-    auto &s2 = in2.second[in2.first - 1];
-
-    set<int> c1(s1.begin(), s1.end()), c2(s2.begin(), s2.end());
-    int cnt = 0;
-    int ret = 0;
-    for(auto it : c1) {
-        if(c2.count(it)) {
-            cnt++;
-            ret = it;
-        }
-    }
     printf("Case #%d: ", dataId);
-    if(cnt == 0) {
-        printf("Volunteer cheated!\n");
-    } else if(cnt == 1) {
-        printf("%d\n", ret);
-    } else {
-        printf("Bad magician!\n");
-    }
 }
 
 void process(int dataId)
 {
-    auto fn1 = [](pair<int, VVI> &in) {
-        scanf(" %d", &in.first);
-        VVI &tmp = in.second;
-        tmp.resize(4);
-        for(int i=0;i<4;i++) {
-            tmp[i].resize(4);
-            for(int j=0;j<4;j++) scanf(" %d", &tmp[i][j]);
-        }
-    };
-    fn1(in1);
-    fn1(in2);
 }
 
 class ForkSolver {
