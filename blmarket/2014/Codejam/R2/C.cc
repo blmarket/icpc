@@ -42,6 +42,8 @@ int vnode(int x, int y) {
 }
 
 bool try_flow(int a) {
+    cout << a << endl;
+    return false;
     if(a == 23) {
         cout << "HERE" << endl;
     }
