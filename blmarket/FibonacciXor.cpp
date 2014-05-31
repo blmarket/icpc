@@ -81,7 +81,16 @@ public:
             modd[i] = (modd[i-1] * 2) % 1000000007;
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
-        cout << F(B+1) << endl;
+        
+        bitset<200> tmp = F(B+1) ^ F(A);
+
+        long long ret = 0;
+        for(int i=0;i<80;i++) {
+            if(tmp[i]) {
+                ret ^= modd[i];
+            }
+        }
+        return ret;
 
         // long long tmp = F(B+1) ^ F(A);
         // return (tmp % 1000000007);
