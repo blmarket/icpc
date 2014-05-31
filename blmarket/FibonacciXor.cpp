@@ -88,8 +88,6 @@ public:
                 ret = (ret + modd[i]) % 1000000007;
             }
         }
-
-        cout << F(B+1) << endl;
         return ret;
 
         // long long tmp = F(B+1) ^ F(A);
