@@ -85,16 +85,13 @@ void solve(int dataId)
     }
 
     for(int i=0;i<W;i++) {
-        cout << vnode(i, H-1)+1 << " ";
         links[vnode(i, H-1)+1].pb(sink);
     }
-    cout << endl;
 
     int ret = 0;
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
         ret += try_flow(vnode(i, 0));
-        break;
     }
     cout << ret << endl;
 }
