@@ -53,7 +53,7 @@ bool try_flow(int x, int y) {
         tie(bx, by) = back[x][y];
     }
 
-    cout << back[4][2].first << " " << back[4][2].second << endl;
+    cout << x << " " << y << " " << back[4][2].first << " " << back[4][2].second << endl;
     for(int i=0;i<4;i++) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
