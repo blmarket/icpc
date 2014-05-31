@@ -48,6 +48,7 @@ void solve(int dataId)
         V.erase(V.begin());
         int jt = upper_bound(V.begin(), V.end(), X - it) - V.begin();
         jt--;
+        cout << it << " " << V[jt] << " : ";
         if(it + V[jt] > X) {
             ret += size(V);
             break;
