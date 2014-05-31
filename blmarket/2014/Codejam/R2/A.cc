@@ -28,13 +28,41 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int N,X;
+vector<int> V;
+
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
+
+    sort(V.begin(), V.end());
+
+    int ret = 0;
+    while(V.size()) {
+        ret++;
+        if(V.size() == 1) {
+            break;
+        }
+
+        int it = V[0];
+        V.erase(V.begin());
+        int jt = upper_bound(V.begin(), V.end(), X - it) - V.begin();
+        jt--;
+        if(it + V[jt] > X) {
+            ret += size(V);
+            break;
+        }
+        V.erase(V.begin() + jt);
+    }
+    cout << ret << endl;
 }
 
 void process(int dataId)
 {
+    cin >> N >> X;
+    V.resize(N);
+    for(int i=0;i<N;i++) 
+        cin >> V[i];
 }
 
 class ForkSolver {
