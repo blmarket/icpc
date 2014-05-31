@@ -42,6 +42,7 @@ int vnode(int x, int y) {
 }
 
 bool try_flow(int a) {
+    cout << a << endl;
     if(a == sink) return true;
     if(visit[a]) return false;
     visit[a] = true;
