@@ -58,14 +58,14 @@ bool try_flow(int x, int y) {
             if(try_flow(nx, ny)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
-                cout << "<-" << x << " " << y << endl;
+                cout << "<-" << x << " " << y << " ";
                 return true;
             }
         } else {
             if(try_flow(px, py)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
-                cout << "<-" << x << " " << y << endl;
+                cout << "<-" << x << " " << y << " ";
                 return true;
             }
         }
@@ -80,7 +80,10 @@ void solve(int dataId)
     for(int i=0;i<W;i++) {
         back[i][0] = mp(-1, -1);
         memset(visit, 0, sizeof(visit));
-        if(try_flow(i, 0)) ret++;
+        if(try_flow(i, 0)) {
+            ret++;
+            cout << endl;
+        }
     }
     cout << ret << endl;
 }
