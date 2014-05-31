@@ -87,8 +87,17 @@ void solve(int dataId)
         }
     }
     for(int i=H-1;i>=0;i--) {
-        for(int j=0;j<W;j++)
+        for(int j=0;j<W;j++) {
+            if(!used[j][i]) {
+                cout << ". ";
+                continue;
+            }
+            if(back[j][i].first == -1) {
+                cout << "X ";
+                continue;
+            }
             cout << used[j][i] << " ";
+        }
         cout << endl;
     }
 
