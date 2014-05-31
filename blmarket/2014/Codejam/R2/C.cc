@@ -53,6 +53,8 @@ bool try_flow(int x, int y) {
     if(used[x][y]) { // take back edge.
         if(back[x][y].first == -1) return false;
         tie(bx, by) = back[x][y];
+        if(visit[bx][by]) return false;
+        visit[bx][by] = true;
     }
 
     for(int i=0;i<4;i++) {
