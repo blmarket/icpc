@@ -40,7 +40,6 @@ bool try_flow(int x, int y) {
     if(x == -1 || y == -1) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
-        cout << "HERE" << endl;
         return true;
     }
 
@@ -59,12 +58,14 @@ bool try_flow(int x, int y) {
             if(try_flow(nx, ny)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
+                cout << "<-" << x << " " << y << endl;
                 return true;
             }
         } else {
             if(try_flow(px, py)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
+                cout << "<-" << x << " " << y << endl;
                 return true;
             }
         }
