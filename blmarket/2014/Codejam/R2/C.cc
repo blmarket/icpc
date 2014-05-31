@@ -53,6 +53,7 @@ bool try_flow(int x, int y) {
         tie(bx, by) = back[x][y];
     }
 
+    cout << back[4][2].first << " " << back[4][2].second << endl;
     for(int i=0;i<4;i++) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
@@ -81,7 +82,6 @@ void solve(int dataId)
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
-        cout << back[4][2].first << " " << back[4][2].second << endl;
         if(ret == 3) break;
     }
 
