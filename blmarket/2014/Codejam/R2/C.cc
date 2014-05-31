@@ -38,7 +38,7 @@ int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
-    cout << x << " " << y << " " << used[5][2] << endl;
+    // cout << x << " " << y << " " << used[5][2] << endl;
     if(x == -1 || y == -1) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
@@ -93,7 +93,7 @@ void solve(int dataId)
         if(try_flow(x, y)) {
             ret++;
             cout << endl;
-            if(ret == 2) break;
+            if(ret == 3) break;
         }
     }
     for(int i=H-1;i>=0;i--) {
