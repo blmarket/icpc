@@ -38,7 +38,6 @@ int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
 bool try_flow(int x, int y) {
-    cout << x << " " << y << endl;
     if(y == H-1) return true;
     if(visit[x][y]) return false;
     visit[x][y] = true;
@@ -52,6 +51,7 @@ bool try_flow(int x, int y) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
         if(nx == x && ny == y) continue;
+        if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
 
         if(try_flow(nx, ny)) {
             back[nx][ny] = mp(bx, by);
