@@ -58,14 +58,14 @@ bool try_flow(int x, int y) {
             if(try_flow(nx, ny)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
-                // cout << "<-" << x << " " << y << " ";
+                cout << "<-" << x << " " << y << " ";
                 return true;
             }
         } else {
             if(try_flow(px, py)) {
                 used[nx][ny] = true;
                 back[nx][ny] = mp(x, y);
-                // cout << "<-" << x << " " << y << " ";
+                cout << "<-" << x << " " << y << " ";
                 return true;
             }
         }
