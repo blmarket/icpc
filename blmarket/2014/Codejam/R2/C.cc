@@ -60,22 +60,12 @@ bool try_flow(int x, int y) {
     for(int i=0;i<4;i++) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
-        if(ret == 2 && bx == 4 && by == 2) {
-            nx = 5, ny = 2;
-        }
-        if(ret == 2 && bx == 5 && by == 1) {
-            nx = 6, ny = 1;
-        }
         if(nx == x && ny == y) continue;
         if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
 
         if(try_flow(nx, ny)) {
             back[nx][ny] = mp(bx, by);
             used[x][y] = true;
-            cout << x << " " << y << " | " << bx << " " << by << " -> " << nx << " " << ny << " updating " << endl;
-            if(ret == 2) {
-                cout << back[4][2].first << " " << back[4][2].second << endl;
-            }
             return true;
         }
     }
