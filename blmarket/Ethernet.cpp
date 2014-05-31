@@ -64,8 +64,8 @@ public:
             childs[parent[i]].pb(mp(i+1, dist[i]));
         }
 
-        go(0);
-        return 0;
+        cout << go(0) << endl;
+        return ret;
     }
 
     
