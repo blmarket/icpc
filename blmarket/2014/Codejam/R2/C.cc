@@ -78,6 +78,7 @@ void solve(int dataId)
     printf("Case #%d: ", dataId);
     int ret = 0;
     for(int i=0;i<W;i++) {
+        if(back[i][0].first == -1) continue;
         back[i][0] = mp(-1, -1);
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) {
@@ -92,6 +93,7 @@ void process(int dataId)
 {
     cin >> W >> H >> N;
     memset(used, 0, sizeof(used));
+    memset(back, 0, sizeof(back));
     for(int i=0;i<N;i++) {
         int x0, y0, x1, y1;
         cin >> x0 >> y0 >> x1 >> y1;
