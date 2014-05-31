@@ -38,6 +38,7 @@ int dy[4] = {0,-1,1,0};
 
 bool try_flow(int x, int y) {
     if(x == -1 || y == -1) return false;
+    if(y == 0) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
         return true;
@@ -78,9 +79,12 @@ void solve(int dataId)
     printf("Case #%d: ", dataId);
     int ret = 0;
     for(int i=0;i<W;i++) {
-        if(back[i][0].first == -1) continue;
         memset(visit, 0, sizeof(visit));
-        if(try_flow(i, 0)) {
+        if(back[i][0].first == -1) continue;
+        if(back[i][1].first == -1) continue;
+        visit[i][0] = true;
+
+        if(try_flow(i, 1)) {
             ret++;
             cout << endl;
         }
