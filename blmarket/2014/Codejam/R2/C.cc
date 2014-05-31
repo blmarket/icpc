@@ -66,6 +66,7 @@ bool try_flow(int x, int y) {
             if(try_flow(px, py)) {
                 used[x][y] = true;
                 back[nx][ny] = mp(x, y);
+                back[px][py] = mp(nx, ny);
                 cout << "<-" << x << " " << y << " ";
                 return true;
             }
