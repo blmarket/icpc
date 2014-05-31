@@ -78,11 +78,8 @@ public:
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
 
-        F(B+1);
-        return 0;
-
-        // long long tmp = F(B+1) ^ F(A+1);
-        // return (tmp % 1000000007);
+        long long tmp = F(B+1) ^ F(A+1);
+        return (tmp % 1000000007);
     }
 
     
