@@ -83,7 +83,7 @@ void solve(int dataId)
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
         if(try_flow(i, 0)) ret++;
-        if(ret == 3) break;
+        if(ret == 4) break;
     }
 
     cout << endl;
