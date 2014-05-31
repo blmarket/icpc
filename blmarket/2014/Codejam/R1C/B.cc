@@ -60,7 +60,6 @@ void solve(int dataId)
                     lpos = i;
                 }
             }
-            cout << tmp.size() << " " << lpos << endl;
             if(fail) break;
             tmp = tmp.substr(lpos);
         }
