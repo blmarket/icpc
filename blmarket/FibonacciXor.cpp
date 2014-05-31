@@ -76,8 +76,8 @@ public:
         for(int i=2;i<80;i++) {
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
-        
-        F(5);
+
+        F(B+1);
         return 0;
 
         // long long tmp = F(B+1) ^ F(A+1);
