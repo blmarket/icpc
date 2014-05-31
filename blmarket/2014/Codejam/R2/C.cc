@@ -37,6 +37,8 @@ int dx[4] = {-1,0,0,1};
 int dy[4] = {0,-1,1,0};
 const char *dir = "<V^>";
 
+int ret = 0;
+
 bool try_flow(int x, int y) {
     if(visit[x][y]) return false;
     visit[x][y] = true;
@@ -56,7 +58,8 @@ bool try_flow(int x, int y) {
     for(int i=0;i<4;i++) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
-        if(bx == 4 && by == 2 && x == 4 && y == 1) {
+        if(ret == 2 && bx == 4 && by == 2) {
+            cout << "GOTCHA" << endl;
         }
         if(nx == x && ny == y) continue;
         if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
@@ -74,7 +77,7 @@ bool try_flow(int x, int y) {
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
-    int ret = 0;
+    ret = 0;
 
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
