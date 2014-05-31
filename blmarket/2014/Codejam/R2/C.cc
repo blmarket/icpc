@@ -56,6 +56,9 @@ bool try_flow(int x, int y) {
     for(int i=0;i<4;i++) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
+        if(bx == 4 && by == 2 && x == 4 && y == 1) {
+            cout << "HERE" << endl;
+        }
         if(nx == x && ny == y) continue;
         if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
 
