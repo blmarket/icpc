@@ -92,6 +92,7 @@ void solve(int dataId)
     for(int i=0;i<W;i++) {
         memset(visit, 0, sizeof(visit));
         ret += try_flow(vnode(i, 0));
+        break;
     }
     cout << ret << endl;
 }
