@@ -43,7 +43,7 @@ void solve(int dataId)
     do {
         string tmp;
         for(int i=0;i<size(V);i++) {
-            tmp += V[i];
+            tmp += data[V[i]];
         }
 
         cout << tmp << " ";
