@@ -22,6 +22,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<PII> childs[55];
 int ret = 0;
+int maxDist;
 
 int go(int a) {
     vector<int> cs;
@@ -29,20 +30,35 @@ int go(int a) {
         int cc, cd;
         tie(cc, cd) = childs[a][i];
         cd += go(cc);
+        if(cd > maxDist) {
+            ret++;
+            continue;
+        }
         cs.pb(cd);
     }
 
-    for(int i=0;i<size(cs);i++) 
-        cout << cs[i] << " ";
-    cout << endl;
-    return 0;
+    sort(cs.rbegin(), cs.rend());
+    if(size(cs) == 0) {
+        return 0;
+    }
+    if(size(cs) == 1) {
+        return cs[0];
+    }
+
+    while(size(cs) > 1 && cs[0] + cs[1] > maxDist) {
+        ret++;
+        cs.erase(cs.begin());
+    }
+
+    return cs[0];
 }
 
 class Ethernet 
 {
 public:
-    int connect(vector <int> parent, vector <int> dist, int maxDist) 
+    int connect(vector <int> parent, vector <int> dist, int maxDist_) 
     {
+        maxDist = maxDist_;
         for(int i=0;i<55;i++) childs[i].clear();
         for(int i=0;i<size(parent);i++) {
             childs[parent[i]].pb(mp(i+1, dist[i]));
