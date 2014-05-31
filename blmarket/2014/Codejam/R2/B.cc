@@ -37,7 +37,19 @@ void solve(int dataId)
     printf("Case #%d: ", dataId);
     for(int i=0;i<size(V);i++) VV.pb(mp(V[i], i));
     sort(VV.begin(), VV.end());
-    for(int i=0;i<size(V);i++) cout << VV[i].first << " " << VV[i].second << endl;
+
+    int ret = 0;
+    for(int i=0;i<size(V);i++) {
+        int right  = size(V) - 1 - i;
+        int cost = min(VV[i].second, right - VV[i].second);
+        ret += cost;
+        for(int j=i+1;j<size(V);j++) {
+            if(VV[j].second > VV[i].second) {
+                VV[j].second -= 1;
+            }
+        }
+    }
+    cout << ret << endl;
 }
 
 void process(int dataId)
