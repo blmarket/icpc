@@ -21,13 +21,21 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<PII> childs[55];
+int ret = 0;
 
-PII go(int a) {
+int go(int a) {
+    vector<int> cs;
     for(int i=0;i<size(childs[a]);i++) {
         int cc, cd;
         tie(cc, cd) = childs[a][i];
+        cd += go(cc);
+        cs.pb(cd);
     }
-    return mp(0, 0);
+
+    for(int i=0;i<size(cs);i++) 
+        cout << cs[i] << " ";
+    cout << endl;
+    return 0;
 }
 
 class Ethernet 
