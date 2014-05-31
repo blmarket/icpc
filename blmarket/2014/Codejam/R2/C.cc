@@ -35,6 +35,7 @@ bool visit[105][505];
 
 int dx[4] = {-1,0,0,1};
 int dy[4] = {0,-1,1,0};
+const char *dir = "^<>V";
 
 bool try_flow(int x, int y) {
     if(x == -1 || y == -1) return false;
@@ -96,7 +97,14 @@ void solve(int dataId)
                 cout << "X ";
                 continue;
             }
-            cout << used[j][i] << " ";
+            for(int k=0;k<4;k++) {
+                int nx = j + dx[k];
+                int ny = i + dy[k];
+                if(back[nx][ny] == mp(j, i)) {
+                    cout << dir[k];
+                }
+            }
+            cout << " ";
         }
         cout << endl;
     }
