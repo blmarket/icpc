@@ -29,46 +29,29 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int W, H, N;
-PII back[105][505];
 bool used[105][505];
-bool visit[105][505];
-
 int dx[4] = {-1,0,0,1};
 int dy[4] = {0,-1,1,0};
-const char *dir = "<V^>";
 
-int ret = 0;
+vector<int> links[150000];
+bool visit[150000];
+int sink = 149999;
 
-bool try_flow(int x, int y) {
-    if(visit[x][y]) return false;
-    visit[x][y] = true;
-    int bx = x, by = y;
+int vnode(int x, int y) {
+    return (x * 505 + y) * 2;
+}
 
-    if(y == H-1) {
-        if(used[x][y]) return false;
-        used[x][y] = true;
-        return true;
-    }
+bool try_flow(int a) {
+    if(a == sink) return true;
+    if(visit[a]) return false;
+    visit[a] = true;
 
-    if(used[x][y]) { // take back edge.
-        if(back[x][y].first == -1) return false;
-        tie(bx, by) = back[x][y];
-        if(visit[bx][by]) return false;
-        visit[bx][by] = true;
-    }
-
-    for(int i=0;i<4;i++) {
-        int nx = bx + dx[i];
-        int ny = by + dy[i];
-        if(nx == x && ny == y) continue;
-        if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
-
-        if(try_flow(nx, ny)) {
-            back[nx][ny] = mp(bx, by);
-            used[x][y] = true;
-            if(ret == 3) {
-                cout << x << " " << y << " | " << bx << " " << by << " -> " << nx << " " << ny << " updating " << endl;
-            }
+    for(int i=0;i<size(links[a]);i++) {
+        int nn = links[a][i];
+        if(try_flow(nn)) {
+            swap(links[a][i], links[a].back());
+            links[a].pop_back();
+            links[nn].pb(a);
             return true;
         }
     }
@@ -78,38 +61,28 @@ bool try_flow(int x, int y) {
 void solve(int dataId)
 {
     printf("Case #%d: ", dataId);
-    ret = 0;
 
     for(int i=0;i<W;i++) {
-        memset(visit, 0, sizeof(visit));
-        if(try_flow(i, 0)) ret++;
-        if(ret == 4) break;
-    }
-
-    cout << endl;
-
-    for(int i=H-1;i>=0;i--) {
-        for(int j=0;j<W;j++) {
-            if(!used[j][i]) {
-                cout << ". ";
-                continue;
-            }
-            if(back[j][i].first == -1) {
-                cout << "X ";
-                continue;
-            }
+        for(int j=0;j<H;j++) if(!used[i][j]) {
+            int v1 = vnode(i, j);
+            links[v1].pb(v1+1);
             for(int k=0;k<4;k++) {
-                int nx = j + dx[k];
-                int ny = i + dy[k];
-                if(back[nx][ny] == mp(j, i)) {
-                    cout << dir[k];
-                }
+                int nx = i + dx[k];
+                int ny = j + dy[k];
+                links[v1+1].pb(vnode(nx, ny));
             }
-            cout << " ";
         }
-        cout << endl;
     }
 
+    for(int i=0;i<W;i++) {
+        links[vnode(i, H+1)+1].pb(sink);
+    }
+
+    int ret = 0;
+    for(int i=0;i<W;i++) {
+        memset(visit, 0, sizeof(visit));
+        ret += try_flow(vnode(i, 0));
+    }
     cout << ret << endl;
 }
 
@@ -117,14 +90,12 @@ void process(int dataId)
 {
     cin >> W >> H >> N;
     memset(used, 0, sizeof(used));
-    memset(back, 0, sizeof(back));
     for(int i=0;i<N;i++) {
         int x0, y0, x1, y1;
         cin >> x0 >> y0 >> x1 >> y1;
         for(int j=x0;j<=x1;j++) {
             for(int k=y0;k<=y1;k++) {
                 used[j][k] = true;
-                back[j][k] = mp(-1, -1);
             }
         }
     }
