@@ -46,8 +46,6 @@ void solve(int dataId)
             tmp += data[V[i]];
         }
 
-        cout << tmp << " ";
-
         bool fail = false;
         while(tmp.size() > 0) {
             bool diff = false;
@@ -62,9 +60,7 @@ void solve(int dataId)
             }
             if(fail) break;
             tmp = tmp.substr(lpos);
-            cout << tmp << " ";
         }
-        cout << !fail << endl;
         if(!fail) ret++;
     } while(next_permutation(V.begin(), V.end()));
     cout << ret << endl;
