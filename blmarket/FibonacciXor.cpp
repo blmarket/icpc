@@ -39,8 +39,8 @@ class FibonacciXor
 public:
     int find(long long A, long long B) 
     {		
-        fbs[0] = 0;
-        fbs[1] = 1;
+        fbs[0] = 1;
+        fbs[1] = 2;
         for(int i=2;i<80;i++) {
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
