@@ -78,8 +78,8 @@ public:
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
 
-        cout << F(B+1) << " " << F(A+1) << endl;
-        long long tmp = F(B+1) ^ F(A+1);
+        cout << F(B+1) << " " << F(A) << endl;
+        long long tmp = F(B+1) ^ F(A);
         cout << tmp << endl;
         return (tmp % 1000000007);
     }
