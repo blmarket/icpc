@@ -31,7 +31,6 @@ void print(long long a) {
             cout << 0;
         }
     }
-    cout << endl;
 }
 
 class FibonacciXor 
@@ -48,6 +47,7 @@ public:
 
         for(int i=0;i<100;i++) {
             print(i);
+            cout << " = " << i << endl;
         }
 
     }
