@@ -37,7 +37,8 @@ int dx[4] = {-1,0,0,1};
 int dy[4] = {0,-1,1,0};
 
 bool try_flow(int x, int y) {
-    cout << x << "," << y << endl;
+    cout << x << ", " << y << endl;
+    cout << H-1 << endl;
     if(x == -1 || y == -1) return false;
     if(y == H-1 && used[x][y] == false) {
         used[x][y] = true;
