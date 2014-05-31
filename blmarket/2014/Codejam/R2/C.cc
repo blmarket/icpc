@@ -50,7 +50,6 @@ void xx(int a) {
 }
 
 bool try_flow(int a) {
-    xx(a);
     if(a == sink) return true;
     if(visit[a]) return false;
     visit[a] = true;
