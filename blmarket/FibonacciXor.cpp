@@ -36,9 +36,9 @@ void print(long long a) {
 map<long long, long long> memo;
 
 long long F(long long x) {
-    if(x == 1) return 1;
-    if(x == 2) return 2;
-    if(x == 3) return 4;
+    if(x == 1) return 0;
+    if(x == 2) return 1;
+    if(x == 3) return 3;
 
     if(memo.count(x)) return memo[x];
 
