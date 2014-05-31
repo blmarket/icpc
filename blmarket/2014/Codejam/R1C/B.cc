@@ -62,6 +62,7 @@ void solve(int dataId)
             }
             if(fail) break;
             tmp = tmp.substr(lpos);
+            cout << tmp << " ";
         }
         cout << !fail << endl;
         if(!fail) ret++;
