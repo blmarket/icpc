@@ -59,7 +59,7 @@ bool try_flow(int x, int y) {
         int nx = bx + dx[i];
         int ny = by + dy[i];
         if(ret == 2 && bx == 4 && by == 2) {
-            cout << "GOTCHA" << endl;
+            nx = 5, ny = 2;
         }
         if(nx == x && ny == y) continue;
         if(nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
@@ -84,7 +84,7 @@ void solve(int dataId)
         if(try_flow(i, 0)) ret++;
         cout << back[4][2].first << " " << back[4][2].second << endl;
         cout << back[5][1].first << " " << back[5][1].second << endl;
-        if(ret == 2) break;
+        if(ret == 3) break;
     }
 
     cout << endl;
