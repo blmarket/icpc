@@ -21,6 +21,7 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 long long fbs[100];
+long long modd[100];
 
 void print(long long a) {
     for(int i=79;i>=0;i--) {
@@ -50,7 +51,7 @@ long long F(long long x) {
         long long ret = 0;
         long long tt = fbs[pos-2];
         if(tt & 1) {
-            ret = (1LL << (pos-1)) % (1000000007);
+            ret = modd[pos-1];
         }
 
         ret ^= F(fbs[pos-1]) ^ F(fbs[pos-2]);
@@ -62,7 +63,7 @@ long long F(long long x) {
         long long cnt = (x - fbs[pos]);
         long long ret = 0;
         if(cnt & 1) {
-            ret = (1LL << pos) % 1000000007;
+            ret = modd[pos];
         }
         ret ^= F(fbs[pos]) ^ F(x - fbs[pos]);
         ret %= 1000000007;
@@ -76,9 +77,12 @@ class FibonacciXor
 public:
     int find(long long A, long long B) 
     {		
+        modd[0] = 1;
+        modd[1] = 2;
         fbs[0] = 1;
         fbs[1] = 2;
         for(int i=2;i<80;i++) {
+            modd[i] = (modd[i-1] * 2) % 1000000007;
             fbs[i] = fbs[i-2] + fbs[i-1];
         }
 
