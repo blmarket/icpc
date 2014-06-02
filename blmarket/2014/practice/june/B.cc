@@ -75,6 +75,7 @@ int maxflow(int s, int e) {
     bool visit[220];
     function<int(int, int)> go = [&](int a, int flow) -> int {
         if(visit[a]) return 0;
+        visit[a] = true;
         if(a == e) return flow;
 
         for(auto &it : links[a]) if(it.second) {
