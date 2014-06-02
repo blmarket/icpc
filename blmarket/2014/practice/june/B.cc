@@ -39,6 +39,9 @@ void process(void) {
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) cin >> matrix[i][j];
     }
+
+    sort(cls, cls+N);
+    cout << get<0>(cls[0]) << endl;
 }
 
 int main(void) {
