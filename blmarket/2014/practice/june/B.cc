@@ -91,7 +91,7 @@ int maxflow(int s, int e) {
     int ret = 0;
     int tmp;
     memset(visit, 0, sizeof(visit));
-    while(tmp = go(s, 100000)) {
+    while((tmp = go(s, 100000))) {
         ret += tmp;
         memset(visit, 0, sizeof(visit));
     }
