@@ -131,7 +131,7 @@ void process(int case_id) {
     }
     
     int tmp = maxflow(src, sink);
-    cout << "MAXFLOW = " << tmp << endl;
+    // cout << "MAXFLOW = " << tmp << endl;
     ret -= tmp;
     printf("Case %d: %d\n", case_id, ret);
 }
