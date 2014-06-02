@@ -55,6 +55,49 @@ int st[105], et[105], sn[105];
 tuple<int, int, int> cls[105];
 int matrix[105][105];
 
+vector<PII> links[220];
+
+void add_link(int s, int e, int flow) {
+    for(int i=0;i<size(links[s]);i++) {
+        if(links[s][i].first == e) {
+            links[s][i].second += flow;
+            if(links[s][i].second == 0) {
+                swap(links[s][i], links[s].back());
+                links[s].pop_back();
+            }
+            return;
+        }
+    }
+    links[s].pb(mp(e, flow));
+}
+
+int maxflow(int s, int e) {
+    bool visit[220];
+    function<int(int, int)> go = [&](int a, int flow) -> int {
+        if(visit[a]) return 0;
+        if(a == e) return flow;
+
+        for(auto &it : links[a]) if(it.second) {
+            int tmp = go(it.first, min(flow, it.second));
+            if(tmp) {
+                add_link(a, it.first, -tmp);
+                add_link(it.first, a, tmp);
+                return tmp;
+            }
+        }
+        return 0;
+    };
+
+    int ret = 0;
+    int tmp;
+    memset(visit, 0, sizeof(visit));
+    while(tmp = go(s, 100000)) {
+        ret += tmp;
+        memset(visit, 0, sizeof(visit));
+    }
+    return ret;
+}
+
 void process(void) {
     cin >> N >> M;
 
@@ -67,20 +110,25 @@ void process(void) {
         for(int j=0;j<N;j++) cin >> matrix[i][j];
     }
 
-    bool flow[105][105];
-    memset(flow, 0, sizeof(flow));
+    int src = 205;
+    int sink = 206;
+
+    int ret = 0;
+
     for(int i=0;i<N;i++) {
+        ret += get<2>(cls[i]);
+        add_link(src, i*2, get<2>(cls[i]));
+        add_link(i*2+1, sink, get<2>(cls[i]));
+
         for(int j=0;j<N;j++) {
             if(get<1>(cls[j]) + matrix[j][i] <= get<0>(cls[i])) {
-                flow[j][i] = true;
+                add_link(j*2, i*2+1, 100000);
             }
         }
     }
 
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) cout << flow[i][j] << " ";
-        cout << endl;
-    }
+    ret -= maxflow(src, sink);
+    cout << ret << endl;
 }
 
 int main(void) {
