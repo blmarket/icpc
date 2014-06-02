@@ -59,6 +59,7 @@ void process(void) {
     cin >> N >> M;
     for(int i=0;i<N;i++) {
         cin >> st[i] >> et[i] >> sn[i];
+        sn[i] = (sn[i] + M-1) / M;
         cls[i] = make_tuple(st[i], et[i], sn[i]);
     }
     for(int i=0;i<N;i++) {
