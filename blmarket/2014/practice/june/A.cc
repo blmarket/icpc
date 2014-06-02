@@ -34,6 +34,7 @@ void process(void) {
     cin >> n;
     string tmp;
     getline(cin, tmp);
+    cout << tmp << endl;
 
     for(int i=0;i<n;i++) {
         getline(cin, tmp);
