@@ -116,6 +116,8 @@ void process(int case_id) {
 
     int ret = 0;
 
+    for(int i=0;i<220;i++) links[i].clear();
+
     for(int i=0;i<N;i++) {
         ret += get<2>(cls[i]);
         add_link(src, i*2, get<2>(cls[i]));
