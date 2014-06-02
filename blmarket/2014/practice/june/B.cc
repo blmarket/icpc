@@ -68,6 +68,7 @@ void process(void) {
 
     sort(cls, cls+N);
     for(int i=0;i<N;i++) cout << cls[i] << endl;
+    cout << endl;
 }
 
 int main(void) {
