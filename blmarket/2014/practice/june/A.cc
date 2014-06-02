@@ -34,16 +34,14 @@ void process(void) {
     cin >> n;
     string tmp;
     getline(cin, tmp);
-    cout << tmp << endl;
 
     for(int i=0;i<n;i++) {
         getline(cin, tmp);
-        cout << tmp << endl;
         istringstream sin(tmp);
         while(true) {
             string tmp2;
             sin >> tmp2;
-            if(tmp2 == "END") continue;
+            if(tmp2 == "END") break;
             double tmp3;
             sin >> tmp3;
             prs[i][i+1][tmp2] += tmp3;
