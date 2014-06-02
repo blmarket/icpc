@@ -74,10 +74,20 @@ void process(void) {
         }
     }
 
-    for(auto &it : prs[0][n]) {
-        cout << it.first << " = " << it.second << endl;
+    if(prs[0][n].size() == 0) {
+        cout << "GAMEOVER" << endl;
+        return;
     }
-    cout << endl;
+
+    double max = 0;
+    string ret;
+    for(auto &it : prs[0][n]) {
+        if(max < it.second) {
+            max = it.second;
+            ret = it.first;
+        }
+    }
+    cout << ret << endl;
 }
 
 int main(void) {
