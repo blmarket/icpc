@@ -57,6 +57,7 @@ int matrix[105][105];
 
 void process(void) {
     cin >> N >> M;
+
     for(int i=0;i<N;i++) {
         cin >> st[i] >> et[i] >> sn[i];
         sn[i] = (sn[i] + M-1) / M;
@@ -66,9 +67,20 @@ void process(void) {
         for(int j=0;j<N;j++) cin >> matrix[i][j];
     }
 
-    sort(cls, cls+N);
-    for(int i=0;i<N;i++) cout << cls[i] << endl;
-    cout << endl;
+    bool flow[105][105];
+    memset(flow, 0, sizeof(flow));
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            if(get<1>(cls[j]) + matrix[j][i] <= get<0>(cls[i])) {
+                flow[j][i] = true;
+            }
+        }
+    }
+
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) cout << flow[i][j] << " ";
+        cout << endl;
+    }
 }
 
 int main(void) {
