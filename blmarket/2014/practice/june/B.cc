@@ -124,7 +124,7 @@ void process(int case_id) {
         add_link(i*2+1, sink, get<2>(cls[i]));
 
         for(int j=0;j<N;j++) {
-            if(get<1>(cls[j]) + matrix[j][i] <= get<0>(cls[i])) {
+            if(get<1>(cls[j]) + matrix[j][i] < get<0>(cls[i])) {
                 add_link(j*2, i*2+1, 100000);
             }
         }
