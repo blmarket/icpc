@@ -38,6 +38,7 @@ void process(void) {
 
     for(int i=0;i<n;i++) {
         getline(cin, tmp);
+        cout << tmp << endl;
         istringstream sin(tmp);
         while(true) {
             string tmp2;
