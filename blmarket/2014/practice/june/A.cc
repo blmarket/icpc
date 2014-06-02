@@ -53,6 +53,7 @@ void process(void) {
         for(auto it : tmp) {
             cout << it.first << " " << it.second << endl;
         }
+        cout << endl;
     }
 }
 
