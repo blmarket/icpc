@@ -25,8 +25,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+typedef map<string, double> MAP;
+
 map<pair<string, string>, string> rules;
-map<string, double> prs[505][505];
+MAP prs[505][505];
+
+MAP mix(const MAP &a, const MAP &b) {
+    MAP ret;
+    for(auto &it: a) {
+        for(auto &jt: b) {
+            pair<string, string> tok = mp(it.first, jt.first);
+            if(rules.count(tok)) {
+                ret[rules[tok]] += it.second * jt.second;
+            }
+        }
+    }
+    return ret;
+}
 
 void process(void) {
     for(int i=0;i<505;i++) for(int j=0;j<505;j++) prs[i][j].clear();
@@ -48,13 +63,21 @@ void process(void) {
         }
     }
 
-    for(int i=0;i<n;i++) {
-        auto tmp = prs[i][i+1];
-        for(auto it : tmp) {
-            cout << it.first << " " << it.second << endl;
+    for(int L=2;L<=n;L++) {
+        for(int i=0;i+L<=n;i++) {
+            for(int j=i+1;j<i+L;j++) {
+                auto tmp = mix(prs[i][j], prs[j][i+L]);
+                for(auto &it: tmp) {
+                    prs[i][i+L][it.first] += it.second;
+                }
+            }
         }
-        cout << endl;
     }
+
+    for(auto &it : prs[0][n]) {
+        cout << it.first << " = " << it.second << endl;
+    }
+    cout << endl;
 }
 
 int main(void) {
