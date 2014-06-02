@@ -99,7 +99,7 @@ int maxflow(int s, int e) {
     return ret;
 }
 
-void process(void) {
+void process(int case_id) {
     cin >> N >> M;
 
     for(int i=0;i<N;i++) {
@@ -127,14 +127,16 @@ void process(void) {
             }
         }
     }
-
-    ret -= maxflow(src, sink);
-    cout << ret << endl;
+    
+    int tmp = maxflow(src, sink);
+    cout << "MAXFLOW = " << tmp << endl;
+    ret -= tmp;
+    printf("Case %d: %d\n", case_id, ret);
 }
 
 int main(void) {
     int T;
     cin >> T;
-    for(int i=0;i<T;i++) process();
+    for(int i=0;i<T;i++) process(i+1);
     return 0;
 }
