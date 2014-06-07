@@ -24,7 +24,6 @@ int M;
 int ret;
 
 string go(string A, string B) {
-    cout << B << endl;
     bool needOn = false;
     bool needOff = false;
     for(int i=0;i<M;i++) {
@@ -63,6 +62,7 @@ public:
         ret = 0;
         string cur(M, '-');
         for(int i=0;i<size(states);i++) {
+            cout << states[i] << endl;
             cur = go(cur, states[i]);
             ret++;
             cout << cur << " " << ret << endl;
