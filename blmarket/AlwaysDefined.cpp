@@ -54,7 +54,7 @@ public:
                 cout << i << endl;
             }
         }
-        cout << endl;
+        cout << cnt << endl;
         // return go(R, W) - go(L - 1, W);
     }
 
