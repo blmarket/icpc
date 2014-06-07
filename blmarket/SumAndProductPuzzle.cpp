@@ -25,10 +25,16 @@ class SumAndProductPuzzle
 public:
     long long getSum(int A, int B) 
     {
+        map<int, int> sum, product;
         for(int i=1;i<=32;i++) {
             for(int j=i;j<=32;j++) {
-                cout << i+j << " " << i*j << endl;
+                sum[i+j] += 1;
+                product[i*j] += 1;
             }
+        }
+
+        for(auto it : sum) {
+            cout << it.first << " = " << it.second << endl;
         }
         return 0;
     }
