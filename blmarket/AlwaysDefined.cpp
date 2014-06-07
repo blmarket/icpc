@@ -47,7 +47,7 @@ public:
     long long countIntegers(long long L, long long R, int W) 
     {		
         int cnt = 0;
-        for(int i = L; i <= R + 500; i++) if((i % W) == 2) {
+        for(int i = L; i <= R + 1000; i++) if((i % W) == 2) {
             int x = i;
             if(chk(x, W)) {
                 cout << i << " " << (i % W) << " " << i/2 << endl;
