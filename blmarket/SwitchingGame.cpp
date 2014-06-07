@@ -24,6 +24,7 @@ int M;
 int ret;
 
 string go(string A, string B) {
+    cout << B << endl;
     bool needOn = false;
     bool needOff = false;
     for(int i=0;i<M;i++) {
