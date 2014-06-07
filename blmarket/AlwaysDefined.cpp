@@ -51,7 +51,7 @@ public:
             int x = i;
             if(chk(x, W)) {
                 cnt++;
-                cout << i << endl;
+                cout << i << " " << (i % W) << endl;
             }
         }
         cout << cnt << endl;
