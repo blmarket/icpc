@@ -22,11 +22,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 long long go(long long R, int W) {
     long long ret = 0;
-    long long n1 = (R-1) / W;
+    long long n1 = (R-1+W) / W;
     ret += n1;
 
     for(int i=2;i<W;i++) {
-        long long k = (R-i) / W;
+        long long k = (R-i+W) / W;
         int t = i / __gcd(W, i);
         ret += (k / t);
     }
