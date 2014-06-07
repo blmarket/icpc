@@ -62,7 +62,7 @@ public:
         for(int i=0;i<size(states);i++) {
             cur = go(cur, states[i]);
             ret++;
-            cout << ret << endl;
+            cout << cur << " " << ret << endl;
         }
         return ret;
     }
