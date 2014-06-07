@@ -35,7 +35,8 @@ long long go2(long long A, int W, int R) {
     int t = __gcd(W, R);
     long long ret = k / t;
     for(int i=1;i<t;i++) {
-        int RR = (R + W*i) / R;
+        if((R + (W*i)) % R) continue;
+        int RR = (R + W * i) / R;
         ret += go2(A/R, W, RR);
     }
     return ret;
