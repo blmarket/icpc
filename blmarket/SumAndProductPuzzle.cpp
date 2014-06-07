@@ -20,27 +20,17 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-bool susan[1000];
-
 class SumAndProductPuzzle 
 {
 public:
     long long getSum(int A, int B) 
     {
-        susan[2] = true; // 2 = 1+1, determined.
-        susan[3] = true; // 3 = 1+2, determined.
-        susan[4] = true; // 4 = 1+3 or 2+2, product = 3 or 4, determined.
-        susan[5] = true; // 5 = 1+4, 2+3, product 4 or 6
-
-        for(int i=6;i<50;i++) {
-            for(int j=1;j<i;j++) {
-                int k = i-j;
-                if(k < j) break;
-                long long product = (long long)j * k;
-                cout << product << " ";
+        for(int i=1;i<=32;i++) {
+            for(int j=i;j<=32;j++) {
+                cout << i+j << " " << i*j << endl;
             }
-            cout << endl;
         }
+        return 0;
     }
 
     
