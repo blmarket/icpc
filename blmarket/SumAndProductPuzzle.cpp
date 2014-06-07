@@ -32,7 +32,7 @@ public:
         susan[4] = true; // 4 = 1+3 or 2+2, product = 3 or 4, determined.
         susan[5] = true; // 5 = 1+4, 2+3, product 4 or 6
 
-        for(int i=6;i<10;i++) {
+        for(int i=6;i<50;i++) {
             for(int j=1;j<i;j++) {
                 int k = i-j;
                 if(k < j) break;
