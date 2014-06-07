@@ -20,19 +20,6 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-long long go(long long R, int W) {
-    long long ret = 0;
-    long long n1 = (R-1+W) / W;
-    ret += n1;
-
-    for(int i=2;i<W;i++) {
-        long long k = (R-i+W) / W;
-        int t = i / __gcd(W, i);
-        ret += (k / t);
-    }
-    return ret;
-}
-
 bool chk(long long x, int W) {
     if((x % W) == 0) return false;
     if((x % W) == 1) return true;
@@ -41,19 +28,37 @@ bool chk(long long x, int W) {
     return chk(x/t, W);
 }
 
+long long go2(long long A, int W, int R) {
+    long long k = (A - R + W) / W;
+    int t = __gcd(W, R);
+    long long ret = k / t;
+    for(int i=1;i<t;i++) {
+        int RR = (R + W*i) / R;
+        ret += go2(A/R, W, RR);
+    }
+    return ret;
+}
+
+long long go(long long R, int W) {
+    long long ret = 0;
+    long long n1 = (R-1+W) / W;
+    ret += n1;
+
+    for(int i=2;i<W;i++) {
+        long long k = (R-i+W) / W;
+        int t = i / __gcd(W, i);
+
+        ret += go2(R, W, i);
+    }
+    return ret;
+}
+
 class AlwaysDefined 
 {
 public:
     long long countIntegers(long long L, long long R, int W) 
     {		
-        int cnt = 0;
-        for(int i = L; i <= R + 1000; i++) if((i % W) == 2) {
-            int x = i;
-            if(chk(x, W)) {
-                cout << i << " " << (i % W) << " " << i/2 << endl;
-            }
-        }
-        // return go(R, W) - go(L - 1, W);
+        return go(R, W) - go(L - 1, W);
     }
 
     
