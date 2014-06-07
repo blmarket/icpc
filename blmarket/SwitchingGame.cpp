@@ -58,6 +58,8 @@ class SwitchingGame
 public:
     int timeToWin(vector <string> states) 
     {
+        for(int i=0;i<size(states);i++) cout << states[i] << " ";
+        cout << endl;
         M = size(states[0]);
         ret = 0;
         string cur(M, '-');
