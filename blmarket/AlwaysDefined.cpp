@@ -29,7 +29,7 @@ bool chk(long long x, int W) {
 }
 
 long long go2(long long A, int W, int R) {
-    cout << A << " " << W << " " << R << endl;
+    if(A == 0) return 0;
     long long k = (A - R + W) / W;
     int t = __gcd(W, R);
     long long ret = k / t;
