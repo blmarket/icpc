@@ -35,7 +35,6 @@ string go(string A, string B) {
 
     ret += needOn + needOff;
 
-    cout << B << endl;
     for(int i=0;i<M;i++) if(B[i] == '?') {
         switch(A[i]) {
             case 'A':
@@ -49,7 +48,6 @@ string go(string A, string B) {
                 break;
         }
     }
-    cout << B << endl;
     return B;
 }
 
@@ -64,10 +62,8 @@ public:
         ret = 0;
         string cur(M, '-');
         for(int i=0;i<size(states);i++) {
-            cout << states[i] << endl;
             cur = go(cur, states[i]);
             ret++;
-            cout << cur << " " << ret << endl;
         }
         return ret;
     }
