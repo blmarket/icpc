@@ -84,6 +84,6 @@ public:
 int main()
 {
     AlwaysDefined ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
