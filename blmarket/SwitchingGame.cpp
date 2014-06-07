@@ -46,11 +46,9 @@ string go(string A, string B) {
             case '-':
                 if(needOn) B[i] = 'A'; else B[i] = '-';
                 break;
-            default:
-                cout << "HERE" << endl;
-                break;
         }
     }
+    cout << B << endl;
     return B;
 }
 
