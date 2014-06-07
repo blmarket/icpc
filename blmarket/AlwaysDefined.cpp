@@ -50,7 +50,7 @@ public:
         for(int i = L; i <= R + 200; i++) if((i % W) == 2) {
             int x = i;
             if(chk(x, W)) {
-                cout << i << " " << (i % W) << endl;
+                cout << i << " " << (i % W) << " " << i/2 << endl;
             }
         }
         // return go(R, W) - go(L - 1, W);
