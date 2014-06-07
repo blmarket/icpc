@@ -33,7 +33,7 @@ public:
             }
         }
 
-        for(auto it : sum) {
+        for(auto it : product) {
             cout << it.first << " = " << it.second << endl;
         }
         return 0;
