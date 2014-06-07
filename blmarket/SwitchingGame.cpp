@@ -35,6 +35,7 @@ string go(string A, string B) {
 
     ret += needOn + needOff;
 
+    cout << B << endl;
     for(int i=0;i<M;i++) if(B[i] == '?') {
         switch(A[i]) {
             case 'A':
