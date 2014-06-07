@@ -46,12 +46,15 @@ class AlwaysDefined
 public:
     long long countIntegers(long long L, long long R, int W) 
     {		
+        int cnt = 0;
         for(int i = L; i <= R; i++) {
             int x = i;
             if(chk(x, W)) {
+                cnt++;
                 cout << i << endl;
             }
         }
+        cout << endl;
         // return go(R, W) - go(L - 1, W);
     }
 
