@@ -33,12 +33,26 @@ long long go(long long R, int W) {
     return ret;
 }
 
+bool chk(long long x, int W) {
+    if((x % W) == 0) return false;
+    if((x % W) == 1) return true;
+    int t = (x % W);
+    if((x % t) != 0) return false;
+    return chk(x/t, W);
+}
+
 class AlwaysDefined 
 {
 public:
     long long countIntegers(long long L, long long R, int W) 
     {		
-        return go(R, W) - go(L - 1, W);
+        for(int i = L; i <= R; i++) {
+            int x = i;
+            if(chk(x, W)) {
+                cout << i << endl;
+            }
+        }
+        // return go(R, W) - go(L - 1, W);
     }
 
     
@@ -61,6 +75,6 @@ public:
 int main()
 {
     AlwaysDefined ___test; 
-    ___test.run_test(-1); 
+    ___test.run_test(2); 
 } 
 // END CUT HERE
