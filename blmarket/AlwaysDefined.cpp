@@ -23,6 +23,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int W;
 
 long long go2(long long maxk, int r) {
+    cout << maxk << " " << r << endl;
     if(r == 1) return maxk+1;
     long long ret = 0;
     // k W + r
