@@ -33,6 +33,7 @@ long long go2(long long maxk, int r) {
         int nr = (i * W + r) / r;
         ret += go2(maxw, nr);
     }
+    return ret;
 }
 
 long long go(long long A) {
