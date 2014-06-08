@@ -42,6 +42,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 map<pair<long long, int>, long long> memo;
 
 int W;
+vector<int> nr[3005];
 
 long long go2(long long maxk, int r) {
     if(r == 1) return maxk+1;
@@ -76,9 +77,20 @@ class AlwaysDefined
 {
 public:
     long long countIntegers(long long L, long long R, int W_) 
-    {		
+    {
         memo.clear();
         W = W_;
+        for(int i=1;i<W;i++) {
+            nr[i].clear();
+            for(int j=0;j<i;j++) {
+                if((j*W+i) % i) continue;
+                nr[i].pb((j*W+i) / i);
+            }
+            for(int j=0;j<size(nr[i]);j++) {
+                cout << nr[i][j] << " ";
+            }
+            cout << endl;
+        }
         return go(R) - go(L-1);
     }
 
