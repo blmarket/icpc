@@ -28,6 +28,7 @@ long long go2(long long maxk, int r) {
     long long ret = 0;
     // k W + r
     for(int i=0;i<r;i++) {
+        if(maxk - i < 0) break;
         // k = W w + i
         long long maxw = (maxk - i) / r;
         if( (i*W+r) % r ) continue; // fraction -> skip.
