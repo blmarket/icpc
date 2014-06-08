@@ -33,7 +33,7 @@ long long go2(long long maxk, int r) {
         int nr = (i * W + r) / r;
         ret += go2(maxw, nr);
     }
-    cout << maxk << " " << r << " = " <<ret << endl;
+    cout << maxk << " " << r << " = " << ret << endl;
     return ret;
 }
 
