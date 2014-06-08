@@ -35,7 +35,7 @@ long long go2(long long maxk, int r) {
         int nr = (i * W + r) / r;
         ret += go2(maxw, nr);
     }
-    cout << maxk << " " << r << " = " << ret << endl;
+    // cout << maxk << " " << r << " = " << ret << endl;
     return ret;
 }
 
@@ -78,6 +78,6 @@ public:
 int main()
 {
     AlwaysDefined ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
