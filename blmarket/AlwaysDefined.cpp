@@ -20,38 +20,26 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-bool chk(long long x, int W) {
-    if((x % W) == 0) return false;
-    if((x % W) == 1) return true;
-    int t = (x % W);
-    if((x % t) != 0) return false;
-    return chk(x/t, W);
-}
+int W;
 
-long long go2(long long A, int W, int R) {
-    cout << A << " " << W << " " << R << endl;
-    if(A == 0) return 0;
-    long long k = (A - R + W) / W;
-    int t = __gcd(W, R);
-    long long ret = k / t;
-    for(int i=1;i<R;i++) {
-        if((R + (W*i)) % R) continue;
-        int RR = (R + W * i) / R;
-        ret += go2(A/R, W, RR);
-    }
-    return ret;
-}
-
-long long go(long long R, int W) {
+long long go2(long long maxk, int r) {
+    if(r == 1) return maxk+1;
     long long ret = 0;
-    long long n1 = (R-1+W) / W;
-    ret += n1;
+    // k W + r
+    for(int i=0;i<r;i++) {
+        // k = W w + i
+        long long maxw = (maxk - i) / r;
+        if( (i*W+r) % r ) continue; // fraction -> skip.
+        int nr = (i * W + r) / r;
+        ret += go2(maxw, nr);
+    }
+}
 
-    for(int i=2;i<W;i++) {
-        long long k = (R-i+W) / W;
-        int t = i / __gcd(W, i);
-
-        ret += go2(R, W, i);
+long long go(long long A) {
+    long long ret = 0;
+    for(int i=1;i<W;i++) {
+        long long k = (A-i) / W;
+        ret += go2(k, i);
     }
     return ret;
 }
@@ -59,9 +47,10 @@ long long go(long long R, int W) {
 class AlwaysDefined 
 {
 public:
-    long long countIntegers(long long L, long long R, int W) 
+    long long countIntegers(long long L, long long R, int W_) 
     {		
-        return go(R, W) - go(L - 1, W);
+        W = W_;
+        return go(R) - go(L-1);
     }
 
     
@@ -84,6 +73,6 @@ public:
 int main()
 {
     AlwaysDefined ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
