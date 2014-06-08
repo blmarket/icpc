@@ -41,6 +41,7 @@ long long go2(long long maxk, int r) {
 long long go(long long A) {
     long long ret = 0;
     for(int i=1;i<W;i++) {
+        if(A < i) break;
         long long k = (A-i) / W;
         ret += go2(k, i);
     }
