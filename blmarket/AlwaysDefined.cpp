@@ -51,12 +51,10 @@ long long go2(long long maxk, int r) {
     if(it != memo.end()) return it->second;
     long long ret = 0;
     // k W + r
-    for(int i=0;i<r;i++) {
-        if(maxk - i < 0) break;
-        // k = W w + i
-        long long maxw = (maxk - i) / r;
-        if( (i*W+r) % r ) continue; // fraction -> skip.
-        int nr = (i * W + r) / r;
+    for(auto it : nr[r]) {
+        if(maxk - it < 0) break;
+        long long maxw = (maxk - it) / r;
+        int nr = (it * W + r) / r;
         ret += go2(maxw, nr);
     }
     // cout << maxk << " " << r << " = " << ret << endl;
@@ -84,7 +82,7 @@ public:
             nr[i].clear();
             for(int j=0;j<i;j++) {
                 if((j*W+i) % i) continue;
-                nr[i].pb((j*W+i) / i);
+                nr[i].pb(j);
             }
             for(int j=0;j<size(nr[i]);j++) {
                 cout << nr[i][j] << " ";
