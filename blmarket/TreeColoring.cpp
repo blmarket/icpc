@@ -89,7 +89,6 @@ public:
                 markBlue(queryNode[i]);
             } else {
                 ret ^= calc(queryNode[i]);
-                cout << ret << endl;
             }
         }
         return ret;
