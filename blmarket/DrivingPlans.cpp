@@ -33,7 +33,7 @@ void calcmd(int mindist[2005], int sp) {
     while(!Q.empty()) {
         int dist, pos;
         tie(dist, pos) = Q.top();
-        cout << dist << " " << pos << endl;
+        cout << dist << " " << pos << " " << mindist[pos] << endl;
         Q.pop();
         dist = -dist;
 
