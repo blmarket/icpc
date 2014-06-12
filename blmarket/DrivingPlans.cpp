@@ -25,7 +25,7 @@ vector<PII> links[2005];
 bool hasz[2005];
 int md1[2005], md2[2005];
 
-void calcmd(int mindist[2005], int sp) {
+void calcmd(int *mindist, int sp) {
     memset(mindist, -1, sizeof(int) * 2005);
     priority_queue<PII> Q;
     mindist[sp] = 0;
@@ -70,10 +70,13 @@ public:
         calcmd(md2, N);
 
         if(md1[N] == -1) return 0;
+
         for(int i=1;i<=N;i++) {
-            cout << md1[i] << " ";
+            if(md1[i] + md2[i] == md1[N] && hasz[i]) return -1;
         }
-        cout << endl;
+
+        return 1;
+
     }
 
     
