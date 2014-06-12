@@ -43,6 +43,7 @@ void markBlue(int a) {
 }
 
 long long calc(int a) {
+    cout << a << endl;
     long long ret = sumblue;
     while(a != 0) {
         ret += -nblue[a] * dist[a] + (nblue[0] - nblue[a]) * dist[a];
