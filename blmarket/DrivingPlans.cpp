@@ -95,6 +95,8 @@ public:
             if(md1[i] + md2[i] == md1[N] && hasz[i]) return -1;
         }
 
+        memo.clear();
+        memo[N] = 1;
         return nways(1);
     }
 
