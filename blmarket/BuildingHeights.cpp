@@ -25,16 +25,18 @@ class BuildingHeights
 public:
     int minimum(vector <int> heights) 
     {		
+        vector<long long> S;
         sort(heights.begin(), heights.end());
+        S.pb(0);
         int n = size(heights);
+        for(int i=0;i<n;i++) {
+            S.pb(S.back() + heights[i]);
+        }
         int ret = 0;
         for(int i=1;i<n;i++) {
             int mindiff = 1000000000;
             for(int j=0;j+i < n;j++) {
-                int sum = 0;
-                for(int k=j;k<j+i;k++) {
-                    sum += heights[j+i] - heights[k];
-                }
+                long long sum = heights[j+i] * (i+1) - S[j+i+1] - S[j];
                 if(sum < mindiff) mindiff = sum;
             }
             ret ^= mindiff;
