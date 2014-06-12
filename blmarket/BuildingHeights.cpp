@@ -35,6 +35,7 @@ public:
                     mindiff = heights[j+i] - heights[j];
                 }
             }
+            cout << i << " " << mindiff << endl;
             ret ^= mindiff;
         }
         return ret;
