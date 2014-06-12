@@ -43,9 +43,9 @@ void markBlue(int a) {
 }
 
 long long calc(int a) {
-    cout << a << endl;
     long long ret = sumblue;
     while(a != 0) {
+        cout << a << endl;
         ret += -nblue[a] * dist[a] + (nblue[0] - nblue[a]) * dist[a];
         a = parent[a];
     }
@@ -66,12 +66,12 @@ public:
 
         function<void()> generateInput = [&]() {
             for (int i = 0; i < N-1; i++) {
-                dist[i] = genNextRandom() % maxDist;
-                parent[i] = genNextRandom();
-                if (parent[i] < threshold) {
-                    parent[i] = i;
+                dist[i+1] = genNextRandom() % maxDist;
+                parent[i+1] = genNextRandom();
+                if (parent[i+1] < threshold) {
+                    parent[i+1] = i;
                 } else {
-                    parent[i] = parent[i] % (i + 1);
+                    parent[i+1] = parent[i+1] % (i + 1);
                 }
             }
 
