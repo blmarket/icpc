@@ -26,14 +26,13 @@ bool hasz[2005];
 int md1[2005], md2[2005];
 
 void calcmd(int mindist[2005], int sp) {
-    memset(mindist, -1, sizeof(mindist));
+    memset(mindist, -1, sizeof(int) * 2005);
     priority_queue<PII> Q;
     mindist[sp] = 0;
     Q.push(mp(0, sp));
     while(!Q.empty()) {
         int dist, pos;
         tie(dist, pos) = Q.top();
-        cout << dist << " " << pos << " " << mindist[pos] << endl;
         Q.pop();
         dist = -dist;
 
