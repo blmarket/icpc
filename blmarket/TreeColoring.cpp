@@ -89,6 +89,7 @@ public:
                 markBlue(queryNode[i]);
             } else {
                 ret ^= calc(queryNode[i]);
+                cout << ret << endl;
             }
         }
         return ret;
@@ -116,6 +117,6 @@ public:
 int main()
 {
     TreeColoring ___test; 
-    ___test.run_test(3); 
+    ___test.run_test(4); 
 } 
 // END CUT HERE
