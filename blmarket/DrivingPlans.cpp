@@ -23,7 +23,32 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<PII> links[2005];
 bool hasz[2005];
-int mindist[2005];
+int md1[2005], md2[2005];
+
+void calcmd(int mindist[2005], int sp) {
+    memset(mindist, -1, sizeof(mindist));
+    priority_queue<PII> Q;
+    mindist[sp] = 0;
+    Q.push(mp(0, sp));
+    while(!Q.empty()) {
+        int dist, pos;
+        tie(dist, pos) = Q.top();
+        Q.pop();
+        dist = -dist;
+
+        if(mindist[pos] != dist) continue;
+
+        for(int i=0;i<size(links[pos]);i++) {
+            int n, d;
+            tie(n, d) = links[pos][i];
+            int nd = dist + d;
+            if(mindist[n] == -1 || mindist[n] > nd) {
+                mindist[n] = nd;
+                Q.push(mp(-nd, n));
+            }
+        }
+    }
+}
 
 class DrivingPlans 
 {
@@ -41,33 +66,12 @@ public:
             links[B[i]].pb(mp(A[i], C[i]));
         }
 
-        memset(mindist, -1, sizeof(mindist));
-        priority_queue<PII> Q;
-        mindist[1] = 0;
-        Q.push(mp(0, 1));
-        while(!Q.empty()) {
-            int dist, pos;
-            tie(dist, pos) = Q.top();
-            Q.pop();
-            dist = -dist;
+        calcmd(md1, 1);
+        calcmd(md2, N);
 
-            if(mindist[pos] != dist) continue;
-
-            for(int i=0;i<size(links[pos]);i++) {
-                int n, d;
-                tie(n, d) = links[pos][i];
-                int nd = dist + d;
-                if(mindist[n] == -1 || mindist[n] > nd) {
-                    mindist[n] = nd;
-                    Q.push(mp(-nd, n));
-                }
-            }
-        }
-
-        if(mindist[N] == -1) return 0;
-
+        if(md1[N] == -1) return 0;
         for(int i=1;i<=N;i++) {
-            cout << mindist[i] << " ";
+            cout << md1[i] << " ";
         }
         cout << endl;
     }
