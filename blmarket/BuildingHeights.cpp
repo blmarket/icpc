@@ -29,13 +29,14 @@ public:
         int n = size(heights);
         int ret = 0;
         for(int i=1;i<n;i++) {
-            int mindiff = 5000;
+            int mindiff = 1000000000;
             for(int j=0;j+i < n;j++) {
-                if(heights[j+i] - heights[j] < mindiff) {
-                    mindiff = heights[j+i] - heights[j];
+                int sum = 0;
+                for(int k=j;k<j+i;k++) {
+                    sum += heights[j+i] - heights[k];
                 }
+                if(sum < mindiff) mindiff = sum;
             }
-            cout << i << " " << mindiff << endl;
             ret ^= mindiff;
         }
         return ret;
