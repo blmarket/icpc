@@ -116,6 +116,6 @@ public:
 int main()
 {
     TreeColoring ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
