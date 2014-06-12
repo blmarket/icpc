@@ -26,6 +26,30 @@ int dist[100005];
 int queryType[100005];
 int queryNode[100005];
 
+bool isblue[100005];
+int nblue[100005];
+long long sumblue;
+
+void markBlue(int a) {
+    if(isblue[a]) return;
+    isblue[a] = true;
+
+    while(a != 0) {
+        nblue[a]++;
+        sumblue += dist[a];
+        a = parent[a];
+    }
+    nblue[0]++;
+}
+
+long long calc(int a) {
+    long long ret = sumblue;
+    while(a != 0) {
+        ret += -nblue[a] * dist[a] + (nblue[0] - nblue[a]) * dist[a];
+        a = parent[a];
+    }
+    return ret;
+}
 
 class TreeColoring 
 {
@@ -57,6 +81,17 @@ public:
         };
 
         generateInput();
+
+        sumblue = 0;
+        long long ret = 0;
+        for(int i=0;i<Q;i++) {
+            if(queryType[i] == 1) {
+                markBlue(queryNode[i]);
+            } else {
+                ret ^= calc(queryNode[i]);
+            }
+        }
+        return ret;
     }
 
     
