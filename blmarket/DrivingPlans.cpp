@@ -25,6 +25,26 @@ vector<PII> links[2005];
 bool hasz[2005];
 int md1[2005], md2[2005];
 
+map<int, long long> memo;
+
+long long mod = 1000000009;
+
+long long nways(int a) {
+    if(memo.count(a)) return memo[a];
+    long long ret = 0;
+
+    for(int i=0;i<size(links[a]);i++) {
+        int n, d;
+        tie(n, d) = links[a][i];
+        if(md2[n] + d == md2[a]) {
+            ret += nways(n);
+            if(ret > mod) ret %= mod;
+        }
+    }
+
+    return memo[a] = ret;
+}
+
 void calcmd(int *mindist, int sp) {
     memset(mindist, -1, sizeof(int) * 2005);
     priority_queue<PII> Q;
@@ -75,8 +95,7 @@ public:
             if(md1[i] + md2[i] == md1[N] && hasz[i]) return -1;
         }
 
-        return 1;
-
+        return nways(1);
     }
 
     
