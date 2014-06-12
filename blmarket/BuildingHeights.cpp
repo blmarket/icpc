@@ -36,7 +36,7 @@ public:
         for(int i=1;i<n;i++) {
             int mindiff = 1000000000;
             for(int j=0;j+i < n;j++) {
-                long long sum = heights[j+i] * (i+1) - S[j+i+1] - S[j];
+                long long sum = heights[j+i] * (i+1) - (S[j+i+1] - S[j]);
                 if(sum < mindiff) mindiff = sum;
             }
             ret ^= mindiff;
