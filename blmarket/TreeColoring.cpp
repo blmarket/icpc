@@ -45,7 +45,6 @@ void markBlue(int a) {
 long long calc(int a) {
     long long ret = sumblue;
     while(a != 0) {
-        cout << a << endl;
         ret += -nblue[a] * dist[a] + (nblue[0] - nblue[a]) * dist[a];
         a = parent[a];
     }
