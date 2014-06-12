@@ -85,7 +85,6 @@ public:
         sumblue = 0;
         long long ret = 0;
         for(int i=0;i<Q;i++) {
-            cout << i << endl;
             if(queryType[i] == 1) {
                 markBlue(queryNode[i]);
             } else {
