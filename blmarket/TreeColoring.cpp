@@ -56,7 +56,6 @@ class TreeColoring
 public:
     long long color(int N, int Q, int startSeed, int threshold, int maxDist) 
     {		
-
         int curValue = startSeed;
         function<int()> genNextRandom = [&]() {
             curValue = (curValue * 1999 + 17) % 1000003;
@@ -81,6 +80,9 @@ public:
         };
 
         generateInput();
+
+        for(int i=0;i<100;i++) cout << parent[i] << " ";
+        cout << endl;
 
         sumblue = 0;
         long long ret = 0;
