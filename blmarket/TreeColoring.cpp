@@ -45,7 +45,7 @@ void markBlue(int a) {
 long long calc(int a) {
     long long ret = sumblue;
     while(a != 0) {
-        ret += -nblue[a] * dist[a] + (nblue[0] - nblue[a]) * dist[a];
+        ret += (long long)(nblue[0] - nblue[a]*2) * dist[a];
         a = parent[a];
     }
     return ret;
@@ -117,6 +117,6 @@ public:
 int main()
 {
     TreeColoring ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(5); 
 } 
 // END CUT HERE
