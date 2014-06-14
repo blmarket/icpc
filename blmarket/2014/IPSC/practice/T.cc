@@ -66,7 +66,6 @@ void process(int dataId)
         p1 = max(p1, cntlast);
         for(int i=p1;i<p2;i++) {
             if(marker[i]) {
-                cout << ps[i] << "-" << ps[i+1] << endl;
                 cnt += (ps[i+1] - ps[i]);
             }
         }
