@@ -29,53 +29,66 @@ template<typename T> int size(const T &a) { return a.size(); }
 long long L;
 int N;
 long long K;
+char marker[2000005];
+vector<long long> ps;
 vector<pair<LL, LL> > V;
 
 void process(int dataId)
 {
     cin >> L >> N >> K;
-    V.resize(N);
+    V.clear();
     for(int i=0;i<N;i++) {
-        cin >> V[i].first >> V[i].second;
+        long long a,b;
+        cin >> a >> b;
+        b++;
+        if(b-a <= K) continue;
+
+        ps.pb(a);
+        ps.pb(b);
+        ps.pb(a+K);
+        ps.pb(b-K);
+        V.pb(mp(a,b));
     }
     sort(V.begin(), V.end());
+    sort(ps.begin(), ps.end());
+    ps.erase(unique(ps.begin(), ps.end()), ps.end());
 
-    long long ps = -1, pe = -1;
+    memset(marker, 0, sizeof(marker));
+
+    int last = -1;
+    for(int i=0;i<size(V);i++) {
+        long long s = V[i].first;
+        long long e = V[i].second - K;
+        int p1 = lower_bound(ps.begin(), ps.end(), s) - ps.begin();
+        int p2 = lower_bound(ps.begin(), ps.end(), e) - ps.begin();
+        p1 = max(p1, last);
+        for(int i=p1;i<p2;i++) {
+            marker[i] |= 1;
+        }
+        last = p2 - 1;
+    }
+
+    last = -1;
+    for(int i=0;i<size(V);i++) {
+        long long s = V[i].first + K;
+        long long e = V[i].second;
+        int p1 = lower_bound(ps.begin(), ps.end(), s) - ps.begin();
+        int p2 = lower_bound(ps.begin(), ps.end(), e) - ps.begin();
+        p1 = max(p1, last);
+        for(int i=p1;i<p2;i++) {
+            marker[i] |= 2;
+        }
+        last = p2 - 1;
+    }
 
     long long cnt = 0;
-
-    for(int i=0;i<N;i++) {
-        long long s, e;
-        tie(s,e) = V[i];
-        long long rs, re;
-        rs = s; re = e - K;
-
-        if(ps != -1) {
-            // erase rs, re from ps, pe;
-            if(pe < rs || re < ps) { 1; } else {
-                long long arr[4] = { ps, pe, rs, re };
-                sort(arr, arr+4);
-                cnt += (arr[2] - arr[1] + 1);
-                if(arr[1] == ps) {
-                    if(arr[2] == pe) {
-                        ps = pe = -1;
-                    } else {
-                        ps = arr[2]+1;
-                    }
-                } else {
-                    pe = arr[1] - 1;
-                }
-            }
-        }
-
-        if(ps == -1) {
-            ps = s + K;
-            pe = e;
-        } else {
-            // add s+K, e to ps, pe range.
-            cout << ps << " " << pe << " + " << (s+K) << " " << e << endl;
+    for(int i=0;i+1<size(ps);i++) {
+        if(marker[i] == 3) {
+            cnt += (ps[i+1] - ps[i]);
         }
     }
+
+    cout << L - cnt << endl;
 }
 
 int main(void)
