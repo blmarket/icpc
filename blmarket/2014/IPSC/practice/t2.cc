@@ -58,7 +58,7 @@ void process(int dataId)
         }
     }
 
-    cout << L - cnt << endl;
+    cout << cnt << " " << L - cnt << endl;
 }
 
 int main(void)
