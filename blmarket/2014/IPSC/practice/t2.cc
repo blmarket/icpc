@@ -59,6 +59,7 @@ void process(int dataId)
 
     long long cnt = 0;
     for(int i=0;i<size(V);i++) {
+        cerr << i << endl;
         long long s,e;
         tie(s,e) = V[i];
         int si = idx(s);
