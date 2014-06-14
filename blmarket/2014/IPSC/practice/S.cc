@@ -39,8 +39,18 @@ double calc(string &a) {
         a[i] = ' ';
     }
 
-    cout << a << endl;
-    return 0;
+    istringstream sin(a);
+    int cnt = 0;
+    double score = 0;
+    string word;
+    while(sin >> word) {
+        bool upper = true;
+        for(int i=0;i<size(word);i++) if(word[i] >= 'a' && word[i] <= 'z') upper = false;
+        cnt++;
+        score++;
+        if(upper) score += 1;
+    }
+    return score / cnt;
 }
 
 void process(int dataId)
