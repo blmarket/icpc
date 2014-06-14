@@ -29,9 +29,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 long long L, K;
 int N;
 
-char marker[20000];
+char marker[2000005];
 
 vector<pair<LL, LL> > V;
+vector<LL> ps;
 
 void process(int dataId)
 {
@@ -40,20 +41,38 @@ void process(int dataId)
     for(int i=0;i<N;i++) {
         long long s, e;
         cin >> s >> e;
+        e++;
+        if(s+K >= e) continue;
         V.pb(mp(s,e));
+        ps.pb(s); ps.pb(e);
+        ps.pb(s+K); ps.pb(e-K);
     }
     sort(V.begin(), V.end());
+
+    sort(ps.begin(), ps.end());
+    ps.erase(unique(ps.begin(), ps.end()), ps.end());
+    auto idx = [&](long long a) -> int {
+        return lower_bound(ps.begin(), ps.end(), a) - ps.begin();
+    };
+
     long long cnt = 0;
     for(int i=0;i<size(V);i++) {
         long long s,e;
         tie(s,e) = V[i];
-        for(int t=s;t<=e-K;t++) {
+        int si = idx(s);
+        int ei = idx(e-K);
+
+        for(int t=si;t<ei;t++) {
             if(marker[t] == 3) continue;
-            marker[t] |= 2;
-            if(marker[t] == 3) cnt++;
+            if(marker[t] == 1) {
+                marker[t] = 3;
+                cnt += ps[t+1] - ps[t];
+            }
         }
 
-        for(int t=s+K;t<=e;t++) {
+        si = idx(s+K);
+        ei = idx(e);
+        for(int t=si;t<ei;t++) {
             if(marker[t] == 0) marker[t] = 1;
         }
     }
