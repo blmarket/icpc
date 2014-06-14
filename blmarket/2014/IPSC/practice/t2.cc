@@ -36,6 +36,8 @@ vector<LL> ps;
 
 void process(int dataId)
 {
+    V.clear();
+    ps.clear();
     cin >> L >> N >> K;
     memset(marker, 0, sizeof(marker));
     for(int i=0;i<N;i++) {
