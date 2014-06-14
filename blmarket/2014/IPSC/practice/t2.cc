@@ -53,6 +53,7 @@ void process(int dataId)
             marker[t] |= 2;
             cout << i << " " << t << " " << (int)marker[t] << endl;
             if(marker[t] == 3) cnt++;
+            cout << t << " " << e-K << endl;
         }
 
         for(int t=s+K;t<=e;t++) {
