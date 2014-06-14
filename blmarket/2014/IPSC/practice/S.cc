@@ -28,6 +28,21 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 
+double calc(string &a) {
+    for(int i=0;i<size(a);i++) {
+        if(a[i] >= 'a' && a[i] <= 'z') continue;
+        if(a[i] >= 'A' && a[i] <= 'Z') continue;
+        if(a[i] == '*') {
+            a.replace(i, i+1, " * ");
+            i++;
+        }
+        a[i] = ' ';
+    }
+
+    cout << a << endl;
+    return 0;
+}
+
 void process(int dataId)
 {
     cin >> N;
@@ -35,7 +50,7 @@ void process(int dataId)
     getline(cin, str);
     for(int i=0;i<N;i++) {
         getline(cin, str);
-        cout << str << endl;
+        calc(str);
     }
 }
 
