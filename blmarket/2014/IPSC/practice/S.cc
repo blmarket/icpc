@@ -33,7 +33,10 @@ void process(int dataId)
     cin >> N;
     string str;
     getline(cin, str);
-    cout << str << endl;
+    for(int i=0;i<N;i++) {
+        getline(cin, str);
+        cout << str << endl;
+    }
 }
 
 int main(void)
