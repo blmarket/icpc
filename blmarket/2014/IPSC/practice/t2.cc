@@ -37,13 +37,13 @@ void process(int dataId)
 {
     cin >> L >> N >> K;
     memset(marker, 0, sizeof(marker));
-    long long cnt = 0;
     for(int i=0;i<N;i++) {
         long long s, e;
         cin >> s >> e;
         V.pb(mp(s,e));
     }
     sort(V.begin(), V.end());
+    long long cnt = 0;
     for(int i=0;i<size(V);i++) {
         long long s,e;
         tie(s,e) = V[i];
@@ -57,11 +57,6 @@ void process(int dataId)
             marker[t] |= 1;
         }
     }
-
-    for(int i=0;i<2000;i++) {
-        cout << marker[i];
-    }
-    cout << endl;
 
     cout << cnt << " " << L - cnt << endl;
 }
