@@ -47,20 +47,15 @@ void process(int dataId)
     for(int i=0;i<size(V);i++) {
         long long s,e;
         tie(s,e) = V[i];
-        cout << s << "-" << e << " " << e-K << endl;
         for(int t=s;t<=e-K;t++) {
             if(marker[t] == 3) continue;
             marker[t] |= 2;
-            cout << i << " " << t << " " << (int)marker[t] << endl;
             if(marker[t] == 3) cnt++;
-            cout << t << " " << e-K << endl;
         }
 
         for(int t=s+K;t<=e;t++) {
             if(marker[t] == 0) marker[t] = 1;
         }
-        cout << cnt << " ";
-        if(i == 1) break;
     }
 
     cout << cnt << " " << L - cnt << endl;
