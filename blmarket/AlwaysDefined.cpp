@@ -84,34 +84,16 @@ public:
                 if((j*W+i) % i) continue;
                 nr[i].pb(j);
             }
-            for(int j=0;j<size(nr[i]);j++) {
-                cout << nr[i][j] << " ";
-            }
-            cout << endl;
         }
         return go(R) - go(L-1);
     }
 
     
-// BEGIN CUT HERE
-	public:
-	void run_test(int Case) { if ((Case == -1) || (Case == 0)) test_case_0(); if ((Case == -1) || (Case == 1)) test_case_1(); if ((Case == -1) || (Case == 2)) test_case_2(); if ((Case == -1) || (Case == 3)) test_case_3(); }
-	private:
-	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
-	void verify_case(int Case, const long long &Expected, const long long &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
-	void test_case_0() { long long Arg0 = 10LL; long long Arg1 = 10LL; int Arg2 = 4; long long Arg3 = 1LL; verify_case(0, Arg3, countIntegers(Arg0, Arg1, Arg2)); }
-	void test_case_1() { long long Arg0 = 1LL; long long Arg1 = 99LL; int Arg2 = 2; long long Arg3 = 50LL; verify_case(1, Arg3, countIntegers(Arg0, Arg1, Arg2)); }
-	void test_case_2() { long long Arg0 = 1282LL; long long Arg1 = 1410LL; int Arg2 = 10; long long Arg3 = 42LL; verify_case(2, Arg3, countIntegers(Arg0, Arg1, Arg2)); }
-	void test_case_3() { long long Arg0 = 29195807LL; long long Arg1 = 273209804877LL; int Arg2 = 42; long long Arg3 = 31415926535LL; verify_case(3, Arg3, countIntegers(Arg0, Arg1, Arg2)); }
-
-// END CUT HERE
 
 };
 
-// BEGIN CUT HERE
-int main()
-{
-    AlwaysDefined ___test; 
-    ___test.run_test(-1); 
-} 
-// END CUT HERE
+
+
+// Powered by FileEdit
+// Powered by TZTester 1.01 [25-Feb-2003]
+// Powered by CodeProcessor

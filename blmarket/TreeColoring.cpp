@@ -81,9 +81,6 @@ public:
 
         generateInput();
 
-        for(int i=0;i<100;i++) cout << parent[i] << " ";
-        cout << endl;
-
         sumblue = 0;
         long long ret = 0;
         for(int i=0;i<Q;i++) {
