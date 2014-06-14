@@ -49,7 +49,6 @@ void process(int dataId)
         tie(s,e) = V[i];
         cout << s << "-" << e << " " << e-K << endl;
         for(int t=s;t<=e-K;t++) {
-            cout << t << endl;
             if(marker[t] == 3) continue;
             marker[t] |= 2;
             cout << i << " " << t << " " << (int)marker[t] << endl;
@@ -58,7 +57,7 @@ void process(int dataId)
         }
 
         for(int t=s+K;t<=e;t++) {
-            marker[t] |= 1;
+            if(marker[t] == 0) marker[t] = 1;
         }
         cout << cnt << " ";
         if(i == 1) break;
