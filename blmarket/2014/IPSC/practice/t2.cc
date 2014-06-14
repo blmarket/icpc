@@ -51,8 +51,7 @@ void process(int dataId)
         for(int t=s;t<=e-K;t++) {
             if(marker[t] == 3) continue;
             marker[t] |= 2;
-            cout << i << " " << t << " " << marker[t] << endl;
-            if(i == 1 && t == 500) cout << marker[t] << endl;
+            cout << i << " " << t << " " << (int)marker[t] << endl;
             if(marker[t] == 3) cnt++;
         }
 
