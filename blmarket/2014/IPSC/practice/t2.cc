@@ -58,6 +58,11 @@ void process(int dataId)
         }
     }
 
+    for(int i=0;i<2000;i++) {
+        cout << marker[i];
+    }
+    cout << endl;
+
     cout << cnt << " " << L - cnt << endl;
 }
 
