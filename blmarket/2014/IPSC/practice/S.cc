@@ -51,8 +51,8 @@ double calc(string &a) {
         bool upper = true;
         for(int i=0;i<size(word);i++) if(word[i] >= 'a' && word[i] <= 'z') upper = false;
         cnt++;
-        score++;
-        if(upper) score += 1;
+        if(upper) score += 2 * (rage?3:1);
+        else score += (rage?3:1);
     }
     return score / cnt;
 }
