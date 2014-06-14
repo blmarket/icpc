@@ -58,10 +58,14 @@ void process(int dataId)
     cin >> N;
     string str;
     getline(cin, str);
+    double maxx = -1;
+    int mi = -1;
     for(int i=0;i<N;i++) {
         getline(cin, str);
-        calc(str);
+        double sc = calc(str);
+        if(maxx < sc) maxx = sc, mi = i;
     }
+    cout << mi+1 << endl;
 }
 
 int main(void)
