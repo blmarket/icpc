@@ -47,6 +47,7 @@ void process(int dataId)
     for(int i=0;i<size(V);i++) {
         long long s,e;
         tie(s,e) = V[i];
+        cout << s << " " << e << endl;
         for(int t=s;t<=e-K;t++) {
             if(marker[t] == 3) continue;
             marker[t] |= 2;
