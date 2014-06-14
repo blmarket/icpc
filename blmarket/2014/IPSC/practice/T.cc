@@ -83,7 +83,7 @@ void process(int dataId)
 
     long long cnt = 0;
     for(int i=0;i+1<size(ps);i++) {
-        cout << ps[i] << "-" << ps[i+1] << " = " << marker[i] << endl;
+        cout << ps[i] << "-" << ps[i+1] << " = " << (int)marker[i] << endl;
         if(marker[i] == 3) {
             cnt += (ps[i+1] - ps[i]);
         }
