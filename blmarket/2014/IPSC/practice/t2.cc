@@ -57,6 +57,7 @@ void process(int dataId)
         for(int t=s+K;t<=e;t++) {
             marker[t] |= 1;
         }
+        cout << cnt << " ";
     }
 
     cout << cnt << " " << L - cnt << endl;
