@@ -68,6 +68,5 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process(i);
-        break;
     }
 }
