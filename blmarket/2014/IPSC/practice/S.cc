@@ -43,7 +43,11 @@ double calc(string &a) {
     int cnt = 0;
     double score = 0;
     string word;
+
+    bool rage = false;
+    
     while(sin >> word) {
+        if(word[0] == '*') rage = !rage;
         bool upper = true;
         for(int i=0;i<size(word);i++) if(word[i] >= 'a' && word[i] <= 'z') upper = false;
         cnt++;
