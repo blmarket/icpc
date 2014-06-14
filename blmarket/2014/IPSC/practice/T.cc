@@ -59,6 +59,7 @@ void process(int dataId)
     for(int i=0;i<size(V);i++) {
         long long s = V[i].first;
         long long e = V[i].second - K;
+        cout << s << " " << e << endl;
         int p1 = lower_bound(ps.begin(), ps.end(), s) - ps.begin();
         int p2 = lower_bound(ps.begin(), ps.end(), e) - ps.begin();
         p1 = max(p1, last);
