@@ -28,6 +28,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int n;
 vector<vector<string> > opt;
 int mincost[30];
+int output[30][30];
 
 void process(int a) {
     memset(mincost, -1, sizeof(mincost));
@@ -62,8 +63,10 @@ void process(int a) {
         }
         if(!again) break;
     }
-    for(int i=0;i<n;i++) cout << mincost[i] << " ";
-    cout << endl;
+
+    for(int i=0;i<n;i++) {
+        output[i][a] = mincost[i];
+    }
 }
 
 int main(void) {
@@ -81,6 +84,13 @@ int main(void) {
 
     for(int i=0;i<n;i++) {
         process(i);
+    }
+
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<n;j++) {
+            cout << output[i][j] << " ";
+        }
+        cout << endl;
     }
 
     return 0;
