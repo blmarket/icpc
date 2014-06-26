@@ -45,6 +45,20 @@ void add_diff(int s1, int e1, int s2, int e2) {
     }
 }
 
+bool check_diff(int a, int b) {
+    int sz = size(rr[a]);
+    for(int i=0;i<sz;i++) {
+        bool same = true;
+        for(int j=0;j<sz;j++) {
+            int n1 = rr[a][j];
+            int n2 = rr[b][(i+j)%sz];
+            if(diff[a][n1][b][n2]) { same = false; break; }
+        }
+        if(same) return true;
+    }
+    return false;
+}
+
 int main(void) {
     scanf(" %d", &n);
     for(int i=0;i<n;i++) {
@@ -63,11 +77,32 @@ int main(void) {
             for(auto a: rr[i]) {
                 for(auto b: rr[j]) {
                     add_diff(a, i, b, j);
+                    add_diff(b, j, a, i);
                 }
             }
         }
     }
 
-    cout << (int)diff[0][1][2][3] << endl;
+    bool chk[105];
+    memset(chk, 0, sizeof(chk));
+
+    for(int i=0;i<n;i++) if(!chk[i]) {
+        chk[i] = true;
+        vector<int> V;
+        V.pb(i);
+        for(int j=i+1;j<n;j++) if(!chk[j]) {
+            if(rr[i].size() != rr[j].size()) continue;
+            if(check_diff(i, j)) {
+                V.pb(j);
+                chk[j] = true;
+                continue;
+            }
+        }
+        if(V.size() > 1) {
+            for(int j=0;j<size(V);j++) cout << V[j]+1 << " ";
+            cout << endl;
+        }
+    }
+
     return 0;
 }
