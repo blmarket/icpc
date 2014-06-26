@@ -33,8 +33,6 @@ void process(int a) {
     memset(mincost, -1, sizeof(mincost));
     mincost[a] = 0;
 
-    cout << size(opt[1]) << endl;
-
     while(true) {
         bool again = false;
         for(int i=0;i<n;i++) {
@@ -78,6 +76,10 @@ int main(void) {
         scanf(" %s", tmp);
         opt[i].pb(tmp);
     }
+
+    for(int i=0;i<n;i++)
+        cout << opt[i].size() << " ";
+    cout << endl;
 
     for(int i=0;i<n;i++) {
         process(i);
