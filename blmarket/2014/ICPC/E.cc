@@ -29,6 +29,22 @@ int n;
 vector<int> rr[105];
 char diff[105][105][105][105];
 
+void add_diff(int s1, int e1, int s2, int e2) {
+    if(diff[s1][e1][s2][e2]) return;
+    diff[s1][e1][s2][e2] = 1;
+    if(rr[s1].size() != rr[s2].size()) return;
+
+    int p1 = find(rr[s1].begin(), rr[s1].end(), e1) - rr[s1].begin();
+    int p2 = find(rr[s2].begin(), rr[s2].end(), e2) - rr[s2].begin();
+
+    int sz = size(rr[s1]);
+    for(int i=1;i<sz;i++) {
+        int pp1 = rr[s1][(p1 + i) % sz];
+        int pp2 = rr[s2][(p2 + i) % sz];
+        add_diff(pp1, s1, pp2, s2);
+    }
+}
+
 int main(void) {
     scanf(" %d", &n);
     for(int i=0;i<n;i++) {
@@ -43,8 +59,9 @@ int main(void) {
     for(int i=0;i<n;i++) {
         for(int j=i+1;j<n;j++) {
             if(rr[i].size() == rr[j].size()) continue;
-            for(int a=0;a<size(rr[i]);a++) {
-                for(int b=0;b<size(rr[j]);b++) {
+            for(auto a: rr[i]) {
+                for(auto b: rr[j]) {
+                    add_diff(a, i, b, j);
                 }
             }
         }
