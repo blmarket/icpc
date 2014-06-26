@@ -68,6 +68,6 @@ int main(void) {
         }
     }
 
-    cout << diff[1][2][3][4] << endl;
+    cout << (int)diff[1][2][3][4] << endl;
     return 0;
 }
