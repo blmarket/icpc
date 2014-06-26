@@ -52,7 +52,11 @@ void process(int a) {
                     }
                     maxx = max(maxx, mincost[tt]);
                 }
+                if(i == 2 && j == 0) {
+                    cout << a << " " << maxx << endl;
+                }
                 if(maxx == -1) continue;
+
                 maxx += 1;
                 if(mincost[j] == -1 || mincost[j] > maxx) {
                     mincost[j] = maxx;
