@@ -33,14 +33,18 @@ void process(int a) {
     memset(mincost, -1, sizeof(mincost));
     mincost[a] = 0;
 
+    cout << size(opt[1]) << endl;
+
     while(true) {
         bool again = false;
         for(int i=0;i<n;i++) {
             for(int j=0;j<size(opt[i]);j++) {
                 const string &a = opt[i][j];
+
                 if(i == 1 && j == 1) {
                     cout << a << endl;
                 }
+
                 int maxx = -1;
                 for(int k=0;k<size(a);k++) {
                     int tt = a[k] - 'a';
