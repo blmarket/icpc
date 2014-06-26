@@ -78,6 +78,8 @@ int main(void) {
             opt[i].pb(tmp);
         }
     }
+    for(int i=0;i<n;i++) cout << opt[i].size() << " ";
+    cout << endl;
 
     for(int i=0;i<n;i++) {
         process(i);
