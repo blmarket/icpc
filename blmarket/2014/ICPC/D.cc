@@ -39,8 +39,8 @@ void process(int a) {
             for(int j=0;j<size(opt[i]);j++) {
                 const string &a = opt[i][j];
 
-                if(i == 1 && j == 1) {
-                    // cout << a << endl;
+                if(i == 2 && j == 0) {
+                    cout << a << endl;
                 }
 
                 int maxx = -1;
