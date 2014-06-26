@@ -73,13 +73,11 @@ int main(void) {
         int m;
         scanf(" %d", &m);
         char tmp[1024];
-        scanf(" %s", tmp);
-        opt[i].pb(tmp);
+        for(int j=0;j<m;j++) {
+            scanf(" %s", tmp);
+            opt[i].pb(tmp);
+        }
     }
-
-    for(int i=0;i<n;i++)
-        cout << opt[i].size() << " ";
-    cout << endl;
 
     for(int i=0;i<n;i++) {
         process(i);
