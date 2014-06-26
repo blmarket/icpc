@@ -86,6 +86,7 @@ int main(void) {
     bool chk[105];
     memset(chk, 0, sizeof(chk));
 
+    bool none = true;
     for(int i=0;i<n;i++) if(!chk[i]) {
         chk[i] = true;
         vector<int> V;
@@ -99,9 +100,13 @@ int main(void) {
             }
         }
         if(V.size() > 1) {
+            none = false;
             for(int j=0;j<size(V);j++) cout << V[j]+1 << " ";
             cout << endl;
         }
+    }
+    if(none) {
+        cout << "none" << endl;
     }
 
     return 0;
