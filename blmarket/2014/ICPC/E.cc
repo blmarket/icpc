@@ -53,6 +53,7 @@ int main(void) {
         rr[i].resize(m);
         for(int j=0;j<m;j++) {
             scanf(" %d", &rr[i][j]);
+            rr[i][j]--;
         }
     }
 
@@ -66,5 +67,7 @@ int main(void) {
             }
         }
     }
+
+    cout << diff[1][2][3][4] << endl;
     return 0;
 }
