@@ -58,8 +58,8 @@ void process(int a) {
                 if(maxx == -1) continue;
 
                 maxx += 1;
-                if(mincost[j] == -1 || mincost[j] > maxx) {
-                    mincost[j] = maxx;
+                if(mincost[i] == -1 || mincost[i] > maxx) {
+                    mincost[i] = maxx;
                     again = true;
                 }
             }
@@ -85,6 +85,7 @@ int main(void) {
 
     for(int i=0;i<n;i++) {
         process(i);
+        break; // FIXME
     }
 
     return 0;
