@@ -40,7 +40,7 @@ void process(int a) {
                 const string &a = opt[i][j];
 
                 if(i == 1 && j == 1) {
-                    cout << a << endl;
+                    // cout << a << endl;
                 }
 
                 int maxx = -1;
@@ -78,8 +78,6 @@ int main(void) {
             opt[i].pb(tmp);
         }
     }
-    for(int i=0;i<n;i++) cout << opt[i].size() << " ";
-    cout << endl;
 
     for(int i=0;i<n;i++) {
         process(i);
