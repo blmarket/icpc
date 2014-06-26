@@ -39,10 +39,6 @@ void process(int a) {
             for(int j=0;j<size(opt[i]);j++) {
                 const string &a = opt[i][j];
 
-                if(i == 2 && j == 0) {
-                    cout << a << endl;
-                }
-
                 int maxx = -1;
                 for(int k=0;k<size(a);k++) {
                     int tt = a[k] - 'a';
@@ -85,7 +81,6 @@ int main(void) {
 
     for(int i=0;i<n;i++) {
         process(i);
-        break; // FIXME
     }
 
     return 0;
