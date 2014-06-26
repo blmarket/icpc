@@ -27,7 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 vector<int> rr[105];
-int diff[105][105][105][105];
+char diff[105][105][105][105];
 
 int main(void) {
     scanf(" %d", &n);
