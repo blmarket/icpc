@@ -52,9 +52,9 @@ void process(int a) {
                     }
                     maxx = max(maxx, mincost[tt]);
                 }
-                if(i == 2 && j == 0) {
-                    cout << a << " " << maxx << endl;
-                }
+                // if(i == 2 && j == 0) {
+                //     cout << a << " " << maxx << endl;
+                // }
                 if(maxx == -1) continue;
 
                 maxx += 1;
@@ -85,7 +85,6 @@ int main(void) {
 
     for(int i=0;i<n;i++) {
         process(i);
-        break; // FIXME
     }
 
     return 0;
