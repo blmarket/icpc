@@ -59,6 +59,7 @@ class TwistyPassages
 public:
     vector <int> similarRooms(vector <string> maze) 
     {		
+        memset(diff, 0, sizeof(diff));
         n = size(maze);
         for(int i=0;i<n;i++) {
             rr[i].clear();
