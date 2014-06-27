@@ -20,12 +20,31 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+long long mod1 = 100000007;
+long long mod2 = 104395301;
+long long mod3 = 104395303;
+
+vector<int> a;
+bool go(int t, long long M) {
+    long long sum = 0;
+    long long now = 1;
+    for(int i=0;i<size(a);i++) {
+        sum = sum + (now * a[i]);
+        sum %= M;
+        now = (now * t) % M;
+    }
+    return sum == 0;
+}
+
+bool chk(int t) {
+    return go(t, mod1) && go(t, mod2) && go(t, mod3);
+}
+
 class SolvePolynomial 
 {
 public:
     vector <int> integerRoots(vector <int> X, vector <int> Y, int n) 
     {
-        vector<int> a;
         a.resize(n+1);
         for(int i=0;i<=n;i++) {
             int p = (i % size(X));
@@ -41,11 +60,16 @@ public:
             a.erase(a.begin(), a.begin()+1);
         }
 
-        for(int i=0;i<size(a);i++) {
-            cout << a[i] << " ";
+        for(int i=1;i*i <= a[0];i++) {
+            bool tmp = chk(i);
+            if(tmp) ret.insert(i);
+            tmp = chk(-i);
+            if(tmp) ret.insert(-i);
         }
-        cout << endl;
-        return vector<int>();
+        if(chk(a[0])) ret.insert(a[0]);
+        if(chk(-a[0])) ret.insert(-a[0]);
+
+        return vector<int>(ret.begin(), ret.end());
     }
 
     
