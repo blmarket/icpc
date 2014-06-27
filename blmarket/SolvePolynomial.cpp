@@ -35,6 +35,12 @@ public:
             X[q] = a[i];
         }
 
+        set<int> ret;
+        while(a[0] == 0) {
+            ret.insert(0);
+            a.erase(a.begin(), a.begin()+1);
+        }
+
         for(int i=0;i<size(a);i++) {
             cout << a[i] << " ";
         }
