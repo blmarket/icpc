@@ -29,10 +29,11 @@ public:
         while(size(st) > 0) {
             int bb = st.back();
             int cnt = 0;
-            while(st.back() == bb) {
+            while(size(st) > 0 && st.back() == bb) {
                 st.pop_back();
                 cnt++;
             }
+            cout << bb << " " << cnt << endl;
             if(bb == 0 && cnt == 1) return -1;
             if(bb == cnt) return bb;
         }
