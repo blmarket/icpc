@@ -61,9 +61,10 @@ public:
             a.erase(a.begin(), a.begin()+1);
         }
 
+        cout << a[0] << endl;
         for(int i=1;i*i <= a[0];i++) {
-            if( (a[0] % i) != 0) continue;
             cout << i << endl;
+            if( (a[0] % i) != 0) continue;
             bool tmp = chk(i);
             if(tmp) ret.insert(i);
             tmp = chk(-i);
