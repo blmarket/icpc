@@ -37,7 +37,6 @@ bool go(int t, long long M) {
 }
 
 bool chk(int t) {
-    cout << t << endl;
     return go(t, mod1) && go(t, mod2) && go(t, mod3);
 }
 
@@ -99,6 +98,6 @@ public:
 int main()
 {
     SolvePolynomial ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
