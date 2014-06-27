@@ -37,6 +37,7 @@ bool go(int t, long long M) {
 }
 
 bool chk(int t) {
+    cout << t << endl;
     return go(t, mod1) && go(t, mod2) && go(t, mod3);
 }
 
