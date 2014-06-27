@@ -26,7 +26,7 @@ public:
     vector <int> integerRoots(vector <int> X, vector <int> Y, int n) 
     {
         vector<int> a;
-        a.resize(n);
+        a.resize(n+1);
         for(int i=0;i<=n;i++) {
             int p = (i % size(X));
             int q = (i + Y[i % size(Y)]) % size(X);
