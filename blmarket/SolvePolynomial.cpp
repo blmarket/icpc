@@ -11,6 +11,26 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
+/**
+Problem: 500
+Test Case: 76
+Succeeded: No
+Execution Time: 0 ms
+Peak memory used: 11.613MB
+Args:
+{{-72, -8}, {36, 18, 12, 30, 30}, 49}
+
+Expected:
+{-9}
+
+Received:
+{}
+
+Answer checking result:
+Returned value must exactly match the expected one.
+ *
+ */
+
 using namespace std;
 
 typedef vector<int> VI;
@@ -37,6 +57,7 @@ bool go(int t, long long M) {
 }
 
 bool chk(int t) {
+    cout << t << endl;
     return go(t, mod1) && go(t, mod2) && go(t, mod3);
 }
 
@@ -59,6 +80,9 @@ public:
             ret.insert(0);
             a.erase(a.begin(), a.begin()+1);
         }
+
+        for(int i=0;i<size(a);i++) cout << a[i] << " ";
+        cout << endl;
 
         int aa = abs(a[0]);
         for(int i=1;i*i <= aa;i++) {
