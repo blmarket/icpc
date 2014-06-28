@@ -112,10 +112,18 @@ public:
                 }
                 ls[i].clear();
             }
-            cout << change << endl;
             if(!change) break;
         }
-        return vector<int>();
+        VVI sigs(n);
+        for(int i=0;i<n;i++) sigs[i] = roomsig(i);
+
+        vector<int> ret(n, -1);
+        for(int i=0;i<n;i++) if(ret[i] == -1) {
+            int cnt = 0;
+            for(int j=i+1;j<n;j++) if(sigs[i] == sigs[j]) cnt++;
+            for(int j=i;j<n;j++) if(sigs[j] == sigs[i]) ret[j] = cnt;
+        }
+        return ret;
     }
     
 // BEGIN CUT HERE
