@@ -62,6 +62,7 @@ int main(void) {
 
     int mm = 101;
     while(true) {
+        cout << mm << endl;
         map<vector<int>, vector<PII> > M;
         for(int i=1;i<mm;i++) if(ls[i].size() > 1) {
             M.clear();
@@ -70,19 +71,15 @@ int main(void) {
                 M[sig].pb(it);
             }
 
-            cout << i << " " << size(M) << endl;
-
             if(size(M) != 1) {
                 for(auto it : M) {
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
-                        cout << jt.first << " " << jt.second << " " << mm << endl;
                         set_label(jt.first, jt.second, mm);
                     }
                     mm++;
                 }
             }
-            cout << "HERE" << endl;
             ls[i].clear();
         }
     }
