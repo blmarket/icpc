@@ -64,6 +64,7 @@ public:
     {		
         n = size(maze);
         for(int i=0;i<n;i++) {
+            links[i].clear();
             istringstream sin(maze[i]);
             int tmp;
             while(sin >> tmp) {
@@ -80,14 +81,14 @@ public:
 
         while(true) {
             bool change = false;
-            for(int i=0;i<mm;i++) {
-                if(ls[i].size() == 0) continue;
-                cout << i << " : ";
-                for(int j=0;j<size(ls[i]);j++) {
-                    cout << ls[i][j].first << "-" << ls[i][j].second << " ";
-                }
-                cout << endl;
-            }
+            // for(int i=0;i<mm;i++) {
+            //     if(ls[i].size() == 0) continue;
+            //     cout << i << " : ";
+            //     for(int j=0;j<size(ls[i]);j++) {
+            //         cout << ls[i][j].first << "-" << ls[i][j].second << " ";
+            //     }
+            //     cout << endl;
+            // }
 
             for(int i=0;i<mm;i++) {
                 if(ls[i].size() < 2) continue;
@@ -155,6 +156,6 @@ public:
 int main()
 {
     TwistyPassages ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
