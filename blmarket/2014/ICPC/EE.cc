@@ -71,6 +71,9 @@ int main(void) {
                 if(it.first == 1 && it.second == 3) {
                     cout << "HERE : " << sig.size() << endl;
                 }
+                if(it.first == 1 && it.second == 4) {
+                    cout << "HERE : " << sig.size() << endl;
+                }
                 M[sig].pb(it);
             }
 
