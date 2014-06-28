@@ -14,7 +14,7 @@
 #define mp make_pair
 #define pb push_back
 #define sqr(x) ((x)*(x))
-#define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+#define all(x) (x).begin(), (x).end()
 
 using namespace std;
 
@@ -26,25 +26,32 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int n;
-vector<int> rr[105];
-vector<int> label[105];
+VI links[105];
+VI label[105];
+vector<PII> ls[150005];
 
-vector<PII> ls[50005];
+VI get_doorsig(int s, int e) {
+    int sz = size(links[e]);
+    int ii = find(all(links[e]), s) - links[e].begin();
 
-vector<int> get_sig(int s, int e) {
-    int sz = size(rr[e]);
-    int sp = find(rr[e].begin(), rr[e].end(), s) - rr[e].begin();
-    vector<int> ret;
-    for(int i=1;i<sz;i++) {
-        int ii = (sp + i) % sz;
-        ret.pb(label[e][ii]);
+    VI ret;
+    for(int i=0;i<sz;i++) {
+        ret.pb(label[e][(ii+i)%sz]);
     }
     return ret;
 }
 
-void set_label(int s, int e, int l) {
-    int sp = find(rr[s].begin(), rr[s].end(), e) - rr[s].begin();
-    label[s][sp] = l;
+VI roomsig(int s) {
+    int sz = size(links[s]);
+    VI ret;
+    for(int i=0;i<sz;i++) {
+        VI tmp; tmp.clear();
+        for(int j=0;j<sz;j++) {
+            tmp.pb(label[s][(i+j)%sz]);
+        }
+        if(ret.size() == 0 || ret > tmp) ret = tmp;
+    }
+    return ret;
 }
 
 int main(void) {
@@ -52,65 +59,74 @@ int main(void) {
     for(int i=1;i<=n;i++) {
         int m;
         scanf(" %d", &m);
-        rr[i].resize(m);
+        links[i].resize(m);
         for(int j=0;j<m;j++) {
-            scanf(" %d", &rr[i][j]);
-            ls[m].pb(mp(i, rr[i][j]));
+            scanf(" %d", &links[i][j]);
+            links[i][j]--;
+            ls[m].pb(mp(i, links[i][j]));
         }
         label[i] = vector<int>(m, m);
     }
 
-    int mm = 101;
+    int mm = 105;
     while(true) {
         bool change = false;
-        map<vector<int>, vector<PII> > M;
-        for(int i=1;i<mm;i++) if(ls[i].size() > 1) {
-            M.clear();
-            for(auto &it : ls[i]) {
-                vector<int> sig = get_sig(it.first, it.second);
-                M[sig].pb(it);
-            }
+        // for(int i=0;i<mm;i++) {
+        //     if(ls[i].size() == 0) continue;
+        //     cout << i << " : ";
+        //     for(int j=0;j<size(ls[i]);j++) {
+        //         cout << ls[i][j].first << "-" << ls[i][j].second << " ";
+        //     }
+        //     cout << endl;
+        // }
 
-            if(size(M) != 1) {
-                for(auto it : M) {
-                    ls[mm] = it.second;
-                    for(auto jt : it.second) {
-                        set_label(jt.first, jt.second, mm);
+        for(int i=0;i<mm;i++) {
+            if(ls[i].size() < 2) continue;
+            map<VI, vector<PII> > M;
+            M.clear();
+            for(int j=0;j<size(ls[i]);j++) {
+                VI tmp = get_doorsig(ls[i][j].first, ls[i][j].second);
+                M[tmp].pb(ls[i][j]);
+            }
+            if(size(M) == 1) continue;
+            change = true;
+            for(auto &it : M) {
+                ls[mm] = it.second;
+                for(PII jt : it.second) {
+                    int a,b;
+                    tie(a,b) = jt;
+                    for(int j=0;j<size(links[a]);j++) if(links[a][j] == b) {
+                        label[a][j] = mm;
                     }
-                    mm++;
                 }
-                change = true;
+                mm++;
             }
             ls[i].clear();
         }
+        cout << change << endl;
         if(!change) break;
     }
 
-    map<vector<int>, vector<int> > MM;
-    for(int i=1;i<=n;i++) {
-        vector<int> rr;
-        int sz = size(label[i]);
-        for(int j=0;j<sz;j++) {
-            vector<int> tmp; tmp.clear();
-            for(int k=0;k<sz;k++) {
-                tmp.pb(label[i][(j+k)%sz]);
-            }
-            if(rr.size() == 0 || rr > tmp) rr = tmp;
-        }
-        MM[rr].pb(i);
-    }
+    VVI sigs(n);
+    for(int i=0;i<n;i++) sigs[i] = roomsig(i);
 
-    vector<vector<int> > result;
-    for(auto it : MM) result.pb(it.second);
-    sort(result.begin(), result.end());
+    vector<bool> used(n, 0);
     bool none = true;
-    for(int i=0;i<size(result);i++) {
-        if(result[i].size() == 1) continue;
+    for(int i=0;i<n;i++) if(used[i] == false) {
+        used[i] = true;
+        vector<int> V; V.clear(); V.pb(i);
+        for(int j=i+1;j<n;j++) if(!used[j] && sigs[i] == sigs[j]) {
+            V.pb(j);
+        }
+        if(V.size() == 1) continue;
         none = false;
-        for(auto jt : result[i]) cout << jt << " ";
+        for(int j=0;j<size(V);j++) cout << V[j]+1 << " ";
         cout << endl;
     }
-    if(none) cout << "none" << endl;
+
+    if(none) {
+        cout << "none" << endl;
+    }
 
     return 0;
 }
