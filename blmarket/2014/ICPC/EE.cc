@@ -72,7 +72,11 @@ int main(void) {
             }
 
             if(size(M) != 1) {
+                cout << i << " -> ";
                 for(auto it : M) {
+                    for(auto jt : it.first) cout << jt << " ";
+                    cout << endl;
+
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
                         set_label(jt.first, jt.second, mm);
