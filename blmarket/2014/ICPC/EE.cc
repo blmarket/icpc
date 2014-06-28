@@ -104,6 +104,7 @@ int main(void) {
     for(auto it : MM) result.pb(it.second);
     sort(result.begin(), result.end());
     for(int i=0;i<size(result);i++) {
+        cout << size(result[i]) << endl;
         if(result[i].size() == 1) continue;
         for(auto jt : result[i]) cout << jt << " ";
         cout << endl;
