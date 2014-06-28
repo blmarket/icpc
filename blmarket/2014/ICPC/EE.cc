@@ -74,8 +74,7 @@ int main(void) {
             if(size(M) != 1) {
                 cout << i << " -> ";
                 for(auto it : M) {
-                    for(auto jt : it.first) cout << jt << " ";
-                    cout << endl;
+                    cout << size(it.first) << " ";
 
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
@@ -83,6 +82,7 @@ int main(void) {
                     }
                     mm++;
                 }
+                cout << endl;
                 change = true;
             }
             ls[i].clear();
