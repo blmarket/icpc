@@ -43,6 +43,7 @@ vector<int> get_sig(int s, int e) {
 }
 
 void set_label(int s, int e, int l) {
+    cout << s << " " << e << " " << l << " " << rr[s].size() << endl;
     int sp = find(rr[s].begin(), rr[s].end(), e) - rr[s].begin();
     label[s][sp] = l;
 }
@@ -77,7 +78,6 @@ int main(void) {
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
                         cout << jt.first << " " << jt.second << " " << mm << endl;
-                        cout << rr[jt.first].size() << endl;
                         set_label(jt.first, jt.second, mm);
                     }
                     mm++;
