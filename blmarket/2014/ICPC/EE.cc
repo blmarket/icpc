@@ -121,7 +121,9 @@ int main(void) {
         }
         if(V.size() == 1) continue;
         none = false;
-        for(int j=0;j<size(V);j++) cout << V[j]+1 << " ";
+        for(int j=0;j<size(V);j++) {
+            cout << V[j]+1 << " - ";
+        }
         cout << endl;
     }
 
