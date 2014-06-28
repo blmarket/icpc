@@ -44,6 +44,7 @@ vector<int> get_sig(int s, int e) {
 
 void set_label(int s, int e, int l) {
     int sp = find(rr[e].begin(), rr[e].end(), s) - rr[e].begin();
+    cout << sp << endl;
     label[s][sp] = l;
 }
 
