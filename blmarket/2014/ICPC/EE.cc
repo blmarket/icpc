@@ -68,21 +68,20 @@ int main(void) {
             M.clear();
             for(auto &it : ls[i]) {
                 vector<int> sig = get_sig(it.first, it.second);
+                if(it.first == 1 && it.second == 3) {
+                    cout << "HERE : " << sig.size() << endl;
+                }
                 M[sig].pb(it);
             }
 
             if(size(M) != 1) {
-                cout << i << " -> ";
                 for(auto it : M) {
-                    cout << size(it.first) << " ";
-
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
                         set_label(jt.first, jt.second, mm);
                     }
                     mm++;
                 }
-                cout << endl;
                 change = true;
             }
             ls[i].clear();
