@@ -56,7 +56,7 @@ VI roomsig(int s) {
 
 int main(void) {
     scanf(" %d", &n);
-    for(int i=1;i<=n;i++) {
+    for(int i=0;i<n;i++) {
         int m;
         scanf(" %d", &m);
         links[i].resize(m);
@@ -103,12 +103,13 @@ int main(void) {
             }
             ls[i].clear();
         }
-        cout << change << endl;
         if(!change) break;
     }
 
     VVI sigs(n);
-    for(int i=0;i<n;i++) sigs[i] = roomsig(i);
+    for(int i=0;i<n;i++) {
+        sigs[i] = roomsig(i);
+    }
 
     vector<bool> used(n, 0);
     bool none = true;
@@ -122,7 +123,7 @@ int main(void) {
         if(V.size() == 1) continue;
         none = false;
         for(int j=0;j<size(V);j++) {
-            cout << V[j]+1 << " - ";
+            cout << V[j]+1 << " ";
         }
         cout << endl;
     }
