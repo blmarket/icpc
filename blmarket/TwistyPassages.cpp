@@ -20,6 +20,13 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+ostream& operator<<(ostream &ost, const vector<int> &V) {
+    ost << "(";
+    for(int i=0;i<size(V);i++) {
+        ost << V[i] << " ";
+    }
+    return ost << ")";
+}
 
 int n;
 VI links[105];
@@ -87,6 +94,7 @@ public:
             cout << change << endl;
             if(!change) break;
         }
+        cout << get_doorsig(1, 0) << endl;
         return vector<int>();
     }
     
