@@ -67,6 +67,7 @@ int main(void) {
         for(int i=1;i<mm;i++) if(ls[i].size() > 1) {
             M.clear();
             for(auto &it : ls[i]) {
+                cout << "HERE" << endl;
                 vector<int> sig = get_sig(it.first, it.second);
                 M[sig].pb(it);
             }
