@@ -62,15 +62,15 @@ int main(void) {
 
     int mm = 101;
     while(true) {
-        cout << mm << endl;
         map<vector<int>, vector<PII> > M;
         for(int i=1;i<mm;i++) if(ls[i].size() > 1) {
             M.clear();
             for(auto &it : ls[i]) {
-                cout << "HERE" << endl;
                 vector<int> sig = get_sig(it.first, it.second);
                 M[sig].pb(it);
             }
+
+            cout << size(M) << endl;
 
             if(size(M) != 1) {
                 for(auto it : M) {
