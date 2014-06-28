@@ -62,6 +62,7 @@ class TwistyPassages
 public:
     vector <int> similarRooms(vector <string> maze) 
     {		
+        for(int i=0;i<50005;i++) ls[i].clear();
         n = size(maze);
         for(int i=0;i<n;i++) {
             links[i].clear();
