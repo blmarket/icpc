@@ -103,12 +103,14 @@ int main(void) {
     vector<vector<int> > result;
     for(auto it : MM) result.pb(it.second);
     sort(result.begin(), result.end());
+    bool none = true;
     for(int i=0;i<size(result);i++) {
-        cout << size(result[i]) << endl;
         if(result[i].size() == 1) continue;
+        none = false;
         for(auto jt : result[i]) cout << jt << " ";
         cout << endl;
     }
+    if(none) cout << "none" << endl;
 
     return 0;
 }
