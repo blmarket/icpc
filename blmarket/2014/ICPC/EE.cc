@@ -86,11 +86,26 @@ int main(void) {
         if(!change) break;
     }
 
+    map<vector<int>, vector<int> > MM;
     for(int i=1;i<=n;i++) {
-        cout << i << " : ";
-        for(auto it : label[i]) {
-            cout << it << " ";
+        vector<int> rr;
+        int sz = size(label[i]);
+        for(int j=0;j<sz;j++) {
+            vector<int> tmp; tmp.clear();
+            for(int k=0;k<sz;k++) {
+                tmp.pb(label[i][(j+k)%sz]);
+            }
+            if(rr.size() == 0 || rr > tmp) rr = tmp;
         }
+        MM[rr].pb(i);
+    }
+
+    vector<vector<int> > result;
+    for(auto it : MM) result.pb(it.second);
+    sort(result.begin(), result.end());
+    for(int i=0;i<size(result);i++) {
+        if(result[i].size() == 1) continue;
+        for(auto jt : result[i]) cout << jt << " ";
         cout << endl;
     }
 
