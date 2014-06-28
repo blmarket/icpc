@@ -64,6 +64,7 @@ public:
             }
             cout << endl;
         }
+        return vector<int>();
     }
     
 // BEGIN CUT HERE
