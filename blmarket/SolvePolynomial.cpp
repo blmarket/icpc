@@ -57,7 +57,6 @@ bool go(int t, long long M) {
 }
 
 bool chk(int t) {
-    cout << t << endl;
     return go(t, mod1) && go(t, mod2) && go(t, mod3);
 }
 
@@ -91,6 +90,8 @@ public:
             if(tmp) ret.insert(i);
             tmp = chk(-i);
             if(tmp) ret.insert(-i);
+            if(chk(a[0] / i)) ret.insert(a[0]/i);
+            if(chk(-a[0]/i)) ret.insert(-a[0]/i);
         }
         if(chk(a[0])) ret.insert(a[0]);
         if(chk(-a[0])) ret.insert(-a[0]);

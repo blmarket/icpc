@@ -33,8 +33,7 @@ public:
                 st.pop_back();
                 cnt++;
             }
-            cout << bb << " " << cnt << endl;
-            if(bb == 0 && cnt == 1) return -1;
+            if(bb == 0) return -1;
             if(bb == cnt) return bb;
         }
         return 0;
