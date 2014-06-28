@@ -57,13 +57,34 @@ public:
         }
 
         int mm = 55;
-        for(int i=0;i<mm;i++) {
-            if(ls[i].size() == 0) continue;
-            cout << i << " : ";
-            for(int j=0;j<size(ls[i]);j++) {
-                cout << ls[i][j].first << "-" << ls[i][j].second << " ";
+
+        while(true) {
+            bool change = false;
+            for(int i=0;i<mm;i++) {
+                if(ls[i].size() == 0) continue;
+                cout << i << " : ";
+                for(int j=0;j<size(ls[i]);j++) {
+                    cout << ls[i][j].first << "-" << ls[i][j].second << " ";
+                }
+                cout << endl;
             }
-            cout << endl;
+
+            for(int i=0;i<mm;i++) {
+                if(ls[i].size() < 2) continue;
+                map<VI, vector<PII> > M;
+                M.clear();
+                for(int j=0;j<size(ls[i]);j++) {
+                    VI tmp = get_doorsig(ls[i][j].first, ls[i][j].second);
+                    M[tmp].pb(ls[i][j]);
+                }
+                if(size(M) == 1) continue;
+                change = true;
+                for(auto &it : M) {
+                    ls[mm++] = it.second;
+                }
+                ls[i].clear();
+            }
+            if(!change) break;
         }
         return vector<int>();
     }
