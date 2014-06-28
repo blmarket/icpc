@@ -116,6 +116,7 @@ int main(void) {
         used[i] = true;
         vector<int> V; V.clear(); V.pb(i);
         for(int j=i+1;j<n;j++) if(!used[j] && sigs[i] == sigs[j]) {
+            used[j] = true;
             V.pb(j);
         }
         if(V.size() == 1) continue;
