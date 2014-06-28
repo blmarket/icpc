@@ -87,7 +87,15 @@ public:
                 if(size(M) == 1) continue;
                 change = true;
                 for(auto &it : M) {
-                    ls[mm++] = it.second;
+                    ls[mm] = it.second;
+                    for(PII jt : it.second) {
+                        int a,b;
+                        tie(a,b) = jt;
+                        for(int j=0;j<size(links[a]);j++) if(links[a][j] == b) {
+                            label[a][j] = mm;
+                        }
+                    }
+                    mm++;
                 }
                 ls[i].clear();
             }
