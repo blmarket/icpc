@@ -113,6 +113,7 @@ public:
                 }
                 ls[i].clear();
             }
+            cout << change << endl;
             if(!change) break;
         }
         VVI sigs(n);
