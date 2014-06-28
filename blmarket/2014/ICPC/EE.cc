@@ -70,7 +70,7 @@ int main(void) {
                 M[sig].pb(it);
             }
 
-            cout << size(M) << endl;
+            cout << i << " " << size(M) << endl;
 
             if(size(M) != 1) {
                 for(auto it : M) {
