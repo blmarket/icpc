@@ -77,6 +77,7 @@ int main(void) {
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
                         cout << jt.first << " " << jt.second << " " << mm << endl;
+                        cout << rr[jt.first].size() << endl;
                         set_label(jt.first, jt.second, mm);
                     }
                     mm++;
