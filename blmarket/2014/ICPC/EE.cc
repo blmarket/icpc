@@ -62,6 +62,7 @@ int main(void) {
 
     int mm = 101;
     while(true) {
+        cout << mm << endl;
         map<vector<int>, vector<PII> > M;
         for(int i=1;i<mm;i++) if(ls[i].size() > 1) {
             M.clear();
