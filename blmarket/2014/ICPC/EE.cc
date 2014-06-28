@@ -76,6 +76,7 @@ int main(void) {
                 for(auto it : M) {
                     ls[mm] = it.second;
                     for(auto jt : it.second) {
+                        cout << jt.first << " " << jt.second << " " << mm << endl;
                         set_label(jt.first, jt.second, mm);
                     }
                     mm++;
