@@ -44,6 +44,19 @@ VI get_doorsig(int s, int e) {
     return ret;
 }
 
+VI roomsig(int s) {
+    int sz = size(links[s]);
+    VI ret;
+    for(int i=0;i<sz;i++) {
+        VI tmp; tmp.clear();
+        for(int j=0;j<sz;j++) {
+            tmp.pb(label[s][(i+j)%sz]);
+        }
+        if(ret.size() == 0 || ret > tmp) ret = tmp;
+    }
+    return ret;
+}
+
 class TwistyPassages 
 {
 public:
@@ -67,14 +80,14 @@ public:
 
         while(true) {
             bool change = false;
-            for(int i=0;i<mm;i++) {
-                if(ls[i].size() == 0) continue;
-                cout << i << " : ";
-                for(int j=0;j<size(ls[i]);j++) {
-                    cout << ls[i][j].first << "-" << ls[i][j].second << " ";
-                }
-                cout << endl;
-            }
+            // for(int i=0;i<mm;i++) {
+            //     if(ls[i].size() == 0) continue;
+            //     cout << i << " : ";
+            //     for(int j=0;j<size(ls[i]);j++) {
+            //         cout << ls[i][j].first << "-" << ls[i][j].second << " ";
+            //     }
+            //     cout << endl;
+            // }
 
             for(int i=0;i<mm;i++) {
                 if(ls[i].size() < 2) continue;
@@ -102,7 +115,6 @@ public:
             cout << change << endl;
             if(!change) break;
         }
-        cout << get_doorsig(1, 0) << endl;
         return vector<int>();
     }
     
