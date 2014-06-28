@@ -68,12 +68,6 @@ int main(void) {
             M.clear();
             for(auto &it : ls[i]) {
                 vector<int> sig = get_sig(it.first, it.second);
-                if(it.first == 1 && it.second == 3) {
-                    cout << "HERE1 : " << sig.size() << endl;
-                }
-                if(it.first == 1 && it.second == 4) {
-                    cout << "HERE2 : " << sig.size() << endl;
-                }
                 M[sig].pb(it);
             }
 
