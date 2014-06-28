@@ -59,6 +59,7 @@ public:
         int mm = 55;
         for(int i=0;i<mm;i++) {
             if(ls[i].size() == 0) continue;
+            cout << i << " : ";
             for(int j=0;j<size(ls[i]);j++) {
                 cout << ls[i][j].first << "-" << ls[i][j].second << " ";
             }
