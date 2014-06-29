@@ -35,7 +35,6 @@ class ReflectiveRectangle
 public:
     int findSum(int sideA, int sideB, int bounces) 
     {
-        cout << mod<< endl;
         if(bounces % 2) return 0;
         long long n = bounces + 2;
 
