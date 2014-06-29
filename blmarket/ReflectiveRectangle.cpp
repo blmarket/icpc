@@ -51,12 +51,12 @@ public:
                 break;
             }
             if(((n-i) % i) == 0) {
+                cout << (n-i) * (n-i) << endl;
                 xsum = (xsum - i*i - (n-i)*(n-i)) % mod;
                 ysum = (ysum - i*i - (n-i)*(n-i)) % mod;
                 // (i, n-i) and (n-i, i).
             }
         }
-        cout << ((long long)sideA * sideA) % mod << endl;
         xsum *= ((long long)sideA * sideA) % mod;
         ysum *= ((long long)sideB * sideB) % mod;
         xsum %= mod;
