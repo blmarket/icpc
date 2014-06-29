@@ -61,6 +61,7 @@ public:
                 cnt = !cnt;
                 base *= fs[j];
             }
+            cout << base << " " << n/base << endl;
             long long tmp = (sumsq(n/base - 1) * (base*base) % mod) % mod;
             if(!cnt) tmp = -tmp;
             cur = (cur - tmp + mod) % mod;
