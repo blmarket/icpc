@@ -56,6 +56,7 @@ public:
                 // (i, n-i) and (n-i, i).
             }
         }
+        cout << ((long long)sideA * sideA) % mod << endl;
         xsum *= ((long long)sideA * sideA) % mod;
         ysum *= ((long long)sideB * sideB) % mod;
         xsum %= mod;
