@@ -34,15 +34,9 @@ public:
             memset(prob[nex], 0, sizeof(prob[0]));
             for(int j=0;j<5000;j++) {
                 for(int k=1;k<=d;k++) {
-                    prob[nex][j+k] += prob[0][j] / d;
+                    prob[nex][j+k] += prob[cur][j] / d;
                 }
             }
-
-            for(int j=0;j<5000;j++) {
-                printf("%.12lf ", prob[nex][j]);
-            }
-
-            if(i == 2) return -1;
         }
         if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
 
