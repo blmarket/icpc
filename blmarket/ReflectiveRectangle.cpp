@@ -58,15 +58,14 @@ public:
         int sz = size(fs);
         for(int i=0;i<(1LL<<sz);i++) {
             int base = 1;
-            int cnt = 0;
+            int cnt = 1;
             for(int j=0;j<sz;j++) if(i & (1<<j)) {
-                cnt = !cnt;
+                cnt = -cnt;
                 base *= fs[j];
             }
             cout << base << " " << n/base << endl;
             long long tmp = (sumsq(n/base - 1) * (base*base) % mod) % mod;
-            if(!cnt) tmp = -tmp;
-            cur = (cur - tmp + mod) % mod;
+            cur = (cur + tmp * cnt + mod) % mod;
         }
         cout << cur << endl;
         long long tmp = (LL)sideA * sideA + (LL)sideB * sideB;
