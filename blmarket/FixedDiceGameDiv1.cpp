@@ -43,7 +43,7 @@ public:
             }
             cout << endl;
 
-            return -1;
+            if(i == 2) return -1;
 
         }
         if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
