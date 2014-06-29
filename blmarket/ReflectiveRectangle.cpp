@@ -20,51 +20,27 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-long long mod = 1e9+7;
-
-long long sqsum(long long n) {
-    long long ret = (n*(n+1));
-    ret /= 2;
-    ret %= mod;
-
-    ret *= (2*n+1);
-    while((ret % 3)) ret += mod;
-    ret /= 3;
-    return ret % mod;
-}
-
 class ReflectiveRectangle 
 {
 public:
     int findSum(int sideA, int sideB, int bounces) 
-    {
-        long long n = bounces + 2;
-        if(n%2) return 0;
-        long long xsum, ysum;
-        xsum = ysum = (sqsum(n) - 4 * sqsum(n/2)) % mod;
+    {		
+        if(bounces % 2) return 0;
+        int n = bounces + 2;
 
-        for(int i=3;i*i <= n; i+= 2) {
-            if(i*i == n) {
-                cout << i << " " << i << endl;
-                // (i, i)
-                xsum = (xsum - i*i) % mod;
-                ysum = (ysum - i*i) % mod;
-                break;
+        vector<int> fs;
+        for(int i=3;i*i < n;i += 2) {
+            if((n%i) == 0) {
+                fs.pb(i);
+                n /= i;
             }
-            if(((n-i) % i) == 0) {
-                cout << i << " " << (n-i) << endl;
-                xsum = (xsum - i*i - (n-i)*(n-i)) % mod;
-                ysum = (ysum - i*i - (n-i)*(n-i)) % mod;
-                // (i, n-i) and (n-i, i).
-            }
+            while((n%i) == 0) n /= i;
         }
-        xsum *= ((long long)sideA * sideA) % mod;
-        ysum *= ((long long)sideB * sideB) % mod;
-        xsum %= mod;
-        ysum %= mod;
-        xsum += mod;
-        ysum += mod;
-        return (xsum + ysum) % mod;
+        if(n > 1) fs.pb(n);
+
+        for(auto it : fs) cout << it << " ";
+        cout << endl;
+        return 0;
     }
 
     
