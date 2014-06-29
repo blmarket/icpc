@@ -39,12 +39,10 @@ public:
             }
 
             for(int j=0;j<5000;j++) {
-                cout << prob[nex][j] << " ";
+                printf("%.12lf ", prob[nex][j]);
             }
-            cout << endl;
 
             if(i == 2) return -1;
-
         }
         if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
 
