@@ -39,6 +39,7 @@ public:
         long long n = bounces + 2;
 
         long long cur = sumsq(n - 1);
+        cout << cur << endl;
 
         vector<int> fs;
         for(int i=2;i*i < n;i ++) {
