@@ -47,9 +47,6 @@ public:
         prob[1][0] = 0;
         for(int i=1;i<5000;i++) prob[1][i] = prob[1][i-1] + prob[0][i-1];
 
-        for(int i=1;i<5000;i++) cout << prob[1][i] << " ";
-        cout << endl;
-
         double win = 0;
         for(int i=left;i<=right;i++) win += prob[1][i];
 
@@ -81,6 +78,6 @@ public:
 int main()
 {
     FixedDiceGameDiv1 ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
