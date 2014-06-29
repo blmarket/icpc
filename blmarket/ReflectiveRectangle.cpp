@@ -50,6 +50,8 @@ public:
         }
         if(n > 1) fs.pb(n);
 
+        n = bounces + 2;
+
         for(auto it : fs) cout << it << " ";
         cout << endl;
 
