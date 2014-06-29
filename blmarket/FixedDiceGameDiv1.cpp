@@ -25,6 +25,7 @@ class FixedDiceGameDiv1
 public:
     double getExpectation(int a, int b, int c, int d) 
     {		
+        if(a*b < c) return -1;
         double prob[2][5050];
         memset(prob, 0, sizeof(prob));
         prob[0][0] = 1;
@@ -51,9 +52,6 @@ public:
 
         double win = 0;
         for(int i=left;i<=right;i++) win += prob[1][i];
-
-        cout << win << endl;
-        if(win < 1e-5) return -1;
 
         double ret = 0;
         for(int i=left;i<=right;i++) {
