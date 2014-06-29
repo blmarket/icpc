@@ -42,6 +42,7 @@ public:
 
         vector<int> fs;
         for(int i=2;i*i < n;i ++) {
+            cout << i << endl;
             if((n%i) == 0) {
                 fs.pb(i);
                 n /= i;
