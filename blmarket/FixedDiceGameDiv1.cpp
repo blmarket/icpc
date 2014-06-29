@@ -25,14 +25,14 @@ class FixedDiceGameDiv1
 public:
     double getExpectation(int a, int b, int c, int d) 
     {		
-        double prob[2][350];
+        double prob[2][5050];
         memset(prob, 0, sizeof(prob));
         prob[0][0] = 1;
         for(int i=0;i<c;i++) {
             int cur = (i%2), nex = 1-cur;
 
             memset(prob[nex], 0, sizeof(prob[0]));
-            for(int j=0;j<300;j++) {
+            for(int j=0;j<5000;j++) {
                 for(int k=1;k<=d;k++) {
                     prob[nex][j+k] += prob[0][j] / d;
                 }
@@ -44,9 +44,9 @@ public:
         int right = a*b;
 
         prob[1][0] = 0;
-        for(int i=1;i<300;i++) prob[1][i] = prob[1][i-1] + prob[0][i-1];
+        for(int i=1;i<5000;i++) prob[1][i] = prob[1][i-1] + prob[0][i-1];
 
-        for(int i=1;i<300;i++) cout << prob[1][i] << " ";
+        for(int i=1;i<5000;i++) cout << prob[1][i] << " ";
         cout << endl;
 
         double win = 0;
