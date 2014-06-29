@@ -46,11 +46,14 @@ public:
         prob[1][0] = 0;
         for(int i=1;i<300;i++) prob[1][i] = prob[1][i-1] + prob[0][i-1];
 
+        for(int i=1;i<300;i++) cout << prob[1][i] << " ";
+        cout << endl;
+
+
         double win = 0;
         for(int i=left;i<=right;i++) win += prob[1][i];
 
         if(win < 1e-5) return -1;
-        cout << win << endl;
 
         double ret = 0;
         for(int i=left;i<=right;i++) {
