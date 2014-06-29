@@ -65,6 +65,7 @@ public:
             cout << "tmp = " << tmp << endl;
             cur = (cur - tmp + mod) % mod;
         }
+        cout << cur << endl;
         long long tmp = (LL)sideA * sideA + (LL)sideB * sideB;
         tmp %= mod;
         return (cur * tmp) % mod;
