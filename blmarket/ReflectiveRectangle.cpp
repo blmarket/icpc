@@ -52,7 +52,7 @@ public:
                 break;
             }
             if(((n-i) % i) == 0) {
-                cout << i << " " << (n-i) / i << endl;
+                cout << i << " " << (n-i) << endl;
                 xsum = (xsum - i*i - (n-i)*(n-i)) % mod;
                 ysum = (ysum - i*i - (n-i)*(n-i)) % mod;
                 // (i, n-i) and (n-i, i).
