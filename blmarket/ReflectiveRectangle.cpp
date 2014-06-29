@@ -68,6 +68,7 @@ public:
             cout << base << " " << tmp << " " << cnt << " " << cur << endl;
         }
         long long tmp = (LL)sideA * sideA + (LL)sideB * sideB;
+        cout << tmp << endl;
         tmp %= mod;
         return (cur * tmp) % mod;
     }
