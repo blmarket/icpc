@@ -41,8 +41,7 @@ public:
         long long cur = 0;
 
         vector<int> fs;
-        for(int i=2;i*i < n;i ++) {
-            cout << i << endl;
+        for(int i=2;i*i <= n;i ++) {
             if((n%i) == 0) {
                 fs.pb(i);
                 n /= i;
