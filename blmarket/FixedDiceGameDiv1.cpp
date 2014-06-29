@@ -34,7 +34,7 @@ public:
             memset(prob[nex], 0, sizeof(prob[0]));
             for(int j=0;j<5000;j++) {
                 for(int k=1;k<=d;k++) {
-                    prob[nex][j+k] += prob[0][j] / d;
+                    prob[nex][j+k] += prob[0][j] / (double)d;
                 }
             }
 
