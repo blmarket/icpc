@@ -57,13 +57,13 @@ public:
 
         int sz = size(fs);
         for(int i=0;i<(1LL<<sz);i++) {
-            int base = 1;
+            long long base = 1;
             int cnt = 1;
             for(int j=0;j<sz;j++) if(i & (1<<j)) {
                 cnt = -cnt;
                 base *= fs[j];
             }
-            long long tmp = sumsq(n/base) * base % mod *base % mod;
+            long long tmp = sumsq(n/base) * base % mod * base % mod;
             cur = (cur + tmp * cnt + mod) % mod;
             cout << base << " " << tmp << " " << cnt << " " << cur << endl;
         }
