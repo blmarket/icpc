@@ -49,6 +49,8 @@ public:
         double win = 0;
         for(int i=left;i<=right;i++) win += prob[1][i];
 
+        if(win < 1e-5) return -1;
+
         double ret = 0;
         for(int i=left;i<=right;i++) {
             ret += i * prob[1][i] / win;
