@@ -62,6 +62,7 @@ public:
                 base *= fs[j];
             }
             long long tmp = (sumsq(n/base - 1) * (base*base) % mod) % mod;
+            cout << "tmp = " << tmp << endl;
             cur = (cur - tmp + mod) % mod;
         }
         long long tmp = (LL)sideA * sideA + (LL)sideB * sideB;
