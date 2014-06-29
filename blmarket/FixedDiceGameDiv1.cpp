@@ -37,6 +37,12 @@ public:
                     prob[nex][j+k] += prob[0][j] / d;
                 }
             }
+
+            for(int j=0;j<5000;j++) {
+                cout << prob[nex][j] << " ";
+            }
+            cout << endl;
+
         }
         if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
 
