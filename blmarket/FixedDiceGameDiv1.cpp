@@ -26,33 +26,41 @@ public:
     double getExpectation(int a, int b, int c, int d) 
     {		
         if(a*b < c) return -1;
-        double prob[2][5050];
-        memset(prob, 0, sizeof(prob));
-        prob[0][0] = 1;
-        for(int i=0;i<c;i++) {
-            int cur = (i%2), nex = 1-cur;
 
-            memset(prob[nex], 0, sizeof(prob[0]));
-            for(int j=0;j<5000;j++) {
-                for(int k=1;k<=d;k++) {
-                    prob[nex][j+k] += prob[cur][j] / d;
+        auto fn = [&](int c, int d) -> vector<double> {
+            double prob[2][5050];
+            memset(prob, 0, sizeof(prob));
+            prob[0][0] = 1;
+            for(int i=0;i<c;i++) {
+                int cur = (i%2), nex = 1-cur;
+
+                memset(prob[nex], 0, sizeof(prob[0]));
+                for(int j=0;j<5000;j++) {
+                    for(int k=1;k<=d;k++) {
+                        prob[nex][j+k] += prob[cur][j] / d;
+                    }
                 }
             }
-        }
-        if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
+            if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
+            return vector<double>(prob[0], prob[0] + 5050);
+        };
+
+        vector<double> p1 = fn(a,b);
+        vector<double> p2 = fn(c,d);
+        vector<double> acc = vector<double>(5050, 0);
+
+        for(int i=1;i<5000;i++) acc[i] = acc[i-1] + p2[i-1];
+
+        double psum = 0;
 
         int left = a;
         int right = a*b;
 
-        prob[1][0] = 0;
-        for(int i=1;i<5000;i++) prob[1][i] = prob[1][i-1] + prob[0][i-1];
-
-        double win = 0;
-        for(int i=left;i<=right;i++) win += prob[1][i];
+        for(int i=left;i<=right;i++) psum += p1[i] * acc[i];
 
         double ret = 0;
         for(int i=left;i<=right;i++) {
-            ret += i * prob[1][i] / win;
+            ret += i * (p1[i] * acc[i]) / psum;
         }
         return ret;
     }
