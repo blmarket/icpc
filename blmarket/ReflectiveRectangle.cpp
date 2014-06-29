@@ -39,7 +39,6 @@ public:
         long long n = bounces + 2;
 
         long long cur = sumsq(n - 1);
-        cout << cur << endl;
 
         vector<int> fs;
         for(int i=2;i*i < n;i ++) {
@@ -62,7 +61,7 @@ public:
                 cnt = !cnt;
                 base *= fs[j];
             }
-            long long tmp = (sumsq(n/base) * (base*base) % mod) % mod;
+            long long tmp = (sumsq(n/base - 1) * (base*base) % mod) % mod;
             cur = (cur - tmp + mod) % mod;
         }
         long long tmp = (LL)sideA * sideA + (LL)sideB * sideB;
