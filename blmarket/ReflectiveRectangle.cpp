@@ -17,16 +17,28 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+long long mod = 1e9+7;
+long long inv6 = (mod+1) / 6;
+
+long long sumsq(long long n) {
+     long long ret = n * (n+1);
+     ret %= mod; ret *= (2*n+1); ret %= mod; ret *= inv6; ret %= mod;
+     return ret;
+}
 
 class ReflectiveRectangle 
 {
 public:
     int findSum(int sideA, int sideB, int bounces) 
-    {		
+    {
         if(bounces % 2) return 0;
-        int n = bounces + 2;
+        long long n = bounces + 2;
+
+        long long cur = sumsq(n - 1);
 
         vector<int> fs;
         for(int i=2;i*i < n;i ++) {
@@ -40,7 +52,21 @@ public:
 
         for(auto it : fs) cout << it << " ";
         cout << endl;
-        return 0;
+
+        int sz = size(fs);
+        for(int i=0;i<(1LL<<sz);i++) {
+            int base = 1;
+            int cnt = 0;
+            for(int j=0;j<sz;j++) if(i & (1<<j)) {
+                cnt = !cnt;
+                base *= fs[j];
+            }
+            long long tmp = (sumsq(n/base) * (base*base) % mod) % mod;
+            cur = (cur - tmp + mod) % mod;
+        }
+        long long tmp = (LL)sideA * sideA + (LL)sideB * sideB;
+        tmp %= mod;
+        return (cur * tmp) % mod;
     }
 
     
