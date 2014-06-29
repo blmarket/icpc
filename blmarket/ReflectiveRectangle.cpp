@@ -38,7 +38,7 @@ public:
         if(bounces % 2) return 0;
         long long n = bounces + 2;
 
-        long long cur = sumsq(n - 1);
+        long long cur = 0;
 
         vector<int> fs;
         for(int i=2;i*i < n;i ++) {
