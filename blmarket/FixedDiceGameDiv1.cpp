@@ -49,10 +49,10 @@ public:
         for(int i=1;i<300;i++) cout << prob[1][i] << " ";
         cout << endl;
 
-
         double win = 0;
         for(int i=left;i<=right;i++) win += prob[1][i];
 
+        cout << win << endl;
         if(win < 1e-5) return -1;
 
         double ret = 0;
