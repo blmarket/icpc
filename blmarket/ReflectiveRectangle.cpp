@@ -43,22 +43,20 @@ public:
         long long xsum, ysum;
         xsum = ysum = (sqsum(n) - 4 * sqsum(n/2)) % mod;
 
-        // for(int i=3;i*i <= n; i+= 2) {
-        //     if(i*i == n) {
-        //         // (i, i)
-        //         xsum = (xsum - i*i) % mod;
-        //         ysum = (ysum - i*i) % mod;
-        //         break;
-        //     }
-        //     if(((n-i) % i) == 0) {
-        //         cout << xsum << endl;
-        //         cout << (n-i) * (n-i) << endl;
-        //         cout << i*i << endl;
-        //         xsum = (xsum - i*i - (n-i)*(n-i)) % mod;
-        //         ysum = (ysum - i*i - (n-i)*(n-i)) % mod;
-        //         // (i, n-i) and (n-i, i).
-        //     }
-        // }
+        for(int i=3;i*i <= n; i+= 2) {
+            if(i*i == n) {
+                // (i, i)
+                xsum = (xsum - i*i) % mod;
+                ysum = (ysum - i*i) % mod;
+                break;
+            }
+            if(((n-i) % i) == 0) {
+                cout << i << " " << (n-i) / i << endl;
+                xsum = (xsum - i*i - (n-i)*(n-i)) % mod;
+                ysum = (ysum - i*i - (n-i)*(n-i)) % mod;
+                // (i, n-i) and (n-i, i).
+            }
+        }
         xsum *= ((long long)sideA * sideA) % mod;
         ysum *= ((long long)sideB * sideB) % mod;
         xsum %= mod;
