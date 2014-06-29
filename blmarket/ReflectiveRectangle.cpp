@@ -45,6 +45,7 @@ public:
 
         for(int i=3;i*i <= n; i+= 2) {
             if(i*i == n) {
+                cout << i << " " << i << endl;
                 // (i, i)
                 xsum = (xsum - i*i) % mod;
                 ysum = (ysum - i*i) % mod;
