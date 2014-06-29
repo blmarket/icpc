@@ -50,6 +50,7 @@ public:
         for(int i=left;i<=right;i++) win += prob[1][i];
 
         if(win < 1e-5) return -1;
+        cout << win << endl;
 
         double ret = 0;
         for(int i=left;i<=right;i++) {
