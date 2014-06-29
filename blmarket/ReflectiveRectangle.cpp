@@ -26,7 +26,7 @@ long long inv6 = (mod+1) / 6;
 
 long long sumsq(long long n) {
      long long ret = n * (n+1);
-     ret %= mod; ret *= (2*n+1); ret %= mod; ret *= inv6; ret %= mod;
+     ret %= mod; ret *= (n*2+1); ret %= mod; ret *= inv6; ret %= mod;
      return ret;
 }
 
