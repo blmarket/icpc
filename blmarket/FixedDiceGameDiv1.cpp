@@ -40,11 +40,20 @@ public:
         }
         if(c%2) memcpy(prob[0], prob[1], sizeof(prob[0]));
 
-        for(int i=0;i<300;i++) {
-            cout << prob[0][i] << " ";
+        int left = a;
+        int right = a*b;
+
+        prob[1][0] = 0;
+        for(int i=1;i<300;i++) prob[1][i] = prob[1][i-1] + prob[0][i-1];
+
+        double win = 0;
+        for(int i=left;i<=right;i++) win += prob[1][i];
+
+        double ret = 0;
+        for(int i=left;i<=right;i++) {
+            ret += i * prob[1][i] / win;
         }
-        cout << endl;
-        return 0;
+        return ret;
     }
 
     
