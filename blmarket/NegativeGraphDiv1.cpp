@@ -65,6 +65,7 @@ public:
         if(charges < 100) ret = cost[charges][0][N-1];
 
         for(int i=0;i<N;i++) {
+            cout << i << endl;
             for(int j=0;j<80;j++) {
                 if(cost[j][0][i] == BIG) continue;
                 for(int k=1;k<80;k++) {
