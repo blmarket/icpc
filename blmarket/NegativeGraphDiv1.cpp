@@ -64,6 +64,26 @@ public:
         long long ret = BIG;
         if(charges < 100) ret = cost[charges][0][N-1];
 
+        for(int i=0;i<N;i++) {
+            for(int j=0;j<80;j++) {
+                if(cost[j][0][i] == BIG) continue;
+                for(int k=1;k<80;k++) {
+                    if(cost[k][i][i] == BIG) continue;
+                    int q = (charges - j) / k;
+                    int rem = (charges - j) % k;
+                    long long curcost = cost[j][0][i] + cost[k][i][i] * q;
+                    while(rem < 100) {
+                        if(cost[rem][i][N-1] != BIG) {
+                            long long tmp = curcost + cost[rem][i][N-1];
+                            setmin(ret, tmp);
+                        }
+                        rem += k;
+                        curcost -= cost[k][i][i];
+                    }
+                }
+            }
+        }
+
         return ret;
     }
 
