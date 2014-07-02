@@ -47,6 +47,7 @@ public:
         }
 
         for(int t=0;t<1000;t++) {
+            cout << t << endl;
             for(int k=0;k<N;k++) {
                 for(int i=0;i<N;i++) {
                     for(int j=0;j<N;j++) {
