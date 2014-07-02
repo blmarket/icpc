@@ -62,7 +62,10 @@ public:
         }
 
         long long ret = BIG;
-        if(charges < 100) ret = cost[charges][0][N-1];
+        if(charges < 100) {
+            ret = cost[charges][0][N-1];
+            return ret;
+        }
 
         for(int i=0;i<N;i++) {
             for(int j=0;j<80;j++) {
