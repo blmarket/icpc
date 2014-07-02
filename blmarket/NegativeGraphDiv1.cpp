@@ -69,9 +69,9 @@ public:
                 if(cost[j][0][i] == BIG) continue;
                 for(int k=1;k<80;k++) {
                     if(cost[k][i][i] == BIG) continue;
-                    cout << "HERE" << endl;
                     int q = (charges - j) / k;
                     int rem = (charges - j) % k;
+                    cout << "HERE " << q << " " << rem << endl;
                     long long curcost = cost[j][0][i] + cost[k][i][i] * q;
                     while(rem < 100) {
                         if(cost[rem][i][N-1] != BIG) {
