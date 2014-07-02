@@ -23,6 +23,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 long long cost[1000][55][55];
 bool have[1000][55][55];
 
+bool setmin(long long &a, long long b) {
+    if(a > b) { a = b; return true; }
+    return false;
+}
+
 const long long BIG = 1000000000000LL;
 
 class NegativeGraphDiv1 
@@ -30,15 +35,33 @@ class NegativeGraphDiv1
 public:
     long long findMin(int N, vector <int> from, vector <int> to, vector <int> weight, int charges) 
     {
-        cout << BIG << endl;
         for(int i=0;i<1000;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) cost[i][j][k] = BIG;
         int E = size(from);
         for(int i=0;i<E;i++) {
-            int s = from[i];
-            int e = to[i];
+            int s = from[i] - 1;
+            int e = to[i] - 1;
             have[0][s][e] = true;
             have[1][s][e] = true;
+            setmin(cost[0][s][e], weight[i]);
+            setmin(cost[1][s][e], -weight[i]);
         }
+
+        for(int t=0;t<1000;t++) {
+            for(int k=0;k<N;k++) {
+                for(int i=0;i<N;i++) {
+                    for(int j=0;j<N;j++) {
+                        for(int l=0;l<=t;l++) {
+                            if(have[l][i][k] && have[t-l][k][j]) {
+                                have[t][i][j] = true;
+                                setmin(cost[t][i][j], cost[l][i][k] + cost[t-l][k][j]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return 0;
     }
 
     
