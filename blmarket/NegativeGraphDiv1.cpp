@@ -35,7 +35,10 @@ class NegativeGraphDiv1
 public:
     long long findMin(int N, vector <int> from, vector <int> to, vector <int> weight, int charges) 
     {
-        for(int i=0;i<1000;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) cost[i][j][k] = BIG;
+        for(int i=0;i<1000;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) {
+            cost[i][j][k] = BIG;
+            have[i][j][k] = false;
+        }
         int E = size(from);
         for(int i=0;i<E;i++) {
             int s = from[i] - 1;
