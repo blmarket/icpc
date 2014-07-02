@@ -67,6 +67,8 @@ public:
             return ret;
         }
 
+        for(int i=0;i<100;i++) setmin(ret, cost[i][0][N-1]);
+
         for(int i=0;i<N;i++) {
             for(int j=0;j<80;j++) {
                 if(cost[j][0][i] == BIG) continue;
