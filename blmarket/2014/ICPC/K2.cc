@@ -53,8 +53,6 @@ int main(void) {
         }
     }
 
-    cout << size(V) << endl;
-
     J.resize(V.size());
     for(int i=0;i<size(V);i++) {
         int ss = V[i].second + 1;
@@ -69,7 +67,7 @@ int main(void) {
             cout << "impossible" << endl;
             return 0;
         }
-        // cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
+        cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
     vector<int> JJ(size(J));
