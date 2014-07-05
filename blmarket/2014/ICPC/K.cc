@@ -31,6 +31,7 @@ vector<PII> V;
 int chk(int a) {
     int s = V[a].first;
     int e = V[a].second;
+    cout << s << " " << e << endl;
 
     int ret = 1;
 
@@ -78,7 +79,6 @@ int main(void) {
     }
     for(int i=size(V)-1;i>=0;i--) {
         if(V[i].first <= V[i].second) break;
-        cout << i << endl;
         int tmp = chk(i);
         if(tmp == -1) continue;
         if(ret == -1 || ret > tmp) ret = tmp;
