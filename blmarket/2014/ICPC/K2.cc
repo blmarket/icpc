@@ -47,11 +47,17 @@ int main(void) {
         }
     }
 
+    if(V.back().second < V.back().first) {
+        while(V[0].second < V.back().second) {
+            V.erase(V.begin());
+        }
+    }
+
     J.resize(V.size());
     for(int i=0;i<size(V);i++) {
-        int ss = V[i].second;
+        int ss = V[i].second + 1;
         if(ss > N) ss -= N;
-        int ep = upper_bound(V.begin(), V.end(), mp(ss+1, 1000000)) - V.begin() - 1;
+        int ep = upper_bound(V.begin(), V.end(), mp(ss, 1000000)) - V.begin() - 1;
 
         if(V[i].second > N) {
             ep += size(V);
