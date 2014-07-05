@@ -60,8 +60,13 @@ int main(void) {
         cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
-    for(int i=0;i<size(V);i++) {
-        if(J[i] >= size(V)) { cout << 1 << endl; return 0; }
+    vector<int> JJ(size(J));
+    for(int t=1;;t++) {
+        for(int i=0;i<size(V);i++) {
+            if(J[i] >= size(V)) { cout << t << endl; return 0; }
+            JJ[i] = J[i] + J[(i+J[i])%size(J)];
+        }
+        J.swap(JJ);
     }
 
     return 0;
