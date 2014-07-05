@@ -53,6 +53,7 @@ int main(void) {
         int ep = upper_bound(V.begin(), V.end(), mp(ss+1, 1000000)) - V.begin() - 1;
 
         if(V[i].second > N) {
+            cout << ep << endl;
             ep += size(V);
         }
         J[i] = ep;
