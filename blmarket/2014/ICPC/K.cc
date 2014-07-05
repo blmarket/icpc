@@ -45,6 +45,7 @@ int chk(int a) {
         }
 
         if(V[i].first > e+1) {
+            cout << "NEXTREACH = " << nextreach << endl;
             e = nextreach;
             ret++;
         }
@@ -65,6 +66,9 @@ int main(void) {
         V.pb(mp(a,b));
     }
     sort(V.begin(), V.end());
+    chk(1);
+    return 0;
+
     for(int i=0;i<size(V);i++) {
         cout << V[i].first << " " << V[i].second << " = " << chk(i) << endl;
     }
