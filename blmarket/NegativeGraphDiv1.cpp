@@ -81,6 +81,7 @@ public:
             }
             dmult(d2, d2, dt);
             d2.swap(dt);
+            charges >>= 1;
         }
 
         return dist[1][N];
