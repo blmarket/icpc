@@ -53,6 +53,8 @@ int main(void) {
         }
     }
 
+    cout << size(V) << endl;
+
     J.resize(V.size());
     for(int i=0;i<size(V);i++) {
         int ss = V[i].second + 1;
