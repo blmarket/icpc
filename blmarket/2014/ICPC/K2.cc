@@ -34,7 +34,7 @@ int main(void) {
     for(int i=0;i<M;i++) {
         int a,b;
         scanf("%d %d", &a, &b);
-        if(a < b) a += N;
+        if(b < a) b += N;
         V.pb(mp(a,b));
     }
     sort(V.begin(), V.end());
