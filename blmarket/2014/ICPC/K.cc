@@ -58,7 +58,7 @@ int chk(int a) {
 
 int main(void) {
     scanf("%d %d", &N, &M);
-    V.resize(M);
+    V.clear();
     for(int i=0;i<M;i++) {
         int a,b;
         scanf("%d %d", &a, &b);
