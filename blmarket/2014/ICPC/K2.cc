@@ -60,5 +60,9 @@ int main(void) {
         cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
+    for(int i=0;i<size(V);i++) {
+        if(J[i] >= N) { cout << 1 << endl; return 0; }
+    }
+
     return 0;
 }
