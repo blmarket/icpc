@@ -49,7 +49,7 @@ int main(void) {
         }
 
         if(V[i].second < V[i].first) {
-            J[i] = tmp + N - i;
+            J[i] = tmp + M - i;
         } else {
             J[i] = tmp - i;
         }
