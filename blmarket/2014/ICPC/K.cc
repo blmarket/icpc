@@ -66,7 +66,7 @@ int main(void) {
         V.pb(mp(a,b));
     }
     sort(V.begin(), V.end());
-    chk(1);
+    chk(0);
     return 0;
 
     for(int i=0;i<size(V);i++) {
