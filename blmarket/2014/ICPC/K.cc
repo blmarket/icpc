@@ -67,15 +67,9 @@ int main(void) {
     sort(V.begin(), V.end());
 
     for(int i=0;i<size(V);i++) {
-        if(V[i].second >= V[i].first) {
-            for(int j=i;j<size(V);j++) {
-                if(V[j].first <= V[i].second + 1) {
-                }
-            }
-        } else {
-            // FIXME
-        }
+        cout << chk(i) << " ";
     }
+    cout << endl;
 
     return 0;
 }
