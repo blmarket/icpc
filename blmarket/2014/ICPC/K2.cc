@@ -61,7 +61,7 @@ int main(void) {
     }
 
     for(int i=0;i<size(V);i++) {
-        if(J[i] >= N) { cout << 1 << endl; return 0; }
+        if(J[i] >= size(V)) { cout << 1 << endl; return 0; }
     }
 
     return 0;
