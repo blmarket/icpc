@@ -48,6 +48,7 @@ int chk(int a) {
             cout << "NEXTREACH = " << nextreach << endl;
             e = nextreach;
             ret++;
+            if(e + 1 >= s + N) return ret;
         }
 
         nextreach = max(nextreach, rr);
