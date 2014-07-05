@@ -27,37 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, M;
 vector<PII> V;
-
-int chk(int a) {
-    int s = V[a].first;
-    int e = V[a].second;
-    cout << s << " " << e << endl;
-
-    int ret = 1;
-
-    if(e < s) e += N;
-    if(e + 1 >= s + N) return 1;
-    int nextreach = e;
-    for(int i=a;i<size(V);i++) {
-        int rr = V[i].second;
-        if(V[i].second < V[i].first) rr += N;
-
-        if(V[i].first > nextreach+1) {
-            return -1;
-        }
-
-        if(V[i].first > e+1) {
-            e = nextreach;
-            ret++;
-            if(e + 1 >= s + N) return ret;
-        }
-
-        nextreach = max(nextreach, rr);
-    }
-
-    if(nextreach + 1 >= s + N) return ret + 1;
-    return -1;
-}
+vector<int> J;
 
 int main(void) {
     scanf("%d %d", &N, &M);
@@ -69,25 +39,12 @@ int main(void) {
     }
     sort(V.begin(), V.end());
 
-    int ret = -1;
     for(int i=0;i<size(V);i++) {
-        if(V[i].first > 1) break;
-        int tmp = chk(i);
-        if(tmp == -1) continue;
-        if(ret == -1 || ret > tmp) ret = tmp;
-        // cout << V[i].first << " " << V[i].second << " = " << chk(i) << endl;
-    }
-    for(int i=size(V)-1;i>=0;i--) {
-        if(V[i].first <= V[i].second) break;
-        int tmp = chk(i);
-        if(tmp == -1) continue;
-        if(ret == -1 || ret > tmp) ret = tmp;
-    }
-
-    if(ret == -1) {
-        cout << "impossible" << endl;
-    } else {
-        cout << ret << endl;
+        int tmp = upper_bound(V.begin(), V.end(), mp(V[i].second+1, N+1)) - V.begin() - 1;
+        cout << V[i].first << "," << V[i].second << " = " << tmp << endl;
+        if(V[i].second < V[i].first) {
+        } else {
+        }
     }
     return 0;
 }
