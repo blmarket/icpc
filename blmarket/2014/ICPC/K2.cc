@@ -48,11 +48,11 @@ int main(void) {
     }
 
     if(V.back().second < V.back().first) {
+        cout << "HERE" << endl;
         while(V[0].second < V.back().second) {
             V.erase(V.begin());
         }
     }
-    cout << size(V) << endl;
 
     J.resize(V.size());
     for(int i=0;i<size(V);i++) {
