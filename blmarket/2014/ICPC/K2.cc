@@ -27,6 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, M;
 vector<PII> V;
+vector<int> J;
 
 int main(void) {
     scanf("%d %d", &N, &M);
@@ -37,13 +38,25 @@ int main(void) {
         if(b < a) b += N;
         V.pb(mp(a,b));
     }
+
     sort(V.begin(), V.end());
     for(int i=0;i<size(V);i++) {
-        cout << V[i].first << "," << V[i].second << endl;
         while(i+1 < size(V)) {
             if(V[i+1].second > V[i].second) break;
             V.erase(V.begin() + i+1);
         }
+    }
+    J.resize(V.size());
+    for(int i=0;i<size(V);i++) {
+        int ss = V[i].second;
+        if(ss > N) ss -= N;
+        int ep = upper_bound(V.begin(), V.end(), mp(ss+1, 1000000)) - V.begin() - 1;
+
+        if(V[i].second > N) {
+            ep += size(V);
+        }
+        J[i] = ep;
+        cout << V[i].first << "," << V[i].second << " " << J[i] << endl;
     }
 
     return 0;
