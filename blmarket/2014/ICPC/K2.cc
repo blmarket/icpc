@@ -57,7 +57,7 @@ int main(void) {
             ep += size(V);
         }
         J[i] = ep;
-        cout << V[i].first << "," << V[i].second << " " << J[i] << endl;
+        cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
     return 0;
