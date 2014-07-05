@@ -20,80 +20,16 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-long long cost[1000][55][55];
-bool have[1000][55][55];
-
-bool setmin(long long &a, long long b) {
-    if(a > b) { a = b; return true; }
-    return false;
-}
-
-const long long BIG = 1000000000000LL;
+long long dist[55][55];
+const long long BIG = (long long)1e15;
 
 class NegativeGraphDiv1 
 {
 public:
     long long findMin(int N, vector <int> from, vector <int> to, vector <int> weight, int charges) 
     {
-        for(int i=0;i<1000;i++) for(int j=0;j<55;j++) for(int k=0;k<55;k++) {
-            cost[i][j][k] = BIG;
-            have[i][j][k] = false;
-        }
-        int E = size(from);
-        for(int i=0;i<E;i++) {
-            int s = from[i] - 1;
-            int e = to[i] - 1;
-            have[0][s][e] = true;
-            have[1][s][e] = true;
-            setmin(cost[0][s][e], weight[i]);
-            setmin(cost[1][s][e], -weight[i]);
-        }
-
-        for(int t=0;t<100;t++) {
-            for(int k=0;k<N;k++) {
-                for(int i=0;i<N;i++) {
-                    for(int j=0;j<N;j++) {
-                        for(int l=0;l<=t;l++) {
-                            if(have[l][i][k] && have[t-l][k][j]) {
-                                have[t][i][j] = true;
-                                setmin(cost[t][i][j], cost[l][i][k] + cost[t-l][k][j]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        long long ret = BIG;
-        if(charges < 100) {
-            ret = cost[charges][0][N-1];
-            return ret;
-        }
-
-        for(int i=0;i<100;i++) setmin(ret, cost[i][0][N-1]);
-
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<80;j++) {
-                if(cost[j][0][i] == BIG) continue;
-                for(int k=1;k<80;k++) {
-                    if(cost[k][i][i] == BIG) continue;
-                    int q = (charges - j) / k;
-                    int rem = (charges - j) % k;
-                    // cout << "HERE " << q << " " << rem << endl;
-                    long long curcost = cost[j][0][i] + cost[k][i][i] * q;
-                    while(rem < 100) {
-                        if(cost[rem][i][N-1] != BIG) {
-                            long long tmp = curcost + cost[rem][i][N-1];
-                            setmin(ret, tmp);
-                        }
-                        rem += k;
-                        curcost -= cost[k][i][i];
-                    }
-                }
-            }
-        }
-
-        return ret;
+        cout << BIG << endl;
+        for(int i=0;i<55;i++) for(int j=0;j<55;j++) dist[i][j] = BIG;
     }
 
     
