@@ -39,6 +39,7 @@ int main(void) {
     }
     sort(V.begin(), V.end());
 
+    J.resize(M);
     for(int i=0;i<size(V);i++) {
         int tmp = upper_bound(V.begin(), V.end(), mp(V[i].second+1, N+1)) - V.begin() - 1;
         cout << V[i].first << "," << V[i].second << " = " << tmp << endl;
