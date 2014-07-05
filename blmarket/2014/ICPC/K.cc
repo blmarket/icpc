@@ -45,7 +45,6 @@ int chk(int a) {
         }
 
         if(V[i].first > e+1) {
-            cout << "NEXTREACH = " << nextreach << endl;
             e = nextreach;
             ret++;
             if(e + 1 >= s + N) return ret;
