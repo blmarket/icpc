@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -20,16 +21,69 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-long long dist[55][55];
+typedef array<array<long long, 55>, 55> dd_t;
+
+dd_t dist, d2, dt;
 const long long BIG = (long long)1e15;
+
+void setmin(long long &a, long long b) { a = min(a,b); }
 
 class NegativeGraphDiv1 
 {
 public:
     long long findMin(int N, vector <int> from, vector <int> to, vector <int> weight, int charges) 
     {
-        cout << BIG << endl;
         for(int i=0;i<55;i++) for(int j=0;j<55;j++) dist[i][j] = BIG;
+        for(int i=0;i<size(from);i++) {
+            int f = from[i];
+            int t = to[i];
+            int w = weight[i];
+            setmin(dist[f][t], w);
+        }
+
+        for(int i=1;i<=N;i++) dist[i][i] = 0;
+
+        for(int k=1;k<=N;k++) {
+            for(int i=1;i<=N;i++) if(dist[i][k] != BIG) {
+                for(int j=1;j<=N;j++) if(dist[k][j] != BIG) {
+                    setmin(dist[i][j], dist[i][k] + dist[k][j]);
+                }
+            }
+        }
+
+        if(charges == 0) return dist[1][N];
+
+        d2 = dist;
+        for(int i=0;i<size(from);i++) {
+            for(int j=1;j<=N;j++) {
+                for(int k=1;k<=N;k++) {
+                    setmin(d2[j][k], dist[j][from[i]] - weight[i] + dist[to[i]][k]);
+                }
+            }
+        }
+
+        auto dmult = [&](const dd_t &a, const dd_t &b, dd_t &c) {
+            for(int i=1;i<=N;i++) for(int j=1;j<=N;j++) c[i][j] = min(a[i][j], b[i][j]);
+
+            for(int i=1;i<=N;i++) {
+                for(int j=1;j<=N;j++) {
+                    for(int k=1;k<=N;k++) {
+                        setmin(c[i][j], a[i][k] + b[k][j]);
+                    }
+                }
+            }
+        };
+
+        while(charges) {
+            if(charges & 1) {
+                dmult(dist, d2, dt);
+                dist.swap(dt);
+            }
+            dmult(d2, d2, dt);
+            d2.swap(dt);
+        }
+
+        return dist[1][N];
     }
 
     
