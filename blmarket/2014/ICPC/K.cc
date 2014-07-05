@@ -42,9 +42,17 @@ int main(void) {
     for(int i=0;i<size(V);i++) {
         int tmp = upper_bound(V.begin(), V.end(), mp(V[i].second+1, N+1)) - V.begin() - 1;
         cout << V[i].first << "," << V[i].second << " = " << tmp << endl;
-        if(V[i].second < V[i].first) {
-        } else {
+        if(tmp == -1) {
+            J[i] = 0;
+            continue;
         }
+
+        if(V[i].second < V[i].first) {
+            J[i] = tmp + N - i;
+        } else {
+            J[i] = tmp - i;
+        }
+        cout << i << " " << J[i] << endl;
     }
     return 0;
 }
