@@ -56,7 +56,7 @@ int main(void) {
         if(V[i].second > N) {
             ep += size(V);
         }
-        J[i] = ep;
+        J[i] = ep - i;
         cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
