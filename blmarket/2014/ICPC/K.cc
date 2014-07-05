@@ -35,6 +35,7 @@ int chk(int a) {
     int ret = 1;
 
     if(e < s) e += N;
+    if(e + 1 >= s + N) return 1;
     int nextreach = e;
     for(int i=a;i<size(V);i++) {
         int rr = V[i].second;
