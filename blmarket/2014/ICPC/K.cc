@@ -54,7 +54,7 @@ int chk(int a) {
         nextreach = max(nextreach, rr);
     }
 
-    if(nextreach + 1 >= s + N) return ret;
+    if(nextreach + 1 >= s + N) return ret + 1;
     return -1;
 }
 
