@@ -65,9 +65,8 @@ int main(void) {
         V.pb(mp(a,b));
     }
     sort(V.begin(), V.end());
-
     for(int i=0;i<size(V);i++) {
-        cout << chk(i) << " ";
+        cout << V[i].first << " " << V[i].second << " = " << chk(i) << endl;
     }
     cout << endl;
 
