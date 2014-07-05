@@ -70,11 +70,19 @@ int main(void) {
 
     int ret = -1;
     for(int i=0;i<size(V);i++) {
+        if(V[i].first > 1) break;
         int tmp = chk(i);
         if(tmp == -1) continue;
         if(ret == -1 || ret > tmp) ret = tmp;
         // cout << V[i].first << " " << V[i].second << " = " << chk(i) << endl;
     }
+    for(int i=size(V)-1;i>=0;i--) {
+        if(V[i].first <= V[i].second) break;
+        int tmp = chk(i);
+        if(tmp == -1) continue;
+        if(ret == -1 || ret > tmp) ret = tmp;
+    }
+
     if(ret == -1) {
         cout << "impossible" << endl;
     } else {
