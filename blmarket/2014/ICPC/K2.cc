@@ -57,6 +57,10 @@ int main(void) {
             ep += size(V);
         }
         J[i] = ep - i;
+        if(J[i] == 0) {
+            cout << "impossible" << endl;
+            return 0;
+        }
         // cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
