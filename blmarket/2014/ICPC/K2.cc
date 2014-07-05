@@ -47,8 +47,9 @@ int main(void) {
         }
     }
 
+    cout << V.back().second << " " << V.back().first << endl;
+
     if(V.back().second < V.back().first) {
-        cout << "HERE" << endl;
         while(V[0].second < V.back().second) {
             V.erase(V.begin());
         }
