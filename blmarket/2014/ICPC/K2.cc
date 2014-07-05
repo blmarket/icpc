@@ -47,10 +47,8 @@ int main(void) {
         }
     }
 
-    cout << V.back().second << " " << V.back().first << endl;
-
-    if(V.back().second < V.back().first) {
-        while(V[0].second < V.back().second) {
+    if(V.back().second > N) {
+        while(V[0].second < V.back().second - N) {
             V.erase(V.begin());
         }
     }
