@@ -59,7 +59,7 @@ int main(void) {
         if(ss > N) ss -= N;
         int ep = upper_bound(V.begin(), V.end(), mp(ss, 1000000)) - V.begin() - 1;
 
-        if(V[i].second > N) {
+        if(V[i].second >= N) {
             ep += size(V);
         }
         J[i] = ep - i;
