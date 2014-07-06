@@ -69,10 +69,12 @@ int main(void) {
         J[i] = max(J[i], reach - i);
     }
 
+    int ret = go(1);
     int fj = J[1];
-    for(int i=1;i<=fj;i++) {
-        cout << go(i) << " ";
+    for(int i=2;i<=fj;i++) {
+        int tmp = go(i);
+        if(ret > tmp) ret = tmp;
     }
-    cout << endl;
+    cout << ret << endl;
     return 0;
 }
