@@ -25,10 +25,13 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+struct tmp { int a,b,c; };
+
 tuple<int, int, int> func() {
     return {1,2,3};
 }
 
 int main(void) {
+    tmp vv = {1,2,3};
     return 0;
 }
