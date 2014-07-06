@@ -27,7 +27,16 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, M;
 vector<PII> V;
-vector<int> J;
+vector<int> J[25];
+
+vector<int> sum(const vector<int> &a, const vector<int> &b) {
+    int m = size(a);
+    vector<int> ret(m);
+    for(int i=0;i<m;i++) {
+        ret[i] = a[i] + b[(i+a[i])%m];
+    }
+    return ret;
+}
 
 int main(void) {
     scanf("%d %d", &N, &M);
@@ -53,7 +62,7 @@ int main(void) {
         }
     }
 
-    J.resize(V.size());
+    J[1].resize(V.size());
     for(int i=0;i<size(V);i++) {
         int ss = V[i].second + 1;
         if(ss > N) ss -= N;
@@ -62,22 +71,42 @@ int main(void) {
         if(V[i].second >= N) {
             ep += size(V);
         }
-        J[i] = ep - i;
-        if(J[i] == 0) {
+        J[1][i] = ep - i;
+        if(J[1][i] == 0) {
             cout << "impossible" << endl;
             return 0;
         }
-        cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
+        // cout << V[i].first << "," << V[i].second%N << " " << J[i] << endl;
     }
 
-    vector<int> JJ(size(J));
-    for(int t=1;;t++) {
+    for(int t=1;t<24;t++) {
+        J[t+1].resize(J[1].size());
         for(int i=0;i<size(V);i++) {
-            if(J[i] >= size(V)) { cout << t << endl; return 0; }
-            JJ[i] = J[i] + J[(i+J[i])%size(J)];
+            J[t+1][i] = J[t][i] + J[t][(i+J[t][i])%size(V)];
+            if(J[t+1][i] > size(V)) J[t+1][i] = size(V);
         }
-        J.swap(JJ);
     }
+
+    int ret = 1<<25;
+    for(int i=0;i<size(V);i++) {
+        int pos = 24;
+        int sum = 0;
+
+        while(pos > 0) {
+            int sz = 1<<(pos+1);
+            int cur = 0;
+            int tmp = cur + J[pos][(i + cur) % size(V)];
+            if(tmp >= size(V)) {
+                if(ret > sum + sz) {
+                    ret = sum + sz;
+                }
+            } else {
+                sum += sz;
+                cur = tmp;
+            }
+        }
+    }
+    cout << ret << endl;
 
     return 0;
 }
