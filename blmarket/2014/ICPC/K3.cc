@@ -64,9 +64,12 @@ int main(void) {
     for(int i=1;i<=reach;i++) {
         J[i] = max(J[i], reach - i);
     }
+    for(int i=1;i<10;i++) {
+        cout << J[i] << " ";
+    }
+    cout << endl;
 
     for(int i=1;i<=n;i++) {
-        cout << J[i] << " ";
         if(J[i] == 0) {
             cout << "impossible" << endl;
             return 0;
