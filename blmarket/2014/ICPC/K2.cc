@@ -101,6 +101,7 @@ int main(void) {
                     ret = sum + sz;
                 }
             } else {
+                cout << sz << endl;
                 sum += sz;
                 cur = tmp;
             }
