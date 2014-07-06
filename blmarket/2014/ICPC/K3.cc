@@ -1,5 +1,5 @@
 #include <iostream>
-#include <sys/wait.h>
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
