@@ -72,7 +72,9 @@ int main(void) {
     int ret = go(1);
     int fj = J[1];
     for(int i=2;i<=fj;i++) {
+        if(J[i-1] + i - 1 == J[i] + i) continue;
         int tmp = go(i);
+        cout << i << " " << tmp << endl;
         if(ret > tmp) ret = tmp;
     }
     cout << ret << endl;
