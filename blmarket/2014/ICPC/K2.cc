@@ -87,6 +87,8 @@ int main(void) {
         }
     }
 
+    cout << "HERE" << endl;
+
     int ret = 1<<25;
     for(int i=0;i<size(V);i++) {
         int pos = 24;
