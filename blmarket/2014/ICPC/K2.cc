@@ -87,6 +87,13 @@ int main(void) {
         }
     }
 
+    for(int i=1;i<5;i++) { 
+        for(int j=0;j<size(V);j++) {
+            cout << J[i][j] << " ";
+        }
+        cout << endl;
+    }
+
     int ret = 1<<25;
     for(int i=0;i<size(V);i++) {
         int pos = 24;
@@ -101,7 +108,6 @@ int main(void) {
                     ret = sum + sz;
                 }
             } else {
-                cout << sz << endl;
                 sum += sz;
                 cur = tmp;
             }
