@@ -100,7 +100,7 @@ int main(void) {
         int sum = 0;
 
         while(pos > 0) {
-            int sz = 1<<(pos+1);
+            int sz = 1<<(pos-1);
             int cur = 0;
             int tmp = cur + J[pos][(i + cur) % size(V)];
             if(tmp >= size(V)) {
