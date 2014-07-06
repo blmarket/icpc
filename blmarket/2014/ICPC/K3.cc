@@ -33,12 +33,10 @@ int go(int a) {
     int ret = 0;
     int sum = 0;
     while(sum < n) {
-        cout << a << " ";
         sum += J[a];
         a = (a + J[a] - 1) % n + 1;
         ret++;
     }
-    cout << endl;
     return ret;
 }
 
