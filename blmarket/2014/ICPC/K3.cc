@@ -33,10 +33,12 @@ int go(int a) {
     int ret = 0;
     int sum = 0;
     while(sum < n) {
+        cout << a << " ";
         sum += J[a];
         a = (a + J[a] - 1) % n + 1;
         ret++;
     }
+    cout << endl;
     return ret;
 }
 
@@ -79,12 +81,12 @@ int main(void) {
     cout << endl;
 
     int ret = go(1+J[1]);
+    return 0; // REMOVE
     int fj = J[1];
     for(int i=2;i<fj;i++) {
         if(J[i-1] + i - 1 == J[i] + i) continue;
         int tmp = go(i);
         if(ret > tmp) {
-            cout << i << " " << tmp << endl;
             ret = tmp;
         }
     }
