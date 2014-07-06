@@ -25,13 +25,50 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-struct tmp { int a,b,c; };
+int n, m;
+int J[100005];
+vector<PII> V;
 
-tuple<int, int, int> func() {
-    return {1,2,3};
+int go(int a) {
+    int ret = 0;
+    int sum = 0;
+    while(sum < n) {
+        sum += J[a];
+        a = (a + J[a]);
+        ret++;
+    }
+    return ret;
 }
 
 int main(void) {
-    tmp vv = {1,2,3};
+    scanf("%d %d", &n, &m);
+    for(int i=0;i<m;i++) {
+        int a, b;
+        scanf("%d %d", &a, &b);
+        if(b < a) b += n;
+        V.pb(mp(a,b));
+    }
+    sort(V.begin(), V.end());
+    
+    int reach = V[0].second + 1;
+    int it = 1;
+    for(int i=V[0].first;i <= n;i++) {
+        while(V[it].first <= i) {
+            reach = max(reach, V[it].second + 1);
+            it++;
+        }
+        if(reach <= i) {
+            cout << "impossible" << endl;
+            return 0;
+        }
+        J[i] = (reach - i);
+    }
+
+    reach -= n;
+    for(int i=1;i<=reach;i++) {
+        J[i] = max(J[i], reach - i);
+    }
+
+    cout << go(1) << endl;
     return 0;
 }
