@@ -70,6 +70,7 @@ int main(void) {
     }
 
     for(int i=1;i<=n;i++) {
+        cout << i << endl;
         cout << go(i) << " ";
     }
     cout << endl;
