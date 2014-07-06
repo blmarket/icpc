@@ -81,7 +81,6 @@ int main(void) {
     cout << endl;
 
     int ret = go(1+J[1]);
-    return 0; // REMOVE
     int fj = J[1];
     for(int i=2;i<fj;i++) {
         if(J[i-1] + i - 1 == J[i] + i) continue;
