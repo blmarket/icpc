@@ -41,13 +41,12 @@ int go(int a) {
 }
 
 int main(void) {
-    scanf("%d %d", &n, &m);
-    V.clear();
+    cin >> n >> m;
+    V.resize(m);
     for(int i=0;i<m;i++) {
         int a, b;
-        scanf("%d %d", &a, &b);
-        if(b < a) b += n;
-        V.pb(mp(a,b));
+        cin >> V[i].first >> V[i].second;
+        if(V[i].second < V[i].first) V[i].second += n;
     }
     sort(V.begin(), V.end());
     // cout << V.back().first << " " << V.back().second << endl;
