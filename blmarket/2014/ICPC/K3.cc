@@ -57,16 +57,18 @@ int main(void) {
             reach = max(reach, V[it].second + 1);
             it++;
         }
-        if(reach <= i) {
-            cout << "impossible" << endl;
-            return 0;
-        }
-        J[i] = (reach - i);
+        J[i] = max(0, reach - i);
     }
 
     reach -= n;
     for(int i=1;i<=reach;i++) {
         J[i] = max(J[i], reach - i);
+    }
+    for(int i=1;i<=n;i++) {
+        if(J[i] == 0) {
+            cout << "impossible" << endl;
+            return 0;
+        }
     }
 
     int ret = go(1);
