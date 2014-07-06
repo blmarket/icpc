@@ -47,7 +47,7 @@ int main(void) {
     V.resize(m);
     for(int i=0;i<m;i++) {
         cin >> V[i].first >> V[i].second;
-        V[i].second += V[i].first;
+        V[i].second += V[i].first - 1;
 
         // if(V[i].second < V[i].first) V[i].second += n;
     }
