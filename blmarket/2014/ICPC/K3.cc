@@ -64,7 +64,7 @@ int main(void) {
         J[i] = max(0, reach - i);
     }
 
-    // cout << reach << endl;
+    cout << reach << endl;
 
     reach -= n;
     for(int i=1;i<=reach;i++) {
