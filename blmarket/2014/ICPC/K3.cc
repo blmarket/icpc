@@ -44,9 +44,10 @@ int main(void) {
     cin >> n >> m;
     V.resize(m);
     for(int i=0;i<m;i++) {
-        int a, b;
         cin >> V[i].first >> V[i].second;
-        if(V[i].second < V[i].first) V[i].second += n;
+        V[i].second += V[i].first;
+
+        // if(V[i].second < V[i].first) V[i].second += n;
     }
     sort(V.begin(), V.end());
     // cout << V.back().first << " " << V.back().second << endl;
@@ -61,16 +62,12 @@ int main(void) {
         J[i] = max(0, reach - i);
     }
 
-    cout << reach << endl;
+    // cout << reach << endl;
 
     reach -= n;
     for(int i=1;i<=reach;i++) {
         J[i] = max(J[i], reach - i);
     }
-    for(int i=1;i<10;i++) {
-        cout << J[i] << " ";
-    }
-    cout << endl;
 
     for(int i=1;i<=n;i++) {
         if(J[i] == 0) {
