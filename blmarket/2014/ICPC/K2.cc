@@ -108,7 +108,7 @@ int main(void) {
                     ret = sum + sz;
                 }
             } else {
-                cout << sz << endl;
+                cout << sz << " " << tmp << endl;
                 sum += sz;
                 cur = tmp;
             }
