@@ -98,10 +98,10 @@ int main(void) {
     for(int i=0;i<size(V);i++) {
         int pos = 24;
         int sum = 0;
+        int cur = 0;
 
         while(pos > 0) {
             int sz = 1<<(pos-1);
-            int cur = 0;
             int tmp = cur + J[pos][(i + cur) % size(V)];
             if(tmp >= size(V)) {
                 if(ret > sum + sz) {
