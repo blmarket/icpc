@@ -69,6 +69,9 @@ int main(void) {
         J[i] = max(J[i], reach - i);
     }
 
-    cout << go(1) << endl;
+    for(int i=1;i<=n;i++) {
+        cout << go(i) << " ";
+    }
+    cout << endl;
     return 0;
 }
