@@ -89,7 +89,6 @@ int main(void) {
 
     int ret = 1<<25;
     for(int i=0;i<size(V);i++) {
-        cout << i << endl;
         int pos = 24;
         int sum = 0;
 
@@ -105,6 +104,7 @@ int main(void) {
                 sum += sz;
                 cur = tmp;
             }
+            pos--;
         }
     }
     cout << ret << endl;
