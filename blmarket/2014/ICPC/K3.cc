@@ -72,13 +72,11 @@ int main(void) {
     }
 
     for(int i=1;i<=n;i++) {
-        cout << J[i] << " ";
         if(J[i] == 0) {
             cout << "impossible" << endl;
             return 0;
         }
     }
-    cout << endl;
 
     int ret = go(1+J[1]);
     int fj = J[1];
