@@ -64,6 +64,7 @@ int main(void) {
     for(int i=1;i<=reach;i++) {
         J[i] = max(J[i], reach - i);
     }
+
     for(int i=1;i<=n;i++) {
         if(J[i] == 0) {
             cout << "impossible" << endl;
