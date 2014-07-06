@@ -34,7 +34,7 @@ int go(int a) {
     int sum = 0;
     while(sum < n) {
         sum += J[a];
-        a = (a + J[a]);
+        a = (a + J[a] - 1) % n + 1;
         ret++;
     }
     return ret;
