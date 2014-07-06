@@ -71,10 +71,9 @@ int main(void) {
         }
     }
 
-    int ret = go(1);
+    int ret = go(1+J[1]);
     int fj = J[1];
-    for(int i=2;i<=fj;i++) {
-        cout << i << endl;
+    for(int i=2;i<fj;i++) {
         if(J[i-1] + i - 1 == J[i] + i) continue;
         int tmp = go(i);
         if(ret > tmp) ret = tmp;
