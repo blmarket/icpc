@@ -42,6 +42,7 @@ int go(int a) {
 
 int main(void) {
     scanf("%d %d", &n, &m);
+    V.clear();
     for(int i=0;i<m;i++) {
         int a, b;
         scanf("%d %d", &a, &b);
@@ -49,7 +50,7 @@ int main(void) {
         V.pb(mp(a,b));
     }
     sort(V.begin(), V.end());
-    // cout << V.back().first << " " << V.back().second << endl;
+    cout << V.back().first << " " << V.back().second << endl;
     
     int reach = V[0].second + 1;
     int it = 1;
