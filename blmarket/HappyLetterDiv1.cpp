@@ -42,6 +42,7 @@ class HappyLetterDiv1
 public:
     string getHappyLetters(string letters) 
     {		
+        M.clear();
         string ret;
         for(auto it : letters) M[it] += 1;
         for(auto it : M) {
