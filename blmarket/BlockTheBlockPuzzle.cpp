@@ -84,6 +84,7 @@ public:
             for(auto it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
             }
+            return 0;
         };
         while(true) {
             memset(back, -1, sizeof(back));
