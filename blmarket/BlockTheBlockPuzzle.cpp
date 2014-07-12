@@ -135,7 +135,7 @@ public:
         while(true) {
             memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
-            cout << "HERE" << endl;
+            cout << tmp << endl;
             ret += tmp;
             if(ret > 5000) return -1;
         }
