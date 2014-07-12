@@ -34,7 +34,7 @@ int go(int a, int K) {
         if(visit[it]) continue;
         int tmp = go(it, K-1);
         if(tmp == -1) continue;
-        if(V[a] < V[it]) tmp++;
+        if(V[a] > V[it]) tmp++;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
 
