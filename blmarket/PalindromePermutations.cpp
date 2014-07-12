@@ -60,9 +60,7 @@ public:
             V.pb(it.second / 2);
         }
 
-        cout << ret << endl;
         ret *= go(V);
-        cout << ret << endl;
         return ret;
     }
 
