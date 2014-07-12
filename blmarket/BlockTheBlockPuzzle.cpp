@@ -165,7 +165,7 @@ public:
         while(true) {
             memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
-            cout << tmp << endl;
+            cout << endl;
             if(!tmp) break;
             ret += tmp;
             if(ret > 5000) return -1;
