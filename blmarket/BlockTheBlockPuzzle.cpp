@@ -83,11 +83,9 @@ public:
                     int flow = 0;
                     if(c1 == 'b' || c2 == 'b') flow = 50000;
                     flow += (c1 == '.') + (c2 == '.');
-                    int n3 = label(make_tuple(nx, ny, 0));
-                    if(n2 == 0) {
-                        cout << c1 << " " << c2 << " " << n3 << " " << flow << endl;
-                    }
+                    if(flow == 0) continue;
 
+                    int n3 = label(make_tuple(nx, ny, 0));
                     links[n2].pb(mp(n3, flow));
                 }
             }
