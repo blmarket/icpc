@@ -103,7 +103,6 @@ public:
             for(auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
                 if(try_flow(np)) {
-                    cout << sp << endl;
                     add_link(sp, np, -1);
                     add_link(np, sp, 1);
                     return true;
@@ -188,6 +187,6 @@ public:
 int main()
 {
     BlockTheBlockPuzzle ___test; 
-    ___test.run_test(2); 
+    ___test.run_test(3); 
 } 
 // END CUT HERE
