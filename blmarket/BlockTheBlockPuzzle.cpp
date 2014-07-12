@@ -70,10 +70,21 @@ int ls = 0;
 vector<PII> links[5500];
 bool sink[5500];
 
+map<tuple<int, int, int>, int> M;
 template<typename T> int label(const T &a) {
-    static map<T, int> M;
     if(M.count(a)) return M[a];
     return M[a] = ls++;
+}
+
+void trace(int a) {
+    for(const auto it : M) {
+        if(it.second == a) {
+            int b,c,d;
+            tie(b,c,d) = it.first;
+            cout << b << " " << c << " " << d << endl;
+            return;
+        }
+    }
 }
 
 void add_link(int s, int e, int f) {
