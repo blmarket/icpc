@@ -98,6 +98,7 @@ void add_link(int s, int e, int f) {
             return;
         }
     }
+    links[s].pb(mp(e,f));
 }
 
 const int dx[4] = {0,-1,1,0};
