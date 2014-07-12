@@ -77,13 +77,16 @@ public:
         }
 
         int ret = 0;
-        bool visit[5500];
+        int back[5500];
 
         function<int(int)> try_flow = [&](int sp) -> int {
-            return 0;
+            if(back[sp] != -1) return 0;
+            for(auto it : links[sp]) {
+                int np, flow; tie(np, flow) = it;
+            }
         };
         while(true) {
-            memset(visit, 0, sizeof(visit));
+            memset(back, -1, sizeof(back));
             int tmp = try_flow(sp);
             if(tmp == 0) break;
             if(tmp > 100) return -1;
