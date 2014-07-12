@@ -20,7 +20,8 @@
  * Execution Time: 1 ms
  * Peak memory used: 11.750MB
  * Args:
- * {{
+ * {
+ * {
  * "...........H....bb.....b...", 
  * "...........................", 
  * "........HH.b..b.....H......", 
@@ -179,8 +180,27 @@ public:
 	private:
 	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
 	void verify_case(int Case, const int &Expected, const int &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
-	void test_case_0() { string Arr0[] = 
-           {"............H..", "...............", "...............", "HHH$HHH........", "HHHHHHH........", "HHHHHHHH.......", "......b..H.....", "...............", "...............", "...H..H..H.....", "...............", "...............", "...............", "...............", "..............."} ;
+	void test_case_0() { string Arr0[] = { "...........H....bb.....b...", 
+ "...........................", 
+ "........HH.b..b.....H......", 
+ ".............b.Hb..H.....H.", 
+ "....H........H.............", 
+ ".............HH..b.........", 
+ "b....H..........b.........b", 
+ "..HH.Hb....$.....H...b..H..", 
+ "..........H................", 
+ "..........H....HH..........", 
+ "...............H.........b.", 
+ "H...........bH....HbH..HbH.", 
+ "...H........H.............b", 
+ "........H.....b...H.H....H.", 
+ "................H....b...H.", 
+ "bb..........H....b..Hb.....", 
+ "..............b..H.........", 
+ "...H......b................", 
+ "b......H...HH..............", 
+ ".....H.....................", 
+ "..............H............", "..H.........b....b.........", "..........b................", "...b.bH..........H.........", "...HH..................H..H", "...........H......H........", "b........H............bb..."};
             vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 2; verify_case(0, Arg1, minimumHoles(Arg0)); }
 	void test_case_1() { string Arr0[] = {"............H..",
  "...............",
