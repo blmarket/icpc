@@ -96,6 +96,8 @@ public:
             if(back[sp]) return false;
             if(sink[sp]) return true;
 
+            back[sp] = true;
+
             for(auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
                 if(try_flow(np)) {
