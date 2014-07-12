@@ -160,7 +160,7 @@ public:
 
             back[sp] = true;
 
-            for(auto &it : links[sp]) {
+            for(const auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
                 if(try_flow(np)) {
                     trace(sp);
