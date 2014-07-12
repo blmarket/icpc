@@ -59,6 +59,7 @@ public:
         for(int i=0;i<N;i++) {
             int tmp = go(i, K-1);
             if(tmp == -1) continue;
+            cout << i << " " << tmp << endl;
             if(ret == -1 || ret > tmp) ret = tmp;
         }
         return ret;
