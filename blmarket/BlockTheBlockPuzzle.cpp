@@ -21,6 +21,13 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<string> board;
+int ls = 0;
+
+template<typename T> int label(const T &a) {
+    static map<T, int> M;
+    if(M.count(a)) return M[a];
+    return M[a] = ls++;
+}
 
 class BlockTheBlockPuzzle 
 {
@@ -37,10 +44,9 @@ public:
             }
         }
 
-        dx++;
         for(int i=0;i<size(board);i++) for(int j=0;j<size(board);j++) {
             if((i-dx) % 3 == 0 && (j - dy) % 3 == 0) {
-                cout << i << " " << j << endl;
+                label(make_tuple(i, j));
             }
         }
     }
