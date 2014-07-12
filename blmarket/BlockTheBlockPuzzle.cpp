@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -10,6 +11,27 @@
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+
+/**
+ * Problem: 500
+ * Test Case: 2
+ * Succeeded: No
+ * Execution Time: 0 ms
+ * Peak memory used: 0.000MB
+ * Args:
+ * {{"............H..", "...............", "...............", "HHH$HHH........", "HHHHHHH........", "HHHHHHHH.......", "......b..H.....", "...............", "...............", "...H..H..H.....", "...............", "...............", "...............", "...............", "..............."}}
+ *
+ * Expected:
+ * 1
+ *
+ * Received:
+ * The code execution time exceeded the 2.000 second time limit.
+ *
+ * Answer checking result:
+ * null
+ *
+
+ */
 
 using namespace std;
 
@@ -126,10 +148,9 @@ public:
 	private:
 	template <typename T> string print_array(const vector<T> &V) { ostringstream os; os << "{ "; for (typename vector<T>::const_iterator iter = V.begin(); iter != V.end(); ++iter) os << '\"' << *iter << "\","; os << " }"; return os.str(); }
 	void verify_case(int Case, const int &Expected, const int &Received) { cerr << "Test Case #" << Case << "..."; if (Expected == Received) cerr << "PASSED" << endl; else { cerr << "FAILED" << endl; cerr << "\tExpected: \"" << Expected << '\"' << endl; cerr << "\tReceived: \"" << Received << '\"' << endl; } }
-	void test_case_0() { string Arr0[] = {"b..$",
- "....",
- "HHHH",
- "HHHH"}; vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 2; verify_case(0, Arg1, minimumHoles(Arg0)); }
+	void test_case_0() { string Arr0[] = 
+           {"............H..", "...............", "...............", "HHH$HHH........", "HHHHHHH........", "HHHHHHHH.......", "......b..H.....", "...............", "...............", "...H..H..H.....", "...............", "...............", "...............", "...............", "..............."} ;
+            vector <string> Arg0(Arr0, Arr0 + (sizeof(Arr0) / sizeof(Arr0[0]))); int Arg1 = 2; verify_case(0, Arg1, minimumHoles(Arg0)); }
 	void test_case_1() { string Arr0[] = {"............H..",
  "...............",
  "...............",
@@ -186,6 +207,6 @@ public:
 int main()
 {
     BlockTheBlockPuzzle ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(0); 
 } 
 // END CUT HERE
