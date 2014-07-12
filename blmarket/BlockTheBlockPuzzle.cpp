@@ -68,6 +68,7 @@ public:
         for(int i=0;i<size(board);i++) for(int j=0;j<size(board);j++) {
             if((i-px) % 3 == 0 && (j - py) % 3 == 0) if(board[i][j] != 'H') {
                 int n1 = label(make_tuple(i, j, 0));
+                cout << i << " " << j << " " << n1 << endl;
                 int n2 = label(make_tuple(i, j, 1));
                 if(board[i][j] == 'b') sink[n1] = true;
                 links[n1].pb(mp(n2, 1));
@@ -101,6 +102,7 @@ public:
             for(auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
                 if(try_flow(np)) {
+                    cout << sp << endl;
                     add_link(sp, np, -1);
                     add_link(np, sp, 1);
                     return true;
