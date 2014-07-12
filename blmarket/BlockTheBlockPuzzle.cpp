@@ -103,9 +103,7 @@ public:
         int sp;
         for(int i=0;i<size(board);i++) {
             for(int j=0;j<size(board[i]);j++) if(board[i][j] == '$') {
-                sp = label(make_tuple(i,j,1));
-                px = (i % 3);
-                py = (j % 3);
+                px = i; py = j;
                 break;
             }
         }
@@ -135,6 +133,7 @@ public:
                 }
             }
         }
+        sp = label(make_tuple(px,py,1));
 
         int ret = 0;
         bool back[5500];
