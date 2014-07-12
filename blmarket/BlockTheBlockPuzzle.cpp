@@ -112,9 +112,6 @@ public:
 
         for(int i=0;i<size(board);i++) for(int j=0;j<size(board);j++) {
             if((i-px) % 3 == 0 && (j - py) % 3 == 0) if(board[i][j] != 'H') {
-                if(board[i][j] == 'b') {
-                    cout << i << " " << j << endl;
-                }
                 int n1 = label(make_tuple(i, j, 0));
                 cout << i << " " << j << " " << n1 << endl;
                 int n2 = label(make_tuple(i, j, 1));
