@@ -113,9 +113,8 @@ public:
         while(true) {
             memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
-            if(tmp == 0) break;
-            if(tmp > 100) return -1;
             ret += tmp;
+            if(ret > 5000) return -1;
         }
         return ret;
     }
