@@ -38,6 +38,7 @@ double go(vector<int> &V) {
         ret *= c(sum, it);
         ret *= f(it*2);
     }
+    cout << ret << endl;
     return ret / f(sum*2);
 }
 
