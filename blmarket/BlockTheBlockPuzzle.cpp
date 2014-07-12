@@ -155,7 +155,7 @@ public:
             cout << " : ";
             for(const auto &it : links[sp]) {
                 trace(it.first);
-                cout << " ";
+                cout << ":" << it.second << " ";
             }
             cout << endl;
             
