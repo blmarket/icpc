@@ -46,8 +46,9 @@ public:
 
         for(int i=0;i<size(board);i++) for(int j=0;j<size(board);j++) {
             if((i-dx) % 3 == 0 && (j - dy) % 3 == 0) {
-                label(make_tuple(i, j, 0));
-                label(make_tuple(i, j, 1));
+                int n1 = label(make_tuple(i, j, 0));
+                int n2 = label(make_tuple(i, j, 1));
+                cout << n1 << " " << n2 << endl;
             }
         }
 
