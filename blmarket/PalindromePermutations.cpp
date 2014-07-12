@@ -26,15 +26,19 @@ double f(int a) {
     return ret;
 }
 
+double c(int a, int b) {
+    return f(a) / f(b);
+}
+
 double go(vector<int> &V) {
     int sum = 0;
     double ret = 1.0;
     for(int it : V) {
         sum += it;
-        ret *= f(it);
+        ret *= c(sum, it);
+        ret *= f(it*2);
     }
-    ret /= f(sum);
-    return ret;
+    return ret / f(sum*2);
 }
 
 class PalindromePermutations 
