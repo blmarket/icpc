@@ -150,7 +150,8 @@ public:
         bool back[5500];
 
         function<bool(int)> try_flow = [&](int sp) -> bool {
-            cout << "chk " << sp << endl;
+            cout << "chk ";
+            trace(sp);
             if(back[sp]) return false;
             if(sink[sp]) {
                 cout << sp << endl;
