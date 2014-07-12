@@ -81,7 +81,7 @@ void trace(int a) {
         if(it.second == a) {
             int b,c,d;
             tie(b,c,d) = it.first;
-            cout << b << " " << c << " " << d << endl;
+            cout << b << "," << c << "," << d;
             return;
         }
     }
@@ -152,6 +152,13 @@ public:
         function<bool(int)> try_flow = [&](int sp) -> bool {
             cout << "chk ";
             trace(sp);
+            cout << " : ";
+            for(const auto &it : links[sp]) {
+                trace(it.first);
+                cout << " ";
+            }
+            cout << endl;
+            
             if(back[sp]) return false;
             if(sink[sp]) {
                 cout << sp << endl;
