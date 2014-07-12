@@ -36,6 +36,7 @@ double go(vector<int> &V) {
     for(int it : V) {
         sum += it;
         ret *= c(sum, it);
+        cout << sum << " " << it << endl;
         ret *= f(it*2);
     }
     cout << ret << endl;
