@@ -76,17 +76,6 @@ template<typename T> int label(const T &a) {
     return M[a] = ls++;
 }
 
-void trace(int a) {
-    for(const auto it : M) {
-        if(it.second == a) {
-            int b,c,d;
-            tie(b,c,d) = it.first;
-            cout << b << "," << c << "," << d;
-            return;
-        }
-    }
-}
-
 void add_link(int s, int e, int f) {
     for(auto &it : links[s]) {
         if(it.first == e) {
@@ -150,18 +139,9 @@ public:
         bool back[5500];
 
         function<bool(int)> try_flow = [&](int sp) -> bool {
-            cout << "chk ";
-            trace(sp);
-            cout << " : ";
-            for(const auto &it : links[sp]) {
-                trace(it.first);
-                cout << ":" << it.second << " ";
-            }
-            cout << endl;
             
             if(back[sp]) return false;
             if(sink[sp]) {
-                cout << sp << endl;
                 return true;
             }
 
@@ -180,7 +160,6 @@ public:
         while(true) {
             memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
-            cout << endl;
             if(!tmp) break;
             ret += tmp;
             if(ret > 5000) return -1;
