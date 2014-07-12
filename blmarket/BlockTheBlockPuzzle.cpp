@@ -31,6 +31,19 @@ template<typename T> int label(const T &a) {
     return M[a] = ls++;
 }
 
+void add_link(int s, int e, int f) {
+    for(auto &it : links[s]) {
+        if(it.first == e) {
+            it.second += f;
+            if(it.second == 0) {
+                swap(it, links[s].back());
+                links[s].pop_back();
+            }
+            return;
+        }
+    }
+}
+
 const int dx[4] = {0,-1,1,0};
 const int dy[4] = {-1,0,0,1};
 
@@ -77,17 +90,24 @@ public:
         }
 
         int ret = 0;
-        int back[5500];
+        bool back[5500];
 
-        function<int(int)> try_flow = [&](int sp) -> int {
-            if(back[sp] != -1) return 0;
-            for(auto it : links[sp]) {
+        function<bool(int)> try_flow = [&](int sp) -> bool {
+            if(back[sp]) return false;
+            if(sink[sp]) return true;
+
+            for(auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
+                if(try_flow(np)) {
+                    add_link(sp, np, -1);
+                    add_link(np, sp, 1);
+                    return true;
+                }
             }
-            return 0;
+            return false;
         };
         while(true) {
-            memset(back, -1, sizeof(back));
+            memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
             if(tmp == 0) break;
             if(tmp > 100) return -1;
