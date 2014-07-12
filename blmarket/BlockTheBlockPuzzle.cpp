@@ -162,7 +162,7 @@ public:
             for(auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
                 if(try_flow(np)) {
-                    cout << sp << endl;
+                    trace(sp);
                     add_link(sp, np, -1);
                     add_link(np, sp, 1);
                     return true;
