@@ -117,7 +117,6 @@ public:
         bool back[5500];
 
         function<bool(int)> try_flow = [&](int sp) -> bool {
-            cout << sp << " " << back[sp] << endl;
             if(back[sp]) return false;
             if(sink[sp]) return true;
 
@@ -136,6 +135,7 @@ public:
         while(true) {
             memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
+            cout << "HERE" << endl;
             ret += tmp;
             if(ret > 5000) return -1;
         }
