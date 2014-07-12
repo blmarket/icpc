@@ -27,7 +27,7 @@ double f(int a) {
 }
 
 double c(int a, int b) {
-    return f(a) / f(b);
+    return f(a) / f(b) / f(a-b);
 }
 
 double go(vector<int> &V) {
@@ -36,7 +36,6 @@ double go(vector<int> &V) {
     for(int it : V) {
         sum += it;
         ret *= c(sum, it);
-        cout << sum << " " << it << endl;
         ret *= f(it*2);
     }
     cout << ret << endl;
