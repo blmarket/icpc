@@ -37,6 +37,7 @@ public:
             }
         }
 
+        dx++;
         for(int i=0;i<size(board);i++) for(int j=0;j<size(board);j++) {
             if((i-dx) % 3 == 0 && (j - dy) % 3 == 0) {
                 cout << i << " " << j << endl;
