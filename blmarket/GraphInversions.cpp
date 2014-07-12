@@ -37,6 +37,8 @@ int go(int a, int K) {
         if(V[a] < V[it]) tmp++;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
+
+    visit[a] = false;
     return ret;
 }
 
