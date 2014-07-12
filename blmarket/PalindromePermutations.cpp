@@ -20,19 +20,19 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-double f(int a) {
-    double ret = 1.0;
+long double f(int a) {
+    long double ret = 1.0;
     for(int i=1;i<=a;i++) ret *= i;
     return ret;
 }
 
-double c(int a, int b) {
+long double c(int a, int b) {
     return f(a) / f(b) / f(a-b);
 }
 
-double go(vector<int> &V) {
+long double go(vector<int> &V) {
     int sum = 0;
-    double ret = 1.0;
+    long double ret = 1.0;
     for(int it : V) {
         sum += it;
         ret *= c(sum, it);
@@ -49,7 +49,7 @@ public:
         map<char, int> M;
         for(auto it : word) M[it] += 1;
         bool haveone = false;
-        double ret = 1.0;
+        long double ret = 1.0;
         vector<int> V;
         for(auto it : M) {
             if(it.second % 2) {
