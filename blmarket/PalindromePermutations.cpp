@@ -20,6 +20,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+double f(int a) {
+    double ret = 1.0;
+    for(int i=1;i<=a;i++) ret *= i;
+    return ret;
+}
+
+double go(vector<int> &V) {
+    int sum = 0;
+    double ret = 1.0;
+    for(int it : V) {
+        sum += it;
+        ret *= f(it);
+    }
+    ret /= f(sum);
+    return ret;
+}
+
 class PalindromePermutations 
 {
 public:
@@ -27,10 +44,20 @@ public:
     {		
         map<char, int> M;
         for(auto it : word) M[it] += 1;
+        bool haveone = false;
+        double ret = 1.0;
+        vector<int> V;
         for(auto it : M) {
-            cout << it.first << " = " << it.second << endl;
+            if(it.second % 2) {
+                if(haveone) return 0;
+                haveone = true;
+                ret /= size(word);
+            }
+            V.pb(it.second / 2);
         }
-        return 0;
+
+        ret *= go(V);
+        return ret;
     }
 
     
