@@ -23,17 +23,25 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<string> board;
 int ls = 0;
 
+typedef tuple<int,int,int,int> T4;
+
 map<PII, int> m1;
-map<tuple<int, int, int, int>, int> m2;
+map<T4, int> m2;
 
 int label1(int a, int b) {
     PII key = { a, b };
+    if(m1.count(key)) return m1[key];
+    return m1[key] = ls++;
 }
 
 int label2(int a, int b, int c, int d) {
+    T4 key = { a,b,c,d};
+    if(m2.count(key)) return m2[key];
+    return m2[key] = ls++;
 }
 
 int start(int a, int b) {
+    int sp = label1(a, b);
 }
 
 class BlockTheBlockPuzzle 
