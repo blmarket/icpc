@@ -12,25 +12,24 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
-/**
+/**o
  * Problem: 500
- * Test Case: 2
+ * Test Case: 16
  * Succeeded: No
  * Execution Time: 0 ms
- * Peak memory used: 0.000MB
+ * Peak memory used: 11.750MB
  * Args:
- * {{"............H..", "...............", "...............", "HHH$HHH........", "HHHHHHH........", "HHHHHHHH.......", "......b..H.....", "...............", "...............", "...H..H..H.....", "...............", "...............", "...............", "...............", "..............."}}
+ * {{"...........H....bb.....b...", "...........................", "........HH.b..b.....H......", ".............b.Hb..H.....H.", "....H........H.............", ".............HH..b.........", "b....H..........b.........b", "..HH.Hb....$.....H...b..H..", "..........H................", "..........H....HH..........", "...............H.........b.", "H...........bH....HbH..HbH.", "...H........H.............b", "........H.....b...H.H....H.", "................H....b...H.", "bb..........H....b..Hb.....", "..............b..H.........", "...H......b................", "b......H...HH..............", ".....H.....................", "..............H............", "..H.........b....b.........", "..........b................", "...b.bH..........H.........", "...HH..................H..H", "...........H......H........", "b........H............bb..."}}
  *
  * Expected:
- * 1
+ * 4
  *
  * Received:
- * The code execution time exceeded the 2.000 second time limit.
+ * 1
  *
  * Answer checking result:
- * null
+ * Returned value must exactly match the expected one.
  *
-
  */
 
 using namespace std;
@@ -118,13 +117,17 @@ public:
 
         function<bool(int)> try_flow = [&](int sp) -> bool {
             if(back[sp]) return false;
-            if(sink[sp]) return true;
+            if(sink[sp]) {
+                cout << sp << endl;
+                return true;
+            }
 
             back[sp] = true;
 
             for(auto &it : links[sp]) {
                 int np, flow; tie(np, flow) = it;
                 if(try_flow(np)) {
+                    cout << sp << endl;
                     add_link(sp, np, -1);
                     add_link(np, sp, 1);
                     return true;
@@ -135,6 +138,7 @@ public:
         while(true) {
             memset(back, 0, sizeof(back));
             int tmp = try_flow(sp);
+            cout << tmp << endl;
             if(!tmp) break;
             ret += tmp;
             if(ret > 5000) return -1;
