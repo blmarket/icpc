@@ -24,9 +24,9 @@ vector<int> links[1050];
 vector<int> V;
 bool trace[1050];
 
+const int SIZE = 1024;
 struct FenwickTree {
-    const int SIZE = 1024;
-    int tree[1024];
+    int tree[SIZE];
 
     void add(int a, int cnt = 1) {
         for(;a<=SIZE;a+=(a&-a)) tree[a] += cnt;
@@ -51,7 +51,7 @@ int go(int a, int K) {
     for(auto it : links[a]) {
         int tmp = go(it, K-1);
         if(tmp == -1) continue;
-        tmp += t.range(V[it] - 1);
+        tmp += t.range(SIZE) - t.range(V[it]);
         if(ret == -1 || ret > tmp) ret = tmp;
     }
 
