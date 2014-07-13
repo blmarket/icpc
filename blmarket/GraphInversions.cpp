@@ -24,20 +24,39 @@ vector<int> links[1050];
 vector<int> V;
 bool trace[1050];
 
+struct FenwickTree {
+    const int SIZE = 1024;
+    int tree[1024];
+
+    void add(int a, int cnt = 1) {
+        for(;a<=SIZE;a+=(a&-a)) tree[a] += cnt;
+    }
+
+    int range(int e) {
+        int ret = 0;
+        for(;e>0;e-=(e&-e)) ret += tree[e];
+        return ret;
+    }
+};
+
+FenwickTree t;
+
 int go(int a, int K) {
     if(trace[a]) return -1;
     if(K == 0) return 0;
     trace[a] = true;
+    t.add(V[a]);
     int ret = -1;
 
     for(auto it : links[a]) {
         int tmp = go(it, K-1);
         if(tmp == -1) continue;
-        if(V[a] > V[it]) tmp += 1;
+        tmp += t.range(V[it] - 1);
         if(ret == -1 || ret > tmp) ret = tmp;
     }
 
     trace[a] = false;
+    t.add(V[a], -1);
     cout << a << " " << K << " " << V[a] << " = " << ret << endl;
     return ret;
 }
