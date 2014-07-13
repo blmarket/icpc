@@ -57,7 +57,6 @@ int go(int a, int K) {
 
     trace[a] = false;
     t.add(V[a], -1);
-    cout << a << " " << K << " " << V[a] << " = " << ret << endl;
     return ret;
 }
 
