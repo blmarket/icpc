@@ -7,7 +7,7 @@
 #include <vector>
 
 #define mp make_pair
-#define pb emplace_back 
+#define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
@@ -20,25 +20,24 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-int N;
-vector<int> V;
 vector<int> links[1050];
-bool visit[1050];
+vector<int> V;
+bool trace[1050];
 
 int go(int a, int K) {
+    if(trace[a]) return -1;
     if(K == 0) return 0;
-    visit[a] = true;
-
+    trace[a] = true;
     int ret = -1;
-    for(const auto &it : links[a]) {
-        if(visit[it]) continue;
+
+    for(auto it : links[a]) {
         int tmp = go(it, K-1);
         if(tmp == -1) continue;
-        if(V[a] > V[it]) tmp++;
+        if(V[a] > V[it]) tmp += 1;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
 
-    visit[a] = false;
+    trace[a] = false;
     return ret;
 }
 
@@ -48,18 +47,15 @@ public:
     int getMinimumInversions(vector <int> A, vector <int> B, vector <int> V_, int K) 
     {
         V = V_;
-        N = size(A);
-        for(int i=0;i<N;i++) {
-            int a = A[i], b = B[i], v = V[i];
-            links[a].pb(b);
-            links[b].pb(a);
+        for(int i=0;i<size(A);i++) {
+            links[A[i]].pb(B[i]);
+            links[B[i]].pb(A[i]);
         }
 
         int ret = -1;
-        for(int i=0;i<N;i++) {
+        for(int i=0;i<size(V);i++) {
             int tmp = go(i, K-1);
             if(tmp == -1) continue;
-            cout << i << " " << tmp << endl;
             if(ret == -1 || ret > tmp) ret = tmp;
         }
         return ret;
@@ -86,6 +82,6 @@ public:
 int main()
 {
     GraphInversions ___test; 
-    ___test.run_test(4); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
