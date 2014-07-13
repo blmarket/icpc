@@ -72,8 +72,6 @@ public:
             links[B[i]].pb(A[i]);
         }
 
-        return go(2, K-1);
-
         int ret = -1;
         for(int i=0;i<size(V);i++) {
             int tmp = go(i, K-1);
