@@ -11,6 +11,26 @@
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
+/**
+ * Problem: 500
+ * Test Case: 0
+ * Succeeded: No
+ * Execution Time: 1 ms
+ * Peak memory used: 11.641MB
+ * Args:
+ * {{0, 1, 2}, {1, 2, 0}, {40, 50, 60}, 3}
+ *
+ * Expected:
+ * 0
+ *
+ * Received:
+ * 258
+ *
+ * Answer checking result:
+ * Returned value must exactly match the expected one.
+ *
+ */
+
 using namespace std;
 
 typedef vector<int> VI;
@@ -26,7 +46,7 @@ bool trace[1050];
 
 const int SIZE = 1024;
 struct FenwickTree {
-    int tree[SIZE];
+    int tree[SIZE + 1];
 
     void add(int a, int cnt = 1) {
         for(;a<=SIZE;a+=(a&-a)) tree[a] += cnt;
