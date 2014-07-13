@@ -20,33 +20,35 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-map<char, int> M;
-bool chk(char a) {
-    int mine = M[a];
-    vector<int> V;
-    for(auto it : M) {
-        if(it.first != a) V.pb(it.second);
-    }
-    while(V.size() > 1) {
-        sort(V.rbegin(), V.rend());
-        V[0] -= V[1];
-        swap(V[1], V.back());
-        V.pop_back();
-    }
-    if(V[0] >= mine) return false;
-    return true;
-}
-
 class HappyLetterDiv1 
 {
 public:
     string getHappyLetters(string letters) 
-    {		
-        M.clear();
+    {
+        map<char, int> M;
+        for(char it : letters) M[it] += 1;
+
+        auto check = [&](char a) -> bool {
+            int mine = M[a];
+            vector<int> V;
+            for(auto it : M) if(it.first != a) {
+                V.pb(it.second);
+            }
+
+            while(V.size() > 1) {
+                sort(V.rbegin(), V.rend());
+                while(V.size() > 0 && V.back() == 0) V.pop_back();
+                if(V.size() < 2) break;
+                V[0]--;
+                V[1]--;
+            }
+            if(V.size() == 0) return true;
+            return V[0] < mine;
+        };
+
         string ret;
-        for(auto it : letters) M[it] += 1;
         for(auto it : M) {
-            if(chk(it.first)) ret += it.first;
+            if(check(it.first)) ret += it.first;
         }
         return ret;
     }
