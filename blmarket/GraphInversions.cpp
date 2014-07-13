@@ -26,7 +26,6 @@ bool trace[1050];
 
 int go(int a, int K) {
     if(trace[a]) return -1;
-    cout << a << " " << K << " " << V[a] << endl;
     if(K == 0) return 0;
     trace[a] = true;
     int ret = -1;
@@ -39,6 +38,7 @@ int go(int a, int K) {
     }
 
     trace[a] = false;
+    cout << a << " " << K << " " << V[a] << " = " << ret << endl;
     return ret;
 }
 
