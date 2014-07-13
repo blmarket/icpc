@@ -25,6 +25,7 @@ vector<int> V;
 bool trace[1050];
 
 int go(int a, int K) {
+    cout << a << " " << K << " " << V[a] << endl;
     if(trace[a]) return -1;
     if(K == 0) return 0;
     trace[a] = true;
