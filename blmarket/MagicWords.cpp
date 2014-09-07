@@ -20,10 +20,30 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/**
+ * Problem: 250
+ * Test Case: 6
+ * Succeeded: No
+ * Execution Time: 1 ms
+ * Peak memory used: 11.613MB
+ * Args:
+ * {{"DGD", "GD", "G", "D", "G"}, 4}
+ *
+ * Expected:
+ * 20
+ *
+ * Received:
+ * 0
+ *
+ * Answer checking result:
+ * Returned value must exactly match the expected one.
+ */
+
 int K;
 vector<int> dk;
 
 bool chk(const string &a) {
+    cout << a << endl;
     int ret = 1;
     for(int i=2;i<size(a);i++) {
         if(size(a) % i) continue;
