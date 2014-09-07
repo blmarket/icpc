@@ -26,16 +26,18 @@ public:
     int countSites(int N, int M) 
     {		
         int ret = 0;
+        int r2 = 0;
         for(int i=1;i<=N;i++) {
             for(int j=1;j<=M;j++) {
                 ret += (N-i+1) * (M-j+1);
                 int h = i * 2;
                 int w = j * 2;
                 if(h > N || j > M) continue;
-                ret += (N-h+1) * (M-w+1);
+                r2 += (N-h+1) * (M-w+1);
             }
         }
-        return ret;
+        cout << ret << " " << r2 << endl;
+        return ret + r2;
     }
 
     
