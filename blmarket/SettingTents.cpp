@@ -32,7 +32,7 @@ public:
                 ret += (N-i+1) * (M-j+1);
                 int h = i * 2;
                 int w = j * 2;
-                if(h > N || j > M) continue;
+                if(h > N || w > M) continue;
                 r2 += (N-h+1) * (M-w+1);
             }
         }
