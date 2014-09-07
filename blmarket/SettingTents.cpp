@@ -27,20 +27,26 @@ public:
     {		
         int ret = 0;
         int r2 = 0;
+        int r3 = 0;
         int mm = min(N, M);
         for(int i=1;i<=mm;i++) {
             ret += (N-i+1) * (M-i+1);
         }
+
         for(int i=1;i<=N;i++) {
             for(int j=1;j<=M;j++) {
                 int h = i * 2;
                 int w = j * 2;
                 if(h > N || w > M) continue;
                 r2 += (N-h+1) * (M-w+1);
+
+                h = i + j;
+                if(h > N || w > N) continue;
+                r3 += (N-h+1) * (M-h+1);
             }
         }
-        cout << ret << " " << r2 << endl;
-        return ret + r2;
+        cout << ret << " " << r2 << " " << r3 << endl;
+        return ret + r2 + r3;
     }
 
     
