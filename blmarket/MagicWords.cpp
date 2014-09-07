@@ -33,7 +33,7 @@ bool chk(const string &a) {
         }
         if(!fail) ret++;
     }
-    cout << K << endl;
+    cout << ret << " " << K << endl;
     return ret == K;
 }
 
