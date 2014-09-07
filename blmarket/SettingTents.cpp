@@ -27,9 +27,12 @@ public:
     {		
         int ret = 0;
         int r2 = 0;
+        int mm = min(N, M);
+        for(int i=1;i<=mm;i++) {
+            ret += (N-i+1) * (M-i+1);
+        }
         for(int i=1;i<=N;i++) {
             for(int j=1;j<=M;j++) {
-                ret += (N-i+1) * (M-j+1);
                 int h = i * 2;
                 int w = j * 2;
                 if(h > N || w > M) continue;
