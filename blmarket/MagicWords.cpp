@@ -33,15 +33,26 @@ bool chk(const string &a) {
         }
         if(!fail) ret++;
     }
-    cout << size(a) << " " << ret << " " << K << endl;
     return ret == K;
 }
+
+int fact(int a) { if(a == 0) return 1; else return a * fact(a-1); }
 
 class MagicWords 
 {
 public:
     int count(vector <string> S, int K_) 
     {
+        string tmp;
+        for(int i=0;i<size(S);i++) tmp += S[i];
+        bool fail = false;
+        for(int i=1;i<size(tmp);i++) {
+            if(tmp[i] != tmp[0]) { fail = true; break; }
+        }
+        if(!fail) {
+            if(K == size(tmp)) return fact(size(S));
+        }
+
         K = K_;
         for(int i=2;i<K;i++) {
             if((K % i) == 0) dk.pb(i);
