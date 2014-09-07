@@ -50,7 +50,7 @@ public:
             if(tmp[i] != tmp[0]) { fail = true; break; }
         }
         if(!fail) {
-            cout << "HERE" << endl;
+            cout << K << " " << size(tmp) << endl;
             if(K == size(tmp)) return fact(size(S));
         }
 
