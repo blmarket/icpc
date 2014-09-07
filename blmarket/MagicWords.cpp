@@ -24,25 +24,16 @@ int K;
 vector<int> dk;
 
 bool chk(const string &a) {
-    if(size(a) % K) return false;
-    int ss = size(a) / K;
-    for(int i=0;i<size(a);i++) {
-        if(a[i] != a[(i+ss)%size(a)]) return false;
-    }
-
-    for(int i=0;i<size(dk);i++) {
-        int ds = size(a) / dk[i];
+    int ret = 1;
+    for(int i=2;i<size(a);i++) {
+        if(size(a) % i) continue;
         bool fail = false;
         for(int j=0;j<size(a);j++) {
-            if(a[j] != a[(j+ds)%size(a)]) {
-                fail = true;
-                break;
-            }
+            if(a[j] != a[(j+i)%size(a)]) { fail = true; break; }
         }
-        if(!fail) return false;
+        if(!fail) ret++;
     }
-
-    return true;
+    return ret == K;
 }
 
 class MagicWords 
