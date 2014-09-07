@@ -40,6 +40,8 @@ public:
                 if(h > N || w > M) continue;
                 r2 += (N-h+1) * (M-w+1);
 
+                if(i == j) continue;
+
                 h = i + j;
                 if(h > N || w > N) continue;
                 r3 += (N-h+1) * (M-h+1);
