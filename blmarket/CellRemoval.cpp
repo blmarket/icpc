@@ -42,6 +42,7 @@ public:
             bool fail = false;
             while(parent[tmp] != -1) {
                 if(tmp == deletedCell) { fail = true; break; }
+                tmp = parent[tmp];
             }
             ret += !fail;
         }
