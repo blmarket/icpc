@@ -24,7 +24,8 @@ class CellRemoval
 {
 public:
     int cellsLeft(vector <int> parent, int deletedCell) 
-    {		
+    {
+        if(parent[deletedCell] == -1) return 0;
         bool leaf[55];
         for(int i=0;i<55;i++) leaf[i] = true;
         for(int i=0;i<size(parent);i++) {
