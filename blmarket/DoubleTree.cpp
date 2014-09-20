@@ -20,6 +20,31 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/**
+ * Problem: 600
+ * Test Case: 8
+ * Succeeded: No
+ * Execution Time: 2 ms
+ * Peak memory used: 11.617MB
+ * Args:
+ * {
+ * {3, 21, 16, 12, 25, 9, 26, 15, 19, 2, 18, 0, 7, 4, 11, 14, 17, 20, 22, 8, 5, 10, 23, 24, 6, 27, 13}, 
+ * {1, 1, 3, 1, 1, 25, 12, 21, 26, 12, 26, 9, 0, 15, 19, 2, 18, 7, 4, 20, 20, 14, 20, 20, 5, 10, 6}, 
+ * {13, 18, 23, 9, 27, 14, 4, 0, 10, 11, 5, 24, 19, 15, 2, 20, 25, 21, 3, 7, 16, 12, 1, 22, 6, 26, 17}, 
+ * {8, 13, 13, 18, 9, 13, 13, 14, 23, 0, 11, 11, 0, 11, 24, 5, 15, 25, 15, 21, 20, 20, 21, 16, 3, 22, 12}, 
+ * {439, 677, -245, -564, -289, 687, 501, -359, 19, 691, 335, 211, 196, 21, 10, 335, -711, -233, -49, -371, -316, -432, 228, 776, 503, -17, -608, 28}}
+ *
+ * Expected:
+ * 1696
+ *
+ * Received:
+ * 3174
+ *
+ * Answer checking result:
+ * Returned value must exactly match the expected one.
+ *
+ */
+
 vector<bool> visit;
 vector<vector<PII> > V;
 
@@ -105,6 +130,7 @@ public:
         if(score[j] < 0) {
           add_edge(j, n+1, -score[j]);
         }
+        cout << j << " " << p1[j] << " " << p2[j] << endl;
         if(i != j) {
           add_edge(j, p1[j], 500000);
           add_edge(j, p2[j], 500000);
@@ -112,6 +138,7 @@ public:
       }
 
       int tmp = do_flow(n, n+1);
+      cout << i << " " << sum-tmp << endl;
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
