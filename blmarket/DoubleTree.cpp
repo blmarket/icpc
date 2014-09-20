@@ -44,11 +44,10 @@ void add_edge(int s, int e, int flow) {
 }
 
 int try_flow(int s, int e, int maxflow) {
-  cout << s << " " << e << " " << maxflow << endl;
   if(s == e) return maxflow;
   if(visit[s]) return 0;
   visit[s] = true;
-  for(auto it : V[s]) {
+  for(auto &it : V[s]) {
     if(it.second > 0) {
       int tmp = try_flow(it.first, e, min(maxflow, it.second));
       if(tmp == 0) continue;
