@@ -44,6 +44,7 @@ void add_edge(int s, int e, int flow) {
 }
 
 int try_flow(int s, int e, int maxflow) {
+  if(s == e) return maxflow;
   if(visit[s]) return 0;
   visit[s] = true;
   for(auto it : V[s]) {
