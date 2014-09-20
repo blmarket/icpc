@@ -45,7 +45,6 @@ void add_edge(int s, int e, int flow) {
 
 int try_flow(int s, int e, int maxflow) {
   if(visit[s]) return 0;
-  cout << s << " " << e << " " << maxflow << endl;
   visit[s] = true;
   for(auto it : V[s]) {
     if(it.second > 0) {
@@ -61,6 +60,7 @@ int try_flow(int s, int e, int maxflow) {
 }
 
 int do_flow(int s, int e) {
+  cout << "do_flow" << s << " " << e << endl;
   int tot = 0;
   int tmp;
   while(true) {
