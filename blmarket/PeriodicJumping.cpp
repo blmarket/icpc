@@ -51,9 +51,11 @@ public:
         sum *= ret;
         ret *= size(jj);
 
+        if(sum >= x) return ret;
+
         for(int i=0;i<size(jj);i++) {
             sum += jj[i];
-            if(sum > x) return ret + i + 1;
+            if(sum >= x) return ret + i + 1;
         }
     }
 
