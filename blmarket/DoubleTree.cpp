@@ -114,6 +114,7 @@ public:
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
+      break;
     }
     return ret;
   }
