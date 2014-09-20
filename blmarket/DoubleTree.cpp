@@ -60,7 +60,6 @@ int try_flow(int s, int e, int maxflow) {
 }
 
 int do_flow(int s, int e) {
-  cout << "do_flow" << s << " " << e << endl;
   int tot = 0;
   int tmp;
   while(true) {
@@ -93,6 +92,8 @@ public:
       p1 = p2 = VI(n, -1);
       build_tree(-1,i,a,b,p1);
       build_tree(-1,i,c,d,p2);
+
+      init_graph(n+2);
 
       int sum = 0;
       for(int j=0;j<n;j++) {
