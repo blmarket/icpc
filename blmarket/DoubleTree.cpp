@@ -144,7 +144,7 @@ public:
       }
 
       int tmp = do_flow(n, n+1);
-      cout << i << " " << sum-tmp << endl;
+      cout << i << " " << sum << " " << sum-tmp << endl;
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
