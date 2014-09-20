@@ -105,6 +105,7 @@ public:
           add_edge(j, n+1, -score[j]);
         }
         if(i != j) {
+          cout << j << " " << p1[j] << " " << p2[j] << endl;
           add_edge(j, p1[j], 500000);
           add_edge(j, p2[j], 500000);
         }
