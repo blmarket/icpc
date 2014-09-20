@@ -20,12 +20,8 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-struct edge {
-  int e, f;
-  edge(int e, int f):e(e),f(f) {}
-};
-
-vector<vector<edge> > V;
+vector<bool> visit;
+vector<vector<PII> > V;
 
 void init_graph(int sz) {
   V.clear();
@@ -33,7 +29,46 @@ void init_graph(int sz) {
 }
 
 void add_edge(int s, int e, int flow) {
-  V[s].pb(edge(e, flow));
+  vector<PII> &vv = V[s];
+  for(int i=0;i<size(vv);i++) {
+    if(vv[i].first == e) {
+      vv[i].second += flow;
+      if(vv[i].second == 0) {
+        swap(vv.back(), vv[i]);
+        vv.pop_back();
+      }
+      return;
+    }
+  }
+  vv.pb(mp(e, flow));
+}
+
+int try_flow(int s, int e, int maxflow) {
+  if(visit[s]) return 0;
+  visit[s] = true;
+  for(auto it : V[s]) {
+    if(it.second > 0) {
+      int tmp = try_flow(it.first, e, min(maxflow, it.second));
+      if(tmp == 0) continue;
+
+      it.second -= maxflow; // addedge(s, it.first, -maxflow);
+      add_edge(it.first, s, maxflow);
+      return tmp;
+    }
+  }
+  return 0;
+}
+
+int do_flow(int s, int e) {
+  int tot = 0;
+  int tmp;
+  while(true) {
+    visit = vector<bool>(size(V), false);
+    tmp = try_flow(s, e, 500000);
+    if(tmp == 0) break;
+    tot += tmp;
+  }
+  return tot;
 }
 
 void build_tree(int parent, int root, vector<int> &a, vector<int> &b, vector<int> &res) {
@@ -50,18 +85,35 @@ class DoubleTree
 public:
   int maximalScore(vector <int> a, vector <int> b, vector <int> c, vector <int> d, vector <int> score) 
   {
+    int ret = 0;
     int n = size(score);
     for(int i=0;i<n;i++) {
       vector<int> p1, p2;
       p1 = p2 = VI(n, -1);
       build_tree(-1,i,a,b,p1);
       build_tree(-1,i,c,d,p2);
-      for(int i=0;i<n;i++) cout << p1[i] << " ";
-      cout << endl;
-      for(int i=0;i<n;i++) cout << p2[i] << " ";
-      cout << endl;
+
+      int sum = 0;
+      for(int j=0;j<n;j++) {
+        if(score[j] > 0) {
+          sum += score[j];
+          add_edge(n, j, score[j]);
+        }
+        if(score[j] < 0) {
+          add_edge(j, n+1, -score[j]);
+        }
+        if(i != j) {
+          add_edge(j, p1[j], 500000);
+          add_edge(j, p2[j], 500000);
+        }
+      }
+
+      int tmp = do_flow(n, n+1);
+      if(ret < (sum - tmp)) {
+        ret = sum - tmp;
+      }
     }
-    return 0;
+    return ret;
   }
 
     
