@@ -20,6 +20,22 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+struct edge {
+  int e, f;
+  edge(int e, int f):e(e),f(f) {}
+};
+
+vector<vector<edge> > V;
+
+void init_graph(int sz) {
+  V.clear();
+  V.resize(sz);
+}
+
+void add_edge(int s, int e, int flow) {
+  V[s].pb(edge(e, flow));
+}
+
 void build_tree(int parent, int root, vector<int> &a, vector<int> &b, vector<int> &res) {
   for(int i=0;i<size(a);i++) if(a[i] == root || b[i] == root) {
     int oth = a[i] + b[i] - root;
