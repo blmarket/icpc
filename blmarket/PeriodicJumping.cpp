@@ -23,14 +23,14 @@ template<typename T> int size(const T &a) { return a.size(); }
 class PeriodicJumping 
 {
 public:
-    int minimalTime(int x, vector <int> jumpLengths) 
+    int minimalTime(int x, vector <int> jj) 
     {		
         if(x == 0) return 0;
         x = abs(x);
         vector<int> V;
         long long sum = 0;
         for(int i=0;i<100;i++) {
-            V.pb(jumpLengths[i % size(jumpLengths)]);
+            V.pb(jj[i % size(jj)]);
             sum += V.back();
             if(sum < x) continue;
 
@@ -43,7 +43,18 @@ public:
                 return i+1;
             }
         }
-        return -1;
+
+        sum = 0;
+        for(int i=0;i<size(jj);i++) sum += jj[i];
+
+        int ret = (x / sum);
+        sum *= ret;
+        ret *= size(jj);
+
+        for(int i=0;i<size(jj);i++) {
+            sum += jj[i];
+            if(sum > x) return ret + i + 1;
+        }
     }
 
     
