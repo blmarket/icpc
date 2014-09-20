@@ -69,13 +69,18 @@ void add_edge(int s, int e, int flow) {
 }
 
 int try_flow(int s, int e, int maxflow) {
-  if(s == e) return maxflow;
+  if(s == e) {
+    cout << maxflow << " : " << s << " ";
+    return maxflow;
+  }
   if(visit[s]) return 0;
   visit[s] = true;
   for(auto &it : V[s]) {
     if(it.second > 0) {
       int tmp = try_flow(it.first, e, min(maxflow, it.second));
       if(tmp == 0) continue;
+
+      cout << s << " ";
 
       it.second -= maxflow; // addedge(s, it.first, -maxflow);
       add_edge(it.first, s, maxflow);
@@ -92,6 +97,7 @@ int do_flow(int s, int e) {
     visit = vector<bool>(size(V), false);
     tmp = try_flow(s, e, 500000);
     if(tmp == 0) break;
+    cout << endl;
     tot += tmp;
   }
   return tot;
