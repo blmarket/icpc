@@ -116,7 +116,6 @@ public:
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
-      break;
     }
     return ret;
   }
@@ -143,6 +142,6 @@ public:
 int main()
 {
     DoubleTree ___test; 
-    ___test.run_test(0); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
