@@ -103,8 +103,8 @@ int do_flow(int s, int e) {
   int tmp;
   while(true) {
     visit = vector<bool>(size(V), false);
-    cout << size(visit) << endl;
     tmp = try_flow(s, e, 500000);
+    if(debug) cout << tmp << endl;
     if(tmp == 0) break;
     tot += tmp;
   }
