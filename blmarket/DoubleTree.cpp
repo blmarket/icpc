@@ -125,7 +125,6 @@ public:
       build_tree(-1,i,a,b,p1);
       build_tree(-1,i,c,d,p2);
 
-      cout << i << endl;
       init_graph(n+2);
 
       int sum = 0;
@@ -154,7 +153,6 @@ public:
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
-      cout << i << endl;
     }
     return ret;
   }
