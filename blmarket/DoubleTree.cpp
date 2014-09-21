@@ -77,6 +77,7 @@ int get_edge(int s, int e) {
 }
 
 int try_flow(int s, int e, int maxflow) {
+  cout << s << " " << e << " " << maxflow << endl;
   if(s == e) {
     return maxflow;
   }
