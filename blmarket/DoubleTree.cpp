@@ -72,10 +72,7 @@ int get_edge(int s, int e) {
     return 0;
 }
 
-bool debug = false;
-
 int try_flow(int s, int e, int maxflow) {
-  if(debug) cout << s << " " << e << " " << maxflow << endl;
   if(s == e) {
     return maxflow;
   }
@@ -100,7 +97,6 @@ int do_flow(int s, int e) {
   while(true) {
     visit = vector<bool>(size(V), false);
     tmp = try_flow(s, e, 500000);
-    if(debug) cout << tmp << endl;
     if(tmp == 0) break;
     tot += tmp;
   }
@@ -124,8 +120,6 @@ public:
     int ret = 0;
     int n = size(score);
     for(int i=0;i<n;i++) {
-      if(i == 10) debug = true;
-      cout << i << endl;
       vector<int> p1, p2;
       p1 = p2 = VI(n, -1);
       build_tree(-1,i,a,b,p1);
