@@ -76,8 +76,10 @@ int get_edge(int s, int e) {
     return 0;
 }
 
+bool debug = false;
+
 int try_flow(int s, int e, int maxflow) {
-  cout << s << " " << e << " " << maxflow << endl;
+  if(debug) cout << s << " " << e << " " << maxflow << endl;
   if(s == e) {
     return maxflow;
   }
@@ -125,6 +127,7 @@ public:
     int ret = 0;
     int n = size(score);
     for(int i=0;i<n;i++) {
+      if(i == 10) debug = true;
       cout << i << endl;
       vector<int> p1, p2;
       p1 = p2 = VI(n, -1);
