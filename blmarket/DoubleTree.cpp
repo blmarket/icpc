@@ -87,8 +87,6 @@ int try_flow(int s, int e, int maxflow) {
       int tmp = try_flow(it.first, e, min(maxflow, it.second));
       if(tmp == 0) continue;
 
-      cout << s << " ";
-
       add_edge(s, it.first, -tmp);
       add_edge(it.first, s, tmp);
       return tmp;
@@ -127,6 +125,7 @@ public:
     int ret = 0;
     int n = size(score);
     for(int i=0;i<n;i++) {
+      cout << i << endl;
       vector<int> p1, p2;
       p1 = p2 = VI(n, -1);
       build_tree(-1,i,a,b,p1);
