@@ -19,7 +19,6 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
-template<typename R, typename T1, typename T2, typename T3> function<R(T1,T2,T3)> to_func(function<R(T1,T2,T3)> &a) { return a; }
 
 vector<vector<PII> > V;
 
@@ -44,6 +43,7 @@ int get_edge(int s, int e) { return add_edge(s, e, 0); }
 int do_flow(vector<vector<PII> > &V, int s, int e) {
   vector<bool> visit;
 
+  // function<int(int,int,int)> try_flow = [&V, &visit, &try_flow](int s, int e, int maxflow) -> int {
   function<int(int,int,int)> try_flow = [&V, &visit, &try_flow](int s, int e, int maxflow) -> int {
     if(s == e) {
       return maxflow;
