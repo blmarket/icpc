@@ -43,15 +43,15 @@ int K;
 vector<int> dk;
 
 bool chk(const string &a) {
-    cout << a << endl;
     int ret = 1;
-    for(int i=2;i<size(a);i++) {
-        if(size(a) % i) continue;
+    for(int i=1;i<size(a);i++) {
         bool fail = false;
         for(int j=0;j<size(a);j++) {
             if(a[j] != a[(j+i)%size(a)]) { fail = true; break; }
         }
-        if(!fail) ret++;
+        if(!fail) {
+            ret++;
+        }
     }
     return ret == K;
 }
