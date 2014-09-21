@@ -53,24 +53,18 @@ void init_graph(int sz) {
   V.resize(sz);
 }
 
-void add_edge(int s, int e, int flow) {
+int add_edge(int s, int e, int flow) {
   vector<PII> &vv = V[s];
   for(int i=0;i<size(vv);i++) {
     if(vv[i].first == e) {
-      vv[i].second += flow;
-      return;
+      return vv[i].second += flow;
     }
   }
-  vv.pb(mp(e, flow));
+  if(flow != 0) vv.pb(mp(e, flow));
+  return flow;
 }
 
-int get_edge(int s, int e) {
-    auto &vv = V[s];
-    for(auto &it : vv) {
-        if(it.first == e) return it.second;
-    }
-    return 0;
-}
+int get_edge(int s, int e) { return add_edge(s, e, 0); }
 
 int try_flow(int s, int e, int maxflow) {
   if(s == e) {
@@ -143,7 +137,6 @@ public:
       }
 
       int tmp = do_flow(n, n+1);
-      cout << i << " " << sum << " " << sum-tmp << endl;
       for(int j=0;j<n;j++) {
           if(score[j] > 0) {
               cout << j << ":" << get_edge(n, j) << " ";
