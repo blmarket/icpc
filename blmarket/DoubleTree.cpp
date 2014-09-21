@@ -90,7 +90,7 @@ int try_flow(int s, int e, int maxflow) {
 
       cout << s << " ";
 
-      it.second -= maxflow; // addedge(s, it.first, -maxflow);
+      add_edge(s, it.first, -maxflow);
       add_edge(it.first, s, maxflow);
       return tmp;
     }
