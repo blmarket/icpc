@@ -19,6 +19,7 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+template<typename R, typename T1, typename T2, typename T3> function<R(T1,T2,T3)> to_func(function<R(T1,T2,T3)> &a) { return a; }
 
 vector<vector<PII> > V;
 
