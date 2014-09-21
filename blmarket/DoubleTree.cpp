@@ -58,10 +58,6 @@ void add_edge(int s, int e, int flow) {
   for(int i=0;i<size(vv);i++) {
     if(vv[i].first == e) {
       vv[i].second += flow;
-      if(vv[i].second == 0) {
-        swap(vv.back(), vv[i]);
-        vv.pop_back();
-      }
       return;
     }
   }
