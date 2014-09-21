@@ -43,7 +43,6 @@ int get_edge(int s, int e) { return add_edge(s, e, 0); }
 int do_flow(vector<vector<PII> > &V, int s, int e) {
   vector<bool> visit;
 
-  // function<int(int,int,int)> try_flow = [&V, &visit, &try_flow](int s, int e, int maxflow) -> int {
   function<int(int,int,int)> try_flow = [&V, &visit, &try_flow](int s, int e, int maxflow) -> int {
     if(s == e) {
       return maxflow;
@@ -64,10 +63,9 @@ int do_flow(vector<vector<PII> > &V, int s, int e) {
   };
 
   int tot = 0;
-  int tmp;
   while(true) {
     visit = vector<bool>(size(V), false);
-    tmp = try_flow(s, e, 500000);
+    int tmp = try_flow(s, e, 500000);
     if(tmp == 0) break;
     tot += tmp;
   }
