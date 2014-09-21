@@ -102,7 +102,6 @@ int do_flow(int s, int e) {
     visit = vector<bool>(size(V), false);
     tmp = try_flow(s, e, 500000);
     if(tmp == 0) break;
-    cout << endl;
     tot += tmp;
   }
   return tot;
@@ -131,9 +130,7 @@ public:
       build_tree(-1,i,a,b,p1);
       build_tree(-1,i,c,d,p2);
 
-      for(int j=0;j<size(p1);j++) cout << p1[j] << " ";
-      cout << endl;
-
+      cout << i << endl;
       init_graph(n+2);
 
       int sum = 0;
@@ -158,9 +155,11 @@ public:
               cout << j << ":" << get_edge(n, j) << " ";
           }
       }
+      cout << endl;
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
+      cout << i << endl;
     }
     return ret;
   }
