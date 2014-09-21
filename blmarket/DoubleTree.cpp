@@ -155,6 +155,11 @@ public:
 
       int tmp = do_flow(n, n+1);
       cout << i << " " << sum << " " << sum-tmp << endl;
+      for(int j=0;j<n;j++) {
+          if(score[j] > 0) {
+              cout << j << ":" << get_edge(n, j) << " ";
+          }
+      }
       if(ret < (sum - tmp)) {
         ret = sum - tmp;
       }
