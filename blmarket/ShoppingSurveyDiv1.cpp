@@ -31,6 +31,7 @@ public:
       for(int i=0;i+1<size(s);i++) {
         tot += s[i];
         if(tot > N*K) {
+          cout << i << endl;
           int rest = tot - N*K;
           return max(rest, s[i+1]);
         }
