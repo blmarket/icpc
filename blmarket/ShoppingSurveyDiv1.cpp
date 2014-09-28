@@ -24,19 +24,16 @@ class ShoppingSurveyDiv1
 {
 public:
     int minValue(int N, int K, vector <int> s) 
-    {		
-      K -= 1;
+    {
       sort(s.rbegin(), s.rend());
-      int tot = 0;
-      s.pb(0);
-      for(int i=0;i+1<size(s);i++) {
-        tot += s[i];
-        if(tot > N*K) {
-          int rest = tot - N*K;
-          return max(rest, s[i+1]);
+      for(int i=0;i<=N;i++) {
+        int sum = 0;
+        for(int j=0;j<size(s);j++) {
+          sum += max(0, s[j] - i);
         }
+        if(sum <= (N-i) * (K-1)) return i;
       }
-      return 0;
+      return N;
     }
 
     
