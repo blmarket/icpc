@@ -31,14 +31,13 @@ int main(void) {
     for(int i=0;i<6;i++) scanf(" %d", &v[i]);
     sort(v, v+6);
     if(v[0] == v[3]) {
-        cout << v[4] << " " << v[5] << endl;
-        cout << ((v[4] == v[5]) ? "Bear" : "Elephant") << endl;
+        cout << ((v[4] != v[5]) ? "Bear" : "Elephant") << endl;
         return 0;
     }
     if(v[1] == v[4]) {
         cout << "Bear" << endl;
         return 0;
     }
-    cout << ((v[0] == v[1]) ? "Bear" : "Elephant") << endl;
+    cout << ((v[0] != v[1]) ? "Bear" : "Elephant") << endl;
     return 0;
 }
