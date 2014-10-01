@@ -38,6 +38,10 @@ int main(void) {
         cout << "Bear" << endl;
         return 0;
     }
-    cout << ((v[0] != v[1]) ? "Bear" : "Elephant") << endl;
+    if(v[2] == v[5]) {
+        cout << ((v[0] != v[1]) ? "Bear" : "Elephant") << endl;
+        return 0;
+    }
+    cout << "Alien" << endl;
     return 0;
 }
