@@ -55,6 +55,7 @@ int main(void) {
             print_second(V);
             swap(V[pi], V[pi+1]);
             print_second(V);
+            return 0;
         }
     }
     cout << "NO" << endl;
