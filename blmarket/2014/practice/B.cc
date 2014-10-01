@@ -30,7 +30,7 @@ int n;
 vector<PII> V;
 
 void print_second(vector<PII> &v) {
-    for(int i=0;i<n;i++) cout << V[i].second << " ";
+    for(int i=0;i<n;i++) cout << V[i].second+1 << " ";
     cout << endl;
 }
 
