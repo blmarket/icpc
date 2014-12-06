@@ -40,8 +40,7 @@ void maxcut(vector<int> V[3]) {
     int s = ret;
     int e = 2505;
 
-    while(s < e) {
-        cout << s << " " << e << endl;
+    while(s + 1 < e) {
         int m = (s+e+1) / 2;
         if(check(V, m)) {
             ret = m;
