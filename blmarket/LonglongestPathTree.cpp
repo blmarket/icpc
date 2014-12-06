@@ -28,10 +28,9 @@ tuple<long long, long long> dia(int a, int p) {
     long long ret = 0;
     long long lc = 0;
     for(int i=0;i<size(v);i++) {
-        cout << a << " " << i << " " << v[i].first << endl;
         if(v[i].first == p) continue;
         long long childdia, longchild;
-        tie(childdia, longchild) = dia(v[i].second, a);
+        tie(childdia, longchild) = dia(v[i].first, a);
         longchild += v[i].second;
         ret = max(ret, childdia);
         ret = max(ret, lc + longchild);
