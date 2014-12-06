@@ -26,12 +26,16 @@ vector<PII> links[2005];
 tuple<long long, long long> dia(int a, int p) {
     vector<PII> &v = links[a];
     long long ret = 0;
+    long long lc = 0;
     for(int i=0;i<size(v);i++) {
         if(v[i].first == p) continue;
         long long childdia, longchild;
         tie(childdia, longchild) = dia(v[i].second, a);
         longchild += v[i].second;
+        lc = max(lc, longchild);
     }
+
+    return make_tuple(ret, lc);
 }
 
 class LonglongestPathTree 
