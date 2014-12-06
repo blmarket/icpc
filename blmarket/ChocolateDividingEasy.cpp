@@ -39,16 +39,9 @@ bool check(vector<int> V[3], int t) {
 void maxcut(vector<int> V[3]) {
     int s = ret;
     int e = 2505;
-    for(int i=0;i<3;i++) {
-        for(int j=0;j<M;j++) {
-            cout << V[i][j] << " ";
-        }
-        cout << endl;
-    }
 
     while(s < e) {
         int m = (s+e) / 2;
-        cout << "check " << m << endl;
         if(check(V, m)) {
             ret = m;
             s = m + 1;
@@ -90,7 +83,6 @@ public:
                     acc[2][k] -= acc[0][k] + acc[1][k];
                 }
                 maxcut(acc);
-                cout << i << " " << j << " " << ret << endl;
             }
         }
 
@@ -131,6 +123,6 @@ public:
 int main()
 {
     ChocolateDividingEasy ___test; 
-    ___test.run_test(1); 
+    ___test.run_test(-1); 
 } 
 // END CUT HERE
