@@ -39,6 +39,12 @@ bool check(vector<int> V[3], int t) {
 void maxcut(vector<int> V[3]) {
     int s = ret;
     int e = 2505;
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<M;j++) {
+            cout << V[i][j] << " ";
+        }
+        cout << endl;
+    }
 
     while(s + 1 < e) {
         int m = (s+e+1) / 2;
