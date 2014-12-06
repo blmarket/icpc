@@ -46,6 +46,7 @@ public:
     long long getLength(vector <int> A, vector <int> B, vector <int> L) 
     {
         N = size(A) + 1;
+        for(int i=0;i<N;i++) links[i].clear();
         for(int i=0;i<size(A);i++) {
             links[A[i]].pb(mp(B[i], L[i]));
             links[B[i]].pb(mp(A[i], L[i]));
