@@ -32,6 +32,8 @@ tuple<long long, long long> dia(int a, int p) {
         long long childdia, longchild;
         tie(childdia, longchild) = dia(v[i].second, a);
         longchild += v[i].second;
+        ret = max(ret, childdia);
+        ret = max(ret, lc + longchild);
         lc = max(lc, longchild);
     }
 
