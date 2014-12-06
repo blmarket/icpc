@@ -24,6 +24,7 @@ int N;
 vector<PII> links[2005];
 
 tuple<long long, long long> dia(int a, int p) {
+    cout << a << " " << p << endl;
     vector<PII> &v = links[a];
     long long ret = 0;
     long long lc = 0;
