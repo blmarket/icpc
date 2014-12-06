@@ -42,7 +42,6 @@ void maxcut(vector<int> V[3]) {
 
     while(s + 1 < e) {
         int m = (s+e+1) / 2;
-        cout << s << " " << e << " " << m << endl;
         if(check(V, m)) {
             ret = m;
             s = m + 1;
@@ -84,6 +83,7 @@ public:
                     acc[2][k] -= acc[0][k] + acc[1][k];
                 }
                 maxcut(acc);
+                cout << i << " " << j << " " << ret << endl;
             }
         }
 
