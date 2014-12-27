@@ -58,6 +58,7 @@ int main(void) {
         double s = sqrt(2) * xx;
         double t = sqrt(2) * (100. - xx);
 
+        d = fabs(d);
         cout << d << " " << R << " " << s << " " << t << " " << calc(s) << " " << calc(t) << endl;
         printf("%.12lf\n", calc(s) + calc(t));
     }
