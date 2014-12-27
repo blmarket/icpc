@@ -72,7 +72,7 @@ int main(void) {
         s = s + s;
         pp = 1;
         long long t2 = process();
-        if(t1 != t2) cout << s << endl;
+        if(t1 != t2) cout << s << " " << t1 << " " << t2 << endl;
     }
     return 0;
 }
