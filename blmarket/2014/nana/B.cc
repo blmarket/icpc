@@ -41,7 +41,7 @@ long long trial(const string &s) {
             cs = 0;
         }
         if(cs+1 == size(s) && s[0] == '0') return 0;
-        tmp = (size(s) - 1 - i) * 2 + (pp-1)*size(s) + (i - cs);
+        tmp = (size(s) - 1 - i) * 2 + (long long)(pp-1)*size(s) + (i - cs);
         if(ret == -1 || ret > tmp) ret = tmp;
     }
     return ret;
