@@ -61,9 +61,9 @@ int main(void) {
     char str[1024];
     scanf("%d", &T);
     for(int i=0;i<T;i++) {
-        base = 0;
         scanf(" %s %d", str, &pp);
         s = string(str);
+        base = 0;
         for(int j=0;j<size(s);j++) {
             base += min(s[j] - '0', 10 - s[j] + '0');
         }
