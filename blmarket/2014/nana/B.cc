@@ -66,11 +66,13 @@ int main(void) {
         }
         base *= pp;
         pp = 2;
-        cout << base + base + process() + 1 << endl;
+        long long t1 = process();
+        cout << base + process() + 1 << endl;
 
         s = s + s;
         pp = 1;
-        cout << base + base + process() + 1 << endl;
+        long long t2 = process();
+        if(t1 != t2) cout << s << endl;
     }
     return 0;
 }
