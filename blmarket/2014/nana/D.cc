@@ -35,11 +35,6 @@ double calc(double s) {
     double theta2 = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
     double theta = atan((s * d - R * dd) / (d*d - dd*dd));
 
-    cout << theta << " " << theta2 << endl;
-    cout << " theta = " << theta << endl;
-
-    cout << d * tan(theta) + dd / cos(theta) << " should be equal to " << s << endl;
-
     return dd + theta * R;
 }
 
