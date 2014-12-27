@@ -37,7 +37,7 @@ int main(void) {
 
         double d = (double)(y - x) / 2.;
         if(fabs(d) > r) {
-            cout << sqrt(200) << endl;
+            cout << sqrt(20000) << endl;
             continue;
         }
     }
