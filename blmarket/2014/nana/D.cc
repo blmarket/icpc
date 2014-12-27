@@ -26,6 +26,17 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+double d;
+double R;
+
+double calc(double s) {
+    double dd = sqrt(s*s + d*d - R*R);
+    double x = dd * s / (dd + d);
+    double theta = acos(dd / x);
+
+    return dd + theta * R;
+}
+
 int main(void) {
     int T;
     scanf("%d", &T);
@@ -35,18 +46,20 @@ int main(void) {
         scanf(" %d", &n);
         scanf(" %d %d %d", &x, &y, &r);
 
-        double d = (double)(y - x) / 2.;
+        d = (double)(y - x) / 2.;
         if(fabs(d) > r) {
             printf("%.12lf\n", sqrt(20000));
             continue;
         }
+
+        R = r;
 
         double xx = d + x;
         double s = sqrt(2) * xx;
         double t = sqrt(2) * (100. - xx);
 
         cout << s << " " << t << endl;
-        
+        printf("%.12lf\n", calc(s) + calc(t));
     }
     return 0;
 }
