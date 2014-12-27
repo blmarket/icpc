@@ -63,7 +63,7 @@ int main(void) {
         s = string(str);
         base = 1;
         for(int j=0;j<size(s);j++) {
-            base += s[j] - '0';
+            base += min(s[j] - '0', 10 - s[j] + '0');
         }
         base *= pp;
         cout << base + process() << endl;
