@@ -33,12 +33,12 @@ double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
 
     double theta2 = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
-    double theta = atan(2 * (s * d - R * dd) / (d*d - dd*dd));
+    double theta = atan((s * d - R * dd) / (d*d - dd*dd));
 
     cout << theta << " " << theta2 << endl;
-
     cout << " theta = " << theta << endl;
-    cout << d * tan(theta) + dd * acos(theta) << " should be equal to " << s << endl;
+
+    cout << d * tan(theta) + dd / cos(theta) << " should be equal to " << s << endl;
 
     return dd + theta * R;
 }
