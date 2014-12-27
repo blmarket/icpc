@@ -55,6 +55,7 @@ public:
                 }
             }
         }
+        cout << cnt << endl;
         if(cnt == 0) return "Possible";
         for(int i=0;i<n;i++) for(int j=0;j<n;j++) for(int k=0;k<n;k++) if(space[i][j][k]) {
             if(dfs(i,j,k) == cnt) {
@@ -63,6 +64,7 @@ public:
                 return "Impossible";
             }
         }
+        return "";
     }
 
     
