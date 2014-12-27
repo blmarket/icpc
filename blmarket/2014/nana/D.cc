@@ -38,7 +38,6 @@ double calc(double s) {
     cout << theta << " " << theta2 << endl;
 
     cout << " theta = " << theta << endl;
-    cout << dd << " " << dd * cos(theta) * acos(theta) << endl;
     cout << d * tan(theta) + dd * acos(theta) << endl;
 
     return dd + theta * R;
