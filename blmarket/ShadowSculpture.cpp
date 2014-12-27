@@ -29,7 +29,7 @@ int dz[] = {0,0,0,0,-1,1};
 int dfs(int a, int b, int c) {
     if (a<0 || b<0 || c<0 || a>=n || b>=n || c>=n) return 0;
     if(space[a][b][c] == false) return 0;
-    int ret = 0;
+    int ret = 1;
     space[a][b][c] = false;
     for(int i=0;i<6;i++) {
         ret += dfs(a+dx[i], b+dy[i], c+dz[i]);
@@ -55,7 +55,6 @@ public:
                 }
             }
         }
-        cout << cnt << endl;
         if(cnt == 0) return "Possible";
         for(int i=0;i<n;i++) for(int j=0;j<n;j++) for(int k=0;k<n;k++) if(space[i][j][k]) {
             if(dfs(i,j,k) == cnt) {
