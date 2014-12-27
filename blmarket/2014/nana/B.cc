@@ -32,14 +32,14 @@ int pp;
 long long trial(const string &s) {
     int cs = 0;
     long long ret = -1;
-    for(int i=1;i<=size(s);i++) {
+    for(int i=1;i<size(s);i++) {
         long long tmp;
         if(s[i] == '0') {
             cs++;
         } else {
             cs = 0;
         }
-        tmp = (size(s) - i) * 2 + (i - cs);
+        tmp = (size(s) - 1 - i) * 2 + (i - cs);
         if(ret == -1 || ret > tmp) ret = tmp;
     }
     return ret;
