@@ -60,7 +60,7 @@ int main(void) {
     for(int i=0;i<T;i++) {
         scanf(" %s %d", str, &pp);
         s = string(str);
-        base = 0;
+        base = 1;
         for(int j=0;j<size(s);j++) {
             base += s[j] - '0';
         }
