@@ -40,6 +40,7 @@ long long trial(const string &s) {
             cs = 0;
         }
         tmp = (size(s) - 1 - i) * 2 + (i - cs);
+        cout << i << " " << tmp << endl;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
     return ret;
