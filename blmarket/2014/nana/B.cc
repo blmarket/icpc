@@ -33,7 +33,7 @@ long long trial(const string &s) {
     int cs = 0;
     long long ret = -1;
     if(size(s) == 1 && s[0] == '0') return 0;
-    cout << size(s) << endl;
+    cout << "HERE" << size(s) << endl;
     if(size(s) == 1) return (pp-1);
 
     for(int i=1;i<size(s);i++) {
