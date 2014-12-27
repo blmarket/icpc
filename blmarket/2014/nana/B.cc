@@ -40,7 +40,7 @@ long long trial(const string &s) {
             cs = 0;
         }
         tmp = (size(s) - 1 - i) * 2 + (i - cs);
-        // cout << s << " " << i << " " << tmp << endl;
+        cout << s << " " << i << " " << tmp << endl;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
     return ret;
@@ -50,7 +50,6 @@ long long process() {
     long long tmp = trial(s);
     reverse(s.begin() + 1, s.end());
     long long tmp2 = trial(s);
-    cout << tmp << " " << tmp2 << endl;
     return min(tmp, tmp2);
 }
 
