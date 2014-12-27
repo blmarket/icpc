@@ -32,9 +32,6 @@ int pp;
 long long trial(const string &s) {
     int cs = 0;
     long long ret = -1;
-    if(size(s) == 1 && s[0] == '0') return 0;
-    cout << "HERE" << size(s) << endl;
-    if(size(s) == 1) return (pp-1);
 
     for(int i=1;i<size(s);i++) {
         long long tmp;
@@ -51,7 +48,8 @@ long long trial(const string &s) {
 }
 
 long long process() {
-    if(size(s) == 1) return 0;
+    if(size(s) == 1 && s[0] == '0') return 0;
+    if(size(s) == 1) return pp-1;
     long long tmp = trial(s);
     reverse(s.begin() + 1, s.end());
     long long tmp2 = trial(s);
