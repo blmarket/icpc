@@ -61,11 +61,11 @@ int main(void) {
     for(int i=0;i<T;i++) {
         scanf(" %s %d", str, &pp);
         s = string(str);
-        base = 1;
         for(int j=0;j<size(s);j++) {
             base += min(s[j] - '0', 10 - s[j] + '0');
         }
         base *= pp;
+        base += 1;
         cout << base + process() << endl;
     }
     return 0;
