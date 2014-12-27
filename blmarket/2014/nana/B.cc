@@ -57,8 +57,8 @@ int main(void) {
     int T;
     char str[1024];
     scanf("%d", &T);
-    base = 0;
     for(int i=0;i<T;i++) {
+        base = 0;
         scanf(" %s %d", str, &pp);
         s = string(str);
         for(int j=0;j<size(s);j++) {
