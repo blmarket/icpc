@@ -65,6 +65,7 @@ int main(void) {
             base += s[j] - '0';
         }
         base *= pp;
+        cout << base << " " << process() << endl;
         cout << base + process() << endl;
     }
     return 0;
