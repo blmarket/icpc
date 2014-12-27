@@ -67,7 +67,7 @@ int main(void) {
         base *= pp;
         pp = 2;
         long long t1 = process();
-        cout << base + process() + 1 << endl;
+        // cout << base + process() + 1 << endl;
 
         s = s + s;
         pp = 1;
