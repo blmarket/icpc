@@ -33,6 +33,7 @@ double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
 
     double theta = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
+    cout << d * tan(theta) << endl;
 
     cout << " theta = " << theta * 180 / 3.1415926535 << endl;
 
