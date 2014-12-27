@@ -33,7 +33,7 @@ double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
 
     double theta2 = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
-    double theta = atan((s * d - R * dd) / (d*d - dd*dd));
+    double theta = atan(2 * (s * d - R * dd) / (d*d - dd*dd));
 
     cout << theta << " " << theta2 << endl;
 
