@@ -40,13 +40,13 @@ long long trial(const string &s) {
             cs = 0;
         }
         tmp = (size(s) - 1 - i) * 2 + (i - cs);
-        cout << s << " " << i << " " << tmp << endl;
         if(ret == -1 || ret > tmp) ret = tmp;
     }
     return ret;
 }
 
 long long process() {
+    if(size(s) == 1) return 0;
     long long tmp = trial(s);
     reverse(s.begin() + 1, s.end());
     long long tmp2 = trial(s);
