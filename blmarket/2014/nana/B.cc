@@ -48,7 +48,7 @@ long long trial(const string &s) {
 
 long long process() {
     long long tmp = trial(s);
-    reverse(s.begin(), s.end());
+    reverse(s.begin() + 1, s.end());
     long long tmp2 = trial(s);
     return min(tmp, tmp2);
 }
