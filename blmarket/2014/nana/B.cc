@@ -50,6 +50,7 @@ long long process() {
     long long tmp = trial(s);
     reverse(s.begin() + 1, s.end());
     long long tmp2 = trial(s);
+    cout << tmp << " " << tmp2 << endl;
     return min(tmp, tmp2);
 }
 
@@ -65,7 +66,6 @@ int main(void) {
             base += s[j] - '0';
         }
         base *= pp;
-        cout << base << " " << process() << endl;
         cout << base + process() << endl;
     }
     return 0;
