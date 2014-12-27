@@ -65,8 +65,12 @@ int main(void) {
             base += min(s[j] - '0', 10 - s[j] + '0');
         }
         base *= pp;
-        base += 1;
-        cout << base + process() << endl;
+        pp = 2;
+        cout << base + base + process() + 1 << endl;
+
+        s = s + s;
+        pp = 1;
+        cout << base + base + process() + 1 << endl;
     }
     return 0;
 }
