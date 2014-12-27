@@ -31,9 +31,8 @@ double R;
 
 double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
-    double x = dd * s / (dd + d);
-    cout << dd << " " << x << endl;
-    double theta = acos(dd / x);
+
+    double theta = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
 
     return dd + theta * R;
 }
