@@ -67,14 +67,7 @@ int main(void) {
             base += min(s[j] - '0', 10 - s[j] + '0');
         }
         base *= pp;
-        pp = 2;
-        long long t1 = process();
-        // cout << base + process() + 1 << endl;
-
-        s = s + s;
-        pp = 1;
-        long long t2 = process();
-        if(t1 != t2) cout << s << " " << t1 << " " << t2 << endl;
+        cout << base + process() + 1 << endl;
     }
     return 0;
 }
