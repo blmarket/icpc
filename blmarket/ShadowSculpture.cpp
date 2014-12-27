@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
 #include <set>
 #include <sstream>
@@ -19,6 +20,26 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+/**
+ * Problem: 300
+ * Test Case: 5
+ * Succeeded: No
+ * Execution Time: 0 ms
+ * Peak memory used: 11.605MB
+ * Args:
+ * {{"YYYYY", "YYNYY", "YYYYY", "YYNYY", "YYYYY"}, {"YYYYY", "YYNYY", "YYYYY", "YYNYY", "YYYYY"}, {"YYYYY", "YYNYY", "YYYYY", "YYNYY", "YYYYY"}}
+ *
+ * Expected:
+ * "Possible"
+ *
+ * Received:
+ * "Impossible"
+ *
+ * Answer checking result:
+ * Returned value must exactly match the expected one.
+ *
+ */
 
 int n;
 bool space[15][15][15];
@@ -55,9 +76,12 @@ public:
                 }
             }
         }
+        cout << cnt << endl;
         if(cnt == 0) return "Possible";
         for(int i=0;i<n;i++) for(int j=0;j<n;j++) for(int k=0;k<n;k++) if(space[i][j][k]) {
-            if(dfs(i,j,k) == cnt) {
+            int tmp = dfs(i,j,k);
+            cout << tmp << endl;
+            if(tmp == cnt) {
                 return "Possible";
             } else {
                 return "Impossible";
