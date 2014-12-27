@@ -32,7 +32,7 @@ double R;
 double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
     double x = dd * s / (dd + d);
-    // cout << dd << " " << x << endl;
+    cout << dd << " " << x << endl;
     double theta = acos(dd / x);
 
     return dd + theta * R;
@@ -60,7 +60,8 @@ int main(void) {
         double t = sqrt(2) * (100. - xx);
 
         d = fabs(d);
-        cout << d << " " << R << " " << s << " " << t << " " << calc(s) << " " << calc(t) << endl;
+        cout << d << " " << R << " " << s << " " << t << endl;
+        // calc(s) << " " << calc(t) << endl;
         printf("%.12lf\n", calc(s) + calc(t));
     }
     return 0;
