@@ -32,6 +32,7 @@ double R;
 double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
     double x = dd * s / (dd + d);
+    cout << dd << " " << x << endl;
     double theta = acos(dd / x);
 
     return dd + theta * R;
