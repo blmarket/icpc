@@ -32,7 +32,10 @@ double R;
 double calc(double s) {
     double dd = sqrt(s*s + d*d - R*R);
 
-    long double theta = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
+    double theta2 = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
+    double theta = atan2(s * d - R * dd, d*d - dd*dd);
+
+    cout << theta << " " << theta2 << endl;
 
     cout << " theta = " << theta << endl;
     cout << dd << " " << dd * cos(theta) * acos(theta) << endl;
