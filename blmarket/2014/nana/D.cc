@@ -40,6 +40,12 @@ int main(void) {
             cout << sqrt(20000) << endl;
             continue;
         }
+
+        double xx = d + x;
+        double s = sqrt(2) * xx;
+        double t = sqrt(2) * (100. - xx);
+
+        cout << s << " " << t << endl;
     }
     return 0;
 }
