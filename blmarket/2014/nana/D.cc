@@ -34,7 +34,7 @@ double calc(double s) {
 
     double theta = atan( ( (s+R)/(d+dd) + (s-R)/(d-dd)) / 2);
 
-    cout << " theta = " << theta << endl;
+    cout << " theta = " << theta * 180 / 3.1415926535 << endl;
 
     return dd + theta * R;
 }
