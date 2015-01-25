@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -26,6 +25,23 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int v[6];
+
 int main(void) {
+    for(int i=0;i<6;i++) scanf(" %d", &v[i]);
+    sort(v, v+6);
+    if(v[0] == v[3]) {
+        cout << ((v[4] != v[5]) ? "Bear" : "Elephant") << endl;
+        return 0;
+    }
+    if(v[1] == v[4]) {
+        cout << "Bear" << endl;
+        return 0;
+    }
+    if(v[2] == v[5]) {
+        cout << ((v[0] != v[1]) ? "Bear" : "Elephant") << endl;
+        return 0;
+    }
+    cout << "Alien" << endl;
     return 0;
 }

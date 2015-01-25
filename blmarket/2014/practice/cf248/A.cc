@@ -27,5 +27,21 @@ typedef pair<int,int> PII;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int main(void) {
+    int N;
+    int sum = 0;
+    scanf("%d", &N);
+    bool alltwo = true;
+    for(int i=0;i<N;i++) {
+        int tmp;
+        scanf(" %d", &tmp);
+        if(tmp == 100) alltwo = false;
+        sum += tmp;
+    }
+    sum /= 100;
+    if(N == 1 || (sum%2) == 1 || ((N%2)==1 && alltwo == true)) {
+        cout << "NO" << endl;
+    } else {
+        cout << "YES" << endl;
+    }
     return 0;
 }
