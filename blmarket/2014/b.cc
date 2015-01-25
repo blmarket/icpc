@@ -1,5 +1,5 @@
 #include <iostream>
-#include <sys/wait.h>
+#include <functional>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -64,7 +64,7 @@ int main(void) {
     for(int i=1;i<=T;i++) {
         scanf(" %Lf", &p);
         long double ret = process();
-        printf("Case #%d: %.12Lf\n", i, ret);
+        printf("Case #%d: %.5Lf\n", i, ret);
     }
     return 0;
 }
