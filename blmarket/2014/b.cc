@@ -33,10 +33,23 @@ int combi[25][25];
 long double process() {
     RR[0] = 0;
     long double q = (1.-p);
+    function<long double(int, int)> pk = [&](int n, int k) -> long double {
+        long double pp = 1;
+        long double qq = 1;
+        for(int i=0;i<k;i++) pp *= p;
+        for(int i=0;i<(n-k);i++) qq *= q;
+        return combi[n][k] * pp * qq;
+    };
+
     for(int i=1;i<=20;i++) {
-        for(int k=0;k<=i;k++) {
+        long double pself = pk(i, 0);
+        long double rhs = 1;
+        for(int j=1;j<=i;j++) {
+            rhs += pk(i, j) * RR[i-j];
         }
+        RR[i] = rhs / (1 - pself);
     }
+    return RR[20];
 }
 
 int main(void) {
@@ -46,13 +59,12 @@ int main(void) {
             combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
         }
     }
-    cout << combi[20][10] << endl;
     int T;
     scanf("%d", &T);
     for(int i=1;i<=T;i++) {
         scanf(" %Lf", &p);
         long double ret = process();
-        printf("Case #%d: %.12Lf\n", ret);
+        printf("Case #%d: %.12Lf\n", i, ret);
     }
     return 0;
 }
