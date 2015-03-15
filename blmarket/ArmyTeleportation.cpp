@@ -54,8 +54,9 @@ bool match() {
 
     if(v4[0].first > v4[1].first) swap(v4[0], v4[1]);
     int yy = gcd(v4[0], v4[1]);
-    int xx = 0;
-    cout << yy << endl;
+    swap(v4[0].first, v4[0].second);
+    swap(v4[1].first, v4[1].second);
+    int xx = gcd(v4[0], v4[1]);
 
     cout << xx << " " << yy << " | "  << v3[0].first << " " << v3[0].second << endl;
     return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
