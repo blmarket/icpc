@@ -20,6 +20,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/**
+ * Problem: 250
+ * Test Case: 6
+ * Succeeded: No
+ * Execution Time: 3 ms
+ * Peak memory used: 11.602MB
+ * Args:
+ * {{1, 2, 3, 4, 5, 6, 7}, {2, 3, 365, 5, 6, 7, 8}}
+ *
+ * Expected:
+ * 2
+ *
+ * Received:
+ * 3
+ *
+ * Answer checking result:
+ * Returned value must exactly match the expected one.
+ */
+
 class JanuszTheBusinessman 
 {
 public:
@@ -43,6 +62,7 @@ public:
                 if(V[i].first > mind) break;
                 maxd = max(maxd, V[i].second);
             }
+            cout << maxd << endl;
 
             int j = 0;
             for(int i=0;i<size(V);i++) {
