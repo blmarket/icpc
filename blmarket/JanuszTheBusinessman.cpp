@@ -56,6 +56,7 @@ int go(int a) {
             }
         }
     }
+    cout << a << " = " << ret << endl;
     return memo[a] = ret;
 }
 
