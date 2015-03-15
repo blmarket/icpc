@@ -41,6 +41,9 @@ bool match() {
     for(int i=0;i<size(v1);i++) {
         v3.pb(mp(v1[i].first - v2[i].first, v1[i].second - v2[i].second));
     }
+    for(int i=0;i<size(v3);i++) {
+        cout << v3[i].first << " " << v3[i].second << endl;
+    }
     for(int i=1;i<size(v3);i++) {
         if(v3[i] != v3[0]) return false;
     }
