@@ -47,18 +47,15 @@ int go(int a) {
     int myd = V[a].first;
     for(int i=a;i<size(V);i++) {
         if(V[i].second <= myd) {
-            cout << a << " : check " << i << endl;
             // check this candidate
             int j = a;
             while(j < size(V) && V[j].second <= V[i].first) {
                 j++;
                 int tmp = go(j) + 1;
-                cout << a << " : " << j << " : " << tmp << endl;
                 if(ret == -1 || ret > tmp) ret = tmp;
             }
         }
     }
-    cout << a << " = " << ret << endl;
     return memo[a] = ret;
 }
 
@@ -73,9 +70,6 @@ public:
         }
 
         sort(V.begin(), V.end());
-        for(int i=0;i<size(V);i++) {
-            cout << V[i].first << " " << V[i].second << endl;
-        }
         memo[size(V)] = 0;
         return go(0);
     }
