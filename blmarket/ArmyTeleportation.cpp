@@ -106,6 +106,6 @@ public:
 int main()
 {
     ArmyTeleportation ___test; 
-    ___test.run_test(5); 
+    ___test.run_test(6); 
 } 
 // END CUT HERE
