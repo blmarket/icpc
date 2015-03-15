@@ -23,17 +23,20 @@ template<typename T> int size(const T &a) { return a.size(); }
 vector<PII> v1, v2, v3, v4;
 vector<int> xt,yt;
 
-int gcd(int a, int b) {
-    a = abs(a);
-    b = abs(b);
-    if(a == 0 || b == 0) return a+b;
-    return __gcd(a,b);
-}
-
 bool divi(int a, int b) {
     if(a == 0) return true;
     if(b == 0) return false;
     return ((a%b) == 0);
+}
+
+int gcd(PII a, PII b) {
+    while(true) {
+        if(a.first == 0) return a.second;
+        int divi = b.first / a.first;
+        b.first -= a.first * divi;
+        b.second -= a.second * divi;
+        swap(a, b);
+    }
 }
 
 bool match() {
@@ -48,14 +51,12 @@ bool match() {
     v4.resize(3);
     v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
-    v4[2] = mp(xt[1] - xt[2], yt[1] - yt[2]);
 
-    cout << v4[0].first << " " << v4[0].second << endl;
-    cout << v4[1].first << " " << v4[1].second << endl;
-    cout << v4[2].first << " " << v4[2].second << endl;
+    if(v4[0].first > v4[1].first) swap(v4[0], v4[1]);
+    int yy = gcd(v4[0], v4[1]);
+    int xx = 0;
+    cout << yy << endl;
 
-    int xx = gcd(v4[0].first, v4[1].first);
-    int yy = gcd(v4[0].second, v4[1].second);
     cout << xx << " " << yy << " | "  << v3[0].first << " " << v3[0].second << endl;
     return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
 }
