@@ -38,42 +38,39 @@ template<typename T> int size(const T &a) { return a.size(); }
  * Answer checking result:
  * Returned value must exactly match the expected one.
  */
+vector<PII> V;
+int memo[55];
+
+int go(int a) {
+    if(memo[a] != -1) return memo[a];
+    int ret = -1;
+    int myd = V[a].first;
+    for(int i=a;i<size(V);i++) {
+        if(V[i].second <= myd) {
+            // check this candidate
+            int j = a;
+            while(V[i].second <= V[j].first) {
+                j++;
+                int tmp = go(j) + 1;
+                if(ret == -1 || ret > tmp) ret = tmp;
+            }
+        }
+    }
+    return memo[a] = ret;
+}
 
 class JanuszTheBusinessman 
 {
 public:
     int makeGuestsReturn(vector <int> arrivals, vector <int> departures) 
     {		
-        vector<PII> V;
+        memset(memo, -1, sizeof(memo));
         for(int i=0;i<size(arrivals);i++) {
-            V.pb(mp(arrivals[i], departures[i]));
+            V.pb(mp(departures[i], arrivals[i]));
         }
 
-        int ret = 0;
-        while(V.size()) {
-            ret++;
-            sort(V.begin(), V.end());
-
-            int mind = V[0].second;
-            for(int i=1;i<size(V);i++) mind = min(mind, V[i].second);
-
-            int maxd = V[0].second;
-            for(int i=0;i<size(V);i++) {
-                if(V[i].first > mind) break;
-                maxd = max(maxd, V[i].second);
-            }
-            cout << maxd << endl;
-
-            int j = 0;
-            for(int i=0;i<size(V);i++) {
-                while(i+j < size(V) && V[i+j].first <= maxd) {
-                    j++;
-                }
-                V[i] = V[i+j];
-            }
-            V.resize(size(V) - j);
-        }
-        return ret;
+        sort(V.begin(), V.end());
+        return go(0);
     }
 
     
