@@ -20,12 +20,44 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+vector<PII> v1, v2, v3, v4;
+vector<int> xt,yt;
+
+int gcd(int a, int b) {
+    a = abs(a);
+    b = abs(b);
+    if(a == 0 || b == 0) return a+b;
+    return __gcd(a,b);
+}
+
+bool divi(int a, int b) {
+    if(a == 0) return true;
+    if(b == 0) return false;
+    return ((a%b) == 0);
+}
+
+bool match() {
+    for(int i=0;i<size(v1);i++) {
+        v3[i] = mp(v1[i].first - v2[i].first, v1[i].second - v2[i].second);
+    }
+    for(int i=1;i<size(v3);i++) {
+        if(v3[i] != v3[0]) return false;
+    }
+    v4.resize(2);
+    v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
+    v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
+    int xx = gcd(v4[0].first, v4[1].first);
+    int yy = gcd(v4[0].second, v4[1].second);
+    return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
+}
+
 class ArmyTeleportation 
 {
 public:
-    string ifPossible(vector <int> x1, vector <int> y1, vector <int> x2, vector <int> y2, vector <int> xt, vector <int> yt) 
+    string ifPossible(vector <int> x1, vector <int> y1, vector <int> x2, vector <int> y2, vector <int> xt_, vector <int> yt_) 
     {
-        vector<PII> v1, v2;
+        xt = xt_; yt = yt_;
+        for(int i=0;i<3;i++) xt[i] *= 2, yt[i] *= 2;
         for(int i=0;i<size(x1);i++) {
             v1.pb(mp(x1[i], y1[i]));
             v2.pb(mp(x2[i], y2[i]));
@@ -34,6 +66,17 @@ public:
         sort(v2.begin(), v2.end());
         for(int i=0;i<size(v1);i++) cout << v1[i].first << "," << v1[i].second << " "; cout << endl;
         for(int i=0;i<size(v2);i++) cout << v2[i].first << "," << v2[i].second << " "; cout << endl;
+        if(match()) {
+            return "possible";
+        }
+        for(int i=0;i<size(v1);i++) {
+            v1[i].first = xt[0] * 2 - v1[i].first;
+            v1[i].second = yt[0] * 2 - v1[i].second;
+        }
+        sort(v1.begin(), v1.end());
+        if(match()) {
+            return "possible";
+        }
         return "impossible";
     }
 
