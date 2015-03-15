@@ -58,6 +58,7 @@ PII abs(PII v) {
 }
 
 long long gcd(LL a, LL b) {
+    cout << "gcd " << a << " " << b << endl;
     a = abs(a);
     b = abs(b);
     if(a > b) swap(a,b);
