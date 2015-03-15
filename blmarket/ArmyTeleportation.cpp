@@ -63,11 +63,13 @@ bool match() {
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
     v4[2] = mp(xt[1] - xt[2], yt[1] - yt[2]);
 
-    for(int i=0;i<3;i++) cout << v4[i].first << "," << v4[i].second << " ";
-    cout << endl;
-
     LL xt = v3[0].first;
     LL yt = v3[0].second;
+
+    for(int i=0;i<3;i++) cout << v4[i].first << "," << v4[i].second << " ";
+    cout << endl;
+    cout << xt << " " << yt << endl;
+
 
     v4[0].first *= v4[2].second;
     v4[1].first *= v4[2].second;
