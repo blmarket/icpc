@@ -41,9 +41,11 @@ bool match() {
     for(int i=0;i<size(v1);i++) {
         v3[i] = mp(v1[i].first - v2[i].first, v1[i].second - v2[i].second);
     }
+    cout << "hiere" << endl;
     for(int i=1;i<size(v3);i++) {
         if(v3[i] != v3[0]) return false;
     }
+    cout << "hiere" << endl;
     v4.resize(2);
     v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
