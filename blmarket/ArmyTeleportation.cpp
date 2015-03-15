@@ -48,6 +48,7 @@ bool match() {
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
     int xx = gcd(v4[0].first, v4[1].first);
     int yy = gcd(v4[0].second, v4[1].second);
+    cout << xx << " " << yy << endl;
     return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
 }
 
