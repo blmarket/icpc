@@ -73,6 +73,7 @@ bool match() {
     int xx3 = gcd(v4[1], v4[2]);
 
     cout << xx2 << " " << yy2 << endl;
+    cout << xx3 << " " << yy3 << endl;
     cout << xx << " " << yy << " | "  << v3[0].first << " " << v3[0].second << endl;
     return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
 }
