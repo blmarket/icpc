@@ -67,6 +67,7 @@ public:
     string ifPossible(vector <int> x1, vector <int> y1, vector <int> x2, vector <int> y2, vector <int> xt_, vector <int> yt_) 
     {
         xt = xt_; yt = yt_;
+
         for(int i=0;i<3;i++) xt[i] *= 2, yt[i] *= 2;
         for(int i=0;i<size(x1);i++) {
             v1.pb(mp(x1[i], y1[i]));
@@ -80,8 +81,8 @@ public:
             return "possible";
         }
         for(int i=0;i<size(v1);i++) {
-            v1[i].first = xt[0] - v1[i].first;
-            v1[i].second = yt[0] - v1[i].second;
+            v1[i].first = -v1[i].first;
+            v1[i].second = -v1[i].second;
         }
         sort(v1.begin(), v1.end());
         if(match()) {
