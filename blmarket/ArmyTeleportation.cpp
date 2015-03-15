@@ -44,6 +44,7 @@ bool match() {
     for(int i=0;i<size(v3);i++) {
         cout << v3[i].first << " " << v3[i].second << endl;
     }
+    cout << endl;
     for(int i=1;i<size(v3);i++) {
         if(v3[i] != v3[0]) return false;
     }
