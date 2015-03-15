@@ -48,12 +48,14 @@ bool match() {
     for(int i=1;i<size(v3);i++) {
         if(v3[i] != v3[0]) return false;
     }
-    v4.resize(2);
+    v4.resize(3);
     v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
+    v4[2] = mp(xt[1] - xt[2], yt[1] - yt[2]);
 
     cout << v4[0].first << " " << v4[0].second << endl;
     cout << v4[1].first << " " << v4[1].second << endl;
+    cout << v4[2].first << " " << v4[2].second << endl;
 
     int xx = gcd(v4[0].first, v4[1].first);
     int yy = gcd(v4[0].second, v4[1].second);
