@@ -47,6 +47,7 @@ int go(int a) {
     int myd = V[a].first;
     for(int i=a;i<size(V);i++) {
         if(V[i].second <= myd) {
+            cout << a << " : check " << i << endl;
             // check this candidate
             int j = a;
             while(j < size(V) && V[i].second <= V[j].first) {
