@@ -53,6 +53,7 @@ int go(int a) {
             while(j < size(V) && V[i].second <= V[j].first) {
                 j++;
                 int tmp = go(j) + 1;
+                cout << a << " : " << j << " : " << tmp << endl;
                 if(ret == -1 || ret > tmp) ret = tmp;
             }
         }
