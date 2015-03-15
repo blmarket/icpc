@@ -73,6 +73,9 @@ public:
         }
 
         sort(V.begin(), V.end());
+        for(int i=0;i<size(V);i++) {
+            cout << V[i].first << " " << V[i].second << endl;
+        }
         memo[size(V)] = 0;
         return go(0);
     }
