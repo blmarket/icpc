@@ -39,7 +39,7 @@ template<typename T> int size(const T &a) { return a.size(); }
  * Returned value must exactly match the expected one.
  */
 vector<PII> V;
-int memo[55];
+int memo[550];
 
 int go(int a) {
     if(memo[a] != -1) return memo[a];
