@@ -91,6 +91,7 @@ bool match() {
 
     LL gx = gcd(gcd(v4[0].first, v4[1].first), v4[2].first);
     LL gy = gcd(gcd(v4[0].second, v4[1].second), v4[2].second);
+    cout << gx << " " << gy << endl;
     if(!divi(xt, gx) || !divi(yt, gy)) return false;
 
 
