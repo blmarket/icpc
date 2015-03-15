@@ -56,7 +56,6 @@ int go(int a) {
             }
         }
     }
-    cout << a << " = " << ret << endl;
     return memo[a] = ret;
 }
 
@@ -71,6 +70,7 @@ public:
         }
 
         sort(V.begin(), V.end());
+        memo[size(V)] = 0;
         return go(0);
     }
 
