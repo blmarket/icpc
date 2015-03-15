@@ -51,6 +51,10 @@ bool match() {
     v4.resize(2);
     v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
+
+    cout << v4[0].first << " " << v4[0].second << endl;
+    cout << v4[1].first << " " << v4[1].second << endl;
+
     int xx = gcd(v4[0].first, v4[1].first);
     int yy = gcd(v4[0].second, v4[1].second);
     cout << xx << " " << yy << " | "  << v3[0].first << " " << v3[0].second << endl;
