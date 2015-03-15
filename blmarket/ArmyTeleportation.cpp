@@ -29,7 +29,16 @@ bool divi(int a, int b) {
     return ((a%b) == 0);
 }
 
+PII abs(PII v) {
+    if(v.first >= 0) return v;
+    v.first = -v.first;
+    v.second = -v.second;
+    return v;
+}
+
 int gcd(PII a, PII b) {
+    a = abs(a);
+    b = abs(b);
     while(true) {
         if(a.first == 0) return a.second;
         int divi = b.first / a.first;
@@ -51,8 +60,8 @@ bool match() {
     v4.resize(3);
     v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
+    v4[2] = mp(xt[1] - xt[2], yt[1] - yt[2]);
 
-    if(v4[0].first > v4[1].first) swap(v4[0], v4[1]);
     int yy = gcd(v4[0], v4[1]);
     swap(v4[0].first, v4[0].second);
     swap(v4[1].first, v4[1].second);
