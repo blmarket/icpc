@@ -76,8 +76,6 @@ public:
         }
         sort(v1.begin(), v1.end());
         sort(v2.begin(), v2.end());
-        for(int i=0;i<size(v1);i++) cout << v1[i].first << "," << v1[i].second << " "; cout << endl;
-        for(int i=0;i<size(v2);i++) cout << v2[i].first << "," << v2[i].second << " "; cout << endl;
         if(match()) {
             return "possible";
         }
