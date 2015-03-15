@@ -49,7 +49,7 @@ int go(int a) {
         if(V[i].second <= myd) {
             // check this candidate
             int j = a;
-            while(V[i].second <= V[j].first) {
+            while(j < size(V) && V[i].second <= V[j].first) {
                 j++;
                 int tmp = go(j) + 1;
                 if(ret == -1 || ret > tmp) ret = tmp;
