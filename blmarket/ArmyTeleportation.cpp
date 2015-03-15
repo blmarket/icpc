@@ -36,6 +36,17 @@ PII abs(PII v) {
     return v;
 }
 
+int gcd(int a, int b) {
+    a = abs(a);
+    b = abs(b);
+    if(a > b) swap(a,b);
+    while(a != 0) {
+        b = (a%b);
+        swap(a,b);
+    }
+    return b;
+}
+
 int gcd(PII a, PII b) {
     a = abs(a);
     b = abs(b);
@@ -62,22 +73,26 @@ bool match() {
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
     v4[2] = mp(xt[1] - xt[2], yt[1] - yt[2]);
 
-    for(int i=0;i<3;i++) cout << v4[i].first << " " << v4[i].second << endl;
+    int xt = v3[0].first;
+    int yt = v3[0].second;
 
-    int yy = gcd(v4[0], v4[1]);
-    int yy2 = gcd(v4[0], v4[2]);
-    int yy3 = gcd(v4[1], v4[2]);
-    swap(v4[0].first, v4[0].second);
-    swap(v4[1].first, v4[1].second);
-    swap(v4[2].first, v4[2].second);
-    int xx = gcd(v4[0], v4[1]);
-    int xx2 = gcd(v4[0], v4[2]);
-    int xx3 = gcd(v4[1], v4[2]);
+    v4[0].first *= v4[2].second;
+    v4[1].first *= v4[2].second;
+    xt *= v4[2].second;
 
-    cout << xx2 << " " << yy2 << endl;
-    cout << xx3 << " " << yy3 << endl;
-    cout << xx << " " << yy << " | "  << v3[0].first << " " << v3[0].second << endl;
-    return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
+    v4[0].second *= v4[2].first;
+    v4[1].second *= v4[2].first;
+    yt *= v4[2].first;
+
+    int ah = v4[0].first - v4[0].second;
+    int bh = v4[1].first - v4[1].second;
+    int rh = xt - yt;
+
+    if(divi(rh, gcd(ah, bh))) {
+        return true;
+    }
+    
+    return false;
 }
 
 class ArmyTeleportation 
