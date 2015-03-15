@@ -45,8 +45,6 @@ bool match() {
         if(v3[i] != v3[0]) return false;
     }
 
-    cout << v3[0].first << " " << v3[0].second << endl;
-
     v4.resize(3);
     v4[0] = mp(xt[0] - xt[1], yt[0] - yt[1]);
     v4[1] = mp(xt[0] - xt[2], yt[0] - yt[2]);
