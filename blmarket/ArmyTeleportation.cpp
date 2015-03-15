@@ -37,6 +37,7 @@ bool divi(int a, int b) {
 }
 
 bool match() {
+    cout << "hiere" << endl;
     for(int i=0;i<size(v1);i++) {
         v3[i] = mp(v1[i].first - v2[i].first, v1[i].second - v2[i].second);
     }
