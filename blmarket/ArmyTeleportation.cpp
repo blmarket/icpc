@@ -98,8 +98,8 @@ public:
             return "possible";
         }
         for(int i=0;i<size(v1);i++) {
-            v1[i].first = -v1[i].first;
-            v1[i].second = -v1[i].second;
+            v1[i].first = xt[0] - v1[i].first;
+            v1[i].second = xt[0] - v1[i].second;
         }
         sort(v1.begin(), v1.end());
         if(match()) {
