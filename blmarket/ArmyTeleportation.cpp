@@ -63,10 +63,14 @@ bool match() {
     v4[2] = mp(xt[1] - xt[2], yt[1] - yt[2]);
 
     int yy = gcd(v4[0], v4[1]);
+    int yy2 = gcd(v4[0], v4[2]);
     swap(v4[0].first, v4[0].second);
     swap(v4[1].first, v4[1].second);
+    swap(v4[2].first, v4[2].second);
     int xx = gcd(v4[0], v4[1]);
+    int xx2 = gcd(v4[0], v4[2]);
 
+    cout << xx2 << " " << yy2 << endl;
     cout << xx << " " << yy << " | "  << v3[0].first << " " << v3[0].second << endl;
     return (divi(v3[0].first, xx) && divi(v3[0].second, yy));
 }
