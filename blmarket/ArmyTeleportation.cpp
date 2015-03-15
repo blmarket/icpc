@@ -13,6 +13,7 @@
 
 using namespace std;
 
+typedef long long LL;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
@@ -20,7 +21,8 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
-vector<PII> v1, v2, v3, v4;
+vector<PII> v1, v2, v3;
+vector<pair<long long, long long> > v4;
 vector<int> xt,yt;
 
 bool divi(int a, int b) {
@@ -36,7 +38,7 @@ PII abs(PII v) {
     return v;
 }
 
-int gcd(int a, int b) {
+long long gcd(LL a, LL b) {
     a = abs(a);
     b = abs(b);
     if(a > b) swap(a,b);
@@ -45,18 +47,6 @@ int gcd(int a, int b) {
         swap(a,b);
     }
     return b;
-}
-
-int gcd(PII a, PII b) {
-    a = abs(a);
-    b = abs(b);
-    while(true) {
-        if(a.first == 0) return a.second;
-        int divi = b.first / a.first;
-        b.first -= a.first * divi;
-        b.second -= a.second * divi;
-        swap(a, b);
-    }
 }
 
 bool match() {
