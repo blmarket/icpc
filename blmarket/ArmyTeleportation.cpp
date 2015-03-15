@@ -63,7 +63,7 @@ long long gcd(LL a, LL b) {
     b = abs(b);
     if(a > b) swap(a,b);
     while(a != 0) {
-        b = (a%b);
+        b = (b % a);
         swap(a,b);
     }
     return b;
