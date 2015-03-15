@@ -79,9 +79,11 @@ bool match() {
     v4[1].second *= v4[2].first;
     yt *= v4[2].first;
 
-    int ah = v4[0].first - v4[0].second;
-    int bh = v4[1].first - v4[1].second;
-    int rh = xt - yt;
+    LL ah = v4[0].first - v4[0].second;
+    LL bh = v4[1].first - v4[1].second;
+    LL rh = xt - yt;
+
+    cout << ah << " " << bh << " " << gcd(ah,bh) << " " << rh << endl;
 
     if(divi(rh, gcd(ah, bh))) {
         return true;
