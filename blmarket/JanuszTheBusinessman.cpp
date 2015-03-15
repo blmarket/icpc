@@ -50,7 +50,7 @@ int go(int a) {
             cout << a << " : check " << i << endl;
             // check this candidate
             int j = a;
-            while(j < size(V) && V[j].first <= V[i].second) {
+            while(j < size(V) && V[j].second <= V[i].first) {
                 j++;
                 int tmp = go(j) + 1;
                 cout << a << " : " << j << " : " << tmp << endl;
