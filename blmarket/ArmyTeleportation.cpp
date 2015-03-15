@@ -21,6 +21,25 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+/**
+ * Problem: 500
+ * Test Case: 16
+ * Succeeded: No
+ * Execution Time: 1 ms
+ * Peak memory used: 11.605MB
+ * Args:
+ * {{0}, {0}, {11}, {22}, {3, 4, 6}, {6, 8, 12}}
+ *
+ * Expected:
+ * "impossible"
+ *
+ * Received:
+ * "possible"
+ *
+ * Answer checking result:
+ * Returned value must exactly match the expected one.
+ */
+
 vector<PII> v1, v2, v3;
 vector<pair<long long, long long> > v4;
 vector<int> xt,yt;
@@ -69,6 +88,10 @@ bool match() {
     for(int i=0;i<3;i++) cout << v4[i].first << "," << v4[i].second << " ";
     cout << endl;
     cout << xt << " " << yt << endl;
+
+    LL gx = gcd(gcd(v4[0].first, v4[1].first), v4[2].first);
+    LL gy = gcd(gcd(v4[0].second, v4[1].second), v4[2].second);
+    if(!divi(xt, gx) || !divi(yt, gy)) return false;
 
 
     v4[0].first *= v4[2].second;
