@@ -25,7 +25,7 @@ vector<PII> v1, v2, v3;
 vector<pair<long long, long long> > v4;
 vector<int> xt,yt;
 
-bool divi(int a, int b) {
+bool divi(long long a, long long b) {
     if(a == 0) return true;
     if(b == 0) return false;
     return ((a%b) == 0);
