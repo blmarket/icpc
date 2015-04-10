@@ -32,6 +32,7 @@ public:
         memset(cnt, 0, sizeof(cnt));
         cnt[0][0] = 1;
         for(int i=0;i<size(d);i++) {
+            cout << i << endl;
             int cur = (i%2);
             int nex = !cur;
             memset(cnt[nex], 0, sizeof(cnt[0]));
