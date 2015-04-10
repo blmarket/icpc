@@ -33,8 +33,8 @@ public:
         do {
             change = false;
 
-            for(int i=0;i+k<n;i++) {
-                for(int j=0;j+k<n;j++) {
+            for(int i=0;i+k<=n;i++) {
+                for(int j=0;j+k<=n;j++) {
                     bool fail = false;
                     for(int a=0;a<k;a++) {
                         char cc = 0;
