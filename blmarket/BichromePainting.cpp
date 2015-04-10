@@ -54,13 +54,17 @@ public:
                     }
                 }
             }
+            for(int i=0;i<n;i++) {
+                for(int j=0;j<n;j++) cout << poss[i][j] << " ";
+                cout << endl;
+            }
         }
         for(int i=0;i<n;i++) {
             for(int j=0;j<n;j++) if(poss[i][j] == false) {
-                return "IMPOSSIBLE";
+                return "Impossible";
             }
         }
-        return "POSSIBLE";
+        return "Possible";
     }
 
     
