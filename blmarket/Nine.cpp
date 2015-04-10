@@ -35,6 +35,7 @@ public:
             cout << i << endl;
             int cur = (i%2);
             int nex = !cur;
+            cout << cur << " " << nex << endl;
             memset(cnt[nex], 0, sizeof(cnt[0]));
             int v[10];
             for(int j=0;j<100000;j++) if(cnt[i][j]) {
