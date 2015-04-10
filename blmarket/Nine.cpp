@@ -48,13 +48,12 @@ public:
 
                 for(int k=0;k<10;k++) {
                     for(int a=0;a<N;a++) if(d[i] & (1<<a)) {
-                        cout << "a=" << a << endl;
                         v[a] = (v[a] + k) % 9;
                     }
                     int kk = 0;
                     for(int a=N-1;a>=0;a--) {
-                        kk += v[a];
                         kk *= 9;
+                        kk += v[a];
                     }
                     // cout << kk << endl;
                     cnt[nex][kk] = (cnt[nex][kk] + cnt[i][j]) % mod;
