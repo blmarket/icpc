@@ -36,7 +36,7 @@ public:
             int cur = (i%2);
             int nex = !cur;
             memset(cnt[nex], 0, sizeof(cnt[0]));
-            int v[5];
+            int v[10];
             for(int j=0;j<100000;j++) if(cnt[i][j]) {
                 cout << i << " " << j << endl;
                 int jj = j;
