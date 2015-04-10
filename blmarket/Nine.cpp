@@ -45,6 +45,7 @@ public:
                     jj /= 9;
                 }
                 cout << " = " << cnt[i][j] << endl;
+                cout << d[i] << endl;
 
                 for(int k=0;k<10;k++) {
                     for(int a=0;a<N;a++) if(d[i] & (1<<a)) {
