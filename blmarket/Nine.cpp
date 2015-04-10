@@ -38,6 +38,7 @@ public:
             memset(cnt[nex], 0, sizeof(cnt[0]));
             int v[5];
             for(int j=0;j<100000;j++) if(cnt[i][j]) {
+                cout << i << " " << j << endl;
                 int jj = j;
                 for(int k=0;k<N;k++) {
                     v[k] = (jj % 9);
