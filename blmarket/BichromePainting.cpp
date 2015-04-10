@@ -29,7 +29,10 @@ public:
     {		
         int n = size(board);
         memset(poss, 0, sizeof(poss));
-        for(bool change = false;change;change=false) {
+        bool change;
+        do {
+            change = false;
+
             for(int i=0;i+k<n;i++) {
                 for(int j=0;j+k<n;j++) {
                     bool fail = false;
@@ -58,7 +61,7 @@ public:
                 for(int j=0;j<n;j++) cout << poss[i][j] << " ";
                 cout << endl;
             }
-        }
+        } while(change);
         for(int i=0;i<n;i++) {
             for(int j=0;j<n;j++) if(poss[i][j] == false) {
                 return "Impossible";
