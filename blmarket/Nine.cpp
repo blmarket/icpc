@@ -38,13 +38,10 @@ public:
             int v[5];
             for(int j=0;j<100000;j++) if(cnt[i][j]) {
                 int jj = j;
-                cout << i << " ";
                 for(int k=0;k<N;k++) {
                     v[k] = (jj % 9);
-                    cout << v[k] << ",";
                     jj /= 9;
                 }
-                cout << " = " << cnt[i][j] << endl;
 
                 for(int k=0;k<10;k++) {
                     for(int a=0;a<N;a++) if(d[i] & (1<<a)) {
