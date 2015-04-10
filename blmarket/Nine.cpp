@@ -38,14 +38,11 @@ public:
             memset(cnt[nex], 0, sizeof(cnt[0]));
             int v[10];
             for(int j=0;j<100000;j++) if(cnt[cur][j]) {
-                cout << i << " ";
                 int jj = j;
                 for(int k=0;k<N;k++) {
                     v[k] = (jj % 9);
-                    cout << v[k] << ",";
                     jj /= 9;
                 }
-                cout << " = " << cnt[cur][j] << endl;
 
                 for(int k=0;k<10;k++) {
                     for(int a=0;a<N;a++) if(d[i] & (1<<a)) {
