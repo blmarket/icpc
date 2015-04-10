@@ -52,6 +52,7 @@ public:
                         kk += v[a];
                         kk *= 9;
                     }
+                    cout << kk << endl;
                     cnt[nex][kk] = (cnt[nex][kk] + cnt[i][j]) % mod;
                     for(int a=0;a<N;a++) if(d[i] & (1<<a)) {
                         v[a] = (v[a] + 9 - k) % 9;
