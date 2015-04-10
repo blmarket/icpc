@@ -37,6 +37,7 @@ public:
             memset(cnt[nex], 0, sizeof(cnt[0]));
             int v[5];
             for(int j=0;j<100000;j++) if(cnt[i][j]) {
+                cout << i << " " << j << " = " << cnt[i][j] << endl;
                 int jj = j;
                 for(int k=0;k<N;k++) {
                     v[k] = (jj % 9);
@@ -52,7 +53,7 @@ public:
                         kk += v[a];
                         kk *= 9;
                     }
-                    cout << kk << endl;
+                    // cout << kk << endl;
                     cnt[nex][kk] = (cnt[nex][kk] + cnt[i][j]) % mod;
                     for(int a=0;a<N;a++) if(d[i] & (1<<a)) {
                         v[a] = (v[a] + 9 - k) % 9;
