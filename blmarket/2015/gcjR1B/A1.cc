@@ -65,7 +65,10 @@ void solve(int dataId)
     }
 
     for(auto it : cnts) {
-        cout << it.first << "=" << it.second << endl;
+        long long tmp = rev(it.first);
+        if(cnts.count(tmp) && cnts[tmp] == it.second - 1) {
+            cout << it.first << "=" << it.second << endl;
+        }
     }
 
     cout << cnts[target] << endl;
