@@ -55,6 +55,7 @@ void solve(int dataId)
         Q.pop();
         auto addif = [&](long long v) -> bool {
             if(cnts.count(v) == 0) {
+                cerr << v << " " << cc+1 << endl;
                 cnts[v] = cc+1;
             }
             return v == target;
@@ -63,9 +64,7 @@ void solve(int dataId)
         if(addif(rev(tmp))) break;
     }
 
-    cout << cnts.count(target) << " " << cnts[target] << endl;
-
-    // cout << cnts[target] << endl;
+    cout << cnts[target] << endl;
 }
 
 void process(int dataId)
