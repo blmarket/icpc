@@ -64,6 +64,10 @@ void solve(int dataId)
         if(addif(rev(tmp))) break;
     }
 
+    for(auto it : cnts) {
+        cerr << it.first << "=" << it.second << endl;
+    }
+
     cout << cnts[target] << endl;
 }
 
