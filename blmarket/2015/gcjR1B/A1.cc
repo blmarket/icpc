@@ -47,7 +47,7 @@ void solve(int dataId)
     printf("Case #%d: ", dataId);
     cnts[1] = 1;
     queue<LL> Q;
-    Q.push(target);
+    Q.push(1);
 
     while(!Q.empty()) {
         LL tmp = Q.front();
