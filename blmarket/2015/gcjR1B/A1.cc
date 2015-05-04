@@ -65,7 +65,7 @@ void solve(int dataId)
     }
 
     for(auto it : cnts) {
-        cerr << it.first << "=" << it.second << endl;
+        cout << it.first << "=" << it.second << endl;
     }
 
     cout << cnts[target] << endl;
