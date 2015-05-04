@@ -63,7 +63,9 @@ void solve(int dataId)
         if(addif(rev(tmp))) break;
     }
 
-    cout << cnts[target] << endl;
+    cout << cnts.count(target) << " " << cnts[target] << endl;
+
+    // cout << cnts[target] << endl;
 }
 
 void process(int dataId)
