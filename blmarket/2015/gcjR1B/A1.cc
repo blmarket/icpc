@@ -57,6 +57,7 @@ void solve(int dataId)
             if(cnts.count(v) == 0) {
                 cerr << v << " " << cc+1 << endl;
                 cnts[v] = cc+1;
+                Q.push(v);
             }
             return v == target;
         };
