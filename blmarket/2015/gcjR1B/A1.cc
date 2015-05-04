@@ -55,7 +55,6 @@ void solve(int dataId)
         Q.pop();
         auto addif = [&](long long v) -> bool {
             if(cnts.count(v) == 0) {
-                cerr << v << " " << cc+1 << endl;
                 cnts[v] = cc+1;
                 Q.push(v);
             }
