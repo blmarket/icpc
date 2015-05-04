@@ -102,6 +102,7 @@ void ForkSolver::_solve(int dataId)
 
     if(pid) // I'm parent!
     {
+        nchilds++;
         close(pipefd[1]); // close write end, i'll only read
         outfds[dataId] = mp(pid, pipefd[0]);
     }
