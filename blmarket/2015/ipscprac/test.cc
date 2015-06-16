@@ -10,8 +10,8 @@ int main(void) {
         S.insert(i);
         if(S.bucket_count() != ps) {
             cout << S.bucket_count() << endl;
-            cout << S.bucket(i) << endl;
         }
+        cout << i << " = " << S.bucket(i) << endl;
         ps = S.bucket_count();
     }
 }
