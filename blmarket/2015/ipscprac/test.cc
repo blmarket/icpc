@@ -12,7 +12,7 @@ int main(void) {
         if(S.bucket_count() != ps) {
             cout << S.bucket_count() << endl;
         }
-        cout << i << " = " << S.bucket(i) << endl;
+        // cout << i << " = " << S.bucket(i) << endl;
         ps = S.bucket_count();
     }
 }
