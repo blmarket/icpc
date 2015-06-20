@@ -59,4 +59,6 @@ int main(void) {
         cout << score << endl;
         scores.pb(score);
     }
+    sort(scores.begin(), scores.end());
+    for(auto &it: scores) cout << it << endl;
 }
