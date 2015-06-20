@@ -80,7 +80,6 @@ void process(void) {
     b[0].pb(board);
     int ii;
     for(ii=0;;ii++) {
-        cerr << memo.size() << endl;
         int i = (ii % 2);
         if(b[i].size() == 0) {
             ii--;
@@ -110,7 +109,7 @@ void process(void) {
     }
 
     LL sum = 0;
-    vector<LL> tmp = b[ii][0];
+    vector<LL> tmp = b[ii%2][0];
     for(auto it:tmp) {
         cout << it << " ";
         sum += it;
