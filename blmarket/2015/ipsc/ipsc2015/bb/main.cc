@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 #define mp make_pair
 #define pb push_back
@@ -10,7 +10,7 @@ using namespace std;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<pair<string, int> > W[3];
-map<int, vector<pair<int, int> > > memo;
+unordered_map<int, vector<pair<int, int> > > memo;
 
 void read_input(int a) {
     auto &ww = W[a];
