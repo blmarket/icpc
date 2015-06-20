@@ -23,6 +23,7 @@ long long next(int idx) {
         x[it] = x[(it-22+50)%50] - x[(it-43+50)%50] - c;
         c = x[it] < 0 ? 1 : 0;
         x[it] += c * (1LL << 32);
+        it++;
     }
 
     return x[idx];
@@ -105,7 +106,6 @@ void process(void) {
                 b[!i].pb(tmp);
             }
         }
-        cerr << "HERE" << endl;
     }
 
     LL sum = 0;
