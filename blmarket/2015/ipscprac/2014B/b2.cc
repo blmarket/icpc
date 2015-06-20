@@ -82,5 +82,5 @@ void process(void) {
 int main(void) {
     int T;
     scanf("%d", &T);
-    for(int i=0;i<T;i++) process();
+    for(int i=0;i<1;i++) process();
 }
