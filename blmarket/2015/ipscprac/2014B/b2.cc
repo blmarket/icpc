@@ -102,7 +102,10 @@ void process(void) {
 
     LL sum = 0;
     vector<LL> tmp = b[i][0];
-    for(auto it:tmp) sum += it;
+    for(auto it:tmp) {
+        cout << it << " ";
+        sum += it;
+    }
     cout << sum << endl;
 
 }
