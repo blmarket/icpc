@@ -66,6 +66,7 @@ void process(void) {
         tmp.resize(board.size());
         if(moves[i] == 'r') reverse(tmp.begin(), tmp.end());
 
+        cout << (tmp == board) << endl;
         if(tmp != board && nempty > 0) {
             cout << "ADD oNE" << endl;
             int pos = next() % nempty;
