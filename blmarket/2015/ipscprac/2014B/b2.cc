@@ -111,6 +111,7 @@ void process(void) {
         cout << it << " ";
         sum += it;
     }
+    cout << endl;
     cout << sum << endl;
 
 }
