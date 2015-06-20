@@ -91,6 +91,7 @@ void process(void) {
                 cout << kt << " ";
             }
             cout << endl;
+
             vector<LL> tmp = jt;
             move(tmp, false, 43+2*ii);
             if(memo.count(tmp) == 0) {
@@ -104,6 +105,7 @@ void process(void) {
                 b[!i].pb(tmp);
             }
         }
+        cerr << "HERE" << endl;
     }
 
     LL sum = 0;
