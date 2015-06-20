@@ -19,7 +19,6 @@ long long mod(long long a) {
 
 int it;
 long long next(int idx) {
-    cerr << it << endl;
     while(it <= idx) {
         x[it] = x[(it-22+50)%50] - x[(it-43+50)%50] - c;
         c = x[it] < 0 ? 1 : 0;
