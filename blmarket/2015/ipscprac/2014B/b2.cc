@@ -66,17 +66,16 @@ void process(void) {
         tmp.resize(board.size());
         if(moves[i] == 'r') reverse(tmp.begin(), tmp.end());
 
+        if(tmp != board && nempty > 0) {
+            cout << "ADD oNE" << endl;
+            int pos = next() % nempty;
+            int value = (next() % 10) == 0 ? 4 : 2;
+            if(moves[i] == 'l') pos += (n - nempty);
+            tmp[pos] = value;
+        }
+
         board.swap(tmp);
 
-        if(tmp != board) {
-            cout << "ADD oNE" << endl;
-            if(nempty > 0) {
-                int pos = next() % nempty;
-                int value = (next() % 10) == 0 ? 4 : 2;
-                if(moves[i] == 'l') pos += (n - nempty);
-                board[pos] = value;
-            }
-        }
     }
 
     for(int i=0;i<n;i++) {
