@@ -15,16 +15,14 @@ int group[2][10005];
 vector<int> descendants[2][10005];
 
 void merge(int a, int b, int c) {
+    if(group[a][b] == group[a][c]) return;
     int ng = group[a][c];
 
-    cout << a << " = " << group[a][b] << endl;
     auto &V = descendants[a][group[a][b]];
     for(auto &it: V) {
-        cout << it << " ";
         group[a][it] = ng;
         descendants[a][ng].pb(it);
     }
-    cout << endl;
     V.clear();
 }
 
