@@ -86,6 +86,7 @@ long long calc(int pos, vector<LL> board) {
     long long tmp2 = move(board, true, tp);
     tmp2 += calc(tp, board);
 
+    cout << pos << " : ";
     for(auto it : pboard) cout << it << " ";
     cout << "= " << max(ret, tmp2) << endl;
 
