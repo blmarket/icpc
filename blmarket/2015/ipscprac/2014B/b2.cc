@@ -44,6 +44,8 @@ void process(void) {
     scanf("%d", &m);
     scanf(" %s", moves);
     for(int i=0;i<m;i++) {
+        for(int j=0;j<size(board);j++) cout << board[j] << " ";
+        cout << endl;
         if(moves[i] == 'r') {
             reverse(board.begin(), board.end());
         } else if(moves[i] == 'l') {
