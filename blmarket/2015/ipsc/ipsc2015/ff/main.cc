@@ -40,8 +40,10 @@ void process(void) {
         M.clear();
 
         for(int i=1;i<=n;i++) {
+            cout << group[0][i] << group[1][i] << " ";
             M[mp(group[0][i], group[1][i])] += 1;
         }
+        cout << endl;
         for(auto &it: M) {
             ret += ((long long)it.second * (it.second - 1)) / 2;
             ret %= mod;
