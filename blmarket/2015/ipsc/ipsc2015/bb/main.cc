@@ -56,7 +56,6 @@ int main(void) {
 
         scanf(" %s %s %s", a,b,c);
         int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c);
-        cout << score << endl;
         scores.pb(score);
     }
     sort(scores.begin(), scores.end());
