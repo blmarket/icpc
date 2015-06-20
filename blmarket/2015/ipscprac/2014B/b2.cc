@@ -27,6 +27,35 @@ long long next() {
 int n;
 vector<long long> board;
 
+void move(bool right) {
+    vector<long long> pboard = board;
+    if(right)
+        reverse(board.begin(), board.end());
+
+    vector<long long> tmp; tmp.clear();
+    for(int j=0;j<size(board);j++) if(board[j] != 0) {
+        if(tmp.size() && tmp.back() == board[j]) {
+            tmp.back() = -tmp.back() * 2;
+        } else {
+            tmp.push_back(board[j]);
+        }
+    }
+    for(int j=0;j<size(tmp);j++) if(tmp[j] < 0) tmp[j] = -tmp[j];
+    int nempty = board.size() - tmp.size();
+    tmp.resize(board.size());
+    if(right) reverse(tmp.begin(), tmp.end());
+
+    if(tmp != pboard && nempty > 0) {
+        int pos = next() % nempty;
+        int value = (next() % 10) == 0 ? 4 : 2;
+        if(!right) pos += (n - nempty);
+        tmp[pos] = value;
+    }
+
+    board.swap(tmp);
+
+}
+
 void process(void) {
     scanf("%d", &n);
     board.resize(n);
@@ -44,36 +73,7 @@ void process(void) {
     scanf("%d", &m);
     scanf(" %s", moves);
     for(int i=0;i<m;i++) {
-        vector<long long> pboard = board;
-        if(moves[i] == 'r') {
-            reverse(board.begin(), board.end());
-        } else if(moves[i] == 'l') {
-        } else {
-            throw 1;
-        }
-
-        vector<long long> tmp; tmp.clear();
-        for(int j=0;j<size(board);j++) if(board[j] != 0) {
-            if(tmp.size() && tmp.back() == board[j]) {
-                tmp.back() = -tmp.back() * 2;
-            } else {
-                tmp.push_back(board[j]);
-            }
-        }
-        for(int j=0;j<size(tmp);j++) if(tmp[j] < 0) tmp[j] = -tmp[j];
-        int nempty = board.size() - tmp.size();
-        tmp.resize(board.size());
-        if(moves[i] == 'r') reverse(tmp.begin(), tmp.end());
-
-        if(tmp != pboard && nempty > 0) {
-            int pos = next() % nempty;
-            int value = (next() % 10) == 0 ? 4 : 2;
-            if(moves[i] == 'l') pos += (n - nempty);
-            tmp[pos] = value;
-        }
-
-        board.swap(tmp);
-
+        move(moves[i] == 'r');
     }
 
     for(int i=0;i<n;i++) {
