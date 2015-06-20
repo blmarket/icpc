@@ -30,6 +30,7 @@ int find(const vector<pair<string, int> > &V, const string &a) {
     for(int i=0;i<size(V);i++) {
         if(V[i].first == a) return V[i].second;
     }
+    return -1;
 }
 
 
