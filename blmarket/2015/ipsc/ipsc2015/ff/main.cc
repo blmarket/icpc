@@ -20,6 +20,7 @@ void merge(int a, int b, int c) {
     cout << a << " " << group[a][b] << endl;
     auto &V = descendants[a][group[a][b]];
     for(auto &it: V) {
+        cout << it << " ";
         group[a][it] = ng;
         descendants[a][ng].pb(it);
     }
