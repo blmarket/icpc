@@ -40,7 +40,6 @@ int main(void) {
     for(int i=0;i<3;i++) read_input(i);
 
     for(int i=0;i<size(W[0]);i++) {
-        if((i % 100) == 0) cout << i << endl;
         for(int j=0;j<size(W[1]);j++) {
             memo[W[0][i].second + W[1][j].second].pb(mp(i, j));
         }
