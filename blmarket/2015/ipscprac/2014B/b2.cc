@@ -1,8 +1,10 @@
 #include <iostream>
+#include <map>
 #include <vector>
 #include <set>
 
 #define pb push_back
+#define mp make_pair
 
 using namespace std;
 
@@ -31,7 +33,8 @@ long long next(int idx) {
 
 int n;
 
-void move(vector<long long> &board, bool right, int rp) {
+long long move(vector<long long> &board, bool right, int rp) {
+    long long ret = 0;
     vector<long long> pboard = board;
     if(right)
         reverse(board.begin(), board.end());
@@ -39,6 +42,7 @@ void move(vector<long long> &board, bool right, int rp) {
     vector<long long> tmp; tmp.clear();
     for(int j=0;j<size(board);j++) if(board[j] != 0) {
         if(tmp.size() && tmp.back() == board[j]) {
+            ret += tmp.back() * 2;
             tmp.back() = -tmp.back() * 2;
         } else {
             tmp.push_back(board[j]);
@@ -57,9 +61,27 @@ void move(vector<long long> &board, bool right, int rp) {
     }
 
     board.swap(tmp);
+    return ret;
 }
 
-set<vector<long long> > memo;
+map<pair<int, vector<long long> >, long long> memo;
+
+long long calc(int pos, vector<LL> board) {
+    pair<int, vector<LL> > key = mp(pos, board);
+    if(memo.count(key)) {
+        return memo[key];
+    }
+
+    vector<LL> tmp = board;
+
+    long long ret = move(tmp, false, pos);
+    ret += calc(pos + 2, tmp);
+
+    long long tmp2 = move(board, true, pos);
+    tmp2 += calc(pos + 2, board);
+
+    return memo[key] = max(ret, tmp2);
+}
 
 void process(void) {
     scanf("%d", &n);
@@ -75,48 +97,7 @@ void process(void) {
     }
     c = 0; it = 43;
 
-    memo.insert(board);
-    vector<vector<LL> > b[2];
-    b[0].pb(board);
-    int ii;
-    for(ii=0;;ii++) {
-        int i = (ii % 2);
-        if(b[i].size() == 0) {
-            ii--;
-            break;
-        }
-        b[!i].clear();
-        cout << "----" << endl;
-        for(const auto &jt : b[i]) {
-            for(auto kt: jt) {
-                cout << kt << " ";
-            }
-            cout << endl;
-
-            vector<LL> tmp = jt;
-            move(tmp, false, 43+2*ii);
-            if(memo.count(tmp) == 0) {
-                memo.insert(tmp);
-                b[!i].pb(tmp);
-            }
-            tmp = jt;
-            move(tmp, true, 43+2*ii);
-            if(memo.count(tmp) == 0) {
-                memo.insert(tmp);
-                b[!i].pb(tmp);
-            }
-        }
-    }
-
-    LL sum = 0;
-    vector<LL> tmp = b[ii%2][0];
-    for(auto it:tmp) {
-        cout << it << " ";
-        sum += it;
-    }
-    cout << endl;
-    cout << sum << endl;
-
+    cout << calc(43, board) << endl;
 }
 
 int main(void) {
