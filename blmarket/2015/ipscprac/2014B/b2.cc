@@ -84,7 +84,12 @@ void process(void) {
             break;
         }
         b[!i].clear();
+        cout << "----" << endl;
         for(const auto &jt : b[i]) {
+            for(auto kt: jt) {
+                cout << kt << " ";
+            }
+            cout << endl;
             vector<LL> tmp = jt;
             move(tmp, false);
             if(memo.count(tmp) == 0) {
