@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <set>
 
 #define mp make_pair
 #define pb push_back
@@ -46,6 +47,7 @@ int main(void) {
    // }
 
     vector<int> scores;
+    set<string> used;
 
     int m;
     scanf("%d", &m);
@@ -55,9 +57,22 @@ int main(void) {
         char c[32];
 
         scanf(" %s %s %s", a,b,c);
-        int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c);
-        scores.pb(score);
+        int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c) + 1;
+
+        bool found = false;
+        for(auto &it : W[2]) {
+            int ts = score - it.second;
+            if(memo.count(ts)) {
+                for(auto &jt : memo[ts]) {
+                    string tmp = W[0][jt.first].first + " " + W[1][jt.second].first + " " + it.first;
+                    if(used.count(tmp)) continue;
+                    used.insert(tmp);
+                    cout << tmp << endl;
+                    found = true;
+                    break;
+                }
+            }
+            if(found) break;
+        }
     }
-    sort(scores.begin(), scores.end());
-    for(auto &it: scores) cout << it << endl;
 }
