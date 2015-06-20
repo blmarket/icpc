@@ -67,6 +67,7 @@ long long move(vector<long long> &board, bool right, int rp) {
 map<pair<int, vector<long long> >, long long> memo;
 
 long long calc(int pos, vector<LL> board) {
+    cout << pos << endl;
     pair<int, vector<LL> > key = mp(pos, board);
     if(memo.count(key)) {
         return memo[key];
