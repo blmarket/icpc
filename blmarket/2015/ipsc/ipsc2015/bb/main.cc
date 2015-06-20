@@ -10,7 +10,7 @@ using namespace std;
 template<typename T> int size(const T &a) { return a.size(); }
 
 vector<pair<string, int> > W[3];
-map<int, vector<string> > memo;
+map<int, vector<pair<int, int> > > memo;
 
 void read_input(int a) {
     auto &ww = W[a];
@@ -38,9 +38,9 @@ int find(const vector<pair<string, int> > &V, const string &a) {
 int main(void) {
     for(int i=0;i<3;i++) read_input(i);
 
-    for(auto &it : W[0]) {
-        for(auto &jt : W[1]) { 
-            memo[it.second + jt.second].pb(it.first + " " + jt.first);
+    for(int i=0;i<size(W[0]);i++) {
+        for(int j=0;j<size(W[1]);j++) {
+            memo[W[0][i].second + W[1][j].second].pb(mp(i, j));
         }
     }
 
