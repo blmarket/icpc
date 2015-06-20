@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_set>
+#include "bint.cpp"
 
 using namespace std;
 
@@ -25,13 +26,15 @@ long long next() {
 }
 
 int n;
-vector<long long> board;
+vector<BigInteger> board;
 
 void process(void) {
     scanf("%d", &n);
     board.resize(n);
     for(int i=0;i<n;i++) {
-        scanf("%lld", &board[i]);
+        long long tmp;
+        scanf("%lld", &tmp);
+        board[i] = tmp;
     }
     for(int i=0;i<43;i++) {
         scanf("%lld", &x[i]);
@@ -49,8 +52,8 @@ void process(void) {
             throw 1;
         }
 
-        vector<long long> tmp;
-        for(int j=0;j<size(board);j++) if(board[j]) {
+        vector<BigInteger> tmp;
+        for(int j=0;j<size(board);j++) if(board[j] != 0) {
             if(tmp.size() && tmp.back() == board[j]) {
                 tmp.back() = -tmp.back() * 2;
             } else {
