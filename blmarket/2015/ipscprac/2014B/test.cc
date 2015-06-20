@@ -4,6 +4,8 @@
 
 using namespace std;
 
+template<typename T> int size(const T &a) { return a.size(); }
+
 long long x[50];
 int c[50];
 
@@ -38,11 +40,38 @@ void process(void) {
     scanf(" %s", moves);
     for(int i=0;i<m;i++) {
         if(moves[i] == 'r') {
+            reverse(board.begin(), board.end());
         } else if(moves[i] == 'l') {
         } else {
             throw 1;
         }
+
+        vector<long long> tmp;
+        for(int j=0;j<size(board);j++) if(board[j]) {
+            if(tmp.size() && tmp.back() == board[j]) {
+                tmp.back() = -tmp.back() * 2;
+            } else {
+                tmp.push_back(board[j]);
+            }
+        }
+        for(int j=0;j<size(tmp);j++) if(tmp[j] < 0) tmp[j] = -tmp[j];
+        int nempty = board.size() - tmp.size();
+        tmp.resize(board.size());
+        board.swap(tmp);
+        if(moves[i] == 'r') reverse(board.begin(), board.end());
+
+        if(nempty > 0) {
+            int pos = next() % nempty;
+            int value = (next() % 10) == 0 ? 4 : 2;
+            if(moves[i] == 'l') pos += (n - nempty);
+            board[pos] = value;
+        }
     }
+
+    for(int i=0;i<n;i++) {
+        cout << board[i] << " ";
+    }
+    cout << endl;
 }
 
 int main(void) {
