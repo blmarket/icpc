@@ -58,6 +58,8 @@ int main(void) {
 
         scanf(" %s %s %s", a,b,c);
         int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c) + 1;
+        cerr << score << endl;
+
 
         bool found = false;
         for(auto &it : W[2]) {
