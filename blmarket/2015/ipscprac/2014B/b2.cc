@@ -68,10 +68,7 @@ long long move(vector<long long> &board, bool right, int &rp) {
 map<pair<int, vector<long long> >, long long> memo;
 
 long long calc(int pos, vector<LL> board) {
-    cout << pos << " : ";
-    for(auto it : board) cout << it << " ";
-    cout << endl;
-    
+    vector<LL> pboard = board;
 
     pair<int, vector<LL> > key = mp(pos, board);
     if(memo.count(key)) {
@@ -88,6 +85,9 @@ long long calc(int pos, vector<LL> board) {
     tp = pos;
     long long tmp2 = move(board, true, tp);
     tmp2 += calc(tp, board);
+
+    for(auto it : pboard) cout << it << " ";
+    cout << "= " << max(ret, tmp2) << endl;
 
     return memo[key] = max(ret, tmp2);
 }
