@@ -43,6 +43,7 @@ void process(void) {
             reverse(board.begin(), board.end());
         } else if(moves[i] == 'l') {
         } else {
+            cerr << moves[i] << endl;
             throw 1;
         }
 
