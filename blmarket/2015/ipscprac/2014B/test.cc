@@ -41,7 +41,6 @@ void process(void) {
     char moves[5005];
     scanf("%d", &m);
     scanf(" %s", moves);
-    cerr << moves << endl;
     for(int i=0;i<m;i++) {
         if(moves[i] == 'r') {
             reverse(board.begin(), board.end());
@@ -82,17 +81,4 @@ int main(void) {
     int T;
     scanf("%d", &T);
     for(int i=0;i<T;i++) process();
-
-
-
-    for(int i=0;i<=42;i++) {
-        x[i] = mod(mod(mod(i*i)*i)*999999999LL);
-    }
-    int it = 43;
-
-
-    for(int i=0;i<10;i++) {
-        cout << next() << endl;
-    }
-
 }
