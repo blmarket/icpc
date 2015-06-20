@@ -24,6 +24,7 @@ void merge(int a, int b, int c) {
         group[a][it] = ng;
         descendants[a][ng].pb(it);
     }
+    cout << endl;
     V.clear();
 }
 
