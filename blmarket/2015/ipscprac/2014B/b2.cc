@@ -71,6 +71,7 @@ long long calc(int pos, vector<LL> board) {
     if(memo.count(key)) {
         return memo[key];
     }
+    memo[key] = -1;
 
     vector<LL> tmp = board;
 
