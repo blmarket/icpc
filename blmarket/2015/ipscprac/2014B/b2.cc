@@ -76,11 +76,10 @@ void process(void) {
 
     memo.insert(board);
     vector<vector<LL> > b[2];
-    b[1].pb(board);
+    b[0].pb(board);
     int ii;
     for(ii=0;;ii++) {
         int i = (ii % 2);
-        cerr << ii << " " << i << endl;
         if(b[i].size() == 0) {
             ii--;
             break;
