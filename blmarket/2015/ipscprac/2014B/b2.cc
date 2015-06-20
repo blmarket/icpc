@@ -69,6 +69,7 @@ void process(void) {
         board.swap(tmp);
 
         if(tmp != board) {
+            cout << "ADD oNE" << endl;
             if(nempty > 0) {
                 int pos = next() % nempty;
                 int value = (next() % 10) == 0 ? 4 : 2;
