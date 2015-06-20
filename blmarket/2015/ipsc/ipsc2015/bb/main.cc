@@ -38,12 +38,12 @@ int find(const vector<pair<string, int> > &V, const string &a) {
 int main(void) {
     for(int i=0;i<3;i++) read_input(i);
 
-    for(int i=0;i<size(W[0]);i++) {
-        if((i % 100) == 0) cout << i << endl;
-        for(int j=0;j<size(W[1]);j++) {
-            memo[W[0][i].second + W[1][j].second].pb(mp(i, j));
-        }
-    }
+   // for(int i=0;i<size(W[0]);i++) {
+   //     if((i % 100) == 0) cout << i << endl;
+   //     for(int j=0;j<size(W[1]);j++) {
+   //         memo[W[0][i].second + W[1][j].second].pb(mp(i, j));
+   //     }
+   // }
 
     vector<int> scores;
 
@@ -56,6 +56,7 @@ int main(void) {
 
         scanf(" %s %s %s", a,b,c);
         int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c);
+        cout << score << endl;
         scores.pb(score);
     }
 }
