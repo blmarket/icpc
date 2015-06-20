@@ -60,7 +60,6 @@ int main(void) {
         int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c) + 1;
         cerr << score << endl;
 
-
         bool found = false;
         for(auto &it : W[2]) {
             int ts = score - it.second;
@@ -76,5 +75,6 @@ int main(void) {
             }
             if(found) break;
         }
+        cerr << found << endl;
     }
 }
