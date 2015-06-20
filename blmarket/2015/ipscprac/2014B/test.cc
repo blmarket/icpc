@@ -33,17 +33,20 @@ void process(void) {
     for(int i=0;i<n;i++) {
         scanf("%lld", &board[i]);
     }
+    for(int i=0;i<43;i++) {
+        scanf("%lld", &x[i]);
+    }
 
     int m;
     char moves[5005];
     scanf("%d", &m);
     scanf(" %s", moves);
+    cerr << moves << endl;
     for(int i=0;i<m;i++) {
         if(moves[i] == 'r') {
             reverse(board.begin(), board.end());
         } else if(moves[i] == 'l') {
         } else {
-            cerr << moves[i] << endl;
             throw 1;
         }
 
