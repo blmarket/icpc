@@ -32,6 +32,8 @@ void process(void) {
     scanf("%d %d", &n, &m);
     for(int i=0;i<=n;i++) {
         group[0][i] = group[1][i] = i;
+        descendants[0][i].clear();
+        descendants[1][i].clear();
         descendants[0][i].pb(i);
         descendants[1][i].pb(i);
     }
