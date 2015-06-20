@@ -27,7 +27,7 @@ long long next() {
 int n;
 vector<long long> board;
 
-void move(bool right) {
+void move(vector<long long> &board, bool right) {
     vector<long long> pboard = board;
     if(right)
         reverse(board.begin(), board.end());
@@ -73,7 +73,7 @@ void process(void) {
     scanf("%d", &m);
     scanf(" %s", moves);
     for(int i=0;i<m;i++) {
-        move(moves[i] == 'r');
+        move(board, moves[i] == 'r');
     }
 
     for(int i=0;i<n;i++) {
