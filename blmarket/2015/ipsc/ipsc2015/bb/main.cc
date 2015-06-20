@@ -56,4 +56,5 @@ int main(void) {
         int score = find(W[0], a)+ find(W[1], b)+ find(W[2], c);
         scores.pb(score);
     }
+    return 0;
 }
