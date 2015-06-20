@@ -17,7 +17,7 @@ vector<int> descendants[2][10005];
 void merge(int a, int b, int c) {
     int ng = group[a][c];
 
-    cout << a << " " << group[a][b] << endl;
+    cout << a << " = " << group[a][b] << endl;
     auto &V = descendants[a][group[a][b]];
     for(auto &it: V) {
         cout << it << " ";
