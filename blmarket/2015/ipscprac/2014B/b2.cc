@@ -90,6 +90,7 @@ long long calc(int pos, vector<LL> board) {
 }
 
 void process(void) {
+    memo.clear();
     scanf("%d", &n);
     vector<long long> board;
     board.resize(n);
