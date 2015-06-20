@@ -1,10 +1,14 @@
 #include <iostream>
 #include <vector>
-#include <unordered_set>
+#include <set>
+
+#define pb push_back
 
 using namespace std;
 
 template<typename T> int size(const T &a) { return a.size(); }
+
+typedef long long LL;
 
 long long x[50];
 int c[50];
@@ -25,7 +29,6 @@ long long next() {
 }
 
 int n;
-vector<long long> board;
 
 void move(vector<long long> &board, bool right) {
     vector<long long> pboard = board;
@@ -53,11 +56,13 @@ void move(vector<long long> &board, bool right) {
     }
 
     board.swap(tmp);
-
 }
+
+set<vector<long long> > memo;
 
 void process(void) {
     scanf("%d", &n);
+    vector<long long> board;
     board.resize(n);
     for(int i=0;i<n;i++) {
         long long tmp;
@@ -68,18 +73,31 @@ void process(void) {
         scanf("%lld", &x[i]);
     }
 
-    int m;
-    char moves[5005];
-    scanf("%d", &m);
-    scanf(" %s", moves);
-    for(int i=0;i<m;i++) {
-        move(board, moves[i] == 'r');
+    memo.insert(board);
+    vector<vector<LL> > b[2];
+    b[0].pb(board);
+    for(int i=0;;i = !i) {
+        cout << i << endl;
+        if(b[i].size() == 0) {
+            i = !i;
+            break;
+        }
+        b[!i].clear();
+        for(const auto &jt : b[i]) {
+            vector<LL> tmp = jt;
+            move(tmp, false);
+            if(memo.count(tmp) == 0) {
+                memo.insert(tmp);
+                b[!i].pb(tmp);
+            }
+            tmp = jt;
+            move(tmp, true);
+            if(memo.count(tmp) == 0) {
+                memo.insert(tmp);
+                b[!i].pb(tmp);
+            }
+        }
     }
-
-    for(int i=0;i<n;i++) {
-        cout << board[i] << " ";
-    }
-    cout << endl;
 }
 
 int main(void) {
