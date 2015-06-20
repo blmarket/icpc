@@ -44,6 +44,7 @@ void process(void) {
     scanf("%d", &m);
     scanf(" %s", moves);
     for(int i=0;i<m;i++) {
+        vector<long long> pboard = board;
         for(int j=0;j<size(board);j++) cout << board[j] << " ";
         cout << endl;
         if(moves[i] == 'r') {
@@ -66,8 +67,7 @@ void process(void) {
         tmp.resize(board.size());
         if(moves[i] == 'r') reverse(tmp.begin(), tmp.end());
 
-        cout << (tmp == board) << endl;
-        if(tmp != board && nempty > 0) {
+        if(tmp != pboard && nempty > 0) {
             cout << "ADD oNE" << endl;
             int pos = next() % nempty;
             int value = (next() % 10) == 0 ? 4 : 2;
