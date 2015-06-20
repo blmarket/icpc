@@ -76,7 +76,8 @@ void process(void) {
     memo.insert(board);
     vector<vector<LL> > b[2];
     b[0].pb(board);
-    for(int i=0;;i = !i) {
+    int i;
+    for(i=0;;i = !i) {
         cout << i << endl;
         if(b[i].size() == 0) {
             i = !i;
@@ -98,6 +99,12 @@ void process(void) {
             }
         }
     }
+
+    LL sum = 0;
+    vector<LL> tmp = b[i][0];
+    for(auto it:tmp) sum += it;
+    cout << sum << endl;
+
 }
 
 int main(void) {
