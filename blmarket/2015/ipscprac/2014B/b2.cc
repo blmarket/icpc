@@ -33,7 +33,7 @@ long long next(int idx) {
 
 int n;
 
-long long move(vector<long long> &board, bool right, int rp) {
+long long move(vector<long long> &board, bool right, int &rp) {
     long long ret = 0;
     vector<long long> pboard = board;
     if(right)
@@ -58,6 +58,7 @@ long long move(vector<long long> &board, bool right, int rp) {
         int value = (next(rp + 1) % 10) == 0 ? 4 : 2;
         if(!right) pos += (n - nempty);
         tmp[pos] = value;
+        rp += 2;
     }
 
     board.swap(tmp);
@@ -79,12 +80,14 @@ long long calc(int pos, vector<LL> board) {
     memo[key] = -1;
 
     vector<LL> tmp = board;
+    int tp = pos;
 
-    long long ret = move(tmp, false, pos);
-    ret += calc(pos + 2, tmp);
+    long long ret = move(tmp, false, tp);
+    ret += calc(tp, tmp);
 
-    long long tmp2 = move(board, true, pos);
-    tmp2 += calc(pos + 2, board);
+    tp = pos;
+    long long tmp2 = move(board, true, tp);
+    tmp2 += calc(tp, board);
 
     return memo[key] = max(ret, tmp2);
 }
