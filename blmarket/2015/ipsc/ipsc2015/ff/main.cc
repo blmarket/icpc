@@ -27,7 +27,11 @@ void merge(int a, int b, int c) {
 void process(void) {
     int n,m;
     scanf("%d %d", &n, &m);
-    for(int i=0;i<=n;i++) group[0][i] = group[1][i] = i;
+    for(int i=0;i<=n;i++) {
+        group[0][i] = group[1][i] = i;
+        descendants[0][i].pb(i);
+        descendants[1][i].pb(i);
+    }
 
     long long ret = 0;
 
