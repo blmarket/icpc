@@ -10,27 +10,27 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 typedef long long LL;
 
-long long x[50];
-int c[50];
+long long x[5000];
+int c;
 
 long long mod(long long a) {
     return a % (1LL << 32);
 }
 
-int it = 43;
-long long next() {
-    x[it] = x[(it-22+50)%50] - x[(it-43+50)%50] - c[(it-1+50)%50];
-    c[it] = x[it] < 0 ? 1 : 0;
-    x[it] += c[it] * (1LL << 32);
+int it;
+long long next(int idx) {
+    while(it <= idx) {
+        x[it] = x[(it-22+50)%50] - x[(it-43+50)%50] - c;
+        c = x[it] < 0 ? 1 : 0;
+        x[it] += c * (1LL << 32);
+    }
 
-    long long ret = x[it];
-    it = (it+1) % 50;
-    return ret;
+    return x[idx];
 }
 
 int n;
 
-void move(vector<long long> &board, bool right) {
+void move(vector<long long> &board, bool right, int rp) {
     vector<long long> pboard = board;
     if(right)
         reverse(board.begin(), board.end());
@@ -49,8 +49,8 @@ void move(vector<long long> &board, bool right) {
     if(right) reverse(tmp.begin(), tmp.end());
 
     if(tmp != pboard && nempty > 0) {
-        int pos = next() % nempty;
-        int value = (next() % 10) == 0 ? 4 : 2;
+        int pos = next(rp) % nempty;
+        int value = (next(rp + 1) % 10) == 0 ? 4 : 2;
         if(!right) pos += (n - nempty);
         tmp[pos] = value;
     }
@@ -72,15 +72,16 @@ void process(void) {
     for(int i=0;i<43;i++) {
         scanf("%lld", &x[i]);
     }
+    c = 0; it = 43;
 
     memo.insert(board);
     vector<vector<LL> > b[2];
-    b[0].pb(board);
-    int i;
-    for(i=0;;i = !i) {
-        cout << i << endl;
+    b[1].pb(board);
+    int ii;
+    for(ii=0;;ii++) {
+        int i = (ii % 2);
         if(b[i].size() == 0) {
-            i = !i;
+            ii--;
             break;
         }
         b[!i].clear();
@@ -91,13 +92,13 @@ void process(void) {
             }
             cout << endl;
             vector<LL> tmp = jt;
-            move(tmp, false);
+            move(tmp, false, 43+2*ii);
             if(memo.count(tmp) == 0) {
                 memo.insert(tmp);
                 b[!i].pb(tmp);
             }
             tmp = jt;
-            move(tmp, true);
+            move(tmp, true, 43+2*ii);
             if(memo.count(tmp) == 0) {
                 memo.insert(tmp);
                 b[!i].pb(tmp);
@@ -106,7 +107,7 @@ void process(void) {
     }
 
     LL sum = 0;
-    vector<LL> tmp = b[i][0];
+    vector<LL> tmp = b[ii][0];
     for(auto it:tmp) {
         cout << it << " ";
         sum += it;
