@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <unordered_set>
 
 using namespace std;
@@ -21,12 +22,41 @@ long long next() {
     return ret;
 }
 
+int n;
+vector<long long> board;
+
+void process(void) {
+    scanf("%d", &n);
+    board.resize(n);
+    for(int i=0;i<n;i++) {
+        scanf("%lld", &board[i]);
+    }
+
+    int m;
+    char moves[5005];
+    scanf("%d", &m);
+    scanf(" %s", moves);
+    for(int i=0;i<m;i++) {
+        if(moves[i] == 'r') {
+        } else if(moves[i] == 'l') {
+        } else {
+            throw 1;
+        }
+    }
+}
+
 int main(void) {
+    int T;
+    scanf("%d", &T);
+    for(int i=0;i<T;i++) process();
+
+
+
     for(int i=0;i<=42;i++) {
         x[i] = mod(mod(mod(i*i)*i)*999999999LL);
     }
-
     int it = 43;
+
 
     for(int i=0;i<10;i++) {
         cout << next() << endl;
