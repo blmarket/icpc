@@ -50,9 +50,11 @@ void process(void) {
 
         long long sum = 0;
         for(auto &it: MM) {
+            cout << it.second << " ";
             sum += (long long)it.second * (it.second-1) / 2;
             if(sum >= mod) sum -= mod;
         }
+        cout << endl;
         ret += sum * (i+1);
         if(ret >= mod) ret %= mod;
     }
