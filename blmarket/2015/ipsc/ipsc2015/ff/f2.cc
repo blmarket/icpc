@@ -34,22 +34,24 @@ void process(void) {
         scanf("%d %d %d", &a, &b, &c);
         a--;b--;c--;
         int g1 = mf[a][b], g2 = mf[a][c];
-        if(gmf[a][g1].size() < gmf[a][g2].size()) {
-            swap(g1, g2);
-        }
-
-        for(auto &it: gmf[a][g2]) {
-            pair<int, int> cg = mp(mf[0][it], mf[1][it]);
-            mf[a][it] = g1;
-            gmf[a][g1].pb(it);
-            pair<int, int> ng = mp(mf[0][it], mf[1][it]);
-            cout << "::" << cg.first << " " << cg.second << " -> " << ng.first << " " << ng.second << endl;
-            if(--MM[cg] == 0) {
-                MM.erase(cg);
+        if(g1 != g2) {
+            if(gmf[a][g1].size() < gmf[a][g2].size()) {
+                swap(g1, g2);
             }
-            MM[ng]++;
+
+            for(auto &it: gmf[a][g2]) {
+                pair<int, int> cg = mp(mf[0][it], mf[1][it]);
+                mf[a][it] = g1;
+                gmf[a][g1].pb(it);
+                pair<int, int> ng = mp(mf[0][it], mf[1][it]);
+                cout << "::" << cg.first << " " << cg.second << " -> " << ng.first << " " << ng.second << endl;
+                if(--MM[cg] == 0) {
+                    MM.erase(cg);
+                }
+                MM[ng]++;
+            }
+            gmf[a][g2].clear();
         }
-        gmf[a][g2].clear();
 
         long long sum = 0;
         for(auto &it: MM) {
