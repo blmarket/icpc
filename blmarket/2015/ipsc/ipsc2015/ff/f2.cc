@@ -37,6 +37,7 @@ void process(void) {
         }
 
         for(auto &it: gmf[a][g2]) {
+            cout << it << " -> " << g1 << endl;
             pair<int, int> cg = mp(mf[0][it], mf[1][it]);
             mf[a][it] = g1;
             gmf[a][g1].pb(it);
