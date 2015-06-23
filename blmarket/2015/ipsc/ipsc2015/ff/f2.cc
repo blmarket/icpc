@@ -43,6 +43,7 @@ void process(void) {
             mf[a][it] = g1;
             gmf[a][g1].pb(it);
             pair<int, int> ng = mp(mf[0][it], mf[1][it]);
+            cout << "::" << cg.first << " " << cg.second << " -> " << ng.first << " " << ng.second << endl;
             if(--MM[cg] == 0) {
                 MM.erase(cg);
             }
