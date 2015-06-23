@@ -39,7 +39,6 @@ void process(void) {
         }
 
         for(auto &it: gmf[a][g2]) {
-            cout << it << " -> " << g1 << endl;
             pair<int, int> cg = mp(mf[0][it], mf[1][it]);
             mf[a][it] = g1;
             gmf[a][g1].pb(it);
@@ -53,11 +52,9 @@ void process(void) {
 
         long long sum = 0;
         for(auto &it: MM) {
-            cout << it.second << " ";
             sum += (long long)it.second * (it.second-1) / 2;
             if(sum >= mod) sum -= mod;
         }
-        cout << endl;
         ret += sum * (i+1);
         if(ret >= mod) ret %= mod;
     }
