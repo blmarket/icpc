@@ -62,7 +62,7 @@ void process(void) {
             gmf[a][g2].clear();
         }
 
-        cerr << "sum = " << sum << " " << MM.size() << endl;
+        // cerr << "sum = " << sum << " " << MM.size() << endl;
         ret += sum * (i+1);
         if(ret >= mod) ret %= mod;
     }
