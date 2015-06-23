@@ -25,6 +25,8 @@ void process(void) {
         MM[mp(i,i)] = 1;
     }
 
+    long long ret = 0;
+
     for(int i=0;i<m;i++) {
         int a,b,c;
         scanf("%d %d %d", &a, &b, &c);
@@ -46,10 +48,15 @@ void process(void) {
         }
         gmf[a][g2].clear();
 
+        long long sum = 0;
         for(auto &it: MM) {
-            cout << it.first.first << "," << it.first.second << " = " << it.second << endl;
+            sum += (long long)it.second * (it.second-1) / 2;
+            if(sum >= mod) sum -= mod;
         }
+        ret += sum * (i+1);
+        if(ret >= mod) ret %= mod;
     }
+    cout << ret << endl;
 }
 
 int main(void) {
