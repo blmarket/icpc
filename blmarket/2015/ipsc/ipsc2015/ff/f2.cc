@@ -54,7 +54,7 @@ void process(void) {
                 }
                 tmp = MM[ng];
                 sum -= tmp*(tmp-1)/2;
-                sum += (tmp+1)*(tmp+2)/2;
+                sum += tmp*(tmp+1)/2;
                 MM[ng]++;
                 sum %= mod;
                 if(sum < 0) sum += mod;
