@@ -23,6 +23,8 @@ void process(void) {
     for(int i=0;i<n;i++) {
         mf[0][i] = mf[1][i] = i;
         MM[mp(i,i)] = 1;
+        gmf[0][i].pb(i);
+        gmf[1][i].pb(i);
     }
 
     long long ret = 0;
