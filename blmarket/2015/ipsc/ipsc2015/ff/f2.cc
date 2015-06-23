@@ -55,7 +55,7 @@ void process(void) {
             sum += (long long)it.second * (it.second-1) / 2;
             if(sum >= mod) sum -= mod;
         }
-        cout << "sum = " << sum << endl;
+        cout << "sum = " << sum << " " << MM.size() << endl;
         ret += sum * (i+1);
         if(ret >= mod) ret %= mod;
     }
