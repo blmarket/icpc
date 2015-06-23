@@ -62,6 +62,7 @@ void process(void) {
         ret += sum * (i+1);
         if(ret >= mod) ret %= mod;
     }
+    cerr << n << " " << m << endl;
     cout << ret << endl;
 }
 
