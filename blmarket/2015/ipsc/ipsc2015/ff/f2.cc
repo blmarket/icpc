@@ -28,6 +28,7 @@ void process(void) {
     }
 
     long long ret = 0;
+    long long sum = 0;
 
     for(int i=0;i<m;i++) {
         int a,b,c;
@@ -45,19 +46,22 @@ void process(void) {
                 gmf[a][g1].pb(it);
                 pair<int, int> ng = mp(mf[0][it], mf[1][it]);
                 // cout << "::" << cg.first << " " << cg.second << " -> " << ng.first << " " << ng.second << endl;
+                long long tmp = MM[cg];
+                sum -= tmp*(tmp-1)/2;
+                sum += (tmp-1)*(tmp-2)/2;
                 if(--MM[cg] == 0) {
                     MM.erase(cg);
                 }
+                tmp = MM[ng];
+                sum -= tmp*(tmp-1)/2;
+                sum += (tmp+1)*(tmp+2)/2;
                 MM[ng]++;
+                sum %= mod;
+                if(sum < 0) sum += mod;
             }
             gmf[a][g2].clear();
         }
 
-        long long sum = 0;
-        for(auto &it: MM) {
-            sum += (long long)it.second * (it.second-1) / 2;
-            if(sum >= mod) sum -= mod;
-        }
         // cout << "sum = " << sum << " " << MM.size() << endl;
         ret += sum * (i+1);
         if(ret >= mod) ret %= mod;
