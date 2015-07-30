@@ -21,5 +21,7 @@ struct Grader {
     }
 };
 
+Grader g;
+
 int main(void) {
 }
