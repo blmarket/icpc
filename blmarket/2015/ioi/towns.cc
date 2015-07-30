@@ -24,4 +24,5 @@ struct Grader {
 Grader g;
 
 int main(void) {
+    cout << g.getDist(0, 1) << endl;
 }
