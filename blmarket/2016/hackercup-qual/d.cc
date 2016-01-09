@@ -60,6 +60,13 @@ struct tri {
         //}
         //cout << endl;
     }
+
+    void cleanup() {
+        for(int i=0;i<26;i++) if(child[i]) {
+            child[i]->cleanup();
+            delete child[i];
+        }
+    }
 };
 
 tri *root;
@@ -90,6 +97,9 @@ void process(void) {
     }
     root->calc();
     cout << root->cost[K] << endl;
+
+    root->cleanup();
+    delete root;
 }
 
 int main(void) {
