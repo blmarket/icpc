@@ -54,11 +54,11 @@ struct tri {
                 }
             }
         }
-        cout << tag << " ";
-        for(int i=1;i<=K;i++) {
-            cout << cost[i] << " ";
-        }
-        cout << endl;
+        //cout << tag << " ";
+        //for(int i=1;i<=K;i++) {
+        //    cout << cost[i] << " ";
+        //}
+        //cout << endl;
     }
 };
 
