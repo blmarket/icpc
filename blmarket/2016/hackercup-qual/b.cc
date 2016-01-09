@@ -33,6 +33,9 @@ void process(void) {
     scanf(" %s", r[0]);
     scanf(" %s", r[1]);
 
+    r[0][N] = r[1][N] = 'X';
+    N++;
+
     int p[2] = {0,0};
     int ret = 0;
     for(int i=0;i<N;i++) {
