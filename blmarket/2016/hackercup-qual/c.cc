@@ -47,6 +47,8 @@ void process(void) {
             j++;
         }
 
+        cerr << j-i << " ";
+
         ret += (long long)(j-i) * (j-i+1) / 2;
         
         ssum -= data[i];
