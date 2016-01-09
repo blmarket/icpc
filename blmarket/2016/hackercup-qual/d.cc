@@ -30,10 +30,15 @@ int N, K;
 struct tri {
     tri *child[26] = {0};
     int nc = 0;
-    int cost[305] = {0};
+    int cost[305];
+
+    tri() {
+        memset(cost, -1, sizeof(cost));
+    }
 
     void calc() {
         for(int i=0;i<26;i++) {
+            if(child[i]) child[i]->calc();
         }
     }
 };
