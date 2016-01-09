@@ -39,7 +39,6 @@ struct tri {
     }
 
     void calc() {
-        cout << tag << endl;
         if(nc == 0) {
             cost[1] = 1;
             return;
@@ -55,6 +54,11 @@ struct tri {
                 }
             }
         }
+        cout << tag << " ";
+        for(int i=1;i<=K;i++) {
+            cout << cost[i] << " ";
+        }
+        cout << endl;
     }
 };
 
