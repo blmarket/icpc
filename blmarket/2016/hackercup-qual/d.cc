@@ -27,6 +27,13 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 struct tri {
     tri *child[26] = {0};
+    int nc = 0;
+    int cost[305] = {0};
+
+    void calc() {
+        for(int i=0;i<26;i++) {
+        }
+    }
 };
 
 int N, K;
@@ -34,6 +41,12 @@ tri *root;
 
 void build(char *cur, tri *tr) {
     if(*cur == 0) return;
+    tr->nc++;
+    int idx = *cur - 'a';
+    if(tr->child[idx] == 0) {
+        tr->child[idx] = new tri();
+    }
+    build(cur + 1, tr->child[idx]);
 }
 
 void process(void) {
@@ -46,6 +59,7 @@ void process(void) {
         scanf(" %s", tmp);
         build(tmp, root);
     }
+    root->calc();
 }
 
 int main(void) {
