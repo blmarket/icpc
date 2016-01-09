@@ -28,6 +28,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N, K;
 
 struct tri {
+    string tag;
     tri *child[26] = {0};
     int nc = 0;
     int cost[305];
@@ -48,6 +49,8 @@ struct tri {
                 }
             }
         }
+
+        cout << tag << endl;
     }
 };
 
@@ -59,6 +62,7 @@ void build(char *cur, tri *tr) {
     int idx = *cur - 'a';
     if(tr->child[idx] == 0) {
         tr->child[idx] = new tri();
+        tr->child[idx]->tag = tr->tag + *cur;
     }
     build(cur + 1, tr->child[idx]);
 }
