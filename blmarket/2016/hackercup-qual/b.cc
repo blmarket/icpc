@@ -66,6 +66,7 @@ void process(void) {
                 p[1] = -1;
             }
         }
+        p[0] = 0;
 
         if(r[1][i] == 'X') {
             swap(p[0], p[1]);
