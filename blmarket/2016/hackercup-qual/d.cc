@@ -32,6 +32,7 @@ struct tri {
     tri *child[26] = {0};
     int nc = 0;
     int cost[305];
+    bool leaf = false;
 
     tri() {
         memset(cost, -1, sizeof(cost));
@@ -39,9 +40,8 @@ struct tri {
     }
 
     void calc() {
-        if(nc == 0) {
+        if (leaf) {
             cost[1] = 1;
-            return;
         }
         for(int i=0;i<26;i++) {
             if(!child[i]) continue;
@@ -65,7 +65,10 @@ struct tri {
 tri *root;
 
 void build(char *cur, tri *tr) {
-    if(*cur == 0) return;
+    if(*cur == 0) {
+        tr->leaf = true;
+        return;
+    }
     tr->nc++;
     int idx = *cur - 'a';
     if(tr->child[idx] == 0) {
