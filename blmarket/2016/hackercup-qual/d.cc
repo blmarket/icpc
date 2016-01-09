@@ -25,6 +25,8 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int N, K;
+
 struct tri {
     tri *child[26] = {0};
     int nc = 0;
@@ -36,7 +38,6 @@ struct tri {
     }
 };
 
-int N, K;
 tri *root;
 
 void build(char *cur, tri *tr) {
