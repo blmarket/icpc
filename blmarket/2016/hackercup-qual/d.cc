@@ -39,6 +39,7 @@ struct tri {
     }
 
     void calc() {
+        cout << "h1" << endl;
         for(int i=0;i<26;i++) {
             if(child[i]) child[i]->calc();
             for(int j=min(nc, K);j>=1;j--) {
