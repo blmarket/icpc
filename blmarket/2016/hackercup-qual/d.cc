@@ -47,7 +47,7 @@ struct tri {
             if(!child[i]) continue;
             child[i]->calc();
             for(int j=min(nc, K);j>=1;j--) {
-                for(int k=0;k<j;k++) {
+                for(int k=0;k<=j;k++) {
                     if(cost[k] < 0 || child[i]->cost[j-k] < 0) continue;
                     int tmp = cost[k] + 2 + child[i]->cost[j-k];
                     if(cost[j] < 0 || cost[j] > tmp) cost[j] = tmp;
