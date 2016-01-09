@@ -47,7 +47,7 @@ void process(void) {
             j++;
         }
 
-        cerr << j-i << " ";
+        // cerr << j-i << " ";
 
         ret += j-i;
         
