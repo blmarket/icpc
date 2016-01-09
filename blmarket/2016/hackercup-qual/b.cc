@@ -36,7 +36,7 @@ void process(void) {
     int p[2] = {0,0};
     int ret = 0;
     for(int i=0;i<N;i++) {
-        cout << i << " " << p[0] << " " << p[1] << endl;
+        cout << i << " " << ret << " " << p[0] << " " << p[1] << endl;
         if(r[0][i] == '.' && r[1][i] == '.') {
             if(p[0]>=0) p[0]++;
             if(p[1]>=0) p[1]++;
