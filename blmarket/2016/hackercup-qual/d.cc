@@ -39,9 +39,9 @@ struct tri {
     }
 
     void calc() {
-        cout << "h1" << endl;
         for(int i=0;i<26;i++) {
-            if(child[i]) child[i]->calc();
+            if(!child[i]) continue;
+            child[i]->calc();
             for(int j=min(nc, K);j>=1;j--) {
                 for(int k=0;k<j;k++) {
                     if(cost[k] < 0 || child[i]->cost[j-k] < 0) continue;
