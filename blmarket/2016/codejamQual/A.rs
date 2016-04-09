@@ -18,7 +18,8 @@ fn process(ncase: u32) {
 
   for i in 1..100 {
     let tmp = N * i;
-    println!("{}", tmp);
+    let ss = format!("{}", tmp);
+    println!("{}", ss);
   }
 }
 
