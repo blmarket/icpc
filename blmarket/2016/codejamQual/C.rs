@@ -58,6 +58,7 @@ fn main() {
         }
       }
       if !found {
+        dbg(base);
         fail = true;
         break;
       }
