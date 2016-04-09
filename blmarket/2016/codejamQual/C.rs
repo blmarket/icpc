@@ -41,15 +41,9 @@ fn genmask(r: Vec<i32>) -> Vec<Vec<i32>> {
   return ret;
 }
 
-fn gen(r: Range<i32>, m: i32, p: i32) {
-  let c: Vec<i32> = r.clone().map(|x| pmod(m, x, p)).collect();
-  
-  dbg(c);
-}
-
 fn main() {
-  // let primes = vec![3,5,7,11,13,17,23];
-  let primes = vec![11];
+  let primes: Vec<i32> = vec![3,5,7,11,13,17,23];
+  // let primes = vec![11];
 
   let N = 16;
 
@@ -58,4 +52,15 @@ fn main() {
 
   let m1 = genmask(r1.clone().collect());
   let m2 = genmask(r2.clone().collect());
+
+  let base = 2..11;
+
+  m1.iter().map(|v| {
+    primes.iter().map(|p| {
+      let tmp: Vec<Vec<i32>> = base.clone().map(|b| {
+        return v.iter().map(|x| pmod(b, *x, *p)).collect::<Vec<i32>>();
+      }).collect();
+      dbg(tmp);
+    });
+  });
 }
