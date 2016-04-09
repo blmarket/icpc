@@ -23,5 +23,5 @@ fn main() {
   let r1 = 1..8;
   let r2 = 8..15;
 
-  dbg(2^5);
+  dbg(r1.count());
 }
