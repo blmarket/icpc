@@ -45,7 +45,7 @@ fn main() {
   // let primes: Vec<i32> = vec![3,5,7,11,13,17,23];
   let primes = vec![3, 5];
 
-  let N = 16;
+  let N = 6;
 
   let r1 = 1..N/2;
   let r2 = N/2..N-1;
