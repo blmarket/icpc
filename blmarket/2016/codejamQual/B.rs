@@ -25,7 +25,6 @@ fn process(ncase: u32) {
       ret += 1;
     }
   }
-  dbg(v.last());
   match v.last() {
     Some(&'-') => ret += 1,
     Some(x) => (),
