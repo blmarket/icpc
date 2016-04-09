@@ -1,4 +1,5 @@
 use std::io;
+use std::ops::Range;
 use std::fmt::Debug;
 use std::fmt::Display;
 use std::str::FromStr;
@@ -17,11 +18,15 @@ fn process(ncase: u32) {
   println!("Case #{}: ", ncase);
 }
 
+fn gen(r: Range<i32>) {
+  let c = r.count();
+}
+
 fn main() {
   let primes = vec![3,5,7,11,13,17,23];
 
   let r1 = 1..8;
   let r2 = 8..15;
 
-  dbg(r1.count());
+  gen(r1);
 }
