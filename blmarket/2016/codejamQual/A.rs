@@ -25,7 +25,6 @@ fn process(ncase: u32) {
     let sss = ss.chars();
     for s in sss {
       mask |= (1 << (s as u32) - ('0' as u32));
-      println!("{}", mask);
     }
     if (mask == 1023) {
       println!("{}", ss);
