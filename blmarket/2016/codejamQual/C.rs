@@ -35,8 +35,10 @@ fn main() {
   // let primes = vec![3,5,7,11,13,17,23];
   let primes = vec![11];
 
-  let r1 = 1..8;
-  let r2 = 8..15;
+  let N = 16;
+
+  let r1 = 1..N/2;
+  let r2 = N/2..N-1;
 
   for p in primes {
     for i in 2..11 {
