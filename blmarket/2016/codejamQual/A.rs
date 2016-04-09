@@ -18,6 +18,7 @@ fn process(ncase: u32) {
 
   let mut mask: u32 = 0;
 
+  print!("Case #{}: ", ncase);
   for i in 1..100 {
     let tmp = N * i;
     let ss = format!("{}", tmp);
@@ -26,8 +27,11 @@ fn process(ncase: u32) {
       mask |= (1 << (s as u32) - ('0' as u32));
       println!("{}", mask);
     }
-    println!("{} {}", ss, mask);
+    if (mask == 1023) {
+      println!("{}", ss);
+    }
   }
+  println!("INSOMNIA");
 }
 
 fn main() {
