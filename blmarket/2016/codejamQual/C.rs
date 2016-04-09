@@ -45,7 +45,7 @@ fn main() {
     let mut divisor: Vec<i32> = vec![];
     for base in 2..11 {
       for p in primes.iter() {
-        let mut tmp:i32 = (1 + pmod(base, N-1, *p)) % *p;
+        let mut tmp:i32 = (1 + pmod(base, 31, *p)) % *p;
         for j in 0..c {
           if mask & (1<<j) != 0 {
             tmp = (tmp + pmod(base, r1[j as usize], *p)) % *p;
