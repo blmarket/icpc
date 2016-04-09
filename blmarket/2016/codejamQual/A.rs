@@ -26,7 +26,7 @@ fn process(ncase: u32) {
       mask |= (s as u32) - ('0' as u32);
       println!("{}", mask);
     }
-    println!("{}", mask);
+    println!("{} {}", ss, mask);
   }
 }
 
