@@ -34,8 +34,8 @@ fn genmask(r: Vec<i32>) -> Vec<Vec<i32>> {
 }
 
 fn main() {
-  // let primes: Vec<i32> = vec![3,5,7,11,13,17,23];
-  let primes = vec![3, 5];
+  let primes: Vec<i32> = vec![3,5,7,11,13,17,23];
+  // let primes = vec![3, 5];
 
   let N = 6;
 
