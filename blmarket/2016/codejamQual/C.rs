@@ -4,6 +4,7 @@ use std::ops::Range;
 use std::fmt::Debug;
 use std::fmt::Display;
 use std::str::FromStr;
+use std::cmp;
 
 fn read_line<T: FromStr + Clone>() -> T where <T as FromStr>::Err: Debug {
   let mut ret = String::new();
@@ -46,7 +47,7 @@ fn main() {
   // let N = 16;
 
   let r1 = (1..N-1).collect::<Vec<_>>();
-  let c = r1.len() as i32;
+  let c = cmp::min(r1.len() as i32, 16);
   println!("Case #1:");
   for mask in 0..(1<<c) {
     let mut divisor: Vec<i32> = vec![];
