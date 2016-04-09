@@ -18,12 +18,10 @@ fn process(ncase: u32) {
 }
 
 fn main() {
-  for i in 2..11 {
-    let mut ii: i64 = 1;
-    for j in 0..16 {
-      print!("{} ", ii % 5);
-      ii *= i;
-    }
-    println!("");
-  }
+  let primes = vec![3,5,7,11,13,17,23];
+
+  let r1 = 2..8;
+  let r2 = 8..16;
+
+  dbg(r1);
 }
