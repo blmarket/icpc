@@ -40,7 +40,7 @@ fn main() {
   let N = params[0];
   let mut J = params[1];
 
-  let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37,43];
+  let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37,43, 73];
   // let primes = vec![3, 5];
 
   // let N = 16;
