@@ -52,11 +52,11 @@ fn main() {
 
   let m1 = genmask(r1.clone().collect());
   let m2 = genmask(r2.clone().collect());
-  dbg(m1.clone());
 
   let base = 2..11;
 
   m1.iter().map(|v| {
+    dbg(v);
     primes.iter().map(|p| {
       let tmp: Vec<Vec<i32>> = base.clone().map(|b| {
         return v.iter().map(|x| pmod(b, *x, *p)).collect::<Vec<i32>>();
