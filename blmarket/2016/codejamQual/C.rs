@@ -53,7 +53,7 @@ fn main() {
             tmp = (tmp + pmod(base, r1[j as usize], *p));
           }
         }
-        println!("{} {}", base, tmp);
+        println!("{} {} {}", base, p, tmp);
         if tmp == 0 {
           found = true;
           break;
