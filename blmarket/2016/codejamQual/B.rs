@@ -19,7 +19,7 @@ fn process(ncase: u32) {
   let v: Vec<char> = S.chars().collect();
 
   for s in v.windows(2) {
-    dbg(s);
+    dbg(s[0]);
   }
 }
 
