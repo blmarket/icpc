@@ -56,7 +56,7 @@ fn main() {
   let base = 2..11;
 
   let rr1 = m1.iter().map(|v| {
-    primes.iter().map(|p| {
+    return primes.iter().map(|p| {
       let tmp = base.clone().map(|b| {
         return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
       }).collect::<Vec<_>>();
