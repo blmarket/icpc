@@ -42,10 +42,8 @@ fn main() {
   let r1 = (1..N-1).collect::<Vec<_>>();
   let c = r1.len() as i32;
   for mask in 0..(1<<c) {
-    // dbg(mask);
-    let mut fail: bool = false;
+    let mut divisor: Vec<i32> = vec![];
     for base in 2..11 {
-      let mut found: bool = false;
       for p in primes.iter() {
         let mut tmp:i32 = (1 + pmod(base, N-1, *p)) % *p;
         for j in 0..c {
@@ -55,16 +53,15 @@ fn main() {
         }
         // println!("{} {} {}", base, p, tmp);
         if tmp == 0 {
-          found = true;
+          divisor.push(*p);
           break;
         }
       }
-      if !found {
-        fail = true;
+      if divisor.len() as i32 != (base as i32) - 1 {
         break;
       }
     }
-    if !fail { 
+    if divisor.len() == 9 { 
       dbg(mask);
     }
   }
