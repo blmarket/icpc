@@ -57,10 +57,9 @@ fn main() {
 
   m1.iter().map(|v| {
     primes.iter().map(|p| {
-      let tmp: Vec<Vec<i32>> = base.clone().map(|b| {
-        return v.iter().map(|x| pmod(b, *x, *p)).collect::<Vec<i32>>();
+      let tmp = base.clone().map(|b| {
+        return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
       }).collect::<Vec<_>>();
-      println!("{}", p);
       dbg(tmp.clone());
       return tmp;
     }).collect::<Vec<_>>();
