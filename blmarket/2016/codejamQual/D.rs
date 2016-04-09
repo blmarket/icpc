@@ -36,15 +36,9 @@ fn process(ncase: u32) {
     let mut v: Vec<i32> = vec![];
     for j in 0..C {
       v.push(it % K);
-      if (it < K) {
-        it += 1;
-      }
     }
 
     print!("{} ", gen(K, &v, 0, 0) + 1);
-    if (it == K) {
-      break;
-    }
   }
   println!("");
 }
