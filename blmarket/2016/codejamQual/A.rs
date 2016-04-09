@@ -24,6 +24,7 @@ fn process(ncase: u32) {
     let sss = ss.chars();
     for s in sss {
       mask |= (s as u32) - ('0' as u32);
+      println!("{}", mask);
     }
     println!("{}", mask);
   }
