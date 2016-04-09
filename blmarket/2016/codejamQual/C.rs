@@ -1,4 +1,5 @@
 use std::io;
+use std::collections::HashMap;
 use std::ops::Range;
 use std::fmt::Debug;
 use std::fmt::Display;
@@ -29,15 +30,6 @@ fn pmod(mul: i32, pow: i32, m: i32) -> i32 {
 fn genmask(r: Vec<i32>) -> Vec<Vec<i32>> {
   let mut ret: Vec<Vec<i32>> = vec![];
   let c: i32 = r.len() as i32;
-  for i in 0..(1<<c) {
-    let mut tmp: Vec<i32> = vec![];
-    for j in 0..c {
-      if i & (1<<j) != 0 {
-        tmp.push(r[j as usize]);
-      }
-    }
-    ret.push(tmp);
-  }
   return ret;
 }
 
@@ -47,25 +39,31 @@ fn main() {
 
   let N = 6;
 
-  let r1 = 1..N/2;
-  let r2 = N/2..N-1;
-
-  let m1 = genmask(r1.clone().collect());
-  let m2 = genmask(r2.clone().collect());
-
-  let base = 2..11;
-
-  for b in base {
-    for p in primes.clone() {
-      for it in m1.clone() {
-        let vv = it .iter().map(|x| pmod(b, *x, p)).fold(0, |a,b| (a+b) % p);
-        dbg(vv);
+  let r1 = (1..N-1).collect::<Vec<_>>();
+  let c = r1.len() as i32;
+  for mask in 0..(1<<c) {
+    let mut fail: bool = false;
+    for base in 2..11 {
+      let mut found: bool = false;
+      for p in primes.iter() {
+        let mut tmp:i32 = (1 + pmod(base, N, *p)) % *p;
+        for j in 0..c {
+          if mask & (1<<j) != 0 {
+            tmp = (tmp + pmod(base, r1[j as usize], *p));
+          }
+        }
+        if tmp == 0 {
+          found = true;
+          break;
+        }
       }
-
-      for it in m2.clone() {
-        let vv = it .iter().map(|x| pmod(b, *x, p)).fold(0, |a,b| (a+b) % p);
-        dbg(vv);
+      if !found {
+        fail = true;
+        break;
       }
+    }
+    if !fail { 
+      dbg(mask);
     }
   }
 }
