@@ -40,14 +40,14 @@ fn main() {
   let N = params[0];
   let mut J = params[1];
 
-  let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37];
+  let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37, 43];
   // let primes = vec![3, 5];
 
   // let N = 16;
 
   let r1 = (1..N-1).collect::<Vec<_>>();
   let c = r1.len() as i32;
-  for mask in 1..(1<<c) {
+  for mask in 0..(1<<c) {
     let mut divisor: Vec<i32> = vec![];
     for base in 2..11 {
       for p in primes.iter() {
