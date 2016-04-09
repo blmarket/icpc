@@ -50,7 +50,7 @@ fn main() {
         let mut tmp:i32 = (1 + pmod(base, N-1, *p)) % *p;
         for j in 0..c {
           if mask & (1<<j) != 0 {
-            tmp = (tmp + pmod(base, r1[j as usize], *p));
+            tmp = (tmp + pmod(base, r1[j as usize], *p)) % *p;
           }
         }
         println!("{} {} {}", base, p, tmp);
