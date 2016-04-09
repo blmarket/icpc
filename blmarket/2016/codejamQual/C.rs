@@ -47,7 +47,7 @@ fn main() {
     for base in 2..11 {
       let mut found: bool = false;
       for p in primes.iter() {
-        let mut tmp:i32 = (1 + pmod(base, N, *p)) % *p;
+        let mut tmp:i32 = (1 + pmod(base, N-1, *p)) % *p;
         for j in 0..c {
           if mask & (1<<j) != 0 {
             tmp = (tmp + pmod(base, r1[j as usize], *p));
