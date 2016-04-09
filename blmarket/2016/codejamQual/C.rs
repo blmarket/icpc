@@ -34,10 +34,15 @@ fn genmask(r: Vec<i32>) -> Vec<Vec<i32>> {
 }
 
 fn main() {
+  read_line::<String>();
+  let params: Vec<i32> = read_line::<String>()
+    .split(" ").map(|x| x.parse::<i32>().unwrap()).collect();
+  let (N, J) = (params[0], params[1]);
+
   let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37];
   // let primes = vec![3, 5];
 
-  let N = 16;
+  // let N = 16;
 
   let r1 = (1..N-1).collect::<Vec<_>>();
   let c = r1.len() as i32;
