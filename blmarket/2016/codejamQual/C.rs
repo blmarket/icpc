@@ -55,16 +55,15 @@ fn main() {
 
   let base = 2..11;
 
-  m1.iter().map(|v| {
+  let rr1 = m1.iter().map(|v| {
     primes.iter().map(|p| {
       let tmp = base.clone().map(|b| {
         return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
       }).collect::<Vec<_>>();
-      dbg(tmp.clone());
       return (p, tmp);
     }).collect::<Vec<_>>();
-    return 1;
-  }).collect::<Vec<i32>>();
+  }).collect::<Vec<_>>();
+  dbg(rr1);
   println!("");
 
   m2.iter().map(|v| {
