@@ -68,9 +68,12 @@ fn main() {
       }
     }
     if divisor.len() == 9 { 
+      print!("1");
+      for j in (0..c).rev() {
+        print!("{}", (mask >> j) & 1);
+      }
+      println!("1 {}", divisor.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" "));
       J -= 1;
-      dbg(mask);
-      dbg(divisor);
       if J == 0 {
         break;
       }
