@@ -52,13 +52,13 @@ fn main() {
             tmp = (tmp + pmod(base, r1[j as usize], *p));
           }
         }
+        println!("{} {}", base, tmp);
         if tmp == 0 {
           found = true;
           break;
         }
       }
       if !found {
-        dbg(base);
         fail = true;
         break;
       }
