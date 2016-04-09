@@ -18,13 +18,15 @@ fn process(ncase: u32) {
   println!("Case #{}: ", ncase);
 }
 
-fn gen(r: Range<i32>, p: i32) {
-  let c = r.clone().count();
-
-  dbg(r.clone().collect::<Vec<i32>>());
-
-  for i in 0..(1<<c) {
-  }
+fn gen(r: Range<i32>, m: i32, p: i32) {
+  let c: Vec<i32> = r.clone().map(|x| {
+    let mut ret: i32 = 1;
+    for i in 0..x {
+      ret = (ret * m) % p;
+    }
+    return ret;
+  }).collect();
+  dbg(c);
 }
 
 fn main() {
@@ -35,6 +37,8 @@ fn main() {
   let r2 = 8..15;
 
   for p in primes {
-    gen(r1.clone(), p);
+    for i in 2..11 {
+      gen(r1.clone(), i, p);
+    }
   }
 }
