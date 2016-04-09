@@ -47,7 +47,7 @@ fn main() {
   // let N = 16;
 
   let r1 = (1..N-1).collect::<Vec<_>>();
-  let c = cmp::min(r1.len() as i32, 16);
+  let c = cmp::min(r1.len() as i32, 999);
   println!("Case #1:");
   for mask in 0..(1<<c) {
     let mut divisor: Vec<i32> = vec![];
