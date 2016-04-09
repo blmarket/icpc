@@ -55,23 +55,17 @@ fn main() {
 
   let base = 2..11;
 
-  let rr1 = m1.iter().map(|v| {
-    return primes.iter().map(|p| {
-      let tmp = base.clone().map(|b| {
-        return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
-      }).collect::<Vec<_>>();
-      return (p, tmp);
-    }).collect::<Vec<_>>();
-  }).collect::<Vec<_>>();
-  dbg(rr1);
+  for b in base {
+    for p in primes.clone() {
+      for it in m1.clone() {
+        let vv = it .iter().map(|x| pmod(b, *x, p)).fold(0, |a,b| (a+b) % p);
+        dbg(vv);
+      }
 
-  let rr2 = m2.iter().map(|v| {
-    return primes.iter().map(|p| {
-      let tmp = base.clone().map(|b| {
-        return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
-      }).collect::<Vec<_>>();
-      return (p, tmp);
-    }).collect::<Vec<_>>();
-  }).collect::<Vec<_>>();
-  dbg(rr2);
+      for it in m2.clone() {
+        let vv = it .iter().map(|x| pmod(b, *x, p)).fold(0, |a,b| (a+b) % p);
+        dbg(vv);
+      }
+    }
+  }
 }
