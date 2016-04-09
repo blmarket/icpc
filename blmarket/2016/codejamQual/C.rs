@@ -26,8 +26,24 @@ fn pmod(mul: i32, pow: i32, m: i32) -> i32 {
   return ret;
 }
 
+fn genmask(r: Vec<i32>) -> Vec<Vec<i32>> {
+  let mut ret: Vec<Vec<i32>> = vec![];
+  let c: i32 = r.len() as i32;
+  for i in 0..(1<<c) {
+    let mut tmp: Vec<i32> = vec![];
+    for j in 0..c {
+      if i & (1<<j) != 0 {
+        tmp.push(r[j as usize]);
+      }
+    }
+    ret.push(tmp);
+  }
+  return ret;
+}
+
 fn gen(r: Range<i32>, m: i32, p: i32) {
   let c: Vec<i32> = r.clone().map(|x| pmod(m, x, p)).collect();
+  
   dbg(c);
 }
 
@@ -40,9 +56,6 @@ fn main() {
   let r1 = 1..N/2;
   let r2 = N/2..N-1;
 
-  for p in primes {
-    for i in 2..11 {
-      gen(r1.clone(), i, p);
-    }
-  }
+  dbg(genmask(r1.clone().collect()));
+
 }
