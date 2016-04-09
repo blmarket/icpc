@@ -19,7 +19,7 @@ fn process(ncase: u32) {
 
 fn main() {
   for i in 2..11 {
-    let mut ii = 1;
+    let mut ii: i64 = 1;
     for j in 0..16 {
       print!("{} ", ii);
       ii *= i;
