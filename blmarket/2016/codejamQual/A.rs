@@ -28,7 +28,7 @@ fn process(ncase: u32) {
     }
     if (mask == 1023) {
       println!("{}", ss);
-      break;
+      return;
     }
   }
   println!("INSOMNIA");
