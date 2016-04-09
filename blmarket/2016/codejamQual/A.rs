@@ -16,10 +16,17 @@ fn dbg<T: Debug>(d: T) {
 fn process(ncase: u32) {
   let N: u32 = read_line();
 
+  let mut mask: u32 = 0;
+
   for i in 1..100 {
     let tmp = N * i;
     let ss = format!("{}", tmp);
-    println!("{}", ss);
+    let sss = ss.as_bytes();
+    for s in sss {
+      println!("{}", s);
+      mask |= 1;
+    }
+    println!("{}", mask);
   }
 }
 
