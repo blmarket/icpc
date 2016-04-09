@@ -64,4 +64,14 @@ fn main() {
     }).collect::<Vec<_>>();
   }).collect::<Vec<_>>();
   dbg(rr1);
+
+  let rr2 = m2.iter().map(|v| {
+    return primes.iter().map(|p| {
+      let tmp = base.clone().map(|b| {
+        return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
+      }).collect::<Vec<_>>();
+      return (p, tmp);
+    }).collect::<Vec<_>>();
+  }).collect::<Vec<_>>();
+  dbg(rr2);
 }
