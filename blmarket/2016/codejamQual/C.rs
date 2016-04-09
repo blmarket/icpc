@@ -37,7 +37,7 @@ fn main() {
   let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37];
   // let primes = vec![3, 5];
 
-  let N = 6;
+  let N = 16;
 
   let r1 = (1..N-1).collect::<Vec<_>>();
   let c = r1.len() as i32;
