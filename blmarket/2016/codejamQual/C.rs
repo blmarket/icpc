@@ -56,6 +56,6 @@ fn main() {
   let r1 = 1..N/2;
   let r2 = N/2..N-1;
 
-  dbg(genmask(r1.clone().collect()));
-
+  let m1 = genmask(r1.clone().collect());
+  let m2 = genmask(r2.clone().collect());
 }
