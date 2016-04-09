@@ -47,7 +47,7 @@ fn main() {
 
   let r1 = (1..N-1).collect::<Vec<_>>();
   let c = r1.len() as i32;
-  for mask in 1..(1<<c) {
+  for mask in 0..(1<<c) {
     let mut divisor: Vec<i32> = vec![];
     for base in 2..11 {
       for p in primes.iter() {
