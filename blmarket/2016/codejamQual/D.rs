@@ -18,6 +18,8 @@ fn process(ncase: u32) {
   let ps = read_line::<String>().split(" ")
     .map(|x| x.parse::<i32>().unwrap()).collect::<Vec<_>>();
   let (K,C,S) = (ps[0], ps[1], ps[2]);
+
+  println!("{} {} {}", K,C,S);
 }
 
 fn main() {
