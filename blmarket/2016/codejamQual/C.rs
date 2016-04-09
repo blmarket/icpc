@@ -59,10 +59,10 @@ fn main() {
     primes.iter().map(|p| {
       let tmp: Vec<Vec<i32>> = base.clone().map(|b| {
         return v.iter().map(|x| pmod(b, *x, *p)).collect::<Vec<i32>>();
-      }).collect();
+      }).collect::<Vec<_>>();
       dbg(tmp.clone());
       return tmp;
-    });
+    }).collect::<Vec<_>>();
     return 1;
   }).collect::<Vec<i32>>();
 }
