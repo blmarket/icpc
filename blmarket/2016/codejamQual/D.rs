@@ -2,6 +2,7 @@ use std::io;
 use std::fmt::Debug;
 use std::fmt::Display;
 use std::str::FromStr;
+use std::collections::BTreeSet;
 
 fn read_line<T: FromStr + Clone>() -> T where <T as FromStr>::Err: Debug {
   let mut ret = String::new();
@@ -31,16 +32,19 @@ fn process(ncase: u32) {
     return;
   }
 
+  let mut ret: BTreeSet<i64> = BTreeSet::new();
   let mut it = 0;
   for i in 0..S {
     let mut v: Vec<i32> = vec![];
     for j in 0..C {
-      v.push(it % K);
+      v.push(it);
+      it = (it + 1) % K;
     }
 
-    print!("{} ", gen(K, &v, 0, 0) + 1);
+    ret.insert(gen(K, &v, 0, 0) + 1);
   }
-  println!("");
+
+  println!("{}", ret.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" "));
 }
 
 fn main() {
