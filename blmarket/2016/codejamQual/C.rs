@@ -18,14 +18,16 @@ fn process(ncase: u32) {
   println!("Case #{}: ", ncase);
 }
 
+fn pmod(mul: i32, pow: i32, m: i32) -> i32 {
+  let mut ret: i32 = 1;
+  for i in 0..pow {
+    ret = (ret * mul) % m;
+  }
+  return ret;
+}
+
 fn gen(r: Range<i32>, m: i32, p: i32) {
-  let c: Vec<i32> = r.clone().map(|x| {
-    let mut ret: i32 = 1;
-    for i in 0..x {
-      ret = (ret * m) % p;
-    }
-    return ret;
-  }).collect();
+  let c: Vec<i32> = r.clone().map(|x| pmod(m, x, p)).collect();
   dbg(c);
 }
 
