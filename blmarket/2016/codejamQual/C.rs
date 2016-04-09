@@ -42,7 +42,7 @@ fn main() {
   let r1 = (1..N-1).collect::<Vec<_>>();
   let c = r1.len() as i32;
   for mask in 0..(1<<c) {
-    // dbg(mask);
+    dbg(mask);
     let mut fail: bool = false;
     for base in 2..11 {
       let mut found: bool = false;
