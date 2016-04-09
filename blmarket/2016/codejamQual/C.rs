@@ -37,7 +37,8 @@ fn main() {
   read_line::<String>();
   let params: Vec<i32> = read_line::<String>()
     .split(" ").map(|x| x.parse::<i32>().unwrap()).collect();
-  let (N, J) = (params[0], params[1]);
+  let N = params[0];
+  let mut J = params[1];
 
   let primes: Vec<i32> = vec![2, 3,5,7,11,13,17,19,23,29,31,37];
   // let primes = vec![3, 5];
@@ -67,8 +68,12 @@ fn main() {
       }
     }
     if divisor.len() == 9 { 
+      J -= 1;
       dbg(mask);
       dbg(divisor);
+      if J == 0 {
+        break;
+      }
     }
   }
 }
