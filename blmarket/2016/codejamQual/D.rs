@@ -39,7 +39,7 @@ fn process(ncase: u32) {
       it = (it + 1) % K;
     }
 
-    print!("{} ", gen(K, &v, 0, 0));
+    print!("{} ", gen(K, &v, 0, 0) + 1);
   }
   println!("");
 }
