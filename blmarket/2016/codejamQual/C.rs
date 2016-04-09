@@ -63,6 +63,7 @@ fn main() {
     }
     if divisor.len() == 9 { 
       dbg(mask);
+      dbg(divisor);
     }
   }
 }
