@@ -20,6 +20,7 @@ fn process(ncase: u32) {
 
 fn gen(r: Range<i32>) {
   let c = r.count();
+  dbg(c);
 }
 
 fn main() {
