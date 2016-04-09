@@ -18,9 +18,18 @@ fn process(ncase: u32) {
   let S: String = read_line();
   let v: Vec<char> = S.chars().collect();
 
+  let mut ret: i32 = 0;
+
   for s in v.windows(2) {
-    dbg(s[0]);
+    if (s[0] != s[1]) {
+      ret += 1;
+    }
   }
+  dbg(v.last());
+//  match v.last() {
+//    Some('-') => ret += 1,
+//  }
+  println!("{}", ret);
 }
 
 fn main() {
