@@ -21,10 +21,9 @@ fn process(ncase: u32) {
   for i in 1..100 {
     let tmp = N * i;
     let ss = format!("{}", tmp);
-    let sss = ss.as_bytes();
+    let sss = ss.chars();
     for s in sss {
-      println!("{}", s);
-      mask |= 1;
+      mask |= (s as u32) - ('0' as u32);
     }
     println!("{}", mask);
   }
