@@ -21,7 +21,7 @@ fn main() {
   for i in 2..11 {
     let mut ii: i64 = 1;
     for j in 0..16 {
-      print!("{} ", ii % 3);
+      print!("{} ", ii % 5);
       ii *= i;
     }
     println!("");
