@@ -67,7 +67,6 @@ fn main() {
         break;
       }
     }
-    dbg(&divisor);
     if divisor.len() == 9 { 
       print!("1");
       for j in (0..c).rev() {
