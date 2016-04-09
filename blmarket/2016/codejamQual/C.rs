@@ -61,7 +61,7 @@ fn main() {
         return v.iter().map(|x| pmod(b, *x, *p)).fold(0, |a,b| (a + b) % *p);
       }).collect::<Vec<_>>();
       dbg(tmp.clone());
-      return tmp;
+      return (p, tmp);
     }).collect::<Vec<_>>();
     return 1;
   }).collect::<Vec<i32>>();
