@@ -20,8 +20,8 @@ fn process(ncase: u32) {
 fn main() {
   let primes = vec![3,5,7,11,13,17,23];
 
-  let r1 = 2..8;
-  let r2 = 8..16;
+  let r1 = 1..8;
+  let r2 = 8..15;
 
-  dbg(r1);
+  dbg(2^5);
 }
