@@ -36,7 +36,7 @@ fn process(ncase: u32) {
     let mut v: Vec<i32> = vec![];
     for j in 0..C {
       v.push(it);
-      it += 1;
+      it = (it + 1) % K;
     }
 
     print!("{} ", gen(K, &v, 0, 0));
