@@ -42,7 +42,7 @@ string go(int len) {
         }
     }
 
-    return string(1, maxc) + go(mp) + src.substr(mp + 1, len - mp);
+    return string(1, maxc) + go(mp) + src.substr(mp + 1, len - mp - 1);
 }
 
 void process(void) {
