@@ -8,7 +8,6 @@ struct Grader {
     int cnt = 0;
 
     Grader() {
-        cout << "HERE" << endl;
         scanf("%d", &N);
         for(int i=0;i<N;i++) {
             for(int j=0;j<N;j++)
@@ -22,9 +21,19 @@ struct Grader {
     }
 };
 
-Grader g;
 
 int main(void) {
-    cout << g.getDist(0, 1) << endl;
+    int ab = g.getDist(0, 1);
+    int m1 = 0;
+    int m2 = 1;
+
+    for(int i=2;i<g.N;i++) {
+        int ac = g.getDist(m1, i);
+        int bc = g.getDist(m2, i);
+
+        if(bc > ab && bc > ac) {
+        }
+    }
+
     return 0;
 }
