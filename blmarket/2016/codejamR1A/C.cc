@@ -50,7 +50,7 @@ void process(void) {
     for(int i=0;i<N;i++) {
         memset(visit, 0, sizeof(visit));
         int tmp = go(i, -1, i);
-        // cerr << i << " " << tmp << endl;
+        cerr << i << " " << tmp << endl;
         if(ret < tmp) ret = tmp;
     }
     cout << ret << endl;
