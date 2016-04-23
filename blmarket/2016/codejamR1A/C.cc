@@ -30,12 +30,13 @@ int data[1024];
 
 bool visit[1024];
 
-int go(int a) {
+int go(int s, int a) {
     if(visit[a]) {
-        return 0;
+        if(s==a) return 0;
+        return -9999;
     }
     visit[a] = true;
-    return go(data[a]) + 1;
+    return go(s, data[a]) + 1;
 }
 
 void process(void) {
@@ -48,7 +49,7 @@ void process(void) {
     int ret = 0;
     for(int i=0;i<N;i++) {
         memset(visit, 0, sizeof(visit));
-        int tmp = go(i);
+        int tmp = go(i, i);
         cerr << i << " " << tmp << endl;
         if(ret < tmp) ret = tmp;
     }
