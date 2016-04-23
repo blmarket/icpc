@@ -42,6 +42,7 @@ void process(void) {
     scanf(" %d", &N);
     for(int i=0;i<N;i++) {
         scanf(" %d", &data[i]);
+        data[i]--;
     }
 
     int ret = 0;
