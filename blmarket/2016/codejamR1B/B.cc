@@ -38,6 +38,7 @@ bool comp(pair<LL, LL> t1, pair<LL, LL> t2) {
 }
 
 pair<LL, LL> go(int a, LL t1, LL t2) {
+  cerr << a << endl;
   if(a == len) {
     return mp(t1, t2);
   }
