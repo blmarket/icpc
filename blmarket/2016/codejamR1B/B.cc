@@ -82,8 +82,8 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
   auto r1 = go(a+1, t1, t2);
   for(int i=0;i<10;i++) {
     for(int j=0;j<10;j++) {
-      auto tmp = go(a+1, t1 + as[a] == '?' ? i : 0, 
-          t2 + bs[a] == '?' ? j : 0);
+      auto tmp = go(a+1, t1 + (as[a] == '?' ? i : 0), 
+          t2 + (bs[a] == '?' ? j : 0));
       if(comp(tmp, r1)) r1 = tmp;
       if(bs[a] != '?') break;
     }
