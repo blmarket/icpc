@@ -38,7 +38,6 @@ bool comp(pair<LL, LL> t1, pair<LL, LL> t2) {
 }
 
 pair<LL, LL> go(int a, LL t1, LL t2) {
-  cerr << a << " " << t1 << " " << t2 << endl;
   if(a == len) {
     return mp(t1, t2);
   }
@@ -49,6 +48,7 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
   bool l1 = t1 < t2;
   bool l2 = t2 < t1;
 
+  cerr << a << " " << t1 << " " << t2 << " " << l1 << " " << l2 << endl;
   if(as[a] != '?') {
     t1 += as[a] - '0';
   }
