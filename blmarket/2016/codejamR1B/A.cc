@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sys/wait.h>
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -29,17 +30,42 @@ string ns[] = {
   "ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"
 };
 
+int order[] = { 0, 2, 4, 6, 8, 1,3,5,7,9 };
+
 void process(void) {
+  char buf[4096];
+  scanf(" %s", buf);
+  map<char, int> MM;
+  for(int i=0;i<strlen(buf);i++) {
+    MM[buf[i]] += 1;
+  }
+
+  string ret;
+
   for(int i=0;i<10;i++) {
+    int tmp = order[i];
     map<char, int> M;
-    for(auto &it: ns[i]) {
+    for(auto &it: ns[tmp]) {
       M[it] += 1;
     }
+
+    int maxc = 0;
     for(auto &it: M) {
-      cout << it.first << " = " << it.second << endl;
+      maxc = min(maxc, MM[it.first] / it.second);
     }
-    cout << endl;
+
+    ret += string(maxc, tmp + '0');
+    for(auto &it: M) {
+      MM[it.first] -= it.second * maxc;
+    }
+
+    for(auto &it: MM) {
+      cerr << it.first << " - " << it.second << endl;
+    }
   }
+
+  sort(ret.begin(), ret.end());
+  cout << ret << endl;
 }
 
 int main(void) {
