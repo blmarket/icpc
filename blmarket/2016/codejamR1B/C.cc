@@ -31,6 +31,8 @@ int n;
 
 void process(void) {
   scanf(" %d", &n);
+  m1.clear();
+  m2.clear();
   char s1[32], s2[32];
   for(int i=0;i<n;i++) {
     scanf(" %s %s", s1, s2);
