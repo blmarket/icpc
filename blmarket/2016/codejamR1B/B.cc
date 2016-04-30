@@ -73,6 +73,16 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
     return go(a+1, t1, t2);
   }
 
+  if(as[a] == '?' && bs[a] == '?') {
+    auto r1 = go(a+1, t1, t2);
+    auto r2 = go(a+1, t1 + 1, t2);
+    auto r3 = go(a+1, t1, t2 + 1);
+
+    if(comp(r2, r1)) r1 = r2;
+    if(comp(r3, r1)) r1 = r3;
+    return r1;
+  }
+
   auto r1 = go(a+1, t1, t2);
   for(int i=0;i<10;i++) {
     for(int j=0;j<10;j++) {
