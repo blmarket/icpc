@@ -48,13 +48,14 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
   bool l1 = t1 < t2;
   bool l2 = t2 < t1;
 
-  cerr << a << " " << t1 << " " << t2 << " " << l1 << " " << l2 << endl;
   if(as[a] != '?') {
     t1 += as[a] - '0';
   }
   if(bs[a] != '?') {
     t2 += bs[a] - '0';
   }
+
+  cerr << a << " " << t1 << " " << t2 << " " << l1 << " " << l2 << endl;
 
   if(as[a] != '?' && bs[a] != '?') {
     return go(a+1, t1, t2);
