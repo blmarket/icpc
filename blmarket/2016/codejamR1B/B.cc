@@ -55,7 +55,7 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
     t2 += bs[a] - '0';
   }
 
-  if(a == 1) {
+  if(a == 2) {
     cerr << a << " " << t1 << " " << t2 << " " << l1 << " " << l2 << endl;
   }
 
