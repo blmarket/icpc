@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <sys/wait.h>
 #include <cstdlib>
 #include <cstring>
@@ -89,7 +90,7 @@ void process(void) {
   scanf(" %s %s", as, bs);
   len = strlen(as);
   auto tmp = go(0, 0, 0);
-  cout << tmp.first << " " << tmp.second << endl;
+  cout << setfill('0') << setw(len) << tmp.first << " " << setfill('0') << setw(len) << tmp.second << endl;
 }
 
 int main(void) {
