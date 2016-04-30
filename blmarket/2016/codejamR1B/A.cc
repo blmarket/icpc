@@ -31,7 +31,14 @@ string ns[] = {
 
 void process(void) {
   for(int i=0;i<10;i++) {
-    cout << ns[i] << endl;
+    map<char, int> M;
+    for(auto &it: ns[i]) {
+      M[it] += 1;
+    }
+    for(auto &it: M) {
+      cout << it.first << " = " << it.second << endl;
+    }
+    cout << endl;
   }
 }
 
