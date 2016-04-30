@@ -49,12 +49,11 @@ void process(void) {
       M[it] += 1;
     }
 
-    int maxc = 0;
+    int maxc = 10000;
     for(auto &it: M) {
       maxc = min(maxc, MM[it.first] / it.second);
     }
 
-    cerr << maxc << endl;
     ret += string(maxc, tmp + '0');
     for(auto &it: M) {
       MM[it.first] -= it.second * maxc;
