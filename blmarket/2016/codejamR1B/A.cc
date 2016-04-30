@@ -55,6 +55,7 @@ void process(void) {
     }
 
     ret += string(maxc, tmp + '0');
+    cerr << ret << endl;
     for(auto &it: M) {
       MM[it.first] -= it.second * maxc;
     }
