@@ -29,7 +29,30 @@ map<string, int> m1;
 map<string, int> m2;
 int n;
 
+vector<int> links[1024];
+int back[1024];
+bool visit[1024];
+
+bool tryflow(int a) {
+  if(visit[a]) return false;
+  visit[a] = true;
+  vector<int> &v = links[a];
+  for(auto it: v) {
+    if(back[it] == -1) {
+      back[it] = a;
+      return true;
+    }
+    if (tryflow(back[it])) {
+      back[it] = a;
+      return true;
+    }
+  }
+  return false;
+}
+
 void process(void) {
+  for(int i=0;i<1024;i++) links[i].clear();
+  memset(back, -1, sizeof(back));
   scanf(" %d", &n);
   m1.clear();
   m2.clear();
@@ -42,11 +65,23 @@ void process(void) {
     if(m2.count(s2) == 0) {
       m2[s2] = m2.size();
     }
+
+    int p1 = m1[s1];
+    int p2 = m2[s2];
+
+    links[p1].pb(p2);
   }
 
-  for(auto &it : m1) {
-    cout << it.first << " = " << it.second << endl;
+  int matched = 0;
+  int sz = m1.size();
+  for(int i=1;i<=sz;i++) {
+    memset(visit, 0, sizeof(visit));
+    if (tryflow(i)) {
+      matched += 1;
+    }
   }
+
+  cout << n - (m1.size() + m2.size() - matched) << endl;
 }
 
 int main(void) {
