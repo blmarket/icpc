@@ -55,10 +55,6 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
     t2 += bs[a] - '0';
   }
 
-  if(a == 2) {
-    cerr << a << " " << t1 << " " << t2 << " " << l1 << " " << l2 << endl;
-  }
-
   if(as[a] != '?' && bs[a] != '?') {
     return go(a+1, t1, t2);
   }
@@ -76,9 +72,6 @@ pair<LL, LL> go(int a, LL t1, LL t2) {
     return go(a+1, t1, t2);
   }
 
-  if(a == 1) {
-    cerr << "HERE" << t1 << " " << t2 << endl;
-  }
   auto r1 = go(a+1, t1, t2);
   for(int i=0;i<10;i++) {
     for(int j=0;j<10;j++) {
