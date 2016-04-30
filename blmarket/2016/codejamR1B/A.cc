@@ -60,7 +60,7 @@ void process(void) {
     }
 
     for(auto &it: MM) {
-      cerr << it.first << " - " << it.second << endl;
+      // cerr << it.first << " - " << it.second << endl;
     }
   }
 
