@@ -69,12 +69,12 @@ int main(void) {
     LL buf = 0;
     int cur = 0;
 
-    pair<int, LL> ps;
-    if (cache.count(seed)) {
-      ps = cache[seed];
-    } else {
-      ps = cache[seed] = slow();
-    }
+    pair<int, LL> ps = slow();
+//    if (cache.count(seed)) {
+//      ps = cache[seed];
+//    } else {
+//      ps = cache[seed] = slow();
+//    }
 
     buf |= ps.second << cur;
     cur += ps.first;
@@ -89,8 +89,7 @@ int main(void) {
   }
 
   each(it, v) {
-    //cout << bitset<SZ>(it) << " ";
-    cout << it << " ";
+    cout << bitset<SZ>(it) << " ";
   }
   cout << endl;
   return 0;
