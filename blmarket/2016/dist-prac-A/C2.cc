@@ -74,6 +74,7 @@ int main(void) {
 
     pair<int, LL> ps = slow(seed);
     cerr << ps.first << " " << ps.second << endl;
+    cerr << bitset<20>(ps.second) << endl;
 //    if (cache.count(seed)) {
 //      ps = cache[seed];
 //    } else {
