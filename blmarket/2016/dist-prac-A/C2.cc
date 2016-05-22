@@ -50,7 +50,7 @@ int main(void) {
       int jt;
 
       for(int j=0;j<20;j++) {
-        cerr << ((seed >> j) & 1)+1 << " " << now << endl;
+        cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
         if(seed & (1<<j)) {
           buf |= now * (1<<jt + (1<<(jt+1)));
           jt += 2;
