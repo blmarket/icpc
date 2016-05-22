@@ -87,12 +87,13 @@ int main(void) {
     int seed = v[i++];
 
     pair<int, LL> ps;
-    if (cache.count(seed) && false) {
-      cerr << "got seed" << endl;
+    if (cache.count(seed)) {
       ps = cache[seed];
     } else {
       ps = cache[seed] = slow(seed);
     }
+
+    cerr << cur << " " << buf << endl;
 
     buf |= ps.second << cur;
     cur += ps.first;
