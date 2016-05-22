@@ -58,6 +58,7 @@ int main(void) {
           buf |= now * (1<<jt);
           ++jt;
         }
+        cerr << buf << endl;
         now = !now;
       }
 
