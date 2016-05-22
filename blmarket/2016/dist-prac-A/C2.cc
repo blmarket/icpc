@@ -63,7 +63,10 @@ int main(void) {
         jt >>= 20;
       }
     }
+    idx++;
   }
+
+  cout << V.size() << endl;
 
   each(it, V) {
     cout << bitset<20>(it) << " ";
