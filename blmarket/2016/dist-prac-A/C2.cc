@@ -72,12 +72,11 @@ int main(void) {
   for(int i=0;i<5;i++) {
     int seed = v[i];
 
-    pair<int, LL> ps = slow(seed);
-    cerr << ps.first << " " << ps.second << endl;
+    pair<int, LL> ps;
     if (cache.count(seed)) {
       ps = cache[seed];
     } else {
-      ps = cache[seed] = slow();
+      ps = cache[seed] = slow(seed);
     }
 
     buf |= ps.second << cur;
