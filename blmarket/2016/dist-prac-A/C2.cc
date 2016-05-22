@@ -43,13 +43,14 @@ int main(void) {
   int seed = 413094;
 
   int idx = 0;
-  for(int i=0;i<10;i++) {
+  for(int i=0;i<1;i++) {
     auto slow = [&]() -> pair<int, LL> {
       int now = 0;
       LL buf = 0;
       int jt;
 
       for(int j=0;j<20;j++) {
+        cerr << j << " " << (seed >> j) & 1 << endl;
         if(seed & (1<<j)) {
           buf |= now * (1<<(jt+2) - (1<<jt));
           jt += 2;
