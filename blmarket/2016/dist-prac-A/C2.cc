@@ -85,11 +85,11 @@ int main(void) {
     cerr << bitset<20>(buf) << " " << cur << endl;
 
     while (cur >= SZ) {
-      ++pos;
       cerr << (buf & ((1<<SZ) - 1)) << endl;
       if(pos == v.size()) {
         v.pb(buf & ((1<<SZ) - 1));
       }
+      ++pos;
       buf >>= SZ;
       cur -= SZ;
     }
