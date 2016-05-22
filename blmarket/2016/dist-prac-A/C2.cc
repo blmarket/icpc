@@ -79,13 +79,14 @@ int main(void) {
     buf |= ps.second << cur;
     cur += ps.first;
 
+
+    cerr << buf << endl;
     if (cur >= SZ) {
       v.pb(buf & ((1<<SZ) - 1));
       buf >>= SZ;
       cur -= SZ;
     }
 
-    cerr << idx << endl;
     seed = v[idx++];
   }
 
