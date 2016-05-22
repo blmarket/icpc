@@ -88,7 +88,7 @@ int main(void) {
   }
 
   each(it, v) {
-    cout << bitset<20>(it) << " ";
+    cout << bitset<SZ>(it) << " ";
   }
   cout << endl;
   return 0;
