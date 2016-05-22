@@ -54,20 +54,11 @@ int main(void) {
     now = 3-now;
   }
 
-  cerr << V[0] - 1;
-  for(int i=1;i<20;i++) {
-    cerr << V[i] - V[i-1] - 1;
+  cerr << V[0];
+  for(int i=1;i<1000;i++) {
+    cerr << V[i] - V[i-1] << " ";
   }
   cerr << endl;
-  for(int i=20;i<40;i++) {
-    cerr << V[i] - V[i-1] - 1;
-  }
-  cerr << endl;
-  for(int i=40;i<60;i++) {
-    cerr << V[i] - V[i-1] - 1;
-  }
-  cerr << endl;
-
 
   return 0;
 }
