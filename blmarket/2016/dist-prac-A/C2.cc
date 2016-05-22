@@ -94,7 +94,7 @@ int main(void) {
     }
 
     cerr << cur << " " << buf << " " << ps.first << endl;
-    buf |= ps.second << cur;
+    buf |= ps.second << (long long)cur;
     cur += ps.first;
 
     while (cur >= SZ) {
