@@ -31,7 +31,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 #include "kolakoski.h"
 
-vector<int> V;
+vector<int> v;
+unordered_map<int, pair<int, LL> > cache;
 
 int main(void) {
   LL N = GetIndex();
@@ -39,34 +40,49 @@ int main(void) {
 
   // 1 2 2 1 1 2 1 2 2 1 2 2 1 1 2 1 1 2 2 1
   int seed = 413094;
-  int now = 1;
 
-  V.pb(seed);
   int idx = 0;
   for(int i=0;i<10;i++) {
-    seed = V[idx];
-    LL buf = 0;
-    LL jt = 1LL;
-    for(int j=0;j<20;j++) {
-      if(seed & (1<<j)) {
-        buf |= now * (jt + (jt << 1));
-        jt <<= 2;
-      } else {
-        buf |= now * jt;
-        jt <<= 1;
-      }
-      now = !now;
+    auto slow = [&]() -> pair<int, LL> {
+      int now = 0;
+      LL buf = 0;
+      int jt;
 
-      if (jt >= (1<<20)) {
-        V.pb(buf & ((1<<20)-1));
-        buf >>= 20;
-        jt >>= 20;
+      for(int j=0;j<20;j++) {
+        if(seed & (1<<j)) {
+          buf |= now * (1<<(jt+2) - (1<<jt));
+          jt += 2;
+        } else {
+          buf |= now * (1<<jt);
+          ++jt;
+        }
+        now = !now;
       }
+
+      return make_pair(jt, buf);
     }
-    idx++;
-  }
 
-  cout << V.size() << endl;
+    LL buf = 0;
+    int cur = 0;
+
+    pair<int, LL> ps;
+    if (cache.count(seed)) {
+      ps = cache[seed];
+    } else {
+      ps = cache[seed] = slow();
+    }
+
+    buf |= ps.second << cur;
+    cur += ps.first;
+
+    if (cur >= 20) {
+      v.pb(buf & ((1<<20) - 1));
+      buf >>= 20;
+      cur -= 20;
+    }
+
+    seed = v[idx++];
+  }
 
   each(it, V) {
     cout << bitset<20>(it) << " ";
