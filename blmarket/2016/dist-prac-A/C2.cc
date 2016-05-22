@@ -85,7 +85,7 @@ int main(void) {
     seed = v[idx++];
   }
 
-  cout << v[0];
+  cout << v[0] << endl; 
 
   each(it, v) {
     cout << bitset<20>(it) << " ";
