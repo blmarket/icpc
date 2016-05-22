@@ -110,6 +110,7 @@ int main(void) {
   cerr << ls << " " << rs << endl;
   for(LL i=ls;i<rs;i++) {
     int tmp = ((v[i/SZ] >> (i%SZ))&1) + 1;
+    cerr << tmp << " ";
     sum += tmp * GetMultiplier(i);
   }
 
