@@ -74,7 +74,6 @@ int main(void) {
   LL ls = N * my / nn;
   LL rs = N * (my + 1) / nn;
 
-  // 1 2 2 1 1 2 1 2 2 1 2 2 1 1 2 1 1 2 2 1
   v.pb(413094);
   v.pb(447081);
   v.pb(635482);
@@ -84,7 +83,7 @@ int main(void) {
   int cur = 0;
 
   int i=0;
-  while(pos < 150000005) {
+  while(pos <= N / SZ) {
     int seed = v[i++];
 
     pair<int, LL> ps;
@@ -106,12 +105,11 @@ int main(void) {
       cur -= SZ;
     }
   }
-  cout << int(1e9/20) << " " << v.size() << endl;
 
   LL sum = 0;
   cerr << ls << " " << rs << endl;
   for(LL i=ls;i<rs;i++) {
-    int tmp = ((v[i/20] >> (i%20))&1) + 1;
+    int tmp = ((v[i/SZ] >> (i%SZ))&1) + 1;
     sum += tmp * GetMultiplier(i);
   }
 
