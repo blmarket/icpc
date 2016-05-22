@@ -69,7 +69,7 @@ int main(void) {
   LL buf = 0;
   int cur = 0;
 
-  for(int i=0;i<5;i++) {
+  for(int i=0;i<1e8;i++) {
     int seed = v[i];
 
     pair<int, LL> ps;
@@ -92,7 +92,6 @@ int main(void) {
     }
   }
 
-  cout << bitset<20>(413094) << endl;
   each(it, v) {
     cout << it << " ";
   }
