@@ -46,6 +46,7 @@ int main(void) {
   int idx = 2;
   int now = 1;
   while(V.back() <= N) {
+    cerr << idx << " ";
     for(int i=0;i<V[idx] - V[idx - 1];i++) {
       V.pb(V.back() + now);
     }
