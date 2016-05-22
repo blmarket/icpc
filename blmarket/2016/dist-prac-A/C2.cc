@@ -63,7 +63,7 @@ int main(void) {
   // 1 2 2 1 1 2 1 2 2 1 2 2 1 1 2 1 1 2 2 1
   v.pb(413094);
   v.pb(447081);
-  // v.pb(635482);
+  v.pb(635482);
   int pos = 0;
 
   LL buf = 0;
@@ -74,11 +74,11 @@ int main(void) {
 
     pair<int, LL> ps = slow(seed);
     cerr << ps.first << " " << ps.second << endl;
-//    if (cache.count(seed)) {
-//      ps = cache[seed];
-//    } else {
-//      ps = cache[seed] = slow();
-//    }
+    if (cache.count(seed)) {
+      ps = cache[seed];
+    } else {
+      ps = cache[seed] = slow();
+    }
 
     buf |= ps.second << cur;
     cur += ps.first;
