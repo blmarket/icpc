@@ -54,7 +54,7 @@ int main(void) {
     now = 3-now;
   }
   for(int i=1;i<20;i++) {
-    cerr << V[i] - V[i-1] << " ";
+    cerr << V[i] - V[i-1] - 1 << " ";
   }
   cerr << endl;
   cerr << idx << endl;
