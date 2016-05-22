@@ -44,6 +44,9 @@ int main(void) {
   int seed = 413094;
 
   int idx = 0;
+  LL buf = 0;
+  int cur = 0;
+
   for(int i=0;i<5;i++) {
     auto slow = [&]() -> pair<int, LL> {
       cerr << seed << endl;
@@ -65,9 +68,6 @@ int main(void) {
 
       return make_pair(jt, buf);
     };
-
-    LL buf;
-    int cur;
 
     pair<int, LL> ps = slow();
 //    if (cache.count(seed)) {
