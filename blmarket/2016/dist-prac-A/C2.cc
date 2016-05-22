@@ -52,6 +52,8 @@ pair<int, LL> slow(int seed) {
     }
     now = !now;
   }
+  
+  cerr << " " << jt << " " << buf << endl;
 
   return make_pair(jt, buf);
 }
@@ -92,8 +94,6 @@ int main(void) {
     } else {
       ps = cache[seed] = slow(seed);
     }
-
-    cerr << cur << " " << buf << endl;
 
     buf |= ps.second << cur;
     cur += ps.first;
