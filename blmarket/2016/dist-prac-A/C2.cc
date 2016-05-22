@@ -44,7 +44,7 @@ int main(void) {
   int seed = 413094;
 
   int idx = 0;
-  for(int i=0;i<3;i++) {
+  for(int i=0;i<5;i++) {
     auto slow = [&]() -> pair<int, LL> {
       cerr << seed << endl;
       int now = 0;
