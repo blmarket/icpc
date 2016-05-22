@@ -54,7 +54,7 @@ int main(void) {
       LL buf = 0;
       int jt = 0;
  
-      for(int j=0;j<SZ;j++) {
+      for(int j=0;j<SZ*2;j++) {
         // cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
         if(seed & (1<<j)) {
           buf |= now * 3 * (1<<jt);
