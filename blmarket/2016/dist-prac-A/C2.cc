@@ -41,7 +41,7 @@ pair<int, LL> slow(int seed) {
   LL buf = 0;
   int jt = 0;
 
-  for(int j=0;j<SZ*2;j++) {
+  for(int j=0;j<SZ;j++) {
     // cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
     if(seed & (1<<j)) {
       buf |= now * 3 * (1<<jt);
@@ -74,7 +74,6 @@ int main(void) {
 
     pair<int, LL> ps = slow(seed);
     cerr << ps.first << " " << ps.second << endl;
-    cerr << bitset<20>(ps.second) << endl;
 //    if (cache.count(seed)) {
 //      ps = cache[seed];
 //    } else {
