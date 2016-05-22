@@ -57,6 +57,23 @@ pair<int, LL> slow(int seed) {
 }
 
 int main(void) {
+  int nn = NumberOfNodes() - 1;
+  int my = MyNodeId();
+
+  if(my == nn) {
+    LL sum = 0;
+    for(int i=0;i<nn;i++) {
+      Receive(i);
+      sum += GetLL(i);
+    }
+    cout << sum << endl;
+    return 0;
+  }
+
+  LL N = GetIndex();
+  LL ls = N * my / nn;
+  LL rs = N * (my + 1) / nn;
+
   // 1 2 2 1 1 2 1 2 2 1 2 2 1 1 2 1 1 2 2 1
   v.pb(413094);
   v.pb(447081);
@@ -88,23 +105,6 @@ int main(void) {
       cur -= SZ;
     }
   }
-
-  int nn = NumberOfNodes() - 1;
-  int my = MyNodeId();
-
-  if(my == nn) {
-    LL sum = 0;
-    for(int i=0;i<nn;i++) {
-      Receive(i);
-      sum += GetLL(i);
-    }
-    cout << sum << endl;
-    return 0;
-  }
-
-  LL N = GetIndex();
-  LL ls = N * my / nn;
-  LL rs = N * (my + 1) / nn;
 
   LL sum = 0;
   for(LL i=ls;i<rs;i++) {
