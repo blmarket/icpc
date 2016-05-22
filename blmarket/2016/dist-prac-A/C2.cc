@@ -88,6 +88,7 @@ int main(void) {
 
     pair<int, LL> ps;
     if (cache.count(seed)) {
+      cerr << "got seed" << endl;
       ps = cache[seed];
     } else {
       ps = cache[seed] = slow(seed);
