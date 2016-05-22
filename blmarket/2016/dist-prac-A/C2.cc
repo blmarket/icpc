@@ -77,10 +77,9 @@ int main(void) {
 //    }
 
     buf |= ps.second << cur;
+    cerr << bitset<20>(buf) << endl;
     cur += ps.first;
 
-
-    cerr << buf << endl;
     if (cur >= SZ) {
       v.pb(buf & ((1<<SZ) - 1));
       buf >>= SZ;
