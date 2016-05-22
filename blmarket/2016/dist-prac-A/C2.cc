@@ -52,7 +52,7 @@ int main(void) {
       for(int j=0;j<20;j++) {
         cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
         if(seed & (1<<j)) {
-          buf |= now * (1<<jt + (1<<(jt+1)));
+          buf |= now * 3 * (1<<jt);
           jt += 2;
         } else {
           buf |= now * (1<<jt);
