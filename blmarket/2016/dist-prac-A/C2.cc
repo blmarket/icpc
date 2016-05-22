@@ -36,6 +36,26 @@ vector<int> v;
 unordered_map<int, pair<int, LL> > cache;
 const int SZ = 20;
 
+pair<int, LL> slow(int seed) {
+  int now = 0;
+  LL buf = 0;
+  int jt = 0;
+
+  for(int j=0;j<SZ*2;j++) {
+    // cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
+    if(seed & (1<<j)) {
+      buf |= now * 3 * (1<<jt);
+      jt += 2;
+    } else {
+      buf |= now * (1<<jt);
+      ++jt;
+    }
+    now = !now;
+  }
+
+  return make_pair(jt, buf);
+}
+
 int main(void) {
   LL N = GetIndex();
   N = 2000;
@@ -51,27 +71,8 @@ int main(void) {
 
   for(int i=0;i<5;i++) {
     int seed = v[i];
-    auto slow = [&]() -> pair<int, LL> {
-      int now = 0;
-      LL buf = 0;
-      int jt = 0;
- 
-      for(int j=0;j<SZ*2;j++) {
-        // cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
-        if(seed & (1<<j)) {
-          buf |= now * 3 * (1<<jt);
-          jt += 2;
-        } else {
-          buf |= now * (1<<jt);
-          ++jt;
-        }
-        now = !now;
-      }
 
-      return make_pair(jt, buf);
-    };
-
-    pair<int, LL> ps = slow();
+    pair<int, LL> ps = slow(seed);
 //    if (cache.count(seed)) {
 //      ps = cache[seed];
 //    } else {
