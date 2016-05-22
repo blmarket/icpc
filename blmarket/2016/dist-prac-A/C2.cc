@@ -80,7 +80,7 @@ int main(void) {
     cur += ps.first;
     cerr << bitset<20>(buf) << " " << cur << endl;
 
-    if (cur >= SZ) {
+    while (cur >= SZ) {
       v.pb(buf & ((1<<SZ) - 1));
       buf >>= SZ;
       cur -= SZ;
