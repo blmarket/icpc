@@ -93,7 +93,7 @@ int main(void) {
       ps = cache[seed] = slow(seed);
     }
 
-    cerr << cur << " " << buf << " " << ps.first << endl;
+    cerr << cur << " " << buf << " " << ps.first << " " << ps.second << endl;
     buf |= ps.second << cur;
     cerr << buf << endl;
     cur += ps.first;
