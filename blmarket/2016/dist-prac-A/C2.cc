@@ -94,7 +94,7 @@ int main(void) {
 
   cout << bitset<20>(413094) << endl;
   each(it, v) {
-    cout << bitset<SZ>(it) << " ";
+    cout << it << " ";
   }
   cout << endl;
   return 0;
