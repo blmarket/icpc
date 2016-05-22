@@ -86,6 +86,7 @@ int main(void) {
 
     while (cur >= SZ) {
       ++pos;
+      cerr << (buf & ((1<<SZ) - 1)) << endl;
       if(pos == v.size()) {
         v.pb(buf & ((1<<SZ) - 1));
       }
