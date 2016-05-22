@@ -43,14 +43,14 @@ int main(void) {
   int seed = 413094;
 
   int idx = 0;
-  for(int i=0;i<1;i++) {
+  for(int i=0;i<3;i++) {
     auto slow = [&]() -> pair<int, LL> {
       int now = 0;
       LL buf = 0;
       int jt = 0;
  
       for(int j=0;j<20;j++) {
-        cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
+        // cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
         if(seed & (1<<j)) {
           buf |= now * 3 * (1<<jt);
           jt += 2;
@@ -86,8 +86,6 @@ int main(void) {
 
     seed = v[idx++];
   }
-
-  cout << v[0] << endl; 
 
   each(it, v) {
     cout << bitset<20>(it) << " ";
