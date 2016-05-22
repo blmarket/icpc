@@ -34,6 +34,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> v;
 unordered_map<int, pair<int, LL> > cache;
+const int SZ = 10;
 
 int main(void) {
   LL N = GetIndex();
@@ -49,7 +50,7 @@ int main(void) {
       LL buf = 0;
       int jt = 0;
  
-      for(int j=0;j<20;j++) {
+      for(int j=0;j<SZ;j++) {
         // cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
         if(seed & (1<<j)) {
           buf |= now * 3 * (1<<jt);
@@ -77,10 +78,10 @@ int main(void) {
     buf |= ps.second << cur;
     cur += ps.first;
 
-    if (cur >= 20) {
-      v.pb(buf & ((1<<20) - 1));
-      buf >>= 20;
-      cur -= 20;
+    if (cur >= SZ) {
+      v.pb(buf & ((1<<SZ) - 1));
+      buf >>= SZ;
+      cur -= SZ;
     }
 
     seed = v[idx++];
