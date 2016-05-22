@@ -52,7 +52,6 @@ int main(void) {
   for(int i=0;i<5;i++) {
     int seed = v[i];
     auto slow = [&]() -> pair<int, LL> {
-      cerr << seed << endl;
       int now = 0;
       LL buf = 0;
       int jt = 0;
