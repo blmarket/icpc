@@ -81,6 +81,7 @@ int main(void) {
 
     buf |= ps.second << cur;
     cur += ps.first;
+    cerr << bitset<20>(buf) << " " << cur << endl;
 
     while (cur >= SZ) {
       if(pos+1 == v.size()) {
