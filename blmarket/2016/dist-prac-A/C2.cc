@@ -92,9 +92,5 @@ int main(void) {
     }
   }
 
-  each(it, v) {
-    cout << it << " ";
-  }
-  cout << endl;
   return 0;
 }
