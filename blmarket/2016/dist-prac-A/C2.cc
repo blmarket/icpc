@@ -13,6 +13,7 @@
 
 #include <message.h>
 
+#define each(it, v) for(auto &it: v)
 #define mp make_pair
 #define pb push_back
 #define sqr(x) ((x)*(x))
