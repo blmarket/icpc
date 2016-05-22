@@ -66,8 +66,8 @@ int main(void) {
       return make_pair(jt, buf);
     };
 
-    LL buf = 0;
-    int cur = 0;
+    LL buf;
+    int cur;
 
     pair<int, LL> ps = slow();
 //    if (cache.count(seed)) {
@@ -84,7 +84,7 @@ int main(void) {
       v.pb(buf & ((1<<SZ) - 1));
       buf >>= SZ;
       cur -= SZ;
-      cerr << bitset<20>(buf) << endl;
+      cerr << bitset<20>(buf) << " " << cur << endl;
     }
 
     seed = v[idx++];
