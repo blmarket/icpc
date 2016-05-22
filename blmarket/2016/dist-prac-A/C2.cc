@@ -90,6 +90,7 @@ int main(void) {
     seed = v[idx++];
   }
 
+  cout << bitset<20>(413094) << endl;
   each(it, v) {
     cout << bitset<SZ>(it) << " ";
   }
