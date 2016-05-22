@@ -34,7 +34,6 @@ vector<int> V;
 
 int main(void) {
   LL N = GetIndex();
-  N = 2000;
 
   LL ret = 0;
 
@@ -55,7 +54,7 @@ int main(void) {
   }
 
   cerr << V[0];
-  for(int i=1;i<1000;i++) {
+  for(int i=1;i<N;i++) {
     cerr << V[i] - V[i-1];
   }
   cerr << endl;
