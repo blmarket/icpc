@@ -56,7 +56,7 @@ int main(void) {
 
   cerr << V[0];
   for(int i=1;i<1000;i++) {
-    cerr << V[i] - V[i-1] << " ";
+    cerr << V[i] - V[i-1];
   }
   cerr << endl;
 
