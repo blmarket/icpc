@@ -83,8 +83,9 @@ int main(void) {
   LL buf = 0;
   int cur = 0;
 
-  for(int i=0;i<2e8;i++) {
-    int seed = v[i];
+  int i=0;
+  while(pos < 150000005) {
+    int seed = v[i++];
 
     pair<int, LL> ps;
     if (cache.count(seed)) {
