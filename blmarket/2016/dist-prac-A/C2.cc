@@ -87,7 +87,7 @@ int main(void) {
     int seed = v[i++];
 
     pair<int, LL> ps;
-    if (cache.count(seed)) {
+    if (cache.count(seed) && false) {
       cerr << "got seed" << endl;
       ps = cache[seed];
     } else {
