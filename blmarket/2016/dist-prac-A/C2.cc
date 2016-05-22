@@ -105,7 +105,7 @@ int main(void) {
       cur -= SZ;
     }
   }
-  cout << 1e9/20 << " " << v.size() << endl;
+  cout << int(1e9/20) << " " << v.size() << endl;
 
   LL sum = 0;
   cerr << ls << " " << rs << endl;
