@@ -84,6 +84,7 @@ int main(void) {
       v.pb(buf & ((1<<SZ) - 1));
       buf >>= SZ;
       cur -= SZ;
+      cerr << bitset<20>(buf) << endl;
     }
 
     seed = v[idx++];
