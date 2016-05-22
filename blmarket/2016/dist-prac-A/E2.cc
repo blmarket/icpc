@@ -36,6 +36,7 @@ int my = MyNodeId();
 
 int main(void) {
   if (my == nn) {
+    cout << 0 << endl;
     return 0;
   }
   return 0;
