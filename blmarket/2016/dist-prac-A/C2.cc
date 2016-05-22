@@ -46,6 +46,7 @@ int main(void) {
   int idx = 0;
   for(int i=0;i<3;i++) {
     auto slow = [&]() -> pair<int, LL> {
+      cerr << seed << endl;
       int now = 0;
       LL buf = 0;
       int jt = 0;
