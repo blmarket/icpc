@@ -76,8 +76,8 @@ int main(void) {
 //      ps = cache[seed] = slow();
 //    }
 
-    buf |= (ps.second << cur);
-    cerr << bitset<20>(buf) << endl;
+    buf |= ps.second << cur;
+    cerr << bitset<20>(buf) << " " << cur << endl;
     cur += ps.first;
 
     if (cur >= SZ) {
