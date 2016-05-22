@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 #include "kolakoski.h"
 
-vector<int> V;
+vector<LL> V;
 
 int main(void) {
   LL N = GetIndex();
