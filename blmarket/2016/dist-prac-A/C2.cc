@@ -60,7 +60,7 @@ int main(void) {
       }
 
       return make_pair(jt, buf);
-    }
+    };
 
     LL buf = 0;
     int cur = 0;
@@ -84,7 +84,9 @@ int main(void) {
     seed = v[idx++];
   }
 
-  each(it, V) {
+  cout << v[0];
+
+  each(it, v) {
     cout << bitset<20>(it) << " ";
   }
   cout << endl;
