@@ -85,6 +85,7 @@ int main(void) {
       cur -= SZ;
     }
 
+    cerr << idx << endl;
     seed = v[idx++];
   }
 
