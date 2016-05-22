@@ -47,8 +47,8 @@ int main(void) {
     auto slow = [&]() -> pair<int, LL> {
       int now = 0;
       LL buf = 0;
-      int jt;
-
+      int jt = 0;
+ 
       for(int j=0;j<20;j++) {
         cerr << ((seed >> j) & 1)+1 << " " << now << " " << jt << endl;
         if(seed & (1<<j)) {
