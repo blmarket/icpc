@@ -34,20 +34,23 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 vector<int> v;
 unordered_map<int, pair<int, LL> > cache;
-const int SZ = 10;
+const int SZ = 20;
 
 int main(void) {
   LL N = GetIndex();
   N = 2000;
 
   // 1 2 2 1 1 2 1 2 2 1 2 2 1 1 2 1 1 2 2 1
-  int seed = 413094;
+  v.pb(413094);
+  v.pb(447081);
+  v.pb(635482);
+  int pos = 0;
 
-  int idx = 0;
   LL buf = 0;
   int cur = 0;
 
   for(int i=0;i<5;i++) {
+    int seed = v[i];
     auto slow = [&]() -> pair<int, LL> {
       cerr << seed << endl;
       int now = 0;
@@ -81,13 +84,12 @@ int main(void) {
     cerr << bitset<20>(buf) << " " << cur << endl;
 
     while (cur >= SZ) {
-      v.pb(buf & ((1<<SZ) - 1));
+      if(pos+1 == v.size()) {
+        v.pb(buf & ((1<<SZ) - 1));
+      }
       buf >>= SZ;
       cur -= SZ;
-      cerr << bitset<20>(buf) << " " << cur << endl;
     }
-
-    seed = v[idx++];
   }
 
   cout << bitset<20>(413094) << endl;
