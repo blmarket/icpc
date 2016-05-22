@@ -73,6 +73,7 @@ int main(void) {
     int seed = v[i];
 
     pair<int, LL> ps = slow(seed);
+    cerr << ps.first << " " << ps.second << endl;
 //    if (cache.count(seed)) {
 //      ps = cache[seed];
 //    } else {
