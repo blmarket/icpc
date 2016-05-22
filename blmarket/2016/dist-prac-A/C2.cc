@@ -93,7 +93,6 @@ int main(void) {
       ps = cache[seed] = slow(seed);
     }
 
-    cerr << cur << " " << buf << " " << ps.first << " " << ps.second << endl;
     buf |= ps.second << cur;
     cerr << buf << endl;
     cur += ps.first;
@@ -112,10 +111,8 @@ int main(void) {
   cerr << ls << " " << rs << endl;
   for(LL i=ls;i<rs;i++) {
     int tmp = ((v[i/SZ] >> (i%SZ))&1) + 1;
-    cerr << tmp;
     sum += tmp * GetMultiplier(i);
   }
-  cerr << endl;
 
   PutLL(nn, sum);
   Send(nn);
