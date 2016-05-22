@@ -107,6 +107,7 @@ int main(void) {
   }
 
   LL sum = 0;
+  cerr << ls << " " << rs << endl;
   for(LL i=ls;i<rs;i++) {
     int tmp = (v[i/20] >> (i%20))&1;
     if (tmp) sum += GetMultiplier(i);
