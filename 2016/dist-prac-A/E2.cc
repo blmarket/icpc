@@ -63,8 +63,6 @@ int main(void) {
             LL t1 = GetLL(i);
             LL t2 = GetLL(i);
 
-            cerr << candi << " " << vote << endl;
-
             if(candi == t1) {
                 vote += t2;
                 continue;
