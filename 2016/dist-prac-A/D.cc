@@ -84,11 +84,34 @@ int main(void) {
   };
 
   unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
+  if(t1[sum] || t2[sum]) {
+    PutLL(0, 1);
+    Send(0);
+    return 0;
+  }
 
   each(it, t1) {
-    cerr << it << " ";
+    each(jt, t2) {
+      if(it + jt == sum) {
+        PutLL(0, 1);
+        Send(0);
+      }
+    }
   }
-  cerr << endl;
+
+  PutLL(0, 0);
+  Send(0);
+
+  if(my == 0) {
+    for(int i=0;i<nn;i++) {
+      Receive(i);
+      if(GetLL(i)) {
+        cout << "POSSIBLE" << endl;
+        return 0;
+      }
+    }
+    cout << "IMPOSSIBLE" << endl;
+  }
 
   return 0;
 }
