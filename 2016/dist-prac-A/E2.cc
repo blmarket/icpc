@@ -93,10 +93,10 @@ int main(void) {
 
     if(my == 0) {
         LL sum = 0;
+        cerr << "HERE" << endl;
         for(int i=0;i<nn;i++) {
             sum += GetLL(i);
         }
-        cerr << sum << endl;
         if(sum*2 > N) {
             cout << candi << endl;
         } else {
