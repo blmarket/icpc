@@ -66,7 +66,7 @@ int main(void) {
         ret[tmp % nn].insert(tmp);
       }
       return ret;
-    }
+    };
     t1 = gen(left, mid);
     t2 = gen(mid, right);
 
