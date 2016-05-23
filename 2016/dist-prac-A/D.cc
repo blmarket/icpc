@@ -87,7 +87,7 @@ int main(void) {
   if(t1.count(sum) || t2.count(sum)) {
     PutLL(0, 1);
     Send(0);
-    return 0;
+    goto end;
   }
 
   each(it, t1) {
@@ -95,12 +95,15 @@ int main(void) {
       if(it + jt == sum) {
         PutLL(0, 1);
         Send(0);
+        goto end;
       }
     }
   }
 
   PutLL(0, 0);
   Send(0);
+
+end:
 
   if(my == 0) {
     for(int i=0;i<nn;i++) {
