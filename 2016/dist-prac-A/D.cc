@@ -84,7 +84,6 @@ int main(void) {
   };
 
   unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
-  cerr << t1.size() << " " << t2.size() << endl;
   if(t1.count(sum) || t2.count(sum)) {
     PutLL(0, 1);
     Send(0);
@@ -92,6 +91,7 @@ int main(void) {
   }
 
   each(it, t1) {
+    cerr << it << endl;
     each(jt, t2) {
       if(it + jt == sum) {
         PutLL(0, 1);
