@@ -91,7 +91,9 @@ int main(void) {
   }
 
   each(it, t1) {
-    cerr << it << endl;
+    if (my == 0) {
+      cerr << it << endl;
+    }
     each(jt, t2) {
       if(it + jt == sum) {
         PutLL(0, 1);
