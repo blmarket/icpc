@@ -24,15 +24,59 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+long long target;
+map<long long, int> cnts;
+
+long long rev(long long a) {
+    ostringstream sout;
+    sout << a;
+    string tmp = sout.str();
+    reverse(tmp.begin(), tmp.end());
+    istringstream sin(tmp);
+    sin >> a;
+    return a;
+}
+
 void solve(int dataId)
 {
+    cnts.clear();
+    printf("Case #%d: ", dataId);
+    cnts[1] = 1;
+    queue<LL> Q;
+    Q.push(1);
+
+    while(!Q.empty()) {
+        LL tmp = Q.front();
+        int cc = cnts[tmp];
+        Q.pop();
+        auto addif = [&](long long v) -> bool {
+            if(cnts.count(v) == 0) {
+                cnts[v] = cc+1;
+                Q.push(v);
+            }
+            return v == target;
+        };
+        if(addif(tmp+1)) break;
+        if(addif(rev(tmp))) break;
+    }
+
+    for(auto it : cnts) {
+        long long tmp = rev(it.first);
+        if(cnts.count(tmp) && cnts[tmp] == it.second - 1) {
+            cout << it.first << "=" << it.second << endl;
+        }
+    }
+
+    cout << cnts[target] << endl;
 }
 
 void process(int dataId)
 {
+    cin >> target;
 }
 
 class ForkSolver {
