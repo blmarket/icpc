@@ -88,8 +88,6 @@ int main(void) {
         cnt += (GetVote(i) == candi);
     }
 
-    cerr << cnt << endl;
-
     PutLL(0, cnt);
     Send(0);
 
@@ -98,6 +96,7 @@ int main(void) {
         for(int i=0;i<nn;i++) {
             sum += GetLL(i);
         }
+        cerr << sum << endl;
         if(sum*2 > N) {
             cout << candi << endl;
         } else {
