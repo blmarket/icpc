@@ -80,7 +80,6 @@ int main(void) {
         }
       }
     }
-    cerr << endl;
     return ret;
   };
 
