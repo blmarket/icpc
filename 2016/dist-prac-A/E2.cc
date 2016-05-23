@@ -40,6 +40,7 @@ int main(void) {
     LL candi = 0, vote = 0;
     for(LL i=ls;i<rs;i++) {
         LL tmp = GetVote(i);
+        cerr << tmp << " ";
         if(vote == 0) {
             candi = tmp;
             vote = 1;
@@ -51,8 +52,7 @@ int main(void) {
         }
         vote--;
     }
-
-    cerr << " " << candi << " " << vote << endl;
+    cerr << endl;
 
     PutLL(0, candi);
     PutLL(0, vote);
