@@ -74,6 +74,7 @@ int main(void) {
             }
         }
 
+        cerr << candi << endl;
         for(int i=0;i<nn;i++) {
             PutLL(i, candi);
             Send(i);
@@ -83,8 +84,6 @@ int main(void) {
     Receive(0);
     candi = GetLL(0);
     LL cnt = 0;
-
-    cerr << candi << endl;
 
     for(LL i=ls;i<rs;i++) {
         cnt += (GetVote(i) == candi);
