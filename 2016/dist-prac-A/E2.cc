@@ -63,6 +63,8 @@ int main(void) {
             LL t1 = GetLL(i);
             LL t2 = GetLL(i);
 
+            cerr << candi << " " << vote << endl;
+
             if(candi == t1) {
                 vote += t2;
                 continue;
@@ -74,7 +76,6 @@ int main(void) {
             }
         }
 
-        cerr << candi << endl;
         for(int i=0;i<nn;i++) {
             PutLL(i, candi);
             Send(i);
