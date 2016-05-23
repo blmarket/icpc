@@ -48,15 +48,11 @@ int main(void) {
             return ret;
         };
 
-        unordered_set<LL> cs;
-        for(int i=0;i<nn;i++) {
-            Receive(i);
-            cs.insert(GetLL(i));
-        }
-
-        each(it, cs) {
-            if (count(it) > N / 2) {
-                cout << it << endl;
+        for(int i=0;i<100;i++) {
+            LL pos = rand() % N;
+            LL candi = GetVote(pos);
+            if (count(candi) > N / 2) {
+                cout << candi << endl;
                 goto end;
             }
         }
@@ -72,27 +68,15 @@ end:
     LL ls = N * my / nn;
     LL rs = N * (my+1) / nn;
 
-    unordered_map<LL, LL> cnts;
-    for(LL i=ls;i<rs;i++) {
-        cnts[GetVote(i)] += 1;
-    }
-
-    LL msize = 0, mp = 0;
-    each(it, cnts) {
-        if(msize < it.second) {
-            msize = it.second;
-            mp = it.first;
-        }
-    }
-
-    PutLL(nn, mp);
-    Send(nn);
-
     while(true) {
         Receive(nn);
         LL tmp = GetLL(nn);
         if(tmp == -1) break;
-        PutLL(nn, cnts[tmp]);
+
+        LL ret = 0;
+        for(LL i=ls;i<rs;i++) if (GetVote(i) == tmp) ret++;
+
+        PutLL(nn, ret);
         Send(nn);
     }
     return 0;
