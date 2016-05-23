@@ -77,15 +77,13 @@ end:
         cnts[GetVote(i)] += 1;
     }
 
-    LL msize = 0, mp;
+    LL msize = 0, mp = 0;
     each(it, cnts) {
         if(msize < it.second) {
             msize = it.second;
             mp = it.first;
         }
     }
-
-    cerr << msize << " " << mp << endl;
 
     PutLL(nn, mp);
     Send(nn);
