@@ -70,7 +70,7 @@ int main(void) {
                 continue;
             }
             vote -= t2;
-            if(t2 < 0) {
+            if(vote < 0) {
                 candi = t1;
                 vote = -vote;
             }
