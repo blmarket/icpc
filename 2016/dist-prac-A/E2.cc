@@ -72,7 +72,7 @@ int main(void) {
             vote -= t2;
             if(t2 < 0) {
                 candi = t1;
-                vote = -t2;
+                vote = -vote;
             }
         }
 
