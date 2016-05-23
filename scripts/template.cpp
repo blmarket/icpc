@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <sys/wait.h>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -22,25 +22,9 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
-typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-void solve(int dataId)
-{
-}
-
-void process(int dataId)
-{
-}
-
-int main(void)
-{
-    int N;
-    cin >> N;
-    for(int i=1;i<=N;i++)
-    {
-        process(i);
-        solve(i);
-    }
+int main(void) {
+    return 0;
 }
