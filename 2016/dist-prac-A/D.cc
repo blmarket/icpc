@@ -52,11 +52,43 @@ int main(void) {
   sum /= 2;
 
   auto create_mid = [&](int left, int right, int target) -> unordered_set<LL> {
+    unordered_map<int, unordered_set<LL> > t1, t2;
+    int mid = (left + right) / 2;
+
+    auto gen = [&](int a, int b) {
+      unordered_map<int, unordered_set<LL> > ret;
+      int sz = b-a;
+      for(int i=0;i<(1<<sz);i++) {
+        LL tmp = 0;
+        for(int j=a;j<b;j++) {
+          tmp += w[j];
+        }
+        ret[tmp % nn].insert(tmp);
+      }
+      return ret;
+    }
+    t1 = gen(left, mid);
+    t2 = gen(mid, right);
+
     unordered_set<LL> ret;
+
+    each(it, t1) {
+      auto &tmp = t2[(target - it.first + nn) % nn];
+      each(jt, tmp) {
+        each(kt, it.second) {
+          ret.insert(jt + kt);
+        }
+      }
+    }
     return ret;
   };
 
   unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
+
+  each(it, t1) {
+    cerr << it << " ";
+  }
+  cerr << endl;
 
   return 0;
 }
