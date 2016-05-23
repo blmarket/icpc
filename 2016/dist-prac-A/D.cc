@@ -42,12 +42,12 @@ int main(void) {
     sum += w.back();
   }
 
-  if (sum % 2) {
-    if (my == 0) {
-      cout << "IMPOSSIBLE" << endl;
-    }
-    return 0;
-  }
+//  if (sum % 2) {
+//    if (my == 0) {
+//      cout << "IMPOSSIBLE" << endl;
+//    }
+//    return 0;
+//  }
 
   sum /= 2;
 
@@ -91,9 +91,6 @@ int main(void) {
   }
 
   each(it, t1) {
-    if (my == 0) {
-      cerr << it << endl;
-    }
     each(jt, t2) {
       if(it + jt == sum) {
         PutLL(0, 1);
