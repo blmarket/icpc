@@ -85,6 +85,8 @@ end:
         }
     }
 
+    cerr << msize << " " << mp << endl;
+
     PutLL(nn, mp);
     Send(nn);
 
