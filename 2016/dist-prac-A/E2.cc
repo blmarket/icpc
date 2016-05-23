@@ -88,6 +88,8 @@ int main(void) {
         cnt += (GetVote(i) == candi);
     }
 
+    cerr << candi << " " << cnt << endl;
+
     PutLL(0, cnt);
     Send(0);
 
