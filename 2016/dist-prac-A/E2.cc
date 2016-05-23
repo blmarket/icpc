@@ -93,8 +93,8 @@ int main(void) {
 
     if(my == 0) {
         LL sum = 0;
-        cerr << "HERE" << endl;
         for(int i=0;i<nn;i++) {
+            Receive(i);
             sum += GetLL(i);
         }
         if(sum*2 > N) {
