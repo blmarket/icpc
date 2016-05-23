@@ -38,10 +38,8 @@ int main(void) {
     LL rs = N * (my+1) / nn;
 
     LL candi = 0, vote = 0;
-    cerr << ls << " " << rs << endl;
     for(LL i=ls;i<rs;i++) {
         LL tmp = GetVote(i);
-        cerr << tmp << " ";
         if(vote == 0) {
             candi = tmp;
             vote = 1;
@@ -53,7 +51,7 @@ int main(void) {
         }
         vote--;
     }
-    cerr << endl;
+    cerr << candi << " " << vote << endl;
 
     PutLL(0, candi);
     PutLL(0, vote);
