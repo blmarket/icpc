@@ -52,6 +52,8 @@ int main(void) {
   sum /= 2;
 
   auto create_mid = [&](int left, int right, int target) -> unordered_set<LL>&& {
+    unordered_set<LL> ret;
+    return ret;
   };
 
   unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
