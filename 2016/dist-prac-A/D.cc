@@ -61,7 +61,7 @@ int main(void) {
       for(int i=0;i<(1<<sz);i++) {
         LL tmp = 0;
         for(int j=0;j<sz;j++) if((i>>j)&1) {
-          tmp += w[j];
+          tmp += w[a + j];
         }
         ret[tmp % nn].insert(tmp);
       }
