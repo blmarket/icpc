@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -12,9 +11,8 @@
 #include <vector>
 
 #define mp make_pair
-#define pb push_back
-#define sqr(x) ((x)*(x))
-#define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
+#define each(it, v) for(auto &it: v)
+#define pb emplace_back
 
 using namespace std;
 
@@ -26,21 +24,6 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-void solve(int dataId)
-{
-}
-
-void process(int dataId)
-{
-}
-
-int main(void)
-{
-    int N;
-    cin >> N;
-    for(int i=1;i<=N;i++)
-    {
-        process(i);
-        solve(i);
-    }
+int main(void) {
+    return 0;
 }

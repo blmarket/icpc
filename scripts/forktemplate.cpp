@@ -1,5 +1,5 @@
 #include <iostream>
-#include <sys/wait.h>
+#include <unistd.h>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -27,12 +27,10 @@ typedef pair<int,int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-// do time-consuming job here
 void solve(int dataId)
 {
 }
 
-// do data input here. don't use stdin methods in solve function.
 void process(int dataId)
 {
 }
@@ -62,7 +60,7 @@ int main(void)
         char buffer[8192];
         waitpid(solver.outfds[i].first, &status, 0);
         ssize_t sz;
-        while(sz = read(solver.outfds[i].second, buffer, sizeof(buffer)))
+        while((sz = read(solver.outfds[i].second, buffer, sizeof(buffer))))
         {
             ssize_t iter = 0, outsz;
 
@@ -104,6 +102,7 @@ void ForkSolver::_solve(int dataId)
 
     if(pid) // I'm parent!
     {
+        nchilds++;
         close(pipefd[1]); // close write end, i'll only read
         outfds[dataId] = mp(pid, pipefd[0]);
     }
