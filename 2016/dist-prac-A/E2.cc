@@ -74,7 +74,6 @@ int main(void) {
             }
         }
 
-    cerr << candi << endl;
         for(int i=0;i<nn;i++) {
             PutLL(i, candi);
             Send(i);
@@ -88,6 +87,8 @@ int main(void) {
     for(LL i=ls;i<rs;i++) {
         cnt += (GetVote(i) == candi);
     }
+
+    cerr << cnt << endl;
 
     PutLL(0, cnt);
     Send(0);
