@@ -76,16 +76,17 @@ int main(void) {
       auto &tmp = t2[(target - it.first + nn) % nn];
       each(jt, tmp) {
         each(kt, it.second) {
+          cerr << jt + kt << " ";
           ret.insert(jt + kt);
         }
       }
     }
+    cerr << endl;
     return ret;
   };
 
   unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
   if(t1.count(sum) || t2.count(sum)) {
-    cerr << "HERE" << endl;
     PutLL(0, 1);
     Send(0);
     goto end;
