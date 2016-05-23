@@ -87,5 +87,13 @@ end:
 
     PutLL(nn, mp);
     Send(nn);
+
+    while(true) {
+        Receive(nn);
+        LL tmp = GetLL(nn);
+        if(tmp == -1) break;
+        PutLL(nn, cnts[tmp]);
+        Send(nn);
+    }
     return 0;
 }
