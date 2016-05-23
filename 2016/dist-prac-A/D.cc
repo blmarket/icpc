@@ -84,6 +84,7 @@ int main(void) {
   };
 
   unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
+  cerr << sum << endl;
   if(t1.count(sum) || t2.count(sum)) {
     PutLL(0, 1);
     Send(0);
