@@ -75,9 +75,7 @@ int main(void) {
     each(it, t1) {
       auto &tmp = t2[(target - it.first + nn) % nn];
       each(jt, tmp) {
-        cerr << "jt = " << jt << endl;
         each(kt, it.second) {
-          cerr << "kt = " << kt << endl;
           ret.insert(jt + kt);
         }
       }
