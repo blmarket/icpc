@@ -52,7 +52,7 @@ int main(void) {
   sum /= 2;
 
   auto create_mid = [&](int left, int right, int target) -> unordered_set<LL>&& {
-    unordered_set<LL> ret;
+    unordered_set<LL> &&ret;
     return ret;
   };
 
