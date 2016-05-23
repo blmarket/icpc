@@ -51,7 +51,6 @@ int main(void) {
         }
         vote--;
     }
-    cerr << candi << " " << vote << endl;
 
     PutLL(0, candi);
     PutLL(0, vote);
@@ -75,6 +74,7 @@ int main(void) {
             }
         }
 
+    cerr << candi << endl;
         for(int i=0;i<nn;i++) {
             PutLL(i, candi);
             Send(i);
