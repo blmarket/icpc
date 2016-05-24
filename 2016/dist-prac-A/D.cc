@@ -69,7 +69,7 @@ int main(void) {
 
     each(it, v1) {
         int rest = sum - it;
-        if (ret == *lower_bound(v2.begin(), v2.end(), rest)) {
+        if (rest == *lower_bound(v2.begin(), v2.end(), rest)) {
             PutLL(0, 1);
             Send(0);
             goto end;
