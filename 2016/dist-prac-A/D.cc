@@ -46,7 +46,7 @@ vector<LL> gen1(int s, int e) {
     return v;
 }
 
-int main(void) {
+int process(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
 
@@ -111,4 +111,11 @@ end:
     }
 
     return 0;
+}
+
+int main() {
+    for(int i=0;i<10;i++) {
+        w.clear();
+        process();
+    }
 }
