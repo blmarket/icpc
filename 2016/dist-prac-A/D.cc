@@ -57,7 +57,9 @@ int main(void) {
     int n = 10;
     for(int i=0;i<n;i++) {
         w.pb(rand() % 1000);
+        cerr << w[i] << " ";
     }
+    cerr << endl;
 
     LL sum = 0;
     each(it, w) sum += it;
