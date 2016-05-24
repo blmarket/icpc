@@ -53,6 +53,7 @@ int main(void) {
 //    int n = GetN();
 //    for(int i=0;i<n;i++) w.pb(GetWeight(i));
 
+    srand(time(NULL));
     int n = 10;
     for(int i=0;i<n;i++) {
         w.pb(rand() % 1000);
