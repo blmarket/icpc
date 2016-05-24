@@ -48,6 +48,7 @@ bool simple() {
 }
 
 vector<LL> gen(int s, int e) {
+  vector<LL> ret;
   ret.clear();
   ret.pb(0);
   for(int i=s;i<e;i++) {
