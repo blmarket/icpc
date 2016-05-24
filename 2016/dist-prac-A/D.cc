@@ -74,7 +74,7 @@ int main(void) {
 
     vector<LL> tmp = gen1(0, n);
     if(sum == *lower_bound(tmp.begin(), tmp.end(), sum)) {
-        cerr << "POSSIBLE" << endl;
+        cerr << "YES" << endl;
     } else {
         cerr << "NO" << endl;
     }
