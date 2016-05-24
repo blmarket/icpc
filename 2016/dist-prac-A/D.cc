@@ -72,6 +72,13 @@ int main(void) {
     }
     sum /= 2;
 
+    vector<LL> tmp = gen1(0, n);
+    if(sum == *lower_bound(sum, tmp.begin(), tmp.end())) {
+        cerr << "POSSIBLE" << endl;
+    } else {
+        cerr << "NO" << endl;
+    }
+
     vector<LL> v1 = move(gen1(0, n/2));
     vector<LL> v2 = move(gen1(n/2, n));
 
