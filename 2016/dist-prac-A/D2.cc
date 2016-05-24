@@ -48,8 +48,7 @@ bool simple() {
   return false;
 }
 
-vector<LL> gen(int s, int e) {
-  vector<LL> ret;
+void gen(vector<LL> &ret, int s, int e) {
   ret.clear();
   ret.pb(0);
   for(int i=s;i<e;i++) {
@@ -57,7 +56,6 @@ vector<LL> gen(int s, int e) {
       ret.pb(ret[j] + w[i]);
     }
   }
-  return ret;
 }
 
 bool comp() {
@@ -68,8 +66,8 @@ bool comp() {
 
   int mid = n / 2;
   vector<LL> v1, v2;
-  v1 = gen(0, mid);
-  v2 = gen(mid, n);
+  gen(v1, 0, mid);
+  gen(v2, mid, n);
   sort(v1.begin(), v1.end());
   sort(v2.begin(), v2.end());
   
