@@ -56,7 +56,7 @@ int main(void) {
     srand(time(NULL));
     int n = 10;
     for(int i=0;i<n;i++) {
-        w.pb(rand() % 1000);
+        w.pb(rand() % 100);
         cerr << w[i] << " ";
     }
     cerr << endl;
