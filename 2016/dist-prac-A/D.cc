@@ -73,7 +73,7 @@ int main(void) {
     sum /= 2;
 
     vector<LL> tmp = gen1(0, n);
-    if(sum == *lower_bound(sum, tmp.begin(), tmp.end())) {
+    if(sum == *lower_bound(tmp.begin(), tmp.end(), sum)) {
         cerr << "POSSIBLE" << endl;
     } else {
         cerr << "NO" << endl;
