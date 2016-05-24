@@ -65,10 +65,12 @@ int main(void) {
     each(it, w) sum += it;
 
     if (sum & 1) {
-        if(my == 0) {
-            cout << "IMPOSSIBLE" << endl;
-        }
-        return 0;
+        w[0]++;
+        sum++;
+        //if(my == 0) {
+        //    cout << "IMPOSSIBLE" << endl;
+        //}
+        //return 0;
     }
     sum /= 2;
 
