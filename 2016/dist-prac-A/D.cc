@@ -76,7 +76,7 @@ int process(void) {
 
     vector<LL> tmp = gen1(0, n);
     if(sum == *lower_bound(tmp.begin(), tmp.end(), sum)) {
-        cerr << "YES" << endl;
+        cerr << "YES" << " " << sum << endl;
     } else {
         cerr << "NO" << endl;
     }
