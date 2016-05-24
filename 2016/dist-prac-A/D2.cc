@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <unordered_map>
@@ -27,7 +28,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-// #include "load_balance.h"
+#include "load_balance.h"
 
 int n;
 vector<LL> w;
@@ -60,29 +61,41 @@ vector<LL> gen(int s, int e) {
 }
 
 bool comp() {
-  int mid = N / 2;
+  LL total = 0;
+  each(it, w) total += it;
+
+  if(total & 1) return false;
+
+  int mid = n / 2;
   vector<LL> v1, v2;
   v1 = gen(0, mid);
-  v2 = gen(mid, N);
-}
-
-void process(void) {
+  v2 = gen(mid, n);
+  sort(v1.begin(), v1.end());
+  sort(v2.begin(), v2.end());
+  
+  int j = v2.size() - 1;
+  for(int i=0;i<size(v1);i++) {
+    while(j > 0 && v1[i] + v2[j] > total/2) j--;
+    if(v1[i] + v2[j] == total/2) {
+      return true;
+    }
+    if(j == 0) break;
+  }
+  return false;
 }
 
 int main(void) {
   int my = MyNodeId();
   int nn = NumberOfNodes();
 
-  while(true) {
-    srand(time(NULL));
-    n = 10;
-    w.clear();
-    for(int i=0;i<n;i++) {
-      w.pb(rand() % 100);
-    }
+  if (my != 0) return 0;
 
-    process();
+  n = GetN();
+  w.clear();
+  for(int i=0;i<n;i++) {
+    w.pb(GetWeight(i));
   }
 
+  cout << (comp() ? "POSSIBLE" : "IMPOSSIBLE") << endl;
   return 0;
 }
