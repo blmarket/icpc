@@ -95,6 +95,7 @@ int main(void) {
   for(int i=0;i<n;i++) {
     w.pb(GetWeight(i));
   }
+  n--;
 
   cout << (comp() ? "POSSIBLE" : "IMPOSSIBLE") << endl;
   return 0;
