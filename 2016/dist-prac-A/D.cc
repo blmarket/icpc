@@ -53,7 +53,6 @@ int process(void) {
 //    int n = GetN();
 //    for(int i=0;i<n;i++) w.pb(GetWeight(i));
 
-    srand(time(NULL));
     int n = 10;
     for(int i=0;i<n;i++) {
         w.pb(rand() % 100);
@@ -114,6 +113,7 @@ end:
 }
 
 int main() {
+    srand(time(NULL));
     for(int i=0;i<10;i++) {
         w.clear();
         process();
