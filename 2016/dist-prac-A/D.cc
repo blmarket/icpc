@@ -12,6 +12,8 @@
 #include <map>
 #include <vector>
 
+#include <message.h>
+
 #define mp make_pair
 #define each(it, v) for(auto &it: v)
 #define pb emplace_back
