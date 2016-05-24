@@ -29,7 +29,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-#include "load_balance.h"
+// #include "load_balance.h"
 
 vector<LL> w;
 
@@ -50,8 +50,13 @@ int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
 
-    int n = GetN();
-    for(int i=0;i<n;i++) w.pb(GetWeight(i));
+//    int n = GetN();
+//    for(int i=0;i<n;i++) w.pb(GetWeight(i));
+
+    int n = 10;
+    for(int i=0;i<n;i++) {
+        w.pb(rand() % 1000);
+    }
 
     LL sum = 0;
     each(it, w) sum += it;
@@ -67,9 +72,11 @@ int main(void) {
     vector<LL> v1 = move(gen1(0, n/2));
     vector<LL> v2 = move(gen1(n/2, n));
 
+    int jj = v2.size() - 1;
+
     each(it, v1) {
-        int rest = sum - it;
-        if (rest == *lower_bound(v2.begin(), v2.end(), rest)) {
+        while(jj > 0 && v2[jj] + it > sum) jj--;
+        if(it + v2[jj] == sum) {
             PutLL(0, 1);
             Send(0);
             goto end;
