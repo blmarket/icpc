@@ -68,11 +68,11 @@ void go(int a, int b) {
 
     if(tmp == data[a-1][b]) {
       for(int i=1;i<=3;i++) if(i != data[a-1][b]) {
+        cerr << a << " " << b << " " << i << endl;
         data[a][b] = i;
         go(a,b+1);
       }
     }
-    return;
   }
 
   for(int i=1;i<=3;i++) {
