@@ -48,7 +48,7 @@ int main(void) {
             return ret;
         };
 
-        for(int i=0;i<100;i++) {
+        for(int i=0;i<10;i++) {
             LL pos = rand() % N;
             LL candi = GetVote(pos);
             if (count(candi) > N / 2) {
