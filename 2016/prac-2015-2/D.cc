@@ -88,7 +88,7 @@ void process() {
   scanf(" %d %d", &r, &c);
   total = 0;
   go(0,0);
-  cout << total << endl;
+  // cout << total << endl;
 
   int gen[10] = {0};
   // except 3.
