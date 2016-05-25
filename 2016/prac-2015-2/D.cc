@@ -82,7 +82,7 @@ void process() {
   }
   while(ret % c) ret += mod;
   ret /= c;
-  cout << ret << endl;
+  cout << (ret%mod) << endl;
 }
 
 int main(void) {
