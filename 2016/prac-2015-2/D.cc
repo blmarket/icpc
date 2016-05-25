@@ -50,6 +50,7 @@ void go(int a, int b) {
       for(int j=0;j<c;j++) cout << data[i][j] << " ";
       cout << endl;
     }
+    cout << endl;
     return;
   }
   if(b == c) {
