@@ -40,6 +40,7 @@ bool check(int a, int b) {
 }
 
 void go(int a, int b) {
+  cerr << a << " " << b << endl;
   if(a == r) {
     for(int i=0;i<r;i++) for(int j=0;j<c;j++) {
       if(check(i, j) == false) {
