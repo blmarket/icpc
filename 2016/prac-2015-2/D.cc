@@ -62,9 +62,9 @@ void go(int a, int b) {
 
     for(int i=1;i<=3;i++) {
         data[a][b] = i;
-        if(!(good(a-1,b) && good(a,(b+c-1)%c))) {
-            continue;
-        }
+        if(!good(a-1,b)) continue;
+        if(b && !good(a,b-1)) continue;
+        if(b == c-1 && !good(a,0)) continue;
         cerr << a << " " << b << " " << data[a][b] << endl;
         go(a, b+1);
     }
