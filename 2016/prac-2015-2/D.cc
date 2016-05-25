@@ -118,6 +118,9 @@ void process() {
   for(int i=101;i<=100+r;i++) {
     dyna[i][0] += dyna[i-2][1];
     dyna[i][1] += dyna[i-1][0];
+    dyna[i][2] += dyna[i-2][3];
+    dyna[i][3] += dyna[i-1][2];
+
 
     dyna[i][2] += dyna[i-2][3];
     if((c%6) == 0) {
@@ -134,6 +137,7 @@ void process() {
   LL ret = dyna[100+r][0] + dyna[100+r][1] + dyna[100+r][2] + dyna[100+r][3];
   ret %= mod;
   cerr << dyna[102][3] << " " << dyna[102][0] << " " << dyna[101][1] << endl;
+  cerr << dyna[104][2] << " " << dyna[103][1] << " " << dyna[103][0] << endl;
   cerr << dyna[104][2] << " " << dyna[103][1] << " " << dyna[103][0] << endl;
   cout << ret << endl;
 }
