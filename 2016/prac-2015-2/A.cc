@@ -32,11 +32,15 @@ int r,c;
 vector<string> v;
 
 bool testmove(int a, int b, int d) {
+    a += dx[d];
+    b += dy[d];
+
     while(a>=0 && b>=0 && a<r && b<c) {
+        if(v[a][b] != '.') return true;
         a += dx[d];
         b += dy[d];
-        if(v[a][b] != '.') return 0;
     }
+    return false;
 }
 
 int chk(int a, int b) {
@@ -58,7 +62,6 @@ void process() {
         scanf(" %s", tmp);
         v.pb(tmp);
     }
-    cerr << "HERE" << endl;
 
     int ret = 0;
     for(int i=0;i<r;i++) {
