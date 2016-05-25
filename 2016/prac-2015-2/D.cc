@@ -30,19 +30,19 @@ int data[10][10];
 int dx[] = {-1,0,0,1};
 int dy[] = {0,-1,1,0};
 
-bool check(int a, int b) {
+int check(int a, int b) {
   int cnt = 0;
   if(a) cnt += data[a][b] == data[a-1][b];
   if(a+1 < r) cnt += data[a][b] == data[a+1][b];
   cnt += data[a][(b+c-1)%c] == data[a][b];
   cnt += data[a][(b+1)%c] == data[a][b];
-  return cnt == data[a][b];
+  return cnt;
 }
 
 void go(int a, int b) {
   if(a == r) {
     for(int i=0;i<r;i++) for(int j=0;j<c;j++) {
-      if(check(i, j) == false) {
+      if(check(i, j) == data[i][j]) {
         return;
       }
     }
@@ -57,6 +57,10 @@ void go(int a, int b) {
     go(a+1, 0);
     return;
   }
+
+  if(a) {
+  }
+
   for(int i=1;i<=3;i++) {
     data[a][b] = i;
     go(a,b+1);
