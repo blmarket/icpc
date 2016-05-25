@@ -67,7 +67,7 @@ void go(int a, int b) {
     }
 
     if(tmp == data[a-1][b]) {
-      for(int i=1;i<=3;i++) if(i != tmp) {
+      for(int i=1;i<=3;i++) if(i != data[a-1][b]) {
         data[a][b] = i;
         go(a,b+1);
       }
