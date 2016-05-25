@@ -122,7 +122,7 @@ void process() {
     dyna[i][3] += dyna[i-1][2];
 
     if((c%6) == 0) {
-      dyna[i][3] += (dyna[i-2][0] * 2 + dyna[i-2][2] * 7) % mod;
+      dyna[i][3] += (dyna[i-2][0] * 2 + dyna[i-2][2] * 8) % mod;
     } else if((c%3) == 0) {
       dyna[i][3] += (dyna[i-2][0] + dyna[i-2][2] * 3) % mod;
     }
