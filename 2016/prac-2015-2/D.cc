@@ -42,7 +42,7 @@ int check(int a, int b) {
 void go(int a, int b) {
   if(a == r) {
     for(int i=0;i<r;i++) for(int j=0;j<c;j++) {
-      if(check(i, j) == data[i][j]) {
+      if(check(i, j) != data[i][j]) {
         return;
       }
     }
@@ -56,9 +56,6 @@ void go(int a, int b) {
   if(b == c) {
     go(a+1, 0);
     return;
-  }
-
-  if(a) {
   }
 
   for(int i=1;i<=3;i++) {
