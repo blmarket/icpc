@@ -73,6 +73,7 @@ void go(int a, int b) {
         go(a,b+1);
       }
     }
+    return;
   }
 
   for(int i=1;i<=3;i++) {
