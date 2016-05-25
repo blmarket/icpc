@@ -48,11 +48,11 @@ void go(int a, int b) {
       }
     }
     total ++;
-    //for(int i=0;i<r;i++) {
-    //  for(int j=0;j<c;j++) cout << data[i][j] << " ";
-    //  cout << endl;
-    //}
-    //cout << endl;
+    for(int i=0;i<r;i++) {
+      for(int j=0;j<c;j++) cout << data[i][j] << " ";
+      cout << endl;
+    }
+    cout << endl;
     return;
   }
   if(b == c) {
