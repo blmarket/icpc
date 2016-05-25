@@ -58,6 +58,7 @@ void process() {
         scanf(" %s", tmp);
         v.pb(tmp);
     }
+    cerr << "HERE" << endl;
 
     int ret = 0;
     for(int i=0;i<r;i++) {
