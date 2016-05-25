@@ -59,6 +59,7 @@ void go(int a, int b) {
   }
   
   if(a) {
+    data[a][b] = -1;
     int tmp = check(a-1, b);
     if(tmp+1 == data[a-1][b]) {
       data[a][b] = data[a-1][b];
