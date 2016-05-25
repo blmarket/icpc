@@ -33,12 +33,12 @@ int data[10][10];
 int ret;
 
 int get(int a, int b) {
-    if(a<0 || b<0 || a>=r || b>=c) return -1;
-    return data[a][b];
+    if(a<0 || a>=r) return -1;
+    return data[a][(b+c)%c];
 }
 
 bool good(int a, int b) {
-    if(a<0 || b<0 || a>=r || b>=c) return true;
+    if(a<0 || a>=r) return true;
     int cnt = 0;
     for(int i=0;i<4;i++) {
         if(get(a+dx[i], b+dy[i]) == data[a][b]) cnt++;
@@ -62,7 +62,7 @@ void go(int a, int b) {
 
     for(int i=1;i<=3;i++) {
         data[a][b] = i;
-        if(!(good(a-1,b) && good(a,b-1))) {
+        if(!(good(a-1,b) && good(a,(b+c-1)%c))) {
             continue;
         }
         cerr << a << " " << b << " " << data[a][b] << endl;
