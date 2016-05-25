@@ -40,7 +40,6 @@ bool check(int a, int b) {
 }
 
 void go(int a, int b) {
-  cout << a << " " << b << " " << c << endl;
   if(a == r) {
     for(int i=0;i<r;i++) for(int j=0;j<c;j++) {
       if(check(i, j) == false) {
@@ -55,6 +54,7 @@ void go(int a, int b) {
   }
   if(b == c) {
     go(a+1, 0);
+    return;
   }
   for(int i=1;i<=3;i++) {
     data[a][b] = i;
