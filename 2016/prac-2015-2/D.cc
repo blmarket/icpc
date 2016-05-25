@@ -124,7 +124,9 @@ void process() {
       dyna[i][3] += (dyna[i-2][0] * 2 + dyna[i-2][2] * 9) % mod;
     } else if((c%3) == 0) {
       dyna[i][3] += (dyna[i-2][0] + dyna[i-2][2] * 3) % mod;
-    } else if((c%4) == 0) {
+    }
+
+    if((c%4) == 0) {
       dyna[i][3] += (dyna[i-3][0] + dyna[i-3][2] * 4) % mod;
     }
   }
