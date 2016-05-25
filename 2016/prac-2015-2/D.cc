@@ -25,115 +25,63 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int r,c;
-int data[10][10];
 int total = 0;
+LL mod = 1e9 + 7;
 
-int dx[] = {-1,0,0,1};
-int dy[] = {0,-1,1,0};
+LL go(int rot) {
+  LL dp[205][2] = {0};
+  dp[100][0] = 1;
+  dp[100][1] = 1;
 
-int check(int a, int b) {
-  int cnt = 0;
-  if(a) cnt += data[a][b] == data[a-1][b];
-  if(a+1 < r) cnt += data[a][b] == data[a+1][b];
-  cnt += data[a][(b+c-1)%c] == data[a][b];
-  cnt += data[a][(b+1)%c] == data[a][b];
-  return cnt;
-}
+  for(int i=101;i<=100+r;i++) {
+    dp[i][0] = dp[i-2][1];
+    dp[i][1] = dp[i-1][0];
 
-void go(int a, int b) {
-  if(a == r) {
-    for(int i=0;i<r;i++) for(int j=0;j<c;j++) {
-      if(check(i, j) != data[i][j]) {
-        return;
-      }
+    if((c%6) && (rot%6)) {
+      dp[i][1] += dp[i-2][0] * 6;
     }
-    total ++;
-    //for(int i=0;i<r;i++) {
-    //  for(int j=0;j<c;j++) cout << data[i][j] << " ";
-    //  cout << endl;
-    //}
-    //cout << endl;
-    return;
-  }
-  if(b == c) {
-    go(a+1, 0);
-    return;
-  }
-  
-  if(a) {
-    data[a][b] = -1;
-    int tmp = check(a-1, b);
-    if(tmp+1 == data[a-1][b]) {
-      data[a][b] = data[a-1][b];
-      go(a, b+1);
-      return;
+    if((c%3) && (rot%3)) {
+      dp[i][1] += dp[i-2][0] * 3;
+    }
+    if((c%4) && (rot%4)) {
+      dp[i][1] += dp[i-3][0] * 4;
     }
 
-    if(tmp == data[a-1][b]) {
-      for(int i=1;i<=3;i++) if(i != data[a-1][b]) {
-        data[a][b] = i;
-        go(a,b+1);
-      }
-    }
-    return;
+    dp[i][0] %= mod;
+    dp[i][1] %= mod;
   }
 
-  for(int i=1;i<=3;i++) {
-    data[a][b] = i;
-    go(a,b+1);
-  }
+  return dp[100+r][0] + dp[100+r][1];
 }
 
 void process() {
   scanf(" %d %d", &r, &c);
-  total = 0;
-  go(0,0);
-  // cout << total << endl;
 
-  int gen[10] = {0};
-  // except 3.
-  // gen[1] = 1; // use only 2.
-  if((c%6) == 0) {
-    // 222211
-    // 211222
-    gen[2] += 6;
+  // 3-cycle
+  // 221
+  // 221
+
+  // 4-cycle
+  // 2122
+  // 2121
+  // 2221
+
+  // 6-cycle
+  // 211222
+  // 222211
+
+  // 1-cycle
+  // 222...
+  //
+  // 333...
+  // 333...
+
+  LL ret = 0;
+  for(int i=0;i<c;i++) {
+    ret = (ret + go(i)) % mod;
   }
-  if((c%3) == 0) {
-    // 221
-    // 221
-    gen[2] += 3;
-  }
-  // 2212 
-  // 1212
-  // 1222
-  if((c%4) == 0) {
-    gen[3] += 4;
-  }
-
-  const LL mod = 1e9 + 7;
-
-  LL dyna[205][4] = {0};
-  dyna[100][0] = 1;
-  dyna[100][1] = 1;
-  for(int i=101;i<=100+r;i++) {
-    dyna[i][0] += dyna[i-2][1];
-    dyna[i][1] += dyna[i-1][0];
-    dyna[i][2] += dyna[i-2][3];
-    dyna[i][3] += dyna[i-1][2];
-
-    if((c%6) == 0) {
-      dyna[i][3] += (dyna[i-2][0] * 2 + dyna[i-2][2] * 8) % mod;
-    } else if((c%3) == 0) {
-      dyna[i][3] += (dyna[i-2][0] + dyna[i-2][2] * 3) % mod;
-    }
-
-    if((c%4) == 0) {
-      dyna[i][3] += (dyna[i-3][0] + dyna[i-3][2] * 4) % mod;
-    }
-  }
-
-  LL ret = dyna[100+r][0] + dyna[100+r][1] + dyna[100+r][2] + dyna[100+r][3];
-  ret %= mod;
+  while(ret % c) ret += mod;
+  ret /= c;
   cout << ret << endl;
 }
 
