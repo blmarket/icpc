@@ -57,6 +57,14 @@ void go(int a, int b) {
     go(a+1, 0);
     return;
   }
+  
+  if(a) {
+    if(check(a-1,b)+1 == data[a-1][b]) {
+      data[a][b] = data[a-1][b];
+      go(a, b+1);
+      return;
+    }
+  }
 
   for(int i=1;i<=3;i++) {
     data[a][b] = i;
