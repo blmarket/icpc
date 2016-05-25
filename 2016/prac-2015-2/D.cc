@@ -37,13 +37,13 @@ LL go(int rot) {
     dp[i][0] = dp[i-2][1];
     dp[i][1] = dp[i-1][0];
 
-    if((c%6) && (rot%6)) {
+    if((c%6)==0 && (rot%6)==0) {
       dp[i][1] += dp[i-2][0] * 6;
     }
-    if((c%3) && (rot%3)) {
+    if((c%3)==0 && (rot%3)==0) {
       dp[i][1] += dp[i-2][0] * 3;
     }
-    if((c%4) && (rot%4)) {
+    if((c%4)==0 && (rot%4)==0) {
       dp[i][1] += dp[i-3][0] * 4;
     }
 
@@ -78,6 +78,7 @@ void process() {
 
   LL ret = 0;
   for(int i=0;i<c;i++) {
+    cout << go(i) << endl;
     ret = (ret + go(i)) % mod;
   }
   while(ret % c) ret += mod;
