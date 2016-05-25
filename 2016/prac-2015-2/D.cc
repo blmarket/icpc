@@ -26,6 +26,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int r,c;
 int data[10][10];
+int total = 0;
 
 int dx[] = {-1,0,0,1};
 int dy[] = {0,-1,1,0};
@@ -46,11 +47,12 @@ void go(int a, int b) {
         return;
       }
     }
-    for(int i=0;i<r;i++) {
-      for(int j=0;j<c;j++) cout << data[i][j] << " ";
-      cout << endl;
-    }
-    cout << endl;
+    total ++;
+    //for(int i=0;i<r;i++) {
+    //  for(int j=0;j<c;j++) cout << data[i][j] << " ";
+    //  cout << endl;
+    //}
+    //cout << endl;
     return;
   }
   if(b == c) {
@@ -84,7 +86,29 @@ void go(int a, int b) {
 
 void process() {
   scanf(" %d %d", &r, &c);
-  go(0, 0);
+  total = 0;
+  go(0,0);
+  cout << total << endl;
+
+  int gen[10] = {0};
+  // except 3.
+  gen[1] = 1; // use only 2.
+  if((c%6) == 0) {
+    // 222211
+    // 211222
+    gen[2] += 6;
+  }
+  if((c%3) == 0) {
+    // 221
+    // 221
+    gen[2] += 3;
+  }
+  // 2212 
+  // 1212
+  // 1222
+  if((c%4) == 0) {
+    gen[3] += 4;
+  }
 }
 
 int main(void) {
