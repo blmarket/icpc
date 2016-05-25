@@ -38,7 +38,6 @@ int get(int a, int b) {
 }
 
 bool good(int a, int b) {
-    if(a<0 || a>=r) return true;
     int cnt = 0;
     for(int i=0;i<4;i++) {
         if(get(a+dx[i], b+dy[i]) == data[a][b]) cnt++;
@@ -47,7 +46,6 @@ bool good(int a, int b) {
 }
 
 void go(int a, int b) {
-    cerr << a << " " << b << endl;
     if(a == r) {
         ret++;
         for(int i=0;i<r;i++) {
@@ -63,7 +61,7 @@ void go(int a, int b) {
 
     for(int i=1;i<=3;i++) {
         data[a][b] = i;
-        if(!good(a-1,b)) continue;
+        if(a && !good(a-1,b)) continue;
         if(b && !good(a,b-1)) continue;
         if(b == c-1 && !good(a,0)) continue;
         cerr << a << " " << b << " " << data[a][b] << endl;
