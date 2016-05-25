@@ -56,6 +56,7 @@ int chk(int a, int b) {
 }
 
 void process() {
+    v.clear();
     scanf(" %d %d", &r, &c);
     char tmp[1024];
     for(int i=0;i<r;i++) {
