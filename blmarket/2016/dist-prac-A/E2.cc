@@ -39,5 +39,21 @@ int main(void) {
     cout << 0 << endl;
     return 0;
   }
+
+  LL N = GetN();
+  LL ls = N * my / nn;
+  LL rs = N * (my + 1) / nn;
+
+  unordered_map<LL, LL> m;
+  for(LL i=ls;i<rs;i++) {
+    m[GetVote(i)] += 1;
+  }
+
+  vector<pair<LL, LL> > v;
+  for(auto it: m) {
+    v.pb(mp(it.second, it.first));
+  }
+  sort(v.rbegin(), v.rend());
+
   return 0;
 }

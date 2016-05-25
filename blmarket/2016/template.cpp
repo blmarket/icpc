@@ -1,6 +1,7 @@
 #include <iostream>
-#include <sys/wait.h>
 #include <cstdlib>
+#include <algorithm>
+#include <unordered_map>
 #include <cstring>
 #include <cstdio>
 #include <sstream>
@@ -12,6 +13,7 @@
 #include <vector>
 
 #define mp make_pair
+#define each(it, v) for(auto &it: v)
 #define pb push_back
 #define sqr(x) ((x)*(x))
 #define foreach(it,c) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
@@ -22,6 +24,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
