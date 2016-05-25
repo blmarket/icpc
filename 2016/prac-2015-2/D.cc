@@ -69,13 +69,13 @@ void go(int a, int b) {
       return;
     }
 
-    //if(tmp == data[a-1][b]) {
-    //  for(int i=1;i<=3;i++) if(i != data[a-1][b]) {
-    //    data[a][b] = i;
-    //    go(a,b+1);
-    //  }
-    //}
-    //return;
+    if(tmp == data[a-1][b]) {
+      for(int i=1;i<=3;i++) if(i != data[a-1][b]) {
+        data[a][b] = i;
+        go(a,b+1);
+      }
+    }
+    return;
   }
 
   for(int i=1;i<=3;i++) {
@@ -92,7 +92,7 @@ void process() {
 
   int gen[10] = {0};
   // except 3.
-  gen[1] = 1; // use only 2.
+  // gen[1] = 1; // use only 2.
   if((c%6) == 0) {
     // 222211
     // 211222
@@ -109,6 +109,29 @@ void process() {
   if((c%4) == 0) {
     gen[3] += 4;
   }
+
+  const LL mod = 1e9 + 7;
+
+  LL dyna[205][4] = {0};
+  dyna[100][0] = 1;
+  dyna[100][1] = 1;
+  for(int i=101;i<=100+r;i++) {
+    dyna[i][0] += dyna[i-2][1];
+    dyna[i][1] += dyna[i-1][0];
+
+    dyna[i][2] += dyna[i-2][3];
+    if((c%6) == 0) {
+      dyna[i][3] += (dyna[i-2][0] * 2 + dyna[i-2][2] * 9) % mod;
+    } else if((c%3) == 0) {
+      dyna[i][3] += (dyna[i-2][0] + dyna[i-2][2] * 3) % mod;
+    } else if((c%4) == 0) {
+      dyna[i][3] += (dyna[i-3][0] + dyna[i-3][2] * 4) % mod;
+    }
+  }
+
+  LL ret = dyna[100+r][0] + dyna[100+r][1] + dyna[100+r][2] + dyna[100+r][3];
+  ret %= mod;
+  cout << ret << endl;
 }
 
 int main(void) {
