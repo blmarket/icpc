@@ -133,6 +133,7 @@ void process() {
 
   LL ret = dyna[100+r][0] + dyna[100+r][1] + dyna[100+r][2] + dyna[100+r][3];
   ret %= mod;
+  cerr << dyna[102][3] << " " << dyna[102][0] << " " << dyna[101][1] << endl;
   cout << ret << endl;
 }
 
