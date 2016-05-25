@@ -78,7 +78,7 @@ void process() {
 
   LL ret = 0;
   for(int i=0;i<c;i++) {
-    cout << go(i) << endl;
+    // cout << go(i) << endl;
     ret = (ret + go(i)) % mod;
   }
   while(ret % c) ret += mod;
