@@ -51,6 +51,7 @@ bool try_flow(int s, int e) {
 
 void process() {
   int n;
+  scanf(" %d", &n);
 
   for(int i=0;i<n;i++) {
     fgets(line, 20005, stdin);
