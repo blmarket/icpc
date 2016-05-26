@@ -48,6 +48,8 @@ bool try_flow(int s, int e) {
 }
 
 void process() {
+  M.clear();
+  for(int i=0;i<5000;i++) links[i].clear();
   int n;
   scanf(" %d ", &n);
 
