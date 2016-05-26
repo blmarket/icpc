@@ -57,6 +57,7 @@ void process() {
     istringstream sin(line);
     string tmp;
     while(sin >> tmp) {
+      cerr << tmp << endl;
       if(M.count(tmp) == 0) M[tmp] = 2 * M.size() + 200;
       links[i][M[tmp]] = 5000;
       links[M[tmp]+1][i] = 5000;
