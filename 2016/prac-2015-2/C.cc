@@ -39,6 +39,7 @@ bool try_flow(int s, int e) {
   if(visit[s]) return false;
   visit[s] = true;
   each(it, links[s]) if(it.second) {
+    cerr << it.first << " " << it.second << endl;
     if(try_flow(it.first, e)) {
       links[s][it.first]--;
       links[it.first][s]++;
