@@ -54,6 +54,7 @@ void process() {
 
   for(int i=0;i<n;i++) {
     fgets(line, 20005, stdin);
+    cerr << line << endl;
     istringstream sin(line);
     string tmp;
     while(sin >> tmp) {
