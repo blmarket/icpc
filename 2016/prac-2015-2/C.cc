@@ -32,6 +32,7 @@ unordered_map<int, int> links[5000];
 bool visit[5000];
 
 bool try_flow(int s, int e) {
+  cerr << s << " " << e << endl;
   if(s == e) {
     return true;
   }
