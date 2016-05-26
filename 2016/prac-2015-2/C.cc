@@ -62,9 +62,7 @@ void process() {
     }
   }
 
-  for(int i=0;i<size(M);i++) {
-    links[200+i*2][201+i*2] = 1;
-  }
+  each(it, M) links[it.second][it.second+1] = 1;
 
   int ret = 0;
   while(true) {
