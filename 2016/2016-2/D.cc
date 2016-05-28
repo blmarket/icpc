@@ -57,7 +57,7 @@ bool chk() {
       }
     }
     // cerr << i << " " << total << " " << cnt << endl;
-    if(cnt == total) return false;
+    if(cnt >= total) return false;
   }
 
   for(int i=0;i<N;i++) {
