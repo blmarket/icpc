@@ -65,6 +65,7 @@ void process() {
     }
 
     if(change) continue;
+    cout << "HERE" << endl;
     memset(cnt, 0, sizeof(cnt));
     memset(bitcnt, 0, sizeof(bitcnt));
     for(int i=0;i<N;i++) {
@@ -105,6 +106,7 @@ void process() {
         cout << "FAIL" << endl;
       }
     }
+    cout << "BREAK" << endl;
     break;
 onemore:
     continue;
