@@ -112,7 +112,9 @@ void process() {
     pairs.pb(mp(gates[a], gates[b]));
   }
 
-  go(0, 0);
+  if(go(0, 0) == false) {
+    cout << "IMPOSSIBLE" << endl;
+  }
 }
 
 int main(void) {
