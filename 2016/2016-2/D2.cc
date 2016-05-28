@@ -81,6 +81,18 @@ void process() {
     }
 
     for(int i=0;i<N;i++) {
+      if(bitcnt[i] == 0) {
+        for(int j=0;j<N;j++) {
+          if(cnt[j] > bitcnt[j]) {
+            data[i] = data[j];
+            ret += bitcnt[j];
+            goto onemore;
+          }
+        }
+      }
+    }
+
+    for(int i=0;i<N;i++) {
       LL tmp = (1LL << i);
       bool fail = false;
       for(int j=0;j<N;j++) {
