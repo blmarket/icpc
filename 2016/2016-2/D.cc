@@ -84,8 +84,8 @@ int go(int a, int b) {
     return -1;
   }
   int tmp2 = go(a, b+1);
+  cout << a << " " << b << " " << tmp2 << " " << tmp << endl;
   if(tmp2 == -1 || tmp2 > tmp) tmp2 = tmp;
-  cout << a << " " << b << " " << tmp2 << endl;
   return tmp2;
 }
 
