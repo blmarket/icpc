@@ -43,6 +43,12 @@ void process() {
   int ret = 0;
 
   while(true) {
+    for(int i=0;i<N;i++) {
+      for(int j=0;j<N;j++) {
+        cout << ((data[i]>>j)&1) << " ";
+      }
+      cout << endl;
+    }
     bool change = false;
     int unused = -1;
     for(int i=0;i<N;i++) {
