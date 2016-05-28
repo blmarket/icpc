@@ -88,6 +88,10 @@ void process() {
             data[j] |= (1LL<<i);
             goto onemore;
           }
+          if(bitcnt[j] == 0) {
+            data[j] |= (1LL << i);
+            goto onemore;
+          }
         }
         cout << "FAIL" << endl;
       }
