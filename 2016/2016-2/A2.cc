@@ -102,8 +102,8 @@ void process() {
 
     n--;
     int c1 = (cur[0].first + cur[1].first - cur[2].first) / 2;
-    int c2 = (cur[0].first + cur[2].first - cur[1].first) / 2;
-    int c3 = (cur[1].first + cur[2].first - cur[0].first) / 2;
+    int c2 = (cur[1].first + cur[2].first - cur[0].first) / 2;
+    int c3 = (cur[0].first + cur[2].first - cur[1].first) / 2;
     nex[0] = mp(c1, concat(cur[0].second, cur[1].second));
     nex[1] = mp(c2, concat(cur[1].second, cur[2].second));
     nex[2] = mp(c3, concat(cur[0].second, cur[2].second));
