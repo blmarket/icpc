@@ -83,6 +83,7 @@ void process() {
       }
       if(!fail) {
         for(int j=0;j<N;j++) {
+          cout << cnt[j] << " " << bitcnt[j] << endl;
           if(cnt[j] < bitcnt[j]) {
             data[j] |= (1LL<<i);
             goto onemore;
