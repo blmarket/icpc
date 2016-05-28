@@ -29,6 +29,8 @@ bool data[10][10];
 bool visit[10];
 int back[10];
 
+int mincnt = -1;
+
 bool try_flow(int s, int mask) {
   if(visit[s]) return false;
   visit[s] = true;
@@ -41,7 +43,7 @@ bool try_flow(int s, int mask) {
   return false;
 }
 
-bool chk() {
+bool chk(int tag) {
   for(int i=0;i<N;i++) {
     int total = 0;
     for(int j=0;j<N;j++) {
@@ -60,27 +62,31 @@ bool chk() {
     if(cnt >= total) return false;
   }
 
- // for(int i=0;i<N;i++) {
- //   for(int j=0;j<N;j++) cout << data[i][j];
- //   cout << endl;
- // }
+  if(mincnt == -1 || mincnt > tag) {
+    mincnt = tag;
+    for(int i=0;i<N;i++) {
+      for(int j=0;j<N;j++) cout << data[i][j];
+      cout << endl;
+    }
+  }
+
   
   return true;
 }
 
-int go(int a, int b) {
+int go(int a, int b, int cnt) {
   if(a == N) {
-    if(chk()) return 0;
+    if(chk(cnt)) return 0;
     return -1;
   }
   if(b == N) {
-    return go(a+1, 0);
+    return go(a+1, 0, cnt);
   }
-  if(data[a][b] == 1) return go(a,b+1);
+  if(data[a][b] == 1) return go(a,b+1, cnt);
   data[a][b] = 1;
-  int tmp = go(a,b+1);
+  int tmp = go(a,b+1, cnt+1);
   data[a][b] = 0;
-  int tmp2 = go(a, b+1);
+  int tmp2 = go(a, b+1, cnt);
   if(tmp == -1) return tmp2;
   tmp = tmp + 1;
   if(tmp2 == -1) return tmp;
@@ -97,7 +103,7 @@ void process() {
     }
   }
 
-  cout << go(0, 0) << endl;
+  cout << go(0, 0, 0) << endl;
 }
 
 int main(void) {
