@@ -81,10 +81,6 @@ void process() {
   ret.clear();
   scanf(" %d %d %d %d",&n, &r,&p,&s);
 
-  if(r >= p+s || p >= r+s || s >= r+p) {
-    cout << "IMPOSSIBLE" << endl;
-    return;
-  }
   pair<int, string> cur[3], nex[3];
   cur[0] = mp(p, "P");
   cur[1] = mp(r, "R");
