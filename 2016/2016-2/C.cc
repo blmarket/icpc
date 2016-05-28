@@ -56,6 +56,13 @@ PII move(int a, int b, int c) {
 }
 
 bool chk() {
+  for(int i=0;i<r;i++) {
+    for(int j=0;j<c;j++) {
+      cout << data[i][j] << " ";
+    }
+    cout << endl;
+  }
+
   for(int i=0;i<size(pairs);i++) {
     PII a = pairs[i].first;
     PII b;
