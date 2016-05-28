@@ -45,6 +45,7 @@ double go() {
 
 void process() {
   scanf(" %d %d", &n, &k);
+  v.clear();
   for(int i=0;i<n;i++) {
     double tmp;
     cin >> tmp;
