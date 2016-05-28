@@ -96,6 +96,10 @@ void process() {
   };
 
   while(n) {
+    for(int i=0;i<3;i++) {
+      cout << cur[i].first << " " << cur[i].second << endl;
+    }
+
     n--;
     int c1 = (cur[0].first + cur[1].first - cur[2].first) / 2;
     int c2 = (cur[0].first + cur[2].first - cur[1].first) / 2;
@@ -105,10 +109,6 @@ void process() {
     nex[2] = mp(c3, concat(cur[0].second, cur[2].second));
 
     for(int i=0;i<3;i++) cur[i] = nex[i];
-  }
-
-  for(int i=0;i<3;i++) {
-    cout << cur[i].first << " " << cur[i].second << endl;
   }
 }
 
