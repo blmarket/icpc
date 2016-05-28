@@ -93,7 +93,10 @@ void process() {
 
   while(n) {
     for(int i=0;i<3;i++) {
-      cout << cur[i].first << " " << cur[i].second << endl;
+      if(cur[i].first < 0) {
+        cout << "IMPOSSIBLE" << endl;
+        return;
+      }
     }
 
     n--;
@@ -108,7 +111,17 @@ void process() {
   }
 
   for(int i=0;i<3;i++) {
-    cout << cur[i].first << " " << cur[i].second << endl;
+    if(cur[i].first < 0) {
+        cout << "IMPOSSIBLE" << endl;
+        return;
+    }
+  }
+
+  for(int i=0;i<3;i++) {
+    if(cur[i].first == 1) {
+      cout << cur[i].second << endl;
+      return;
+    }
   }
 }
 
