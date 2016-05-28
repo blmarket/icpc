@@ -78,14 +78,13 @@ int go(int a, int b) {
   }
   if(data[a][b] == 1) return go(a,b+1);
   data[a][b] = 1;
-  int tmp = go(a,b+1) + 1;
+  int tmp = go(a,b+1);
   data[a][b] = 0;
-  if(tmp == 0) { // actually it's -1
-    return -1;
-  }
   int tmp2 = go(a, b+1);
-  if(tmp2 == -1 || tmp2 > tmp) tmp2 = tmp;
-  return tmp2;
+  if(tmp == -1) return tmp2;
+  tmp = tmp + 1;
+  if(tmp2 == -1) return tmp;
+  return min(tmp, tmp2);
 }
 
 void process() {
