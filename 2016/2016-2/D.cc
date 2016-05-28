@@ -72,7 +72,7 @@ int go(int a, int b) {
   }
   if(data[a][b] == 1) return go(a,b+1);
   data[a][b] = 1;
-  int tmp = go(a,b+1);
+  int tmp = go(a,b+1) + 1;
   data[a][b] = 0;
   if(tmp == -1) {
     return -1;
