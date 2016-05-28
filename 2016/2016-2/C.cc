@@ -75,6 +75,7 @@ bool chk() {
     } else {
       b = move(a.first, 0, 3);
     }
+    cout << a.first << " " << a.second << " - " << b.first << " " << b.second << endl;
     if(b != pairs[i].second) return false;
   }
   cout << "HERE" << endl;
