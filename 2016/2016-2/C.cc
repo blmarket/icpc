@@ -56,13 +56,6 @@ PII move(int a, int b, int cc) {
 }
 
 bool chk() {
-  for(int i=0;i<r;i++) {
-    for(int j=0;j<c;j++) {
-      cout << data[i][j] << " ";
-    }
-    cout << endl;
-  }
-
   for(int i=0;i<size(pairs);i++) {
     PII a = pairs[i].first;
     PII b;
@@ -78,7 +71,13 @@ bool chk() {
     cout << a.first << " " << a.second << " - " << b.first << " " << b.second << endl;
     if(b != pairs[i].second) return false;
   }
-  cout << "HERE" << endl;
+
+  for(int i=0;i<r;i++) {
+    for(int j=0;j<c;j++) {
+      printf("%c", data[i][j] ? '\\' : '/');
+    }
+    printf("\n");
+  }
   return true;
 }
 
