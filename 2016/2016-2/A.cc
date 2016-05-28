@@ -33,14 +33,13 @@ string ret;
 
 bool check() {
   for(int i=n*2-1;i>=3;i-=2) {
-    cerr << i << " " << vec[i] << " " << vec[i-1] << endl;
     if(vec[i] == vec[i-1]) {
       return false;
     }
     switch(vec[i] + vec[i-1]) {
-      case 1: vec[i/2] = 0;
-      case 2: vec[i/2] = 2;
-      case 3: vec[i/2] = 1;
+      case 1: vec[i/2] = 0; break;
+      case 2: vec[i/2] = 2; break;
+      case 3: vec[i/2] = 1; break;
     }
   }
   return true;
