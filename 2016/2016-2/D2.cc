@@ -63,12 +63,13 @@ void process() {
     memset(bitcnt, 0, sizeof(bitcnt));
     for(int i=0;i<N;i++) {
       cnt[i]++;
-      for(int j=0;j<N;j++) if(data[i] == data[j]) {
-        cnt[i]++;
-        cnt[j]++;
-      }
       for(int j=0;j<N;j++) if(data[i] & (1LL << j)) {
         bitcnt[i]++;
+      }
+
+      for(int j=i+1;j<N;j++) if(data[i] == data[j]) {
+        cnt[i]++;
+        cnt[j]++;
       }
     }
 
