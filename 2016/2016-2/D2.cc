@@ -82,10 +82,8 @@ void process() {
 
     for(int i=0;i<N;i++) {
       if(bitcnt[i] == 0) {
-        cerr << "CHK " << i << endl;
         for(int j=0;j<N;j++) if(bitcnt[j]) {
-          cerr << "GET " << j << " " << cnt[j] << " " << bitcnt[j] << endl;
-          if(cnt[j] > bitcnt[j]) {
+          if(cnt[j] < bitcnt[j]) {
             data[i] = data[j];
             ret += bitcnt[j];
             goto onemore;
