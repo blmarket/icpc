@@ -33,6 +33,7 @@ string ret;
 
 bool check() {
   for(int i=n*2-1;i>=3;i-=2) {
+    cerr << i << " " << vec[i] << " " << vec[i-1] << endl;
     if(vec[i] == vec[i-1]) {
       return false;
     }
