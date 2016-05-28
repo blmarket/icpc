@@ -64,6 +64,7 @@ bool chk(int tag) {
 
   if(mincnt == -1 || mincnt > tag) {
     mincnt = tag;
+    cout << endl;
     for(int i=0;i<N;i++) {
       for(int j=0;j<N;j++) cout << data[i][j];
       cout << endl;
@@ -94,6 +95,7 @@ int go(int a, int b, int cnt) {
 }
 
 void process() {
+  mincnt = -1;
   scanf(" %d" ,&N);
   char buf[30];
   for(int i=0;i<N;i++) {
