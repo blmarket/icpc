@@ -34,13 +34,13 @@ double pp[300];
 double go() {
   memset(pp, 0, sizeof(pp));
   pp[0]=1;
-  for(int i=0;i<size(v);i++) {
+  for(int i=0;i<size(vv);i++) {
     for(int j=i+1;j>=0;j--) {
-      pp[j] += pp[j-1] * v[i];
-      pp[j-1] *= (1-v[i]);
+      pp[j] += pp[j-1] * vv[i];
+      pp[j-1] *= (1-vv[i]);
     }
   }
-  for(int i=0;i<=size(v);i++) {
+  for(int i=0;i<=size(vv);i++) {
     cout << pp[i] << " ";
   }
   cout << endl;
