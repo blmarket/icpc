@@ -112,6 +112,9 @@ void process() {
   }
 
   for(int i=0;i<3;i++) {
+    cout << cur[i].first << " " << cur[i].second << endl;
+  }
+  for(int i=0;i<3;i++) {
     if(cur[i].first < 0) {
         cout << "IMPOSSIBLE" << endl;
         return;
