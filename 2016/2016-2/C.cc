@@ -31,12 +31,10 @@ vector<pair<PII, PII> > pairs;
 
 int data[20][20];
 
-PII move(int a, int b, int c) {
-  cerr << "move" << a << " " << b << " " << c << endl;
-  cerr << r << " " << c << endl;
+PII move(int a, int b, int cc) {
   if(a == -1 || b == -1 || a==r || b==c) return mp(a,b);
 
-  switch(data[a][b] * 4 + c) {
+  switch(data[a][b] * 4 + cc) {
     case 0:
       return move(a, b-1, 1);
     case 1:
