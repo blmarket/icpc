@@ -56,7 +56,7 @@ bool chk() {
         cnt++;
       }
     }
-    cerr << i << " " << total << " " << cnt << endl;
+    // cerr << i << " " << total << " " << cnt << endl;
     if(cnt == total) return false;
   }
   return true;
