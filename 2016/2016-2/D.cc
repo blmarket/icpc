@@ -85,6 +85,10 @@ int go(int a, int b) {
   }
   int tmp2 = go(a, b+1);
   cout << a << " " << b << " " << tmp2 << " " << tmp << endl;
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<N;j++) cout << data[i][j];
+    cout << endl;
+  }
   if(tmp2 == -1 || tmp2 > tmp) tmp2 = tmp;
   return tmp2;
 }
