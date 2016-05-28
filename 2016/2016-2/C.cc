@@ -70,12 +70,13 @@ bool chk() {
     }
     if(b != pairs[i].second) return false;
   }
+  cout << "HERE" << endl;
   return true;
 }
 
 bool go(int a, int b) {
   if(a == r) {
-    return false;
+    return chk();
   }
   if(b == c) {
     return go(a+1, 0);
