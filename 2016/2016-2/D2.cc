@@ -87,10 +87,12 @@ void process() {
           cout << cnt[j] << " " << bitcnt[j] << endl;
           if(cnt[j] > bitcnt[j]) {
             data[j] |= (1LL<<i);
+            ret++;
             goto onemore;
           }
           if(bitcnt[j] == 0) {
             data[j] |= (1LL << i);
+            ret++;
             goto onemore;
           }
         }
