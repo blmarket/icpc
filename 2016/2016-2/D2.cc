@@ -115,10 +115,8 @@ void process() {
             goto onemore;
           }
         }
-        cout << "FAIL" << endl;
       }
     }
-    cout << "BREAK" << endl;
     break;
 onemore:
     continue;
