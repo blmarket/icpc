@@ -80,7 +80,7 @@ int go(int a, int b) {
   data[a][b] = 1;
   int tmp = go(a,b+1) + 1;
   data[a][b] = 0;
-  if(tmp == -1) {
+  if(tmp == 0) { // actually it's -1
     return -1;
   }
   int tmp2 = go(a, b+1);
