@@ -80,7 +80,7 @@ int go(int a, int b) {
   }
   int tmp2 = go(a, b+1);
   if(tmp2 == -1 || tmp2 > tmp) tmp2 = tmp;
-  cerr << a << " " << b << " " << tmp2 << endl;
+  cout << a << " " << b << " " << tmp2 << endl;
   return tmp2;
 }
 
