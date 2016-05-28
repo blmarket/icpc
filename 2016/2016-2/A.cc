@@ -26,7 +26,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n,r,p,s;
 
-char *rps = "PRS";
+const char *rps = "PRS";
 
 int vec[5000];
 string ret;
