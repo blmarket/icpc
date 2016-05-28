@@ -45,6 +45,11 @@ bool check() {
 
 void go(int a) {
   if(a == n*2) {
+    string tmp;
+    for(int i=n;i<n*2;i++) {
+      tmp += rps[vec[i]];
+    }
+    cout << tmp << endl;
     if(check()) {
       string tmp;
       for(int i=n;i<n*2;i++) {
