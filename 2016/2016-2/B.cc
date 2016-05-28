@@ -65,10 +65,6 @@ void process() {
     for(int j=right;j<n;j++) {
       vv.pb(v[j]);
     }
-    for(int j=0;j<size(vv);j++) {
-      cout << vv[j] << " ";
-    }
-    cout << endl;
     double tmp = go();
     if(ret < tmp) ret = tmp;
   }
