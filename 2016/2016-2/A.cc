@@ -47,10 +47,6 @@ bool check() {
 
 void go(int a) {
   if(a == n*2) {
-    for(int i=n;i<n*2;i++) {
-      cout << vec[i] << " ";
-    }
-    cout << endl;
     if(check()) {
       string tmp;
       for(int i=n;i<n*2;i++) {
