@@ -33,6 +33,7 @@ int data[20][20];
 
 PII move(int a, int b, int c) {
   cerr << "move" << a << " " << b << " " << c << endl;
+  cerr << r << " " << c << endl;
   if(a == -1 || b == -1 || a==r || b==c) return mp(a,b);
 
   switch(data[a][b] * 4 + c) {
