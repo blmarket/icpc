@@ -59,10 +59,6 @@ bool chk() {
     // cerr << i << " " << total << " " << cnt << endl;
     if(cnt == total) return false;
   }
-  for(int i=0;i<N;i++) {
-    for(int j=0;j<N;j++) cout << data[i][j];
-    cout << endl;
-  }
   
   return true;
 }
@@ -84,6 +80,7 @@ int go(int a, int b) {
   }
   int tmp2 = go(a, b+1);
   if(tmp2 == -1 || tmp2 > tmp) tmp2 = tmp;
+  cerr << a << " " << b << " " << tmp2 << endl;
   return tmp2;
 }
 
