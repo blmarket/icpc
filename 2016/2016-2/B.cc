@@ -40,6 +40,10 @@ double go() {
       pp[j-1] *= (1-v[i]);
     }
   }
+  for(int i=0;i<=size(v);i++) {
+    cout << pp[i] << " ";
+  }
+  cout << endl;
   return pp[k/2];
 }
 
