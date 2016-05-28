@@ -59,7 +59,6 @@ void process() {
     }
 
     if(change) continue;
-    cout << "HERE" << endl;
     memset(cnt, 0, sizeof(cnt));
     memset(bitcnt, 0, sizeof(bitcnt));
     for(int i=0;i<N;i++) {
@@ -97,7 +96,6 @@ void process() {
       }
       if(!fail) {
         for(int j=0;j<N;j++) {
-          cout << cnt[j] << " " << bitcnt[j] << endl;
           if(cnt[j] > bitcnt[j]) {
             data[j] |= (1LL<<i);
             ret++;
