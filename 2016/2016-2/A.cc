@@ -44,7 +44,7 @@ bool check() {
 }
 
 void go(int a) {
-  if(a == n) {
+  if(a == n*2) {
     if(check()) {
       string tmp;
       for(int i=n;i<n*2;i++) {
@@ -79,7 +79,7 @@ void process() {
   ret.clear();
   scanf(" %d %d %d %d",&n, &r,&p,&s);
   n = (1<<n);
-  go(0);
+  go(n);
   if(ret.size()) {
     cout << ret << endl;
   } else {
