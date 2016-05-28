@@ -34,7 +34,6 @@ string ret;
 bool check() {
   for(int i=n*2-1;i>=3;i--) {
     if(vec[i] == vec[i-1]) {
-      cout << i << endl;
       return false;
     }
     switch(vec[i] + vec[i-1]) {
@@ -48,11 +47,10 @@ bool check() {
 
 void go(int a) {
   if(a == n*2) {
-    string tmp;
     for(int i=n;i<n*2;i++) {
-      tmp += rps[vec[i]];
+      cout << vec[i] << " ";
     }
-    cout << tmp << " " << check() << endl;
+    cout << endl;
     if(check()) {
       string tmp;
       for(int i=n;i<n*2;i++) {
