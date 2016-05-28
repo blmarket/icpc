@@ -34,6 +34,7 @@ void process() {
   char buf[30];
   for(int i=0;i<N;i++) {
     scanf(" %s", buf);
+    data[i] = 0;
     for(int j=0;j<N;j++) {
       data[i] <<= 1;
       data[i] |= (buf[j] == '1');
