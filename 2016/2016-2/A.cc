@@ -49,7 +49,7 @@ void go(int a) {
     for(int i=n;i<n*2;i++) {
       tmp += rps[vec[i]];
     }
-    cout << tmp << endl;
+    cout << tmp << " " << check() << endl;
     if(check()) {
       string tmp;
       for(int i=n;i<n*2;i++) {
