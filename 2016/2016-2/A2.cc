@@ -106,6 +106,10 @@ void process() {
 
     for(int i=0;i<3;i++) cur[i] = nex[i];
   }
+
+  for(int i=0;i<3;i++) {
+    cout << cur[i].first << " " << cur[i].second << endl;
+  }
 }
 
 int main(void) {
