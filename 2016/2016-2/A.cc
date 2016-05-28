@@ -32,7 +32,7 @@ int vec[5000];
 string ret;
 
 bool check() {
-  for(int i=n*2-1;i>=3;i--) {
+  for(int i=n*2-1;i>=3;i-=2) {
     if(vec[i] == vec[i-1]) {
       return false;
     }
