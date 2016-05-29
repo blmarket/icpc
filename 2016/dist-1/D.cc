@@ -84,7 +84,7 @@ int main(void) {
         LL cur = GetStackHeight(i + ls + 1);
         LL req = oneh + (i < tail);
 
-        moves += 1 + 2 * abs(left + cur - req);
+        moves += abs(left + cur - req);
         moves %= mod;
       }
     }
