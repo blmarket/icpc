@@ -58,7 +58,7 @@ int main(void) {
         total += sums.back();
       }
       LL tail = total % N;
-      cerr << "TAIL = " << tail << " " << total << endl;
+      // cerr << "TAIL = " << tail << " " << total << endl;
 
       LL left = 0;
       for(int i=0;i<nn;i++) {
@@ -66,7 +66,7 @@ int main(void) {
         LL rr = N * (i+1) / nn;
         LL esti = (total / N) * (rr - ll) + max(0LL, min(rr, tail) - ll);
 
-        cerr << "II = " << i << " " << left << " " << sums[i] << " " << esti << endl;
+        // cerr << "II = " << i << " " << left << " " << sums[i] << " " << esti << endl;
 
         PutLL(i, esti);
         PutLL(i, left);
@@ -80,7 +80,7 @@ int main(void) {
     LL esti = GetLL(0);
     LL left = GetLL(0);
     LL right = GetLL(0);
-    cerr << esti << " " << left << " " << right << endl;
+    // cerr << esti << " " << left << " " << right << endl;
 
     LL moves = 0;
     if(rs - ls > 0) {
