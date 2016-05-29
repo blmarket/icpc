@@ -93,12 +93,12 @@ int main(void) {
           tmp = memo[mask] = dumb(mask, step);
         }
         tmp.second = (i - step + tmp.second);
+        cerr << tmp.first << " " << tmp.second << endl;
         buff[it++] = tmp;
         step = 0;
         mask = 0;
       }
     }
-    cerr << it << endl;
 
     while(it >= 3) {
       buff[it/2] = go(buff[it], buff[it-1]);
