@@ -39,11 +39,12 @@ int main(void) {
     LL ls = N * my / nn;
     LL rs = N * (my+1) / nn;
 
+    cerr << ls << " " << rs << endl;
+
     LL sum = 0;
     for(LL i=ls;i<rs;i++) {
       sum += GetStackHeight(i + 1);
     }
-    cerr << sum << endl;
     PutLL(0, sum);
     Send(0);
 
