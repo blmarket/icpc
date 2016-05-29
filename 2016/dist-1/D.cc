@@ -35,6 +35,9 @@ int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
 
+    nn = 1;
+    if(my >= nn) return 0;
+
     LL N = GetNumStacks();
     LL ls = N * my / nn;
     LL rs = N * (my+1) / nn;
