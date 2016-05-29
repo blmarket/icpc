@@ -108,6 +108,7 @@ int main(void) {
 
     while(it >= 3) {
       buff[it/2] = go(buff[it-1], buff[it]);
+      cerr << buff[it/2].first << " " << buff[it/2].second << endl;
       it -= 2;
     }
     cerr << buff[1].first << " " << buff[1].second << endl;
