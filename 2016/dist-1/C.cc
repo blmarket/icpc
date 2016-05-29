@@ -71,6 +71,8 @@ int main(void) {
     LL rs = NN * (my+1) / nn;
     int sz = rs - ls;
 
+    cerr << sz << endl;
+
     PII buff[1024768];
     int it = max(1, sz / 8);
 
