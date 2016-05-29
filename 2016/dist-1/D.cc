@@ -54,8 +54,8 @@ int main(void) {
         sums.pb(GetLL(i));
         total += sums.back();
       }
-      cerr << "HERE" << endl;
       LL tail = total % N;
+      cerr << tail << endl;
 
       LL left = 0;
       for(int i=0;i<nn;i++) {
