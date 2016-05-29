@@ -65,17 +65,14 @@ int main(void) {
     LL N = GetN();
     LL NN = (1LL<<N);
     if(nn > 8) nn = 8;
-    if(N <= 10) nn = 1;
     if(my >= nn) return 0;
-
 
     LL ls = NN * my / nn;
     LL rs = NN * (my+1) / nn;
     LL sz = rs - ls;
-    cerr << sz << endl;
 
     PII buff[1024768];
-    int it = sz;
+    int it = max(1, sz / 8);
 
     int mask = 0;
     int step = 0;
@@ -99,6 +96,9 @@ int main(void) {
         step = 0;
         mask = 0;
       }
+    }
+    if(step) {
+      buff[1] = dumb(mask, step);
     }
 
     while(it >= 3) {
