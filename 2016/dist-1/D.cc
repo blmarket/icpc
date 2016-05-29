@@ -39,6 +39,8 @@ int main(void) {
     LL ls = N * my / nn;
     LL rs = N * (my+1) / nn;
 
+    cerr << ls << " " << rs << endl;
+
     LL sum = 0;
     for(LL i=ls;i<rs;i++) {
       sum += GetStackHeight(i);
