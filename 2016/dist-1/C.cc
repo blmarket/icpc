@@ -72,6 +72,7 @@ int main(void) {
     LL ls = NN * my / nn;
     LL rs = NN * (my+1) / nn;
     LL sz = rs - ls;
+    cerr << sz << endl;
 
     PII buff[1024768];
     int it = sz;
