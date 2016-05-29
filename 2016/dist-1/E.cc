@@ -64,8 +64,8 @@ end:
         if(tmp == 0) continue;
         if(ret == 0 || ret > tmp) ret = tmp;
       }
+      cout << ret << endl;
     }
 
-    cout << ret << endl;
     return 0;
 }
