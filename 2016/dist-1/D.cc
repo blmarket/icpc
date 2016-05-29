@@ -66,7 +66,7 @@ int main(void) {
         LL rr = N * (i+1) / nn;
         LL esti = (total / N) * (rr - ll) + max(0LL, min(rr, tail) - ll);
 
-        cerr << "II = " << left << " " << sums[i] << " " << esti << endl;
+        cerr << "II = " << i << " " << left << " " << sums[i] << " " << esti << endl;
 
         PutLL(i, esti);
         PutLL(i, left);
