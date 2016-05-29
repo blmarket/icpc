@@ -55,7 +55,7 @@ int main(void) {
         total += sums.back();
       }
       LL tail = total % N;
-      cerr << "TAIL = " << tail << endl;
+      cerr << "TAIL = " << tail << " " << total << endl;
 
       LL left = 0;
       for(int i=0;i<nn;i++) {
