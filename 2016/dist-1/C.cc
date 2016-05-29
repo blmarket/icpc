@@ -108,12 +108,12 @@ int main(void) {
       it--;
       while(it >= 3) {
         buff[it/2] = go(buff[it-1], buff[it]);
-        cerr << it/2 << " " << buff[it/2].first << " " << buff[it/2].second << endl;
+        // cerr << it/2 << " " << buff[it/2].first << " " << buff[it/2].second << endl;
         it -= 2;
       }
     }
 
-    cerr << buff[1].first << " " << buff[1].second << endl;
+    // cerr << buff[1].first << " " << buff[1].second << endl;
     PutLL(0, buff[1].first);
     PutLL(0, buff[1].second);
     Send(0);
