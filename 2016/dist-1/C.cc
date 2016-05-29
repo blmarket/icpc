@@ -100,13 +100,14 @@ int main(void) {
         mask = 0;
       }
     }
+    cerr << it << endl;
     if(step) {
       buff[1] = dumb(mask, step);
       buff[1].second = (rs-1 - buff[1].second);
     } else {
       it--;
       while(it >= 3) {
-        cerr << it << endl;
+        buff[it/2] = go(buff[it-1], buff[it]);
         cerr << it/2 << " " << buff[it/2].first << " " << buff[it/2].second << endl;
         it -= 2;
       }
