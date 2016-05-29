@@ -65,13 +65,12 @@ int main(void) {
     LL N = GetN();
     LL NN = (1LL<<N);
     if(nn > 8) nn = 8;
+    if(NN < 8) nn = 1;
     if(my >= nn) return 0;
 
     LL ls = NN * my / nn;
     LL rs = NN * (my+1) / nn;
     int sz = rs - ls;
-
-    cerr << sz << endl;
 
     PII buff[1024768];
     int it = max(1, sz / 8);
