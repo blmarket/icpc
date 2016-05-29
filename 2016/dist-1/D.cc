@@ -58,7 +58,7 @@ int main(void) {
       for(int i=0;i<nn;i++) {
         LL ll = N * i / nn;
         LL rr = N * (i+1) / nn;
-        LL esti = total / N * (rr - ll) + max(0, min(rr, tail) - ll);
+        LL esti = total / N * (rr - ll) + max(0LL, min(rr, tail) - ll);
 
         PutLL(i, esti);
         PutLL(i, left);
