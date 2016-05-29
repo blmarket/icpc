@@ -48,7 +48,6 @@ int main(void) {
     Send(0);
 
     if(my == 0) {
-      cerr << "HERE" << endl;
       LL total = 0;
       vector<LL> sums;
       for(int i=0;i<nn;i++) {
@@ -56,6 +55,7 @@ int main(void) {
         sums.pb(GetLL(i));
         total += sums.back();
       }
+      cerr << "HERE" << endl;
       LL tail = total % N;
 
       LL left = 0;
