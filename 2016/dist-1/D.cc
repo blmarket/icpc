@@ -61,6 +61,7 @@ int main(void) {
       for(int i=0;i<nn;i++) {
         LL ll = N * i / nn;
         LL rr = N * (i+1) / nn;
+        cerr << "SIZE = " << rr - ll << endl;
         LL esti = (total / N) * (rr - ll) + max(0LL, min(rr, tail) - ll);
 
         PutLL(i, esti);
