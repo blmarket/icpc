@@ -62,11 +62,12 @@ PII dumb(int mask, int sz) {
 int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
-    if(nn > 8) nn = 8;
-    if(my >= nn) return 0;
-
     LL N = GetN();
     LL NN = (1LL<<N);
+    if(nn > 8) nn = 8;
+    if(N <= 10) nn = 1;
+    if(my >= nn) return 0;
+
 
     LL ls = NN * my / nn;
     LL rs = NN * (my+1) / nn;
@@ -93,7 +94,6 @@ int main(void) {
           tmp = memo[mask] = dumb(mask, step);
         }
         tmp.second = (i - step + tmp.second);
-        cerr << tmp.first << " " << tmp.second << endl;
         buff[it++] = tmp;
         step = 0;
         mask = 0;
