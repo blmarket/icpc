@@ -71,7 +71,6 @@ int main(void) {
     LL ls = NN * my / nn;
     LL rs = NN * (my+1) / nn;
     int sz = rs - ls;
-    cerr << sz << endl;
 
     PII buff[1024768];
     int it = max(1, sz / 8);
@@ -101,6 +100,7 @@ int main(void) {
     }
     if(step) {
       buff[1] = dumb(mask, step);
+      cerr << buff[1].first << " " << buff[1].second << endl;
       buff[1].second = (ls + buff[1].second);
     }
 
