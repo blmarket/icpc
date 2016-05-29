@@ -74,7 +74,7 @@ int main(void) {
     LL esti = GetLL(0);
     LL left = GetLL(0);
     LL right = GetLL(0);
-    cerr << esti << " " << left << " " << right << endl;
+    // cerr << esti << " " << left << " " << right << endl;
 
     LL moves = 0;
     if(rs - ls > 0) {
@@ -90,7 +90,6 @@ int main(void) {
       }
     }
 
-    cerr << moves << endl;
     PutLL(0, moves);
     Send(0);
     if(my == 0) {
