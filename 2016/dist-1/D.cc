@@ -35,15 +35,13 @@ int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
 
-    LL N = GetNumStacks();
+    LL N = GetNumStacks() - 1;
     LL ls = N * my / nn;
     LL rs = N * (my+1) / nn;
 
-    cerr << ls << " " << rs << endl;
-
     LL sum = 0;
     for(LL i=ls;i<rs;i++) {
-      sum += GetStackHeight(i);
+      sum += GetStackHeight(i + 1);
     }
     PutLL(0, sum);
     Send(0);
@@ -81,7 +79,7 @@ int main(void) {
     
     LL moves = 0;
     for(LL i=0;i<rs-ls;i++) {
-      LL cur = GetStackHeight(i + ls);
+      LL cur = GetStackHeight(i + ls + 1);
       LL req = oneh + (i < tail);
 
       moves += 1 + 2 * abs(left + cur - req);
