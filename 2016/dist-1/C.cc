@@ -63,7 +63,7 @@ int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
     if(nn > 8) nn = 8;
-    my %= nn;
+    if(my >= nn) return 0;
 
     LL N = GetN();
     LL NN = (1LL<<N);
