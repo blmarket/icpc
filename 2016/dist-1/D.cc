@@ -43,6 +43,7 @@ int main(void) {
     for(LL i=ls;i<rs;i++) {
       sum += GetStackHeight(i + 1);
     }
+    cerr << sum << endl;
     PutLL(0, sum);
     Send(0);
 
