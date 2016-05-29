@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <unordered_map>
@@ -11,6 +12,7 @@
 #include <set>
 #include <map>
 #include <vector>
+
 #include <message.h>
 
 #define mp make_pair
@@ -27,94 +29,93 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-#include "load_balance.h"
+// #include "load_balance.h"
 
-int main(void) {
-  int my = MyNodeId();
-  int nn = NumberOfNodes();
+vector<LL> w;
 
-  int N = GetN();
-
-  vector<LL> w;
-  LL sum = 0;
-  for(int i=0;i<N;i++) {
-    w.pb(GetWeight(i));
-    sum += w.back();
-  }
-
-//  if (sum % 2) {
-//    if (my == 0) {
-//      cout << "IMPOSSIBLE" << endl;
-//    }
-//    return 0;
-//  }
-
-  sum /= 2;
-
-  auto create_mid = [&](int left, int right, int target) -> unordered_set<LL> {
-    unordered_map<int, unordered_set<LL> > t1, t2;
-    int mid = (left + right) / 2;
-
-    auto gen = [&](int a, int b) {
-      unordered_map<int, unordered_set<LL> > ret;
-      int sz = b-a;
-      for(int i=0;i<(1<<sz);i++) {
-        LL tmp = 0;
-        for(int j=0;j<sz;j++) if((i>>j)&1) {
-          tmp += w[a + j];
+vector<LL> gen1(int s, int e) {
+    vector<LL> v;
+    v.pb(0);
+    for(int i=s;i<e;i++) {
+        for(int j=v.size()-1;j>=0;j--) {
+            v.pb(v[j] + w[i]);
         }
-        ret[tmp % nn].insert(tmp);
-      }
-      return ret;
-    };
-    t1 = gen(left, mid);
-    t2 = gen(mid, right);
-
-    unordered_set<LL> ret;
-
-    each(it, t1) {
-      auto &tmp = t2[(target - it.first + nn) % nn];
-      each(jt, tmp) {
-        each(kt, it.second) {
-          ret.insert(jt + kt);
-        }
-      }
     }
-    return ret;
-  };
+    sort(v.begin(), v.end());
+    v.erase(unique(v.begin(), v.end()), v.end());
+    return v;
+}
 
-  unordered_set<LL> t1 = create_mid(0, N/2, my), t2 = create_mid(N/2, N, (sum - my + nn) % nn);
-  if(t1.count(sum) || t2.count(sum)) {
-    PutLL(0, 1);
+int process(void) {
+    int my = MyNodeId();
+    int nn = NumberOfNodes();
+
+//    int n = GetN();
+//    for(int i=0;i<n;i++) w.pb(GetWeight(i));
+
+    int n = 10;
+    for(int i=0;i<n;i++) {
+        w.pb(rand() % 100);
+        cerr << w[i] << " ";
+    }
+    cerr << endl;
+
+    LL sum = 0;
+    each(it, w) sum += it;
+
+    if (sum & 1) {
+        w[0]++;
+        sum++;
+        //if(my == 0) {
+        //    cout << "IMPOSSIBLE" << endl;
+        //}
+        //return 0;
+    }
+    sum /= 2;
+
+    vector<LL> tmp = gen1(0, n);
+    if(sum == *lower_bound(tmp.begin(), tmp.end(), sum)) {
+        cerr << "YES" << " " << sum << endl;
+    } else {
+        cerr << "NO" << endl;
+    }
+
+    vector<LL> v1 = move(gen1(0, n/2));
+    vector<LL> v2 = move(gen1(n/2, n));
+
+    int jj = v2.size() - 1;
+
+    each(it, v1) {
+        while(jj > 0 && v2[jj] + it > sum) jj--;
+        if(it + v2[jj] == sum) {
+            PutLL(0, 1);
+            Send(0);
+            goto end;
+        }
+    }
+    PutLL(0, 0);
     Send(0);
-    goto end;
-  }
-
-  each(it, t1) {
-    each(jt, t2) {
-      if(it + jt == sum) {
-        PutLL(0, 1);
-        Send(0);
-        goto end;
-      }
-    }
-  }
-
-  PutLL(0, 0);
-  Send(0);
 
 end:
-
-  if(my == 0) {
-    for(int i=0;i<nn;i++) {
-      Receive(i);
-      if(GetLL(i)) {
-        cout << "POSSIBLE" << endl;
+    if(my == 0) {
+        for(int i=0;i<nn;i++) {
+            Receive(i);
+            if (GetLL(i)) {
+                cout << "POSSIBLE" << endl;
+                return 0;
+            }
+        }
+        cout << "IMPOSSIBLE" << endl;
         return 0;
-      }
     }
-    cout << "IMPOSSIBLE" << endl;
-  }
 
-  return 0;
+    return 0;
+}
+
+int main() {
+    srand(time(NULL));
+    for(int i=0;i<10;i++) {
+        w.clear();
+        process();
+    }
 }
