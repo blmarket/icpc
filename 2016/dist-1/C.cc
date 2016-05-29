@@ -106,7 +106,7 @@ int main(void) {
       buff[it/2] = go(buff[it], buff[it-1]);
       it -= 2;
     }
-    // cerr << buff[1].first << " " << buff[1].second << endl;
+    cerr << buff[1].first << " " << buff[1].second << endl;
     PutLL(0, buff[1].first);
     PutLL(0, buff[1].second);
     Send(0);
