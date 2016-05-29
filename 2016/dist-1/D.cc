@@ -89,6 +89,7 @@ int main(void) {
       }
     }
 
+    cerr << moves << endl;
     PutLL(0, moves);
     Send(0);
     if(my == 0) {
