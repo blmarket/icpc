@@ -87,11 +87,13 @@ int main(void) {
       LL tail = esti % (rs-ls);
       
       for(LL i=0;i<rs-ls;i++) {
-        LL cur = GetStackHeight(i + ls + 1);
+        left += GetStackHeight(i + ls + 1);
         LL req = oneh + (i < tail);
 
-        moves += abs(left + cur - req);
+        moves += abs(left - req);
         moves %= mod;
+
+        left -= req;
       }
     }
 
