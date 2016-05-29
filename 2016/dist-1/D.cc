@@ -66,6 +66,7 @@ int main(void) {
         PutLL(i, left);
         PutLL(i, left + sums[i] - esti);
         Send(i);
+        left += sums[i] - esti;
       }
     }
 
