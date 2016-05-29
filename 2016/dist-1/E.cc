@@ -37,21 +37,35 @@ int main(void) {
     LL N = GetNumPlayers();
     vector<LL> v;
     for(int i=0;i<N;i++) {
-      v.pb(GetSubmission(i));
+      LL tmp = GetSubmission(i);
+      if((tmp % nn) == my) {
+        v.pb(tmp);
+      }
     }
-
-    if(my != 0) return 0;
 
     sort(v.begin(), v.end());
     for(int i=0;i<N;i++) {
       if(i == 0 || v[i] != v[i-1]) {
         if(i+1 >= N || v[i+1] != v[i]) {
-          cout << v[i] << endl;
-          return 0;
+          PutLL(0, v[i]);
+          Send(0);
+          goto end;
         }
       }
     }
+    PutLL(0, 0);
+    Send(0);
+end:
+    if(my == 0) {
+      LL ret = 0;
+      for(int i=0;i<nn;i++) {
+        Receive(i);
+        LL tmp = GetLL(i);
+        if(tmp == 0) continue;
+        if(ret == 0 || ret > tmp) ret = tmp;
+      }
+    }
 
-    cout << 0 << endl;
+    cout << ret << endl;
     return 0;
 }
