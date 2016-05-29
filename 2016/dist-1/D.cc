@@ -75,16 +75,18 @@ int main(void) {
     LL right = GetLL(0);
     cerr << esti << " " << left << " " << right << endl;
 
-    LL oneh = esti / (rs-ls);
-    LL tail = esti % (rs-ls);
-    
     LL moves = 0;
-    for(LL i=0;i<rs-ls;i++) {
-      LL cur = GetStackHeight(i + ls + 1);
-      LL req = oneh + (i < tail);
+    if(rs - ls > 0) {
+      LL oneh = esti / (rs-ls);
+      LL tail = esti % (rs-ls);
+      
+      for(LL i=0;i<rs-ls;i++) {
+        LL cur = GetStackHeight(i + ls + 1);
+        LL req = oneh + (i < tail);
 
-      moves += 1 + 2 * abs(left + cur - req);
-      moves %= mod;
+        moves += 1 + 2 * abs(left + cur - req);
+        moves %= mod;
+      }
     }
 
     PutLL(0, moves);
