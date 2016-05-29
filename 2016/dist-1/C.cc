@@ -99,6 +99,7 @@ int main(void) {
     }
     if(step) {
       buff[1] = dumb(mask, step);
+      buff[1].second = (ls + buff[1].second);
     }
 
     while(it >= 3) {
