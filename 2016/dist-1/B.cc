@@ -34,40 +34,33 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int main(void) {
   long long N = GetN();
-  long long nodes = NumberOfNodes();
-  long long my_id = MyNodeId();
-  long long best_so_far = 0LL;
-  for (long long i = 0; i < N; ++i) {
-    for (long long j = 0; j < N; ++j) {
-      if (j % nodes == my_id) {
-        long long candidate = GetNumber(i) - GetNumber(j);
-        if (candidate > best_so_far) {
-          best_so_far = candidate;
-          PutLL(MASTER_NODE, candidate);
-          Send(MASTER_NODE);
-        }
-      }
-    }
-  }
-  PutLL(MASTER_NODE, DONE);
-  Send(MASTER_NODE);
+  long long nn = NumberOfNodes();
+  long long my = MyNodeId();
 
-  if (my_id == MASTER_NODE) {
-    long long global_best_so_far = 0;
-    for (int node = 0; node < nodes; ++node) {
-      long long received_candidate = 0;
-      while (true) {
-        Receive(node);
-        received_candidate = GetLL(node);
-        if (received_candidate == DONE) {
-          break;
-        }
-        if (received_candidate > global_best_so_far) {
-          global_best_so_far = received_candidate;
-        }
-      }
+  LL ls = N * my / nn;
+  LL rs = N * (my+1) / nn;
+
+  LL minn, maxx;
+  minn = maxx = GetNumber(ls);
+  for(LL i=ls;i<rs;i++) {
+    LL tmp = GetNumber(i);
+    minn = min(minn, tmp);
+    maxx = max(maxx, tmp);
+  }
+
+  PutLL(0, minn);
+  PutLL(0, maxx);
+  Send(0);
+
+  if(my == 0) {
+    for(int i=0;i<nn;i++) {
+      Receive(i);
+      LL tmp = GetLL(i);
+      minn = min(minn, tmp);
+      tmp = GetLL(i);
+      maxx = max(maxx, tmp);
     }
-    printf("%lld\n", global_best_so_far);
+    cout << maxx - minn << endl;
   }
   return 0;
 }
