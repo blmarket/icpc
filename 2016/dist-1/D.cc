@@ -29,6 +29,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 #include "crates.h"
 
+const LL mod = 1e9 + 7;
+
 int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
@@ -81,7 +83,7 @@ int main(void) {
       LL req = oneh + (i < tail);
 
       moves += 1 + 2 * abs(left + cur - req);
-      moves %= (1e9 + 7);
+      moves %= mod;
     }
 
     PutLL(0, moves);
@@ -92,7 +94,7 @@ int main(void) {
         Receive(i);
         total += GetLL(i);
       }
-      total %= (1e9 + 7);
+      total %= mod;
       cout << total << endl;
     }
 
