@@ -124,7 +124,7 @@ int main(void) {
         buff[nn+i] = mp(t1, t2);
       }
       for(int i=nn*2-1;i>=3;i-=2) {
-        buff[i/2] = go(buff[i], buff[i-1]);
+        buff[i/2] = go(buff[i-1], buff[i]);
       }
       cout << buff[1].second << endl;
     }
