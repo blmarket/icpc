@@ -92,7 +92,7 @@ int main(void) {
         } else {
           tmp = memo[mask] = dumb(mask, step);
         }
-        tmp.second = (i - step + tmp.second);
+        tmp.second = (i - tmp.second);
         buff[it++] = tmp;
         step = 0;
         mask = 0;
@@ -100,8 +100,7 @@ int main(void) {
     }
     if(step) {
       buff[1] = dumb(mask, step);
-      cerr << buff[1].first << " " << buff[1].second << endl;
-      buff[1].second = (ls + buff[1].second);
+      buff[1].second = (rs-1 - buff[1].second);
     }
 
     while(it >= 3) {
