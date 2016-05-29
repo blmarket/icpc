@@ -100,17 +100,18 @@ int main(void) {
         mask = 0;
       }
     }
-    cerr << it << endl;
     if(step) {
       buff[1] = dumb(mask, step);
       buff[1].second = (rs-1 - buff[1].second);
+    } else {
+      it--;
+      while(it >= 3) {
+        cerr << it << endl;
+        cerr << it/2 << " " << buff[it/2].first << " " << buff[it/2].second << endl;
+        it -= 2;
+      }
     }
 
-    while(it >= 3) {
-      cerr << it << endl;
-      cerr << it/2 << " " << buff[it/2].first << " " << buff[it/2].second << endl;
-      it -= 2;
-    }
     cerr << buff[1].first << " " << buff[1].second << endl;
     PutLL(0, buff[1].first);
     PutLL(0, buff[1].second);
