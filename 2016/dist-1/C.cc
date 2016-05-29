@@ -100,6 +100,7 @@ int main(void) {
         mask = 0;
       }
     }
+    cerr << step << endl;
     if(step) {
       buff[1] = dumb(mask, step);
       buff[1].second = (rs-1 - buff[1].second);
