@@ -98,6 +98,7 @@ int main(void) {
         mask = 0;
       }
     }
+    cerr << it << endl;
 
     while(it >= 3) {
       buff[it/2] = go(buff[it], buff[it-1]);
