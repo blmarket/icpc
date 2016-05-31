@@ -147,7 +147,7 @@ void process() {
         cout << "IMPOSSIBLE" << endl;
         return;
       }
-      if(md == -1 || mdist < tmp) {
+      if(md == -1 || mdist > tmp) {
         md = j;
         mdist = tmp;
       }
