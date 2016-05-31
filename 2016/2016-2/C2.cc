@@ -152,7 +152,7 @@ void process() {
         mdist = tmp;
       }
     }
-    cerr << pairs[md].first << " " << pairs[md].second << endl;
+    cerr << pairs[md].first << " " << pairs[md].second << " " << mdist << endl;
     trace(pairs[md].first, pairs[md].second, true);
     used[md] = true;
   }
