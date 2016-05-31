@@ -11,6 +11,7 @@
 #include <vector>
 
 #define mp make_pair
+#define mt make_tuple
 #define each(it, v) for(auto &it: v)
 #define pb emplace_back
 
@@ -20,6 +21,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
+typedef tuple<int,int,int> TI;
 typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
@@ -30,7 +32,8 @@ const int dy[] = {0,-1,1,0};
 int r,c;
 int n;
 bool flow[105][105][4];
-PII track[105][105];
+bool visit[105][105];
+int track[105][105];
 vector<PII> gates;
 vector<PII> pairs;
 
@@ -40,20 +43,53 @@ bool good(int x, int y) {
 
 int trace(int a, int b, bool move) {
   PII pos = gates[a];
-  memset(track, 0, sizeof(track));
+  PII tgt = gates[b];
+  memset(track, -1, sizeof(track));
   int sx,sy;
   for(int i=0;i<4;i++) {
     sx = pos.first + dx[i];
     sy = pos.second + dy[i];
-    if(good(sx,sy)) break;
+    if(good(sx,sy)) {
+      track[sx][sy] = i;
+      break;
+    }
   }
 
-  queue<PII> Q;
-  Q.push(mp(sx,sy));
+  auto apply = [&](int x, int y, int d) {
+    while(true) {
+      int px = x + dx[d];
+      int py = y + dy[d];
+      if(!good(px, py)) break;
+      flow[px][py][3-d] = false;
+      x = px; y = py;
+      d = track[x][y];
+    }
+  };
+
+  queue<TI> Q;
+  Q.push(mt(sx,sy,0));
   while(!Q.empty()) {
-    tie(sx,sy) = Q.front();
+    int dist;
+    tie(sx,sy,dist) = Q.front();
     Q.pop();
+    for(int i=0;i<4;i++) {
+      if(flow[sx][sy][i]) {
+        int nx = sx + dx[i];
+        int ny = sy + dy[i];
+        if(mp(nx,ny) == tgt) {
+          if(move) {
+            apply(nx, ny, 3-i);
+          }
+          return dist+1;
+        }
+        if(!good(nx,ny)) continue;
+        if(track[nx][ny] != -1) continue;
+        track[nx][ny] = 3-i;
+        Q.push(mt(nx,ny, dist+1));
+      }
+    }
   }
+  return -1;
 }
 
 void process() {
@@ -86,8 +122,27 @@ void process() {
     pairs.pb(mp(a,b));
   }
 
+  vector<bool> used(pairs.size(), false);
+
   for(int i=0;i<size(pairs);i++) {
+    int md = -1;
+    int mdist = -1;
+    for(int j=0;j<size(pairs);j++) if(!used[j]) {
+      int a,b;
+      tie(a,b) = pairs[i];
+      int tmp = trace(a,b,false);
+      if(tmp == -1){
+        cout << "IMPOSSIBLE" << endl;
+        return;
+      }
+      if(md == -1 || mdist < tmp) {
+        md = j;
+        mdist = tmp;
+      }
+    }
+    trace(pairs[md].first, pairs[md].second, true);
   }
+  cout << "POSSIBLE" << endl;
 }
 
 int main(void) {
