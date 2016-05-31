@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -128,42 +129,29 @@ void process() {
     int a,b;
     scanf(" %d %d", &a, &b);
     a--;b--;
-    if(a & 1) swap(a, b);
-    pairs.pb(mp(a,b));
+    if(a<b) {
+      swap(a,b);
+    }
+    pairs.pb(a-b,b);
+
+    //if(a & 1) swap(a, b);
+    //pairs.pb(mp(a,b));
+  }
+  sort(pairs.begin(), pairs.end());
+  for(int i=0;i<size(pairs);i++) {
+    int a,b;
+    tie(a,b) = pairs[i];
+    a += b;
+    if(a & 1) swap(a,b);
+    pairs[i] = mp(a,b);
   }
 
-  vector<bool> used(pairs.size(), false);
-
-  for(int i=0;i<r;i++) for(int j=0;j<c;j++) ret[i][j] = '?';
+  for(int i=0;i<r;i++) for(int j=0;j<c;j++) ret[i][j] = '/';
 
   for(int i=0;i<size(pairs);i++) {
-    int md = -1;
-    int mdist = -1;
-    for(int j=0;j<size(pairs);j++) if(!used[j]) {
-      int a,b;
-      tie(a,b) = pairs[j];
-      int tmp = trace(a,b,false);
-      if(tmp == -1){
-        cout << "IMPOSSIBLE" << endl;
-        return;
-      }
-      if(md == -1 || mdist > tmp) {
-        md = j;
-        mdist = tmp;
-      }
-    }
-    cerr << pairs[md].first << " " << pairs[md].second << " " << mdist << endl;
-    trace(pairs[md].first, pairs[md].second, true);
-
-    auto dbg = [&]() {
-      for(int i=0;i<r;i++) {
-        for(int j=0;j<c;j++) printf("%c", ret[i][j]);
-        printf("\n");
-      }
-    };
-    dbg();
-
-    used[md] = true;
+    int a,b;
+    tie(a,b) = pairs[i];
+    trace(a,b, true);
   }
   for(int i=0;i<r;i++) {
     for(int j=0;j<c;j++) printf("%c", ret[i][j]);
