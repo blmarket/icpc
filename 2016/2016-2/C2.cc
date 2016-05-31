@@ -63,11 +63,11 @@ int trace(int a, int b, bool move) {
       int py = y + dy[(d+2)%4];
       if(!good(px, py)) break;
 
-      // cerr << (d - track[px][py] + 4) % 4 << " " << px << " " << py << endl;
       int pd = track[px][py];
-      if(
-          (d == 0 && pd == 3) || (d == 1 && pd == 2) || (d == 2 && pd == 3) || (d == 3 && pd == 0))
-      ret[px][py] = '/'; else
+      cerr << d << " " << pd << " " << px << " " << py << endl;
+      if((d == 0 && pd == 3) || (d == 1 && pd == 2) || (d == 2 && pd == 3) || (d == 3 && pd == 0))
+        ret[px][py] = '/'; 
+      else
         ret[px][py] = '\\';
       
       flow[px][py][d] = false;
