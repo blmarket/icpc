@@ -63,6 +63,7 @@ int trace(int a, int b, bool move) {
       int py = y + dy[d];
       if(!good(px, py)) break;
 
+      cerr << px << " " << py << endl;
       ret[px][py] = '/';
       
       flow[px][py][(d+2)%4] = false;
@@ -147,7 +148,6 @@ void process() {
     }
     trace(pairs[md].first, pairs[md].second, true);
   }
-  cout << "POSSIBLE" << r << c << endl;
   for(int i=0;i<r;i++) {
     for(int j=0;j<c;j++) printf("%c", ret[i][j]);
     printf("\n");
