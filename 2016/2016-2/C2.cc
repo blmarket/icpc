@@ -146,6 +146,7 @@ void process() {
         mdist = tmp;
       }
     }
+    cerr << md << endl;
     trace(pairs[md].first, pairs[md].second, true);
   }
   for(int i=0;i<r;i++) {
