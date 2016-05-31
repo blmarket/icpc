@@ -111,9 +111,9 @@ void process() {
   for(int i=0;i<r;i++) {
     for(int j=0;j<c;j++) {
       if((i^j)&1) {
-        flow[i][j][0] = flow[i][j][3] = true;
+        flow[i][j][0] = flow[i][j][2] = true;
       } else {
-        flow[i][j][1] = flow[i][j][2] = true;
+        flow[i][j][1] = flow[i][j][3] = true;
       }
     }
   }
