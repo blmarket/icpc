@@ -134,6 +134,8 @@ void process() {
 
   vector<bool> used(pairs.size(), false);
 
+  for(int i=0;i<r;i++) for(int j=0;j<c;j++) ret[i][j] = '/';
+
   for(int i=0;i<size(pairs);i++) {
     int md = -1;
     int mdist = -1;
