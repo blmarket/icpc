@@ -141,13 +141,12 @@ void process() {
     int mdist = -1;
     for(int j=0;j<size(pairs);j++) if(!used[j]) {
       int a,b;
-      tie(a,b) = pairs[i];
+      tie(a,b) = pairs[j];
       int tmp = trace(a,b,false);
       if(tmp == -1){
         cout << "IMPOSSIBLE" << endl;
         return;
       }
-      cerr << a << " " << b << " " << tmp << endl;
       if(md == -1 || mdist > tmp) {
         md = j;
         mdist = tmp;
