@@ -134,7 +134,7 @@ void process() {
 
   vector<bool> used(pairs.size(), false);
 
-  for(int i=0;i<r;i++) for(int j=0;j<c;j++) ret[i][j] = '/';
+  for(int i=0;i<r;i++) for(int j=0;j<c;j++) ret[i][j] = '?';
 
   for(int i=0;i<size(pairs);i++) {
     int md = -1;
@@ -154,6 +154,15 @@ void process() {
     }
     cerr << pairs[md].first << " " << pairs[md].second << " " << mdist << endl;
     trace(pairs[md].first, pairs[md].second, true);
+
+    auto dbg = [&]() {
+      for(int i=0;i<r;i++) {
+        for(int j=0;j<c;j++) printf("%c", ret[i][j]);
+        printf("\n");
+      }
+    };
+    dbg();
+
     used[md] = true;
   }
   for(int i=0;i<r;i++) {
