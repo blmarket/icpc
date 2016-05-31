@@ -26,8 +26,8 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-const int dx[] = {-1,0,0,1};
-const int dy[] = {0,-1,1,0};
+const int dx[] = {-1,0,1,0};
+const int dy[] = {0,-1,0,1};
 
 int r,c;
 int n;
@@ -36,6 +36,8 @@ bool visit[105][105];
 int track[105][105];
 vector<PII> gates;
 vector<PII> pairs;
+
+char ret[105][105];
 
 bool good(int x, int y) {
   return x>=0 && y>=0 && x<r && y<c;
@@ -60,7 +62,10 @@ int trace(int a, int b, bool move) {
       int px = x + dx[d];
       int py = y + dy[d];
       if(!good(px, py)) break;
-      flow[px][py][3-d] = false;
+
+      ret[px][py] = '/';
+      
+      flow[px][py][(d+2)%4] = false;
       x = px; y = py;
       d = track[x][y];
     }
@@ -78,13 +83,13 @@ int trace(int a, int b, bool move) {
         int ny = sy + dy[i];
         if(mp(nx,ny) == tgt) {
           if(move) {
-            apply(nx, ny, 3-i);
+            apply(nx, ny, (i+2)%4);
           }
           return dist+1;
         }
         if(!good(nx,ny)) continue;
         if(track[nx][ny] != -1) continue;
-        track[nx][ny] = 3-i;
+        track[nx][ny] = (i+2)%4;
         Q.push(mt(nx,ny, dist+1));
       }
     }
@@ -143,6 +148,10 @@ void process() {
     trace(pairs[md].first, pairs[md].second, true);
   }
   cout << "POSSIBLE" << endl;
+  for(int i=0;i<r;i++) {
+    for(int j=0;j<c;j++) printf("%c", ret[i][j]);
+    printf("\n");
+  }
 }
 
 int main(void) {
