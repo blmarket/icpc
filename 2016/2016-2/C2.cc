@@ -150,6 +150,7 @@ void process() {
   for(int i=0;i<size(pairs);i++) {
     int a,b;
     tie(a,b) = pairs[i];
+    cerr << a << " " << b << endl;
     trace(a,b, true);
   }
   for(int i=0;i<r;i++) {
