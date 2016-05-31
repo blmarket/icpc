@@ -59,14 +59,14 @@ int trace(int a, int b, bool move) {
 
   auto apply = [&](int x, int y, int d) {
     while(true) {
-      int px = x + dx[d];
-      int py = y + dy[d];
+      int px = x + dx[(d+2)%4];
+      int py = y + dy[(d+2)%4];
       if(!good(px, py)) break;
 
-      cerr << (d+2)%4 << " " << track[px][py] << " " << px << " " << py << endl;
+      cerr << d << " " << track[px][py] << " " << px << " " << py << endl;
       ret[px][py] = '/';
       
-      flow[px][py][(d+2)%4] = false;
+      flow[px][py][d] = false;
       x = px; y = py;
       d = track[x][y];
     }
@@ -84,13 +84,13 @@ int trace(int a, int b, bool move) {
         int ny = sy + dy[i];
         if(mp(nx,ny) == tgt) {
           if(move) {
-            apply(nx, ny, (i+2)%4);
+            apply(nx, ny, i);
           }
           return dist+1;
         }
         if(!good(nx,ny)) continue;
         if(track[nx][ny] != -1) continue;
-        track[nx][ny] = (i+2)%4;
+        track[nx][ny] = i;
         Q.push(mt(nx,ny, dist+1));
       }
     }
