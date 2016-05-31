@@ -146,8 +146,8 @@ void process() {
         mdist = tmp;
       }
     }
-    cerr << md << endl;
     trace(pairs[md].first, pairs[md].second, true);
+    used[md] = true;
   }
   for(int i=0;i<r;i++) {
     for(int j=0;j<c;j++) printf("%c", ret[i][j]);
