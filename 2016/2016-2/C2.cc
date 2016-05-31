@@ -147,7 +147,7 @@ void process() {
     }
     trace(pairs[md].first, pairs[md].second, true);
   }
-  cout << "POSSIBLE" << endl;
+  cout << "POSSIBLE" << r << c << endl;
   for(int i=0;i<r;i++) {
     for(int j=0;j<c;j++) printf("%c", ret[i][j]);
     printf("\n");
