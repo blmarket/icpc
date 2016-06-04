@@ -56,8 +56,8 @@ again:
     for(int i=1;i<=D*2;i++) {
       int d0 = dist(i-1);
       int d1 = dist(i);
-      cerr << i << " " << d0 << " " << d1 << endl;
 
+      cerr << i << " " << d0 << " " << d1 << " " << D << endl;
       if(d1 < d0) {
         ret++;
         add(i, D);
