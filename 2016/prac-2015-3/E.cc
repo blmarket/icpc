@@ -62,9 +62,9 @@ void process() {
           ret++;
           add(i, D);
 
-          for(int j=0;j<N;j++)
-            cerr << v[j] << " ";
-          cerr << endl;
+          //for(int j=0;j<N;j++)
+          //  cerr << v[j] << " ";
+          //cerr << endl;
         } else break;
       }
     }
