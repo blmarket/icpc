@@ -36,8 +36,9 @@ void process() {
     for(int i=1;i<=D;i++) {
       int d0 = v[i-1] - v[i+D-1];
       int d1 = v[i] - v[(i+D)%N];
-      cerr << d0 << " " << d1 << endl;
+      cerr << i << " " << d0 << " " << d1 << endl;
     }
+    break;
   }
 }
 
