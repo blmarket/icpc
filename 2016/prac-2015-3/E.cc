@@ -33,7 +33,7 @@ void process() {
     scanf(" %d", &v[i]);
   }
   while(D) {
-    for(int i=1;i<=D;i++) {
+    for(int i=1;i<=D*2;i++) {
       int d0 = v[i-1] - v[(i+D-1)%N];
       int d1 = v[i] - v[(i+D)%N];
       cerr << i << " " << d0 << " " << d1 << " " << i+D << endl;
