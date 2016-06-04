@@ -132,10 +132,8 @@ void process() {
       swap(a,b);
     }
     pairs.pb(a-b,b);
-
-    //if(a & 1) swap(a, b);
-    //pairs.pb(mp(a,b));
   }
+
   sort(pairs.begin(), pairs.end());
   for(int i=0;i<size(pairs);i++) {
     int a,b;
