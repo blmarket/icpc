@@ -52,9 +52,9 @@ void process() {
       }
     };
 
-    for(int i=1;i<D*2;i++) {
+    for(int i=0;i<D*2;i++) {
       while(true) {
-        int d0 = dist(i-1);
+        int d0 = dist(i == 0 ? D*2-1 : i-1);
         int d1 = dist(i);
 
         cerr << i << " " << d0 << " " << d1 << " " << D << endl;
