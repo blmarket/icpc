@@ -57,8 +57,8 @@ again:
       int d0 = dist(i-1);
       int d1 = dist(i);
 
-      cerr << i << " " << d0 << " " << d1 << " " << D << endl;
       if(d1 < d0) {
+        cerr << i << " " << d0 << " " << d1 << " " << D << endl;
         ret++;
         add(i, D);
         goto again;
