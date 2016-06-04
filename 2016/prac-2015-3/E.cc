@@ -57,7 +57,7 @@ void process() {
         int d0 = dist(i == 0 ? D*2-1 : i-1);
         int d1 = dist(i);
 
-        cerr << i << " " << d0 << " " << d1 << " " << D << endl;
+        // cerr << i << " " << d0 << " " << d1 << " " << D << endl;
         if(d1 < d0) {
           ret++;
           add(i, D);
