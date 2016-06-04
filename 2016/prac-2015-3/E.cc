@@ -77,6 +77,11 @@ void process() {
       return;
     }
   }
+
+  if(v[0] < ret) {
+    cout << "CHEATERS!" << endl;
+    return;
+  }
   cout << ret << endl;
 }
 
