@@ -57,11 +57,11 @@ void process() {
         int d0 = dist(i-1);
         int d1 = dist(i);
 
+        cerr << i << " " << d0 << " " << d1 << " " << D << endl;
         if(d1 < d0) {
           ret++;
           add(i, D);
 
-          cerr << i << " " << d0 << " " << d1 << " " << D << endl;
           for(int j=0;j<N;j++)
             cerr << v[j] << " ";
           cerr << endl;
