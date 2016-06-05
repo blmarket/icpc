@@ -94,6 +94,8 @@ void process() {
     cur[d1[i]] = tmp;
   }
 
+  cerr << "here" << endl;
+
   search(cur);
   sort(ret.begin(), ret.end());
   each(it, ret) cout << it << " ";
