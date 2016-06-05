@@ -49,7 +49,10 @@ bool search(map<int, int> &cur) {
       cerr << it->first << " " << it->second << endl;
       if(it->second == 0) continue;
       nex[it->first-a] = it->second;
-      if((cur[it->first-a] -= it->second) < 0) return false;
+      if((cur[it->first-a] -= it->second) < 0) {
+        cerr << "happen!" << endl;
+        return false;
+      }
     }
     each(xt, cur) {
       cerr << xt.first << "=" << xt.second << " ";
