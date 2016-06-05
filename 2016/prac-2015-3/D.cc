@@ -51,8 +51,9 @@ bool search(map<int, int> &cur) {
       if((cur[it->first-a] -= it->second) < 0) return false;
     }
     each(xt, cur) {
-      cerr << xt.first << " " << xt.second << endl;
+      cerr << xt.first << "=" << xt.second << " ";
     }
+    cerr << endl;
     bool tmp = search(nex);
     if(tmp) ret.pb(a);
     return tmp;
