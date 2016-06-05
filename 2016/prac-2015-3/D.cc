@@ -55,8 +55,23 @@ bool search(map<int, int> &cur) {
     return tmp;
   };
 
+  auto chk2 = [&](int a) {
+    map<int, int> nex;
+    for(auto it = cur.begin(); it != cur.end(); ++it) {
+      if(it->second == 0) continue;
+      nex[it->first-a] = it->second;
+      cur[it->first-a] -= it->second;
+    }
+    bool tmp = search(nex);
+    if(tmp) ret.pb(a);
+    return tmp;
+  };
+
   int c1 = it->first - jt->first;
   if(chk(c1)) return true;
+  if(cur.begin()->first < 0) { // can be negative
+    if(chk2(-c1)) return true;
+  }
   return false;
 }
 
