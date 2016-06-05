@@ -48,10 +48,7 @@ bool search(map<LL, LL> &cur) {
     for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
       if(it->second == 0) continue;
       nex[it->first-a] = it->second;
-      if((cur[it->first-a] -= it->second) < 0) {
-        cerr << "happen!" << endl;
-        return false;
-      }
+      cur[it->first-a] -= it->second;
     }
     cerr << a << endl;
     //each(xt, cur) {
@@ -84,7 +81,7 @@ bool search(map<LL, LL> &cur) {
 void process() {
   ret.clear();
   int p;
-  map<LL, LL> cur;
+  map<LL, LL> cur, init;
 
   vector<LL> d1, d2;
   scanf(" %lld", &p);
@@ -96,7 +93,57 @@ void process() {
     cur[d1[i]] = tmp;
   }
 
-  search(cur);
+  init = cur;
+
+  auto remove = [&](map<LL, LL> &cur, int candi) -> bool {
+    map<LL, LL> nex;
+    if(candi > 0) {
+      for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
+        if(it->second == 0) continue;
+        nex[it->first - candi] = it->second;
+        cur[it->first - candi] -= it->second;
+      }
+    } else {
+      for(auto it = cur.begin(); it != cur.end(); ++it) {
+        if(it->second == 0) continue;
+        nex[it->first - candi] = it->second;
+        cur[it->first - candi] -= it->second;
+      }
+    }
+    cur.swap(nex);
+  };
+
+  vector<LL> cs;
+  while(cur.size() > 1) {
+    auto it = cur.rbegin();
+    auto it2 = it; ++it2;
+
+    LL candi = it->first - it2->first;
+    cs.pb(candi);
+
+    remove(cur, candi);
+  }
+  while(cur[0] > 1) {
+    cs.pb(0);
+    cur[0] /= 2;
+  }
+
+  sort(cs.rbegin(), cs.rend());
+  cur = move(init);
+  vector<LL> ret;
+  for(int i=0;i<size(cs);i++) {
+    if(cs[i] == 0) {
+      ret.pb(0);
+      continue;
+    }
+    if(cur[-cs[i]]) {
+      ret.pb(-cs[i]);
+      remove(cur, -cs[i]);
+    } else {
+      ret.pb(cs[i]);
+      remove(cur, cs[i]);
+    }
+  }
   sort(ret.begin(), ret.end());
   each(it, ret) cout << it << " ";
   cout << endl;
