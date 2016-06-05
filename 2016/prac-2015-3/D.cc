@@ -53,6 +53,7 @@ bool search(map<LL, LL> &cur) {
         return false;
       }
     }
+    cerr << a << endl;
     //each(xt, cur) {
     //  cerr << xt.first << "=" << xt.second << " ";
     //}
