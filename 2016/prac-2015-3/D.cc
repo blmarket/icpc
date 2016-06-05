@@ -46,7 +46,6 @@ bool search(map<LL, LL> &cur) {
   auto chk = [&](LL a) {
     map<LL, LL> nex;
     for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
-      cerr << it->first << " " << it->second << endl;
       if(it->second == 0) continue;
       nex[it->first-a] = it->second;
       if((cur[it->first-a] -= it->second) < 0) {
