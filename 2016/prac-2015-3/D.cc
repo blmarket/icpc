@@ -78,10 +78,10 @@ bool search(map<LL, LL> &cur) {
   int c1 = it->first - jt->first;
   cerr << it->first << " " <<jt->first << " " << c1 << endl;
 
-  if(it->first > 0 && chk(c1)) return true;
   if(cur.begin()->first < 0) { // can be negative
     if(chk2(-c1)) return true;
   }
+  if(it->first > 0 && chk(c1)) return true;
   return false;
 }
 
