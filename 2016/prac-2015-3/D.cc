@@ -75,6 +75,8 @@ bool search(map<LL, LL> &cur) {
     return tmp;
   };
 
+  cerr << it->first << " " <<jt->first << endl;
+
   int c1 = it->first - jt->first;
   if(it->first > 0 && chk(c1)) return true;
   if(cur.begin()->first < 0) { // can be negative
