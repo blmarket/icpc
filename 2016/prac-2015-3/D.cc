@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
@@ -75,6 +76,7 @@ void process() {
   }
 
   search(cur);
+  sort(ret.begin(), ret.end());
   each(it, ret) cout << it << " ";
   cout << endl;
 }
