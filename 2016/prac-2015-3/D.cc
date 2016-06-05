@@ -128,10 +128,10 @@ void process() {
     remove(cur, candi);
   }
 
-  cerr << cur[0] << endl;
-  while(cur[0] > 1) {
+  LL tmp = cur.begin()->second;
+  while(tmp > 1) {
     cs.pb(0);
-    cur[0] /= 2;
+    tmp /= 2;
   }
 
   sort(cs.rbegin(), cs.rend());
