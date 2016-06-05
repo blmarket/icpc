@@ -75,6 +75,8 @@ void process() {
   }
 
   search(cur);
+  each(it, ret) cout << it << " ";
+  cout << endl;
 }
 
 int main(void) {
