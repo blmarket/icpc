@@ -49,7 +49,9 @@ bool search(map<int, int> &cur) {
       nex[it->first-a] = it->second;
       cur[it->first-a] -= it->second;
     }
-    return search(nex);
+    bool tmp = search(nex);
+    if(tmp) ret.pb(a);
+    return tmp;
   };
 
   int c1 = it->first - jt->first;
