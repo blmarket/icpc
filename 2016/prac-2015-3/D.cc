@@ -27,11 +27,11 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-vector<int> ret;
+vector<LL> ret;
 
-bool search(map<int, int> &cur) {
+bool search(map<LL, LL> &cur) {
   if(cur.size() == 1) {
-    int &tmp = cur[0];
+    LL &tmp = cur[0];
     while(tmp > 1) {
       ret.pb(0);
       tmp /= 2;
@@ -43,8 +43,8 @@ bool search(map<int, int> &cur) {
   auto jt = cur.rbegin();
   ++jt;
 
-  auto chk = [&](int a) {
-    map<int, int> nex;
+  auto chk = [&](LL a) {
+    map<LL, LL> nex;
     for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
       cerr << it->first << " " << it->second << endl;
       if(it->second == 0) continue;
@@ -64,7 +64,7 @@ bool search(map<int, int> &cur) {
   };
 
   auto chk2 = [&](int a) {
-    map<int, int> nex;
+    map<LL, LL> nex;
     for(auto it = cur.begin(); it != cur.end(); ++it) {
       if(it->second == 0) continue;
       nex[it->first-a] = it->second;
@@ -86,15 +86,15 @@ bool search(map<int, int> &cur) {
 void process() {
   ret.clear();
   int p;
-  map<int, int> cur;
+  map<LL, LL> cur;
 
-  vector<int> d1, d2;
-  scanf(" %d", &p);
+  vector<LL> d1, d2;
+  scanf(" %lld", &p);
   d1.resize(p); d2.resize(p);
-  for(int i=0;i<p;i++) scanf(" %d", &d1[i]);
+  for(int i=0;i<p;i++) scanf(" %lld", &d1[i]);
   for(int i=0;i<p;i++) {
-    int tmp;
-    scanf(" %d", &tmp);
+    LL tmp;
+    scanf(" %lld", &tmp);
     cur[d1[i]] = tmp;
   }
 
