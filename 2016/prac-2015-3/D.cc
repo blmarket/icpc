@@ -26,8 +26,17 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+vector<int> ret;
+
 bool search(map<int, int> &cur) {
-  if(cur.size() == 1) return true;
+  if(cur.size() == 1) {
+    int &tmp = cur[0];
+    while(tmp > 1) {
+      ret.pb(0);
+      tmp /= 2;
+    }
+    return true;
+  }
 
   auto it = cur.rbegin();
   auto jt = cur.rbegin();
@@ -49,6 +58,7 @@ bool search(map<int, int> &cur) {
 }
 
 void process() {
+  ret.clear();
   int p;
   map<int, int> cur;
 
