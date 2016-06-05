@@ -48,7 +48,7 @@ bool search(map<int, int> &cur) {
     for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
       if(it->second == 0) continue;
       nex[it->first-a] = it->second;
-      cur[it->first-a] -= it->second;
+      if((cur[it->first-a] -= it->second) < 0) return false;
     }
     bool tmp = search(nex);
     if(tmp) ret.pb(a);
