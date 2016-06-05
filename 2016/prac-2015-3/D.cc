@@ -31,8 +31,19 @@ bool search(map<int, int> &cur) {
   auto jt = cur.rbegin();
   ++jt;
 
-  cerr << STR(*it) << endl;
-  cerr << STR(*jt) << endl;
+  auto chk = [&](int a) {
+    map<int, int> nex;
+    for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
+      if(it->second == 0) continue;
+      nex[it->first-a] = it->second;
+      cur[it->first-a] -= it->second;
+    }
+    return search(nex);
+  };
+
+  int c1 = it->first - jt->first;
+  if(chk(c1)) return true;
+  return false;
 }
 
 void process() {
