@@ -111,6 +111,9 @@ void process() {
       }
     }
     cur.swap(nex);
+    each(it, cur) {
+      cerr << it.first << " " << it.second << endl;
+    }
   };
 
   vector<LL> cs;
