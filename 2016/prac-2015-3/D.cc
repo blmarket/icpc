@@ -27,10 +27,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 bool search(map<int, int> &cur) {
-  for(auto it: cur) {
-    cerr << it.first << " " << it.second << endl;
-  }
-  if(cur.size() == 0) return true;
+  if(cur.size() == 1) return true;
 
   auto it = cur.rbegin();
   auto jt = cur.rbegin();
