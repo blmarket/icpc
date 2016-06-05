@@ -46,6 +46,7 @@ bool search(map<int, int> &cur) {
   auto chk = [&](int a) {
     map<int, int> nex;
     for(auto it = cur.rbegin(); it != cur.rend(); ++it) {
+      cerr << it->first << " " << it->second << endl;
       if(it->second == 0) continue;
       nex[it->first-a] = it->second;
       if((cur[it->first-a] -= it->second) < 0) return false;
@@ -93,8 +94,6 @@ void process() {
     scanf(" %d", &tmp);
     cur[d1[i]] = tmp;
   }
-
-  cerr << "here" << endl;
 
   search(cur);
   sort(ret.begin(), ret.end());
