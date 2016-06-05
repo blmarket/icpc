@@ -53,10 +53,10 @@ bool search(map<LL, LL> &cur) {
         return false;
       }
     }
-    each(xt, cur) {
-      cerr << xt.first << "=" << xt.second << " ";
-    }
-    cerr << endl;
+    //each(xt, cur) {
+    //  cerr << xt.first << "=" << xt.second << " ";
+    //}
+    //cerr << endl;
     bool tmp = search(nex);
     if(tmp) ret.pb(a);
     return tmp;
