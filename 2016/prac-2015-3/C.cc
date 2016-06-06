@@ -55,9 +55,9 @@ void process(void) {
 
   int L = ls.size();
   int R = rs.size();
-  for(int i=0;i<L;i++) {
-    for(int j=0;j<R;j++) {
-      for(int k=0;k<N;k++) dyna[i][j][k] = 1e18;
+  for(int i=0;i<=L;i++) {
+    for(int j=0;j<=R;j++) {
+      for(int k=0;k<=N;k++) dyna[i][j][k] = 1e18;
     }
   }
 
