@@ -69,17 +69,17 @@ void process(void) {
       for(int k=0;k<=N;k++) if(dyna[i][j][k] < 1e17) {
         double t = dyna[i][j][k];
         double pos = t * data[k].first + data[k].second;
-        cerr << i << " " << j << " " << k << " = " << t << " " << pos << endl;
+        // cerr << i << " " << j << " " << k << " = " << t << " " << pos << endl;
 
         if(i < L) {
           int ni = ls[i];
           double npos = t * data[ni].first + data[ni].second;
-          cerr << ni << " <-> " << npos << endl;
+          // cerr << ni << " <-> " << npos << endl;
           if(pos < npos) {
             setmin(dyna[i+1][j][ni], t);
           } else {
             double nt = t + (pos - npos) / (Y + data[ni].first);
-            cerr << "t2 " << (pos-npos) << " " << (Y+data[ni].first) << endl;
+            // cerr << "t2 " << (pos-npos) << " " << (Y+data[ni].first) << endl;
             setmin(dyna[i+1][j][ni], nt);
           }
         }
