@@ -77,7 +77,7 @@ void process(void) {
             setmin(dyna[i+1][j][ni], t);
           } else {
             double nt = t + (pos - npos) / (Y + data[ni].first);
-            cerr << (pos-npos) << " " << (Y+data[ni].first) << endl;
+            cerr << "t2" << (pos-npos) << " " << (Y+data[ni].first) << endl;
             setmin(dyna[i+1][j][ni], nt);
           }
         }
