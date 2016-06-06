@@ -75,7 +75,7 @@ void process(void) {
           double npos = t * data[ni].first + data[ni].second;
           // cerr << ni << " <-> " << npos << endl;
           if(pos < npos) {
-            setmin(dyna[i+1][j][ni], t);
+            setmin(dyna[i+1][j][k], t);
           } else {
             double nt = t + (pos - npos) / (Y + data[ni].first);
             // cerr << "t2 " << (pos-npos) << " " << (Y+data[ni].first) << endl;
@@ -86,7 +86,7 @@ void process(void) {
           int ni = rs[j];
           double npos = t * data[ni].first + data[ni].second;
           if(pos > npos) {
-            setmin(dyna[i][j+1][ni], t);
+            setmin(dyna[i][j+1][k], t);
           } else {
             double nt = t + (npos - pos) / (Y - data[ni].first);
             setmin(dyna[i][j+1][ni], nt);
