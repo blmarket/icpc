@@ -60,10 +60,9 @@ void process(void) {
       for(int k=0;k<=N;k++) dyna[i][j][k] = 1e18;
     }
   }
+  
+  for(int i=0;i<N;i++) dyna[0][0][i] = (double)abs(data[i].second) / (Y - abs(data[i].first));
 
-  data.pb(mp(0,0));
-
-  dyna[0][0][N] = 0;
   for(int i=0;i<=L;i++) {
     for(int j=0;j<=R;j++) {
       for(int k=0;k<=N;k++) if(dyna[i][j][k] < 1e17) {
