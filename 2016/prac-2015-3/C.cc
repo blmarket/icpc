@@ -74,10 +74,10 @@ void process(void) {
           double npos = t * data[ni].first + data[ni].second;
           cerr << ni << " <-> " << npos << endl;
           if(pos < npos) {
-            cerr << "here" << endl;
             setmin(dyna[i+1][j][ni], t);
           } else {
             double nt = t + (pos - npos) / (Y + data[ni].first);
+            cerr << "nt = " << nt << endl;
             setmin(dyna[i+1][j][ni], nt);
           }
         }
