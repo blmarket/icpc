@@ -66,6 +66,7 @@ void process(void) {
     for(int j=0;j<R;j++) {
       for(int k=0;k<N;k++) if(dyna[i][j][k] < 1e17) {
         double t = dyna[i][j][k];
+        cerr << i << " " << j << " " << k << " = " << t << endl;
         double pos = t * data[i].first + data[i].second;
 
         if(i < L) {
