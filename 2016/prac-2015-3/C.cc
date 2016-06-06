@@ -72,6 +72,7 @@ void process(void) {
         if(i < L) {
           int ni = ls[i];
           double npos = t * data[ni].first + data[ni].second;
+          cerr << npos << endl;
           if(pos < npos) {
             setmin(dyna[i+1][j][ni], t);
           } else {
