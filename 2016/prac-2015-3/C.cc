@@ -26,7 +26,7 @@ typedef pair<int,int> PII;
 typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
-template<typename T> void setmin(T &a, const T &b) { if(a<b) a=b; }
+template<typename T> void setmin(T &a, const T &b) { if(a>b) a=b; }
 
 int Y, N;
 vector<PII> data;
