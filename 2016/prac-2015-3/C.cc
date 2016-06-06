@@ -62,8 +62,8 @@ void process(void) {
   }
 
   dyna[0][0][0] = 0;
-  for(int i=0;i<L;i++) {
-    for(int j=0;j<R;j++) {
+  for(int i=0;i<=L;i++) {
+    for(int j=0;j<=R;j++) {
       for(int k=0;k<N;k++) if(dyna[i][j][k] < 1e17) {
         double t = dyna[i][j][k];
         cerr << i << " " << j << " " << k << " = " << t << endl;
