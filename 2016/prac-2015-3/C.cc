@@ -99,7 +99,6 @@ void process(void) {
 
   double ret = 1e18;
   for(int i=0;i<N;i++) {
-    cerr << dyna[L][R][i] << endl;
     setmin(ret, dyna[L][R][i]);
   }
   printf("%.12lf\n", ret);
