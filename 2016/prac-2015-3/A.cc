@@ -41,13 +41,24 @@ void get(vector<int> &V) {
 }
 
 LL debug = 0;
-int ret[1000005];
+int ret[3000000];
 int lleft;
+
+void add(int left, int right, int i=1, int l1 =0, int r1 = 1048576) {
+  if(right <= l1 || r1 <= left) return;
+  if(left <= l1 && right >= r1) {
+    ret[i] += 1;
+    return;
+  }
+  int mid = (l1 + r1) / 2;
+  add(left, right, i*2, l1, mid);
+  add(left, right, i*2+1, mid, r1);
+}
 
 void go(int a, int left, int right) {
   if(left > right) return;
 
-  cerr << ++debug << endl;
+  add(left - S[0] + D, right - S[0] + D + 1);
 
   for(int i=left;i<=right;i++) ret[i - S[0] + D]++;
   vector<int> &cs = childs[a];
