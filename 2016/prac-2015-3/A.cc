@@ -62,6 +62,9 @@ vector<int> go(int a) {
 
 void process(void) {
   scanf(" %d %d", &N, &D);
+  for(int i=0;i<N;i++) {
+    childs[i].clear();
+  }
   get(S);
   get(M);
   for(int i=1;i<N;i++) {
