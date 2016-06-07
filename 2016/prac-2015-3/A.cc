@@ -26,7 +26,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, D;
 vector<int> S, M;
-vector<int> childs[100005];
+vector<int> childs[1000005];
 
 void get(vector<int> &V) {
   int S,A,C,R;
