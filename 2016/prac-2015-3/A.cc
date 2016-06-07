@@ -41,25 +41,22 @@ void get(vector<int> &V) {
 }
 
 LL debug = 0;
+int ret[1000005];
+int lleft;
 
-vector<int> go(int a) {
-  vector<int> ret;
-  ret.resize(D+1, 1);
+void go(int a, int left, int right) {
+  if(left > right) return;
+
+  for(int i=left;i<=right;i++) ret[i - S[0] + D]++;
   vector<int> &cs = childs[a];
   for(int i=0;i<size(cs);i++) {
     int ci = cs[i];
-    vector<int> tmp = move(go(ci));
-    int left = S[ci] - D;
-    for(int j=0;j<=D;j++) {
-      if(left + j >= S[a] - D && left+j <= S[a]) {
-        ret[left+j - S[a] + D] += tmp[j];
-      }
-    }
+
+    int nl = max(left, S[ci] - D);
+    int nr = min(right, S[ci]);
+
+    go(ci, nl, nr);
   }
-  if( ((++debug) % 10000) == 0) {
-    cerr << debug << " " << a << endl;
-  }
-  return ret;
 }
 
 void process(void) {
@@ -74,7 +71,8 @@ void process(void) {
     childs[M[i]].pb(i);
   }
 
-  vector<int> ret = move(go(0));
+  lleft = S[0] - D;
+  go(0, S[0]-D, S[0]);
   int maxx = 0;
   for(int i=0;i<=D;i++) {
     maxx = max(maxx, ret[i]);
