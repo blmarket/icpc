@@ -63,7 +63,7 @@ void go(int a, int left, int right) {
 
     cerr << a << " " << left << " " << right << endl;
 
-    if(left >= right) continue;
+    if(left > right) continue;
 
     ret[left - S[0] + D]++;
     ret[right - S[0] + D + 1]--;
