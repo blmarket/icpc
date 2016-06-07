@@ -52,7 +52,7 @@ tailrec:
   ret[right - S[0] + D]--;
 
   vector<int> &cs = childs[a];
-  // cerr << a << " " << (left-S[0]+D) << " " << (right-S[0]+D) << " " << cs.size() << endl;
+  cerr << a << " " << (left-S[0]+D) << " " << (right-S[0]+D) << " " << cs.size() << endl;
   for(int i=0;i<size(cs);i++) {
     int ci = cs[i];
 
