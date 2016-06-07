@@ -56,6 +56,7 @@ void add(int left, int right, int i=1, int l1 =0, int r1 = 1048576) {
 }
 
 void go(int a, int left, int right) {
+  cerr << ++debug << endl;
   if(left > right) return;
 
   add(left - S[0] + D, right - S[0] + D + 1);
