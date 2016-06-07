@@ -61,6 +61,8 @@ void go(int a, int left, int right) {
   for(int ii=0;ii<sp;ii++) {
     tie(a, left, right) = make_tuple(sa[ii], sl[ii], sr[ii]);
 
+    cerr << a << " " << left << " " << right << endl;
+
     if(left >= right) continue;
 
     ret[left - S[0] + D]++;
