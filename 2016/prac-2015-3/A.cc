@@ -45,6 +45,7 @@ int ret[1000005];
 int lleft;
 
 void go(int a, int left, int right) {
+  cerr << a << " " << left << " " << right << endl;
   if(left > right) return;
 
   ret[left]++;
