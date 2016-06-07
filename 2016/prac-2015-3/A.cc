@@ -46,12 +46,12 @@ int lleft;
 
 void go(int a, int left, int right) {
   if(left > right) return;
-  cerr << a << " " << (left-S[0]+D) << " " << (right-S[0]+D) << endl;
 
   ret[left - S[0] + D]++;
   ret[right - S[0] + D]--;
 
   vector<int> &cs = childs[a];
+  cerr << a << " " << (left-S[0]+D) << " " << (right-S[0]+D) << " " << cs.size() << endl;
   for(int i=0;i<size(cs);i++) {
     int ci = cs[i];
 
