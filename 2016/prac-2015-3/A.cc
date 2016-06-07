@@ -42,31 +42,42 @@ void get(vector<int> &V) {
 
 LL debug = 0;
 int ret[1000005];
+
+int sa[1000005];
+int sl[1000005];
+int sr[1000005];
+int sp;
+
 int lleft;
 
 void go(int a, int left, int right) {
-tailrec:
-  if(left > right) return;
+  sp = 0;
+  sa[sp] = a;
+  sl[sp] = left;
+  sr[sp] = right;
+  sp++;
 
-  ret[left - S[0] + D]++;
-  ret[right - S[0] + D]--;
+  for(int ii=0;ii<sp;ii++) {
+    tie(a, left, right) = make_tuple(sa[ii], sl[ii], sr[ii]);
 
-  vector<int> &cs = childs[a];
-  cerr << a << " " << (left-S[0]+D) << " " << (right-S[0]+D) << " " << cs.size() << endl;
-  for(int i=0;i<size(cs);i++) {
-    int ci = cs[i];
+    if(left >= right) continue;
 
-    int nl = max(left, S[ci] - D);
-    int nr = min(right, S[ci]);
+    ret[left - S[0] + D]++;
+    ret[right - S[0] + D]--;
 
-    if(cs.size() == 1) {
-      a = ci;
-      left = nl;
-      right = nr;
-      goto tailrec;
+    vector<int> &cs = childs[a];
+
+    for(int i=0;i<size(cs);i++) {
+      int ci = cs[i];
+
+      int nl = max(left, S[ci] - D);
+      int nr = min(right, S[ci]);
+
+      sa[sp] = ci;
+      sl[sp] = nl;
+      sr[sp] = nr;
+      sp++;
     }
-
-    go(ci, nl, nr);
   }
 }
 
