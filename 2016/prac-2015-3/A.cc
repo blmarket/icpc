@@ -42,7 +42,7 @@ void get(vector<int> &V) {
 
 vector<int> go(int a) {
   vector<int> ret;
-  ret.resize(D+1, 0);
+  ret.resize(D+1, 1);
   vector<int> &cs = childs[a];
   for(int i=0;i<size(cs);i++) {
     int ci = cs[i];
