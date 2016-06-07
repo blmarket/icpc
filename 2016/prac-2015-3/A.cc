@@ -51,6 +51,7 @@ int sp;
 int lleft;
 
 void go(int a, int left, int right) {
+  for(int i=0;i<1000005;i++) ret[i] = 0;
   sp = 0;
   sa[sp] = a;
   sl[sp] = left;
