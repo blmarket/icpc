@@ -41,28 +41,15 @@ void get(vector<int> &V) {
 }
 
 LL debug = 0;
-int ret[3000000];
+int ret[1000005];
 int lleft;
 
-void add(int left, int right, int i=1, int l1 =0, int r1 = 1048576) {
-  if(right <= l1 || r1 <= left) return;
-  if(left <= l1 && right >= r1) {
-    ret[i] += 1;
-    return;
-  }
-  int mid = (l1 + r1) / 2;
-  add(left, right, i*2, l1, mid);
-  add(left, right, i*2+1, mid, r1);
-}
-
 void go(int a, int left, int right) {
-  if (((++debug) % 10000) == 0)
-    cerr << ++debug << endl;
   if(left > right) return;
 
-  add(left - S[0] + D, right - S[0] + D + 1);
+  ret[left]++;
+  ret[right]--;
 
-  for(int i=left;i<=right;i++) ret[i - S[0] + D]++;
   vector<int> &cs = childs[a];
   for(int i=0;i<size(cs);i++) {
     int ci = cs[i];
@@ -89,8 +76,10 @@ void process(void) {
   lleft = S[0] - D;
   go(0, S[0]-D, S[0]);
   int maxx = 0;
+  int acc = 0;
   for(int i=0;i<=D;i++) {
-    maxx = max(maxx, ret[i]);
+    acc += ret[i];
+    maxx = max(maxx, acc);
   }
   cout << maxx << endl;
 }
