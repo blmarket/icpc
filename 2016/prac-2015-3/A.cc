@@ -40,6 +40,8 @@ void get(vector<int> &V) {
   }
 }
 
+LL debug = 0;
+
 vector<int> go(int a) {
   vector<int> ret;
   ret.resize(D+1, 1);
@@ -54,9 +56,9 @@ vector<int> go(int a) {
       }
     }
   }
-  cerr << a << " : ";
-  // each(it, ret) cerr << it << " ";
-  cerr << endl;
+  if( (++debug) % 10000) {
+    cerr << debug << " " << a << endl;
+  }
   return ret;
 }
 
