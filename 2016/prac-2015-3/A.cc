@@ -48,8 +48,8 @@ void go(int a, int left, int right) {
   cerr << a << " " << left << " " << right << endl;
   if(left > right) return;
 
-  ret[left]++;
-  ret[right]--;
+  ret[left - S[0] + D]++;
+  ret[right - S[0] + D]--;
 
   vector<int> &cs = childs[a];
   for(int i=0;i<size(cs);i++) {
