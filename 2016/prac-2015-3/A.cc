@@ -102,6 +102,7 @@ void process(void) {
   int acc = 0;
   for(int i=0;i<=D;i++) {
     acc += ret[i];
+    cerr << i << " " << acc << endl;
     maxx = max(maxx, acc);
   }
   cout << maxx << endl;
