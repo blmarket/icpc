@@ -45,6 +45,7 @@ int ret[1000005];
 int lleft;
 
 void go(int a, int left, int right) {
+tailrec:
   if(left > right) return;
 
   ret[left - S[0] + D]++;
@@ -57,6 +58,13 @@ void go(int a, int left, int right) {
 
     int nl = max(left, S[ci] - D);
     int nr = min(right, S[ci]);
+
+    if(cs.size() == 1) {
+      a = ci;
+      left = nl;
+      right = nr;
+      goto tailrec;
+    }
 
     go(ci, nl, nr);
   }
