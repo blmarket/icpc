@@ -54,9 +54,9 @@ vector<int> go(int a) {
       }
     }
   }
-  // cerr << a << " : ";
+  cerr << a << " : ";
   // each(it, ret) cerr << it << " ";
-  // cerr << endl;
+  cerr << endl;
   return ret;
 }
 
