@@ -56,7 +56,7 @@ vector<int> go(int a) {
       }
     }
   }
-  if( (++debug) % 10000) {
+  if( ((++debug) % 10000) == 0) {
     cerr << debug << " " << a << endl;
   }
   return ret;
