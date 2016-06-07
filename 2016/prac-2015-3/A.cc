@@ -66,7 +66,7 @@ void go(int a, int left, int right) {
     if(left >= right) continue;
 
     ret[left - S[0] + D]++;
-    ret[right - S[0] + D]--;
+    ret[right - S[0] + D + 1]--;
 
     vector<int> &cs = childs[a];
 
