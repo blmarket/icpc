@@ -67,10 +67,6 @@ void go(int a, int left, int right) {
 
     ret[left - S[0] + D]++;
     ret[right - S[0] + D + 1]--;
-    for(int i=0;i<=D;i++) {
-      cerr << ret[i] << " ";
-    }
-    cerr << endl;
 
     vector<int> &cs = childs[a];
 
