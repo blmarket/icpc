@@ -47,6 +47,8 @@ int lleft;
 void go(int a, int left, int right) {
   if(left > right) return;
 
+  cerr << ++debug << endl;
+
   for(int i=left;i<=right;i++) ret[i - S[0] + D]++;
   vector<int> &cs = childs[a];
   for(int i=0;i<size(cs);i++) {
