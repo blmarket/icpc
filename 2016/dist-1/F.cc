@@ -53,7 +53,8 @@ int main(void) {
     };
 
     if(my == 0) {
-        cerr << rot(0, 12312) << " " << rot(12312, 12313) << endl;
+        cerr << rot(0, 12312) << endl;
+        cerr << rot(12312, 12313) << endl;
     }
     return 0;
 
