@@ -86,11 +86,11 @@ int main(void) {
         cnt = 1;
 
         for(LL i=left + 1; i<right;i++) {
-            int tmp = rot(i, mep);
+            int tmp = rot(mep, i);
             if(tmp == 0) {
                 mep = i;
                 cnt++;
-            } else if(tmp > 0) {
+            } else if(tmp < 0) {
                 msp = mep = i;
                 cnt = 1;
             }
@@ -110,7 +110,7 @@ int main(void) {
 
                 int tmp = rot(t1, t2);
 
-                if(i == 0 || tmp >= 0) {
+                if(i == 0 || tmp <= 0) {
                     t1 = t2;
                     cnt = c2;
                 }
