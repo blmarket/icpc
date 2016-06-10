@@ -50,7 +50,10 @@ int main(void) {
         return -1;
     };
 
-    cerr << rot(0, 12312) << " " << rot(12312, 12313) << endl;
+    if(my == 0) {
+        cerr << rot(0, 12312) << " " << rot(12312, 12313) << endl;
+    }
+    return 0;
 
     while(true) {
         if(my == 0) {
