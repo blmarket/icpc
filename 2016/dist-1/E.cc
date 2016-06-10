@@ -31,7 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 #include "winning_move.h"
 
 #define ROT32(x, y) ((x << y) | (x >> (32 - y))) // avoid effort
-uint32_t murmur(const char *key, uint32_t len, uint32_t seed = 1723621) {
+uint32_t murmur(void *key, uint32_t len, uint32_t seed = 1723621) {
     static const uint32_t c1 = 0xcc9e2d51;
     static const uint32_t c2 = 0x1b873593;
     static const uint32_t r1 = 15;
