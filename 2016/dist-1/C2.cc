@@ -66,10 +66,10 @@ int main(void) {
             auto t1 = stack.back(); stack.pop_back();
             auto t2 = stack.back(); stack.pop_back();
 
-            if(comp(t1.first, t2.first)) {
-                stack.pb(mp(t1.first, t1.second + 1));
-            } else {
+            if(comp(t2.first, t1.first)) {
                 stack.pb(mp(t2.first, t2.second + 1));
+            } else {
+                stack.pb(mp(t1.first, t1.second + 1));
             }
 
             ss = stack.size();
@@ -89,12 +89,10 @@ int main(void) {
                 auto t1 = stack.back(); stack.pop_back();
                 auto t2 = stack.back(); stack.pop_back();
 
-                cerr << t1.first << " " << t2.first << endl;
-
-                if(comp(t1.first, t2.first)) {
-                    stack.pb(mp(t1.first, t1.second + 1));
-                } else {
+                if(comp(t2.first, t1.first)) {
                     stack.pb(mp(t2.first, t2.second + 1));
+                } else {
+                    stack.pb(mp(t1.first, t1.second + 1));
                 }
 
                 ss = stack.size();
