@@ -105,6 +105,8 @@ int main(void) {
     }
 
     vector<LL> stack = get_stack();
+    each(it, stack) cerr << it << " ";
+    cerr << endl;
     PutLL(0, stack.size() - 2);
     Send(0);
 
