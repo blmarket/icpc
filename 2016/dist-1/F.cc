@@ -44,6 +44,7 @@ int main(void) {
             PutLL(i, N);
             Send(i);
         }
+        cerr << "HERE" << endl;
         Receive(0);
         N = GetLL(0) - 1;
         LL left = N * my / nn;
@@ -77,12 +78,9 @@ int main(void) {
             }
         }
 
-        cerr << msp << " " << cnt << endl;
         PutLL(0, msp);
         PutLL(0, cnt);
         Send(0);
-
-        cerr << "HERE" << endl;
 
         if(my == 0) {
             LL t1 = 0;
