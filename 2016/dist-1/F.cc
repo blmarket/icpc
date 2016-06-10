@@ -34,16 +34,21 @@ int main(void) {
     int nn = NumberOfNodes();
 
     LL ret = 1;
-    LL N;
-    if (my == 0) {
-        N = NumberOfPeaks() - 1;
-    }
+    LL N = NumberOfPeaks();
+    LL rmost = N - 1;
+    LL lmost = 0;
 
+    LL left = N * my / nn;
+    LL right = N * (my+1) / nn;
+
+    // 1 -> t1 is over t2
+    // -1 -> t2 is over t1
+    // 0 -> same
     auto rot = [&](LL t1, LL t2) {
-        LL v1x = N - t1;
-        LL v2x = N - t2;
-        LL v1y = GetHeight(N) - GetHeight(t1);
-        LL v2y = GetHeight(N) - GetHeight(t2);
+        LL v1x = rmost - t1;
+        LL v2x = rmost - t2;
+        LL v1y = GetHeight(rmost) - GetHeight(t1);
+        LL v2y = GetHeight(rmost) - GetHeight(t2);
 
         // cerr << v1x << " " << v1y << " " << v2x << " " << v2y << endl;
 
@@ -52,69 +57,58 @@ int main(void) {
         return -1;
     };
 
-    while(true) {
-        if(my == 0) {
-            for(int i=0;i<nn;i++) {
-                PutLL(i, N);
-                Send(i);
+    auto get_stack = [&]() {
+        vector<LL> stack;
+        for(LL j=right-1; j>=left;j--) {
+            if(rot(lmost, j) > 0) continue;
+            while(!stack.empty()) {
+                LL t1 = stack.back();
+                if(rot(t1, j) > 0) break;
+                stack.pop_back();
             }
+            stack.pb(j);
+        }
+        return stack;
+    };
+
+    for(int i=0;i<nn;i++) {
+        vector<LL> stack = move(get_stack());
+
+        LL rrmost = rmost;
+        if(!stack.empty()) rrmost = stack.back();
+        LL llmost = lmost;
+        if(!stack.empty()) llmost = stack[0];
+
+        if(i) {
+            PutLL(i-1, rrmost);
+            Send(i-1);
+        }
+        if(i+1 < nn) {
+            PutLL(i+1, llmost);
+            Send(i+1);
         }
 
-        Receive(0);
-        N = GetLL(0);
-
-        if(N == 0) break;
-        if(nn > 1) {
-            nn--;
-            if(my >= nn) return 0;
+        if(i) {
+            Receive(i-1);
+            lmost = GetLL(i-1);
         }
-
-        LL left = N * my / nn;
-        LL right = N * (my + 1) / nn;
-
-        LL msp, mep;
-        LL cnt = 0;
-
-        msp = mep = left;
-        cnt = 1;
-
-        for(LL i=left + 1; i<right;i++) {
-            int tmp = rot(mep, i);
-            if(tmp == 0) {
-                mep = i;
-                cnt++;
-            } else if(tmp < 0) {
-                msp = mep = i;
-                cnt = 1;
-            }
-        }
-
-        PutLL(0, msp);
-        PutLL(0, cnt);
-        Send(0);
-
-        if(my == 0) {
-            LL t1 = 0;
-            LL cnt = 1;
-            for(int i=0;i<nn;i++) {
-                Receive(i);
-                LL t2 = GetLL(i);
-                LL c2 = GetLL(i);
-
-                int tmp = rot(t1, t2);
-
-                if(i == 0 || tmp <= 0) {
-                    t1 = t2;
-                    cnt = c2;
-                }
-            }
-            ret += cnt;
-            N = t1;
+        if(i+1 < nn) {
+            Receive(i+1);
+            rmost = GetLL(i+1);
         }
     }
 
-    if(my == 0)
-        cout << ret << endl;
+    vector<LL> stack = get_stack();
+    PutLL(0, stack.size());
+    Send(0);
 
+    if(my == 0) {
+        LL cnt = 0;
+        for(int i=0;i<nn;i++) {
+            Receive(i);
+            cnt += GetLL(i);
+        }
+        cout << cnt << endl;
+    }
     return 0;
 }
