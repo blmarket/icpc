@@ -55,9 +55,6 @@ uint32_t murmur(void *key, uint32_t len, uint32_t seed = 1723621) {
 	hash = ROT32(hash, r2) * m + n;
     }
 
-    const uint8_t *tail = (const uint8_t *) (key + nblocks * 4);
-    uint32_t k1 = 0;
-
     hash ^= len;
     hash ^= (hash >> 16);
     hash *= 0x85ebca6b;
