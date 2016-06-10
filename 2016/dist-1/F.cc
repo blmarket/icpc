@@ -66,6 +66,8 @@ int main(void) {
             return -1;
         };
 
+        cerr << left << " " << right << endl;
+
         for(LL i=left + 1; i<right;i++) {
             int tmp = rot(i, mep);
             if(tmp == 0) {
@@ -88,7 +90,6 @@ int main(void) {
             LL t1 = 0;
             LL cnt = 1;
             for(int i=0;i<nn;i++) {
-                cerr << i << endl;
                 Receive(i);
                 LL t2 = GetLL(i);
                 LL c2 = GetLL(i);
