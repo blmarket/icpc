@@ -45,18 +45,12 @@ int main(void) {
         LL v1y = GetHeight(N) - GetHeight(t1);
         LL v2y = GetHeight(N) - GetHeight(t2);
 
-        cerr << v1x << " " << v1y << " " << v2x << " " << v2y << endl;
+        // cerr << v1x << " " << v1y << " " << v2x << " " << v2y << endl;
 
         if(v1x * v2y == v2x * v1y) return 0;
         if(v1x * v2y > v2x * v1y) return 1;
         return -1;
     };
-
-    if(my == 0) {
-        cerr << rot(0, 12312) << endl;
-        cerr << rot(12312, 12313) << endl;
-    }
-    return 0;
 
     while(true) {
         if(my == 0) {
