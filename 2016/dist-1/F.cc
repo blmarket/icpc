@@ -77,6 +77,7 @@ int main(void) {
             }
         }
 
+        cerr << msp << " " << cnt << endl;
         PutLL(0, msp);
         PutLL(0, cnt);
         Send(0);
