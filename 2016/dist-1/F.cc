@@ -72,8 +72,8 @@ int main(void) {
             LL v2y = GetHeight(t2) - GetHeight(N);
 
             if(v1x * v2y == v2x * v1y) return 0;
-            if(v1x * v2y > v2x * v1y) return 1;
-            return -1;
+            if(v1x * v2y > v2x * v1y) return -1;
+            return 1;
         };
 
         for(LL i=left + 1; i<right;i++) {
