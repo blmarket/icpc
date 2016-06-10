@@ -96,8 +96,6 @@ int main(void) {
                 LL t2 = GetLL(i);
                 LL c2 = GetLL(i);
 
-                cerr << i << endl;
-
                 int tmp = rot(t1, t2);
                 if(tmp >= 0) {
                     t1 = t2;
@@ -106,6 +104,8 @@ int main(void) {
             }
             ret += cnt;
             N = t1;
+
+            cerr << N << endl;
         }
     }
 
