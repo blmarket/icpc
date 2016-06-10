@@ -76,8 +76,6 @@ int main(void) {
         }
     }
 
-    cerr << stack[0].first << " " << stack[0].second << endl;
-
     PutLL(0, stack[0].first);
     Send(0);
 
@@ -90,8 +88,6 @@ int main(void) {
             while(ss > 1 && stack[ss-1].second == stack[ss-2].second) {
                 auto t1 = stack.back(); stack.pop_back();
                 auto t2 = stack.back(); stack.pop_back();
-
-                cerr << t1.first << " " << t2.first << endl;
 
                 if(comp(t1.first, t2.first)) {
                     stack.pb(mp(t1.first, t1.second + 1));
