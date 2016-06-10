@@ -73,8 +73,7 @@ int main(void) {
     vector<LL> v;
     for(int i=0;i<N;i++) {
       LL tmp = GetSubmission(i);
-      int hash = murmur(&tmp, 8);
-      cerr << tmp << " " << hash << endl;
+      uint32_t hash = murmur(&tmp, 8);
       if((hash % nn) == my) {
         v.pb(tmp);
       }
