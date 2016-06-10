@@ -25,5 +25,8 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int main(void) {
+    int my = MyNodeId();
+    int nn = NumberOfNodes();
+
     return 0;
 }
