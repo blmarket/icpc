@@ -111,7 +111,7 @@ int main(void) {
     Send(0);
 
     if(my == 0) {
-        LL cnt = 2;
+        LL cnt = 0;
         for(int i=0;i<nn;i++) {
             Receive(i);
             cnt += GetLL(i);
