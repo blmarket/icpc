@@ -83,6 +83,7 @@ int main(void) {
     for(int i=0;i<v.size();i++) {
       if(i == 0 || v[i] != v[i-1]) {
         if(i+1 >= N || v[i+1] != v[i]) {
+          cerr << v[i] << endl;
           PutLL(0, v[i]);
           Send(0);
           goto end;
