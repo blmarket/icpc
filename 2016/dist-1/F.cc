@@ -89,6 +89,7 @@ int main(void) {
         Send(0);
 
         if(my == 0) {
+            cerr << "REDUCE" << endl;
             LL t1 = 0;
             LL cnt = 1;
             for(int i=0;i<nn;i++) {
