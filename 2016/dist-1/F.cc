@@ -48,7 +48,6 @@ int main(void) {
         N = GetLL(0) - 1;
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
-        cerr << left << " " << right << endl;
 
         LL msp, mep;
         LL cnt = 0;
@@ -80,6 +79,7 @@ int main(void) {
 
         PutLL(0, msp);
         PutLL(0, cnt);
+        Send(0);
 
         if(my == 0) {
             LL t1 = 0;
