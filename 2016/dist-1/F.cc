@@ -78,6 +78,9 @@ int main(void) {
 
         for(LL i=left + 1; i<right;i++) {
             int tmp = rot(i, mep);
+            if(i == 12312) {
+                cerr << tmp << endl;
+            }
             if(tmp == 0) {
                 mep = i;
                 cnt++;
