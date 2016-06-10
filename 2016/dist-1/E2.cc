@@ -122,15 +122,18 @@ int main(void) {
     Send(0);
 end:
 
-    LL minn = 0;
-    for(int i=0;i<nn;i++) {
-        Receive(i);
-        LL tmp = GetLL(i);
-        if(tmp == -1) continue;
-        if(minn == 0 || minn > tmp) minn = tmp;
-    }
+    if(my == 0) {
+        LL minn = 0;
+        for(int i=0;i<nn;i++) {
+            Receive(i);
+            LL tmp = GetLL(i);
+            if(tmp == -1) continue;
+            if(minn == 0 || minn > tmp) minn = tmp;
+        }
 
-    cout << minn << endl;
+        cout << minn << endl;
+
+    }
 
     return 0;
 }
