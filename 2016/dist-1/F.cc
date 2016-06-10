@@ -39,7 +39,7 @@ int main(void) {
         N = NumberOfPeaks();
     }
 
-    while(N > 0) {
+    while(true) {
         if(my == 0) {
             for(int i=0;i<nn;i++) {
                 PutLL(i, N);
@@ -49,6 +49,8 @@ int main(void) {
 
         Receive(0);
         N = GetLL(0) - 1;
+
+        if(N == -1) break;
 
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
@@ -104,7 +106,8 @@ int main(void) {
         }
     }
 
-    cout << ret << endl;
+    if(my == 0)
+        cout << ret << endl;
 
     return 0;
 }
