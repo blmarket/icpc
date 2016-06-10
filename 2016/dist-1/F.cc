@@ -99,6 +99,8 @@ int main(void) {
                 LL c2 = GetLL(i);
 
                 int tmp = rot(t1, t2);
+
+                cerr << t1 << " " << t2 << " " << tmp << endl;
                 if(tmp >= 0) {
                     t1 = t2;
                     cnt = c2;
