@@ -52,7 +52,7 @@ int main(void) {
         N = GetLL(0);
 
         if(N == 0) break;
-        if(nn > 10) {
+        if(nn > 1) {
             nn--;
             if(my >= nn) return 0;
         }
