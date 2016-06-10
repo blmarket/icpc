@@ -76,6 +76,8 @@ int main(void) {
         }
     }
 
+    cerr << nn << endl;
+
     PutLL(0, stack[0].first);
     Send(0);
 
