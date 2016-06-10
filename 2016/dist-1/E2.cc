@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 #include <cstdio>
@@ -121,12 +122,12 @@ int main(void) {
     Send(0);
 end:
 
-    LL minn = -1;
+    LL minn = 0;
     for(int i=0;i<nn;i++) {
         Receive(i);
         LL tmp = GetLL(i);
         if(tmp == -1) continue;
-        if(minn == -1 || minn > tmp) minn = tmp;
+        if(minn == 0 || minn > tmp) minn = tmp;
     }
 
     cout << minn << endl;
