@@ -36,7 +36,7 @@ int main(void) {
     LL ret = 1;
     LL N;
     if (my == 0) {
-        N = NumberOfPeaks();
+        N = NumberOfPeaks() - 1;
     }
 
     N = 2;
@@ -51,14 +51,12 @@ int main(void) {
         }
 
         Receive(0);
-        N = GetLL(0) - 1;
+        N = GetLL(0);
 
-        if(N == -1) break;
+        if(N == 0) break;
 
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
-
-        cerr << left << " " << right << endl;
 
         LL msp, mep;
         LL cnt = 0;
