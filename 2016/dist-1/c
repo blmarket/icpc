@@ -3,7 +3,7 @@ set -e
 if [ ! -n "$1" ]; then
   make
 else
-  ./dcj.sh test --source $1 --nodes 10
+  ./dcj.sh test --source $1 --nodes 20
 fi
 git add $1 
 set +e
