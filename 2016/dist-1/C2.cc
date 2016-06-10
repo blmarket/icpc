@@ -62,7 +62,7 @@ int main(void) {
     for(LL i=left;i<right;i++) {
         stack.pb(mp(i, 0));
         int ss = stack.size();
-        while(ss > 1 && stack[ss-2].second == stack[ss-2].second) {
+        while(ss > 1 && stack[ss-1].second == stack[ss-2].second) {
             auto t1 = stack.back(); stack.pop_back();
             auto t2 = stack.back(); stack.pop_back();
 
@@ -87,7 +87,7 @@ int main(void) {
             Receive(i);
             stack.pb(mp(GetLL(i), 0));
             int ss = stack.size();
-            while(ss > 1 && stack[ss-2].second == stack[ss-2].second) {
+            while(ss > 1 && stack[ss-1].second == stack[ss-2].second) {
                 auto t1 = stack.back(); stack.pop_back();
                 auto t2 = stack.back(); stack.pop_back();
 
