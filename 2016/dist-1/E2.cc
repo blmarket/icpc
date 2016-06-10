@@ -94,6 +94,7 @@ int main(void) {
                 }
             }
         }
+        cerr << msg.size() << endl;
         PutLL(i, msg.size());
         each(jt, msg) PutLL(i, jt);
         Send(i);
