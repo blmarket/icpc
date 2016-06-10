@@ -39,8 +39,6 @@ int main(void) {
         N = NumberOfPeaks() - 1;
     }
 
-    N = 2;
-
     while(true) {
         if(my == 0) {
             cerr << N << endl;
