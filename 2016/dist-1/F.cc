@@ -41,7 +41,6 @@ int main(void) {
 
     while(true) {
         if(my == 0) {
-            cerr << N << endl;
             for(int i=0;i<nn;i++) {
                 PutLL(i, N);
                 Send(i);
@@ -101,6 +100,8 @@ int main(void) {
                 LL c2 = GetLL(i);
 
                 int tmp = rot(t1, t2);
+
+                cerr << t1 << " " << t2 << " " << tmp << endl;
 
                 if(tmp >= 0) {
                     t1 = t2;
