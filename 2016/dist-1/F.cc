@@ -89,13 +89,14 @@ int main(void) {
         Send(0);
 
         if(my == 0) {
-            cerr << "REDUCE" << endl;
             LL t1 = 0;
             LL cnt = 1;
             for(int i=0;i<nn;i++) {
                 Receive(i);
                 LL t2 = GetLL(i);
                 LL c2 = GetLL(i);
+
+                cerr << i << endl;
 
                 int tmp = rot(t1, t2);
                 if(tmp >= 0) {
