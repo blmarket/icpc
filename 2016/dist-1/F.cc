@@ -41,7 +41,6 @@ int main(void) {
 
     while(true) {
         if(my == 0) {
-            cerr << N << endl;
             for(int i=0;i<nn;i++) {
                 PutLL(i, N);
                 Send(i);
@@ -52,6 +51,10 @@ int main(void) {
         N = GetLL(0);
 
         if(N == 0) break;
+        if(nn > 10) {
+            nn--;
+            if(my >= nn) return 0;
+        }
 
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
