@@ -40,13 +40,14 @@ int main(void) {
     }
 
     while(N > 0) {
-        for(int i=0;i<nn;i++) {
-            PutLL(i, N);
-            Send(i);
+        if(my == 0) {
+            for(int i=0;i<nn;i++) {
+                PutLL(i, N);
+                Send(i);
+            }
         }
-        cerr << "HERE" << endl;
+
         Receive(0);
-        cerr << "HERE" << endl;
         N = GetLL(0) - 1;
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
