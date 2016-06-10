@@ -40,6 +40,7 @@ int main(void) {
     }
 
     while(true) {
+        cerr << N << endl;
         if(my == 0) {
             for(int i=0;i<nn;i++) {
                 PutLL(i, N);
