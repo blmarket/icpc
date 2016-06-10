@@ -76,6 +76,8 @@ int main(void) {
         }
     }
 
+    cout << stack[0].first << " " << stack[0].second << endl;
+
     PutLL(0, stack[0].first);
     Send(0);
 
