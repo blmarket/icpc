@@ -41,7 +41,6 @@ int main(void) {
 
     while(N > 0) {
         if(my == 0) {
-            cerr << "SENDING " << N << endl;
             for(int i=0;i<nn;i++) {
                 PutLL(i, N);
                 Send(i);
@@ -50,8 +49,6 @@ int main(void) {
 
         Receive(0);
         N = GetLL(0) - 1;
-
-        cerr << "HERE " << N << endl;
 
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
