@@ -68,8 +68,8 @@ int main(void) {
         auto rot = [&](LL t1, LL t2) {
             LL v1x = N - t1;
             LL v2x = N - t2;
-            LL v1y = GetHeight(t1) - GetHeight(N);
-            LL v2y = GetHeight(t2) - GetHeight(N);
+            LL v1y = GetHeight(N) - GetHeight(t1);
+            LL v2y = GetHeight(N) - GetHeight(t2);
 
             if(v1x * v2y == v2x * v1y) return 0;
             if(v1x * v2y > v2x * v1y) return 1;
