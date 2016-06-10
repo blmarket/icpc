@@ -58,6 +58,8 @@ int main(void) {
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
 
+        cerr << left << " " << right << endl;
+
         LL msp, mep;
         LL cnt = 0;
 
