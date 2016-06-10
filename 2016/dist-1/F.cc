@@ -49,6 +49,8 @@ int main(void) {
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
 
+        cerr << left << " " << right << endl;
+
         LL msp, mep;
         LL cnt = 0;
 
@@ -65,8 +67,6 @@ int main(void) {
             if(v1x * v2y > v2x * v1y) return 1;
             return -1;
         };
-
-        cerr << left << " " << right << endl;
 
         for(LL i=left + 1; i<right;i++) {
             int tmp = rot(i, mep);
