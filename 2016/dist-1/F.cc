@@ -32,6 +32,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
+    nn = 1;
+    if(my != 0) return 0;
 
     LL ret = 1;
     LL N = NumberOfPeaks();
@@ -44,7 +46,7 @@ int main(void) {
     // 1 -> t1 is over t2
     // -1 -> t2 is over t1
     // 0 -> same
-    auto rot = [&](LL t1, LL t2) {
+    auto rot = [&](LL rmost, LL t1, LL t2) {
         LL v1x = rmost - t1;
         LL v2x = rmost - t2;
         LL v1y = GetHeight(rmost) - GetHeight(t1);
@@ -59,25 +61,29 @@ int main(void) {
 
     auto get_stack = [&]() {
         vector<LL> stack;
-        for(LL j=right-1; j>=left;j--) {
-            if(rot(lmost, j) > 0) continue;
-            while(!stack.empty()) {
-                LL t1 = stack.back();
-                if(rot(t1, j) > 0) break;
+        stack.pb(rmost);
+
+        auto try_push = [&](LL j) {
+            while(stack.size() >= 2) {
+                int sz = stack.size();
+                if(rot(stack[sz-2], stack[sz-1], j) >= 0) break;
                 stack.pop_back();
             }
             stack.pb(j);
+        };
+        for(LL j=right-1; j>=left;j--) {
+            try_push(j);
         }
+        try_push(lmost);
         return stack;
     };
 
-    for(int i=0;i<nn;i++) {
+    for(int i=0;i<nn*5;i++) {
         vector<LL> stack = move(get_stack());
 
-        LL rrmost = rmost;
-        if(!stack.empty()) rrmost = stack.back();
-        LL llmost = lmost;
-        if(!stack.empty()) llmost = stack[0];
+        LL sz = size(stack);
+        LL rrmost = stack[sz-2];
+        LL llmost = stack[1];
 
         if(my) {
             PutLL(my-1, rrmost);
@@ -99,11 +105,11 @@ int main(void) {
     }
 
     vector<LL> stack = get_stack();
-    PutLL(0, stack.size());
+    PutLL(0, stack.size() - 2);
     Send(0);
 
     if(my == 0) {
-        LL cnt = 0;
+        LL cnt = 2;
         for(int i=0;i<nn;i++) {
             Receive(i);
             cnt += GetLL(i);
