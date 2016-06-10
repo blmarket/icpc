@@ -48,6 +48,7 @@ int main(void) {
         N = GetLL(0) - 1;
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
+        cerr << left << " " << right << endl;
 
         LL msp, mep;
         LL cnt = 0;
