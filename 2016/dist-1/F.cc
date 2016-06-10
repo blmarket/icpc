@@ -80,24 +80,22 @@ int main(void) {
         LL llmost = lmost;
         if(!stack.empty()) llmost = stack[0];
 
-        if(i) {
-            cerr << "sending left" << endl;
-            PutLL(i-1, rrmost);
-            Send(i-1);
+        if(my) {
+            PutLL(my-1, rrmost);
+            Send(my-1);
         }
-        if(i+1 < nn) {
-            cerr << "sending right" << endl;
-            PutLL(i+1, llmost);
-            Send(i+1);
+        if(my+1 < nn) {
+            PutLL(my+1, llmost);
+            Send(my+1);
         }
 
-        if(i) {
-            Receive(i-1);
-            lmost = GetLL(i-1);
+        if(my) {
+            Receive(my-1);
+            lmost = GetLL(my-1);
         }
-        if(i+1 < nn) {
-            Receive(i+1);
-            rmost = GetLL(i+1);
+        if(my+1 < nn) {
+            Receive(my+1);
+            rmost = GetLL(my+1);
         }
     }
 
