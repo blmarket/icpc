@@ -74,6 +74,7 @@ int main(void) {
     for(int i=0;i<N;i++) {
       LL tmp = GetSubmission(i);
       int hash = murmur(&tmp, 8);
+      cerr << tmp << " " << hash << endl;
       if((hash % nn) == my) {
         v.pb(tmp);
       }
@@ -81,7 +82,6 @@ int main(void) {
 
     sort(v.begin(), v.end());
     for(int i=0;i<v.size();i++) {
-      cerr << v[i] << endl;
       if(i == 0 || v[i] != v[i-1]) {
         if(i+1 >= N || v[i+1] != v[i]) {
           PutLL(0, v[i]);
