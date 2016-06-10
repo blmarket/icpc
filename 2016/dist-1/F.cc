@@ -72,7 +72,6 @@ int main(void) {
     };
 
     for(int i=0;i<nn;i++) {
-        cerr << i << " " << lmost << " " << rmost << " " << left << " " << right << endl;
         vector<LL> stack = move(get_stack());
 
         LL rrmost = rmost;
