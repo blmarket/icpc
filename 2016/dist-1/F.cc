@@ -104,10 +104,10 @@ int main(void) {
             }
             ret += cnt;
             N = t1;
-
-            cerr << N << endl;
         }
     }
+
+    cout << ret << endl;
 
     return 0;
 }
