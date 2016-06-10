@@ -81,10 +81,12 @@ int main(void) {
         if(!stack.empty()) llmost = stack[0];
 
         if(i) {
+            cerr << "sending left" << endl;
             PutLL(i-1, rrmost);
             Send(i-1);
         }
         if(i+1 < nn) {
+            cerr << "sending right" << endl;
             PutLL(i+1, llmost);
             Send(i+1);
         }
