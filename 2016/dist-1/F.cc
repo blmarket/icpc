@@ -39,6 +39,19 @@ int main(void) {
         N = NumberOfPeaks() - 1;
     }
 
+    auto rot = [&](LL t1, LL t2) {
+        LL v1x = N - t1;
+        LL v2x = N - t2;
+        LL v1y = GetHeight(N) - GetHeight(t1);
+        LL v2y = GetHeight(N) - GetHeight(t2);
+
+        if(v1x * v2y == v2x * v1y) return 0;
+        if(v1x * v2y > v2x * v1y) return 1;
+        return -1;
+    };
+
+    cerr << rot(0, 12312) << " " << rot(12312, 12313) << endl;
+
     while(true) {
         if(my == 0) {
             cerr << N << endl;
@@ -65,17 +78,6 @@ int main(void) {
 
         msp = mep = left;
         cnt = 1;
-
-        auto rot = [&](LL t1, LL t2) {
-            LL v1x = N - t1;
-            LL v2x = N - t2;
-            LL v1y = GetHeight(N) - GetHeight(t1);
-            LL v2y = GetHeight(N) - GetHeight(t2);
-
-            if(v1x * v2y == v2x * v1y) return 0;
-            if(v1x * v2y > v2x * v1y) return 1;
-            return -1;
-        };
 
         for(LL i=left + 1; i<right;i++) {
             int tmp = rot(i, mep);
