@@ -32,8 +32,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 int main(void) {
     int my = MyNodeId();
     int nn = NumberOfNodes();
-    nn = 1;
-    if(my != 0) return 0;
+    //nn = 1;
+    //if(my != 0) return 0;
 
     LL ret = 1;
     LL N = NumberOfPeaks();
