@@ -82,6 +82,8 @@ int main(void) {
         PutLL(0, cnt);
         Send(0);
 
+        cerr << "HERE" << endl;
+
         if(my == 0) {
             LL t1 = 0;
             LL cnt = 1;
