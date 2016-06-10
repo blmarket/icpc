@@ -47,10 +47,10 @@ int main(void) {
             }
         }
 
-        cerr << "HERE" << endl;
-
         Receive(0);
         N = GetLL(0) - 1;
+
+        cerr << "HERE " << N << endl;
         LL left = N * my / nn;
         LL right = N * (my + 1) / nn;
 
