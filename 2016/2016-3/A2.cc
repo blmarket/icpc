@@ -28,7 +28,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 char mood[50005];
-int dyna[20002][20002];
+int dyna[505][505];
 char cj[3] = "JC";
 
 void setmax(int &a, int b) {
