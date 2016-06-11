@@ -34,7 +34,19 @@ vector<int> vv[105];
 void process() {
     scanf(" %d %d", &N, &K);
     v.resize(N-K+1);
+    for(int i=0;i<K;i++) {
+        vv[i].clear();
+        vv[i].pb(0);
+    }
+    vv[K-1].pop_back();
+
+    int sum = 0;
     for(int i=0;i<N-K+1;i++) {
+        int tmp;
+        scanf(" %d", &tmp);
+
+        vv[(i+K-1)%K].pb(tmp - sum);
+
         scanf(" %d", &v[i]);
     }
     for(int i=0;i+1<size(v);i++) {
