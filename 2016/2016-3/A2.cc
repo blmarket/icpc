@@ -57,12 +57,12 @@ void process() {
     int N = strlen(mood);
     memset(dyna, -1, sizeof(dyna));
 
-    for(int i=2;i<N;i+=2) {
-        cerr << i << endl;
-        for(int j=0;j<N;j+=2) {
-            go(j, j+i);
-        }
-    }
+    //for(int i=2;i<N;i+=2) {
+    //    cerr << i << endl;
+    //    for(int j=0;j<N;j+=2) {
+    //        go(j, j+i);
+    //    }
+    //}
 
     cout << go(0, N) << endl;
     return;
