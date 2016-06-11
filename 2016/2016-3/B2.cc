@@ -37,6 +37,7 @@ char tgt[105];
 bool state[105];
 
 bool gen(int a, int b) {
+    cerr << a << " " << b << endl;
     if(b == L) return true;
     if(a == N) return false;
 
