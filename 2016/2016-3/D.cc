@@ -53,15 +53,10 @@ void solve() {
         m1 = max(m1, c1);
     }
 
-    if(m1 > (L-maxc)) {
-        cout << "IMPOSSIBLE" << endl;
-        return;
-    }
+    cout << "10?";
+    for(int i=0;i<60;i++) cout << "10";
 
-    for(int i=0;i<maxc;i++) {
-        cout << "10?";
-    }
-    cout << " " << string(L-maxc, '?') << endl;
+    cout << " " << string(L-1, '?') << endl;
 }
 
 void process() {
