@@ -31,6 +31,7 @@ int N;
 int req[105];
 char chr[105];
 int M;
+int L;
 char tgt[105];
 
 bool state[105];
@@ -39,12 +40,16 @@ double go(int a, int ntry) {
     if(ntry == 0) return 0;
     double ret = 0;
 
+    if(a == L) return 1;
+
     vector<int> poss;
     for(int i=0;i<N;i++) if(!state[i]) {
         if(req[i] == -1 || state[req[i]]) {
             poss.pb(i);
         }
     }
+    if(poss.size() == 0) return 0;
+
     int nn = ntry / poss.size();
     if(nn == 0) {
         random_shuffle(poss.begin(), poss.end());
@@ -54,11 +59,10 @@ double go(int a, int ntry) {
 
     each(it, poss) {
         state[it] = true;
-        ret += go(a+(chr[it] == tgt[a]), nn);
+        ret += go(a+(chr[it] == tgt[a]), nn) / poss.size();
         state[it] = false;
     }
-
-    return ret * ntry / (nn * poss.size());
+    return ret;
 }
 
 void process() {
@@ -71,6 +75,7 @@ void process() {
     scanf(" %d", &M);
     for(int i=0;i<M;i++) {
         scanf(" %s", tgt);
+        L = strlen(tgt);
         double ret = go(0, 100000000);
         printf("%.12lf ", ret);
     }
