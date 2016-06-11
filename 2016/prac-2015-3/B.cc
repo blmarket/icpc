@@ -41,14 +41,14 @@ void process() {
     }
     v.pop_back();
 
-    LL ret = -1;
+    LL ret = 0;
     for(int i=0;i<K;i++) {
         for(int j=i;j<size(v);j+=K) {
             LL sum = 0;
             for(int k=j;k<size(v);k+=K) {
                 sum += v[k];
             }
-            if(ret < 0 || ret > sum) ret = sum;
+            if(ret < sum) ret = sum;
         }
     }
     cout << ret << endl;
