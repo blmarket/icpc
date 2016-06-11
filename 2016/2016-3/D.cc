@@ -60,6 +60,7 @@ void solve() {
 }
 
 void process() {
+    G.clear();
     scanf(" %d %d", &N, &L);
     char buf[1024];
     for(int i=0;i<N;i++) {
