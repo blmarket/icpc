@@ -56,7 +56,7 @@ void solve() {
     cout << "10?";
     for(int i=0;i<60;i++) cout << "10";
 
-    cout << " " << string(L-1, '?') << endl;
+    cout << " 0" << string(L-1, '?') << endl;
 }
 
 void process() {
