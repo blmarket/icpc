@@ -36,6 +36,7 @@ void setmax(int &a, int b) {
 }
 
 int go(int s, int e) {
+    cerr << s << " " << e << endl;
     if(s >= e) return 0;
     if(mood[s] == mood[e-1]) return go(s+1, e-1) + 10;
     if(mood[s] == mood[s+1]) return go(s+2, e) + 10;
