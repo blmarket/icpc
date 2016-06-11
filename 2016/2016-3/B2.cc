@@ -38,10 +38,10 @@ bool state[105];
 string gg;
 
 bool gen(int a) {
-    if(a == N) return false;
     if(a >= L) {
         if(gg.substr(a-L) == tgt) return true;
     }
+    if(a == N) return false;
 
     int x;
     while(true) {
