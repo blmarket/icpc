@@ -60,7 +60,11 @@ double go(int a, int ntry) {
 
     each(it, poss) {
         state[it] = true;
-        ret += go(a+(chr[it] == tgt[a]), nn) / poss.size();
+        if(chr[it] == tgt[a]) {
+            ret += go(a+1, nn) / poss.size();
+        } else {
+            ret += go(0, nn) / poss.size();
+        }
         state[it] = false;
     }
     return ret;
