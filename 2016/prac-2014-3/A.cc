@@ -48,7 +48,6 @@ void process() {
     double ret = 2.0;
     for(int i=0;i<=N;i++) {
         LL s3 = ss.back() - ss[i];
-        jt = 0;
         LL s1 = ss[jt];
         LL s2 = ss[i] - s1;
         while(jt<i && s1 < s2) {
