@@ -36,7 +36,6 @@ void setmax(int &a, int b) {
 }
 
 int go(int s, int e) {
-    cerr << s << " " << e << endl;
     if(s >= e) return 0;
     if(mood[s] == mood[e-1]) return go(s+1, e-1) + 10;
     if(mood[s] == mood[s+1]) return go(s+2, e) + 10;
@@ -56,6 +55,12 @@ void process() {
     scanf(" %s", mood);
     int N = strlen(mood);
     memset(dyna, -1, sizeof(dyna));
+
+    for(int i=2;i<N;i+=2) {
+        for(int j=0;j<N;j+=2) {
+            go(j, j+i);
+        }
+    }
 
     cout << go(0, N) << endl;
     return;
