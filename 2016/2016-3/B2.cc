@@ -43,10 +43,9 @@ bool gen(int a, int b) {
 
     int x;
     while(true) {
-        x = rand() % N;
+        x = (rand() % N) + 1;
         if(state[x]) continue;
         while(state[req[x]] == false) x = req[x];
-        cerr << x << endl;
         break;
     }
 
@@ -60,7 +59,7 @@ bool gen(int a, int b) {
 
 void process() {
     scanf(" %d" ,&N);
-    for(int i=0;i<N;i++) {
+    for(int i=1;i<=N;i++) {
         scanf(" %d", &req[i]);
     }
 
