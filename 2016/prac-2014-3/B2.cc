@@ -32,6 +32,7 @@ int P, Q, N;
 int H[105], G[105];
 
 int go(int a, int b) {
+    if(a == N) return 0;
     if(memo.count(mp(a,b))) {
         return memo[mp(a,b)];
     }
