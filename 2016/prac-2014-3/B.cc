@@ -37,7 +37,6 @@ void setmax(int &a, int b) {
 void process() {
     memset(dyna, -1, sizeof(dyna));
     scanf(" %d %d %d", &P, &Q, &N);
-    cerr << P << " " << Q << " " << N << endl;
     dyna[0][0] = 0;
 
     int ret = 0;
@@ -47,6 +46,7 @@ void process() {
         int cur = i % 2;
         int nex = !cur;
         for(int j=0;j<10005;j++) if(dyna[cur][j] >= 0) {
+            cerr << i << " " << j << " = " << dyna[cur][j] << endl;
             int jj = j + (H+Q-1) / Q;
             setmax(dyna[nex][jj], dyna[cur][j]);
             if(P * jj >= (H % Q)) {
