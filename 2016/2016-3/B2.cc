@@ -48,7 +48,7 @@ bool gen(int a, int b) {
         break;
     }
 
-    cerr << a << " " << b << " " << x << endl;
+    //cerr << a << " " << b << " " << x << endl;
 
     state[x] = true;
     if(tgt[b] == chr[x]) {
