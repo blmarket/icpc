@@ -41,6 +41,8 @@ void process() {
     }
     v.pop_back();
 
+    each(it, v) cerr << it << " "; cerr << endl;
+
     LL ret = 0;
     for(int i=0;i<K;i++) {
         for(int j=i;j<size(v);j+=K) {
