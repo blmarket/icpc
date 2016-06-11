@@ -33,6 +33,7 @@ string B;
 
 void solve() {
     int maxc = 0;
+    int m1 = 0;
     each(it, G) {
         if(it == B) {
             cout << "IMPOSSIBLE" << endl;
@@ -40,13 +41,21 @@ void solve() {
         }
         char now = '0';
         int cnt = 0;
+        int c1 = 0;
         for(int j=0;j<L;j++) {
+            if(it[j] == '1') c1++;
             if(now == '0' && it[j] != now) {
                 cnt++;
             }
             now = it[j];
         }
         maxc = max(maxc, cnt);
+        m1 = max(m1, c1);
+    }
+
+    if(m1 > (L-maxc)) {
+        cout << "IMPOSSIBLE" << endl;
+        return;
     }
 
     for(int i=0;i<maxc;i++) {
