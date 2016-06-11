@@ -71,7 +71,7 @@ void process() {
         L = strlen(tgt);
 
         int cnt = 0;
-        int ntry = 10;
+        int ntry = 100000;
         for(int j=0;j<ntry;j++) {
             memset(state, 0, sizeof(state));
             state[0] = true;
