@@ -40,13 +40,13 @@ void process() {
         v.pb(tmp);
     }
     vector<LL> ss;
-    ss.pb(v[0]);
-    for(int i=1;i<N;i++) ss.pb(ss.back() + v[i]);
+    ss.pb(0);
+    for(int i=0;i<N;i++) ss.pb(ss.back() + v[i]);
 
     int jt = 0;
 
     double ret = 2.0;
-    for(int i=0;i<N;i++) {
+    for(int i=0;i<=N;i++) {
         LL s3 = ss.back() - ss[i];
         jt = 0;
         LL s1 = ss[jt];
