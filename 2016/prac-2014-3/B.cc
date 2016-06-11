@@ -53,7 +53,7 @@ void process() {
 
         for(int j=0;j<10005;j++) if(dyna[cur][0][j] >= 0) {
             cerr << i << " 0 " << j << " = " << dyna[cur][0][j] << endl;
-            setmax(dyna[nex][0][j + bear], dyna[cur][0][j]);
+            setmax(dyna[nex][0][j + bear + 1], dyna[cur][0][j]);
             if(j + bear + 1 >= req) {
                 int nj = j - req + bear + 1;
                 setmax(dyna[nex][1][nj], dyna[cur][0][j] + G);
@@ -68,7 +68,7 @@ void process() {
                     setmax(dyna[nex][1][j-req], dyna[cur][1][j] + G);
                 }
             } else {
-                setmax(dyna[nex][0][j+bear-1], dyna[cur][1][j]);
+                setmax(dyna[nex][0][j+bear], dyna[cur][1][j]);
                 if(j + bear - 1 >= req) {
                     setmax(dyna[nex][1][j+bear-req-1], dyna[cur][1][j] + G);
                 }
