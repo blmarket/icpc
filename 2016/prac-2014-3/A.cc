@@ -31,6 +31,7 @@ int N,p,q,r,s;
 vector<int> v;
 
 void process() {
+    v.clear();
     scanf(" %d %d %d %d %d", &N, &p,&q,&r,&s);
     for(int i=0;i<N;i++) {
         LL tmp = i;
