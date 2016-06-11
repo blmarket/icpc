@@ -78,7 +78,7 @@ int main(void) {
         return stack;
     };
 
-    for(int i=0;i<nn*5;i++) {
+    for(int i=0;i<nn;i++) {
         vector<LL> stack = move(get_stack());
 
         LL sz = size(stack);
