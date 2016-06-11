@@ -32,11 +32,9 @@ int P, Q, N;
 int H[105], G[105];
 
 int go(int a, int b) {
+    PII key = mp(a,b);
     if(a == N) return 0;
-    if(memo.count(mp(a,b))) {
-        return memo[mp(a,b)];
-    }
-    cerr << a << " " << b << " " << memo.count(mp(a,b)) << endl;
+    if(memo.count(key)) return memo[key];
 
     int HH = H[a];
     while(HH > Q) {
@@ -49,9 +47,7 @@ int go(int a, int b) {
         int tmp = go(a+1, b - (HH+P-1) / P) + G[a];
         if(ret < tmp) ret = tmp;
     }
-    memo[mp(a,b)] = ret;
-    cerr << a << " " << b << " " << memo.count(mp(a,b)) << endl;
-    return memo[mp(a,b)] = ret;
+    return memo[key] = ret;
 }
 
 void process() {
