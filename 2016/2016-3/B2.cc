@@ -35,10 +35,13 @@ int L;
 char tgt[105];
 
 bool state[105];
+string gg;
 
-bool gen(int a, int b) {
-    if(b == L) return true;
+bool gen(int a) {
     if(a == N) return false;
+    if(a >= L) {
+        if(gg.substr(a-L) == tgt) return true;
+    }
 
     int x;
     while(true) {
@@ -51,11 +54,8 @@ bool gen(int a, int b) {
     //cerr << a << " " << b << " " << x << endl;
 
     state[x] = true;
-    if(tgt[b] == chr[x]) {
-        return gen(a+1, b+1);
-    } else {
-        return gen(a+1, 0);
-    }
+    gg += chr[x];
+    return gen(a+1);
 }
 
 void process() {
@@ -75,7 +75,7 @@ void process() {
         for(int j=0;j<ntry;j++) {
             memset(state, 0, sizeof(state));
             state[0] = true;
-            cnt += gen(0, 0);
+            cnt += gen(0);
         }
 
         printf("%.12lf ", (double)cnt / ntry);
