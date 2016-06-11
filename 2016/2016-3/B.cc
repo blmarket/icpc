@@ -37,6 +37,7 @@ char tgt[105];
 bool state[105];
 
 double go(int a, int ntry) {
+    cerr << a << " " << ntry << endl;
     if(ntry == 0) return 0;
     double ret = 0;
 
