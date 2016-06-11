@@ -49,6 +49,8 @@ int go(int a, int b) {
         int tmp = go(a+1, b - (HH+P-1) / P) + G[a];
         if(ret < tmp) ret = tmp;
     }
+    memo[mp(a,b)] = ret;
+    cerr << a << " " << b << " " << memo.count(mp(a,b)) << endl;
     return memo[mp(a,b)] = ret;
 }
 
