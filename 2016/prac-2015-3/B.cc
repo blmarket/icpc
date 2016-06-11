@@ -41,8 +41,17 @@ void process() {
     }
     v.pop_back();
 
-    each(it, v) cout << it << " ";
-    cout << endl;
+    LL ret = -1;
+    for(int i=0;i<K;i++) {
+        for(int j=i;j<size(v);j+=K) {
+            LL sum = 0;
+            for(int k=j;k<size(v);k+=K) {
+                sum += v[k];
+            }
+            if(ret < 0 || ret > sum) ret = sum;
+        }
+    }
+    cout << ret << endl;
 }
 
 int main(void) {
