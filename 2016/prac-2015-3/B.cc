@@ -49,8 +49,8 @@ void process() {
             LL sum = 0;
             for(int k=j;k<size(v);k+=K) {
                 sum += v[k];
+                if(abs(ret) < abs(sum)) ret = sum;
             }
-            if(abs(ret) < abs(sum)) ret = sum;
         }
         cerr << ret << endl;
     }
