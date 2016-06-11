@@ -57,8 +57,8 @@ void process() {
     memset(dyna, -1, sizeof(dyna));
 
     for(int i=2;i<N;i+=2) {
+        cerr << i << endl;
         for(int j=0;j<N;j+=2) {
-            cerr << j << " " << j+i << endl;
             go(j, j+i);
         }
     }
