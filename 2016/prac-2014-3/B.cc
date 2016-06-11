@@ -45,6 +45,7 @@ void process() {
         scanf(" %d %d", &H, &G);
         int cur = i % 2;
         int nex = !cur;
+        memset(dyna[nex], -1, sizeof(dyna[0]));
         for(int j=0;j<10005;j++) if(dyna[cur][j] >= 0) {
             int jj = j + (H+Q-1) / Q;
             cerr << i << " " << j << " = " << dyna[cur][j] << " " << jj << endl;
