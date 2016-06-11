@@ -34,7 +34,7 @@ void process() {
     scanf(" %d %d", &N, &K);
     v.resize(N-K+1);
     for(int i=0;i<N-K+1;i++) {
-        scanf(" %d", v[i]);
+        scanf(" %d", &v[i]);
     }
     for(int i=0;i+1<size(v);i++) {
         v[i] = v[i+1] - v[i];
