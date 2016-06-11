@@ -46,6 +46,7 @@ void process() {
             int cur = dyna[i][j];
             int s1 = j / 3;
             int s2 = j % 3;
+            cerr << i << " " << s1 << " " << s2 << " = " << cur << endl;
 
             if(mood[i] == 'C') {
                 setmax(dyna[i+1][6 + s2], dyna[i][j]);
