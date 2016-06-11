@@ -49,7 +49,7 @@ void process() {
             int jj = j + (H+Q-1) / Q;
             cerr << i << " " << j << " = " << dyna[cur][j] << " " << jj << endl;
             setmax(dyna[nex][jj], dyna[cur][j]);
-            if(P * jj >= (H % Q)) {
+            if(P * jj >= ((H-1) % Q)+1) {
                 int jjj = jj - (H%Q) / P;
                 setmax(dyna[nex][jjj], dyna[cur][j] + G);
             }
