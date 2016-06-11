@@ -65,6 +65,7 @@ void process() {
             cerr << i << " " << jt << " " << s1 << " " << s2 << " " << s3 << " = " << prob << endl;
             ret = prob;
         }
+        if(jt) jt--;
     }
 
     ret = 1.0 - ret;
