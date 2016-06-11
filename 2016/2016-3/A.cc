@@ -28,7 +28,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 char mood[50005];
-int dyna[50005][9];
+int dyna[50005][5];
 char cj[3] = "JC";
 
 void setmax(int &a, int b) {
@@ -42,27 +42,19 @@ void process() {
     memset(dyna, -1, sizeof(dyna));
     dyna[0][0] = 0;
     for(int i=0;i<N;i++) {
-        for(int j=0;j<9;j++) if(dyna[i][j] != -1) {
+        for(int j=0;j<5;j++) if(dyna[i][j] != -1) {
             int cur = dyna[i][j];
-            int s1 = j / 3;
-            int s2 = j % 3;
-            cerr << i << " " << s1 << " " << s2 << " = " << cur << endl;
-
             if(mood[i] == 'C') {
-                setmax(dyna[i+1][6 + s2], dyna[i][j]);
-                setmax(dyna[i+1][s1*3+1], dyna[i][j]);
+                setmax(dyna[i+1][3], dyna[i][j]);
+                setmax(dyna[i+1][2], dyna[i][j]);
             } else {
-                setmax(dyna[i+1][3 + s2], dyna[i][j]);
-                setmax(dyna[i+1][s1*3+2], dyna[i][j]);
+                setmax(dyna[i+1][4], dyna[i][j]);
+                setmax(dyna[i+1][1], dyna[i][j]);
             }
-
-            if(s1) {
-                int score = (s1-1 + (mood[i]=='C')) * 5;
-                setmax(dyna[i+1][s2], dyna[i][j] + score);
-            }
-            if(s2) {
-                int score = (s2-1 + (mood[i]=='J')) * 5;
-                setmax(dyna[i+1][s1*3], dyna[i][j] + score);
+            if(j) {
+                int score = (j-1)/2 * 5;
+                if(cj[j%2] == mood[i]) score += 5;
+                setmax(dyna[i+1][0], dyna[i][j] + score);
             }
         }
     }
