@@ -50,6 +50,7 @@ void process() {
             for(int k=j;k<size(v);k+=K) {
                 sum += v[k];
             }
+            sum = abs(sum);
             if(ret < sum) ret = sum;
         }
         cerr << ret << endl;
