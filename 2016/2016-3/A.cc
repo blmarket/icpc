@@ -35,34 +35,29 @@ void setmax(int &a, int b) {
     if(a<b) a= b;
 }
 
+int go(int s, int e) {
+    if(s >= e) return 0;
+    if(mood[s] == mood[e]) return go(s+1, e-1) + 10;
+    if(mood[s] == mood[s+1]) return go(s+2, e) + 10;
+    if(mood[e-1] == mood[e-2]) return go(s, e-2) + 10;
+
+    if(s+2 == e) return 5;
+
+    int ret = 0;
+    for(int i=s+2;i<e;i+=2) {
+        int tmp = go(s, i) + go(i, e);
+        setmax(ret, tmp);
+    }
+    return dyna[s][e] = ret;
+}
+
 void process() {
     scanf(" %s", mood);
     int N = strlen(mood);
-
     memset(dyna, -1, sizeof(dyna));
-    dyna[0][0] = 0;
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<5;j++) if(dyna[i][j] != -1) {
-            int cur = dyna[i][j];
-            if(mood[i] == 'C') {
-                setmax(dyna[i+1][3], dyna[i][j]);
-                setmax(dyna[i+1][2], dyna[i][j]);
-            } else {
-                setmax(dyna[i+1][4], dyna[i][j]);
-                setmax(dyna[i+1][1], dyna[i][j]);
-            }
-            if(j) {
-                int score = (j-1)/2 * 5;
-                if(cj[j%2] == mood[i]) score += 5;
-                setmax(dyna[i+1][0], dyna[i][j] + score);
-            }
-        }
-    }
-    int ret = 0;
-    for(int i=0;i<5;i++) {
-        setmax(ret, dyna[N][i]);
-    }
-    cout << ret << endl;
+
+    cout << go(0, N) << endl;
+    return;
 }
 
 int main(void) {
