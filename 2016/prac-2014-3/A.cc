@@ -53,7 +53,7 @@ void process() {
         while(jt<i && s1 < s2) {
             double prob = (double)max(max(s1, s2), s3) / ss.back();
             if(prob < ret) {
-                cerr << i << " " << jt << " " << s1 << " " << s2 << " " << s3 << " = " << prob << endl;
+                // cerr << i << " " << jt << " " << s1 << " " << s2 << " " << s3 << " = " << prob << endl;
                 ret = prob;
             }
             jt++;
@@ -62,7 +62,7 @@ void process() {
         }
         double prob = (double)max(max(s1, s2), s3) / ss.back();
         if(prob < ret) {
-            cerr << i << " " << jt << " " << s1 << " " << s2 << " " << s3 << " = " << prob << endl;
+            // cerr << i << " " << jt << " " << s1 << " " << s2 << " " << s3 << " = " << prob << endl;
             ret = prob;
         }
         if(jt) jt--;
