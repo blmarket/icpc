@@ -46,6 +46,7 @@ bool gen(int a, int b) {
         x = rand() % N;
         if(state[x]) continue;
         while(state[req[x]] == false) x = req[x];
+        cerr << x << endl;
         break;
     }
 
