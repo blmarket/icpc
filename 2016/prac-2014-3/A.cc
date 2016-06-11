@@ -45,7 +45,7 @@ void process() {
 
     int jt = 0;
 
-    double ret = 1.0;
+    double ret = 2.0;
     for(int i=0;i<N;i++) {
         LL s3 = ss.back() - ss[i];
         LL s1 = ss[jt];
