@@ -29,6 +29,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, K;
 vector<int> v;
+vector<int> vv[105];
 
 void process() {
     scanf(" %d %d", &N, &K);
@@ -41,18 +42,15 @@ void process() {
     }
     v.pop_back();
 
-    each(it, v) cerr << it << " "; cerr << endl;
-
+    LL rret = 0;
     for(int i=0;i<K;i++) {
-        LL ret = 0;
+        vv[i].clear();
+        vv[i].pb(0);
         for(int j=i;j<size(v);j+=K) {
-            LL sum = 0;
-            for(int k=j;k<size(v);k+=K) {
-                sum += v[k];
-                if(abs(ret) < abs(sum)) ret = sum;
-            }
+            vv[i].pb(v[j] + vv[i].back());
         }
-        cerr << ret << endl;
+
+        each(it, vv[i]) cerr << it << " "; cerr << endl;
     }
 }
 
