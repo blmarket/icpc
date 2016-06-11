@@ -43,8 +43,8 @@ void process() {
 
     each(it, v) cerr << it << " "; cerr << endl;
 
-    LL ret = 0;
     for(int i=0;i<K;i++) {
+        LL ret = 0;
         for(int j=i;j<size(v);j+=K) {
             LL sum = 0;
             for(int k=j;k<size(v);k+=K) {
@@ -52,8 +52,8 @@ void process() {
             }
             if(ret < sum) ret = sum;
         }
+        cerr << ret << endl;
     }
-    cout << ret << endl;
 }
 
 int main(void) {
