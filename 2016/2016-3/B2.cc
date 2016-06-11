@@ -37,7 +37,6 @@ char tgt[105];
 bool state[105];
 
 bool gen(int a, int b) {
-    cerr << a << " " << b << endl;
     if(b == L) return true;
     if(a == N) return false;
 
@@ -48,6 +47,8 @@ bool gen(int a, int b) {
         while(state[req[x]] == false) x = req[x];
         break;
     }
+
+    cerr << a << " " << b << " " << x << endl;
 
     state[x] = true;
     if(tgt[b] == chr[x]) {
@@ -63,7 +64,7 @@ void process() {
         scanf(" %d", &req[i]);
     }
 
-    scanf(" %s", chr);
+    scanf(" %s", chr + 1);
     scanf(" %d", &M);
     for(int i=0;i<M;i++) {
         scanf(" %s", tgt);
