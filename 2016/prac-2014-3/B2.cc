@@ -54,6 +54,7 @@ int go(int a, int b) {
 void process() {
     memo.clear();
     scanf(" %d %d %d", &P, &Q, &N);
+    cerr << P << " " << Q << " " << N << endl;
     for(int i=0;i<N;i++) {
         scanf(" %d %d", &H[i], &G[i]);
     }
