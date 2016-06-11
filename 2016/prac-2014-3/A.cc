@@ -53,13 +53,19 @@ void process() {
         LL s2 = ss[i] - s1;
         while(jt<i && s1 < s2) {
             double prob = (double)max(max(s1, s2), s3) / ss.back();
-            if(prob < ret) ret = prob;
+            if(prob < ret) {
+                cerr << i << " " << s1 << " " << s2 << " = " << prob << endl;
+                ret = prob;
+            }
             jt++;
             s1 = ss[jt];
             s2 = ss[i] - s1;
         }
         double prob = (double)max(max(s1, s2), s3) / ss.back();
-        if(prob < ret) ret = prob;
+        if(prob < ret) {
+            cerr << i << " " << s1 << " " << s2 << " = " << prob << endl;
+            ret = prob;
+        }
     }
 
     ret = 1.0 - ret;
