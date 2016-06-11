@@ -47,8 +47,8 @@ void process() {
         int nex = !cur;
         memset(dyna[nex], -1, sizeof(dyna[0]));
 
-        int bear = H / Q;
-        int remain = H % Q;
+        int bear = (H-1) / Q;
+        int remain = ((H-1) % Q) + 1;
         int req = (remain+P-1) / P;
 
         for(int j=0;j<10005;j++) if(dyna[cur][0][j] >= 0) {
