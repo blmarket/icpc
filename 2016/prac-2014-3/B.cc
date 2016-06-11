@@ -52,6 +52,7 @@ void process() {
         int req = (remain+P-1) / P;
 
         for(int j=0;j<10005;j++) if(dyna[cur][0][j] >= 0) {
+            cerr << i << " 0 " << j << " = " << dyna[cur][0][j] << endl;
             setmax(dyna[nex][0][j + bear], dyna[cur][0][j]);
             if(j + bear >= req) {
                 int nj = j - req + bear;
@@ -60,6 +61,7 @@ void process() {
         }
 
         for(int j=0;j<10005;j++) if(dyna[cur][1][j] >= 0) {
+            cerr << i << " 1 " << j << " = " << dyna[cur][1][j] << endl;
             if(bear == 0) {
                 setmax(dyna[nex][0][j], dyna[cur][1][j]);
                 if(j >= req) {
