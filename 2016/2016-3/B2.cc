@@ -69,13 +69,14 @@ void process() {
         L = strlen(tgt);
 
         int cnt = 0;
-        for(int j=0;j<100000;j++) {
+        int ntry = 10;
+        for(int j=0;j<ntry;j++) {
             memset(state, 0, sizeof(state));
             state[0] = true;
             cnt += gen(0, 0);
         }
 
-        printf("%.12lf ", cnt / 100000.0);
+        printf("%.12lf ", (double)cnt / ntry);
     }
     printf("\n");
 }
