@@ -74,6 +74,7 @@ void process() {
         int ntry = 20000;
         for(int j=0;j<ntry;j++) {
             memset(state, 0, sizeof(state));
+            gg.clear();
             state[0] = true;
             cnt += gen(0);
         }
