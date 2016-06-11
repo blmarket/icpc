@@ -46,17 +46,31 @@ void process() {
         int cur = i % 2;
         int nex = !cur;
         memset(dyna[nex], -1, sizeof(dyna[0]));
-        for(int t=0;t<2;t++) {
-            for(int j=0;j<10005;j++) if(dyna[cur][t][j] >= 0) {
-                int jj = j + (H+Q-1) / Q;
-                cerr << i << " " << t << " " << j << " = " << dyna[cur][t][j] << " " << jj << endl;
-                setmax(dyna[nex][0][jj], dyna[cur][t][j]);
-                if(H > 0 && P * jj >= ((H-1) % Q)+1) {
-                    int jjj = jj - (((H-1)%Q)+1) / P;
-                    setmax(dyna[nex][1][jjj], dyna[cur][t][j] + G);
+
+        int bear = H / Q;
+        int remain = H % Q;
+        int req = (remain+P-1) / P;
+
+        for(int j=0;j<10005;j++) if(dyna[cur][0][j] >= 0) {
+            setmax(dyna[nex][0][j + bear], dyna[cur][0][j]);
+            if(j + bear >= req) {
+                int nj = j - req + bear;
+                setmax(dyna[nex][1][nj], dyna[cur][0][j] + G);
+            }
+        }
+
+        for(int j=0;j<10005;j++) if(dyna[cur][1][j] >= 0) {
+            if(bear == 0) {
+                setmax(dyna[nex][0][j], dyna[cur][1][j]);
+                if(j >= req) {
+                    setmax(dyna[nex][1][j-req], dyna[cur][1][j] + G);
+                }
+            } else {
+                setmax(dyna[nex][0][j+bear-1], dyna[cur][1][j]);
+                if(j + bear - 1 >= req) {
+                    setmax(dyna[nex][1][j+bear-req-1], dyna[cur][1][j] + G);
                 }
             }
-            H -= Q;
         }
     }
     for(int i=0;i<10005;i++) {
