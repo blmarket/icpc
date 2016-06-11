@@ -36,7 +36,7 @@ int go(int a, int b) {
     if(memo.count(mp(a,b))) {
         return memo[mp(a,b)];
     }
-    cerr << a << " " << b << endl;
+    cerr << a << " " << b << " " << memo.count(mp(a,b)) << endl;
 
     int HH = H[a];
     while(HH > Q) {
