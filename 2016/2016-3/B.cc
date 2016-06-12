@@ -70,12 +70,30 @@ double go(int a, int ntry) {
     return ret;
 }
 
+pair<int, LL> nchild[105];
+
+void chk(int a) {
+    int nc = 0;
+    LL ne = 1;
+    for(int i=0;i<N;i++) if(req[i] == a) {
+        if(nchild[i].first == -1) chk(i);
+        ne *= combi(nc + nchild[i].first, nchild[i].first) * nchild[i].second;
+        nc += nchild[i].first;
+    }
+    nchild[a] = mp(nc, ne);
+}
+
 void process() {
     scanf(" %d" ,&N);
     for(int i=0;i<N;i++) {
         scanf(" %d", &req[i]);
         req[i]--;
     }
+    for(int i=0;i<N;i++) nchild[i] = mp(-1,-1);
+    for(int i=0;i<N;i++) {
+        chk(i);
+    }
+
     scanf(" %s", chr);
     scanf(" %d", &M);
     for(int i=0;i<M;i++) {
