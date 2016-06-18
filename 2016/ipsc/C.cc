@@ -32,11 +32,16 @@ int V[100005];
 bool visit[100005];
 
 LL dyna[100005];
+LL combi[20][20];
 
 int go(int a) {
   if(visit[a]) return 0;
   visit[a] = true;
   return go(V[a]) + 1;
+}
+
+LL getH(int a, int b) {
+  return combi[a+b-1][b];
 }
 
 const LL mod = 1e9 + 9;
@@ -50,11 +55,16 @@ void process() {
   memset(visit, 0, sizeof(visit));
 
   LL ret = 1;
+  int sz = 0;
 
   for(int i=0;i<N;i++) {
     if(visit[i] == false) {
       int tmp = go(i);
+
       ret = (ret * dyna[tmp]) % mod;
+      ret = (ret * getH(sz, tmp-1)) % mod;
+
+      sz += tmp-1;
     }
   }
   cout << ret << endl;
@@ -71,6 +81,14 @@ int main(void) {
     tmp %= mod;
     dyna[i] = tmp;
   }
+
+  for(int i=0;i<20;i++) {
+    combi[i][0] = combi[i][i] = 1;
+    for(int j=1;j<i;j++) {
+      combi[i][j] = (combi[i-1][j-1] + combi[i-1][j]) % mod;
+    }
+  }
+
     int T;
     scanf(" %d", &T);
     for(int i=1;i<=T;i++) {
