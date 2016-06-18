@@ -61,8 +61,6 @@ void process() {
     if(visit[i] == false) {
       int tmp = go(i);
 
-      cerr << sz << " " << tmp-1 << endl;
-
       ret = (ret * dyna[tmp]) % mod;
       ret = (ret * getH(sz, tmp-1)) % mod;
 
