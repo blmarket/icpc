@@ -45,6 +45,8 @@ void process() {
     scanf(" %d", &V[i]);
     V[i]--;
   }
+  memset(visit, 0, sizeof(visit));
+
 
   LL ret = 1;
 
