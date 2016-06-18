@@ -47,6 +47,7 @@ LL getH(int a, int b) {
 const LL mod = 1e9 + 9;
 
 LL go2(vector<int> vv) {
+  cerr << "HERE" << endl;
   LL ret = 0;
   for(int i=0;i<size(vv);i++) {
     if(vv[i] > 1) {
