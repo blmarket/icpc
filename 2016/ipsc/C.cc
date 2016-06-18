@@ -31,13 +31,15 @@ int N;
 int V[100005];
 bool visit[100005];
 
-unordered_map<int, LL> memo;
+LL dyna[100005];
 
 int go(int a) {
   if(visit[a]) return 0;
   visit[a] = true;
   return go(V[a]) + 1;
 }
+
+const LL mod = 1e9 + 9;
 
 void process() {
   scanf(" %d", &N);
@@ -47,19 +49,28 @@ void process() {
   }
   memset(visit, 0, sizeof(visit));
 
-
   LL ret = 1;
 
   for(int i=0;i<N;i++) {
     if(visit[i] == false) {
       int tmp = go(i);
-      cerr << tmp << " ";
+      ret = (ret * dyna[tmp]) % mod;
     }
   }
-  cerr << endl;
+  cout << ret << endl;
 }
 
 int main(void) {
+  dyna[1] = 1;
+  for(int i=2;i<=100000;i++) {
+    LL tmp = i;
+    tmp *= (i+1);
+    tmp /= 2;
+    tmp %= mod;
+    tmp *= dyna[i-1];
+    tmp %= mod;
+    dyna[i] = tmp;
+  }
     int T;
     scanf(" %d", &T);
     for(int i=1;i<=T;i++) {
