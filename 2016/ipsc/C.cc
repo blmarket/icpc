@@ -64,7 +64,7 @@ int main(void) {
   dyna[1] = 1;
   for(int i=2;i<=100000;i++) {
     LL tmp = i;
-    tmp *= (i+1);
+    tmp *= (i-1);
     tmp /= 2;
     tmp %= mod;
     tmp *= dyna[i-1];
