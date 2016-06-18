@@ -41,7 +41,6 @@ int go(int a) {
 }
 
 LL getH(int a, int b) {
-  cerr << a+b << endl;
   return combi[a+b][b];
 }
 
