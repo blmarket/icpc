@@ -41,7 +41,7 @@ int go(int a) {
 }
 
 LL getH(int a, int b) {
-  return combi[a+b-1][b];
+  return combi[a+b][b];
 }
 
 const LL mod = 1e9 + 9;
@@ -60,6 +60,8 @@ void process() {
   for(int i=0;i<N;i++) {
     if(visit[i] == false) {
       int tmp = go(i);
+
+      cerr << sz << " " << tmp-1 << endl;
 
       ret = (ret * dyna[tmp]) % mod;
       ret = (ret * getH(sz, tmp-1)) % mod;
