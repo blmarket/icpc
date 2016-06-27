@@ -27,6 +27,37 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+char mood[50005];
+vector<char> stack;
+
+void process() {
+    scanf(" %s", mood);
+    int N = strlen(mood);
+
+    int score = 0;
+    stack.clear();
+    for(int i=0;i<N;i++) {
+        int remain = N - i;
+        if(stack.size() == 0) {
+            stack.pb(mood[i]);
+            continue;
+        }
+        if(stack.back() == mood[i]) {
+            stack.pop_back();
+            score += 10;
+            continue;
+        }
+        if(stack.size() >= remain) {
+            stack.pop_back();
+            score += 5;
+            continue;
+        }
+        stack.pb(mood[i]);
+    }
+    cout << score << endl;
+    return;
+}
+
 int main(void) {
     int T;
     scanf(" %d", &T);

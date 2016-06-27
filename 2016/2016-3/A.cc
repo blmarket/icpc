@@ -27,6 +27,39 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+char mood[50005];
+int dyna[20002][20002];
+char cj[3] = "JC";
+
+void setmax(int &a, int b) {
+    if(a<b) a= b;
+}
+
+int go(int s, int e) {
+    if(s >= e) return 0;
+    if(mood[s] == mood[e-1]) return go(s+1, e-1) + 10;
+    if(mood[s] == mood[s+1]) return go(s+2, e) + 10;
+    if(mood[e-1] == mood[e-2]) return go(s, e-2) + 10;
+
+    if(s+2 == e) return 5;
+
+    int ret = 0;
+    for(int i=s+2;i<e;i+=2) {
+        int tmp = go(s, i) + go(i, e);
+        setmax(ret, tmp);
+    }
+    return dyna[s][e] = ret;
+}
+
+void process() {
+    scanf(" %s", mood);
+    int N = strlen(mood);
+    memset(dyna, -1, sizeof(dyna));
+
+    cout << go(0, N) << endl;
+    return;
+}
+
 int main(void) {
     int T;
     scanf(" %d", &T);

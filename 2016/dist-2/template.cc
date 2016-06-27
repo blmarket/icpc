@@ -1,9 +1,8 @@
 #include <iostream>
-#include <algorithm>
-#include <unordered_set>
-#include <unordered_map>
 #include <cstdlib>
 #include <cstring>
+#include <unordered_map>
+#include <unordered_set>
 #include <cstdio>
 #include <sstream>
 #include <numeric>
@@ -12,6 +11,7 @@
 #include <set>
 #include <map>
 #include <vector>
+#include <message.h>
 
 #define mp make_pair
 #define each(it, v) for(auto &it: v)
@@ -27,12 +27,11 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+// #include "majority.h"
+
 int main(void) {
-    int T;
-    scanf(" %d", &T);
-    for(int i=1;i<=T;i++) {
-        printf("Case #%d: ", i);
-        process();
-    }
+    int my = MyNodeId();
+    int nn = NumberOfNodes();
+
     return 0;
 }
