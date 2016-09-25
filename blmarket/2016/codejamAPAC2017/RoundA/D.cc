@@ -77,7 +77,11 @@ void solve(int dataId)
   }
   ret2 = move(ret);
   ret.clear();
-  cerr << ret1.size() << " " << ret2.size() << endl;
+  
+  for(auto it: ret1) {
+    cerr << it.first << " " << it.second << " : ";
+  }
+  cerr << endl;
 }
 
 void read_block(int a) {
