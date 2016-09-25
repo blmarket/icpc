@@ -88,8 +88,8 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process(i);
-        solve(i);
-        // solver._solve(i);
+        // solve(i);
+        solver._solve(i);
     }
     for(int i=1;i<=N;i++)
     {
