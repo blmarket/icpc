@@ -81,8 +81,8 @@ void solve(int dataId)
   for(auto it: ret1) {
     LL c1 = it.first;
     LL cr = M - c1;
-    // auto &it = upper_bound(ret2.begin(), ret2.end(), mp(cr+1, -1));
-    // cerr << it.first << endl;
+    auto jt = upper_bound(ret2.begin(), ret2.end(), mp(cr+1LL, -1LL));
+    cerr << jt->first << endl;
   }
 }
 
