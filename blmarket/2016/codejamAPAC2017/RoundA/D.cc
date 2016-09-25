@@ -90,7 +90,6 @@ void solve(int dataId)
     if(maxx < sum) maxx = sum;
     // cerr << c1 << " " << cr << " " << jt->first << " : " << it.second << " " << jt->second << endl;
   }
-  cerr << basepower << endl;
   printf("Case #%d: %lld\n", dataId, basepower + maxx);
 }
 
@@ -106,6 +105,7 @@ void read_block(int a) {
   for(int i=0;i+1<K;i++) {
     scanf(" %lld", &C[i]);
   }
+  cerr << basepower << " " << A[L-1] << endl;
   basepower += A[L-1];
 
   for(int i=L+1;i<K;i++) {
