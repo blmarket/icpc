@@ -35,7 +35,6 @@ void solve(int dataId)
   for(int i=0;i<size(names);i++) {
     cout << names[i] << endl;
   }
-  return;
 }
 
 void process(int dataId)
@@ -48,7 +47,6 @@ void process(int dataId)
   fgets(buf, 1024, stdin);
   for(int i=0;i<N;i++) {
     fgets(buf, 1024, stdin);
-    cerr << strlen(buf) << endl;
     names[i] = buf;
   }
 }
@@ -130,7 +128,7 @@ void ForkSolver::_solve(int dataId)
         if(dup2(pipefd[1], 1) == -1) perror("dup2");
         if(close(pipefd[1]) == -1) perror("close");
         solve(dataId);
-        fprintf(stderr, "%d\n", dataId);
+        fprintf(stderr, "##%d\n", dataId);
         exit(0); // force exit
     }
 }
