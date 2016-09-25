@@ -52,7 +52,7 @@ void solve(int dataId)
 {
   int N2 = N/2;
   build(0, N2, 0, 0);
-  ret1 = move(ret);
+  ret1 = ret;
   build(N2, N, 0, 0);
 
   cerr << ret.size() << " " << ret1.size() << endl;
