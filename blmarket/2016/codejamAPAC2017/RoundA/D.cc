@@ -78,14 +78,18 @@ void solve(int dataId)
   ret2 = move(ret);
   ret.clear();
   
+  LL maxx = 0;
   for(auto it: ret1) {
     LL c1 = it.first;
     LL cr = M - c1;
     if (cr < 0) break;
     auto jt = upper_bound(ret2.begin(), ret2.end(), mp(cr+1LL, -1LL));
     --jt;
-    cerr << c1 << " " << cr << " " << jt->first << endl;
+    LL sum = it.second + jt->second;
+    if(maxx < sum) maxx = sum;
+    // cerr << c1 << " " << cr << " " << jt->first << endl;
   }
+  printf("Case #%d: %lld\n", dataId, maxx);
 }
 
 void read_block(int a) {
