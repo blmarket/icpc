@@ -43,7 +43,7 @@ void solve(int dataId)
     C.erase(' ');
     for(auto &c : C) {
       if(c < 'A' || c > 'Z') {
-        cerr << "invalid character" << endl;
+        cerr << "invalid character " << (int)c << endl;
       }
     }
     int cnt = C.size();
