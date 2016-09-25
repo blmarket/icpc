@@ -79,9 +79,11 @@ void solve(int dataId)
   ret.clear();
   
   for(auto it: ret1) {
-    cerr << it.first << " " << it.second << " : ";
+    LL c1 = it.first;
+    LL cr = M - c1;
+    // auto &it = upper_bound(ret2.begin(), ret2.end(), mp(cr+1, -1));
+    // cerr << it.first << endl;
   }
-  cerr << endl;
 }
 
 void read_block(int a) {
