@@ -89,6 +89,7 @@ void read_block(int a) {
   int K, L;
   LL A[15], C[15];
   scanf(" %d %d", &K, &L);
+  L--;
   for(int i=0;i<K;i++) {
     scanf(" %lld", &A[i]);
   }
