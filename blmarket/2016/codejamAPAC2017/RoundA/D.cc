@@ -36,6 +36,7 @@ vector<PLL> V[15];
 vector<PLL> ret1, ret;
 
 void build(int s, int e, LL cost, LL power) {
+  cerr << " " << s << " " << e << " " << cost << " " << power << endl;
   if(s == e) {
     ret.pb(mp(cost, power));
   }
@@ -51,6 +52,7 @@ void build(int s, int e, LL cost, LL power) {
 void solve(int dataId)
 {
   int N2 = N/2;
+  ret.clear();
   build(0, N2, 0, 0);
   ret1 = ret;
   build(N2, N, 0, 0);
