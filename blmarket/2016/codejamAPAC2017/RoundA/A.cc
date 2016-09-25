@@ -60,6 +60,7 @@ void process(int dataId)
   fgets(buf, 1024, stdin);
   for(int i=0;i<N;i++) {
     fgets(buf, 1024, stdin);
+    buf[strlen(buf)-1]=0;
     names[i] = buf;
   }
 }
