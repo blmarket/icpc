@@ -47,7 +47,7 @@ void solve(int dataId)
       mp = i;
     }
   }
-  cout << names[mp] << endl;
+  printf("Case #%d: %s\n", dataId, names[mp].c_str());
 }
 
 void process(int dataId)
