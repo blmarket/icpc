@@ -1,4 +1,5 @@
 #include <sys/wait.h>
+#include <algorithm>
 #include <iostream>
 #include <unistd.h>
 #include <cstdlib>
@@ -32,9 +33,21 @@ vector<string> names;
 
 void solve(int dataId)
 {
+  int mcnt = -1;
+  int mp = -1;
+  sort(names.begin(), names.end());
   for(int i=0;i<size(names);i++) {
-    cout << names[i] << endl;
+    string &a = names[i];
+    set<char> C;
+    C.insert(a.begin(), a.end());
+    C.erase(' ');
+    int cnt = C.size();
+    if (mcnt < cnt) {
+      mcnt = cnt;
+      mp = i;
+    }
   }
+  cout << mp << endl;
 }
 
 void process(int dataId)
