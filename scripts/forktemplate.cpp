@@ -52,6 +52,7 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process(i);
+        fflush(stdin);
         solver._solve(i);
     }
     for(int i=1;i<=N;i++)
