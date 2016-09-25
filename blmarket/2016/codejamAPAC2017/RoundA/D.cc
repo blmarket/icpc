@@ -105,8 +105,7 @@ void read_block(int a) {
   for(int i=0;i+1<K;i++) {
     scanf(" %lld", &C[i]);
   }
-  cerr << basepower << " " << A[L-1] << endl;
-  basepower += A[L-1];
+  basepower += A[L];
 
   for(int i=L+1;i<K;i++) {
     LL cost = C[i-1];
