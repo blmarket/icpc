@@ -41,6 +41,11 @@ void solve(int dataId)
     set<char> C;
     C.insert(a.begin(), a.end());
     C.erase(' ');
+    for(auto &c : C) {
+      if(c < 'A' || c > 'Z') {
+        cerr << "invalid character" << endl;
+      }
+    }
     int cnt = C.size();
     cerr << names[i] << " " << cnt << endl;
     if (mcnt < cnt) {
