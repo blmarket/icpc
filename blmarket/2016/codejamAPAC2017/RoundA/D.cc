@@ -64,14 +64,14 @@ void solve(int dataId)
   sort(ret1.begin(), ret1.end());
   sort(ret2.begin(), ret2.end());
   for(auto &it: ret1) {
-    if(ret.size() == 0 || ret.back().second < it.second) {
+    if(ret.size() == 0 || ret.back().second > it.second) {
       ret.pb(mp(it.first, -it.second));
     }
   }
   ret1 = move(ret);
   ret.clear();
   for(auto &it: ret2) {
-    if(ret.size() == 0 || ret.back().second < it.second) {
+    if(ret.size() == 0 || ret.back().second > it.second) {
       ret.pb(mp(it.first, -it.second));
     }
   }
