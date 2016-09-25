@@ -69,6 +69,7 @@ void process(int dataId)
     buf[strlen(buf)-1]=0;
     names[i] = buf;
   }
+  fflush(stdin);
 }
 
 class ForkSolver {
