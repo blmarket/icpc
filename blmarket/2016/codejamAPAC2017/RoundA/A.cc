@@ -41,8 +41,7 @@ void solve(int dataId)
 void process(int dataId)
 {
   int N;
-  scanf(" %d", N);
-  cerr << N << endl;
+  scanf(" %d", &N);
   names.resize(N);
   char buf[1024];
   buf[0] = 0;
