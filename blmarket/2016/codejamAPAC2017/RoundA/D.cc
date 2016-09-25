@@ -1,4 +1,5 @@
 #include <sys/wait.h>
+#include <algorithm>
 #include <iostream>
 #include <unistd.h>
 #include <cstdlib>
@@ -54,8 +55,11 @@ void solve(int dataId)
   int N2 = N/2;
   ret.clear();
   build(0, N2, 0, 0);
-  ret1 = ret;
+  ret1 = move(ret);
   build(N2, N, 0, 0);
+
+  sort(ret.begin(), ret.end());
+  sort(ret1.begin(), ret1.end());
 
   cerr << ret.size() << " " << ret1.size() << endl;
 }
