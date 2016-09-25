@@ -35,6 +35,7 @@ LL M;
 int N;
 vector<PLL> V[15];
 vector<PLL> ret1, ret2, ret;
+LL basepower;
 
 void build(int s, int e, LL cost, LL power) {
   if(s == e) {
@@ -89,7 +90,7 @@ void solve(int dataId)
     if(maxx < sum) maxx = sum;
     cerr << c1 << " " << cr << " " << jt->first << " : " << it.second << " " << jt->second << endl;
   }
-  printf("Case #%d: %lld\n", dataId, maxx);
+  printf("Case #%d: %lld\n", dataId, basepower + maxx);
 }
 
 void read_block(int a) {
@@ -104,6 +105,7 @@ void read_block(int a) {
   for(int i=0;i+1<K;i++) {
     scanf(" %lld", &C[i]);
   }
+  basepower += A[L-1];
 
   for(int i=L+1;i<K;i++) {
     LL cost = C[i-1];
@@ -114,6 +116,7 @@ void read_block(int a) {
 
 void process(int dataId)
 {
+  basepower = 0;
   scanf(" %lld %d", &M, &N);
   for(int i=0;i<N;i++) {
     read_block(i);
