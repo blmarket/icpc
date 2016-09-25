@@ -38,7 +38,7 @@ vector<PLL> ret1, ret2, ret;
 
 void build(int s, int e, LL cost, LL power) {
   if(s == e) {
-    ret.pb(mp(cost, power));
+    ret.pb(mp(cost, -power));
     return;
   }
   auto &v = V[s];
@@ -65,14 +65,14 @@ void solve(int dataId)
   sort(ret2.begin(), ret2.end());
   for(auto &it: ret1) {
     if(ret.size() == 0 || ret.back().second < it.second) {
-      ret.pb(it);
+      ret.pb(mp(it.first, -it.second));
     }
   }
   ret1 = move(ret);
   ret.clear();
   for(auto &it: ret2) {
     if(ret.size() == 0 || ret.back().second < it.second) {
-      ret.pb(it);
+      ret.pb(mp(it.first, -it.second));
     }
   }
   ret2 = move(ret);
