@@ -47,7 +47,7 @@ void solve(int dataId)
       mp = i;
     }
   }
-  cout << mp << endl;
+  cout << names[mp] << endl;
 }
 
 void process(int dataId)
