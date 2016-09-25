@@ -82,7 +82,7 @@ void solve(int dataId)
     LL c1 = it.first;
     LL cr = M - c1;
     auto jt = upper_bound(ret2.begin(), ret2.end(), mp(cr+1LL, -1LL));
-    cerr << jt->first << endl;
+    cerr << c1 << " " << cr << " " << jt->first << endl;
   }
 }
 
