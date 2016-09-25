@@ -87,7 +87,7 @@ void solve(int dataId)
     --jt;
     LL sum = it.second + jt->second;
     if(maxx < sum) maxx = sum;
-    // cerr << c1 << " " << cr << " " << jt->first << endl;
+    cerr << c1 << " " << cr << " " << jt->first << endl;
   }
   printf("Case #%d: %lld\n", dataId, maxx);
 }
