@@ -44,6 +44,7 @@ void process(int dataId)
   scanf(" %d", N);
   names.resize(N);
   char buf[1024];
+  buf[0] = 0;
   // fgets(buf, 1024, stdin);
   cerr << buf << endl;
   for(int i=0;i<N;i++) {
