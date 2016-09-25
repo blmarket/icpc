@@ -42,6 +42,7 @@ void solve(int dataId)
     C.insert(a.begin(), a.end());
     C.erase(' ');
     int cnt = C.size();
+    cerr << names[i] << " " << cnt << endl;
     if (mcnt < cnt) {
       mcnt = cnt;
       mp = i;
