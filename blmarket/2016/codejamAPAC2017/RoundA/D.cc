@@ -33,10 +33,29 @@ template<typename T> int size(const T &a) { return a.size(); }
 LL M;
 int N;
 vector<PLL> V[15];
+vector<PLL> ret1, ret;
+
+void build(int s, int e, LL cost, LL power) {
+  if(s == e) {
+    ret.pb(mp(cost, power));
+  }
+  auto &v = V[s];
+  build(s+1, e, cost, power);
+  for(int i=0;i<size(v);i++) {
+    cost += v[i].first;
+    power += v[i].second;
+    build(s+1, e, cost, power);
+  }
+}
 
 void solve(int dataId)
 {
-  cout << V[0][0].first << " " << V[0][0].second << endl;
+  int N2 = N/2;
+  build(0, N2, 0, 0);
+  ret1 = move(ret);
+  build(N2, N, 0, 0);
+
+  cerr << ret.size() << " " << ret1.size() << endl;
 }
 
 void read_block(int a) {
