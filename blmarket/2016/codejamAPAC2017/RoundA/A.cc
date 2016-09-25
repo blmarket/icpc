@@ -69,7 +69,6 @@ void process(int dataId)
     buf[strlen(buf)-1]=0;
     names[i] = buf;
   }
-  fflush(stdin);
 }
 
 class ForkSolver {
@@ -89,7 +88,7 @@ int main(void)
     for(int i=1;i<=N;i++)
     {
         process(i);
-        // solve(i);
+        fflush(stdin);
         solver._solve(i);
     }
     for(int i=1;i<=N;i++)
