@@ -34,7 +34,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 LL M;
 int N;
 vector<PLL> V[15];
-vector<PLL> ret1, ret;
+vector<PLL> ret1, ret2, ret;
 
 void build(int s, int e, LL cost, LL power) {
   if(s == e) {
@@ -56,12 +56,28 @@ void solve(int dataId)
   ret.clear();
   build(0, N2, 0, 0);
   ret1 = move(ret);
+  ret.clear();
   build(N2, N, 0, 0);
+  ret2 = move(ret);
+  ret.clear();
 
-  sort(ret.begin(), ret.end());
   sort(ret1.begin(), ret1.end());
-
-  cerr << ret.size() << " " << ret1.size() << endl;
+  sort(ret2.begin(), ret2.end());
+  for(auto &it: ret1) {
+    if(ret.size() == 0 || ret.back().second < it.second) {
+      ret.pb(it);
+    }
+  }
+  ret1 = move(ret);
+  ret.clear();
+  for(auto &it: ret2) {
+    if(ret.size() == 0 || ret.back().second < it.second) {
+      ret.pb(it);
+    }
+  }
+  ret2 = move(ret);
+  ret.clear();
+  cerr << ret1.size() << " " << ret2.size() << endl;
 }
 
 void read_block(int a) {
