@@ -36,9 +36,9 @@ vector<PLL> V[15];
 vector<PLL> ret1, ret;
 
 void build(int s, int e, LL cost, LL power) {
-  cerr << " " << s << " " << e << " " << cost << " " << power << endl;
   if(s == e) {
     ret.pb(mp(cost, power));
+    return;
   }
   auto &v = V[s];
   build(s+1, e, cost, power);
