@@ -46,9 +46,6 @@ void chk(int a, int b) {
   if (minn < HH[a][b]) {
     minn = HH[a][b];
   }
-  if (H[a][b] != minn) {
-    cerr << a << " " << b << " = " << minn << endl;
-  }
   H[a][b] = minn;
 }
 
@@ -56,6 +53,7 @@ void solve(int dataId)
 {
   R--;
   C--;
+  for(int i=1;i<R;i++) for(int j=1;j<C;j++) H[i][j] = 5005;
   for(int a=0;a<5000;a++) {
     for(int i=1;i<R;i++) {
       for(int j=1;j<C;j++) {
