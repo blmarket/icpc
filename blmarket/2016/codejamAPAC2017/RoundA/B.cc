@@ -46,6 +46,9 @@ void chk(int a, int b) {
   if (minn < HH[a][b]) {
     minn = HH[a][b];
   }
+  if (H[a][b] != minn) {
+    cerr << a << " " << b << " = " << minn << endl;
+  }
   H[a][b] = minn;
 }
 
