@@ -74,6 +74,7 @@ void solve(int dataId)
 void process(int dataId)
 {
   scanf(" %d %d", &R, &C);
+  cerr << R << " " << C << endl;
   for(int i=0;i<R;i++) {
     for(int j=0;j<C;j++) {
       scanf(" %d", &H[i][j]);
