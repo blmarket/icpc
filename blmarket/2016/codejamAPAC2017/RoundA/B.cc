@@ -64,8 +64,10 @@ void solve(int dataId)
   ret = 0;
   for(int i=1;i<R;i++) {
     for(int j=1;j<C;j++) {
+      cout << H[i][j] << " ";
       ret += H[i][j] - HH[i][j];
     }
+    cout << endl;
   }
 
   printf("Case #%d: %d\n", dataId, ret);
@@ -74,7 +76,6 @@ void solve(int dataId)
 void process(int dataId)
 {
   scanf(" %d %d", &R, &C);
-  cerr << R << " " << C << endl;
   for(int i=0;i<R;i++) {
     for(int j=0;j<C;j++) {
       scanf(" %d", &H[i][j]);
