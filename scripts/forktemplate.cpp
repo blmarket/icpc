@@ -1,3 +1,4 @@
+#include <sys/wait.h>
 #include <iostream>
 #include <unistd.h>
 #include <cstdlib>
@@ -25,6 +26,7 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
+typedef pair<LL, LL> PLL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
