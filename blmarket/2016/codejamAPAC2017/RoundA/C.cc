@@ -54,7 +54,7 @@ void solve(int dataId)
       s = m;
     }
   }
-  printf("%.12lf\n", s - 1.0);
+  printf("Case #%d: %.12lf\n", dataId, s - 1.0);
 }
 
 void process(int dataId)
