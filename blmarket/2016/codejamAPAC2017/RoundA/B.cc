@@ -65,10 +65,8 @@ void solve(int dataId)
   ret = 0;
   for(int i=1;i<R;i++) {
     for(int j=1;j<C;j++) {
-      cout << H[i][j] << " ";
       ret += H[i][j] - HH[i][j];
     }
-    cout << endl;
   }
 
   printf("Case #%d: %d\n", dataId, ret);
