@@ -68,7 +68,7 @@ void solve(int dataId)
     }
   }
 
-  printf("Case #%d: %d\n", dataId, ret);
+// printf("Case #%d: %d\n", dataId, ret);
 }
 
 void process(int dataId)
