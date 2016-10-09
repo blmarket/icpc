@@ -36,6 +36,7 @@ void go(int a) {
     if(avail[a]) return;
     avail[a] = true;
     for(auto it: roads[a]) {
+        cout << it.first << endl;
         go(it.first);
     }
 }
