@@ -70,6 +70,11 @@ int main(void) {
         }
     }
 
+    mx = 1;
+    for(int i=0;i<N;i++) {
+        if(V[i] < 0) mx = -mx;
+    }
+
     if(abs(V[si]) > abs(V[si2])) {
         si = si2;
     }
