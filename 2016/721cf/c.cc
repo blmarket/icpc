@@ -46,8 +46,9 @@ void go2(int a) {
     const map<int, int> &cur = moves[a];
     int prev = 1e9 + 1;
     for(auto &it: cur) {
-        int nv = -it.first;
+        int nv = it.first;
         int cost = it.second;
+        cerr << nv << " " << cost << endl;
         if (cost >= T || cost >= prev) continue;
         prev = cost;
         for(auto &jt: roads[a]) {
