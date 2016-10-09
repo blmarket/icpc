@@ -48,8 +48,7 @@ void go2(int a) {
     for(auto &it: cur) {
         int nv = it.first;
         int cost = it.second;
-        cerr << nv << " " << cost << endl;
-        if (cost >= T || cost >= prev) continue;
+        if (cost > T || cost >= prev) continue;
         prev = cost;
         for(auto &jt: roads[a]) {
             int nc = cost + jt.second;
