@@ -37,6 +37,7 @@ int main(void) {
     scanf(" %d %d %d", &N, &KK, &X);
     LL KX = (LL) KK * X;
     int ss, si;
+    int ss2, si2;
     int mx = 1;
     for(int i=0;i<N;i++) {
         int aa;
@@ -45,10 +46,17 @@ int main(void) {
         if(V[i] < 0) mx = -mx;
         int tmp = abs(V[i]);
         if(i == 0 || ss > tmp) {
+            ss2 = ss;
+            si2 = si;
             ss = tmp;
             si = i;
+        } else if (ss2 > tmp) {
+            ss2 = tmp;
+            si2 = i;
         }
     }
+    cerr << V[si] << " " << V[si2] << endl;
+
     if(mx == -1) {
         if(V[si] < 0) {
             V[si] -= KX;
