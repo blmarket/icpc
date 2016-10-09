@@ -32,6 +32,7 @@ int main(void) {
     char str[500];
     scanf(" %d", &n);
     scanf(" %s", str);
+    str[n++] = 'W';
 
     vector<int> V;
 
