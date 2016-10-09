@@ -35,7 +35,7 @@ vector<PII> vs;
 
 int main(void) {
     scanf(" %d %d %d", &N, &KK, &X);
-    LL KX = (LL) KK * X;
+    LL KX = (LL) (KK - 1) * X;
     int ss, si;
     int ss2, si2;
     int mx = 1;
@@ -55,7 +55,24 @@ int main(void) {
             si2 = i;
         }
     }
-    cerr << V[si] << " " << V[si2] << endl;
+
+    if(mx == -1) {
+        if(V[si] < 0) {
+            V[si] -= X;
+        } else {
+            V[si] += X;
+        }
+    } else {
+        if(V[si] < 0) {
+            V[si] += X;
+        } else {
+            V[si] -= X;
+        }
+    }
+
+    if(abs(V[si]) > abs(V[si2])) {
+        si = si2;
+    }
 
     if(mx == -1) {
         if(V[si] < 0) {
