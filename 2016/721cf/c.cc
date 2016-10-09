@@ -31,7 +31,7 @@ int N, M, T;
 vector<PII> roads[5005];
 bool avail[5005];
 int bc[5005];
-map<int, int> moves[5005];
+map<int, PII> moves[5005];
 
 void go(int a) {
     if(a == N) return;
@@ -43,18 +43,18 @@ void go(int a) {
 }
 
 void go2(int a) {
-    const map<int, int> &cur = moves[a];
+    const map<int, PII> &cur = moves[a];
     int prev = 1e9 + 1;
     for(auto &it: cur) {
         int nv = it.first;
-        int cost = it.second;
+        int cost = it.second.first;
         if (cost > T || cost >= prev) continue;
         prev = cost;
         for(auto &jt: roads[a]) {
             int nc = cost + jt.second;
             int npos = jt.first;
-            if(moves[npos].count(nv-1) == 0 || moves[npos][nv-1] > nc) {
-                moves[npos][nv-1] = nc;
+            if(moves[npos].count(nv-1) == 0 || moves[npos][nv-1].first > nc) {
+                moves[npos][nv-1] = mp(nc, a);
             }
         }
     }
@@ -66,6 +66,15 @@ void go2(int a) {
             go2(npos);
         }
     }
+}
+
+void btrack(int a, int b) {
+    if(a == 1) {
+        cout << "1 ";
+        return;
+    }
+    btrack(moves[a][b].second, b + 1);
+    cout << a << " ";
 }
 
 int main(void) {
@@ -82,11 +91,15 @@ int main(void) {
         }
     }
 
-    moves[1][0] = 0;
+    moves[1][0] = mp(0, 0);
     go2(1);
 
     for(auto &it : moves[N]) {
-        cout << it.first << " " << it.second << endl;
+        if(it.second.first > T) continue;
+        cout << -it.first + 1 << endl;
+        btrack(N, it.first);
+        cout << endl;
+        break;
     }
 
     return 0;
