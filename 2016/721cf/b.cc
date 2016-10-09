@@ -44,7 +44,6 @@ int main(void) {
         if(words[i].size() < l) ns++;
         if(words[i].size() == l) ne++;
     }
-    cout << ns << " " << ne << endl;
     cout << ns + (ns/K)*5 + 1 << " ";
     ns += ne-1;
     cout << ns + (ns/K)*5 + 1 << endl;
