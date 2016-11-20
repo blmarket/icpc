@@ -27,7 +27,8 @@ int main(void) {
             spell2.erase(spell2.begin() + i);
         }
     }
-    long long mintime = 1e15;
+    long long mintime = 4e18;
+    cout << mintime << endl;
     for(auto &it : spell1) {
         int cur = mana - it.first;
         if (cur < 0) continue;
