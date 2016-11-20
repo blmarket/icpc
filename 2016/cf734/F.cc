@@ -72,7 +72,6 @@ int main(void) {
             tmp /= 2;
         }
 
-        cerr << na << " " << b[i] << endl;
         if(b[i] != na) {
             cout << -1 << endl;
             return 0;
