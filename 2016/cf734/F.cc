@@ -70,6 +70,8 @@ int main(void) {
                 na += (1<<j) * n;
             }
         }
+
+        cerr << na << " " << b[i] << endl;
         if(b[i] != na) {
             cout << -1 << endl;
             return 0;
