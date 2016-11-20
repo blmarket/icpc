@@ -57,7 +57,6 @@ int main(void) {
 
         int tmp = d[i];
         for(int j=0;tmp;j++) {
-            cerr << tmp << endl;
             nb[j] += (tmp & 1);
             tmp /= 2;
         }
@@ -70,6 +69,7 @@ int main(void) {
             if(tmp & 1) {
                 na += (1<<j) * n;
             }
+            tmp /= 2;
         }
 
         cerr << na << " " << b[i] << endl;
