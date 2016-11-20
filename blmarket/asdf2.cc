@@ -27,7 +27,7 @@ int main(void) {
         if (cur < 0) continue;
         vector<pair<int, int> >::iterator jt = upper_bound(spell2.begin(), spell2.end(), make_pair(cur, (int)21e8));
         --jt;
-        int remain = n - jt->second;
+        long long remain = n - jt->second;
         if(remain < 0) remain = 0;
         long long t1 = remain * it.second;
         mintime = min(mintime, t1);
