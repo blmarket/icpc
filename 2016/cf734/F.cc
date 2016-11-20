@@ -41,6 +41,8 @@ int main(void) {
     int s = 0;
     for(int i=0;i<n;i++) s = b[i] + c[i];
 
+    cerr << s << endl;
+
     if (s%(2*n)) {
         cout << "-1" << endl;
         return 0;
@@ -49,7 +51,6 @@ int main(void) {
 
     for(int i=0;i<n;i++) {
         d[i] = (b[i] + c[i] - s);
-        cerr << d[i] << endl;
         if(d[i] % n) {
             cout << "-1" << endl;
             return 0;
