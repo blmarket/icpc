@@ -47,7 +47,7 @@ int main(void) {
         }
     }
 
-    for(int i=1;i<=n;i++) cout << r[i] << " " ;
+    for(int i=1;i<=n;i++) cout << r[root(i)] << " " ;
     cout << endl;
     return 0;
 }
