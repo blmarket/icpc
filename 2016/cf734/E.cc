@@ -79,6 +79,7 @@ int main(void) {
     }
 
     s = vn.back();
+    cerr << s << endl;
     memset(dis, -1, sizeof(dis));
     vn.clear(); vn.pb(s);
 
