@@ -41,8 +41,6 @@ int main(void) {
     int s = 0;
     for(int i=0;i<n;i++) s += b[i] + c[i];
 
-    cerr << s << endl;
-
     if (s%(2*n)) {
         cout << "-1" << endl;
         return 0;
@@ -59,6 +57,7 @@ int main(void) {
 
         int tmp = d[i];
         for(int j=0;tmp;j++) {
+            cerr << tmp << endl;
             nb[j] += (tmp & 1);
             tmp /= 2;
         }
