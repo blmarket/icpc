@@ -85,7 +85,7 @@ int main(void) {
 
     for(int i=0;i<size(vn);i++) {
         s = vn[i];
-        cerr << s << " " << dis[s] << endl;
+        // cerr << s << " " << dis[s] << endl;
         for(auto it : link[s]) {
             if(dis[it] >= 0) continue;
             dis[it] = dis[s] + 1;
