@@ -67,7 +67,7 @@ int main(void) {
         int na = 0;
         for(int j=0;tmp;j++) {
             if(tmp & 1) {
-                na += (1<<j) * n;
+                na += (1<<j) * nb[j];
             }
             tmp /= 2;
         }
