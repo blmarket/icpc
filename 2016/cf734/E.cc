@@ -30,6 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int n;
 int c[200005];
 int r[200005];
+vector<pair<int, int> > ve;
 
 int root(int a) {
     return r[a] == a ? a : (r[a] = root(r[a]));
@@ -42,12 +43,17 @@ int main(void) {
     for(int i=1;i<n;i++) {
         int a,b;
         scanf(" %d %d", &a, &b);
+        ve.pb(mp(a,b));
         if(c[a] == c[b]) {
             r[root(a)] = root(b);
         }
     }
 
-    for(int i=1;i<=n;i++) cout << r[root(i)] << " " ;
+    for(int i=0;i<size(ve);i++) {
+        int a,b;
+        tie(a,b) = ve[i];
+    }
+
     cout << endl;
     return 0;
 }
