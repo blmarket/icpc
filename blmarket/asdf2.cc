@@ -28,7 +28,6 @@ int main(void) {
         }
     }
     long long mintime = 4e18;
-    cout << mintime << endl;
     for(auto &it : spell1) {
         int cur = mana - it.first;
         if (cur < 0) continue;
