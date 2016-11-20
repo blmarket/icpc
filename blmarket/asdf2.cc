@@ -29,12 +29,10 @@ int main(void) {
     }
     long long mintime = 1e15;
     for(auto &it : spell1) {
-        cerr << mana << " " << it.first << " " << it.second << endl;
         int cur = mana - it.first;
         if (cur < 0) continue;
         vector<pair<int, int> >::iterator jt = upper_bound(spell2.begin(), spell2.end(), make_pair(cur, (int)1e9));
         --jt;
-        cerr << cur << " " << jt->first << " " << jt->second << endl;
         int remain = n - jt->second;
         if(remain < 0) remain = 0;
         long long t1 = remain * it.second;
