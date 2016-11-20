@@ -81,7 +81,7 @@ int main(void) {
     s = vn.back();
     cerr << s << endl;
     memset(dis, -1, sizeof(dis));
-    vn.clear(); vn.pb(s);
+    vn.clear(); vn.pb(s); dis[s] = 0;
 
     for(int i=0;i<size(vn);i++) {
         s = vn[i];
