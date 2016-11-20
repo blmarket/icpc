@@ -91,6 +91,6 @@ int main(void) {
         }
     }
 
-    cout << (vn.back() + 1) / 2 << endl;
+    cout << (dis[vn.back()] + 1) / 2 << endl;
     return 0;
 }
