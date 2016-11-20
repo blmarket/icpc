@@ -39,7 +39,7 @@ int main(void) {
     for(int i=0;i<n;i++) scanf(" %d", &b[i]);
     for(int i=0;i<n;i++) scanf(" %d", &c[i]);
     int s = 0;
-    for(int i=0;i<n;i++) s = b[i] + c[i];
+    for(int i=0;i<n;i++) s += b[i] + c[i];
 
     cerr << s << endl;
 
