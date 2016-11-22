@@ -38,6 +38,7 @@ int main(void) {
 
   for(int i=0;i<n;i++) {
     bool first = true;
+    cerr << i << endl;
     while(i+2 < n && str[i] == 'o' && str[i+1] == 'g' && str[i+2] == 'o') {
       if(first) ret += "***";
       i += 2;
@@ -47,7 +48,6 @@ int main(void) {
       i++;
       continue;
     }
-    cerr << i << endl;
     ret += str[i];
   }
   cout << ret << endl;
