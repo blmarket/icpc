@@ -38,12 +38,12 @@ int main(void) {
 
   for(int i=0;i<n;i++) {
     bool first = true;
-    cerr << i << endl;
     while(i+2 < n && str[i] == 'o' && str[i+1] == 'g' && str[i+2] == 'o') {
       if(first) ret += "***";
       i += 2;
       first = false;
     }
+    cerr << i << endl;
     if(!first) {
       i++;
       continue;
