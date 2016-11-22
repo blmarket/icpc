@@ -37,6 +37,7 @@ int main(void) {
   string ret;
 
   for(int i=0;i<n;i++) {
+    cerr << i << " " << str[i] << endl;
     bool first = true;
     while(i+2 < n && str[i] == 'o' && str[i+1] == 'g' && str[i+2] == 'o') {
       if(first) ret += "***";
