@@ -44,10 +44,10 @@ int main(void) {
       first = false;
     }
     if(!first) {
-      cerr << str[i] << endl;
       i++;
       continue;
     }
+    cerr << i << endl;
     ret += str[i];
   }
   cout << ret << endl;
