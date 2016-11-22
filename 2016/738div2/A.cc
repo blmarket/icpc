@@ -43,9 +43,7 @@ int main(void) {
       i += 2;
       first = false;
     }
-    cerr << i << " " << str[i] << endl;
     if(!first) {
-      i++;
       continue;
     }
     ret += str[i];
