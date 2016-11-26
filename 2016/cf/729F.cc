@@ -45,6 +45,7 @@ int s[100005];
 
 int go(int L, int R, int k, bool turn) {
   cerr << L << " " << R << " " << k << " " << turn << endl;
+  cerr << s[R] - s[L] << endl;
   if(R-L < k) return 0;
   if(R-L == k) return s[R] - s[L];
 
