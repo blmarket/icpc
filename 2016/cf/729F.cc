@@ -60,7 +60,7 @@ int go(int L, int R, int k, bool turn) {
   } else {
     ans = max(-go(L, R-k, k, !turn) + s[R] - s[R-k], -go(L, R-k-1, k+1, !turn) + s[R] - s[R-k-1]);
   }
-  cerr << L << " " << R << " " << k << " " << turn << " = " << ans << endl;
+  // cerr << L << " " << R << " " << k << " " << turn << " = " << ans << endl;
   return memo[key] = ans;
 }
 
