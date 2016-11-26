@@ -69,10 +69,6 @@ int main(void) {
     s[i+1] = s[i] + v[i];
   }
   int tmp = go(0, N, 1, true);
-  memo.clear();
-  for(int i=0;i<=N;i++) s[i] = -s[i];
-  int tmp2 = go(0, N, 1, true);
-  if(tmp > tmp2) cout << tmp << endl;
-  else cout << -tmp2 << endl;
+  cout << tmp << endl;
   return 0;
 }
