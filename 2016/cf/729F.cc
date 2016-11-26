@@ -29,20 +29,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 
-struct state {
-  int L, R;
-  int k;
-  bool turn;
-
-  int key() {
-    int ret = turn * N + k;
-    ret *= N; ret += R;
-    ret *= N; ret += L;
-    return ret;
-  }
-};
-
-unordered_map<int, int> memo;
+unordered_map<unsigned int, int> memo;
 int v[100005];
 int s[100005];
 
@@ -50,8 +37,7 @@ int go(int L, int R, int k, bool turn) {
   if(R-L < k) return 0;
   if(R-L == k) return s[R] - s[L];
 
-  state ss = { L, R, k, turn };
-  LL key = ss.key();
+  unsigned int key = ((turn * 91 + k) * N + R) * N + L;
   if(memo.count(key)) return memo[key];
 
   int ans;
@@ -65,14 +51,13 @@ int go(int L, int R, int k, bool turn) {
 }
 
 int main(void) {
-  memo.rehash(1e7);
+  memo.rehash(7e7);
   scanf(" %d", &N);
   s[0] = 0;
   for(int i=0;i<N;i++) {
     scanf(" %d", &v[i]);
     s[i+1] = s[i] + v[i];
   }
-  int tmp = go(0, N, 1, true);
-  cout << tmp << endl;
+  cout << go(0, N, 1, true) << endl;
   return 0;
 }
