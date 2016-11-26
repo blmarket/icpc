@@ -35,7 +35,7 @@ int main(void) {
   for(int i=0;i<m;i++) {
     int a,b;
     scanf(" %d %d", &a, &b);
-    a = b-a;
+    a = b-a + 1;
     minlen=min(minlen, a);
   }
 
