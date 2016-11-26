@@ -42,7 +42,18 @@ struct state {
 unordered_map<LL, int> memo;
 int v[100005];
 
+int go(int L, int R, int k, bool turn) {
+  state s = { L, R, k, turn };
+}
+
 int main(void) {
   scanf(" %d", &N);
+  for(int i=0;i<N;i++) scanf(" %d", &v[i]);
+  int tmp = go(0, 0, 1, true);
+  memo.clear();
+  for(int i=0;i<N;i++) v[i] = -v[i];
+  int tmp2 = go(0, 0, 1, true);
+  if(tmp > tmp2) cout << tmp << endl;
+  cout << -tmp2 << endl;
   return 0;
 }
