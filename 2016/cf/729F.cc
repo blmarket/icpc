@@ -34,15 +34,15 @@ struct state {
   int k;
   bool turn;
 
-  LL key() {
-    LL ret = turn * N + k;
+  int key() {
+    int ret = turn * N + k;
     ret *= N; ret += R;
     ret *= N; ret += L;
     return ret;
   }
 };
 
-unordered_map<LL, int> memo;
+unordered_map<int, int> memo;
 int v[100005];
 int s[100005];
 
@@ -65,6 +65,7 @@ int go(int L, int R, int k, bool turn) {
 }
 
 int main(void) {
+  memo.rehash(1e7);
   scanf(" %d", &N);
   s[0] = 0;
   for(int i=0;i<N;i++) {
