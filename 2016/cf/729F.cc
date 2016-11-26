@@ -72,6 +72,7 @@ int main(void) {
   memo.clear();
   for(int i=0;i<=N;i++) s[i] = -s[i];
   int tmp2 = go(0, N, 1, true);
+  cout << go(2, N, 2, false) << endl;
   if(tmp > tmp2) cout << tmp << endl;
   else cout << -tmp2 << endl;
   return 0;
