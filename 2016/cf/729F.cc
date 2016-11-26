@@ -63,9 +63,9 @@ int go(int L, int R, int k, bool turn) {
   }
 
   if(R-k < L) return memo[key] = 0;
-  int tmp = go(L, R-k, k, !turn) + s[R] - s[R-k];
+  int tmp = go(L, R-k, k, !turn) - s[R] + s[R-k];
   if(R-k-1 >= L) {
-    int tmp2 = go(L, R-k-1, k+1, !turn) + s[R] - s[R-k-1];
+    int tmp2 = go(L, R-k-1, k+1, !turn) - s[R] + s[R-k-1];
     if(tmp2 < tmp) {
       cerr << L << " " << R << " " << k << " " << turn << " = " << tmp2 << endl;
       return memo[key] = tmp2;
