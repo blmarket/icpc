@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 long long n,a,b,c;
 
 int main(void) {
-    scanf(" %lld %lld %lld %lld", &n, &a, &b, &c);
+    cin >> n >> a >> b >> c;
     LL mincost = -1;
     for(int i=0;i<4;i++) for(int j=0;j<4;j++) for(int k=0;k<4;k++) {
 	if((n+i+j*2+k*3) % 4) continue;
