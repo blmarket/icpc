@@ -53,9 +53,9 @@ int go(int L, int R, int k, bool turn) {
 
   int ans;
   if(turn) {
-    ans = max(go(L+k, R, k, !turn) + s[L+k] - s[L], go(L+k+1, R, k+1, !turn) + s[L+k+1] - s[L]);
+    ans = max(-go(L+k, R, k, !turn) + s[L+k] - s[L], -go(L+k+1, R, k+1, !turn) + s[L+k+1] - s[L]);
   } else {
-    ans = max(go(L, R-k, k, !turn) + s[R] - s[R-k], go(L, R-k-1, k+1, !turn) + s[R] - s[R-k-1]);
+    ans = max(-go(L, R-k, k, !turn) + s[R] - s[R-k], -go(L, R-k-1, k+1, !turn) + s[R] - s[R-k-1]);
   }
   cerr << L << " " << R << " " << k << " " << turn << " = " << ans << endl;
   return memo[key] = ans;
