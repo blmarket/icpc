@@ -46,7 +46,6 @@ int s[100005];
 int go(int L, int R, int k, bool turn) {
   state ss = { L, R, k, turn };
   LL key = ss.key();
-  cerr << L << " " << R << " " << k << " " << turn << endl;
   if(memo.count(key)) return memo[key];
 
   if(turn) {
@@ -55,9 +54,11 @@ int go(int L, int R, int k, bool turn) {
     if(L+k+1 < R) {
       int tmp2 = go(L+k+1, R, k+1, !turn) + s[L+k+1] - s[L];
       if(tmp2 > tmp) {
+        cerr << L << " " << R << " " << k << " " << turn << " = " << tmp2 << endl;
         return memo[key] = tmp2;
       }
     }
+    cerr << L << " " << R << " " << k << " " << turn << " = " << tmp << endl;
     return memo[key] = tmp;
   }
 
@@ -66,9 +67,11 @@ int go(int L, int R, int k, bool turn) {
   if(R-k-1 >= L) {
     int tmp2 = go(L, R-k-1, k+1, !turn) + s[R] - s[R-k-1];
     if(tmp2 < tmp) {
+      cerr << L << " " << R << " " << k << " " << turn << " = " << tmp2 << endl;
       return memo[key] = tmp2;
     }
   }
+  cerr << L << " " << R << " " << k << " " << turn << " = " << tmp << endl;
   return memo[key] = tmp;
 }
 
