@@ -27,6 +27,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const int maxN = 4000;
 int N;
 
 unordered_map<unsigned int, int> memo;
@@ -37,7 +38,7 @@ int go(int L, int R, int k, bool turn) {
   if(R-L < k) return 0;
   if(R-L == k) return s[R] - s[L];
 
-  unsigned int key = ((turn * 91 + k) * N + R) * N + L;
+  unsigned int key = ((turn * 91 + k) * maxN + R) * maxN + L;
   if(memo.count(key)) return memo[key];
 
   int ans;
