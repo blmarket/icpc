@@ -40,6 +40,7 @@ int main(void) {
   }
 
   cout << mind << endl;
+  mind++;
   for(int i=0;i<n;i++) {
     cout << (i % mind) << " ";
   }
