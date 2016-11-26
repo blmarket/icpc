@@ -46,6 +46,7 @@ int s[100005];
 int go(int L, int R, int k, bool turn) {
   state ss = { L, R, k, turn };
   LL key = ss.key();
+  cerr << L << " " << R << " " << k << " " << turn << endl;
   if(memo.count(key)) return memo[key];
 
   if(turn) {
