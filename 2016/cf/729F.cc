@@ -83,6 +83,6 @@ int main(void) {
   for(int i=0;i<=N;i++) s[i] = -s[i];
   int tmp2 = go(0, N, 1, true);
   if(tmp > tmp2) cout << tmp << endl;
-  cout << -tmp2 << endl;
+  else cout << -tmp2 << endl;
   return 0;
 }
