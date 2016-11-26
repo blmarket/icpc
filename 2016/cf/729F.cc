@@ -35,7 +35,10 @@ struct state {
   bool turn;
 
   LL key() {
-    return L + (LL) N * R + (LL) N * N * k + (LL) N*N*N*turn;
+    LL ret = turn * N + k;
+    ret *= N; ret += R;
+    ret *= N; ret += L;
+    return ret;
   }
 };
 
