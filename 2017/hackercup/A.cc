@@ -50,8 +50,21 @@ int main(void) {
         x -= 50;
         y -= 50;
 
+        LL dist = x*x + y*y;
+
         double deg = atan2(x,y) * 50 / M_PI;
-        cout << deg << endl;
+        if (deg < 0) deg += 100;
+
+        if(dist > 2500) {
+          printf("white\n");
+          continue;
+        }
+
+        if(deg < p) {
+          printf("black\n");
+          continue;
+        }
+        printf("white\n");
     }
     return 0;
 }
