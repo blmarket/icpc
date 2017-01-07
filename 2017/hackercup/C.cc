@@ -35,6 +35,11 @@ void process() {
   char ind;
   int nd, y;
   int offset;
+
+  double maxx = 0;
+
+  double ps[2][500];
+
   for(int i=0;i<n;i++) {
     offset = 0;
     scanf(" %dd%d%c", &nd, &y, &ind);
@@ -44,7 +49,40 @@ void process() {
     }
 
     cout << nd << " " << y << " " << offset << endl;
+
+    memset(ps[0], 0, sizeof(ps[0]));
+    ps[0][0] = 1;
+
+    for(int j=0;j<nd;j++) {
+      int cur = j&1;
+      int nex = !cur;
+
+      memset(ps[nex], 0, sizeof(ps[nex]));
+
+      for(int k=0;k<=400;k++) {
+        for(int l=0;l<y;l++) {
+          ps[nex][k+l+1] += ps[cur][k] / y;
+        }
+      }
+    }
+
+    offset = hp - offset;
+    if(offset <= 0) {
+      maxx = 1;
+      continue;
+    }
+
+    if(offset > 500) {
+      continue;
+    }
+
+    double tmp = 0;
+    for(int j=offset;j<500;j++) {
+      tmp += ps[nd&1][j];
+    }
+    if(tmp > maxx) maxx = tmp;
   }
+  printf("%.12lf\n", maxx);
 }
 
 int main(void) {
