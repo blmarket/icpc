@@ -60,8 +60,6 @@ int main(void) {
           continue;
         }
 
-        cerr << deg << " " << p << endl;
-
         if(deg < p) {
           printf("black\n");
           continue;
