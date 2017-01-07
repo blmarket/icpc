@@ -37,6 +37,20 @@ void process() {
   }
   sort(v, v+n);
   reverse(v, v+n);
+
+  int ret = 0;
+
+  for(int i=0;i<n;i++) {
+    int rem = n - i;
+    int cnt = (50 + v[i] - 1) / v[i];
+    if(rem < cnt) {
+      printf("%d\n", ret);
+      return;
+    }
+    ret++;
+    n -= (cnt - 1);
+  }
+  printf("%d\n", ret);
 }
 
 int main(void) {
