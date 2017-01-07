@@ -48,7 +48,7 @@ void process() {
       if(ind == '-') offset = -offset;
     }
 
-    cout << nd << " " << y << " " << offset << endl;
+    // cout << nd << " " << y << " " << offset << endl;
 
     memset(ps[0], 0, sizeof(ps[0]));
     ps[0][0] = 1;
