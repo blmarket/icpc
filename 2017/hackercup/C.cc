@@ -34,7 +34,7 @@ void process() {
   char buf[1024];
   int nd, y;
   for(int i=0;i<n;i++) {
-    scanf(" %dd%d%s", &nd, &y, buf);
+    scanf(" %dd%d%s ", &nd, &y, buf);
     cout << nd << " " << y << " " << buf << endl;
   }
 }
