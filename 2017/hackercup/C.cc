@@ -36,6 +36,7 @@ void process() {
   int nd, y;
   int offset;
   for(int i=0;i<n;i++) {
+    offset = 0;
     scanf(" %dd%d%c", &nd, &y, &ind);
     if(ind == '+' || ind == '-') {
       scanf("%d", &offset);
