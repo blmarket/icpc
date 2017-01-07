@@ -50,7 +50,8 @@ int main(void) {
         x -= 50;
         y -= 50;
 
-        cout << atan2(x,y) * 180 / M_PI << endl; 
+        double deg = atan2(x,y) * 100 / M_PI;
+        cout << deg << endl;
     }
     return 0;
 }
