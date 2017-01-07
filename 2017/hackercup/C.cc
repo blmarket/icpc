@@ -34,9 +34,16 @@ void process() {
   char buf[1024];
   char ind;
   int nd, y;
+  int offset;
   for(int i=0;i<n;i++) {
     scanf(" %dd%d%c", &nd, &y, &ind);
     cout << nd << " " << y << " " << ind << endl;
+    if(ind == '+' || ind == '-') {
+      scanf("%d", &offset);
+      if(ind == '-') offset = -offset;
+    }
+
+    cout << nd << " " << y << " " << offset << endl;
   }
 }
 
