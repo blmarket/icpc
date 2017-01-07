@@ -32,10 +32,11 @@ int hp, n;
 void process() {
   scanf(" %d %d", &hp, &n);
   char buf[1024];
+  char ind;
   int nd, y;
   for(int i=0;i<n;i++) {
-    scanf(" %dd%d%s ", &nd, &y, buf);
-    cout << nd << " " << y << " " << buf << endl;
+    scanf(" %dd%d%c", &nd, &y, &ind);
+    cout << nd << " " << y << " " << ind << endl;
   }
 }
 
