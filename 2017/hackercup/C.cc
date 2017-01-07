@@ -37,7 +37,6 @@ void process() {
   int offset;
   for(int i=0;i<n;i++) {
     scanf(" %dd%d%c", &nd, &y, &ind);
-    cout << nd << " " << y << " " << ind << endl;
     if(ind == '+' || ind == '-') {
       scanf("%d", &offset);
       if(ind == '-') offset = -offset;
