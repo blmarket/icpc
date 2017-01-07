@@ -50,7 +50,7 @@ int main(void) {
         x -= 50;
         y -= 50;
 
-        cout << atan2(y, x) << endl; 
+        cout << atan2(y, x) * 180 / M_PI << endl; 
     }
     return 0;
 }
