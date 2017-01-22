@@ -41,5 +41,5 @@ int main(void) {
     }
   }
 
-  cout << cnt['R'] << " " << cnt['B'] << " " << cnt['Y'] << " " << cnt['G'] << endl;
+  cout << cnt[pos['R']] << " " << cnt[pos['B']] << " " << cnt[pos['Y']] << " " << cnt[pos['G']] << endl;
 }
