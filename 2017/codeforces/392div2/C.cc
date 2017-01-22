@@ -27,7 +27,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-int N, M, x, y;
+LL N, M, x, y;
 LL K;
 
 int main(void) {
@@ -36,8 +36,6 @@ int main(void) {
   LL pn = (N*2-2) * M;
   LL np = K / pn;
   LL nr = K % pn;
-
-  cerr << pn << " " << np << " " << nr << endl;
 
   auto fn = [&](int x, int y) -> LL {
     LL ret = 0;
