@@ -69,7 +69,11 @@ int main(void) {
   };
 
   LL r1,r2,r3;
-  r1 = max(fn(1,0), fn(N-2,0));
+  if(N == 1) {
+    r1 = fn(0,0);
+  } else {
+    r1 = max(fn(1,0), fn(N-2,0));
+  }
   r2 = min(fn(0,M-1), fn(N-1,M-1));
   r3 = fn(x,y);
   cout << r1 << " " << r2 << " " << r3 << endl;
