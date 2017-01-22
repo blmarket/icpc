@@ -37,7 +37,7 @@ int main(void) {
   LL np = K / pn;
   LL nr = K % pn;
 
-  auto fn = [&](int x, int y) -> LL {
+  auto fn = [&](LL x, LL y) -> LL {
     LL ret = 0;
     if(x == 0 || x == N - 1) {
       ret = np;
