@@ -36,6 +36,8 @@ int main(void) {
   LL np = K / pn;
   LL nr = K % pn;
 
+  cerr << np << " " << nr << endl;
+
   auto fn = [&](int x, int y) -> LL {
     LL ret = 0;
     if(x == 0 || x == N - 1) {
@@ -64,8 +66,6 @@ int main(void) {
       }
     }
   };
-
-  cerr << fn(1,0) << endl;
 
   LL r1,r2,r3;
   r1 = max(fn(1,0), fn(N-2,0));
