@@ -33,7 +33,7 @@ LL K;
 int main(void) {
   cin >> N >> M >> K >> x >> y;
   x--;y--;
-  LL pn = (N*2-1) * M;
+  LL pn = (N*2-2) * M;
   LL np = K / pn;
   LL nr = K % pn;
 
