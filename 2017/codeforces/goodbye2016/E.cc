@@ -31,9 +31,17 @@ int n, q;
 char seq[200005];
 int matrix[524288][5][5];
 const int POS = 262144;
+const int BIG = 1000000;
 
 void merge(auto &s1, auto &s2, auto &r) {
-  memset(r, 0, sizeof(r));
+  for(int i=0;i<5;i++) for(int j=i;j<5;j++) r[i][j] = BIG;
+  for(int i=0;i<5;i++) {
+    for(int j=i;j<5;j++) if(s1[i][j] < BIG) {
+      for(int k=j;k<5;k++) if(s2[j][k] < BIG) {
+        if(r[i][k] > s1[i][j] + s2[j][k]) r[i][k] = s1[i][j] + s2[j][k];
+      }
+    }
+  }
 }
 
 int main(void) {
@@ -43,7 +51,7 @@ int main(void) {
   for(int i=0;i<n;i++) {
     for(int j=0;j<5;j++) {
       matrix[POS+i][j][j] = 0;
-      for(int k=j+1;k<5;k++) matrix[POS+i][j][k] = 1000000;
+      for(int k=j+1;k<5;k++) matrix[POS+i][j][k] = BIG;
     }
     if(seq[i] == '2') {
       matrix[POS+i][0][0] = 1;
@@ -67,6 +75,15 @@ int main(void) {
   }
 
   for(int i=0;i<q;i++) {
+    int s, e;
+    scanf(" %d %d", &s, &e);
+    s--;
+    int t1[5][5], t2[5][5];
+    memcpy(t1, matrix[POS + s], sizeof(t1));
+    for(int j=s+1;j<e;j++) {
+      merge(t1, matrix[POS+j], t2);
+      memcpy(t1, t2, sizeof(t1));
+    }
   }
   return 0;
 }
