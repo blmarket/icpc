@@ -35,8 +35,15 @@ int query(int a, int b) {
 }
 
 int main(void) {
+  memset(matrix, 0, sizeof(matrix));
   scanf(" %d %d", &n, &q);
   scanf(" %s", seq);
+
+  for(int i=0;i<n;i++) {
+    if(seq[i] == '2') {
+    }
+  }
+
   for(int i=0;i<q;i++) {
   }
   return 0;
