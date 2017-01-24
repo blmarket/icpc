@@ -84,6 +84,10 @@ int main(void) {
       merge(t1, matrix[POS+j], t2);
       memcpy(t1, t2, sizeof(t1));
     }
+    for(int i=0;i<5;i++) {
+      for(int j=0;j<5;j++) printf("%6d ", t1[i][j]);
+      printf("\n");
+    }
   }
   return 0;
 }
