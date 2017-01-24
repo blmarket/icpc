@@ -47,7 +47,6 @@ void merge(auto &s1, auto &s2, auto &r) {
 }
 
 void go(int pos, int l, int r, int s, int e) {
-  // cout << pos << " " << l << " " << r << endl;
   if(r <= s || l >= e) return;
   if(s <= l && e >= r) {
     merge(t1, matrix[pos], t2);
