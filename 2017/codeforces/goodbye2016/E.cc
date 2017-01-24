@@ -31,14 +31,14 @@ int n, q;
 char seq[200005];
 int matrix[524288][5][5];
 const int POS = 262144;
-const int BIG = 1000000;
+const int BIG = -1;
 
 void merge(auto &s1, auto &s2, auto &r) {
   for(int i=0;i<5;i++) for(int j=i;j<5;j++) r[i][j] = BIG;
   for(int i=0;i<5;i++) {
-    for(int j=i;j<5;j++) if(s1[i][j] < BIG) {
-      for(int k=j;k<5;k++) if(s2[j][k] < BIG) {
-        if(r[i][k] > s1[i][j] + s2[j][k]) r[i][k] = s1[i][j] + s2[j][k];
+    for(int j=i;j<5;j++) if(s1[i][j] != BIG) {
+      for(int k=j;k<5;k++) if(s2[j][k] != BIG) {
+        if(r[i][k] == BIG || r[i][k] > s1[i][j] + s2[j][k]) r[i][k] = s1[i][j] + s2[j][k];
       }
     }
   }
