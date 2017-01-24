@@ -74,6 +74,10 @@ int main(void) {
     }
   }
 
+  for(int i=POS-1;i>0;i--) {
+    merge(matrix[i*2], matrix[i*2+1], matrix[i]);
+  }
+
   for(int i=0;i<q;i++) {
     int s, e;
     scanf(" %d %d", &s, &e);
