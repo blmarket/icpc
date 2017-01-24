@@ -33,6 +33,8 @@ int matrix[524288][5][5];
 const int POS = 262144;
 const int BIG = -1;
 
+int t1[5][5], t2[5][5];
+
 void merge(auto &s1, auto &s2, auto &r) {
   for(int i=0;i<5;i++) for(int j=i;j<5;j++) r[i][j] = BIG;
   for(int i=0;i<5;i++) {
@@ -42,6 +44,16 @@ void merge(auto &s1, auto &s2, auto &r) {
       }
     }
   }
+}
+
+void go(int pos, int l, int r, int s, int e) {
+  if(s <= l && e >= r) {
+    merge(t1, matrix[pos], t2);
+    memcpy(t1, t2, sizeof(t1));
+    return;
+  }
+  go(pos*2, l, (l+r)/2, s, e);
+  go(pos*2+1, (l+r)/2, r, s, e);
 }
 
 int main(void) {
@@ -81,18 +93,20 @@ int main(void) {
   for(int i=0;i<q;i++) {
     int s, e;
     scanf(" %d %d", &s, &e);
-    s--;
-    int t1[5][5], t2[5][5];
-    memcpy(t1, matrix[POS + s], sizeof(t1));
-    for(int j=s+1;j<e;j++) {
-      merge(t1, matrix[POS+j], t2);
-      memcpy(t1, t2, sizeof(t1));
-    }
-    for(int i=0;i<5;i++) {
-      for(int j=0;j<5;j++) printf("%8d ", t1[i][j]);
-      printf("\n");
-    }
-    printf("\n");
+    memcpy(t1, matrix[POS + s - 1], sizeof(t1));
+
+    go(1, 0, 262144, s, e);
+    cout << t1[0][4] << endl;
+
+    // for(int j=s+1;j<e;j++) {
+    //   merge(t1, matrix[POS+j], t2);
+    //   memcpy(t1, t2, sizeof(t1));
+    // }
+    // for(int i=0;i<5;i++) {
+    //   for(int j=0;j<5;j++) printf("%8d ", t1[i][j]);
+    //   printf("\n");
+    // }
+    // printf("\n");
   }
   return 0;
 }
