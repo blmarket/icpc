@@ -32,7 +32,8 @@ char seq[200005];
 int matrix[524288][5][5];
 const int POS = 262144;
 
-void merge(auto &s1, auto &s2) {
+void merge(auto &s1, auto &s2, auto &r) {
+  memset(r, 0, 0);
 }
 
 int main(void) {
