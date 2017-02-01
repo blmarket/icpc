@@ -25,7 +25,7 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
 
-template<typename T> int size(const T &a) { return a.size(); } 
+template<typename T> int size(const T &a) { return a.size(); }
 
 int main(void) {
   int n;
