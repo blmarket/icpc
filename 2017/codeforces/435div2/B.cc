@@ -44,6 +44,7 @@ int main(void) {
   for(int i=0;i<n-1;i++) {
     int a,b;
     tie(a,b) = edges[i];
+    cerr << a << " " << b << endl;
     if(flag[a] == flag[b]) flag[b] = !flag[a];
     deg[a]++;
     deg[b]++;
