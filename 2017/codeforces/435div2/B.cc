@@ -28,8 +28,17 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 bool flag[100005];
-int deg[100005];
-PII edges[100005];
+vector<int> links[100005];
+int nt[2];
+
+void go(int a, int p) {
+  for(auto it: links[a]) {
+    if(it == p) continue;
+    flag[it] = !flag[a];
+    nt[flag[it]]++;
+    go(it, a);
+  }
+}
 
 int main(void) {
   int n;
@@ -37,30 +46,16 @@ int main(void) {
   for(int i=0;i<n-1;i++) {
     int a,b;
     scanf(" %d %d", &a, &b);
-    if(a>b) swap(a,b);
-    edges[i] = mp(a,b);
-  }
-  sort(edges, edges + n - 1);
-  for(int i=0;i<n-1;i++) {
-    int a,b;
-    tie(a,b) = edges[i];
-    cerr << a << " " << b << endl;
-    if(flag[a] == flag[b]) flag[b] = !flag[a];
-    deg[a]++;
-    deg[b]++;
+    links[a].pb(b);
+    links[b].pb(a);
   }
 
-  int nt[2] = {0,0};
-  for(int i=1;i<=n;i++) {
-    cerr << flag[i] << " ";
-    nt[flag[i]]++;
-  }
-  cerr << endl;
+  nt[0]++;
+  go(1, -1);
 
   long long ret = 0;
   for(int i=1;i<=n;i++) {
-    cerr << i << " " << flag[i] << " " << deg[i] << " " << nt[!flag[i]] - deg[i] << endl;
-    int oth = nt[!flag[i]] - deg[i];
+    int oth = nt[!flag[i]] - links[i].size();
     ret += oth;
   }
   cout << ret/2 << endl;
