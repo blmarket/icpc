@@ -45,5 +45,9 @@ int main(void) {
     tie(a,b) = edges[i];
     if(flag[a] == flag[b]) flag[b] = !flag[a];
   }
+  for(int i=0;i<n;i++) {
+    cout << flag[i] << " ";
+  }
+  cout << endl;
   return 0;
 }
