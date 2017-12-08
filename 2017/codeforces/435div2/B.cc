@@ -28,6 +28,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 bool flag[100005];
+int deg[100005];
 PII edges[100005];
 
 int main(void) {
@@ -44,10 +45,20 @@ int main(void) {
     int a,b;
     tie(a,b) = edges[i];
     if(flag[a] == flag[b]) flag[b] = !flag[a];
+    deg[a]++;
+    deg[b]++;
   }
+
+  int nt[2] = {0,0};
   for(int i=1;i<=n;i++) {
-    cout << flag[i] << " ";
+    nt[flag[i]]++;
   }
-  cout << endl;
+
+  long long ret = 0;
+  for(int i=1;i<=n;i++) {
+    int oth = nt[!flag[i]] - deg[i];
+    ret += oth;
+  }
+  cout << ret << endl;
   return 0;
 }
