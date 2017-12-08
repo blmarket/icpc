@@ -56,11 +56,10 @@ int main(void) {
 
   long long ret = 0;
   for(int i=1;i<=n;i++) {
-    cerr << i << " " << nt[!flag[i]] - deg[i] << endl;
+    cerr << i << " " << flag[i] << " " << nt[!flag[i]] - deg[i] << endl;
     int oth = nt[!flag[i]] - deg[i];
     ret += oth;
   }
-  cerr << ret << endl;
   cout << ret/2 << endl;
   return 0;
 }
