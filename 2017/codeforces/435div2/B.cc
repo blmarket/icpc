@@ -51,10 +51,10 @@ int main(void) {
 
   int nt[2] = {0,0};
   for(int i=1;i<=n;i++) {
+    cerr << flag[i] << " ";
     nt[flag[i]]++;
   }
-
-  cerr << nt[0] << " " << nt[1] << endl;
+  cerr << endl;
 
   long long ret = 0;
   for(int i=1;i<=n;i++) {
