@@ -43,6 +43,7 @@ int main(void) {
   for(int i=0;i<n-1;i++) {
     int a,b;
     tie(a,b) = edges[i];
+    if(flag[a] == flag[b]) flag[b] = !flag[a];
   }
   return 0;
 }
