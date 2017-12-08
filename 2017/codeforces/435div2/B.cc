@@ -54,6 +54,8 @@ int main(void) {
     nt[flag[i]]++;
   }
 
+  cerr << nt[0] << " " << nt[1] << endl;
+
   long long ret = 0;
   for(int i=1;i<=n;i++) {
     cerr << i << " " << flag[i] << " " << deg[i] << " " << nt[!flag[i]] - deg[i] << endl;
