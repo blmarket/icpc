@@ -59,6 +59,6 @@ int main(void) {
     int oth = nt[!flag[i]] - deg[i];
     ret += oth;
   }
-  cout << ret << endl;
+  cout << ret/2 << endl;
   return 0;
 }
