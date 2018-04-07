@@ -35,6 +35,7 @@ void process(void) {
   for(int i=0;i<N;i++) scanf(" %d", &V[i%2][i/2]);
   int v1 = (N+1)/2;
   int v2 = N/2;
+  cerr << v1 << " " << v2 << endl;
   sort(V[0], V[0] + v1);
   sort(V[1], V[1] + v2);
   each(it, V[0]) cout << it << " "; cout << endl;
