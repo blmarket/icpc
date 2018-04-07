@@ -38,8 +38,8 @@ void process(void) {
   cerr << v1 << " " << v2 << endl;
   sort(V[0], V[0] + v1);
   sort(V[1], V[1] + v2);
-  each(it, V[0]) cout << it << " "; cout << endl;
-  each(it, V[1]) cout << it << " "; cout << endl;
+  // each(it, V[0]) cout << it << " "; cout << endl;
+  // each(it, V[1]) cout << it << " "; cout << endl;
 }
 
 int main(void) {
