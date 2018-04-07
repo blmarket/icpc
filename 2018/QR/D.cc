@@ -47,12 +47,11 @@ void process(void) {
     printf("%.12lf %.12lf %.12lf\n", -0.5 * sin(s), 0.5 * cos(s), 0.0);
     printf("%.12lf %.12lf %.12lf\n", 0.0, 0.0, 0.5);
   } else {
-    cerr << atan(1 / sqrt(2.0)) << endl;
     double s = 0;
-    double e = M_PI / 2;
+    double e = atan(1.0 / sqrt(2.0));
     for(int i=0;i<20;i++) {
       double m = (s+e)/2;
-      double t = (cos(m) + sin(m) * sqrt(2) / 2) * sqrt(2);
+      double t = (cos(m) + sin(m) * sqrt(2.0) / 2) * sqrt(2.0);
       cerr << t << endl;
       if(t < A) {
         s = m;
