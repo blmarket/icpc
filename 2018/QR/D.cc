@@ -49,7 +49,7 @@ void process(void) {
   } else {
     double s = 0;
     double e = atan(1.0 / sqrt(2.0));
-    for(int i=0;i<20;i++) {
+    for(int i=0;i<200;i++) {
       double m = (s+e)/2;
       double t = (cos(m) + sin(m) * sqrt(2.0) / 2) * sqrt(2.0);
       if(t < A) {
@@ -58,9 +58,9 @@ void process(void) {
         e = m;
       }
     }
-    printf("%.12lf %.12lf %.12lf\n", 0.5 * cos(s), 0.5 * sin(s), 0.0);
-    printf("%.12lf %.12lf %.12lf\n", -0.5 * sin(s), 0.5 * cos(s), 0.0);
-    printf("%.12lf %.12lf %.12lf\n", 0.0, 0.0, 0.5);
+    printf("%.12lf %.12lf %.12lf\n", 0.25 * sqrt(2.0), 0.25 * sqrt(2.0) * cos(s), 0.25 * sqrt(2.0) * sin(s));
+    printf("%.12lf %.12lf %.12lf\n", -0.25 * sqrt(2.0), 0.25 * sqrt(2.0) * cos(s), 0.25 * sqrt(2.0) * sin(s));
+    printf("%.12lf %.12lf %.12lf\n", 0.0, 0.0, 0.5 * cos(s));
   }
 }
 
