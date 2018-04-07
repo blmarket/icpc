@@ -41,6 +41,7 @@ void process(void) {
   for(int i=0;i<v1;i++) cout << V[0][i] << " "; cout << endl;
   for(int i=0;i<v2;i++) cout << V[1][i] << " "; cout << endl;
   for(int i=1;i<N;i++) if(V[i%2][i/2] > V[(i-1)%2][(i-1)/2]) {
+    cerr << V[i%2][i/2] << endl;
     cout << i << endl;
     return;
   }
