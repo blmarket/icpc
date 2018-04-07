@@ -40,8 +40,7 @@ void process(void) {
   sort(V[1], V[1] + v2);
   for(int i=0;i<v1;i++) cout << V[0][i] << " "; cout << endl;
   for(int i=0;i<v2;i++) cout << V[1][i] << " "; cout << endl;
-  for(int i=1;i<N;i++) if(V[i%2][i/2] > V[(i-1)%2][(i-1)/2]) {
-    cerr << V[i%2][i/2] << " " << V[(i-1)%2][(i-1)/2] << endl;
+  for(int i=1;i<N;i++) if(V[i%2][i/2] < V[(i-1)%2][(i-1)/2]) {
     cout << i << endl;
     return;
   }
