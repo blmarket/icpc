@@ -52,13 +52,15 @@ void process(void) {
     for(int i=0;i<20;i++) {
       double m = (s+e)/2;
       double t = (cos(m) + sin(m) * sqrt(2.0) / 2) * sqrt(2.0);
-      cerr << t << endl;
       if(t < A) {
         s = m;
       } else {
         e = m;
       }
     }
+    printf("%.12lf %.12lf %.12lf\n", 0.5 * cos(s), 0.5 * sin(s), 0.0);
+    printf("%.12lf %.12lf %.12lf\n", -0.5 * sin(s), 0.5 * cos(s), 0.0);
+    printf("%.12lf %.12lf %.12lf\n", 0.0, 0.0, 0.5);
   }
 }
 
