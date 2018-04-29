@@ -49,6 +49,9 @@ void process() {
     if(remain >= rem[i].first) {
       remain -= rem[i].first;
       rem[i].second += rem[i].first;
+    } else {
+      rem[i].second += remain;
+      remain = 0;
     }
     ret += ((rem[i].second * 200) / N + 1) / 2;
   }
