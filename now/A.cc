@@ -50,6 +50,7 @@ void process() {
 
   sort(rem.begin(), rem.end());
   for(int i=0;i<size(rem);i++) {
+    cout << rem[i].first << "," << rem[i].second << " ";
     if(remain >= rem[i].first) {
       remain -= rem[i].first;
       rem[i].second += rem[i].first;
@@ -57,7 +58,6 @@ void process() {
       rem[i].second += remain;
       remain = 0;
     }
-    cout << rem[i].second << " ";
     ret += ((rem[i].second * 200) / N + 1) / 2;
   }
   cout << endl;
