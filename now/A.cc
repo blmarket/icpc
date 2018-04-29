@@ -65,7 +65,7 @@ ee:
     }
     ret += ((rem[i].second * 200) / N + 1) / 2;
   }
-  cout << endl;
+  // cout << endl;
   cout << ret << endl;
 }
 
