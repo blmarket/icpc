@@ -78,7 +78,7 @@ void process() {
     int cnt = 0;
     for(int j=0;j+i<=N;j++) {
       if(chk(j, j+i)) {
-        cerr << j << " " << j+i << endl;
+        // cerr << j << " " << j+i << endl;
         cnt++;
       }
     }
