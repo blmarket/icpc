@@ -63,7 +63,9 @@ void process() {
   for(int i=1;i<=M;i++) {
     scanf(" %lld", &G[i]);
   }
-  while(go(1, 0, 1e9));
+  while(go(1, 0, 1e9)) {
+    cerr << "HERE";
+  }
   printf("%lld\n", G[1]);
 }
 
