@@ -36,7 +36,7 @@ bool chk(int s, int e) {
 
   auto fn = [&]() -> bool {
     for(int i=s+1;i<e;i++) {
-      cerr << v1 << " " << v2 << endl;
+      // cerr << v1 << " " << v2 << endl;
       if(f1 && v[i][0] == v1) continue;
       if(f2 && v[i][1] == v2) continue;
       if(!f1) {
