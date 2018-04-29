@@ -30,6 +30,7 @@ LL G[105];
 bool visit[105];
 
 bool go(int a, int depth, LL req) {
+  cerr << a << endl;
   if(depth == 0) memset(visit, 0, sizeof(visit));
   if(visit[a]) return false;
   visit[a] = true;
