@@ -59,7 +59,10 @@ void process() {
   for(int i=N;i>=1;i--) {
     int cnt = 0;
     for(int j=0;j+i<=N;j++) {
-      if(chk(j, j+i)) cnt++;
+      if(chk(j, j+i)) {
+        cerr << j << " " << j+i << endl;
+        cnt++;
+      }
     }
     if(cnt) {
       cout << i << " " << cnt << endl;
