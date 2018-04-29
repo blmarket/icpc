@@ -50,12 +50,12 @@ ee:
   int ret = 0;
   int remain = N - sum;
   for(int i=0;i<remain;i++) {
-    rem.pb(mp((N+1)/200, 0));
+    rem.pb(mp((N+1)/2, 0));
   }
 
   sort(rem.begin(), rem.end());
   for(int i=0;i<size(rem);i++) {
-    cout << rem[i].first << "," << rem[i].second << " ";
+    // cout << rem[i].first << "," << rem[i].second << " ";
     if(remain >= rem[i].first) {
       remain -= rem[i].first;
       rem[i].second += rem[i].first;
