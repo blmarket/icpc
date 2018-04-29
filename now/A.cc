@@ -38,12 +38,14 @@ void process() {
 
     for(int j=0;j<1000;j++) {
       int tmp = ((V[i]+j) * 200) % (2 * N);
-      cerr << tmp << endl;
       if(tmp >= N) {
         rem.pb(mp(j == 0 ? N : j, V[i]));
-        break;
+        goto ee;
       }
     }
+    rem.pb(mp(N, V[i]));
+ee:
+    1;
   }
   int ret = 0;
   int remain = N - sum;
