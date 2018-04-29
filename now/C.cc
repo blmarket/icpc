@@ -62,7 +62,7 @@ void process() {
     scanf(" %lld", &G[i]);
   }
   while(go(1, 0, 1e9));
-  printf("%d\n", G[1]);
+  printf("%lld\n", G[1]);
 }
 
 int main(void) {
