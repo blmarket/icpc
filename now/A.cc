@@ -55,7 +55,7 @@ ee:
 
   sort(rem.begin(), rem.end());
   for(int i=0;i<size(rem);i++) {
-    cout << rem[i].first << "," << rem[i].second << " ";
+    // cout << rem[i].first << "," << rem[i].second << " ";
     if(remain >= rem[i].first) {
       remain -= rem[i].first;
       rem[i].second += rem[i].first;
