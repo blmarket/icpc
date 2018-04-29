@@ -33,10 +33,15 @@ void process() {
   scanf(" %d %d", &N, &L);
   rem.clear();
   int sum = 0;
+  memset(V, 0, sizeof(V));
   for(int i=0;i<L;i++) {
     scanf(" %d", &V[i]);
     sum += V[i];
+  }
+  int remain = N - sum;
+  L += remain;
 
+  for(int i=0;i<L;i++) {
     for(int j=0;j<=5000;j++) {
       int tmp = ((V[i]+j) * 200) % (2 * N);
       if(tmp >= N) {
@@ -49,10 +54,6 @@ ee:
     1;
   }
   int ret = 0;
-  int remain = N - sum;
-  for(int i=0;i<remain;i++) {
-    rem.pb(mp((N+1)/2, 0));
-  }
 
   sort(rem.begin(), rem.end());
   for(int i=0;i<size(rem);i++) {
