@@ -45,12 +45,10 @@ bool go(int a, int depth, LL req) {
     return true;
   }
   if(!G1) {
-    go(form[a][0], 1, 1LL);
-    return true;
+    return go(form[a][0], 1, 1LL);
   }
   if(!G2) {
-    go(form[a][1], 1, 1LL);
-    return true;
+    return go(form[a][1], 1, 1LL);
   }
   return false;
 }
