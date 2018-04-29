@@ -35,12 +35,14 @@ void process() {
   for(int i=0;i<L;i++) {
     scanf(" %d", &V[i]);
     sum += V[i];
-    int tmp = V[i] * 2 % (2 * N);
-    if(tmp >= N) {
-      rem.pb(mp(N, V[i]));
-      continue;
+
+    for(int j=0;j<1000;j++) {
+      int tmp = ((V[i]+j) * 200) % (2 * N);
+      if(tmp >= N) {
+        rem.pb(mp(j == 0 ? N : j, V[i]));
+        break;
+      }
     }
-    rem.pb(mp((N - tmp + 1) / 2, V[i]));
   }
   int ret = 0;
   int remain = N - sum;
