@@ -31,20 +31,37 @@ int v[100005][2];
 
 bool chk(int s, int e) {
   if(e <= s+2) return true;
-  bool fixed = false;
-  int v1 = -1, v2 = -1;
-  for(int i=s+1;i<e;i++) {
-    cerr << v1 << " " << v2 << endl;
-    if(v[i][0] == v[s][0] && v[i][1] == v[s][1]) continue;
-    if(!fixed) {
-      fixed = true;
-      v1 = v[i][0];
-      v2 = v[i][1];
-      continue;
+  bool f1 = true, f2 = false;
+  int v1 = v[s][0], v2 = -1;
+
+  auto fn = [&]() -> bool {
+    for(int i=s+1;i<e;i++) {
+      cerr << v1 << " " << v2 << endl;
+      if(f1 && v[i][0] == v1) continue;
+      if(f2 && v[i][1] == v2) continue;
+      if(!f1) {
+        f1 = true;
+        v1 = v[i][0];
+        continue;
+      }
+      if(!f2) {
+        f2 = true;
+        v2 = v[i][1];
+        continue;
+      }
+      return false;
     }
-    if(v[i][0] != v1 && v[i][1] != v2) return false;
+    return true;
+  };
+
+  if(fn()) {
+    return true;
   }
-  return true;
+
+  f1 = false, f2 = true;
+  v2 = v[s][1];
+
+  return fn();
 }
 
 void process() {
