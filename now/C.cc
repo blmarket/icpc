@@ -51,6 +51,7 @@ bool go(int a, int depth, LL req) {
     go(form[a][1], 1, 1LL);
     return true;
   }
+  return false;
 }
 
 void process() {
