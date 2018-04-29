@@ -36,7 +36,7 @@ void process() {
     scanf(" %d", &V[i]);
     sum += V[i];
 
-    for(int j=0;j<1000;j++) {
+    for(int j=0;j<=5000;j++) {
       int tmp = ((V[i]+j) * 200) % (2 * N);
       if(tmp >= N) {
         rem.pb(mp(j == 0 ? N : j, V[i]));
@@ -50,7 +50,7 @@ ee:
   int ret = 0;
   int remain = N - sum;
   for(int i=0;i<remain;i++) {
-    rem.pb(mp((N+1)/2, 0));
+    rem.pb(mp((N+1)/200, 0));
   }
 
   sort(rem.begin(), rem.end());
