@@ -34,6 +34,7 @@ bool chk(int s, int e) {
   bool fixed = false;
   int v1, v2;
   for(int i=s+1;i<e;i++) {
+    cerr << v1 << " " << v2 << endl;
     if(v[i][0] == v[s][0] && v[i][1] == v[s][1]) continue;
     if(!fixed) {
       fixed = true;
@@ -56,6 +57,8 @@ void process() {
     v[i][0] = b;
     v[i][1] = c;
   }
+  chk(0, 3);
+  return;
   for(int i=N;i>=1;i--) {
     int cnt = 0;
     for(int j=0;j+i<=N;j++) {
