@@ -74,8 +74,6 @@ void process() {
     v[i][0] = b;
     v[i][1] = c;
   }
-  cerr << chk(0, 3) << endl;
-  return;
   for(int i=N;i>=1;i--) {
     int cnt = 0;
     for(int j=0;j+i<=N;j++) {
