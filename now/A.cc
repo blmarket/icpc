@@ -53,8 +53,10 @@ void process() {
       rem[i].second += remain;
       remain = 0;
     }
+    cout << rem[i].second << " ";
     ret += ((rem[i].second * 200) / N + 1) / 2;
   }
+  cout << endl;
   cout << ret << endl;
 }
 
