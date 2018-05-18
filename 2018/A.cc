@@ -52,6 +52,7 @@ bool enumerate(int a) {
 void process() {
   scanf(" %d %d", &N, &L);
   for(int i=0;i<L;i++) chrs[i].clear();
+  words.clear();
 
   for(int i=0;i<N;i++) {
     char buf[15];
