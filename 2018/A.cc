@@ -26,7 +26,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, L;
-vector<string> words;
+set<string> words;
 vector<char> chrs[15];
 
 char build[15];
@@ -34,8 +34,7 @@ char build[15];
 bool enumerate(int a) {
   if (a == L) {
     build[L] = 0;
-    if(*lower_bound(words.begin(), words.end(), build) == build) {
-      cerr << build << endl;
+    if (words.count(build)) {
       return false;
     }
     printf("%s\n", build);
@@ -59,9 +58,8 @@ void process() {
     for(int i=0;i<L;i++) {
       chrs[i].pb(buf[i]);
     }
-    words.pb(buf);
+    words.insert(buf);
   }
-  sort(words.begin(), words.end());
 
   for(int i=0;i<L;i++) {
     auto &tmp = chrs[i];
