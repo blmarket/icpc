@@ -40,6 +40,7 @@ bool enumerate(int a) {
     printf("%s\n", build);
     return true;
   }
+  cerr << a << " " << L << endl;
   auto &tmp = chrs[a];
   for(auto &it: tmp) {
     build[a] = it;
