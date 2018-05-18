@@ -27,7 +27,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, L;
 set<string> words;
-vector<char> chrs[15];
+vector<set<char> > chrs;
 
 char build[15];
 
@@ -41,8 +41,8 @@ bool enumerate(int a) {
     return true;
   }
   auto &tmp = chrs[a];
-  for(int i=0;i<tmp.size();i++) {
-    build[a] = tmp[i];
+  for(auto &it: tmp) {
+    build[a] = it;
     if(enumerate(a+1)) return true;
   }
   return false;
@@ -56,15 +56,9 @@ void process() {
     char buf[15];
     scanf(" %s", buf);
     for(int i=0;i<L;i++) {
-      chrs[i].pb(buf[i]);
+      chrs[i].insert(buf[i]);
     }
     words.insert(buf);
-  }
-
-  for(int i=0;i<L;i++) {
-    auto &tmp = chrs[i];
-    sort(tmp.begin(), tmp.end());
-    tmp.erase(unique(tmp.begin(), tmp.end()), tmp.end());
   }
 
   if (enumerate(0)) {
