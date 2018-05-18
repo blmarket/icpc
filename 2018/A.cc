@@ -34,7 +34,10 @@ char build[15];
 bool enumerate(int a) {
   if (a == L) {
     build[L] = 0;
-    if(*lower_bound(words.begin(), words.end(), build) == build) return false;
+    if(*lower_bound(words.begin(), words.end(), build) == build) {
+      cerr << build << endl;
+      return false;
+    }
     printf("%s\n", build);
     return true;
   }
