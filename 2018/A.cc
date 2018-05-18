@@ -51,7 +51,7 @@ bool enumerate(int a) {
 
 void process() {
   scanf(" %d %d", &N, &L);
-  for(int i=0;i<L;i++) chrs[i].clear();
+  chrs.clear(); chrs.resize(L);
   words.clear();
 
   for(int i=0;i<N;i++) {
