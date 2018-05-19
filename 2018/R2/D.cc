@@ -51,7 +51,6 @@ int chry(const string &pat, int aa, int bb) {
   for(int i=0;i<N;i++) {
     for(int j=0;j<M;j++) {
       int idx = (i < aa ? 0 : 2) + (j < bb ? 0 : 1);
-      cerr << i << " " << j << " " << idx << endl;
       if(board[i][j] == pat[idx]) {
         mark[i][j] = 1;
         cnt++;
