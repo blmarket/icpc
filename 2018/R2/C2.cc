@@ -41,7 +41,10 @@ bool good() {
       if(x[i][j]) continue;
       m[V[i][j]]++;
     }
-    for(auto it:m) if(it.second > 1) return false;
+    for(auto it:m) {
+      cout << it.first << " " << it.second << endl;
+      if(it.second > 1) return false;
+    }
     m.clear();
     for(int j=0;j<N;j++) {
       if(x[j][i]) continue;
