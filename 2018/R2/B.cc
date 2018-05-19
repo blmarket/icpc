@@ -35,7 +35,7 @@ void go(int r, int b, int h, int bb, int cnt) {
   if(cnt > ret) {
     ret = cnt;
   }
-  if(bb < (ret - cnt)) return;
+  if(b < bb * (ret - cnt)) return;
   for(int i=h;i>0;i--) {
     if(r >= cum[i] && b >= i * bb) {
       go(r - cum[i], b - i * bb, i, bb+1, cnt + i);
