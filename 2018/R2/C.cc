@@ -38,6 +38,10 @@ int V[105][105];
 vector<conflict> row[105], col[105];
 conflict *back[105][105];
 
+bool try_flow() {
+  return false;
+}
+
 void process() {
   memset(back, 0, sizeof(back));
   for(int i=0;i<105;i++) { row[i].clear(); col[i].clear(); }
@@ -71,6 +75,8 @@ void process() {
       }
     }
   }
+
+  while(try_flow()) ret--;
 
   cout << ret << endl;
 }
