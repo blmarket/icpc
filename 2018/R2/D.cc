@@ -80,7 +80,7 @@ void check(string pat) {
       int tmp = chry(pat, i, j);
       if(tmp == -1) continue;
       if(ret < tmp) {
-        fprintf(stderr, "%s\n", pat.c_str());
+        fprintf(stderr, "%s %d %d\n", pat.c_str(), i, j);
         for(int k=0;k<N;k++) {
           for(int l=0;l<M;l++) {
             if(mark[k][l]) fprintf(stderr, "%c", board[k][l]); else fprintf(stderr, " ");
