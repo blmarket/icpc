@@ -44,7 +44,7 @@ void process() {
   ret = 0;
   scanf(" %d %d", &R, &B);
   go(R, B, 10, 0, 0);
-  cout << ret << endl;
+  cout << ret - 1 << endl;
 }
 
 int main(void) {
