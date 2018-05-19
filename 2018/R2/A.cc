@@ -58,12 +58,26 @@ void process() {
 
   vector<string> output;
   while(true) {
+    bool found = false;
     string row = string(N, '.');
     for(auto &it : r) {
       if(it.s < it.t) {
+        row[it.s] = '\\';
+        it.s++;
+        found = true;
+      }
+      if(it.e > it.t+1) {
+        row[it.e] = '/';
+        it.e--;
+        found = true;
       }
     }
+    output.pb(row);
+    if(!found) break;
   }
+
+  printf("%d\n", output.size());
+  for(auto &it: output) printf("%s\n", it.c_str());
 }
 
 int main(void) {
