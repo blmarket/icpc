@@ -61,14 +61,14 @@ void process() {
     for(auto &it : m1) {
       if(it.second.size() == 1) continue;
       ret += it.second.size() - 1;
-      fprintf(stderr, "r=%d c=%d cnt=%d\n", i, it.first, it.second.size());
+      // fprintf(stderr, "r=%d c=%d cnt=%d\n", i, it.first, it.second.size());
       row[i].pb(conflict { i, it.second, (int)it.second.size() - 1 });
     }
 
     for(auto &it : m2) {
       if(it.second.size() == 1) continue;
       ret += it.second.size() - 1;
-      fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second.size());
+      // fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second.size());
       col[i].pb(conflict { i, it.second, (int)it.second.size() - 1 });
       for(auto jt: it.second) {
         back[jt][i] = &col[i].back();
