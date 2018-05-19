@@ -79,7 +79,15 @@ void check(string pat) {
     for(int j=0;j<=M;j++) {
       int tmp = chry(pat, i, j);
       if(tmp == -1) continue;
-      if(ret < tmp) ret = tmp;
+      if(ret < tmp) {
+        for(int k=0;k<N;k++) {
+          for(int l=0;l<M;l++) {
+            if(mark[k][l]) printf("%c", board[k][l]); else printf(" ");
+          }
+          printf("\n");
+        }
+        ret = tmp;
+      }
     }
   }
 }
