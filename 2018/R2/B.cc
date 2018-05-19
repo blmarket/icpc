@@ -50,7 +50,8 @@ int go(int r, int b, int h, int bb, int cnt) {
 void process() {
   ret = 0;
   scanf(" %d %d", &R, &B);
-  go(R, B, 33, 0, 0);
+  cerr << cum[32] << endl;
+  go(R, B, 32, 0, 0);
   cout << ret - 1 << endl;
 }
 
