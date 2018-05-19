@@ -53,6 +53,7 @@ bool good() {
 }
 
 void go(int a, int b, int c) {
+  if(c >= ret) return;
   if(a == N) {
     if(good()) {
       if(ret > c) ret = c;
