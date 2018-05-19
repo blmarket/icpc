@@ -28,12 +28,12 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int R, B;
-int cum[10] = { 0, 1, 3, 6,10,15,21,28,36,45 };
+int cum[11] = { -1, 0, 1, 3, 6,10,15,21,28,36,45 };
 int ret;
 
 int go(int r, int b, int h, int bb, int cnt) {
   if(cnt > ret) ret = cnt;
-  for(int i=h;i>=0;i--) {
+  for(int i=h;i>0;i--) {
     if(r >= cum[i] && b >= i * bb) {
       go(r - cum[i], b - i * bb, i, bb+1, cnt + i);
     }
@@ -43,7 +43,7 @@ int go(int r, int b, int h, int bb, int cnt) {
 void process() {
   ret = 0;
   scanf(" %d %d", &R, &B);
-  go(R, B, 9, 0, 0);
+  go(R, B, 10, 0, 0);
   cout << ret << endl;
 }
 
