@@ -47,26 +47,25 @@ void process() {
     scanf(" %s", board[i]);
   }
 
-  for(int i=0;i+1<N;i++) {
-    for(int j=0;j+1<M;j++) {
-      string pat = string() + board[i][j] + board[i][j+1] + board[i+1][j] + board[i+1][j+1];
-      check(pat);
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<M;j++) {
+      string pat;
+      if(i+1 < N && j+1 < M) {
+        pat = string() + board[i][j] + board[i][j+1] + board[i+1][j] + board[i+1][j+1];
+        check(pat);
+      }
+      if(i+1 < N) {
+        pat = string() + board[i][0] + board[i][0] + board[i+1][0] + board[i+1][1];
+        check(pat);
+      }
+      if(j+1 < M) {
+        pat = string() + board[0][i] + board[0][i+1] + board[0][i] + board[0][i+1];
+        check(pat);
+      }
     }
   }
   check(string(4, 'B'));
   check(string(4, 'W'));
-  if(M == 1) {
-    for(int i=0;i+1<N;i++) {
-      string pat = string() + board[i][0] + board[i][0] + board[i+1][0] + board[i+1][1];
-      check(pat);
-    }
-  }
-  if(N == 1) {
-    for(int i=0;i+1<M;i++) {
-      string pat = string() + board[0][i] + board[0][i+1] + board[0][i] + board[0][i+1];
-      check(pat);
-    }
-  }
 
   printf("%d\n", ret);
 }
