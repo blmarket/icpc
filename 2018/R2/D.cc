@@ -86,6 +86,7 @@ void check(string pat) {
           }
           fprintf(stderr, "\n");
         }
+        fprintf(stderr, "\n");
         ret = tmp;
       }
     }
