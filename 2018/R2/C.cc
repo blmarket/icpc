@@ -60,6 +60,10 @@ void process() {
     for(auto &it : m2) {
       if(it.second.size() == 1) continue;
       fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second.size());
+      col[i].pb(conflict { i, it.second, (int)it.second.size() - 1 });
+      for(auto jt: it.second) {
+        back[jt][i] = &col[i].back();
+      }
     }
   }
 }
