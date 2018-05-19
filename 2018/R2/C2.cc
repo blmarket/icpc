@@ -42,7 +42,6 @@ bool good() {
       m[V[i][j]]++;
     }
     for(auto it:m) {
-      cout << it.first << " " << it.second << endl;
       if(it.second > 1) return false;
     }
     m.clear();
@@ -74,6 +73,7 @@ void go(int a, int b, int c) {
 }
 
 void process() {
+  ret = 25;
   scanf(" %d", &N);
   for(int i=0;i<N;i++) {
     for(int j=0;j<N;j++) scanf(" %d", &V[i][j]);
