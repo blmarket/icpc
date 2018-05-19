@@ -29,13 +29,20 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int R, B;
 int cum[11] = { -1, 0, 1, 3, 6,10,15,21,28,36,45 };
+vector<int> bt;
 int ret;
 
 int go(int r, int b, int h, int bb, int cnt) {
-  if(cnt > ret) ret = cnt;
+  if(cnt > ret) {
+    for(auto it: bt) cerr << it << " ";
+    cerr << endl;
+    ret = cnt;
+  }
   for(int i=h;i>0;i--) {
     if(r >= cum[i] && b >= i * bb) {
+      bt.pb(i);
       go(r - cum[i], b - i * bb, i, bb+1, cnt + i);
+      bt.pop_back();
     }
   }
 }
