@@ -39,6 +39,7 @@ vector<conflict> row[105], col[105];
 conflict *back[105][105];
 
 void process() {
+  memset(back, 0, sizeof(back));
   for(int i=0;i<105;i++) { row[i].clear(); col[i].clear(); }
   scanf(" %d", &N);
   for(int i=0;i<N;i++) {
@@ -65,6 +66,13 @@ void process() {
         back[jt][i] = &col[i].back();
       }
     }
+  }
+
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<N;j++) {
+      cout << back[i][j] << " ";
+    }
+    cout << endl;
   }
 }
 
