@@ -45,7 +45,7 @@ void col(int a, int b) {
   }
 }
 
-int chry(string &pat, int aa, int bb) {
+int chry(const string &pat, int aa, int bb) {
   memset(mark, 0, sizeof(mark));
   int cnt = 0;
   for(int i=0;i<N;i++) {
@@ -103,6 +103,9 @@ void process() {
   for(int i=0;i<N;i++) {
     scanf(" %s", board[i]);
   }
+
+  cerr << chry("BBWB", 1, 1) << endl;
+  return;
 
   for(int i=0;i<N;i++) {
     for(int j=0;j<M;j++) {
