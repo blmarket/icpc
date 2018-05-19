@@ -68,6 +68,7 @@ int chry(const string &pat, int aa, int bb) {
       if(ret < tmp) ret = tmp;
     }
   }
+  return ret;
 }
 
 void check(string pat) {
