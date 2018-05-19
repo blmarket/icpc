@@ -30,6 +30,8 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 int V[105];
 
+vector<int[3]> r;
+
 void process() {
   scanf(" %d", &N);
   for(int i=0;i<N;i++) {
