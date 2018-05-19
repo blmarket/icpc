@@ -55,6 +55,15 @@ void process() {
 
     s += V[i];
   }
+
+  vector<string> output;
+  while(true) {
+    string row = string(N, '.');
+    for(auto &it : r) {
+      if(it.s < it.t) {
+      }
+    }
+  }
 }
 
 int main(void) {
