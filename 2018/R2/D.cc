@@ -45,7 +45,6 @@ void process() {
   scanf(" %d %d", &N, &M);
   for(int i=0;i<N;i++) {
     scanf(" %s", board[i]);
-    printf("%s\n", board[i]);
   }
 
   for(int i=0;i+1<N;i++) {
