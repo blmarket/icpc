@@ -28,7 +28,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); }
 
 int R, B;
-int cum[11] = { -1, 0, 1, 3, 6,10,15,21,28,36,45 };
+int cum[33] = { -1,  0,  1,  3,  6, 10, 15, 21, 28, 36, 45, 55,  66,  78,  91,  105,  120,  136,  153,  171,  190,  210,  231,  253,  276,  300,  325,  351,  378,  406,  435,  465,  496 };
 vector<int> bt;
 int ret;
 
@@ -50,7 +50,7 @@ int go(int r, int b, int h, int bb, int cnt) {
 void process() {
   ret = 0;
   scanf(" %d %d", &R, &B);
-  go(R, B, 10, 0, 0);
+  go(R, B, 33, 0, 0);
   cout << ret - 1 << endl;
 }
 
