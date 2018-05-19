@@ -73,7 +73,7 @@ int chry(string &pat, int aa, int bb) {
 void check(string pat) {
   if(known.count(pat)) return;
   known.insert(pat);
-  fprintf(stderr, "%s\n", pat.c_str());
+  // fprintf(stderr, "%s\n", pat.c_str());
 
   for(int i=0;i<=N;i++) {
     for(int j=0;j<=M;j++) {
@@ -82,9 +82,9 @@ void check(string pat) {
       if(ret < tmp) {
         for(int k=0;k<N;k++) {
           for(int l=0;l<M;l++) {
-            if(mark[k][l]) printf("%c", board[k][l]); else printf(" ");
+            if(mark[k][l]) fprintf(stderr, "%c", board[k][l]); else fprintf(stderr, " ");
           }
-          printf("\n");
+          fprintf(stderr, "\n");
         }
         ret = tmp;
       }
