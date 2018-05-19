@@ -31,16 +31,62 @@ int N,M;
 char board[25][25];
 set<string> known;
 int ret;
+int mark[25][25];
+
+const int dx[4] = {-1, 0, 0, 1};
+const int dy[4] = {0, -1, 1, 0};
+
+void col(int a, int b) {
+  mark[a][b] = 2;
+  for(int i=0;i<4;i++) {
+    int x = a+ dx[i];
+    int y = b + dy[i];
+    if(mark[x][y] == 1) col(x,y);
+  }
+}
+
+int chry(string &pat, int aa, int bb) {
+  memset(mark, 0, sizeof(mark));
+  int cnt = 0;
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<M;j++) {
+      int idx = (i <= aa ? 2 : 0) + (j <= bb ? 1 : 0);
+      if(board[i][j] == pat[idx]) {
+        mark[i][j] = 1;
+        cnt++;
+      }
+    }
+  }
+  if(cnt == 0) return 0;
+
+  bool tmp = false;
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<M;j++) if(mark[i][j] == 1) {
+      if(tmp) return -1;
+      tmp = true;
+      col(i, j);
+    }
+  }
+  return cnt;
+}
 
 void check(string pat) {
   if(known.count(pat)) return;
   known.insert(pat);
   fprintf(stderr, "%s\n", pat.c_str());
+
+  for(int i=0;i<=N;i++) {
+    for(int j=0;j<=M;j++) {
+      int tmp = chry(pat, i, j);
+      if(tmp == -1) continue;
+      if(ret < tmp) ret = tmp;
+    }
+  }
 }
 
 void process() {
   known.clear();
-  ret = 0;
+  ret = 1;
 
   scanf(" %d %d", &N, &M);
   for(int i=0;i<N;i++) {
