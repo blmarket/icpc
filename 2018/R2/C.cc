@@ -38,8 +38,11 @@ int V[105][105];
 
 vector<node> srcs;
 node *back[105][105];
+unordered_set<node *> visit;
 
 bool go(node *a) {
+  if(visit.count(a)) return false;
+  visit.insert(a);
   if(a->sink) {
     a->sink--;
     return true;
@@ -55,6 +58,7 @@ bool go(node *a) {
 }
 
 bool try_flow() {
+  visit.clear();
   for(auto &it: srcs) {
     if(it.src == 0) continue;
     if(go(&it)) {
@@ -75,6 +79,8 @@ void process() {
 
   int ret = 0;
 
+  vector<node *> clears;
+
   for(int i=0;i<N;i++) {
     unordered_map<int, vector<int>> m2;
     m2.clear();
@@ -84,6 +90,7 @@ void process() {
       if(it.second.size() == 1) continue;
       ret += it.second.size() - 1;
       node *tmp = new node { 0, (int)it.second.size() - 1, map<node *, bool>() };
+      clears.pb(tmp);
       // fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second.size());
       for(auto jt: it.second) {
         back[jt][i] = tmp;
@@ -112,6 +119,10 @@ void process() {
   while(try_flow()) ret--;
 
   cout << ret << endl;
+
+  for(auto &it: clears) {
+    delete it;
+  }
 }
 
 int main(void) {
