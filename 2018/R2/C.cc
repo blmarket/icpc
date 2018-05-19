@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 struct node {
   int src;
   int sink;
-  vector<node *> link;
+  map<node *, bool> link;
 };
 
 int N;
@@ -39,7 +39,29 @@ int V[105][105];
 vector<node> srcs;
 node *back[105][105];
 
+bool go(node *a) {
+  if(a->sink) {
+    a->sink--;
+    return true;
+  }
+  for(auto &it: a->link) {
+    if(!it.second) continue;
+    if(go(it.first)) {
+      it.second = false;
+      it.first->link[a] = true;
+      return true;
+    }
+  }
+}
+
 bool try_flow() {
+  for(auto &it: srcs) {
+    if(it.src == 0) continue;
+    if(go(&it)) {
+      it.src--;
+      return true;
+    }
+  }
   return false;
 }
 
@@ -61,7 +83,7 @@ void process() {
     for(auto &it : m2) {
       if(it.second.size() == 1) continue;
       ret += it.second.size() - 1;
-      node *tmp = new node { 0, (int)it.second.size() - 1, vector<node *>() };
+      node *tmp = new node { 0, (int)it.second.size() - 1, map<node *, bool>() };
       // fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second.size());
       for(auto jt: it.second) {
         back[jt][i] = tmp;
@@ -78,9 +100,9 @@ void process() {
       if(it.second.size() == 1) continue;
       ret += it.second.size() - 1;
 
-      vector<node *> tmp;
+      map<node *, bool> tmp;
       for(auto jt: it.second) {
-        if(back[i][jt] != NULL) tmp.pb(back[i][jt]);
+        if(back[i][jt] != NULL) tmp[back[i][jt]] = true;
       }
 
       srcs.pb(node { (int)it.second.size() - 1, 0, tmp });
