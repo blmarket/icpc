@@ -36,13 +36,15 @@ int mark[25][25];
 const int dx[4] = {-1, 0, 0, 1};
 const int dy[4] = {0, -1, 1, 0};
 
-void col(int a, int b) {
+int col(int a, int b) {
   mark[a][b] = 2;
+  int ret = 1;
   for(int i=0;i<4;i++) {
     int x = a+ dx[i];
     int y = b + dy[i];
-    if(mark[x][y] == 1) col(x,y);
+    if(mark[x][y] == 1) ret += col(x,y);
   }
+  return ret;
 }
 
 int chry(const string &pat, int aa, int bb) {
@@ -60,15 +62,12 @@ int chry(const string &pat, int aa, int bb) {
   }
   if(cnt == 0) return 0;
 
-  bool tmp = false;
   for(int i=0;i<N;i++) {
     for(int j=0;j<M;j++) if(mark[i][j] == 1) {
-      if(tmp) return -1;
-      tmp = true;
-      col(i, j);
+      int tmp = col(i, j);
+      if(ret < tmp) ret = tmp;
     }
   }
-  return cnt;
 }
 
 void check(string pat) {
