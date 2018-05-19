@@ -29,20 +29,16 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int R, B;
 int cum[33] = { -1,  0,  1,  3,  6, 10, 15, 21, 28, 36, 45, 55,  66,  78,  91,  105,  120,  136,  153,  171,  190,  210,  231,  253,  276,  300,  325,  351,  378,  406,  435,  465,  496 };
-vector<int> bt;
 int ret;
 
-int go(int r, int b, int h, int bb, int cnt) {
+void go(int r, int b, int h, int bb, int cnt) {
   if(cnt > ret) {
-    // for(auto it: bt) cerr << it << " ";
-    // cerr << endl;
     ret = cnt;
   }
+  if(bb < (ret - cnt)) return;
   for(int i=h;i>0;i--) {
     if(r >= cum[i] && b >= i * bb) {
-      bt.pb(i);
       go(r - cum[i], b - i * bb, i, bb+1, cnt + i);
-      bt.pop_back();
     }
   }
 }
