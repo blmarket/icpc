@@ -50,7 +50,7 @@ void process() {
   int s = 0;
   for(int i=0;i<N;i++) {
     if(!V[i]) continue;
-    fprintf(stderr, "s=%d e=%d t=%d\n", s, s+V[i], i);
+    // fprintf(stderr, "s=%d e=%d t=%d\n", s, s+V[i], i);
     r.pb(range {s, s+V[i], i});
 
     s += V[i];
