@@ -55,11 +55,11 @@ void process() {
         check(pat);
       }
       if(i+1 < N) {
-        pat = string() + board[i][0] + board[i][0] + board[i+1][0] + board[i+1][1];
+        pat = string() + board[i][j] + board[i][j] + board[i+1][j] + board[i+1][j];
         check(pat);
       }
       if(j+1 < M) {
-        pat = string() + board[0][i] + board[0][i+1] + board[0][i] + board[0][i+1];
+        pat = string() + board[i][j] + board[i][j+1] + board[i][j] + board[i][j+1];
         check(pat);
       }
     }
