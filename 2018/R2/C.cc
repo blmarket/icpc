@@ -44,12 +44,12 @@ void process() {
 
     for(auto &it : m1) {
       if(it.second == 1) continue;
-      fprintf(stderr, "r=%d c=%d cnt=%d\n", i, it.first, it.second);
+      fprintf(stderr, "r=%d c=%d cnt=%d\n", i, it.first, it.second-1);
     }
 
     for(auto &it : m2) {
       if(it.second == 1) continue;
-      fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second);
+      fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second-1);
     }
   }
 }
