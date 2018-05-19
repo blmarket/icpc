@@ -44,7 +44,7 @@ void process() {
   int s = 0;
   for(int i=0;i<N;i++) {
     if(!V[i]) continue;
-    cerr << s << " " << s+V[i] << endl;
+    cerr << s << " " << s+V[i] << " " << i << endl;
     s += V[i];
   }
 }
