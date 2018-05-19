@@ -46,6 +46,8 @@ void process() {
     for(int j=0;j<N;j++) scanf(" %d", &V[i][j]);
   }
 
+  int ret = 0;
+
   for(int i=0;i<N;i++) {
     unordered_map<int, vector<int>> m1, m2;
     m1.clear(); m2.clear();
@@ -54,12 +56,14 @@ void process() {
 
     for(auto &it : m1) {
       if(it.second.size() == 1) continue;
+      ret += it.second.size() - 1;
       fprintf(stderr, "r=%d c=%d cnt=%d\n", i, it.first, it.second.size());
       row[i].pb(conflict { i, it.second, (int)it.second.size() - 1 });
     }
 
     for(auto &it : m2) {
       if(it.second.size() == 1) continue;
+      ret += it.second.size() - 1;
       fprintf(stderr, "c=%d c=%d cnt=%d\n", i, it.first, it.second.size());
       col[i].pb(conflict { i, it.second, (int)it.second.size() - 1 });
       for(auto jt: it.second) {
@@ -68,12 +72,7 @@ void process() {
     }
   }
 
-  for(int i=0;i<N;i++) {
-    for(int j=0;j<N;j++) {
-      cout << back[i][j] << " ";
-    }
-    cout << endl;
-  }
+  cout << ret << endl;
 }
 
 int main(void) {
