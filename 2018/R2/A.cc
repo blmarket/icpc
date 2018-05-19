@@ -67,7 +67,7 @@ void process() {
         found = true;
       }
       if(it.e > it.t+1) {
-        row[it.e] = '/';
+        row[it.e-1] = '/';
         it.e--;
         found = true;
       }
