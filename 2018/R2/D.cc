@@ -55,7 +55,7 @@ void process() {
     }
   }
   if(N == 1 && M == 1) {
-    string pat = string(board[0][0], 4);
+    string pat = string(4, board[0][0]);
     check(pat);
   }
   if(M == 1) {
