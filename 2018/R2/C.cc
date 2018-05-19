@@ -59,7 +59,9 @@ int main(void) {
     scanf(" %d", &T);
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ", i);
+        fflush(stdout);
         process();
+        fflush(stdout);
     }
     return 0;
 }
