@@ -27,10 +27,14 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); }
 
+struct range {
+  int s,e,t;
+};
+
 int N;
 int V[105];
 
-vector<int[3]> r;
+vector<range> r;
 
 void process() {
   scanf(" %d", &N);
@@ -47,6 +51,8 @@ void process() {
   for(int i=0;i<N;i++) {
     if(!V[i]) continue;
     fprintf(stderr, "s=%d e=%d t=%d\n", s, s+V[i], i);
+    r.pb(range {s, s+V[i], i});
+
     s += V[i];
   }
 }
