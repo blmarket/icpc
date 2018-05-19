@@ -44,7 +44,7 @@ void process() {
   int s = 0;
   for(int i=0;i<N;i++) {
     if(!V[i]) continue;
-    cerr << s << " " << s+V[i] << " " << i << endl;
+    fprintf(stderr, "s=%d e=%d t=%d", s, s+V[i], i);
     s += V[i];
   }
 }
