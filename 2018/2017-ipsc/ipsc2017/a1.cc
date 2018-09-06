@@ -12,6 +12,7 @@ vector<PII> output;
 int dp[105][105];
 
 void process() {
+  output.clear();
   int r,c;
   scanf(" %d %d", &r, &c);
   while(r>0 && c>0) {
