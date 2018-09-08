@@ -22,7 +22,7 @@ bool chk1(long long v) {
 
 bool enumerate(long long cur, bool used[10]) {
   if(cur > n) return false;
-  cerr << n << " " << cur << " " << n - cur << endl;
+  // cerr << n << " " << cur << " " << n - cur << endl;
   if(chk1(n - cur)) {
     printf("2 %lld %lld\n", n-cur, cur);
     return true;
