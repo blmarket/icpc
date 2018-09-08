@@ -39,6 +39,7 @@ void process() {
   scanf(" %lld", &n);
   if(chk1(n)) {
     printf("1 %lld\n", n);
+    return;
   }
   bool used[10] = {false};
   for(int i=1;i<10;i++) {
@@ -48,7 +49,6 @@ void process() {
     }
     used[i] = false;
   }
-  printf("FAIL\n");
 }
 
 int main() {
