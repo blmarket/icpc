@@ -20,7 +20,17 @@ bool chk1(long long v) {
   return true;
 }
 
-void enumerate(bool used[10]) {
+bool enumerate(long long cur, bool used[10]) {
+  if(chk1(n - cur)) {
+    printf("2 %lld %lld\n", n-cur, cur);
+    return true;
+  }
+  for(int i=0;i<10;i++) if(!used[i]) { 
+    used[i] = true;
+    if(enumerate(cur * 10 + i, used)) return true;
+    used[i] = false;
+  }
+  return false;
 }
 
 void process() {
@@ -28,7 +38,15 @@ void process() {
   if(chk1(n)) {
     printf("1 %lld\n", n);
   }
-  printf("2 ? ?\n");
+  bool used[10] = {false};
+  for(int i=1;i<10;i++) {
+    used[i] = true;
+    if(enumerate(i, used)) {
+      break;
+    }
+    used[i] = false;
+  }
+  printf("FAIL\n");
 }
 
 int main() {
