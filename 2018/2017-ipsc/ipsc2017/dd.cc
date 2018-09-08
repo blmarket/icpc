@@ -20,6 +20,9 @@ bool chk1(long long v) {
   return true;
 }
 
+void enumerate(bool used[10]) {
+}
+
 void process() {
   scanf(" %lld", &n);
   if(chk1(n)) {
