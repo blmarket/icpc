@@ -44,7 +44,7 @@ void process() {
   for(int i=1;i<10;i++) {
     used[i] = true;
     if(enumerate(i, used)) {
-      break;
+      return;
     }
     used[i] = false;
   }
