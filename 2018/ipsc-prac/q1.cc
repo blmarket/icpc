@@ -83,6 +83,8 @@ void process() {
     dict[ds] = i;
     ss[ds] = str;
     ds++;
+
+    cerr << ds << " " << i << " " << str << endl;
   }
 
   printf("%d\n", fail == -1 ? n : fail-1);
