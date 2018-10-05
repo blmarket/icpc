@@ -27,11 +27,34 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+void solve(int a, int b) {
+  char chr = 'a';
+  int cnt = b*b / a;
+  int tmp = 0;
+  char board[1024];
+  board[b] = 0;
+  for(int i=0;i<b;i++) {
+    for(int j=0;j<b;j++) {
+      board[j] = chr;
+      tmp++;
+      if(tmp == cnt) {
+        chr++;
+        tmp = 0;
+      }
+    }
+    cout << board << endl;
+  }
+}
+
 int main(void) {
-  for(int i=1;i<=26;i++) {
+  int t;
+  scanf(" %d", &t);
+  for(int i=0;i<t;i++) {
+    int a;
+    scanf(" %d", &a);
     for(int j=1;j<=i;j++) {
       if((j*j) % i == 0) {
-        cout << i << " " << j << " " << (j*j/i) << " " << (double)(j / (j*j/i)) << endl;
+        solve(a, j);
         break;
       }
     }
