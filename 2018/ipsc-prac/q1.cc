@@ -65,9 +65,11 @@ void process() {
         fail = i;
         continue;
       }
-      int tmp;
-      sscanf(str.c_str(), " %d", &tmp);
-      if(tmp != i) {
+
+      char tmp[10];
+      sprintf(tmp, "%s", i);
+
+      if(str != tmp) {
         fail = i;
       }
       continue;
@@ -77,10 +79,18 @@ void process() {
       continue;
     }
 
-    if(str.length() != 4) {
+    if(str.size() != 4) {
       fail = i;
       continue;
     }
+
+    for(int j=0;j<str.size();j++) {
+      if(str[j] < 'a' || str[j] > 'z') {
+        fail = i;
+        break;
+      }
+    }
+
     dict[ds] = i;
     ss[ds] = str;
     ds++;
