@@ -49,6 +49,7 @@ void solve(int a, int b) {
 int main(void) {
   int t;
   scanf(" %d", &t);
+  cout << "asdf "<< endl;
   for(int i=0;i<t;i++) {
     int a;
     scanf(" %d", &a);
