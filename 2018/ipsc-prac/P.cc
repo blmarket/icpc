@@ -53,8 +53,8 @@ int main(void) {
     int a;
     scanf(" %d", &a);
     for(int j=1;j<=a;j++) {
+      cerr << (j*j) << endl;
       if((j*j) % i == 0) {
-        cerr << "here" << endl;
         solve(a, j);
         break;
       }
