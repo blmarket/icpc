@@ -60,7 +60,7 @@ void process() {
 
     if(fail != -1) continue;
 
-    cerr << "here" << endl;
+    cerr << "here" << i << endl;
 
     if(str[0] >= '0' && str[0] <= '9') {
       if(supp) {
