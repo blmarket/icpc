@@ -59,7 +59,7 @@ void process() {
       }
     }
 
-    if(fail) continue;
+    if(fail != -1) continue;
 
     if(str[0] >= '0' && str[0] <= '9') {
       if(supp) {
