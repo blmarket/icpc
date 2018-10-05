@@ -80,6 +80,8 @@ void process() {
       ds++;
     }
   }
+
+  cerr << fail << endl;
   printf("%d\n", fail == -1 ? n : fail-1);
 }
 
