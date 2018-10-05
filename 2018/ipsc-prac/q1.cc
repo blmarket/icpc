@@ -72,7 +72,9 @@ void process() {
       }
     }
 
-    cerr << i << " here " << str << endl;
+    if(supp && str.size() == 0) {
+      continue;
+    }
 
     if(str.length() != 4) {
       fail = i;
