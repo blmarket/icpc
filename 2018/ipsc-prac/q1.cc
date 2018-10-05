@@ -50,7 +50,6 @@ void process() {
           fail = i;
           break;
         }
-        cerr << i << " " << str.substr(0, 4) << " " << ss[j] << endl;
         if(str.substr(0, ss[j].size()) != ss[j]) {
           fail = i;
           break;
@@ -72,6 +71,8 @@ void process() {
         fail = i;
       }
     }
+
+    cerr << i << " here" << endl;
 
     if(str.length() != 4) {
       fail = i;
