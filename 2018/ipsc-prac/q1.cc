@@ -82,7 +82,6 @@ void process() {
     }
   }
 
-  cerr << fail << endl;
   printf("%d\n", fail == -1 ? n : fail-1);
 }
 
