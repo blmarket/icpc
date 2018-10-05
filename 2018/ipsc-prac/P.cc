@@ -52,8 +52,8 @@ int main(void) {
   for(int i=0;i<t;i++) {
     int a;
     scanf(" %d", &a);
-    cout << a << endl;
     for(int j=1;j<=a;j++) {
+      cerr << j << endl;
       if((j*j) % i == 0) {
         solve(a, j);
         break;
