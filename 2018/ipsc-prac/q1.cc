@@ -60,8 +60,6 @@ void process() {
 
     if(fail != -1) continue;
 
-    cerr << "here" << i << " " << str[0] << endl;
-
     if(str[0] >= '0' && str[0] <= '9') {
       if(supp) {
         fail = i;
@@ -69,9 +67,11 @@ void process() {
       }
       int tmp;
       sscanf(str.c_str(), " %d", &tmp);
+      cerr << "comp " << tmp << " " << i << endl;
       if(tmp != i) {
         fail = i;
       }
+      continue;
     }
 
     if(supp && str.size() == 0) {
