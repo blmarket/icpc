@@ -77,10 +77,10 @@ void process() {
     if(str.length() != 4) {
       fail = i;
       continue;
-      dict[ds] = i;
-      ss[ds] = str;
-      ds++;
     }
+    dict[ds] = i;
+    ss[ds] = str;
+    ds++;
   }
 
   printf("%d\n", fail == -1 ? n : fail-1);
