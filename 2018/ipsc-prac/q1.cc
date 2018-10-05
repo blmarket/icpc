@@ -40,7 +40,6 @@ void process() {
   scanf(" %d", &n);
   for(int i=1;i<=n;i++) {
     cin >> str;
-    cerr << i << " " << fail << endl;
     if(fail != -1) continue;
 
     bool supp = false;
@@ -60,6 +59,8 @@ void process() {
     }
 
     if(fail != -1) continue;
+
+    cerr << "here" << endl;
 
     if(str[0] >= '0' && str[0] <= '9') {
       if(supp) {
