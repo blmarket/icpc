@@ -31,7 +31,7 @@ int main(void) {
   for(int i=1;i<=26;i++) {
     for(int j=1;j<=i;j++) {
       if((j*j) % i == 0) {
-        cout << i << " " << j << " " << (j*j/i) << endl;
+        cout << i << " " << j << " " << (j*j/i) << " " << (double)(j / (j*j/i)) << endl;
         break;
       }
     }
