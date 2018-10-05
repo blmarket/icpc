@@ -40,6 +40,7 @@ void process() {
   scanf(" %d", &n);
   for(int i=1;i<=n;i++) {
     cin >> str;
+    cerr << i << " " << fail << endl;
     if(fail != -1) continue;
 
     bool supp = false;
