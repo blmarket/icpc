@@ -53,7 +53,6 @@ int main(void) {
     int a;
     scanf(" %d", &a);
     for(int j=1;j<=i;j++) {
-      cerr << j << " "<< endl;
       if((j*j) % i == 0) {
         solve(a, j);
         break;
