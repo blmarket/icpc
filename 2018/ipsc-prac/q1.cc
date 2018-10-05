@@ -40,19 +40,19 @@ void process() {
   scanf(" %d", &n);
   for(int i=1;i<=n;i++) {
     cin >> str;
-    if(fail) continue;
+    if(fail != -1) continue;
 
     bool supp = false;
     for(int j=0;j<ds;j++) {
       if(i % dict[j] == 0) {
         supp = true;
         if(str.size() < ss[j].size()) {
-          fail=true;
+          fail = i;
           break;
         }
         cerr << i << " " << str.substr(0, 4) << " " << ss[j] << endl;
         if(str.substr(0, ss[j].size()) != ss[j]) {
-          fail = true;
+          fail = i;
           break;
         }
         str = str.substr(ss[j].size());
@@ -63,7 +63,7 @@ void process() {
 
     if(str[0] >= '0' && str[0] <= '9') {
       if(supp) {
-        fail = true;
+        fail = i;
         continue;
       }
       int tmp;
@@ -74,7 +74,7 @@ void process() {
     }
 
     if(str.length() != 4) {
-      fail = true;
+      fail = i;
       continue;
       dict[ds] = i;
       ss[ds] = str;
