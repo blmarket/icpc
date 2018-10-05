@@ -67,7 +67,6 @@ void process() {
       }
       int tmp;
       sscanf(str.c_str(), " %d", &tmp);
-      cerr << "comp " << tmp << " " << i << endl;
       if(tmp != i) {
         fail = i;
       }
