@@ -53,9 +53,8 @@ int main(void) {
     int a;
     scanf(" %d", &a);
     cout << a << endl;
-    for(int j=1;j<=i;j++) {
+    for(int j=1;j<=a;j++) {
       if((j*j) % i == 0) {
-        cout << "here" << endl;
         solve(a, j);
         break;
       }
