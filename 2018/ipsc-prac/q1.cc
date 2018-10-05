@@ -72,7 +72,7 @@ void process() {
       }
     }
 
-    cerr << i << " here" << endl;
+    cerr << i << " here " << str << endl;
 
     if(str.length() != 4) {
       fail = i;
