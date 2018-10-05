@@ -67,7 +67,7 @@ void process() {
       }
 
       char tmp[10];
-      sprintf(tmp, "%s", i);
+      sprintf(tmp, "%d", i);
 
       if(str != tmp) {
         fail = i;
