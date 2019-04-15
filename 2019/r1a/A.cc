@@ -12,6 +12,7 @@
 #include <set>
 #include <map>
 #include <vector>
+#include <functional>
 
 #define mp make_pair
 #define each(it, v) for(auto &it: v)
@@ -30,7 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int r, c;
 bool used[25][25];
 
-void enumerate(int a, int b, auto fn) {
+void enumerate(int a, int b, function<void(int, int)>fn) {
   for(int i=0;i<r;i++) {
     for(int j=0;j<c;j++) if(!used[i][j]) {
       if(i == a || j == b) continue;
@@ -43,7 +44,7 @@ void enumerate(int a, int b, auto fn) {
 void process() {
   scanf(" %d %d", &r, &c);
 
-  for(int trial=0;trial<100;trial++) {
+  for(int trial=0;trial<1;trial++) {
     memset(used, 0, sizeof(used));
     int cx = rand() % r;
     int cy = rand() % c;
