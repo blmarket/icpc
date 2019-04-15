@@ -75,6 +75,7 @@ void process() {
   }
   sort(words.begin(), words.end());
   go(0, 0, n);
+  cout << ret << endl;
 }
 
 int main(void) {
