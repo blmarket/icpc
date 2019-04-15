@@ -54,7 +54,7 @@ void process() {
     int cy = rand() % c;
     cerr << "HERE" << endl;
 
-    for(int i=0;i<r*c;i++) {
+    for(int i=0;i<r*c-1;i++) {
       cerr << cx + 1 << " " << cy + 1 << endl;
       res.pb(mp(cx, cy));
       used[cx][cy] = 1;
@@ -81,6 +81,7 @@ void process() {
       int rr = rand() % cs.size();
       cx = cs[rr].first; cy = cs[rr].second;
     }
+    res.pb(mp(cx, cy));
     if(!fail) break;
   }
   if(fail) {
