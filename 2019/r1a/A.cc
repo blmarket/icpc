@@ -52,7 +52,6 @@ void process() {
     fail = false;
     int cx = rand() % r;
     int cy = rand() % c;
-    cx = cy = 0; // remove
 
     for(int i=0;i<r*c;i++) {
       cerr << cx << " " << cy << endl;
