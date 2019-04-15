@@ -54,7 +54,6 @@ void process() {
     int cy = rand() % c;
 
     for(int i=0;i<r*c;i++) {
-      cerr << cx << " " << cy << endl;
       res.pb(mp(cx, cy));
       used[cx][cy] = 1;
 
