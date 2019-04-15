@@ -37,7 +37,6 @@ char chr(const string &w, int pos) {
 }
 
 int go(int pos, int s, int e) {
-  cerr << pos << " " << s << " " << e << " " << words[s] << " " << words[s].substr(0, pos) << endl;
   if(s+1 >= e) return e-s;
   int ss = s;
   int carry = 0;
@@ -57,6 +56,7 @@ int go(int pos, int s, int e) {
   carry += go(pos+1, ss, e);
 
   if(!pos) return 0;
+  cerr << pos << " " << s << " " << e << " " << words[s] << " " << words[s].substr(0, pos) << " " << carry << endl;
   if(carry >= 2) {
     ret++;
     carry -= 2;
