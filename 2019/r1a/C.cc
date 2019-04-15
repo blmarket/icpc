@@ -29,10 +29,37 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 vector<string> words;
+int ret = 0;
 
-void go(int pos, int s, int e) {
-  if(s+1 >= e) return;
-  cerr << words[s+1][pos] << endl;
+char chr(const string &w, int pos) {
+  if(pos < w.size()) return w[pos];
+  return 0;
+}
+
+int go(int pos, int s, int e) {
+  if(s+1 >= e) return e-s;
+  int ss = s;
+  int carry = 0;
+  for(int i=s;i<e;i++) {
+    if(i>s && chr(words[i-1], pos) != chr(words[i], pos)) {
+      carry += go(pos+1, ss, i);
+      ss = i;
+      continue;
+    }
+
+    if(words[i].size() <= pos) {
+      carry += go(pos+1, ss, i);
+      ss = i + 1;
+      continue;
+    }
+  }
+
+  if(!pos) return 0;
+  if(carry >= 2) {
+    ret++;
+    carry -= 2;
+  }
+  return carry;
 }
 
 void process() {
