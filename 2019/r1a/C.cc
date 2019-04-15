@@ -58,6 +58,7 @@ int go(int pos, int s, int e) {
   if(carry >= 2) {
     ret++;
     carry -= 2;
+    cerr << words[s].substr(0, pos) << endl;
   }
   return carry;
 }
