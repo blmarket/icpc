@@ -67,6 +67,7 @@ int go(int pos, int s, int e) {
 void process() {
   scanf(" %d", &n);
   words.clear();
+  ret = 0;
   for(int i=0;i<n;i++) {
     char tmp[1024];
     scanf(" %s", tmp);
