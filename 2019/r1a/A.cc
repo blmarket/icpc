@@ -73,11 +73,8 @@ void process() {
               my = y;
           }
       });
-      if(mm == 5000) {
-        fail = true;
-        break;
-      }
-      cx = mx; cy = my;
+      int rr = rand() % cs.size();
+      cx = cs[rr].first; cy = cs[rr].second;
     }
     if(!fail) break;
   }
