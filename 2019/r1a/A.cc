@@ -52,6 +52,7 @@ void process() {
     fail = false;
     int cx = rand() % r;
     int cy = rand() % c;
+    cx = 1; cy = 2;
 
     for(int i=0;i<r*c;i++) {
       cerr << cx + 1 << " " << cy + 1 << endl;
