@@ -76,7 +76,7 @@ void process() {
   }
   cerr << endl;
   go(0, 0, n);
-  cout << ret << endl;
+  cout << ret * 2 << endl;
 }
 
 int main(void) {
