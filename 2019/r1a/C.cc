@@ -53,7 +53,7 @@ int go(int pos, int s, int e) {
       continue;
     }
   }
-  cerr << ss << " " << e << endl;
+  cerr << ss << " " << e << " " << carry << endl;
   carry += go(pos+1, ss, e);
 
   if(!pos) return 0;
