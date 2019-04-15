@@ -47,11 +47,10 @@ int go(int pos, int s, int e) {
       continue;
     }
   }
-  cerr << ss << " " << e << " " << carry << endl;
   carry += go(pos+1, ss, e);
 
   if(!pos) return 0;
-  cerr << pos << " " << s << " " << e << " " << words[s] << " " << words[s].substr(0, pos) << " " << carry << endl;
+  // cerr << pos << " " << s << " " << e << " " << words[s] << " " << words[s].substr(0, pos) << " " << carry << endl;
   if(carry >= 2) {
     ret++;
     carry -= 2;
