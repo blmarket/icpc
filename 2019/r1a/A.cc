@@ -51,9 +51,14 @@ void process() {
     cx = cy = 0; // remove
     cerr << cx << " " << cy << endl;
     used[cx][cy] = 1;
+
     enumerate(cx, cy, [&](int x, int y) {
-        fprintf(stderr, "%d %d\n", x, y);
+        int ret = 0;
+        enumerate(x, y, [&](int xx, int yy) { 
+            ret++;
         });
+        fprintf(stderr, "%d %d %d\n", x, y, ret);
+    });
   }
 }
 
