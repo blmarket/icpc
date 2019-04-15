@@ -28,10 +28,27 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int r, c;
+bool used[25][25];
+
+void enumerate(int a, int b, auto fn) {
+  for(int i=0;i<r;i++) {
+    for(int j=0;j<c;j++) if(!used[i][j]) {
+      if(i == a || j == b) continue;
+      if(i+j == a+b || i-j == a-b) continue;
+      fn(i, j);
+    }
+  }
+}
 
 void process() {
   scanf(" %d %d", &r, &c);
-  if(r < c) swap(r, c);
+
+  for(int trial=0;trial<100;trial++) {
+    memset(used, 0, sizeof(used));
+    int cx = rand() % r;
+    int cy = rand() % c;
+    used[cx][cy] = 1;
+  }
 }
 
 int main(void) {
