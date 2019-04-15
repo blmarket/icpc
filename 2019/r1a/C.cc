@@ -54,7 +54,7 @@ int go(int pos, int s, int e) {
   if(carry >= 2) {
     ret++;
     carry -= 2;
-    cerr << words[s].substr(0, pos) << endl;
+    // cerr << words[s].substr(0, pos) << endl;
   }
   return carry;
 }
@@ -71,10 +71,7 @@ void process() {
     words.pb(tmp);
   }
   sort(words.begin(), words.end());
-  for(auto w: words) {
-    cerr << w << " ";
-  }
-  cerr << endl;
+  // for(auto w: words) { cerr << w << " "; } cerr << endl;
   go(0, 0, n);
   cout << ret * 2 << endl;
 }
