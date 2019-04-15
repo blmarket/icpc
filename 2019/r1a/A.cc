@@ -42,23 +42,42 @@ void enumerate(int a, int b, function<void(int, int)>fn) {
 }
 
 void process() {
+  vector<PII> res;
   scanf(" %d %d", &r, &c);
 
   for(int trial=0;trial<1;trial++) {
+    res.clear();
     memset(used, 0, sizeof(used));
     int cx = rand() % r;
     int cy = rand() % c;
     cx = cy = 0; // remove
-    cerr << cx << " " << cy << endl;
-    used[cx][cy] = 1;
 
-    enumerate(cx, cy, [&](int x, int y) {
-        int ret = 0;
-        enumerate(x, y, [&](int xx, int yy) { 
-            ret++;
-        });
-        fprintf(stderr, "%d %d %d\n", x, y, ret);
-    });
+    bool fail = false;
+
+    for(int i=0;i<r*c;i++) {
+      cerr << cx << " " << cy << endl;
+      res.pb(mp(cx, cy));
+      used[cx][cy] = 1;
+
+      int mx, my, mm = -1;
+      enumerate(cx, cy, [&](int x, int y) {
+          int ret = 0;
+          enumerate(x, y, [&](int xx, int yy) { 
+              ret++;
+          });
+          if(ret > mm) {
+              mm = ret;
+              mx = x;
+              my = y;
+          }
+      });
+      if(mm == -1) {
+        fail = true;
+        break;
+      }
+      cx = mx; cy = my;
+    }
+    if(!fail) break;
   }
 }
 
