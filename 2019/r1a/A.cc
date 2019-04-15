@@ -48,6 +48,7 @@ void process() {
     memset(used, 0, sizeof(used));
     int cx = rand() % r;
     int cy = rand() % c;
+    cx = cy = 0; // remove
     cerr << cx << " " << cy << endl;
     used[cx][cy] = 1;
     enumerate(cx, cy, [&](int x, int y) {
