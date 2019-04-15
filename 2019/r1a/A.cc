@@ -46,7 +46,7 @@ void process() {
   scanf(" %d %d", &r, &c);
 
   bool fail;
-  for(int trial=0;trial<100;trial++) {
+  for(int trial=0;trial<1;trial++) {
     res.clear();
     memset(used, 0, sizeof(used));
     fail = false;
@@ -54,6 +54,7 @@ void process() {
     int cy = rand() % c;
 
     for(int i=0;i<r*c;i++) {
+      cerr << cx << " " << cy << endl;
       res.pb(mp(cx, cy));
       used[cx][cy] = 1;
 
