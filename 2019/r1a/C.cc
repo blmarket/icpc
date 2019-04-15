@@ -77,8 +77,9 @@ void process() {
   }
   sort(words.begin(), words.end());
   for(auto w: words) {
-    cerr << w << endl;
+    cerr << w << " ";
   }
+  cerr << endl;
   go(0, 0, n);
   cout << ret << endl;
 }
