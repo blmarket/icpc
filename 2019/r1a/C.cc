@@ -46,12 +46,6 @@ int go(int pos, int s, int e) {
       ss = i;
       continue;
     }
-
-    if(words[i].size() <= pos) {
-      carry += go(pos+1, ss, i);
-      ss = i + 1;
-      continue;
-    }
   }
   cerr << ss << " " << e << " " << carry << endl;
   carry += go(pos+1, ss, e);
