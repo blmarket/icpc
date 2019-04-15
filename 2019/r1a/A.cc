@@ -58,19 +58,19 @@ void process() {
       res.pb(mp(cx, cy));
       used[cx][cy] = 1;
 
-      int mx, my, mm = -1;
+      int mx, my, mm = 5000;
       enumerate(cx, cy, [&](int x, int y) {
           int ret = 0;
           enumerate(x, y, [&](int xx, int yy) { 
               ret++;
           });
-          if(ret > mm) {
+          if(ret < mm) {
               mm = ret;
               mx = x;
               my = y;
           }
       });
-      if(mm == -1) {
+      if(mm == 5000) {
         fail = true;
         break;
       }
