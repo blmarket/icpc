@@ -32,6 +32,7 @@ vector<string> words;
 
 void process() {
   scanf(" %d", &n);
+  words.clear();
   for(int i=0;i<n;i++) {
     char tmp[1024];
     scanf(" %s", tmp);
@@ -39,6 +40,7 @@ void process() {
     reverse(tmp, tmp + len);
     words.pb(tmp);
   }
+  for(int i=0;i<n;i++) cerr << words[i] << endl;
 }
 
 int main(void) {
