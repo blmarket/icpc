@@ -52,10 +52,10 @@ void process() {
     fail = false;
     int cx = rand() % r;
     int cy = rand() % c;
-    cerr << "HERE" << endl;
+    // cerr << "HERE" << endl;
 
     for(int i=0;i<r*c-1;i++) {
-      cerr << cx + 1 << " " << cy + 1 << endl;
+      // cerr << cx + 1 << " " << cy + 1 << endl;
       res.pb(mp(cx, cy));
       used[cx][cy] = 1;
 
