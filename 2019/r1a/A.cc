@@ -48,6 +48,9 @@ void process() {
     int cx = rand() % r;
     int cy = rand() % c;
     used[cx][cy] = 1;
+    enumerate(cx, cy, [&](int x, int y) {
+        cerr << cx << " " << cy << endl;
+        });
   }
 }
 
