@@ -54,7 +54,7 @@ void process() {
     int cy = rand() % c;
 
     for(int i=0;i<r*c;i++) {
-      cerr << cx << " " << cy << endl;
+      cerr << cx + 1 << " " << cy + 1 << endl;
       res.pb(mp(cx, cy));
       used[cx][cy] = 1;
 
@@ -84,7 +84,7 @@ void process() {
   }
   printf("POSSIBLE\n");
   for(int i=0;i<res.size();i++) {
-    printf("%d %d\n", res[i].first, res[i].second);
+    printf("%d %d\n", res[i].first + 1, res[i].second + 1);
   }
 }
 
