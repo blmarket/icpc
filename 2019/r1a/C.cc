@@ -53,6 +53,7 @@ int go(int pos, int s, int e) {
       continue;
     }
   }
+  carry += go(pos+1, ss, e);
 
   if(!pos) return 0;
   if(carry >= 2) {
