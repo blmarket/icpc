@@ -30,6 +30,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 int n;
 vector<string> words;
 
+void go(int pos, int s, int e) {
+  if(s+1 >= e) return;
+  cerr << words[s+1][pos] << endl;
+}
+
 void process() {
   scanf(" %d", &n);
   words.clear();
@@ -40,7 +45,8 @@ void process() {
     reverse(tmp, tmp + len);
     words.pb(tmp);
   }
-  for(int i=0;i<n;i++) cerr << words[i] << endl;
+  sort(words.begin(), words.end());
+  go(0, 0, n);
 }
 
 int main(void) {
