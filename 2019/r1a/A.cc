@@ -59,7 +59,10 @@ void process() {
       used[cx][cy] = 1;
 
       int mx, my, mm = 5000;
+      vector<PII> cs;
+      cs.clear();
       enumerate(cx, cy, [&](int x, int y) {
+          cs.pb(mp(x, y));
           int ret = 0;
           enumerate(x, y, [&](int xx, int yy) { 
               ret++;
