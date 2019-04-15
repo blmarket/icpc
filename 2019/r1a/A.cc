@@ -46,7 +46,7 @@ void process() {
   scanf(" %d %d", &r, &c);
 
   bool fail;
-  for(int trial=0;trial<1;trial++) {
+  for(int trial=0;trial<100;trial++) {
     res.clear();
     memset(used, 0, sizeof(used));
     fail = false;
