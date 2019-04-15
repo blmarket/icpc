@@ -45,14 +45,14 @@ void process() {
   vector<PII> res;
   scanf(" %d %d", &r, &c);
 
+  bool fail;
   for(int trial=0;trial<1;trial++) {
     res.clear();
     memset(used, 0, sizeof(used));
+    fail = false;
     int cx = rand() % r;
     int cy = rand() % c;
     cx = cy = 0; // remove
-
-    bool fail = false;
 
     for(int i=0;i<r*c;i++) {
       cerr << cx << " " << cy << endl;
@@ -78,6 +78,14 @@ void process() {
       cx = mx; cy = my;
     }
     if(!fail) break;
+  }
+  if(fail) {
+    printf("IMPOSSIBLE\n");
+    return;
+  }
+  printf("POSSIBLE\n");
+  for(int i=0;i<res.size();i++) {
+    printf("%d %d\n", res[i].first, res[i].second);
   }
 }
 
