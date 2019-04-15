@@ -73,6 +73,10 @@ void process() {
               my = y;
           }
       });
+      if(cs.size() == 0) {
+        fail = true;
+        break;
+      }
       int rr = rand() % cs.size();
       cx = cs[rr].first; cy = cs[rr].second;
     }
