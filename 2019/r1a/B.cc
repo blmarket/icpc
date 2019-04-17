@@ -53,7 +53,7 @@ bool process() {
   }
   cerr << endl;
 
-  printf("-1\n");
+  printf("1\n");
   fflush(stdout);
   return false;
 }
