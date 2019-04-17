@@ -46,7 +46,9 @@ tuple<LL, LL> euclid(LL A, LL B) {
     tie(old_t, t) = make_tuple(t, old_t - q * t);
   }
 
-  cerr << old_s << " " << old_t << endl;
+  if(old_s < 0) old_s += A;
+  if(old_t < 0) old_t += B;
+  return make_tuple(old_s, old_t);
 }
 
 tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
