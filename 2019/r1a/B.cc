@@ -34,12 +34,12 @@ int cs[] = { 16,9,5,7,11,13,17 };
 tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
   LL m1 = A;
   while(m1 % B > 1) {
-    m1 *= ((m1%B) + B - 1) / B;
+    m1 *= (B + (m1%B) - 1) / (m1 % B);
     cerr << m1 << " " << m1 % B << endl;
   }
   LL m2 = B;
   while(m2 % A > 1) {
-    m2 *= ((m2%A) + A - 1) / A;
+    m2 *= (A + (m2 % A) - 1) / (m2 % A);
   }
   LL r = A * B;
   return make_tuple(r, (m1 * b + m2 * a) % r);
