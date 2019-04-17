@@ -16,6 +16,7 @@
 #define mp make_pair
 #define each(it, v) for(auto &it: v)
 #define pb emplace_back
+#define MT make_tuple
 
 using namespace std;
 
@@ -32,7 +33,20 @@ int T, N, M;
 int cs[] = { 16,9,5,7,11,13,17 };
 
 tuple<LL, LL> euclid(LL A, LL B) {
+  if(A < B) swap(A, B);
 
+  LL s = 0, old_s = 1;
+  LL t = 1, old_t = 0;
+  LL r = B, old_r = A;
+
+  while(r) {
+    LL q = old_r / r;
+    tie(old_r, r) = make_tuple(r, old_r - q * r);
+    tie(old_s, s) = make_tuple(s, old_s - q * s);
+    tie(old_t, t) = make_tuple(t, old_t - q * t);
+  }
+
+  cerr << old_s << " " << old_t << endl;
 }
 
 tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
