@@ -31,6 +31,10 @@ int T, N, M;
 
 int cs[] = { 16,9,5,7,11,13,17 };
 
+tuple<LL, LL> euclid(LL A, LL B) {
+
+}
+
 tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
   LL m1 = A;
   while(m1 % B > 1) {
@@ -76,6 +80,9 @@ bool process() {
 }
 
 int main(void) {
+  int a = 1, b = 2;
+  tie(a,b) = make_tuple(b,a);
+  cerr << a << " " << b << endl;
   chinese(16, 1, 9, 1);
 
   scanf(" %d %d %d", &T, &N, &M);
