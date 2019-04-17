@@ -40,6 +40,7 @@ tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
   LL m2 = B;
   while(m2 % A > 1) {
     m2 *= (A + (m2 % A) - 1) / (m2 % A);
+    cerr << m2 << " " << m2 % A << endl;
   }
   LL r = A * B;
   return make_tuple(r, (m1 * b + m2 * a) % r);
