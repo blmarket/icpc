@@ -94,10 +94,7 @@ bool process() {
 }
 
 int main(void) {
-  int a = 1, b = 2;
-  tie(a,b) = make_tuple(b,a);
-  cerr << a << " " << b << endl;
-  chinese(16, 1, 9, 1);
+  euclid(16, 9);
 
   scanf(" %d %d %d", &T, &N, &M);
   for(int i=1;i<=T;i++) {
