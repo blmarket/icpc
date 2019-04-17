@@ -55,7 +55,10 @@ bool process() {
 
   printf("1\n");
   fflush(stdout);
-  return false;
+  int judge_response;
+  scanf(" %d", &judge_response);
+  if(judge_response == -1) return false;
+  return true;
 }
 
 int main(void) {
