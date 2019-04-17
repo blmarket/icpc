@@ -46,8 +46,8 @@ tuple<LL, LL> euclid(LL A, LL B) {
     tie(old_t, t) = make_tuple(t, old_t - q * t);
   }
 
-  if(old_s < 0) old_s += A;
-  if(old_t < 0) old_t += B;
+  if(old_s < 0) old_s += B;
+  if(old_t < 0) old_t += A;
   return make_tuple(old_s, old_t);
 }
 
