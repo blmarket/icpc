@@ -31,8 +31,22 @@ int T, N, M;
 
 int cs[] = { 16,9,5,7,11,13,17 };
 
+tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
+  LL m1 = A;
+  while(m1 % B > 1) {
+    m1 *= (m1 + B - 1) / B;
+  }
+  LL m2 = B;
+  while(m2 % A > 1) {
+    m2 *= (m2 + A - 1) / A;
+  }
+  LL r = A * B;
+  return make_tuple(r, (m1 * b + m2 * a) % r);
+}
+
 bool process() {
-  int rs[7];
+  long long denom = 1;
+  long long res = 0;
 
   for(int i=0;i<7;i++) {
     for(int j=0;j<18;j++) printf("%d ", cs[i]);
@@ -45,13 +59,11 @@ bool process() {
       sum += tmp;
     }
     sum %= cs[i];
-    rs[i] = sum;
+
+    tie(denom, res) = chinese(denom, res, cs[i], sum);
   }
 
-  for(auto it: rs) {
-    cerr << it << " ";
-  }
-  cerr << endl;
+  cerr << denom << " " << res << endl;
 
   printf("1\n");
   fflush(stdout);
