@@ -96,7 +96,9 @@ bool process() {
 }
 
 int main(void) {
-  euclid(16, 9);
+  LL t1, t2;
+  tie(t1, t2) = euclid(16, 9);
+  cerr << t1 << " " << t2 << endl;
 
   scanf(" %d %d %d", &T, &N, &M);
   for(int i=1;i<=T;i++) {
