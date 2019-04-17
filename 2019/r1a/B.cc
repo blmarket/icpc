@@ -54,7 +54,7 @@ tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
   tie(m1, m2) = euclid(A, B);
   cerr << m1 << " " << m2 << endl;
   LL M = A * B;
-  return make_tuple(M, (m1 * b + m2 * a) % M);
+  return make_tuple(M, (m1 * A * b + m2 * B * a) % M);
 }
 
 bool process() {
