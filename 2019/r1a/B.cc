@@ -35,7 +35,7 @@ tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
   LL m1 = A;
   while(m1 % B > 1) {
     m1 *= (m1 + B - 1) / B;
-    cerr << m1 << endl;
+    cerr << m1 << " " << m1 % B << endl;
   }
   LL m2 = B;
   while(m2 % A > 1) {
