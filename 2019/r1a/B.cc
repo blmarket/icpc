@@ -89,7 +89,7 @@ bool process() {
 
 int main(void) {
   LL t1, t2;
-  tie(t1, t2) = chinese(16, 3, 9, 2);
+  tie(t1, t2) = chinese(16, 3, 9, 3);
   cerr << t1 << " " << t2 << endl;
 
   scanf(" %d %d %d", &T, &N, &M);
