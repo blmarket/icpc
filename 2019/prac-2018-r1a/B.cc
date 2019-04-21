@@ -35,8 +35,27 @@ void process() {
   for(int i=0;i<c;i++) {
     scanf(" %d %d %d", &m[i], &s[i], &p[i]);
   }
-  LL s = 0, e = 3e18;
-  cout << s << " " << e << endl;
+  LL ss = 0, e = 3e18;
+  auto chk = [&](LL target) -> bool {
+    vector<LL> cs(c);
+    for(int i=0;i<c;i++) {
+      cs[i] = (min((target - p[i]) / s[i], (LL)m[i]));
+    }
+    sort(cs.rbegin(), cs.rend());
+    LL sum = 0;
+    for(int i=0;i<r;i++) sum += cs[i];
+    return sum >= b;
+  };
+
+  while(ss + 1 < e) {
+    LL target = (ss+e+1) / 2;
+    if(chk(target)) {
+      ss = target;
+    } else {
+      e = target;
+    }
+  }
+  cout << e << endl;
 }
 
 int main(void) {
