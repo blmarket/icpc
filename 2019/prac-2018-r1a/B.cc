@@ -42,6 +42,7 @@ void process() {
       cs.pb(min((target - p[i]) / s[i], (LL)m[i]));
     }
     sort(cs.rbegin(), cs.rend());
+    cerr << "SS : ";
     for(int i=0;i<cs.size();i++) cerr << cs[i] << " ";
     cerr << endl;
     LL sum = 0;
