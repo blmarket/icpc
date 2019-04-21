@@ -35,7 +35,7 @@ void process() {
   for(int i=0;i<c;i++) {
     scanf(" %d %d %d", &m[i], &s[i], &p[i]);
   }
-  LL ss = 0, e = 4e18;
+  LL ss = 0, e = 1e19;
   auto chk = [&](LL target) -> bool {
     vector<LL> cs;
     for(int i=0;i<c;i++) {
