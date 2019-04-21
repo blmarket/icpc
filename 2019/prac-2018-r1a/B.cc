@@ -42,9 +42,7 @@ void process() {
       cs.pb(max(min((target - p[i]) / s[i], (LL)m[i]), 0LL));
     }
     sort(cs.rbegin(), cs.rend());
-    cerr << "SS : ";
-    for(int i=0;i<cs.size();i++) cerr << cs[i] << " ";
-    cerr << endl;
+    // for(int i=0;i<cs.size();i++) cerr << cs[i] << " ";
     LL sum = 0;
     for(int i=0;i<r;i++) sum += cs[i];
     return sum >= b;
