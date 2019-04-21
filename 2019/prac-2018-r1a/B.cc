@@ -39,7 +39,7 @@ void process() {
   auto chk = [&](LL target) -> bool {
     vector<LL> cs;
     for(int i=0;i<c;i++) {
-      cs.pb(min((target - p[i]) / s[i], (LL)m[i]));
+      cs.pb(max(min((target - p[i]) / s[i], (LL)m[i]), 0LL));
     }
     sort(cs.rbegin(), cs.rend());
     cerr << "SS : ";
