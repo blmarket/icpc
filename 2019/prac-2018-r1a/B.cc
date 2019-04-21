@@ -50,7 +50,7 @@ void process() {
 
   while(ss + 1 < e) {
     LL target = (ss+e+1) / 2;
-    cerr << ss << " " << e << " " << target << " " << chk(target) << endl;
+    // cerr << ss << " " << e << " " << target << " " << chk(target) << endl;
     if(chk(target)) {
       e = target;
     } else {
