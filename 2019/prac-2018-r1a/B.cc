@@ -51,9 +51,9 @@ void process() {
     LL target = (ss+e+1) / 2;
     cerr << ss << " " << e << " " << target << " " << chk(target) << endl;
     if(chk(target)) {
-      ss = target;
-    } else {
       e = target;
+    } else {
+      ss = target;
     }
   }
   cout << e << endl;
