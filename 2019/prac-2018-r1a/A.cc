@@ -53,6 +53,7 @@ bool process() {
   if(cnt % ((h+1) * (v+1))) {
     return false;
   }
+  int targetsize = cnt / (h+1) / (v+1);
 
   vector<int> s1, s2;
   int cc1 = 0;
@@ -76,6 +77,23 @@ bool process() {
     if(cc2 == (cnt / (v+1))) {
       s2.pb(i+1);
       cc2 = 0;
+    }
+  }
+
+  auto area = [&](int sx, int ex, int sy, int ey) -> int {
+    int ret = 0;
+    for(int i=sx;i<ex;i++) {
+      for(int j=sy;j<ey;j++) {
+        ret += data[i][j] == '@';
+      }
+    }
+    return ret;
+  };
+
+  for(int i=0;i<h;i++) {
+    for(int j=0;j<v;j++) {
+      if (area(s1[i], s1[i+1], s2[j], s2[j+1]) != targetsize)
+        return false;
     }
   }
 
