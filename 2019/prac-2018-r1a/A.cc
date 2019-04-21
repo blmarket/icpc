@@ -97,10 +97,10 @@ bool process() {
     }
   }
 
-  for(int i=0;i<s1.size();i++) cout << s1[i] << " ";
-  cout << endl;
-  for(int i=0;i<s2.size();i++) cout << s2[i] << " ";
-  cout << endl;
+  // for(int i=0;i<s1.size();i++) cout << s1[i] << " ";
+  // cout << endl;
+  // for(int i=0;i<s2.size();i++) cout << s2[i] << " ";
+  // cout << endl;
 
   return true;
 }
