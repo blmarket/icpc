@@ -37,11 +37,13 @@ void process() {
   }
   LL ss = 0, e = 3e18;
   auto chk = [&](LL target) -> bool {
-    vector<LL> cs(c);
+    vector<LL> cs;
     for(int i=0;i<c;i++) {
-      cs[i] = (min((target - p[i]) / s[i], (LL)m[i]));
+      cs.pb(min((target - p[i]) / s[i], (LL)m[i]));
     }
     sort(cs.rbegin(), cs.rend());
+    for(int i=0;i<cs.size();i++) cerr << cs[i] << " ";
+    cerr << endl;
     LL sum = 0;
     for(int i=0;i<r;i++) sum += cs[i];
     return sum >= b;
