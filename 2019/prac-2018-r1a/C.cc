@@ -43,6 +43,7 @@ void go(int a, double rem, double buff) {
   }
   for(idx = idx-1; idx >= 0; idx--) {
     go(idx, rem - h2[idx], buff + 2 * sqrt(sqr(data[idx].first) + sqr(data[idx].second)) - h2[idx]);
+    return;
   }
 }
 
