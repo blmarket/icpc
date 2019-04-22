@@ -71,7 +71,7 @@ void process() {
   if (buff + base >= P) {
     printf("%.12lf\n", P);
   } else {
-    printf("..12lf\n", buff + base);
+    printf("%.12lf\n", buff + base);
   }
 }
 
