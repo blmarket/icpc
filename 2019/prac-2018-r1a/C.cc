@@ -35,6 +35,7 @@ vector<double> h2;
 double mmax;
 
 void go(int a, double rem, double buff) {
+  cerr << a << " " << rem << " " << buff << endl;
   int idx = lower_bound(h2.begin(), h2.begin() + a, rem) - h2.begin();
   if(idx == 0) {
     mmax = min(mmax, max(0.0, rem - buff));
