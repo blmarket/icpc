@@ -65,15 +65,14 @@ void process() {
       base += data[i].first * 2;
       buff += 2 * sqrt(sqr(data[i].first) + sqr(data[i].second)) - data[i].first * 2;
     } else {
-      if (buff + base >= P) {
-        printf("%.12lf\n", P);
-      } else {
-        printf("..12lf\n", buff + base);
-      }
-      return;
+      break;
     }
   }
-
+  if (buff + base >= P) {
+    printf("%.12lf\n", P);
+  } else {
+    printf("..12lf\n", buff + base);
+  }
 }
 
 int main(void) {
