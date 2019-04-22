@@ -35,8 +35,8 @@ vector<double> h2;
 double mmax;
 
 void go(int a, double rem, double buff) {
-  // cerr << a << " " << rem << " " << buff << endl;
-  int idx = lower_bound(h2.begin(), h2.begin() + a, rem) - h2.begin();
+  int idx = a;
+
   if(idx == 0) {
     mmax = min(mmax, max(0.0, rem - buff));
     return;
@@ -59,16 +59,21 @@ void process() {
     data.pb(mp(a, b));
     base += a*2+b*2;
   }
-  mmax = P - base;
-  sort(data.begin(), data.end());
+  double buff = 0;
   for(int i=0;i<N;i++) {
-    h2.pb(data[i].first * 2);
+    if (base + data[i].first * 2 <= P) {
+      base += data[i].first * 2;
+      buff += 2 * sqrt(sqr(data[i].first) + sqr(data[i].second)) - data[i].first * 2;
+    } else {
+      if (buff + base >= P) {
+        printf("%.12lf\n", P);
+      } else {
+        printf("..12lf\n", buff + base);
+      }
+      return;
+    }
   }
-  // cerr << rem << endl;
-  // for(int i=0;i<N;i++) cerr << data[i].first << "," << data[i].second << " ";
-  // cerr << endl;
-  go(N, P-base, 0.0);
-  printf("%.12lf\n", P - mmax);
+
 }
 
 int main(void) {
