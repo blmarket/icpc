@@ -98,13 +98,11 @@ void process() {
         ranges.pb(st, et);
         st = ranges2[i].first;
         et = ranges2[i].second;
-        if(st + base > P) break;
       } else {
         et = ranges2[i].second;
       }
     }
-    if(st + base <= P)
-      ranges.pb(st, et);
+    ranges.pb(st, et);
 
     for(auto jt: ranges) {
       cerr << jt.first << "," << jt.second << " ";
