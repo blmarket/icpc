@@ -111,6 +111,8 @@ void process() {
     cerr << endl;
   }
 
+  cerr << base << endl;
+
   if(ranges.size() == 0) {
     printf("%.12lf\n", (double)base);
   } else {
