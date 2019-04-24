@@ -72,23 +72,33 @@ void process() {
     double r1 = it.first * 2;
     double r2 = 2 * hypot(it.first, it.second);
 
-    ranges2.clear();
+    ranges2 = ranges;
     
     if(r1 + base > P) {
       continue;
     }
 
-    ranges2.pb(mp(r2, r1));
+    ranges2.pb(mp(r1, r2));
     for(auto rr: ranges) {
-      double nr2 = rr.first + r2;
-      double nr1 = rr.second + r1;
-      ranges2.pb(mp(nr2, nr1));
+      double nr1 = rr.first + r1;
+      double nr2 = rr.second + r2;
+      ranges2.pb(mp(nr1, nr2));
     }
     sort(ranges2.begin(), ranges2.end());
 
+    ranges.clear();
     //merge ranges
-    for(auto rr: ranges2) {
-      cerr << rr.first << "," << rr.second << " ";
+    double st = ranges2[0].first, et = ranges2[0].second;
+    for(int i=1;i<ranges2.size();i++) {
+      if(et < ranges2[i].first || i+1 >= ranges2.size()) {
+        ranges.pb(st, et);
+      } else {
+        et = ranges2[i].second;
+      }
+    }
+
+    for(auto jt: ranges) {
+      cerr << jt.first << "," << jt.second << " ";
     }
     cerr << endl;
   }
