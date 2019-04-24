@@ -114,11 +114,14 @@ void process() {
 
   cerr << base << endl;
 
-  if(ranges.size() == 0) {
-    printf("%.12lf\n", (double)base);
-  } else {
-    printf("%.12lf\n", min((double)P, ranges.back().second + base));
+  while(ranges.size()) {
+    if (base + ranges.back().first <= P) {
+      printf("%.12lf\n", min((double)P, ranges.back().second + base));
+      return;
+    }
+    ranges.pop_back();
   }
+  printf("%.12lf\n", (double)base);
 }
 
 int main(void) {
