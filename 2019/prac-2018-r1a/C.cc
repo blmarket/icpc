@@ -110,12 +110,12 @@ void process() {
 
   while(ranges.size()) {
     if (base + ranges.back().first <= P) {
-      printf("%.12lf\n", min((double)P, ranges.back().second + base));
+      printf("%.15lf\n", min((double)P, ranges.back().second + base));
       return;
     }
     ranges.pop_back();
   }
-  printf("%.12lf\n", (double)base);
+  printf("%.15lf\n", (double)base);
 }
 
 int main(void) {
