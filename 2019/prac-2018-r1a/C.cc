@@ -85,6 +85,10 @@ void process() {
       ranges2.pb(mp(nr1, nr2));
     }
     sort(ranges2.begin(), ranges2.end());
+    for(auto jt: ranges2) {
+      cerr << jt.first << "," << jt.second << " ";
+    }
+    cerr << endl;
 
     ranges.clear();
     //merge ranges
@@ -101,10 +105,6 @@ void process() {
     }
     ranges.pb(st, et);
 
-    for(auto jt: ranges) {
-      cerr << jt.first << "," << jt.second << " ";
-    }
-    cerr << endl;
   }
 
   if(ranges.size() == 0) {
