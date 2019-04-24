@@ -71,6 +71,7 @@ void process() {
   for(auto it: data) {
     double r1 = it.first * 2;
     double r2 = 2 * hypot(it.first, it.second);
+    cerr << r1 << " " << r2 << endl;
 
     ranges2 = ranges;
     
