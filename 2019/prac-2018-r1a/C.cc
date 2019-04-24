@@ -69,6 +69,7 @@ void process() {
   vector<pair<double, double> > ranges, ranges2;
 
   for(auto it: data) {
+    cerr << it.first << " " << it.second << endl;
     double r1 = it.first * 2;
     double r2 = 2 * hypot(it.first, it.second);
 
