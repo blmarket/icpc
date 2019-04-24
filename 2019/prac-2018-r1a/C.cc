@@ -59,6 +59,14 @@ void process() {
     data.pb(mp(a, b));
     base += a*2+b*2;
   }
+
+  sort(data.begin(), data.end());
+  for(auto it: data) {
+    cerr << it.first << "," << it.second << " ";
+  }
+  cerr << endl;
+
+
   double buff = 0;
   for(int i=0;i<N;i++) {
     if (base + data[i].first * 2 <= P) {
