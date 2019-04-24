@@ -92,6 +92,9 @@ void process() {
     for(int i=1;i<ranges2.size();i++) {
       if(et < ranges2[i].first || i+1 >= ranges2.size()) {
         ranges.pb(st, et);
+        st = ranges[i].first;
+        et = ranges[i].second;
+        if(st + base > P) break;
       } else {
         et = ranges2[i].second;
       }
