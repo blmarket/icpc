@@ -100,13 +100,13 @@ void process() {
     }
     ranges.pb(st, et);
 
-    for(auto jt: ranges) {
-      cerr << jt.first << "," << jt.second << " ";
-    }
-    cerr << endl;
+    // for(auto jt: ranges) {
+    //   cerr << jt.first << "," << jt.second << " ";
+    // }
+    // cerr << endl;
   }
 
-  cerr << base << endl;
+  // cerr << base << endl;
 
   while(ranges.size()) {
     if (base + ranges.back().first <= P) {
