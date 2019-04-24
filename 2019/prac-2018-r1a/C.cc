@@ -107,6 +107,8 @@ void process() {
     cerr << endl;
   }
 
+  cerr << ranges.size() << endl;
+
   printf("%.12lf\n", min((double)P, ranges.back().second + base));
 }
 
