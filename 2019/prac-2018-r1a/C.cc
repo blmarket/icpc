@@ -107,9 +107,11 @@ void process() {
     cerr << endl;
   }
 
-  cerr << ranges.size() << endl;
-
-  printf("%.12lf\n", min((double)P, ranges.back().second + base));
+  if(ranges.size() == 0) {
+    printf("%.12lf\n", (double)P);
+  } else {
+    printf("%.12lf\n", min((double)P, ranges.back().second + base));
+  }
 }
 
 int main(void) {
