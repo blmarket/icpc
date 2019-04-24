@@ -66,6 +66,32 @@ void process() {
   }
   cerr << endl;
 
+  vector<pair<double, double> > ranges, ranges2;
+
+  for(auto it: data) {
+    double r1 = it.first * 2;
+    double r2 = 2 * hypot(it.first, it.second);
+
+    ranges2.clear();
+    
+    if(r1 + base > P) {
+      continue;
+    }
+
+    ranges2.pb(mp(r2, r1));
+    for(auto rr: ranges) {
+      double nr2 = rr.first + r2;
+      double nr1 = rr.second + r1;
+      ranges2.pb(mp(nr2, nr1));
+    }
+    sort(ranges2.begin(), ranges2.end());
+
+    //merge ranges
+    for(auto rr: ranges2) {
+      cerr << rr.first << "," << rr.second << " ";
+    }
+    cerr << endl;
+  }
 
   double buff = 0;
   for(int i=0;i<N;i++) {
