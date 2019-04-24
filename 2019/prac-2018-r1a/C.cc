@@ -74,10 +74,6 @@ void process() {
 
     ranges2 = ranges;
     
-    if(r1 + base > P) {
-      continue;
-    }
-
     ranges2.pb(mp(r1, r2));
     for(auto rr: ranges) {
       double nr1 = rr.first + r1;
