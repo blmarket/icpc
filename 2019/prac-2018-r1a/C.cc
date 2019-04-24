@@ -108,7 +108,7 @@ void process() {
   }
 
   if(ranges.size() == 0) {
-    printf("%.12lf\n", (double)P);
+    printf("%.12lf\n", (double)base);
   } else {
     printf("%.12lf\n", min((double)P, ranges.back().second + base));
   }
