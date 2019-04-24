@@ -101,10 +101,10 @@ void process() {
     }
     ranges.pb(st, et);
 
-    for(auto jt: ranges) {
-      cerr << jt.first << "," << jt.second << " ";
-    }
-    cerr << endl;
+    // for(auto jt: ranges) {
+    //   cerr << jt.first << "," << jt.second << " ";
+    // }
+    // cerr << endl;
   }
 
   if(ranges.size() == 0) {
