@@ -61,10 +61,10 @@ void process() {
   }
 
   sort(data.begin(), data.end());
-  for(auto it: data) {
-    cerr << it.first << "," << it.second << " ";
-  }
-  cerr << endl;
+  // for(auto it: data) {
+  //   cerr << it.first << "," << it.second << " ";
+  // }
+  // cerr << endl;
 
   vector<pair<double, double> > ranges, ranges2;
 
