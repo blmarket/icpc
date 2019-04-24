@@ -107,20 +107,7 @@ void process() {
     cerr << endl;
   }
 
-  double buff = 0;
-  for(int i=0;i<N;i++) {
-    if (base + data[i].first * 2 <= P) {
-      base += data[i].first * 2;
-      buff += 2 * sqrt(sqr(data[i].first) + sqr(data[i].second)) - data[i].first * 2;
-    } else {
-      break;
-    }
-  }
-  if (buff + base >= P) {
-    printf("%.12lf\n", (double)P);
-  } else {
-    printf("%.12lf\n", buff + base);
-  }
+  printf("%.12lf\n", min((double)P, ranges.back().second + base));
 }
 
 int main(void) {
