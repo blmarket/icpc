@@ -86,13 +86,11 @@ void process() {
     }
     sort(ranges2.begin(), ranges2.end());
 
-    cerr << ranges2.size() << endl;
-
     ranges.clear();
     //merge ranges
     double st = ranges2[0].first, et = ranges2[0].second;
     for(int i=1;i<ranges2.size();i++) {
-      if(et < ranges2[i].first || i+1 >= ranges2.size()) {
+      if(et < ranges2[i].first) {
         ranges.pb(st, et);
         st = ranges[i].first;
         et = ranges[i].second;
@@ -101,6 +99,7 @@ void process() {
         et = ranges2[i].second;
       }
     }
+    ranges.pb(st, et);
 
     for(auto jt: ranges) {
       cerr << jt.first << "," << jt.second << " ";
