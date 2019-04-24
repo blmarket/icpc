@@ -103,7 +103,8 @@ void process() {
         et = ranges2[i].second;
       }
     }
-    ranges.pb(st, et);
+    if(st + base <= P)
+      ranges.pb(st, et);
 
     for(auto jt: ranges) {
       cerr << jt.first << "," << jt.second << " ";
