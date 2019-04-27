@@ -35,11 +35,12 @@ void process() {
   scanf(" %d %d", &N, &P);
   range[0] = 0;
   for(int i=1;i<25010;i++) range[i] = -1;
+  int base = 0;
   for(int i=0;i<N;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
     if(a > b) swap(a,b);
-    P -= a*2 + b*2;
+    base += a*2 + b*2;
 
     int r1 = a*2;
     double r2 = 2 * hypot(a, b);
@@ -49,9 +50,19 @@ void process() {
     }
   }
 
-  cerr << P << endl;
-  for(int i=0;i<250;i++) cerr << i << "," << range[i] << " ";
+  cerr << P - base << endl;
+  for(int i=0;i<P;i++) cerr << i << "," << range[i] << " ";
   cerr << endl;
+
+  double maxx = 0;
+  for(int i=0;i<=min(P-base, 25000);i++) {
+    if(base + range[i] >= P) {
+      printf("%.15lf\n", P);
+      return;
+    }
+    maxx = max(maxx, base + range[i]);
+  }
+  printf("%.15lf\n", maxx);
 }
 
 int main(void) {
