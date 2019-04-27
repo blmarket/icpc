@@ -52,8 +52,8 @@ void process() {
     long double sum = M_PI * sqr((LL)data[i-1].first);
     for(int j=i-K;j<i;j++) {
       cerr << data[j].first << " ";
-      fprintf(stderr, "%.25llf ",sum);
       sum += 2 * M_PIl * (long double)data[j].first * data[j].second;
+      fprintf(stderr, "%.25llf ",sum);
     }
     cerr << " = " << sum << endl;
     if(res < sum) res = sum;
