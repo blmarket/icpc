@@ -48,7 +48,7 @@ void process() {
   };
   long double res = 0;
   for(int i=K;i<=N;i++) {
-    if(i > 2) sort(data, data+i-2, comp);
+    if(i > 2) sort(data, data+i-1, comp);
 
     for(int j=0;j<i;j++) {
       cerr << data[j].first << "," << data[j].second << " ";
