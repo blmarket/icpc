@@ -49,6 +49,7 @@ void process() {
     }
   }
 
+  cerr << P << endl;
   for(int i=0;i<250;i++) cerr << i << "," << range[i] << " ";
   cerr << endl;
 }
