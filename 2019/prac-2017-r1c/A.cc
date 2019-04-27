@@ -52,6 +52,7 @@ void process() {
     double sum = M_PI * sqr((LL)data[i-1].first);
     for(int j=i-K;j<i;j++) {
       cerr << data[j].first << " ";
+      cerr << 2 * M_PI * (double)data[j].first * data[j].second << " ";
       sum += 2 * M_PI * (double)data[j].first * data[j].second;
     }
     cerr << endl;
