@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <algorithm>
 #include <unordered_set>
 #include <unordered_map>
@@ -16,6 +17,7 @@
 #define mp make_pair
 #define each(it, v) for(auto &it: v)
 #define pb emplace_back
+#define sqr(x) ((x)*(x))
 
 using namespace std;
 
@@ -41,7 +43,16 @@ void process() {
   auto comp = [](const PII &a, const PII &b) {
     return a.second < b.second;
   };
-  sort(data, data + N - 1, comp);
+  double res = 0;
+  for(int i=K;i<N;i++) {
+    sort(data, data+i-2, comp);
+    double sum = M_PI * sqr(data[i-1].first);
+    for(int j=i-K;j<i;j++) {
+      sum += M_PI * data[j].first * data[j].second;
+    }
+    if(res < sum) res = sum;
+  }
+  printf("%.15lf\n", res);
 }
 
 int main(void) {
