@@ -39,7 +39,9 @@ void process() {
     int a, b;
     scanf(" %d %d", &a, &b);
     if(a > b) swap(a,b);
-    int r1 = a*2 + b*2;
+    P -= a*2 + b*2;
+
+    int r1 = a*2;
     double r2 = 2 * hypot(a, b);
 
     for(int j=25010;j>=r1;j--) {
