@@ -52,6 +52,7 @@ void process() {
 
   double maxx = base;
   for(int i=0;i<=min(P-base, 25000);i++) {
+    cerr << i << "," << range[i] << " ";
     if(range[i] < 0) continue;
     if(base + range[i] >= P) {
       printf("%.15lf\n", (double)P);
@@ -59,6 +60,7 @@ void process() {
     }
     maxx = max(maxx, base + range[i]);
   }
+  cerr << endl;
   printf("%.15lf\n", maxx);
 }
 
