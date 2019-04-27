@@ -43,7 +43,7 @@ void process() {
   }
   cerr << endl;
 
-  auto comp = [](const PII &a, const PII &b) {
+  auto comp = [](const pair<LL, LL> &a, const pair<LL, LL> &b) {
     return (LL) a.first * a.second < (LL) b.first * b.second;
   };
   long double res = 0;
