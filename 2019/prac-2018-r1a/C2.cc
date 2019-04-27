@@ -29,12 +29,12 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, P;
-double range[25010];
+double range[50010];
 
 void process() {
   scanf(" %d %d", &N, &P);
   range[0] = 0;
-  for(int i=1;i<25010;i++) range[i] = -1;
+  for(int i=1;i<50010;i++) range[i] = -1;
   int base = 0;
   for(int i=0;i<N;i++) {
     int a, b;
@@ -45,13 +45,13 @@ void process() {
     int r1 = a*2;
     double r2 = 2 * hypot(a, b);
 
-    for(int j=25010;j>=r1;j--) {
+    for(int j=50010;j>=r1;j--) {
       if(range[j - r1] >= 0) range[j] = max(range[j], range[j-r1] + r2);
     }
   }
 
   double maxx = base;
-  for(int i=0;i<=min(P-base, 25000);i++) {
+  for(int i=0;i<=min(P-base, 50000);i++) {
     cerr << i << "," << range[i] << " ";
     if(range[i] < 0) continue;
     if(base + range[i] >= P) {
