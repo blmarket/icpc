@@ -47,7 +47,7 @@ void process() {
 
 
   auto comp = [](const PII &a, const PII &b) {
-    return a.second < b.second;
+    return a.first * a.second < b.first * b.second;
   };
   double res = 0;
   for(int i=K;i<=N;i++) {
