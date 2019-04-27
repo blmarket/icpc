@@ -30,21 +30,18 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, K;
-PII data[1050];
+pair<LL, LL> data[1050];
 
 void process() {
   scanf(" %d %d", &N, &K);
   for(int i=0;i<N;i++) {
-    int a, b;
-    scanf(" %d %d", &a, &b);
-    data[i] = mp(a, b);
+    cin >> data[i].first >> data[i].second;
   }
   sort(data, data + N);
   for(int i=0;i<N;i++) {
     cerr << data[i].first << "," << data[i].second << " ";
   }
   cerr << endl;
-
 
   auto comp = [](const PII &a, const PII &b) {
     return (LL) a.first * a.second < (LL) b.first * b.second;
