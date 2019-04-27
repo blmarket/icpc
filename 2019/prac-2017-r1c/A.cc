@@ -49,6 +49,13 @@ void process() {
   long double res = 0;
   for(int i=K;i<=N;i++) {
     if(i > 2) sort(data, data+i-2, comp);
+
+    for(int j=0;j<i;j++) {
+      cerr << data[j].first << "," << data[j].second << " ";
+    }
+    cerr << endl;
+
+
     long double sum = M_PI * data[i-1].first * data[i-1].first;
     for(int j=i-K;j<i;j++) {
       cerr << data[j].first << " ";
