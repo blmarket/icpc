@@ -50,9 +50,9 @@ void process() {
     }
   }
 
-  cerr << P - base << endl;
-  for(int i=0;i<P;i++) cerr << i << "," << range[i] << " ";
-  cerr << endl;
+  // cerr << P - base << endl;
+  // for(int i=0;i<P;i++) cerr << i << "," << range[i] << " ";
+  // cerr << endl;
 
   double maxx = 0;
   for(int i=0;i<=min(P-base, 25000);i++) {
