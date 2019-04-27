@@ -45,6 +45,7 @@ void process() {
   };
   double res = 0;
   for(int i=K;i<N;i++) {
+    cerr << i << endl;
     sort(data, data+i-2, comp);
     double sum = M_PI * sqr(data[i-1].first);
     for(int j=i-K;j<i;j++) {
