@@ -46,10 +46,10 @@ void process() {
   auto comp = [](const PII &a, const PII &b) {
     return (LL) a.first * a.second < (LL) b.first * b.second;
   };
-  double res = 0;
+  long double res = 0;
   for(int i=K;i<=N;i++) {
     if(i > 2) sort(data, data+i-2, comp);
-    double sum = M_PI * sqr((LL)data[i-1].first);
+    long double sum = M_PI * sqr((LL)data[i-1].first);
     for(int j=i-K;j<i;j++) {
       cerr << data[j].first << " ";
       cerr << 2 * M_PI * (double)data[j].first * data[j].second << " ";
@@ -58,7 +58,7 @@ void process() {
     cerr << endl;
     if(res < sum) res = sum;
   }
-  printf("%.15lf\n", res);
+  printf("%.25llf\n", res);
 }
 
 int main(void) {
