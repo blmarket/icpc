@@ -40,6 +40,12 @@ void process() {
     data[i] = mp(a, b);
   }
   sort(data, data + N);
+  for(int i=0;i<N;i++) {
+    cerr << data[i].first << "," << data[i].second << " ";
+  }
+  cerr << endl;
+
+
   auto comp = [](const PII &a, const PII &b) {
     return a.second < b.second;
   };
