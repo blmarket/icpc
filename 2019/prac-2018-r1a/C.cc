@@ -31,27 +31,11 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, P;
 vector<PII> data;
-vector<double> h2;
-double mmax;
-
-void go(int a, double rem, double buff) {
-  int idx = a;
-
-  if(idx == 0) {
-    mmax = min(mmax, max(0.0, rem - buff));
-    return;
-  }
-  for(idx = idx-1; idx >= 0; idx--) {
-    go(idx, rem - h2[idx], buff + 2 * sqrt(sqr(data[idx].first) + sqr(data[idx].second)) - h2[idx]);
-    return;
-  }
-}
 
 void process() {
   scanf(" %d %d", &N, &P);
   int base = 0;
   data.clear();
-  h2.clear();
   for(int i=0;i<N;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
@@ -59,12 +43,6 @@ void process() {
     data.pb(mp(a, b));
     base += a*2+b*2;
   }
-
-  sort(data.begin(), data.end());
-  // for(auto it: data) {
-  //   cerr << it.first << "," << it.second << " ";
-  // }
-  // cerr << endl;
 
   vector<pair<double, double> > ranges, ranges2;
 
@@ -81,10 +59,6 @@ void process() {
       ranges2.pb(mp(nr1, nr2));
     }
     sort(ranges2.begin(), ranges2.end());
-    // for(auto jt: ranges2) {
-    //   cerr << jt.first << "," << jt.second << " ";
-    // }
-    // cerr << endl;
 
     ranges.clear();
     //merge ranges
