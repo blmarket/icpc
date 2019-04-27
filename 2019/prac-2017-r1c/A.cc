@@ -54,7 +54,7 @@ void process() {
     if(i > 2) sort(data, data+i-2, comp);
     double sum = M_PI * sqr(data[i-1].first);
     for(int j=i-K;j<i;j++) {
-      cerr << data[j].first << "," << data[j].second << " ";
+      cerr << data[j].first << " ";
       sum += 2 * M_PI * data[j].first * data[j].second;
     }
     cerr << endl;
