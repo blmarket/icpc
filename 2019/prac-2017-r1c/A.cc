@@ -38,10 +38,6 @@ void process() {
     cin >> data[i].first >> data[i].second;
   }
   sort(data, data + N);
-  for(int i=0;i<N;i++) {
-    cerr << data[i].first << "," << data[i].second << " ";
-  }
-  cerr << endl;
 
   auto comp = [](const pair<LL, LL> &a, const pair<LL, LL> &b) {
     return (LL) a.first * a.second < (LL) b.first * b.second;
@@ -50,19 +46,10 @@ void process() {
   for(int i=K;i<=N;i++) {
     if(i > 2) sort(data, data+i-1, comp);
 
-    for(int j=0;j<i;j++) {
-      cerr << data[j].first << "," << data[j].second << " ";
-    }
-    cerr << endl;
-
-
     long double sum = M_PI * data[i-1].first * data[i-1].first;
     for(int j=i-K;j<i;j++) {
-      cerr << data[j].first << " ";
       sum += 2 * M_PIl * (long double)data[j].first * data[j].second;
-      fprintf(stderr, "%.25llf ",sum);
     }
-    cerr << " = " << sum << endl;
     if(res < sum) res = sum;
   }
   printf("%.25llf\n", res);
