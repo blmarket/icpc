@@ -111,7 +111,7 @@ void process() {
     arr2[i] = max(arr2[i*2], arr2[i*2+1]);
   }
 
-  cerr << find_bigger(arr2, 0, 3, 8, false);
+  cerr << find_bigger(arr2, 0, 3, 8, false) << endl;
 
   ret = 0;
   // go(0, P);
