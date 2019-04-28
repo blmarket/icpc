@@ -34,6 +34,7 @@ int find_max(int *arr, int s, int e) {
   int ret = -1;
   function<void(int, int, int)> go;
   go = [&](int pos, int ps, int pe) {
+    cerr << pos << " " << ps << " " << pe << " " << ret << endl;
     if(pe <= s || ps >= e) return;
     if(ret != -1 && arr[pos] <= arr[ret]) return;
     if(ps+1 == pe) {
@@ -76,7 +77,6 @@ void go(int s, int e) {
   if(s >= e) return;
 
   int i = find_max(arr1, s, e);
-  cerr << i << endl;
 
   int r2 = find_bigger(arr2, i+1, e, arr1[i] + K, true);
   if(r2 < 0) r2 = e;
