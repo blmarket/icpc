@@ -55,13 +55,12 @@ int main(void) {
 
   int nn = N;
   int bb = base;
-  while(nn) {
+  while(nn>1) {
     for(int i=0;i<nn;i++) {
       cout << arr[bb+i] << " ";
     }
     cout << endl;
     nn = (nn+1)/2;
-    cerr << nn << endl;
     bb/=2;
   }
   return 0;
