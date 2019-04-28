@@ -39,8 +39,21 @@ int find_max(int s, int e) {
     if(pe <= s || ps >= e) return -1;
     int pm = (ps+pe)/2;
     int ret = max(go(pos*2, ps, pm), go(pos*2+1, pm, pe));
-    // cerr << pos << " " << ps << " " << pe << " = " << ret << endl;
     return ret;
+  };
+  return go(1, 0, base);
+}
+
+int find_first_bigger(int s, int e, int target) {
+  function<int(int, int, int)> go;
+  go = [&](int pos, int ps, int pe) {
+    if(pe <= s || ps >= e) return -1;
+    if(arr[pos] < target) return -1;
+    if(ps+1 == pe) return ps - base;
+    int pm = (ps+pe)/2;
+    int ret = go(pos*2, ps, pm);
+    if(ret != -1) return ret;
+    return go(pos*2+1, pm, pe);
   };
   return go(1, 0, base);
 }
@@ -66,7 +79,7 @@ int main(void) {
     bb/=2;
   }
 
-  cout << find_max(0, 4) << endl;
-  cout << find_max(8, N) << endl;
+  cerr << find_first_bigger(0, N, 30) << endl;
+
   return 0;
 }
