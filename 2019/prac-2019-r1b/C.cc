@@ -116,6 +116,7 @@ void process() {
 
   ret = 0;
   go(0, P);
+  cerr << ret << endl;
   cout << ret << endl;
 }
 
