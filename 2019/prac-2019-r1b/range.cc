@@ -35,7 +35,7 @@ const int base = 131072;
 int find_max(int s, int e) {
   function<int(int, int, int)> go;
   go = [&](int pos, int ps, int pe) {
-    if(ps <= s && pe >= e) return arr[pos];
+    if(ps >= s && pe <= e) return arr[pos];
     if(pe <= s || ps >= e) return -1;
     int pm = (ps+pe)/2;
     int ret = max(go(pos*2, ps, pm), go(pos*2+1, pm, pe));
