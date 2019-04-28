@@ -39,7 +39,7 @@ int find_max(int s, int e) {
     if(pe <= s || ps >= e) return -1;
     int pm = (ps+pe)/2;
     int ret = max(go(pos*2, ps, pm), go(pos*2+1, pm, pe));
-    cerr << pos << " " << ps << " " << pe << " = " << ret << endl;
+    // cerr << pos << " " << ps << " " << pe << " = " << ret << endl;
     return ret;
   };
   return go(1, 0, base);
