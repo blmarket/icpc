@@ -111,9 +111,6 @@ void process() {
     arr2[i] = max(arr2[i*2], arr2[i*2+1]);
   }
 
-  for(int i=0;i<P;i++) cout << arr1[i] << " ";
-  cout << endl;
-
   ret = 0;
   go(0, P);
   cout << ret << endl;
