@@ -45,13 +45,23 @@ int find_max(int s, int e) {
 
 int main(void) {
   memset(arr, 0, sizeof(arr));
-  for(int i=0;i<16;i++) {
+  int N = 16;
+  for(int i=0;i<N;i++) {
     arr[base+i] = rand() % 100;
-    cout << arr[base+i] << " ";
   }
-  cout << endl;
   for(int i=base-1;i>=1;i--) {
     arr[i] = max(arr[i*2], arr[i*2+1]);
+  }
+
+  int nn = N;
+  int bb = base;
+  while(nn) {
+    for(int i=0;i<nn;i++) {
+      cout << arr[bb+i] << " ";
+    }
+    cout << endl;
+    nn = (nn+1)/2;
+    bb/=2;
   }
   return 0;
 }
