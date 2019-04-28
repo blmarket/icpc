@@ -53,6 +53,7 @@ tuple<LL, LL> chinese(LL A, LL a, LL B, LL b) {
   LL m1, m2;
   tie(m1, m2) = euclid(A, B);
   LL M = A * B;
+  cerr << M << " " << m1 << " " << m2 << endl;
   return make_tuple(M, (m1 * A * b + m2 * B * a) % M);
 }
 
@@ -72,11 +73,17 @@ bool process() {
     }
     sum %= cs[i];
 
-    tie(denom, res) = chinese(denom, res, cs[i], sum);
+    if (i == 0) {
+      tie(denom, res) = make_tuple(cs[i], sum);
+    } else {
+      tie(denom, res) = chinese(denom, res, cs[i], sum);
+    }
     cerr << denom << " " << res << endl;
   }
 
-  printf("1\n");
+  if(res < 0) res += denom;
+
+  printf("%lld\n", res);
   fflush(stdout);
   int judge_response;
   scanf(" %d", &judge_response);
