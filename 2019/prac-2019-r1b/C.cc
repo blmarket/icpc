@@ -89,9 +89,9 @@ void go(int s, int e) {
   int l3 = find_bigger(arr2, s, i + 1, arr1[base+i] - K - 1, false);
   if(l3 < 0) l3 = s;
 
-  cerr << i << " " << l2 << " " << r2 << " " << l3 << " " << r3 << endl;
-
   ret -= (LL)(r3 - i) * (i - l3);
+
+  cerr << i << " " << l2 << " " << r2 << " " << l3 << " " << r3 << " = " << ret << endl;
 
   go(s, i);
   go(i+1, e);
