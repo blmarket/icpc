@@ -85,7 +85,7 @@ int main(void) {
     bb/=2;
   }
 
-  int tmp = find_bigger(0, N, 86, false);
+  int tmp = find_bigger(0, N, 90, false);
   cerr << tmp << " " << arr[base+tmp] << endl;
 
   return 0;
