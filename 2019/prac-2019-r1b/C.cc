@@ -76,7 +76,6 @@ void go(int s, int e) {
   if(s >= e) return;
 
   int i = find_max(arr1, s, e);
-  cerr << i << endl;
 
   int r2 = find_bigger(arr2, i+1, e, arr1[i] + K, true);
   if(r2 < 0) r2 = e;
@@ -107,6 +106,9 @@ void process() {
   for(int i=0;i<P;i++) {
     scanf(" %d", &arr2[i]);
   }
+
+  for(int i=0;i<P;i++) cout << arr1[i] << " ";
+  cout << endl;
 
   ret = 0;
   go(0, P);
