@@ -102,10 +102,14 @@ void process() {
   long long ret = 0;
   scanf(" %d %d",&P, &K);
   for(int i=0;i<P;i++) {
-    scanf(" %d", &arr1[i]);
+    scanf(" %d", &arr1[base + i]);
   }
   for(int i=0;i<P;i++) {
-    scanf(" %d", &arr2[i]);
+    scanf(" %d", &arr2[base + i]);
+  }
+  for(int i=base-1;i>=1;i--) {
+    arr1[i] = max(arr1[i*2], arr1[i*2+1]);
+    arr2[i] = max(arr2[i*2], arr2[i*2+1]);
   }
 
   for(int i=0;i<P;i++) cout << arr1[i] << " ";
