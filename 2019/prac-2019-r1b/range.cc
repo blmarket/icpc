@@ -66,6 +66,6 @@ int main(void) {
     bb/=2;
   }
 
-  cout << find_max(0, 3) << endl;
+  cout << find_max(0, 5) << endl;
   return 0;
 }
