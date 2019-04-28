@@ -93,8 +93,8 @@ void go(int s, int e) {
 
   ret -= (LL)(r3 - i) * (i - l3);
 
-  // go(s, i);
-  // go(i+1, e);
+  go(s, i);
+  go(i+1, e);
 }
 
 void process() {
