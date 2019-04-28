@@ -92,7 +92,6 @@ void go(int s, int e) {
   cerr << i << " " << l2 << " " << r2 << " " << l3 << " " << r3 << endl;
 
   ret -= (LL)(r3 - i) * (i - l3);
-  cerr << "ret=" << ret << endl;
 
   // go(s, i);
   // go(i+1, e);
