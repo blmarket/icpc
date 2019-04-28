@@ -61,6 +61,7 @@ int main(void) {
     }
     cout << endl;
     nn = (nn+1)/2;
+    cerr << nn << endl;
     bb/=2;
   }
   return 0;
