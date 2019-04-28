@@ -77,17 +77,16 @@ void go(int s, int e) {
 
   int i = find_max(arr1, s, e);
 
-  int r2 = find_bigger(arr2, i+1, e, arr1[i] + K, true);
+  int r2 = find_bigger(arr2, i+1, e, arr1[base+i] + K, true);
   if(r2 < 0) r2 = e;
-  cerr << " " << s << " " << i << " " << arr1[i]+K << endl;
-  int l2 = find_bigger(arr2, s, i, arr1[i] + K, false);
+  int l2 = find_bigger(arr2, s, i, arr1[base+i] + K, false);
   if(l2 < 0) l2 = s; else l2++;
 
   ret += (LL)(r2 - i) * (i - l2);
 
-  int r3 = find_bigger(arr2, i+1, e, arr1[i] - K, true);
+  int r3 = find_bigger(arr2, i+1, e, arr1[base+i] - K, true);
   if(r3 < 0) r3 = e;
-  int l3 = find_bigger(arr2, s, i, arr1[i] - K, false);
+  int l3 = find_bigger(arr2, s, i, arr1[base+i] - K, false);
   if(l3 < 0) l3 = s; else l3++;
 
   cerr << i << " " << l2 << " " << r2 << " " << l3 << " " << r3 << endl;
