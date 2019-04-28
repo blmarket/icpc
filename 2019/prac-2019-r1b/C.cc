@@ -107,22 +107,7 @@ void process() {
 
   ret = 0;
   go(0, P);
-
-
-  for(int i=0;i<P;i++) {
-    int r1 = find_bigger(arr1, i+1, P, arr1[i], true);
-    if(r1 < 0) r1 = P;
-    int l1 = find_bigger(arr1, 0, i, arr1[i], false);
-    if(l1 < 0) l1 = 0; else ++l1;
-    int r2 = find_bigger(arr2, i+1, P, arr1[i] + K, true);
-    if(r2 < 0) r2 = P;
-    int l2 = find_bigger(arr2, 0, i, arr1[i] + K, false);
-    if(l2 < 0) l2 = 0; else ++l2;
-    r1 = min(r1, r2);
-    l1 = max(l1, l2);
-    int r3 = find_bigger(arr2, i+1, P, arr1[i] - K, true);
-    int l3 = find_bigger(arr2, 0, i, arr1[i] - K, false);
-  }
+  cout << ret << endl;
 }
 
 int main(void) {
