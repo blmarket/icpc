@@ -67,6 +67,6 @@ int main(void) {
   }
 
   cout << find_max(0, 4) << endl;
-  cout << find_max(7, N) << endl;
+  cout << find_max(8, N) << endl;
   return 0;
 }
