@@ -63,5 +63,7 @@ int main(void) {
     nn = (nn+1)/2;
     bb/=2;
   }
+
+  cout << find_max(0, N) << endl;
   return 0;
 }
