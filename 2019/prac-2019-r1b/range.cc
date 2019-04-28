@@ -79,7 +79,8 @@ int main(void) {
     bb/=2;
   }
 
-  cerr << find_first_bigger(0, N, 86) << endl;
+  int tmp = find_first_bigger(0, N, 86);
+  cerr << tmp << " " << arr[base+tmp] << endl;
 
   return 0;
 }
