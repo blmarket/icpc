@@ -92,7 +92,7 @@ void go(int s, int e) {
   cerr << i << " " << l2 << " " << r2 << " " << l3 << " " << r3 << endl;
 
   ret -= (LL)(r3 - i) * (i - l3);
-  cerr << ret << endl;
+  cerr << "ret=" << ret << endl;
 
   // go(s, i);
   // go(i+1, e);
@@ -116,7 +116,6 @@ void process() {
 
   ret = 0;
   go(0, P);
-  cerr << ret << endl;
   cout << ret << endl;
 }
 
