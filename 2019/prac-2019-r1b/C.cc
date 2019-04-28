@@ -34,9 +34,9 @@ int find_max(int *arr, int s, int e) {
   int ret = -1;
   function<void(int, int, int)> go;
   go = [&](int pos, int ps, int pe) {
-    cerr << pos << " " << ps << " " << pe << " " << arr[pos] << " " << ret << " " << arr[ret] << endl;
+    cerr << pos << " " << ps << " " << pe << " " << arr[pos] << " " << ret << endl;
     if(pe <= s || ps >= e) return;
-    if(ret != -1 && arr[pos] <= arr[ret]) return;
+    if(ret != -1 && arr[pos] <= arr[base + ret]) return;
     if(ps+1 == pe) {
       ret = ps;
       return;
