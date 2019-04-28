@@ -49,7 +49,7 @@ int find_first_bigger(int s, int e, int target) {
   go = [&](int pos, int ps, int pe) {
     if(pe <= s || ps >= e) return -1;
     if(arr[pos] < target) return -1;
-    if(ps+1 == pe) return ps - base;
+    if(ps+1 == pe) return ps;
     int pm = (ps+pe)/2;
     int ret = go(pos*2, ps, pm);
     if(ret != -1) return ret;
