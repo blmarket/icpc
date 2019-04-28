@@ -99,7 +99,6 @@ void go(int s, int e) {
 }
 
 void process() {
-  long long ret = 0;
   scanf(" %d %d",&P, &K);
   for(int i=0;i<P;i++) {
     scanf(" %d", &arr1[base + i]);
