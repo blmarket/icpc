@@ -48,7 +48,7 @@ int find_first_bigger(int s, int e, int target) {
   function<int(int, int, int)> go;
   go = [&](int pos, int ps, int pe) {
     if(pe <= s || ps >= e) return -1;
-    if(arr[pos] < target) return -1;
+    if(arr[pos] <= target) return -1;
     if(ps+1 == pe) return ps;
     int pm = (ps+pe)/2;
     int ret = go(pos*2, ps, pm);
@@ -79,7 +79,7 @@ int main(void) {
     bb/=2;
   }
 
-  cerr << find_first_bigger(0, N, 30) << endl;
+  cerr << find_first_bigger(0, N, 83) << endl;
 
   return 0;
 }
