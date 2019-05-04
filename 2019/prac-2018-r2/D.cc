@@ -27,22 +27,48 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const int dx[] = {-1, 0, 0, 1};
+const int dy[] = {0, -1, 1, 0};
+
 int N, M;
 char data[25][25];
+int mask[25][25];
+
+int ret;
 
 int c1(int sx, int sy, int ex, int ey, int flag) {
   int ret = 0;
   for(int i=sx;i<ex;i++) {
     for(int j=sy;j<ey;j++) {
       if((!!flag) ^ (data[i][j] == 'B'))
-        ret++;
+        mask[i][j] = 1;
     }
   }
   return ret;
 }
 
+int c2(int x, int y) {
+  int r2 = 1;
+  mask[x][y] = 2;
+  for(int i=0;i<4;i++) {
+    int nx = x + dx[i], ny = y + dy[i];
+    if(nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
+    if(mask[nx][ny] == 1) r2 += c2(nx, ny);
+  }
+  return r2;
+}
+
 int cnt(int a, int b, int c) {
-  return c1(0, 0, a, b, c & 1) + c1(a, 0, N, b, c & 2) + c1(0, b, a, M, c & 4) + c1(a, b, N, M, c & 8);
+  memset(mask, 0, sizeof(mask));
+  c1(0, 0, a, b, c & 1) + c1(a, 0, N, b, c & 2) + c1(0, b, a, M, c & 4) + c1(a, b, N, M, c & 8);
+
+  for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(mask[i][j] == 1) {
+    int tmp = c2(i, j);
+    if(ret < tmp) {
+      cerr << a << " " << b << " " << c << " = " << tmp << endl;
+      ret = tmp;
+    }
+  }
 }
 
 void process() {
@@ -51,15 +77,12 @@ void process() {
     scanf(" %s", data[i]);
   }
 
-  int ret = 0;
+  ret = 0;
+
   for(int i=0;i<N;i++) {
     for(int j=0;j<M;j++) {
       for(int k=0;k<(1<<4);k++) {
         int tmp = cnt(i, j, k);
-        if (ret < tmp) {
-          cerr << i << " " << j << " " << k << " " << tmp << endl;
-        }
-        ret = max(ret, tmp);
       }
     }
   }
