@@ -56,6 +56,9 @@ void process() {
     for(int j=0;j<M;j++) {
       for(int k=0;k<(1<<4);k++) {
         int tmp = cnt(i, j, k);
+        if (ret < tmp) {
+          cerr << i << " " << j << " " << k << " " << tmp << endl;
+        }
         ret = max(ret, tmp);
       }
     }
