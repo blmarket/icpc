@@ -40,7 +40,7 @@ int c1(int sx, int sy, int ex, int ey, int flag) {
   int ret = 0;
   for(int i=sx;i<ex;i++) {
     for(int j=sy;j<ey;j++) {
-      if((!!flag) ^ (data[i][j] == 'B'))
+      if((!flag) ^ (data[i][j] == 'B'))
         mask[i][j] = 1;
     }
   }
