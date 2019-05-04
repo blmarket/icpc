@@ -58,7 +58,7 @@ int c2(int x, int y) {
   return r2;
 }
 
-int cnt(int a, int b, int c) {
+void cnt(int a, int b, int c) {
   memset(mask, 0, sizeof(mask));
   c1(0, 0, a, b, c & 1) + c1(a, 0, N, b, c & 2) + c1(0, b, a, M, c & 4) + c1(a, b, N, M, c & 8);
 
@@ -82,7 +82,7 @@ void process() {
   for(int i=0;i<N;i++) {
     for(int j=0;j<M;j++) {
       for(int k=0;k<(1<<4);k++) {
-        int tmp = cnt(i, j, k);
+        cnt(i, j, k);
       }
     }
   }
