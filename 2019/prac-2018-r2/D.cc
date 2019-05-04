@@ -62,6 +62,11 @@ void cnt(int a, int b, int c) {
   memset(mask, 0, sizeof(mask));
   c1(0, 0, a, b, c & 1) + c1(a, 0, N, b, c & 2) + c1(0, b, a, M, c & 4) + c1(a, b, N, M, c & 8);
 
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<M;j++) cout << mask[i][j];
+    cout << endl;
+  }
+
   for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(mask[i][j] == 1) {
     int tmp = c2(i, j);
     if(ret < tmp) {
