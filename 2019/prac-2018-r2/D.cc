@@ -65,7 +65,7 @@ void cnt(int a, int b, int c) {
   for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(mask[i][j] == 1) {
     int tmp = c2(i, j);
     if(ret < tmp) {
-      cerr << a << " " << b << " " << c << " = " << tmp << endl;
+      // cerr << a << " " << b << " " << c << " = " << tmp << endl;
       ret = tmp;
     }
   }
