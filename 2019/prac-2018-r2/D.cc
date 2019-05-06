@@ -36,15 +36,13 @@ int mask[25][25];
 
 int ret;
 
-int c1(int sx, int sy, int ex, int ey, bool flag) {
-  int ret = 0;
+void c1(int sx, int sy, int ex, int ey, bool flag) {
   for(int i=sx;i<ex;i++) {
     for(int j=sy;j<ey;j++) {
       if(flag ^ (data[i][j] == 'W'))
         mask[i][j] = 1;
     }
   }
-  return ret;
 }
 
 int c2(int x, int y) {
@@ -60,7 +58,10 @@ int c2(int x, int y) {
 
 void cnt(int a, int b, int c) {
   memset(mask, 0, sizeof(mask));
-  c1(0, 0, a, b, c & 1) + c1(a, 0, N, b, c & 2) + c1(0, b, a, M, c & 4) + c1(a, b, N, M, c & 8);
+  c1(0, 0, a, b, c & 1); 
+  c1(a, 0, N, b, c & 2);
+  c1(0, b, a, M, c & 4);
+  c1(a, b, N, M, c & 8);
 
   int r2 = 0;
   for(int i=0;i<N;i++) for(int j=0;j<M;j++) if(mask[i][j] == 1) {
@@ -70,11 +71,11 @@ void cnt(int a, int b, int c) {
     }
   }
 
-  for(int i=0;i<N;i++) {
-    for(int j=0;j<M;j++) cerr << mask[i][j];
-    cerr << endl;
-  }
-  cerr << a << " " << b << " " << c << " = " << r2 << endl;
+  // for(int i=0;i<N;i++) {
+  //   for(int j=0;j<M;j++) cerr << mask[i][j];
+  //   cerr << endl;
+  // }
+  // cerr << a << " " << b << " " << c << " = " << r2 << endl;
 
   if(ret < r2) ret = r2;
 }
