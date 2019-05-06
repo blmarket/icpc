@@ -98,7 +98,7 @@ void process() {
           masks.insert(data[i][j] + data[i+1][j] * 2 + data[i][j+1] * 4 + data[i+1][j+1] * 8);
       }
   }
-  // for(int i:masks) cerr << i << endl;
+  for(int i:masks) cerr << i << endl;
 
   for(int i=0;i<N;i++) {
     for(int j=0;j<M;j++) {
