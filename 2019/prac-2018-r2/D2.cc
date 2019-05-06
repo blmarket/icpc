@@ -71,11 +71,11 @@ void cnt(int a, int b, int c) {
     }
   }
 
-  for(int i=0;i<N;i++) {
-    for(int j=0;j<M;j++) cerr << mask[i][j];
-    cerr << endl;
-  }
-  cerr << a << " " << b << " " << c << " = " << r2 << endl;
+  // for(int i=0;i<N;i++) {
+  //   for(int j=0;j<M;j++) cerr << mask[i][j];
+  //   cerr << endl;
+  // }
+  // cerr << a << " " << b << " " << c << " = " << r2 << endl;
 
   if(ret < r2) ret = r2;
 }
@@ -95,11 +95,10 @@ void process() {
   masks.insert(15);
   for(int i=0;i+1<N;i++) {
       for(int j=0;j+1<M;j++) {
-          cerr << i << " " << j << " = " << (data[i][j] + data[i+1][j] * 2 + data[i][j+1] * 4 + data[i+1][j+1] * 8) << endl;
+          // cerr << i << " " << j << " = " << (data[i][j] + data[i+1][j] * 2 + data[i][j+1] * 4 + data[i+1][j+1] * 8) << endl;
           masks.insert(data[i][j] + data[i+1][j] * 2 + data[i][j+1] * 4 + data[i+1][j+1] * 8);
       }
   }
-  for(int i:masks) cerr << i << endl;
 
   for(int k: masks) {
     for(int i=0;i<N;i++) {
