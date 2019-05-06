@@ -39,7 +39,7 @@ int ret;
 void c1(int sx, int sy, int ex, int ey, bool flag) {
   for(int i=sx;i<ex;i++) {
     for(int j=sy;j<ey;j++) {
-      if(flag & data[i][j])
+      if(flag == data[i][j])
         mask[i][j] = 1;
     }
   }
