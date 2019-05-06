@@ -101,10 +101,10 @@ void process() {
   }
   for(int i:masks) cerr << i << endl;
 
-  for(int i=0;i<N;i++) {
-    for(int j=0;j<M;j++) {
-        for(int k: masks) {
-            cnt(i, j, k);
+  for(int k: masks) {
+    for(int i=0;i<N;i++) {
+      for(int j=0;j<M;j++) {
+        cnt(i, j, k);
       }
     }
   }
