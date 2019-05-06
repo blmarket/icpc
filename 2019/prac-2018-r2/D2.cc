@@ -71,11 +71,11 @@ void cnt(int a, int b, int c) {
     }
   }
 
-  // for(int i=0;i<N;i++) {
-  //   for(int j=0;j<M;j++) cerr << mask[i][j];
-  //   cerr << endl;
-  // }
-  // cerr << a << " " << b << " " << c << " = " << r2 << endl;
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<M;j++) cerr << mask[i][j];
+    cerr << endl;
+  }
+  cerr << a << " " << b << " " << c << " = " << r2 << endl;
 
   if(ret < r2) ret = r2;
 }
