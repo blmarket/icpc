@@ -111,11 +111,12 @@ int main(void) {
     }
   }
 
-  debug2(mat);
-  Mat mat2 = move(matmul(mat, mat));
-  markdiff(mat2);
-  Mat mat3 = move(matmul(mat2, mat));
-  markdiff(mat3);
+  Mat cur = mat;
+  for(int i=1;i<10;i++) {
+    Mat nex = move(matmul(cur, mat));
+    markdiff(nex);
+    cur = move(nex);
+  }
   debug(diff);
 
   return 0;
