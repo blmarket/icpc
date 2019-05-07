@@ -119,7 +119,9 @@ bool checkmat(const Mat &diff) {
 
 void process() {
   int a, b;
+
   scanf(" %d %d", &a, &b);
+  if(a == -1) exit(-1);
   N = a;
   Mat mat;
   while(true) {
@@ -145,11 +147,12 @@ void process() {
   }
   fflush(stdout);
   Mat m2{};
-  scanf("%d\n", N);
+  scanf(" %d", &N);
   for(int i=0;i<N*2;i++) {
     scanf(" %d %d", &a, &b);
     m2[a-1][b-1] = m2[b-1][a-1] = 1;
   }
+
   Mat diff = Mat{};
   Mat c1 = mat, c2 = m2;
   for(int i=1;i<10;i++) {
@@ -170,9 +173,14 @@ void process() {
     c2 = move(n2);
   }
 
-  debug(diff);
-  for(int i=0;i<N;i++) printf("%d ", i+1);
-  fflush(stderr);
+  // debug(diff);
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<N;j++) if(diff[i][j] == 0) {
+      printf("%d ", j+1);
+    }
+  }
+  printf("\n");
+  fflush(stdout);
 }
 
 int main(void) {
