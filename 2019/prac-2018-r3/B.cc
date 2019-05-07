@@ -69,6 +69,22 @@ void debug2(const Mat &mat) {
   cout << endl;
 }
 
+void markdiff(const Mat &mat2) {
+  for(int i=0;i<N;i++) {
+    auto r1 = mat2[i];
+    sort(r1.begin(), r1.begin() + N);
+    for(int j=i+1;j<N;j++) {
+      if(diff[i][j]) continue;
+      auto r2 = mat2[j];
+      sort(r2.begin(), r2.begin() + N);
+      if(r1 != r2) {
+        diff[i][j] = 1;
+        diff[j][i] = 1;
+      }
+    }
+  }
+}
+
 int main(void) {
   mat = Mat();
   for(int i=0;i<N;i++) {
@@ -97,23 +113,13 @@ int main(void) {
 
   debug2(mat);
   Mat mat2 = move(matmul(mat, mat));
-  for(int i=0;i<N;i++) {
-    auto r1 = mat2[i];
-    sort(r1.begin(), r1.begin() + N);
-    for(int j=i+1;j<N;j++) {
-      if(diff[i][j]) continue;
-      auto r2 = mat2[j];
-      sort(r2.begin(), r2.begin() + N);
-      if(r1 != r2) {
-        diff[i][j] = 1;
-      }
-    }
-  }
   debug2(mat2);
+  markdiff(mat2);
   debug(diff);
-
   Mat mat3 = move(matmul(mat2, mat));
   debug2(mat3);
+  markdiff(mat3);
+  debug(diff);
 
   return 0;
 }
