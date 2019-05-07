@@ -33,7 +33,27 @@ typedef array<array<int, 55>, 55> Mat;
 int N = 50;
 Mat mat;
 
-Mat&& matmul(const Mat &a, const Mat &b) {
+Mat matmul(const Mat &a, const Mat &b) {
+  Mat res;
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<N;j++) {
+      for(int k=0;k<N;k++) {
+        res[i][j] += a[i][k] * b[k][j];
+      }
+    }
+  }
+  return res;
+}
+
+void debug(const Mat &mat) {
+  for(int i=0;i<N;i++) {
+    int cnt = 0;
+    for(int j=0;j<N;j++) {
+      cout << mat[i][j] << " ";
+      cnt += mat[i][j];
+    }
+    cout << " = " << cnt << endl;
+  }
 }
 
 int main(void) {
@@ -62,14 +82,7 @@ int main(void) {
     }
   }
 
-  for(int i=0;i<N;i++) {
-    int cnt = 0;
-    for(int j=0;j<N;j++) {
-      cout << mat[i][j] << " ";
-      cnt += mat[i][j];
-    }
-    cout << " = " << cnt << endl;
-  }
+  debug(mat);
 
   return 0;
 }
