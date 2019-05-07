@@ -39,7 +39,29 @@ int main(void) {
   }
 
   mt19937 rnd(time(0));
-  cout << rnd() << endl;
+  for(int i=0;i<N;i++) {
+    for(int j=i+1;j<N;j++) {
+      while(mat[i][j] > 1) {
+        int a = rnd() % N;
+        if(a == i || a == j || mat[i][a]) continue;
+        while(true) {
+          int b = rnd() % N;
+          if(b == i || b == j || a == b || mat[a][b] == 0 || mat[j][b]) continue;
+          mat[a][b]--; mat[b][a]--;
+          mat[i][j]--; mat[j][i]--;
+          mat[i][a]++; mat[a][i]++;
+          mat[j][b]++; mat[b][j]++;
+        }
+      }
+    }
+  }
+
+  for(int i=0;i<N;i++) {
+    for(int j=0;j<N;j++) {
+      cout << mat[i][j] << " ";
+    }
+    cout << endl;
+  }
 
   return 0;
 }
