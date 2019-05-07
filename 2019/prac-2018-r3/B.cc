@@ -113,11 +113,8 @@ int main(void) {
 
   debug2(mat);
   Mat mat2 = move(matmul(mat, mat));
-  debug2(mat2);
   markdiff(mat2);
-  debug(diff);
   Mat mat3 = move(matmul(mat2, mat));
-  debug2(mat3);
   markdiff(mat3);
   debug(diff);
 
