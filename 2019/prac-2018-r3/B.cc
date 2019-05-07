@@ -25,12 +25,16 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
-typedef array<array<int, 55>, 55> Mat;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+typedef array<array<int, 55>, 55> Mat;
+
 int N = 50;
 Mat mat;
+
+Mat&& matmul(const Mat &a, const Mat &b) {
+}
 
 int main(void) {
   mat = Mat();
