@@ -28,7 +28,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-typedef array<array<int, 55>, 55> Mat;
+typedef array<array<LL, 55>, 55> Mat;
 
 int N = 50;
 Mat mat;
