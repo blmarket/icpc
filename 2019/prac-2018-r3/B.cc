@@ -56,6 +56,17 @@ void debug(const Mat &mat) {
   }
 }
 
+void debug2(const Mat &mat) {
+  for(int i=0;i<N;i++) {
+    auto row = mat[i];
+    sort(row.begin(), row.begin() + N);
+    for(int j=0;j<N;j++) {
+      cout << row[j] << " ";
+    }
+    cout << endl;
+  }
+}
+
 int main(void) {
   mat = Mat();
   for(int i=0;i<N;i++) {
@@ -82,11 +93,11 @@ int main(void) {
     }
   }
 
-  debug(mat);
+  debug2(mat);
   Mat mat2 = move(matmul(mat, mat));
-  debug(mat2);
+  debug2(mat2);
   Mat mat3 = move(matmul(mat2, mat));
-  debug(mat3);
+  debug2(mat3);
 
   return 0;
 }
