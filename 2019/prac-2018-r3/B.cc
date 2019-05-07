@@ -65,6 +65,7 @@ void debug2(const Mat &mat) {
     }
     cout << endl;
   }
+  cout << endl;
 }
 
 int main(void) {
