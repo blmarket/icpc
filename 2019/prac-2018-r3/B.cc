@@ -28,7 +28,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-int N = 10;
+int N = 50;
 int mat[55][55];
 
 int main(void) {
