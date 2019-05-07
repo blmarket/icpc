@@ -31,7 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 typedef array<array<LL, 55>, 55> Mat;
 
 int N = 50;
-Mat mat;
+Mat mat, diff;
 
 Mat matmul(const Mat &a, const Mat &b) {
   Mat res;
@@ -97,7 +97,21 @@ int main(void) {
 
   debug2(mat);
   Mat mat2 = move(matmul(mat, mat));
+  for(int i=0;i<N;i++) {
+    auto r1 = mat2[i];
+    sort(r1.begin(), r1.begin() + N);
+    for(int j=i+1;j<N;j++) {
+      if(diff[i][j]) continue;
+      auto r2 = mat2[j];
+      sort(r2.begin(), r2.begin() + N);
+      if(r1 != r2) {
+        diff[i][j] = 1;
+      }
+    }
+  }
   debug2(mat2);
+  debug(diff);
+
   Mat mat3 = move(matmul(mat2, mat));
   debug2(mat3);
 
