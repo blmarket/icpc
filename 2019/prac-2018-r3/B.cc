@@ -49,10 +49,10 @@ void debug(const Mat &mat) {
   for(int i=0;i<N;i++) {
     int cnt = 0;
     for(int j=0;j<N;j++) {
-      cout << mat[i][j] << " ";
+      cerr << mat[i][j] << " ";
       cnt += mat[i][j];
     }
-    cout << " = " << cnt << endl;
+    cerr << " = " << cnt << endl;
   }
 }
 
@@ -117,7 +117,10 @@ bool checkmat(const Mat &diff) {
   return true;
 }
 
-int main(void) {
+void process() {
+  int a, b;
+  scanf(" %d %d", &a, &b);
+  N = a;
   Mat mat;
   while(true) {
     mat = move(genmat());
@@ -134,7 +137,49 @@ int main(void) {
       }
     }
     // debug(diff);
-    // if(checkmat(diff)) break;
+    if(checkmat(diff)) break;
+  }
+  printf("%d\n", N);
+  for(int i=0;i<N;i++) for(int j=i+1;j<N;j++) if(mat[i][j]) {
+    printf("%d %d\n", i+1, j+1);
+  }
+  fflush(stdout);
+  Mat m2{};
+  scanf("%d\n", N);
+  for(int i=0;i<N*2;i++) {
+    scanf(" %d %d", &a, &b);
+    m2[a-1][b-1] = m2[b-1][a-1] = 1;
+  }
+  Mat diff = Mat{};
+  Mat c1 = mat, c2 = m2;
+  for(int i=1;i<10;i++) {
+    Mat n1 = move(matmul(c1, mat));
+    Mat n2 = move(matmul(c2, m2));
+
+    for(int j=0;j<N;j++) {
+      auto r1 = n1[j];
+      sort(r1.begin(), r1.begin() + N);
+      for(int k=0;k<N;k++) if(diff[j][k] == 0) {
+        auto r2 = n2[k];
+        sort(r2.begin(), r2.begin() + N);
+        if(r1 != r2) diff[j][k] = 1;
+      }
+    }
+
+    c1 = move(n1);
+    c2 = move(n2);
+  }
+
+  debug(diff);
+  for(int i=0;i<N;i++) cout << i+1 << " ";
+  fflush(stderr);
+}
+
+int main(void) {
+  int T;
+  scanf(" %d", &T);
+  for(int i=1;i<=T;i++) {
+    process();
   }
 
   return 0;
