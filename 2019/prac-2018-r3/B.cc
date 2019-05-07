@@ -132,6 +132,7 @@ int main(void) {
       for(int j=i+1;j<N;j++) if(!diff[i][j]) {
       }
     }
+    debug(diff);
     if(checkmat(diff)) break;
   }
 
