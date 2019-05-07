@@ -58,10 +58,12 @@ int main(void) {
   }
 
   for(int i=0;i<N;i++) {
+    int cnt = 0;
     for(int j=0;j<N;j++) {
       cout << mat[i][j] << " ";
+      cnt += mat[i][j];
     }
-    cout << endl;
+    cout << " = " << cnt << endl;
   }
 
   return 0;
