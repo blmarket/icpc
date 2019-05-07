@@ -110,21 +110,30 @@ Mat genmat() {
   return mat;
 }
 
-int main(void) {
-  Mat mat = move(genmat());
-  Mat diff{};
-  Mat cur = mat;
-  for(int i=1;i<10;i++) {
-    Mat nex = move(matmul(cur, mat));
-    markdiff(nex, diff);
-    cur = move(nex);
-  }
+bool checkmat(const Mat &diff) {
   for(int i=0;i<N;i++) {
-    int cnt = 0;
-    for(int j=i+1;j<N;j++) if(!diff[i][j]) {
-    }
+    for(int j=i+1;j<N;j++) if(diff[i][j] == 0) return false;
   }
-  debug(diff);
+}
+
+int main(void) {
+  Mat mat;
+  while(true) {
+    mat = move(genmat());
+    Mat diff = Mat{};
+    Mat cur = mat;
+    for(int i=1;i<10;i++) {
+      Mat nex = move(matmul(cur, mat));
+      markdiff(nex, diff);
+      cur = move(nex);
+    }
+    for(int i=0;i<N;i++) {
+      int cnt = 0;
+      for(int j=i+1;j<N;j++) if(!diff[i][j]) {
+      }
+    }
+    if(checkmat(diff)) break;
+  }
 
   return 0;
 }
