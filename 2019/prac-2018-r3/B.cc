@@ -38,7 +38,7 @@ Mat matmul(const Mat &a, const Mat &b) {
   for(int i=0;i<N;i++) {
     for(int j=0;j<N;j++) {
       for(int k=0;k<N;k++) {
-        cerr << a[i][k] << " " << b[k][j] << endl;
+        cerr << a[i][k] << " " << b[k][j] << " " << res[i][j] << endl;
         res[i][j] += a[i][k] * b[k][j];
       }
     }
@@ -96,7 +96,7 @@ int main(void) {
   }
 
   debug2(mat);
-  Mat mat2 = matmul(mat, mat);
+  Mat mat2 = move(matmul(mat, mat));
   debug2(mat2);
   // Mat mat3 = move(matmul(mat2, mat));
   // debug2(mat3);
