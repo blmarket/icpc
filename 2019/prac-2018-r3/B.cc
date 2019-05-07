@@ -114,6 +114,7 @@ bool checkmat(const Mat &diff) {
   for(int i=0;i<N;i++) {
     for(int j=i+1;j<N;j++) if(diff[i][j] == 0) return false;
   }
+  return true;
 }
 
 int main(void) {
