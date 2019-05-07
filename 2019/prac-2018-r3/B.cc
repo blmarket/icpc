@@ -38,7 +38,7 @@ Mat matmul(const Mat &a, const Mat &b) {
   for(int i=0;i<N;i++) {
     for(int j=0;j<N;j++) {
       for(int k=0;k<N;k++) {
-        cerr << a[i][j] << " " << b[k][j] << endl;
+        cerr << a[i][k] << " " << b[k][j] << endl;
         res[i][j] += a[i][k] * b[k][j];
       }
     }
