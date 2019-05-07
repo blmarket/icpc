@@ -31,13 +31,12 @@ template<typename T> int size(const T &a) { return a.size(); }
 typedef array<array<LL, 55>, 55> Mat;
 
 int N = 50;
-Mat mat, diff;
+mt19937 rnd(time(0));
 
 Mat matmul(const Mat &a, const Mat &b) {
-  Mat res;
+  Mat res{};
   for(int i=0;i<N;i++) {
     for(int j=0;j<N;j++) {
-      res[i][j] = 0;
       for(int k=0;k<N;k++) {
         res[i][j] += a[i][k] * b[k][j];
       }
@@ -69,7 +68,7 @@ void debug2(const Mat &mat) {
   cout << endl;
 }
 
-void markdiff(const Mat &mat2) {
+void markdiff(const Mat &mat2, Mat &diff) {
   for(int i=0;i<N;i++) {
     auto r1 = mat2[i];
     sort(r1.begin(), r1.begin() + N);
@@ -85,14 +84,12 @@ void markdiff(const Mat &mat2) {
   }
 }
 
-int main(void) {
-  mat = Mat();
+Mat genmat() {
+  Mat mat = Mat();
   for(int i=0;i<N;i++) {
     mat[i][(i+1)%N] = 2;
     mat[(i+1)%N][i] = 2;
   }
-
-  mt19937 rnd(time(0));
   for(int i=0;i<N;i++) {
     for(int j=i+1;j<N;j++) {
       while(mat[i][j] > 1) {
@@ -110,12 +107,22 @@ int main(void) {
       }
     }
   }
+  return mat;
+}
 
+int main(void) {
+  Mat mat = move(genmat());
+  Mat diff{};
   Mat cur = mat;
   for(int i=1;i<10;i++) {
     Mat nex = move(matmul(cur, mat));
-    markdiff(nex);
+    markdiff(nex, diff);
     cur = move(nex);
+  }
+  for(int i=0;i<N;i++) {
+    int cnt = 0;
+    for(int j=i+1;j<N;j++) if(!diff[i][j]) {
+    }
   }
   debug(diff);
 
