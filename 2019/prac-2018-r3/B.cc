@@ -51,6 +51,7 @@ int main(void) {
           mat[i][j]--; mat[j][i]--;
           mat[i][a]++; mat[a][i]++;
           mat[j][b]++; mat[b][j]++;
+          break;
         }
       }
     }
