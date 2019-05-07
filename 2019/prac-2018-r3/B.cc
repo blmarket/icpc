@@ -85,6 +85,8 @@ int main(void) {
   debug(mat);
   Mat mat2 = move(matmul(mat, mat));
   debug(mat2);
+  Mat mat3 = move(matmul(mat2, mat));
+  debug(mat3);
 
   return 0;
 }
