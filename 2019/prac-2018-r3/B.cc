@@ -38,7 +38,7 @@ int main(void) {
     mat[(i+1)%N][i] = 2;
   }
 
-  mt19937 rnd;
+  mt19937 rnd(time(0));
   cout << rnd() << endl;
 
   return 0;
