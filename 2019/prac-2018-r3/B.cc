@@ -171,7 +171,7 @@ void process() {
   }
 
   debug(diff);
-  for(int i=0;i<N;i++) cout << i+1 << " ";
+  for(int i=0;i<N;i++) printf("%d ", i+1);
   fflush(stderr);
 }
 
