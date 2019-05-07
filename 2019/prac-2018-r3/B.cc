@@ -134,7 +134,7 @@ int main(void) {
       }
     }
     debug(diff);
-    if(checkmat(diff)) break;
+    // if(checkmat(diff)) break;
   }
 
   return 0;
