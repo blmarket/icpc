@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 typedef array<array<LL, 55>, 55> Mat;
 
-int N = 20;
+int N = 40;
 Mat mat;
 
 Mat matmul(const Mat &a, const Mat &b) {
