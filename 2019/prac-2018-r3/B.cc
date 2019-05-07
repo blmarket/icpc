@@ -25,14 +25,15 @@ typedef vector<VI> VVI;
 typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
+typedef array<array<int, 55>, 55> Mat;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N = 50;
-int mat[55][55];
+Mat mat;
 
 int main(void) {
-  memset(mat, 0, sizeof(mat));
+  mat = Mat();
   for(int i=0;i<N;i++) {
     mat[i][(i+1)%N] = 2;
     mat[(i+1)%N][i] = 2;
