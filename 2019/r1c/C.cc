@@ -47,7 +47,8 @@ int go(int sx, int sy, int ex, int ey) {
       if(!fail) {
         bool t1 = !!go(sx, sy, ex, j);
         bool t2 = !go(sx, j+1, ex, ey);
-        cerr << sx << " " << sy << " " << ex << " " << ey << " " << i << " " << j << " NS = " << (t1 ^ t2) << endl;
+        if(sx == 0 && sy == 0 && ex == R && ey == C) 
+          cerr << sx << " " << sy << " " << ex << " " << ey << " " << i << " " << j << " NS = " << (t1 ^ t2) << endl;
         ret += t1 ^ t2;
       }
       fail = false;
@@ -59,7 +60,8 @@ int go(int sx, int sy, int ex, int ey) {
       if(!fail) {
         bool t1 = !!go(sx, sy, i, ey);
         bool t2 = !go(i+1, sy, ex, ey);
-        cerr << sx << " " << sy << " " << ex << " " << ey << " " << i << " " << j << " WE = " << (t1 ^ t2) << endl;
+        if(sx == 0 && sy == 0 && ex == R && ey == C) 
+          cerr << sx << " " << sy << " " << ex << " " << ey << " " << i << " " << j << " WE = " << (t1 ^ t2) << endl;
         ret += t1 ^ t2;
       }
     }
