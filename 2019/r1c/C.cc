@@ -40,7 +40,7 @@ int go(int sx, int sy, int ex, int ey) {
     for(int j=sy;j<ey;j++) {
       bool fail = false;
       for(int k=sx;k<ex;k++) {
-        if(board[i][j] == '#') {
+        if(board[k][j] == '#') {
           fail=true; break;
         }
       }
@@ -53,7 +53,7 @@ int go(int sx, int sy, int ex, int ey) {
       }
       fail = false;
       for(int k=sy;k<ey;k++) {
-        if(board[i][j] == '#') {
+        if(board[i][k] == '#') {
           fail=true; break;
         }
       }
