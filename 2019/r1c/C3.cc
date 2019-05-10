@@ -77,10 +77,10 @@ void process() {
   }
   memset(methods, -1, sizeof(methods));
   cout << go(0, 0, R, C, true) << endl;
-  for(int i=0;i<R;i++) {
-    for(int j=0;j<C;j++) {
-      for(int k=0;k<R;k++) {
-        for(int l=0;l<C;l++) {
+  for(int i=0;i<=R;i++) {
+    for(int j=0;j<=C;j++) {
+      for(int k=0;k<=R;k++) {
+        for(int l=0;l<=C;l++) {
           if(methods[i][j][k][l] != -1) {
             cerr << i << " " << j << " " << k << " " << l << " = " << methods[i][j][k][l] << endl;
           }
