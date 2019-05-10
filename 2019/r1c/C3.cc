@@ -35,6 +35,7 @@ int go(int sx, int sy, int ex, int ey, bool first = false) {
   if(methods[sx][sy][ex][ey] != -1) return methods[sx][sy][ex][ey];
   if(sx >= ex || sy >= ey) return 0;
 
+  int ret = 0;
   set<int> S;
   for(int i=sx;i<ex;i++) {
     bool fail = false;
@@ -44,6 +45,7 @@ int go(int sx, int sy, int ex, int ey, bool first = false) {
     if(fail) continue;
     int t1 = go(sx, sy, i, ey);
     int t2 = go(i+1, sy, ex, ey);
+    if(first && (t1 ^ t2) == 0) ret += (ey - sy);
     S.insert(t1 ^ t2);
   }
 
@@ -55,6 +57,7 @@ int go(int sx, int sy, int ex, int ey, bool first = false) {
     if(fail) continue;
     int t1 = go(sx, sy, ex, j);
     int t2 = go(sx, j+1, ex, ey);
+    if(first && (t1 ^ t2) == 0) ret += (ex - sx);
     S.insert(t1 ^ t2);
   }
 
@@ -69,7 +72,7 @@ void process() {
     scanf(" %s", board[i]);
   }
   memset(methods, -1, sizeof(methods));
-  cout << go(0, 0, R, C) << endl;
+  cout << go(0, 0, R, C, true) << endl;
 }
 
 int main(void) {
