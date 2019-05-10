@@ -54,6 +54,9 @@ int go(const VS &a) {
       }
     }
   }
+
+  for(int i=0;i<R;i++) cerr << a[i] << endl;
+  cerr << ret << endl;
   return memo[a] = ret;
 }
 
