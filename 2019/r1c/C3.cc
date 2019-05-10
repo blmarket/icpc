@@ -67,7 +67,10 @@ int go(int sx, int sy, int ex, int ey, bool first = false) {
   }
 
   for(int i=0;;i++) {
-    if(!S.count(i)) return methods[sx][sy][ex][ey] = i;
+    if(!S.count(i)) {
+      cerr << sx << " " << sy << " " << ex << " " << ey << " = " << i << endl;
+      return methods[sx][sy][ex][ey] = i;
+    }
   }
 }
 
