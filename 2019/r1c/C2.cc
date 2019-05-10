@@ -43,9 +43,9 @@ int go(const VS &a) {
         bool fail = false;
         for(int l=-1;l<2;l+=2) {
           while(ii >= 0 && jj >= 0 && ii < R && jj < C) {
-            if(b[i][j] == '#') { fail = true; break; }
-            if(b[i][j] == '$') break;
-            b[i][j] = '$';
+            if(b[ii][jj] == '#') { fail = true; break; }
+            if(b[ii][jj] == '$') break;
+            b[ii][jj] = '$';
             ii += l * k; jj += l * !k;
           }
           if(fail) break;
