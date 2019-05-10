@@ -31,7 +31,7 @@ int R, C;
 int methods[20][20][20][20];
 char board[20][20];
 
-int go(int sx, int sy, int ex, int ey) {
+int go(int sx, int sy, int ex, int ey, bool first = false) {
   if(methods[sx][sy][ex][ey] != -1) return methods[sx][sy][ex][ey];
   if(sx >= ex || sy >= ey) return 0;
 
