@@ -39,10 +39,9 @@ int go(const VS &a) {
       if(a[i][j] != '.') continue;
       for(int k=0;k<2;k++) {
         VS b = a;
-        int ii = i, jj = j;
         bool fail = false;
         for(int l=-1;l<2;l+=2) {
-          cerr << l << " " << ii << " " << jj << endl;
+          int ii = i, jj = j;
           while(ii >= 0 && jj >= 0 && ii < R && jj < C) {
             if(b[ii][jj] == '#') { fail = true; break; }
             if(b[ii][jj] == '$') break;
