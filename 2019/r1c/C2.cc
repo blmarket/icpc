@@ -52,15 +52,17 @@ int go(const VS &a) {
           if(fail) break;
         }
         if(fail) continue;
-        if(go(b) == 0) ret++;
+        if(go(b) == 0) {
+          if(a == data) {
+            for(int i=0;i<R;i++) cerr << b[i] << endl;
+            cerr << ret << endl;
+          }
+          ret++;
+        }
       }
     }
   }
 
-  if(a == data) {
-    for(int i=0;i<R;i++) cerr << a[i] << endl;
-    cerr << ret << endl;
-  }
   return memo[a] = ret;
 }
 
