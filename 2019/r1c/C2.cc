@@ -51,6 +51,7 @@ int go(const VS &a) {
           if(fail) break;
         }
         if(fail) continue;
+        cerr << i << " " << j << " " << k << endl;
         for(int l=0;l<R;l++) cerr << b[l] << endl;
         cerr << endl;
         // if(go(b) == 0) ret++;
