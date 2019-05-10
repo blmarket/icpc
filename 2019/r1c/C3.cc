@@ -61,6 +61,11 @@ int go(int sx, int sy, int ex, int ey, bool first = false) {
     S.insert(t1 ^ t2);
   }
 
+  if(first) {
+    if(S.count(0)) return ret;
+    else return 0;
+  }
+
   for(int i=0;;i++) {
     if(!S.count(i)) return methods[sx][sy][ex][ey] = i;
   }
