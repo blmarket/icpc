@@ -68,7 +68,6 @@ int go(int sx, int sy, int ex, int ey, bool first = false) {
 
   for(int i=0;;i++) {
     if(!S.count(i)) {
-      cerr << sx << " " << sy << " " << ex << " " << ey << " = " << i << endl;
       return methods[sx][sy][ex][ey] = i;
     }
   }
@@ -81,6 +80,17 @@ void process() {
   }
   memset(methods, -1, sizeof(methods));
   cout << go(0, 0, R, C, true) << endl;
+  for(int i=0;i<R;i++) {
+    for(int j=0;j<C;j++) {
+      for(int k=0;k<R;k++) {
+        for(int l=0;l<C;l++) {
+          if(methods[i][j][k][l] != -1) {
+            cerr << i << " " << j << " " << k << " " << l << " = " << methods[i][j][k][l] << endl;
+          }
+        }
+      }
+    }
+  }
 }
 
 int main(void) {
