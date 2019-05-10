@@ -42,6 +42,7 @@ int go(const VS &a) {
         bool fail = false;
         for(int l=-1;l<2;l+=2) {
           int ii = i, jj = j;
+          cerr << l << " " << ii << " " << jj << endl;
           while(ii >= 0 && jj >= 0 && ii < R && jj < C) {
             if(b[ii][jj] == '#') { fail = true; break; }
             if(b[ii][jj] == '$') break;
