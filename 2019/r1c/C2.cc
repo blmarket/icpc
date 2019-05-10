@@ -50,7 +50,7 @@ int go(const VS &a) {
           if(fail) break;
         }
         if(fail) continue;
-        if(go(b)) ret++;
+        if(go(b) == 0) ret++;
       }
     }
   }
