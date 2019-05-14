@@ -34,6 +34,13 @@ int N;
 vector<point> data;
 
 point cross(const point &a, const point &b) {
+  point r;
+  for(int i=0;i<3;i++) {
+    int n1 = (i+1)%3;
+    int n2 = (i+2)%3;
+    r.v[i] = a.v[n1] * b.v[n2] - a.v[n2] * b.v[n1];
+  }
+  return r;
 }
 
 void process() {
