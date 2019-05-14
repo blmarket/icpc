@@ -71,7 +71,6 @@ vector<int> stack;
 bool used[25];
 
 bool go(int a) {
-  stack.pb(a);
   if(a == N) {
     for(int i=0;i<N;i++) cout << stack[i]+1 << " ";
     cout << endl;
@@ -86,10 +85,11 @@ bool go(int a) {
       if(high(p4, p3, p2, p1) > 0) continue;
     }
     used[i] = true;
+    stack.pb(i);
     go(a+1);
+    stack.pop_back();
     used[i] = false;
   }
-  stack.pop_back();
   return false;
 }
 
