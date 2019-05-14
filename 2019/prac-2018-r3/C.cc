@@ -75,6 +75,7 @@ void process() {
     data.emplace_back(point {a, b, c});
   }
   cerr << high(data[3], data[2], data[0], data[4]) << endl;
+  cerr << high(data[2], data[0], data[1], data[3]) << endl;
 }
 
 int main(void) {
