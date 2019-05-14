@@ -105,6 +105,7 @@ void process() {
   cerr << high(data[1], data[2], data[3], data[0]) << endl;
   cerr << high(data[2], data[1], data[3], data[0]) << endl;
   cerr << high(data[2], data[3], data[1], data[0]) << endl;
+  cerr << high(data[2], data[3], data[4], data[1]) << endl;
 }
 
 int main(void) {
