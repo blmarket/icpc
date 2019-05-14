@@ -28,10 +28,13 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 struct point {
-  int x, y, z;
+  int v[3];
 };
 int N;
 vector<point> data;
+
+point cross(const point &a, const point &b) {
+}
 
 void process() {
   scanf(" %d", &N);
