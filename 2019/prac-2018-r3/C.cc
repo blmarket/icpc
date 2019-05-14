@@ -96,6 +96,8 @@ bool go(int a) {
 
 void process() {
   scanf(" %d", &N);
+  stack.clear();
+  memset(used, 0, sizeof(used));
   for(int i=0;i<N;i++) {
     int a,b,c;
     scanf(" %d %d %d", &a, &b, &c);
