@@ -87,7 +87,7 @@ bool go(int a) {
     }
     used[i] = true;
     stack.pb(i);
-    go(a+1);
+    if(go(a+1)) return true;
     stack.pop_back();
     used[i] = false;
   }
@@ -102,10 +102,6 @@ void process() {
     data.emplace_back(point {a, b, c});
   }
   go(0);
-  cerr << high(data[1], data[2], data[3], data[0]) << endl;
-  cerr << high(data[2], data[1], data[3], data[0]) << endl;
-  cerr << high(data[2], data[3], data[1], data[0]) << endl;
-  cerr << high(data[2], data[3], data[4], data[1]) << endl;
 }
 
 int main(void) {
