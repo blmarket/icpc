@@ -86,7 +86,7 @@ bool go(int a) {
       if(high(p4, p3, p2, p1) > 0) continue;
     }
     used[i] = true;
-    if(go(a+1)) return true;
+    go(a+1);
     used[i] = false;
   }
   stack.pop_back();
