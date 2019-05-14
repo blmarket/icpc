@@ -79,12 +79,15 @@ bool go(int a) {
   }
   for(int i=0;i<N;i++) if(!used[i]) {
     if(a >= 3) {
-      const auto &p1 = data[stack[stack.size() - 3]];
       const auto &p2 = data[stack[stack.size() - 2]];
       const auto &p3 = data[stack[stack.size() - 1]];
       const auto &p4 = data[i];
-      auto tmp = high(p4, p3, p2, p1);
-      if(tmp > 0) continue;
+      bool fail = false;
+      for(int j=0;j<stack.size() - 2;j++) {
+        auto tmp = high(p4, p3, p2, data[j]);
+        if(tmp > 0) { fail= true; break; }
+      }
+      if(fail) continue;
     }
     used[i] = true;
     stack.pb(i);
