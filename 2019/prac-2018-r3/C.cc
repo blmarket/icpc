@@ -82,7 +82,9 @@ bool go(int a) {
       const auto &p2 = data[stack.size() - 2];
       const auto &p3 = data[stack.size() - 1];
       const auto &p4 = data[i];
-      if(high(p4, p3, p2, p1) > 0) continue;
+      auto tmp = high(p4, p3, p2, p1);
+      cerr << tmp << endl;
+      if(tmp > 0) continue;
     }
     used[i] = true;
     stack.pb(i);
