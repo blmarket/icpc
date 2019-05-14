@@ -54,8 +54,7 @@ LL dot(const point &a, const point &b) {
 }
 
 point norm(const point &a, const point &b) {
-  cerr << dot(a, b) << endl;
-  if(dot(a,b) < 0) {
+  if(dot(point {0, 0, 10},b) < 0) {
     return point {} - b;
   }
   return b;
