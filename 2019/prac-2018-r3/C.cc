@@ -28,7 +28,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 struct point {
-  int v[3];
+  LL v[3];
 
   point operator-(const point &rhs) {
     return point { v[0] - rhs.v[0], v[1] - rhs.v[1], v[2] - rhs.v[2] };
@@ -47,9 +47,17 @@ point cross(const point &a, const point &b) {
   return r;
 }
 
-bool high(point &a, point &b, point &c, point &d) {
+LL dot(const point &a, const point &b) {
+  LL ret = 0;
+  for(int i=0;i<3;i++) ret += a.v[i] * b.v[i];
+  return ret;
+}
+
+LL high(point &a, point &b, point &c, point &d) {
   point v1 = b - a;
   point v2 = c - a;
+  point v3 = d - a;
+  cerr << dot(cross(v1, v2), v3) << endl;
 }
 
 void process() {
