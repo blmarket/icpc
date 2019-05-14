@@ -101,8 +101,7 @@ void process() {
     scanf(" %d %d %d", &a, &b, &c);
     data.emplace_back(point {a, b, c});
   }
-  cerr << high(data[3], data[2], data[0], data[4]) << endl;
-  cerr << high(data[2], data[0], data[1], data[3]) << endl;
+  cerr << high(data[1], data[2], data[3], data[0]) << endl;
 
   go(0);
 }
