@@ -30,12 +30,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 struct point {
   LL v[3];
 
-  point operator-(const point &rhs) {
+  point operator-(const point &rhs) const {
     return point { v[0] - rhs.v[0], v[1] - rhs.v[1], v[2] - rhs.v[2] };
   }
 };
-int N;
-vector<point> data;
 
 point cross(const point &a, const point &b) {
   point r;
@@ -60,11 +58,39 @@ point norm(const point &a, const point &b) {
   return b;
 }
 
-LL high(point &a, point &b, point &c, point &d) {
+LL high(const point &a, const point &b, const point &c, const point &d) {
   point v1 = b - a;
   point v2 = c - a;
   point v3 = d - a;
   return dot(norm(a, cross(v1, v2)), v3);
+}
+
+int N;
+vector<point> data;
+vector<int> stack;
+bool used[25];
+
+bool go(int a) {
+  stack.pb(a);
+  if(a == N) {
+    for(int i=0;i<N;i++) cout << stack[i]+1 << " ";
+    cout << endl;
+    return true;
+  }
+  for(int i=0;i<N;i++) if(!used[i]) {
+    if(a >= 3) {
+      const auto &p1 = data[stack.size() - 3];
+      const auto &p2 = data[stack.size() - 2];
+      const auto &p3 = data[stack.size() - 1];
+      const auto &p4 = data[i];
+      if(high(p4, p3, p2, p1) > 0) continue;
+    }
+    used[i] = true;
+    if(go(a+1)) return true;
+    used[i] = false;
+  }
+  stack.pop_back();
+  return false;
 }
 
 void process() {
@@ -76,6 +102,8 @@ void process() {
   }
   cerr << high(data[3], data[2], data[0], data[4]) << endl;
   cerr << high(data[2], data[0], data[1], data[3]) << endl;
+
+  go(0);
 }
 
 int main(void) {
