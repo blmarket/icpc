@@ -51,8 +51,8 @@ LL dot(const point &a, const point &b) {
   return ret;
 }
 
-point norm(const point &a, const point &b) {
-  if(dot(point {0, 0, 10},b) < 0) {
+point norm(const point &b) {
+  if(dot(point {0, 0, 1},b) < 0) {
     return point {} - b;
   }
   return b;
@@ -62,7 +62,8 @@ LL high(const point &a, const point &b, const point &c, const point &d) {
   point v1 = b - a;
   point v2 = c - a;
   point v3 = d - a;
-  return dot(norm(a, cross(v1, v2)), v3);
+
+  return dot(norm(cross(v1, v2)), v3);
 }
 
 int N;
