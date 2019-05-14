@@ -57,7 +57,7 @@ LL high(point &a, point &b, point &c, point &d) {
   point v1 = b - a;
   point v2 = c - a;
   point v3 = d - a;
-  cerr << dot(cross(v1, v2), v3) << endl;
+  return dot(cross(v1, v2), v3);
 }
 
 void process() {
@@ -67,6 +67,9 @@ void process() {
     scanf(" %d %d %d", &a, &b, &c);
     data.emplace_back(point {a, b, c});
   }
+
+  cerr << high(data[4], data[3], data[2], data[0]) << endl;
+  cerr << high(data[3], data[2], data[0], data[1]) << endl;
 }
 
 int main(void) {
