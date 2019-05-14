@@ -53,11 +53,18 @@ LL dot(const point &a, const point &b) {
   return ret;
 }
 
+point norm(const point &a, const point &b) {
+  if(dot(a,b) < 0) {
+    return point {} - b;
+  }
+  return b;
+}
+
 LL high(point &a, point &b, point &c, point &d) {
   point v1 = b - a;
   point v2 = c - a;
   point v3 = d - a;
-  return dot(cross(v1, v2), v3);
+  return dot(norm(a, cross(v1, v2)), v3);
 }
 
 void process() {
@@ -70,7 +77,6 @@ void process() {
 
   // cerr << high(data[4], data[3], data[2], data[0]) << endl;
   // cerr << high(data[3], data[2], data[0], data[1]) << endl;
-  cerr << high(data[0], data[2], data[1], data[3]) << endl;
 }
 
 int main(void) {
