@@ -29,6 +29,10 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 struct point {
   int v[3];
+
+  point operator-(const point &rhs) {
+    return point { v[0] - rhs.v[0], v[1] - rhs.v[1], v[2] - rhs.v[2] };
+  }
 };
 int N;
 vector<point> data;
@@ -41,6 +45,11 @@ point cross(const point &a, const point &b) {
     r.v[i] = a.v[n1] * b.v[n2] - a.v[n2] * b.v[n1];
   }
   return r;
+}
+
+bool high(point &a, point &b, point &c, point &d) {
+  point v1 = b - a;
+  point v2 = c - a;
 }
 
 void process() {
