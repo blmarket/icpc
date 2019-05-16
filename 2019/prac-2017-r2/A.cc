@@ -48,6 +48,10 @@ int go(const tuple<int, int, int> &s) {
     int tmp = go(make_tuple(a, b-2, c)) + 1; 
     ret = max(ret, tmp);
   }
+  if(a && c) {
+    int tmp = go(make_tuple(a-1, b, c-1)) + 1; 
+    ret = max(ret, tmp);
+  }
 
   return memo[s] = ret;
 }
