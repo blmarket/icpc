@@ -57,6 +57,7 @@ void process() {
       ret++; v[2] = 0; r1 -= 2;
     }
     ret += r1 / 3; r1 %= 3;
+    cerr << " " << r1 << " " << v[2];
     if(r1 || v[2]) ret++;
     cerr << " = " << ret << endl;
   }
