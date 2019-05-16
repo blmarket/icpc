@@ -51,73 +51,46 @@ LL dot(const point &a, const point &b) {
   return ret;
 }
 
-point norm(const point &b) {
-  if(dot(point {0, 0, 1},b) < 0) {
-    return point {} - b;
-  }
-  return b;
-}
-
 LL high(const point &a, const point &b, const point &c, const point &d) {
   point v1 = b - a;
   point v2 = c - a;
   point v3 = d - a;
 
-  return dot(norm(cross(v1, v2)), v3);
+  return dot(cross(v1, v2), v3);
 }
 
 int N;
 vector<point> data;
-vector<int> stack;
-bool used[25];
-
-bool go(int a) {
-  if(a == N) {
-    for(int i=0;i<N;i++) cout << stack[i]+1 << " ";
-    cout << endl;
-    return true;
-  }
-  for(int i=0;i<N;i++) if(!used[i]) {
-    if(a >= 3) {
-      const auto &p2 = data[stack[stack.size() - 2]];
-      const auto &p3 = data[stack[stack.size() - 1]];
-      const auto &p4 = data[i];
-      bool fail = false;
-      for(int j=0;j<stack.size() - 2;j++) {
-        auto tmp = high(p4, p3, p2, data[j]);
-        if(tmp > 0) { fail= true; break; }
-      }
-      if(fail) continue;
-    }
-    used[i] = true;
-    stack.pb(i);
-    if(go(a+1)) return true;
-    stack.pop_back();
-    used[i] = false;
-  }
-  return false;
-}
 
 void process() {
   scanf(" %d", &N);
-  stack.clear();
-  memset(used, 0, sizeof(used));
+  vector<int> p;
+  for(int i=0;i<N;i++) p.pb(i);
+  do {
+    bool fail=false;
+    for(int i=3;i<N;i++) {
+      point t1 { data[p[i]].v[0], data[p[i]].v[1], 0 };
+      auto v = [&](const point &pp) {
+        return high(data[p[i]], data[p[i-1]], data[p[i-2]], pp);
+      };
+    }
+  } while(next_permutation(p.begin(), p.end()));
+
   for(int i=0;i<N;i++) {
     int a,b,c;
     scanf(" %d %d %d", &a, &b, &c);
     data.emplace_back(point {a, b, c});
   }
-  go(0);
 
-  for(int i=0;i<N;i++) {
-    for(int j=i+1;j<N;j++) {
-      for(int k=j+1;k<N;k++) {
-        for(int l=0;l<N;l++) if(l != i && l != j && l != k) {
-          cerr << i << " " << j << " " << k << " " << l << " " << high(data[i], data[j], data[k], data[l]) << endl;
-        }
-      }
-    }
-  }
+  // for(int i=0;i<N;i++) {
+  //   for(int j=i+1;j<N;j++) {
+  //     for(int k=j+1;k<N;k++) {
+  //       for(int l=0;l<N;l++) if(l != i && l != j && l != k) {
+  //         cerr << i << " " << j << " " << k << " " << l << " " << high(data[i], data[j], data[k], data[l]) << endl;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 int main(void) {
