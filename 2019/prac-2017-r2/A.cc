@@ -40,6 +40,14 @@ int go(const tuple<int, int, int> &s) {
     int tmp = go(make_tuple(a-3, b, c)) + 1; 
     ret = max(ret, tmp);
   }
+  if(c >= 3) {
+    int tmp = go(make_tuple(a, b, c-3)) + 1; 
+    ret = max(ret, tmp);
+  }
+  if(b >= 2) {
+    int tmp = go(make_tuple(a, b-2, c)) + 1; 
+    ret = max(ret, tmp);
+  }
 
   return memo[s] = ret;
 }
