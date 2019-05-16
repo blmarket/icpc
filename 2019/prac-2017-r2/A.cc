@@ -27,12 +27,27 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+map<tuple<int, int,int>, int> memo;
 int N, P;
 int v[4];
+
+int go(const tuple<int, int, int> &s) {
+  if(memo.count(s)) return memo[s];
+  int a,b,c;
+  tie(a,b,c) = s;
+  int ret = 0;
+  if(a >= 3) {
+    int tmp = go(make_tuple(a-3, b, c)) + 1; 
+    ret = max(ret, tmp);
+  }
+
+  return memo[s] = ret;
+}
 
 void process() {
   scanf(" %d %d", &N, &P);
   memset(v, 0, sizeof(v));
+  memo.clear();
   for(int i=0;i<N;i++) {
     int tmp;
     scanf(" %d", &tmp);
@@ -48,18 +63,7 @@ void process() {
     ret += (v[1] / 3) + (v[2] / 3);
     if((v[1]%3) || (v[2]%3)) ret++;
   } else if(P == 4) {
-    cerr << ret << " " << v[1] << " " << v[2] << " " << v[3];
-    int t1 = min(v[1], v[3]);
-    ret += t1; v[1] -= t1; v[3] -= t1;
-    int r1 = v[1] + v[3];
-    ret += v[2] / 2; v[2] %= 2;
-    if(v[2] && r1 >= 2) {
-      ret++; v[2] = 0; r1 -= 2;
-    }
-    ret += r1 / 3; r1 %= 3;
-    cerr << " " << r1 << " " << v[2] << "(" <<  ret << ") ";
-    if(r1 || v[2]) ret++;
-    cerr << " = " << ret << endl;
+    ret += go(make_tuple(v[1], v[2], v[3]));
   }
   cout << ret << endl;
 }
