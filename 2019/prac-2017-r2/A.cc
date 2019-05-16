@@ -51,12 +51,11 @@ void process() {
     int t1 = min(v[1], v[3]);
     ret += t1; v[1] -= t1; v[3] -= t1;
     int r1 = v[1] + v[3];
-    t1 = v[2] / 2;
-    ret += t1; v[2] %= 2;
+    ret += v[2] / 2; v[2] %= 2;
     if(v[2] && r1 >= 2) {
-      ret++; r1 -= 2; v[2]--;
+      ret++; v[2] = 0; r1 -= 2;
     }
-    ret += (r1 / 3); r1 %= 3;
+    ret += r1 / 3; r1 %= 3;
     if(r1 || v[2]) ret++;
   }
   cout << ret << endl;
