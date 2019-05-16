@@ -80,8 +80,8 @@ void process() {
         return high(data[p[i]], data[p[i-1]], data[p[i-2]], pp);
       };
       LL v1 = v(t1);
-      cerr << v1 << endl;
       for(int j=0;j<i-2;j++) {
+        cerr << v1 << " " << v(data[p[j]]) << endl;
         if( (v(data[p[j]]) < 0) != (v1 < 0)) {
           fail = true;
           break;
