@@ -56,6 +56,7 @@ void process() {
     }
     ret += (r1 / 3);
   }
+  if(ret < N) ret++;
   cout << ret << endl;
 }
 
