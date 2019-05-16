@@ -35,7 +35,6 @@ int go(const tuple<int, int, int> &s) {
   if(memo.count(s)) return memo[s];
   int a,b,c;
   tie(a,b,c) = s;
-  cerr << a << " " << b << " " << c << endl;
   int ret = 0;
   if(a >= 3) {
     int tmp = go(make_tuple(a-3, b, c)) + 1; 
