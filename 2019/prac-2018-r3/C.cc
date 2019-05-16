@@ -68,6 +68,7 @@ vector<point> data;
 
 void process() {
   scanf(" %d", &N);
+  data.clear();
   for(int i=0;i<N;i++) {
     int a,b,c;
     scanf(" %d %d %d", &a, &b, &c);
