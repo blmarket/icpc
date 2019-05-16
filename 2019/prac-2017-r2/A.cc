@@ -48,6 +48,7 @@ void process() {
     ret += (v[1] / 3) + (v[2] / 3);
     if((v[1]%3) || (v[2]%3)) ret++;
   } else if(P == 4) {
+    cerr << v[1] << " " << v[2] << " " << v[3] << endl;
     int t1 = min(v[1], v[3]);
     ret += t1; v[1] -= t1; v[3] -= t1;
     int r1 = v[1] + v[3];
