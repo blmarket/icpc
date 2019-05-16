@@ -53,6 +53,10 @@ int go(const tuple<int, int, int> &s) {
     ret = max(ret, tmp);
   }
 
+  if(ret == 0 && (a || b || c)) {
+    ret = 1;
+  }
+
   return memo[s] = ret;
 }
 
