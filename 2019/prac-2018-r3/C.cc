@@ -64,6 +64,12 @@ vector<point> data;
 
 void process() {
   scanf(" %d", &N);
+  for(int i=0;i<N;i++) {
+    int a,b,c;
+    scanf(" %d %d %d", &a, &b, &c);
+    data.emplace_back(point {a, b, c});
+  }
+
   vector<int> p;
   for(int i=0;i<N;i++) p.pb(i);
   do {
@@ -73,14 +79,23 @@ void process() {
       auto v = [&](const point &pp) {
         return high(data[p[i]], data[p[i-1]], data[p[i-2]], pp);
       };
+      LL v1 = v(t1);
+      for(int j=0;j<i-2;j++) {
+        if( (v(data[p[j]]) < 0) != (v1 < 0)) {
+          fail = true;
+          break;
+        }
+      }
+      if(!fail) {
+        for(int i=0;i<N;i++) {
+          cout << p[i]+1 << " ";
+        }
+        cout << endl;
+        break;
+      }
     }
   } while(next_permutation(p.begin(), p.end()));
 
-  for(int i=0;i<N;i++) {
-    int a,b,c;
-    scanf(" %d %d %d", &a, &b, &c);
-    data.emplace_back(point {a, b, c});
-  }
 
   // for(int i=0;i<N;i++) {
   //   for(int j=i+1;j<N;j++) {
