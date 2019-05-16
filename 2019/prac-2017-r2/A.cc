@@ -36,12 +36,12 @@ int go(const tuple<int, int, int> &s) {
   int a,b,c;
   tie(a,b,c) = s;
   int ret = 0;
-  if(a >= 3) {
-    int tmp = go(make_tuple(a-3, b, c)) + 1; 
+  if(a >= 4) {
+    int tmp = go(make_tuple(a-4, b, c)) + 1; 
     ret = max(ret, tmp);
   }
-  if(c >= 3) {
-    int tmp = go(make_tuple(a, b, c-3)) + 1; 
+  if(c >= 4) {
+    int tmp = go(make_tuple(a, b, c-4)) + 1; 
     ret = max(ret, tmp);
   }
   if(b >= 2) {
