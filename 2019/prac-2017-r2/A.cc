@@ -52,6 +52,14 @@ int go(const tuple<int, int, int> &s) {
     int tmp = go(make_tuple(a-1, b, c-1)) + 1; 
     ret = max(ret, tmp);
   }
+  if(b && a >= 2) {
+    int tmp = go(make_tuple(a-2, b-1, c)) + 1; 
+    ret = max(ret, tmp);
+  }
+  if(b && c >= 2) {
+    int tmp = go(make_tuple(a, b-1, c-2)) + 1; 
+    ret = max(ret, tmp);
+  }
 
   if(ret == 0 && (a || b || c)) {
     ret = 1;
