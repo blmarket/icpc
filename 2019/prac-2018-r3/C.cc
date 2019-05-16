@@ -52,15 +52,15 @@ LL dot(const point &a, const point &b) {
 }
 
 LL high(const point &a, const point &b, const point &c, const point &d) {
-  LL A = b.v[0] - a.v[0], B = b.v[1] - a.v[1], C = b.v[2] - a.v[2];
-  LL D = c.v[0] - a.v[0], E = c.v[1] - a.v[1], F = c.v[2] - a.v[2];
-  LL G = d.v[0] - a.v[0], H = d.v[1] - a.v[1], I = d.v[2] - a.v[2];
-  return A*E*I - A*F*H + B*F*G - B*D*I + C*D*H - C*E*G;
-  // point v1 = b - a;
-  // point v2 = c - a;
-  // point v3 = d - a;
+  // LL A = b.v[0] - a.v[0], B = b.v[1] - a.v[1], C = b.v[2] - a.v[2];
+  // LL D = c.v[0] - a.v[0], E = c.v[1] - a.v[1], F = c.v[2] - a.v[2];
+  // LL G = d.v[0] - a.v[0], H = d.v[1] - a.v[1], I = d.v[2] - a.v[2];
+  // return A*E*I - A*F*H + B*F*G - B*D*I + C*D*H - C*E*G;
+  point v1 = b - a;
+  point v2 = c - a;
+  point v3 = d - a;
 
-  // return dot(cross(v1, v2), v3);
+  return dot(cross(v1, v2), v3);
 }
 
 int N;
