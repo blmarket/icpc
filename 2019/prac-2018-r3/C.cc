@@ -86,13 +86,14 @@ void process() {
           break;
         }
       }
-      if(!fail) {
-        for(int i=0;i<N;i++) {
-          cout << p[i]+1 << " ";
-        }
-        cout << endl;
-        break;
+      if(fail) break;
+    }
+    if(!fail) {
+      for(int i=0;i<N;i++) {
+        cout << p[i]+1 << " ";
       }
+      cout << endl;
+      break;
     }
   } while(next_permutation(p.begin(), p.end()));
 
