@@ -87,7 +87,7 @@ void process() {
       LL v1 = v(t1);
       for(int j=0;j<i-2;j++) {
         LL v2 = v(data[p[j]]);
-        cerr << p[i] << " " << p[j] << " " << v1 << " " << v2 << endl;
+        // cerr << p[i] << " " << p[j] << " " << v1 << " " << v2 << endl;
         if((v2 < 0) != (v1 < 0)) {
           fail = true;
           break;
