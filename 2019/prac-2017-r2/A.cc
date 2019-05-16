@@ -41,10 +41,12 @@ void process() {
   int ret = v[0];
   if(P == 2) {
     ret += v[1] / 2;
+    if(v[1]%2) ret++;
   } else if(P == 3) {
     int t1 = min(v[1], v[2]);
     ret += t1; v[1] -= t1; v[2] -= t1;
     ret += (v[1] / 3) + (v[2] / 3);
+    if((v[1]%3) || (v[2]%3)) ret++;
   } else if(P == 4) {
     int t1 = min(v[1], v[3]);
     ret += t1; v[1] -= t1; v[3] -= t1;
@@ -52,11 +54,11 @@ void process() {
     t1 = v[2] / 2;
     ret += t1; v[2] %= 2;
     if(v[2] && r1 >= 2) {
-      ret++; r1 -= 2;
+      ret++; r1 -= 2; v[2]--;
     }
-    ret += (r1 / 3);
+    ret += (r1 / 3); r1 %= 3;
+    if(r1 || v[2]) ret++;
   }
-  if(ret < N) ret++;
   cout << ret << endl;
 }
 
