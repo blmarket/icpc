@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<PII> V;
 
-PII upper, lower;
+pair<LL, LL> upper, lower;
 
 int gcd(int a, int b) {
   if(b == 0) return a;
@@ -70,6 +70,8 @@ void process() {
   }
   cerr << lower.first << " " << lower.second << endl;
   cerr << upper.first << " " << upper.second << endl;
+
+  pair<LL, LL> last;
 
   LL s = 0, e = 2e9;
   while(s+1 < e) {
