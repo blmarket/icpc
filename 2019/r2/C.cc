@@ -70,6 +70,27 @@ void process() {
   }
   cerr << lower.first << " " << lower.second << endl;
   cerr << upper.first << " " << upper.second << endl;
+
+  LL s = 0, e = 2e9;
+  while(s < e) {
+    LL m = (s+e) / 2;
+    LL js = 1, je = 2e9;
+    if(lower.first != -1) {
+      LL lam = lower.first * m;
+      js = (lam / lower.second) + 1;
+    }
+    if(upper.first != -1) {
+      LL lam = upper.first * m;
+      if(lam % upper.second == 0) lam--;
+      je = (lam / upper.second);
+    }
+    if(js <= je) {
+      cerr << m << " " << js << endl;
+      e = m;
+    } else {
+      s = m;
+    }
+  }
 }
 
 int main(void) {
