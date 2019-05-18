@@ -87,12 +87,11 @@ void process() {
       while(!Q.empty()) {
         state st = Q.front();
         Q.pop();
-        if(st.d >= M) continue;
-        if(active[st.x][st.y]) continue;
+        cerr << st.x << " " << st.y << endl;
         for(int i=0;i<4;i++) {
           int xx = st.x + dx[i], yy = st.y + dy[i];
           if(bound(xx, yy) == false || D[xx][yy] == '#') continue;
-          if(!visit[xx][yy]) {
+          if(!active[st.x][st.y] && !visit[xx][yy] && st.d < M) {
             visit[xx][yy] = true;
             Q.push(state { xx, yy, st.d + 1 });
           }
