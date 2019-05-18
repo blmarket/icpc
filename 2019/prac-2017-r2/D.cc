@@ -141,6 +141,7 @@ void process() {
         xx = x + dx[i], yy = y + dy[i];
         if(bound(xx, yy) && visit[xx][yy] == -1) {
           visit[xx][yy] = visit[x][y] + 1;
+          Q.push(mp(xx, yy));
         }
       }
     }
