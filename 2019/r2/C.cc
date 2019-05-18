@@ -72,11 +72,8 @@ void process() {
   // cerr << lower.first << " " << lower.second << endl;
   // cerr << upper.first << " " << upper.second << endl;
 
-  pair<LL, LL> last;
-
-  LL s = 0, e = 2e9;
-  while(s+1 < e) {
-    LL m = (s+e) / 2;
+  pair<LL, LL> last = mp(-1, -1);
+  auto check = [&](LL m) {
     LL js = 1, je = 2e9;
     if(lower.first != -1) {
       LL lam = lower.first * m;
@@ -87,9 +84,18 @@ void process() {
       if(lam % upper.second == 0) lam--;
       je = (lam / upper.second);
     }
-    // cerr << js << " " << je << endl;
     if(js <= je) {
-      last = mp(m, js);
+      pair<LL, LL> tmp = mp(m, js);
+      if(last.first == -1 || last > tmp) last = tmp;
+      return true;
+    }
+    return false;
+  };
+
+  LL s = 0, e = 2e9;
+  while(s+1 < e) {
+    LL m = (s+e) / 2;
+    if(check(m)) {
       e = m;
     } else {
       s = m;
@@ -98,6 +104,11 @@ void process() {
   if(e == 2e9) {
     cout << "IMPOSSIBLE" << endl;
     return;
+  }
+  for(int i=1;i<10000;i++) {
+    LL t1 = last.first - i;
+    if(t1 < 1) break;
+    check(t1);
   }
   cout << last.first << " " << last.second << endl;
 }
