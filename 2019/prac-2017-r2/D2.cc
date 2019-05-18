@@ -58,7 +58,6 @@ void process() {
 
   int n = VT.size();
   for(int mask=0;mask<(1<<n);mask++) {
-    cerr << mask << endl;
     int active[105][105];
     memset(active, 0, sizeof(active));
     for(int i=0;i<VT.size();i++) if(mask & (1<<i)) {
@@ -73,6 +72,7 @@ void process() {
     }
 
     for(int j=0;j<VS.size();j++) {
+      cerr << j << endl;
       bool visit[105][105];
       memset(visit, 0, sizeof(visit));
       visit[VS[j].first][VS[j].second] = true;
