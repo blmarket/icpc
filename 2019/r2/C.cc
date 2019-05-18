@@ -78,7 +78,7 @@ void process() {
 
   pair<LL, LL> last = mp(-1, -1);
   auto check = [&](LL m) {
-    LL js = 1, je = 2e9;
+    LL js = 1, je = 1e18;
     if(lower.first != -1) {
       LL lam = lower.first * m;
       js = (lam / lower.second) + 1;
