@@ -69,8 +69,8 @@ void process() {
       }
     }
   }
-  // cerr << lower.first << " " << lower.second << endl;
-  // cerr << upper.first << " " << upper.second << endl;
+  cerr << lower.first << " " << lower.second << endl;
+  cerr << upper.first << " " << upper.second << endl;
 
   pair<LL, LL> last = mp(-1, -1);
   auto check = [&](LL m) {
