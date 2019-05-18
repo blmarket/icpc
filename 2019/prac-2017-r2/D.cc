@@ -117,20 +117,16 @@ void process() {
 
     memset(visit, -1, sizeof(visit));
     queue<PII> Q;
+    visit[VS[ss].first][VS[ss].second] = 0;
     Q.push(mp(VS[ss].first, VS[ss].second));
     while(!Q.empty()) {
       int x, y;
       tie(x, y) = Q.front();
-    }
-
-
-    function<void(int, int, int)> bfs;
-    bfs = [&](int x, int y, int d) {
-      if(!bound(x,y)) return;
-      if(D[x][y] == '#') return;
-      if(visit[x][y] != -1) return;
-      if(d > M) return;
-      visit[x][y] = d;
+      Q.pop();
+      if(D[x][y] == '#') continue;
+      if(visit[x][y] != -1) continue;
+      if(visit[x][y] > M) continue;
+      int d = visit[x][y];
       for(int i=0;i<4;i++) {
         int xx = x, yy = y;
         while(bound(xx, yy)) {
@@ -142,11 +138,12 @@ void process() {
           xx += dx[i];
           yy += dy[i];
         }
-        bfs(x+dx[i], y+dy[i], d+1);
+        xx = x + dx[i], yy = y + dy[i];
+        if(bound(xx, yy) && visit[xx][yy] == -1) {
+          visit[xx][yy] = visit[x][y] + 1;
+        }
       }
-    };
-
-    bfs(VS[ss].first, VS[ss].second, 0);
+    }
 
     for(auto jt: links) {
       net[ss+1].pb(edge { jt.first + 100, jt.second, 1 });
