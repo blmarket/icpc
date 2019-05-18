@@ -149,6 +149,15 @@ void process() {
     net[i + 100].pb(edge { 204, 0, 1 });
   }
 
+  for(int i=1;i<=VS.size();i++) {
+    if(net[i].size() == 0) continue;
+    cerr << i << " = ";
+    for(auto it: net[i]) {
+      cerr << it.n << "," << it.c << "," << it.f << endl;
+    }
+    cerr << endl;
+  }
+
   int tot = 0;
   while(mcmf(203, 204)) {
     tot++;
