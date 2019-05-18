@@ -39,6 +39,7 @@ int gcd(int a, int b) {
 
 void process() {
   scanf(" %d", &N);
+  V.clear();
   for(int i=0;i<N;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
@@ -86,7 +87,7 @@ void process() {
       if(lam % upper.second == 0) lam--;
       je = (lam / upper.second);
     }
-    cerr << js << " " << je << endl;
+    // cerr << js << " " << je << endl;
     if(js <= je) {
       last = mp(m, js);
       e = m;
