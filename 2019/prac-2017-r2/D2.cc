@@ -50,7 +50,7 @@ int go(int mask1, int mask2) {
       if(ret < tmp + 1) ret = tmp;
     }
   }
-  cerr << bitset<10>(mask1) << " " << bitset<10>(mask2) << " = " << ret << endl;
+  // cerr << bitset<10>(mask1) << " " << bitset<10>(mask2) << " = " << ret << endl;
   return ret;
 }
 
