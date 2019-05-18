@@ -43,6 +43,16 @@ bool bound(int x, int y) {
   return x >= 0 && y >= 0 && x < R && y < C;
 }
 
+void add_edge(int s, int e, int c, int f) {
+  for(auto &it: net[s]) {
+    if(it.n == e && it.c == c) {
+      it.f += f;
+      return;
+    }
+  }
+  net[s].pb(edge { e, c, f });
+}
+
 bool mcmf(int s, int e) {
   int dist[205];
   int back[205];
@@ -55,7 +65,26 @@ bool mcmf(int s, int e) {
     int d, n;
     tie(d, n) = Q.top();
     Q.pop();
+    if(dist[n] != d) continue;
+    for(auto &it: net[n]) {
+      if(it.f == 0) continue;
+      int dd = d + it.c;
+      if(dist[it.n] == -1 || dist[it.n] > dd) {
+        back[it.n] = n;
+        dist[it.n] = dd;
+        Q.push(mp(dd, it.n));
+      }
+    }
   }
+  if(dist[e] == -1) return false;
+  while(e != s) {
+    int ee = back[e];
+    int c = dist[e] - dist[ee];
+    add_edge(ee, e, c, -1);
+    add_edge(e, ee, -c, 1);
+    e = ee;
+  }
+  return true;
 }
 
 void process() {
@@ -118,7 +147,11 @@ void process() {
     net[i + 100].pb(edge { 204, 0, 1 });
   }
 
-  while(mcmf(203, 204));
+  int tot = 0;
+  while(mcmf(203, 204)) {
+    tot++;
+  }
+  cout << tot << endl;
 }
 
 int main(void) {
