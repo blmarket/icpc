@@ -29,7 +29,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N;
 vector<PII> V;
-vector<PII> V2;
+set<PII> V2;
 
 void process() {
   scanf(" %d", &N);
@@ -44,10 +44,10 @@ void process() {
       int a = V[i].first - V[j].first;
       int b = V[i].second - V[j].second;
       if(a > 0 && b < 0) {
-        V2.pb(a, b);
+        V2.insert(mp(a, -b));
       }
       if(a < 0 && b > 0) {
-        V2.pb(a, b);
+        V2.insert(mp(-a, b));
       }
     }
   }
