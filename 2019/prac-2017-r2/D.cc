@@ -47,6 +47,10 @@ void process() {
       }
     }
   }
+
+  for(auto it: VS) {
+    cerr << it.first << "," << it.second << endl;
+  }
 }
 
 int main(void) {
