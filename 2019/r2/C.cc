@@ -53,7 +53,7 @@ void process() {
       auto comp = [&](const PII &a, const PII &b) {
         return a.first * b.second > a.second * b.first;
       };
-      if(a < 0 && b < 0) {
+      if((a < 0 && b < 0) || (a==0&&b<0) || (a<0&&b==0)) {
         cout << "IMPOSSIBLE" << endl;
         return;
       }
