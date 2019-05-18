@@ -42,7 +42,7 @@ void process() {
       return;
     }
     int v = (d % 19) + 1;
-    printf("%d 100\n", v);
+    printf("%d %d\n", v, 90 +v);
     fflush(stdout);
   }
 }
