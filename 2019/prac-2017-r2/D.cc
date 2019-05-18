@@ -128,7 +128,12 @@ void process() {
       if(visit[x][y] > M) continue;
       int d = visit[x][y];
       for(int i=0;i<4;i++) {
-        int xx = x, yy = y;
+        int xx = x + dx[i], yy = y + dy[i];
+        if(bound(xx, yy) && visit[xx][yy] == -1) {
+          visit[xx][yy] = visit[x][y] + 1;
+          Q.push(mp(xx, yy));
+        }
+
         while(bound(xx, yy)) {
           if(D[xx][yy] == '#') break;
           if(D[xx][yy] == 'T') {
@@ -137,12 +142,6 @@ void process() {
           }
           xx += dx[i];
           yy += dy[i];
-        }
-        xx = x + dx[i], yy = y + dy[i];
-        cerr << xx << " " << yy << endl;
-        if(bound(xx, yy) && visit[xx][yy] == -1) {
-          visit[xx][yy] = visit[x][y] + 1;
-          Q.push(mp(xx, yy));
         }
       }
     }
