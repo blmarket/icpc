@@ -26,11 +26,22 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const int dx[] = {-1,0,0,1};
+const int dy[] = {0,-1,1,0};
+
+struct state {
+  int x, y, d;
+};
+
 int C, R, M;
 char D[105][105];
 vector<PII> VS, VT;
+int sight[1<<10][10];
+
+bool bound(int x, int y) { return x >= 0 && y >= 0 && x < R && y < C; }
 
 void process() {
+  memset(sight, -1, sizeof(sight));
   VS.clear(); VT.clear();
   scanf(" %d %d %d", &C, &R, &M);
   for(int i=0;i<R;i++) {
@@ -40,6 +51,35 @@ void process() {
         VS.pb(i, j);
       }
       if(D[i][j] == 'T') {
+        VT.pb(i, j);
+      }
+    }
+  }
+
+  int n = VT.size();
+  for(int mask=0;mask<(1<<n);mask++) {
+    int active[105][105];
+    memset(active, 0, sizeof(active));
+    for(int i=0;i<VT.size();i++) if(mask & (1<<i)) {
+      int x, y; tie(x, y) = VT[i];
+      active[x][y] = 1;
+      for(int j=0;j<4;j++) {
+        int xx = x + dx[j], yy = y + dy[j];
+        while(bound(xx, yy) && D[xx][yy] != '#') {
+          active[xx][yy] = 1;
+        }
+      }
+    }
+
+    for(int j=0;j<VS.size();j++) {
+      bool visit[105][105];
+      memset(visit, 0, sizeof(visit));
+      queue<state> Q;
+      Q.push(state { VS[j].first, VS[j].second, 0 });
+      while(!Q.empty()) {
+        state st = Q.front();
+        const auto [x, y, d] = st;
+        Q.pop();
       }
     }
   }
