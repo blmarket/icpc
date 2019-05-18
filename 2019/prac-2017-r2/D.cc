@@ -75,7 +75,7 @@ void process() {
           if(D[xx][yy] == '#') break;
           if(D[xx][yy] == 'T') {
             int tt = -ST[xx][yy];
-            if(!links[ss].count(tt)) links[ss][tt] = d;
+            if (links[ss][tt] == 0 || links[ss][tt] > d) links[ss][tt] = d;
           }
           xx += dx[i];
           yy += dy[i];
