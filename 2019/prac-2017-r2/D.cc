@@ -111,7 +111,6 @@ void process() {
   int visit[105][105];
 
   for(int ss=0;ss<VS.size();ss++) {
-    cerr << ss << endl;
     net[203].pb(edge { ss+1, 0, 1 });
 
     unordered_map<int, int> links {};
@@ -140,6 +139,7 @@ void process() {
     };
 
     bfs(VS[ss].first, VS[ss].second, 0);
+    cerr << ss << " " << links.size() << endl;
 
     for(auto jt: links) {
       net[ss+1].pb(edge { jt.first + 100, jt.second, 1 });
