@@ -72,7 +72,6 @@ void process() {
     }
 
     for(int j=0;j<VS.size();j++) {
-      cerr << j << endl;
       bool visit[105][105];
       memset(visit, 0, sizeof(visit));
       visit[VS[j].first][VS[j].second] = true;
@@ -81,6 +80,7 @@ void process() {
       while(!Q.empty()) {
         state st = Q.front();
         Q.pop();
+        cerr << st.x << " " << st.y << " " << st.d << endl;
         if(st.d >= M) continue;
         for(int i=0;i<4;i++) {
           int xx = st.x + dx[i], yy = st.y + dy[i];
