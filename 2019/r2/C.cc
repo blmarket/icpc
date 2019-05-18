@@ -30,6 +30,13 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N;
 vector<PII> V;
 
+PII upper, lower;
+
+int gcd(int a, int b) {
+  if(b == 0) return a;
+  return gcd(b, a % b);
+}
+
 void process() {
   scanf(" %d", &N);
   for(int i=0;i<N;i++) {
@@ -37,15 +44,32 @@ void process() {
     scanf(" %d %d", &a, &b);
     V.pb(a, b);
   }
+  upper = lower = mp(-1, -1);
   for(int i=0;i<N;i++) {
     for(int j=i+1;j<N;j++) {
       int a = V[j].first - V[i].first;
       int b = V[j].second - V[i].second;
-      if(a >= 0 && b >= 0) continue;
-      if(a <= 0 && b <= 0) continue;
-      cerr << a << " " << b << endl;
+      auto comp = [&](const PII &a, const PII &b) {
+        return a.first * b.second < a.second * b.first;
+      };
+      if(a > 0 && b < 0) {
+        int g = gcd(a, -b);
+        PII t = mp(a/g, -b/g);
+        if(upper.first == -1 || comp(upper, t)) {
+          upper = t;
+        }
+      }
+      if(a < 0 && b > 0) {
+        int g = gcd(-a, b);
+        PII t = mp(-a/g, b/g);
+        if(lower.first == -1 || comp(t, lower)) {
+          lower = t;
+        }
+      }
     }
   }
+  cerr << lower.first << " " << lower.second << endl;
+  cerr << upper.first << " " << upper.second << endl;
 }
 
 int main(void) {
