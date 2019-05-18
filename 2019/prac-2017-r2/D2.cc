@@ -74,12 +74,20 @@ void process() {
     for(int j=0;j<VS.size();j++) {
       bool visit[105][105];
       memset(visit, 0, sizeof(visit));
+      visit[VS[j].first][VS[j].second] = true;
       queue<state> Q;
       Q.push(state { VS[j].first, VS[j].second, 0 });
       while(!Q.empty()) {
         state st = Q.front();
-        const auto [x, y, d] = st;
         Q.pop();
+        if(st.d >= M) continue;
+        for(int i=0;i<4;i++) {
+          int xx = st.x + dx[i], yy = st.y + dy[i];
+          if(bound(xx, yy) == false) continue;
+          if(visit[xx][yy]) continue;
+          visit[xx][yy] = true;
+          Q.push(state { xx, yy, st.d + 1 });
+        }
       }
     }
   }
