@@ -89,6 +89,8 @@ void process() {
           visit[xx][yy] = true;
           Q.push(state { xx, yy, st.d + 1 });
         }
+
+        cerr << Q.size() << endl;
       }
     }
   }
