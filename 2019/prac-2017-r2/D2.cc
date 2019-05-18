@@ -92,6 +92,8 @@ void process() {
 
         cerr << Q.size() << endl;
       }
+
+      cerr << j << endl;
     }
   }
 }
