@@ -94,7 +94,7 @@ void process() {
             visit[xx][yy] = true;
             Q.push(state { xx, yy, st.d + 1 });
           }
-          while(bound(xx, yy)) {
+          while(bound(xx, yy) && D[xx][yy] != '#') {
             for(int k=0;k<VT.size();k++) if(mask & (1<<k)) {
               if(VT[k] == mp(xx, yy)) r1 |= (1<<k);
             }
