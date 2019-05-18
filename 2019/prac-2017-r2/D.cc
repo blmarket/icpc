@@ -65,14 +65,14 @@ bool mcmf(int s, int e) {
     int d, n;
     tie(d, n) = Q.top();
     Q.pop();
-    if(dist[n] != d) continue;
+    if(dist[n] != -d) continue;
     for(auto &it: net[n]) {
       if(it.f == 0) continue;
       int dd = d + it.c;
       if(dist[it.n] == -1 || dist[it.n] > dd) {
         back[it.n] = n;
         dist[it.n] = dd;
-        Q.push(mp(dd, it.n));
+        Q.push(mp(-dd, it.n));
       }
     }
   }
