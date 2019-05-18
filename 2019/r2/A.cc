@@ -31,6 +31,11 @@ int N;
 vector<PII> V;
 set<PII> V2;
 
+int gcd(int a, int b) {
+  if(b == 0) return a;
+  return gcd(b, a%b);
+}
+
 void process() {
   scanf(" %d", &N);
   V.clear(); V2.clear();
@@ -43,11 +48,15 @@ void process() {
     for(int j=0;j<N;j++) if(i != j) {
       int a = V[i].first - V[j].first;
       int b = V[i].second - V[j].second;
+      auto put = [&](int a, int b) {
+        int g = gcd(a, b);
+        V2.insert(mp(a/g, b/g));
+      };
       if(a > 0 && b < 0) {
-        V2.insert(mp(a, -b));
+        put(a, -b);
       }
       if(a < 0 && b > 0) {
-        V2.insert(mp(-a, b));
+        put(-a, b);
       }
     }
   }
