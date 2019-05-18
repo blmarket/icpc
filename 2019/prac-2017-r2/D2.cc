@@ -103,6 +103,11 @@ void process() {
         }
       }
 
+      for(int k=0;k<R;k++) {
+        for(int l=0;l<C;l++) cerr << visit[k][l] << " ";
+        cerr << endl;
+      }
+
       cerr << " " << bitset<10>(mask) << " " << j << " = " << r1 << endl;
 
       sight[mask][j] = r1;
