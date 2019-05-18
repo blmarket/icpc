@@ -112,7 +112,7 @@ void process() {
         }
       }
 
-      // cerr << " " << bitset<10>(mask) << " " << j << " = " << r1 << endl;
+      cerr << " " << bitset<10>(mask) << " " << j << " = " << r1 << endl;
 
       sight[mask][j] = r1;
     }
