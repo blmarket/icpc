@@ -146,8 +146,10 @@ void process() {
     }
 
     for(auto jt: links) {
+      cerr << jt.first << "," << jt.second << " ";
       net[ss+1].pb(edge { jt.first + 100, jt.second, 1 });
     }
+    cerr << endl;
   }
 
   for(int i=1;i<=VT.size();i++) {
