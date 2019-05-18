@@ -31,6 +31,7 @@ void process() {
   int d;
   while(true) {
     scanf(" %d", &d);
+    cerr << d << endl;
     if(d == -1) {
       cerr << "wrong" << endl;
       exit(0);
