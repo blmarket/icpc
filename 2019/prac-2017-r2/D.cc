@@ -58,9 +58,9 @@ void process() {
   }
 
   int visit[105][105];
-  memset(visit, -1, sizeof(visit));
 
   for(int ss=0;ss<VS.size();ss++) {
+    memset(visit, -1, sizeof(visit));
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
       if(!bound(x,y)) return;
