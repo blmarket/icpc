@@ -53,6 +53,10 @@ void process() {
       auto comp = [&](const PII &a, const PII &b) {
         return a.first * b.second > a.second * b.first;
       };
+      if(a < 0 && b < 0) {
+        cout << "IMPOSSIBLE" << endl;
+        return;
+      }
       if(a > 0 && b < 0) {
         int g = gcd(a, -b);
         PII t = mp(a/g, -b/g);
