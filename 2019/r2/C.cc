@@ -50,7 +50,7 @@ void process() {
       int a = V[j].first - V[i].first;
       int b = V[j].second - V[i].second;
       auto comp = [&](const PII &a, const PII &b) {
-        return a.first * b.second < a.second * b.first;
+        return a.first * b.second > a.second * b.first;
       };
       if(a > 0 && b < 0) {
         int g = gcd(a, -b);
