@@ -37,11 +37,15 @@ void process() {
     scanf(" %d %d", &a, &b);
     V.pb(a, b);
   }
-
-  LL cs = 1, ce = 2e18;
-  cout << ce << endl;
-
-  // cout << (LL)(2e18) << endl;
+  for(int i=0;i<N;i++) {
+    for(int j=i+1;j<N;j++) {
+      int a = V[j].first - V[i].first;
+      int b = V[j].second - V[i].second;
+      if(a >= 0 && b >= 0) continue;
+      if(a <= 0 && b <= 0) continue;
+      cerr << a << " " << b << endl;
+    }
+  }
 }
 
 int main(void) {
