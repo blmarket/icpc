@@ -27,11 +27,12 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+int ms[21];
+
 void process() {
   int d;
-  while(true) {
+  for(int i=1;i<=100;i++) {
     scanf(" %d", &d);
-    cerr << d << endl;
     if(d == -1) {
       cerr << "wrong" << endl;
       exit(0);
@@ -39,10 +40,22 @@ void process() {
     if(d == 100) {
       printf("20 100\n");
       fflush(stdout);
-      return;
+      break;
+    }
+    if(d >= 80) {
+      printf("%d 0\n", d - 79);
+      fflush(stdout);
+      int n;
+      scanf(" %d", &n);
+      for(int j=0;j<n;j++) {
+        int tmp;
+        scanf(" %d", &tmp);
+      }
+      cerr << (d-79) << " " << n << endl;
+      continue;
     }
     int v = (d % 19) + 1;
-    printf("%d %d\n", v, 100);
+    printf("%d %d\n", v, 100 - ((d-1) / 19));
     fflush(stdout);
   }
 }
