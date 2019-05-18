@@ -94,7 +94,10 @@ void process() {
       s = m;
     }
   }
-  cerr << s << endl;
+  if(e == 2e9) {
+    cout << "IMPOSSIBLE" << endl;
+    return;
+  }
   cout << last.first << " " << last.second << endl;
 }
 
