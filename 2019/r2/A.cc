@@ -61,9 +61,7 @@ void process() {
     }
   }
 
-  for(auto it: V2) {
-    cerr << it.first << " " << it.second << endl;
-  }
+  cout << V2.size() + 1 << endl;
 }
 
 int main(void) {
