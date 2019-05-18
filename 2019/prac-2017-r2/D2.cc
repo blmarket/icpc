@@ -81,7 +81,6 @@ void process() {
       while(!Q.empty()) {
         state st = Q.front();
         Q.pop();
-        cerr << st.x << " " << st.y << " " << st.d << endl;
         if(st.d >= M) continue;
         if(active[st.x][st.y]) continue;
         for(int i=0;i<4;i++) {
