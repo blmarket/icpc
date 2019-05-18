@@ -63,7 +63,6 @@ void process() {
   for(int ss=0;ss<VS.size();ss++) {
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
-      cerr << x << " " << y << " " << d << endl;
       if(!bound(x,y)) return;
       if(visit[x][y] != -1) return;
       visit[x][y] = d;
@@ -81,6 +80,8 @@ void process() {
         bfs(x+dx[i], y+dy[i], d+1);
       }
     };
+
+    bfs(VS[ss].first, VS[ss].second, 0);
 
     cerr << ss << " : ";
     for(auto jt: links[ss]) {
