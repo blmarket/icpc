@@ -68,8 +68,8 @@ void process() {
       }
     }
   }
-  cerr << lower.first << " " << lower.second << endl;
-  cerr << upper.first << " " << upper.second << endl;
+  // cerr << lower.first << " " << lower.second << endl;
+  // cerr << upper.first << " " << upper.second << endl;
 
   pair<LL, LL> last;
 
@@ -86,7 +86,7 @@ void process() {
       if(lam % upper.second == 0) lam--;
       je = (lam / upper.second);
     }
-    // cerr << js << " " << je << endl;
+    cerr << js << " " << je << endl;
     if(js <= je) {
       last = mp(m, js);
       e = m;
