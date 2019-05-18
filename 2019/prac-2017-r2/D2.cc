@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bitset>
 #include <algorithm>
 #include <unordered_set>
 #include <unordered_map>
@@ -40,6 +41,10 @@ int sight[1<<10][10];
 
 bool bound(int x, int y) { return x >= 0 && y >= 0 && x < R && y < C; }
 
+int go(int mask1, int mask2) {
+  return 0;
+}
+
 void process() {
   memset(sight, -1, sizeof(sight));
   VS.clear(); VT.clear();
@@ -78,6 +83,7 @@ void process() {
       visit[VS[j].first][VS[j].second] = true;
       queue<state> Q;
       Q.push(state { VS[j].first, VS[j].second, 0 });
+      int r1 = 0;
       while(!Q.empty()) {
         state st = Q.front();
         Q.pop();
@@ -85,13 +91,27 @@ void process() {
         if(active[st.x][st.y]) continue;
         for(int i=0;i<4;i++) {
           int xx = st.x + dx[i], yy = st.y + dy[i];
-          if(bound(xx, yy) == false || visit[xx][yy] || D[xx][yy] == '#') continue;
-          visit[xx][yy] = true;
-          Q.push(state { xx, yy, st.d + 1 });
+          if(bound(xx, yy) == false || D[xx][yy] == '#') continue;
+          if(!visit[xx][yy]) {
+            visit[xx][yy] = true;
+            Q.push(state { xx, yy, st.d + 1 });
+          }
+          while(bound(xx, yy)) {
+            for(int k=0;k<VT.size();k++) if(mask & (1<<k)) {
+              if(VT[k] == mp(xx, yy)) r1 |= (1<<k);
+            }
+            xx += dx[i]; yy += dy[i];
+          }
         }
       }
+
+      cerr << " " << bitset<10>(mask) << " " << j << " = " << r1 << endl;
+
+      sight[mask][j] = r1;
     }
   }
+
+  go((1<<VS.size())-1, (1<<VT.size())-1);
 }
 
 int main(void) {
