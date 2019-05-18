@@ -51,6 +51,7 @@ void go(int mask1, int mask2) {
     for(int j=0;j<VT.size();j++) if(m2 & (1<<j)) {
       stack.pb(i+1, j+1);
       go(mask1 ^ (1<<i), mask2 ^ (1<<j));
+      stack.pop_back();
     }
   }
 }
