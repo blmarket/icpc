@@ -88,7 +88,7 @@ void process() {
       if(lam % upper.second == 0) lam--;
       je = (lam / upper.second);
     }
-    cerr << m << " " << js << " " << je << endl;
+    // cerr << m << " " << js << " " << je << endl;
     if(js <= je) {
       pair<LL, LL> tmp = mp(m, js);
       if(last.first == -1 || last > tmp) last = tmp;
