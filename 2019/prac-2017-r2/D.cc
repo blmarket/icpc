@@ -78,14 +78,14 @@ bool mcmf(int s, int e) {
   }
   if(dist[e] == -1) return false;
   while(e != s) {
-    cerr << e << " ";
+    // cerr << e << " ";
     int ee = back[e];
     int c = dist[e] - dist[ee];
     add_edge(ee, e, c, -1);
     add_edge(e, ee, -c, 1);
     e = ee;
   }
-  cerr << s << endl;
+  // cerr << s << endl;
   return true;
 }
 
