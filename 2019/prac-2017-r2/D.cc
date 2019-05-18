@@ -86,7 +86,7 @@ void process() {
 
     bfs(VS[ss].first, VS[ss].second, 0);
 
-    cerr << ss << " : ";
+    cerr << ss+1 << " : ";
     for(auto jt: links[ss]) {
       cerr << jt.first << "," << jt.second << " ";
     }
