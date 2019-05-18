@@ -122,6 +122,7 @@ void process() {
     while(!Q.empty()) {
       int x, y;
       tie(x, y) = Q.front();
+      cerr << x << " " << y << endl;
       Q.pop();
       if(D[x][y] == '#') continue;
       if(visit[x][y] != -1) continue;
