@@ -68,8 +68,8 @@ void process() {
       }
     }
   }
-  // cerr << lower.first << " " << lower.second << endl;
-  // cerr << upper.first << " " << upper.second << endl;
+  cerr << lower.first << " " << lower.second << endl;
+  cerr << upper.first << " " << upper.second << endl;
 
   pair<LL, LL> last;
 
