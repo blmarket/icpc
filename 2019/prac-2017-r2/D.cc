@@ -158,6 +158,13 @@ void process() {
     tot++;
   }
   cout << tot << endl;
+  for(int i=1;i<=VS.size();i++) {
+    for(auto &it: net[i]) {
+      if(it.f == 0) {
+        cout << i << " " << it.n - 100 << endl;
+      }
+    }
+  }
 }
 
 int main(void) {
