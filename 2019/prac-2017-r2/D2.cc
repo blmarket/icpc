@@ -36,6 +36,7 @@ struct state {
 
 int C, R, M;
 char D[105][105];
+int T[105][105];
 vector<PII> VS, VT;
 int sight[1<<10][10];
 
@@ -58,6 +59,7 @@ void go(int mask1, int mask2) {
 
 void process() {
   memset(sight, -1, sizeof(sight));
+  memset(T, 0, sizeof(T));
   VS.clear(); VT.clear();
   scanf(" %d %d %d", &C, &R, &M);
   for(int i=0;i<R;i++) {
@@ -68,6 +70,7 @@ void process() {
       }
       if(D[i][j] == 'T') {
         VT.pb(i, j);
+        T[i][j] = VT.size();
       }
     }
   }
@@ -107,7 +110,7 @@ void process() {
           }
           while(bound(xx, yy) && D[xx][yy] != '#') {
             for(int k=0;k<VT.size();k++) if(mask & (1<<k)) {
-              if(VT[k] == mp(xx, yy)) r1 |= (1<<k);
+              if(T[xx][yy]) r1 |= (1 << (T[xx][yy]-1));
             }
             xx += dx[i]; yy += dy[i];
           }
