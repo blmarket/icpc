@@ -38,7 +38,10 @@ void process() {
     V.pb(a, b);
   }
 
-  cout << (LL)(2e18) << endl;
+  LL cs = 1, ce = 2e18;
+  cout << ce << endl;
+
+  // cout << (LL)(2e18) << endl;
 }
 
 int main(void) {
