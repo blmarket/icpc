@@ -109,8 +109,9 @@ void process() {
             Q.push(state { xx, yy, st.d + 1 });
           }
           while(bound(xx, yy) && D[xx][yy] != '#') {
-            for(int k=0;k<VT.size();k++) if(mask & (1<<k)) {
-              if(T[xx][yy]) r1 |= (1 << (T[xx][yy]-1));
+            if(T[xx][yy]) {
+              int t = T[xx][yy] - 1;
+              if(mask & (1<<t)) r1 |= (1<<t);
             }
             xx += dx[i]; yy += dy[i];
           }
