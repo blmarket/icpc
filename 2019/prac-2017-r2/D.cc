@@ -77,6 +77,7 @@ void process() {
           xx += dx[i];
           yy += dy[i];
         }
+        bfs(x+dx[i], y+dy[i], d+1);
       }
     };
 
