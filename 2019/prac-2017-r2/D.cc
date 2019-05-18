@@ -79,6 +79,12 @@ void process() {
         }
       }
     };
+
+    cerr << ss << " : ";
+    for(auto jt: links[ss]) {
+      cerr << jt.first << "," << jt.second << " ";
+    }
+    cerr << endl;
   }
 }
 
