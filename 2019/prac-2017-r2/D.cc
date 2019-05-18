@@ -118,6 +118,7 @@ void process() {
     memset(visit, -1, sizeof(visit));
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
+      if(ss == 5) cerr << x << " " << y << " " << d << endl;
       if(!bound(x,y)) return;
       if(D[x][y] == '#') return;
       if(visit[x][y] != -1) return;
@@ -139,7 +140,6 @@ void process() {
     };
 
     bfs(VS[ss].first, VS[ss].second, 0);
-    cerr << ss << " " << links.size() << endl;
 
     for(auto jt: links) {
       net[ss+1].pb(edge { jt.first + 100, jt.second, 1 });
