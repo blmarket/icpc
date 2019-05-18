@@ -82,6 +82,7 @@ void process() {
         Q.pop();
         cerr << st.x << " " << st.y << " " << st.d << endl;
         if(st.d >= M) continue;
+        if(active[st.x][st.y]) continue;
         for(int i=0;i<4;i++) {
           int xx = st.x + dx[i], yy = st.y + dy[i];
           if(bound(xx, yy) == false) continue;
