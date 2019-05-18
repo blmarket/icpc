@@ -118,11 +118,11 @@ void process() {
     memset(visit, -1, sizeof(visit));
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
-      if(ss == 5) cerr << x << " " << y << " " << d << endl;
       if(!bound(x,y)) return;
       if(D[x][y] == '#') return;
       if(visit[x][y] != -1) return;
       if(d > M) return;
+      if(ss == 5) cerr << x << " " << y << " " << d << endl;
       visit[x][y] = d;
       for(int i=0;i<4;i++) {
         int xx = x, yy = y;
