@@ -122,7 +122,6 @@ void process() {
     while(!Q.empty()) {
       int x, y;
       tie(x, y) = Q.front();
-      cerr << x << " " << y << endl;
       Q.pop();
       if(D[x][y] == '#') continue;
       if(visit[x][y] != -1) continue;
@@ -140,8 +139,8 @@ void process() {
           yy += dy[i];
         }
         xx = x + dx[i], yy = y + dy[i];
+        cerr << xx << " " << yy << endl;
         if(bound(xx, yy) && visit[xx][yy] == -1) {
-          cerr << "here" << endl;
           visit[xx][yy] = visit[x][y] + 1;
           Q.push(mp(xx, yy));
         }
