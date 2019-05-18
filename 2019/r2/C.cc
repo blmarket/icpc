@@ -73,6 +73,7 @@ void process() {
 
   LL s = 0, e = 2e9;
   while(s < e) {
+    cerr << s << " " << e << endl;
     LL m = (s+e) / 2;
     LL js = 1, je = 2e9;
     if(lower.first != -1) {
