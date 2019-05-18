@@ -63,6 +63,7 @@ void process() {
   for(int ss=0;ss<VS.size();ss++) {
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
+      cerr << x << " " << y << " " << d << endl;
       if(!bound(x,y)) return;
       if(visit[x][y] != -1) return;
       visit[x][y] = d;
