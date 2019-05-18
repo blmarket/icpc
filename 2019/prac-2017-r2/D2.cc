@@ -58,7 +58,6 @@ void process() {
 
   int n = VT.size();
   for(int mask=0;mask<(1<<n);mask++) {
-    cerr << mask << endl;
     int active[105][105];
     memset(active, 0, sizeof(active));
     for(int i=0;i<VT.size();i++) if(mask & (1<<i)) {
@@ -68,6 +67,7 @@ void process() {
         int xx = x + dx[j], yy = y + dy[j];
         while(bound(xx, yy) && D[xx][yy] != '#') {
           active[xx][yy] = 1;
+          xx += dx[j]; yy += dy[j];
         }
       }
     }
