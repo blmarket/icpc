@@ -41,6 +41,7 @@ bool bound(int x, int y) {
 
 void process() {
   for(int i=0;i<105;i++) links[i].clear();
+  VS.clear(); VT.clear();
   scanf(" %d %d %d", &C, &R, &M);
   memset(ST, 0, sizeof(ST));
   for(int i=0;i<R;i++) {
