@@ -40,7 +40,6 @@ bool bound(int x, int y) {
 }
 
 void process() {
-  for(int i=0;i<105;i++) links[i].clear();
   VS.clear(); VT.clear();
   scanf(" %d %d %d", &C, &R, &M);
   memset(ST, 0, sizeof(ST));
@@ -61,6 +60,7 @@ void process() {
   int visit[105][105];
 
   for(int ss=0;ss<VS.size();ss++) {
+    links[ss].clear();
     memset(visit, -1, sizeof(visit));
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
