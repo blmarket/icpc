@@ -27,10 +27,13 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-int ms[21];
+vector<int> v;
 
 void process() {
   int d;
+  int cur = 1;
+  int mark = -1;
+  int marksize = -1;
   for(int i=1;i<=100;i++) {
     scanf(" %d", &d);
     if(d == -1) {
@@ -42,16 +45,44 @@ void process() {
       fflush(stdout);
       break;
     }
-    if(d >= 80) {
-      printf("%d 0\n", d - 79);
+    // if(mark != -1 && v.size() < 7) {
+    //   cerr << "here" << endl;
+    //   auto put = [&]() {
+    //     for(int j=1;j<100;j++) {
+    //       bool fail = false;
+    //       for(int k=0;k<v.size();k++) {
+    //         if(v[k] == j)
+    //           fail = true; break;
+    //       }
+    //       if(!fail) {
+    //         printf("%d %d\n", mark, j);
+    //         fflush(stdout);
+    //         v.pb(j);
+    //         return;
+    //       }
+    //     }
+    //   };
+    //   // put();
+    //   // continue;
+    // }
+    
+    if(d >= 80 && cur < 20) {
+      printf("%d 0\n", cur);
       fflush(stdout);
       int n;
       scanf(" %d", &n);
+      v.resize(n);
       for(int j=0;j<n;j++) {
-        int tmp;
-        scanf(" %d", &tmp);
+        scanf(" %d", &v[j]);
       }
-      cerr << (d-79) << " " << n << endl;
+      cerr << n << " ";
+      for(int j=0;j<n;j++) cerr << v[j] << " ";
+      cerr << endl;
+      if(n < 7) {
+        mark = cur;
+        marksize = n;
+      }
+      cur++;
       continue;
     }
     int v = (d % 19) + 1;
