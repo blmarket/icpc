@@ -42,7 +42,15 @@ int sight[1<<10][10];
 bool bound(int x, int y) { return x >= 0 && y >= 0 && x < R && y < C; }
 
 int go(int mask1, int mask2) {
-  return 0;
+  int ret = 0;
+  for(int i=0;i<VS.size();i++) if(mask1 & (1<<i)) {
+    int m2 = sight[mask2][i];
+    for(int j=0;j<VT.size();j++) if(m2 & (1<<j)) {
+      int tmp = go(mask1 ^ (1<<i), mask2 ^ (1<<j));
+      if(ret < tmp + 1) ret = tmp;
+    }
+  }
+  return ret;
 }
 
 void process() {
@@ -103,13 +111,13 @@ void process() {
         }
       }
 
-      cerr << " " << bitset<10>(mask) << " " << j << " = " << r1 << endl;
+      // cerr << " " << bitset<10>(mask) << " " << j << " = " << r1 << endl;
 
       sight[mask][j] = r1;
     }
   }
 
-  go((1<<VS.size())-1, (1<<VT.size())-1);
+  cout << go((1<<VS.size())-1, (1<<VT.size())-1) << endl;
 }
 
 int main(void) {
