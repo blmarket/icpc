@@ -46,9 +46,8 @@ int go(int mask1, int mask2) {
   for(int i=0;i<VS.size();i++) if(mask1 & (1<<i)) {
     int m2 = sight[mask2][i];
     for(int j=0;j<VT.size();j++) if(m2 & (1<<j)) {
-      cerr << "here" << endl;
       int tmp = go(mask1 ^ (1<<i), mask2 ^ (1<<j));
-      if(ret < tmp + 1) ret = tmp;
+      if(ret < tmp + 1) ret = tmp + 1;
     }
   }
   // cerr << bitset<10>(mask1) << " " << bitset<10>(mask2) << " = " << ret << endl;
