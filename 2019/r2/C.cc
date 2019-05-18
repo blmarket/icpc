@@ -106,9 +106,7 @@ void process() {
     return;
   }
   for(int i=1;i<10000;i++) {
-    LL t1 = last.first - i;
-    if(t1 < 1) break;
-    check(t1);
+    check(i);
   }
   cout << last.first << " " << last.second << endl;
 }
