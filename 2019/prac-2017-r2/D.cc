@@ -116,13 +116,20 @@ void process() {
     unordered_map<int, int> links {};
 
     memset(visit, -1, sizeof(visit));
+    queue<PII> Q;
+    Q.push(mp(VS[ss].first, VS[ss].second));
+    while(!Q.empty()) {
+      int x, y;
+      tie(x, y) = Q.front();
+    }
+
+
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
       if(!bound(x,y)) return;
       if(D[x][y] == '#') return;
       if(visit[x][y] != -1) return;
       if(d > M) return;
-      if(ss == 5) cerr << x << " " << y << " " << d << endl;
       visit[x][y] = d;
       for(int i=0;i<4;i++) {
         int xx = x, yy = y;
