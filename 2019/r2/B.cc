@@ -27,7 +27,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-vector<int> v;
+set<int> v;
 
 void process() {
   int d;
@@ -41,44 +41,43 @@ void process() {
       exit(0);
     }
     if(d == 100) {
+      // cerr << cur << endl;
       printf("20 100\n");
       fflush(stdout);
       break;
     }
-    // if(mark != -1 && v.size() < 7) {
-    //   cerr << "here" << endl;
-    //   auto put = [&]() {
-    //     for(int j=1;j<100;j++) {
-    //       bool fail = false;
-    //       for(int k=0;k<v.size();k++) {
-    //         if(v[k] == j)
-    //           fail = true; break;
-    //       }
-    //       if(!fail) {
-    //         printf("%d %d\n", mark, j);
-    //         fflush(stdout);
-    //         v.pb(j);
-    //         return;
-    //       }
-    //     }
-    //   };
-    //   // put();
-    //   // continue;
-    // }
+    if(mark != -1 && v.size() < 8) {
+      auto put = [&]() {
+        for(int j=1;j<100;j++) {
+          if(v.count(j)) continue;
+          printf("%d %d\n", mark, j);
+          fflush(stdout);
+          v.insert(j);
+          return;
+        }
+      };
+      put();
+      continue;
+    }
     
-    if(d >= 80 && cur < 20) {
+    if(d >= 55 && cur <= 20) {
       printf("%d 0\n", cur);
       fflush(stdout);
       int n;
       scanf(" %d", &n);
-      v.resize(n);
+      v.clear();
       for(int j=0;j<n;j++) {
-        scanf(" %d", &v[j]);
+        int tmp;
+        scanf(" %d", &tmp);
+        v.insert(tmp);
       }
-      cerr << n << " ";
-      for(int j=0;j<n;j++) cerr << v[j] << " ";
-      cerr << endl;
+
       if(n < 7) {
+        cerr << cur << " " << n << endl;
+        fflush(stderr);
+      }
+
+      if(n < 8) {
         mark = cur;
         marksize = n;
       }
