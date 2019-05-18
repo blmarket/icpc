@@ -26,12 +26,21 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const int dx[] = {-1, 0, 0, 1};
+const int dy[] = {0, -1, 1, 0};
+
 int C, R, M;
 char D[105][105];
 int ST[105][105];
 vector<PII> VS, VT;
+unordered_map<int, int> links[105];
+
+bool bound(int x, int y) {
+  return x >= 0 && y >= 0 && x < R && y < C;
+}
 
 void process() {
+  for(int i=0;i<105;i++) links[i].clear();
   scanf(" %d %d %d", &C, &R, &M);
   memset(ST, 0, sizeof(ST));
   for(int i=0;i<R;i++) {
@@ -48,9 +57,28 @@ void process() {
     }
   }
 
-  cerr << endl;
-  for(auto it: VS) {
-    cerr << it.first << "," << it.second << endl;
+  int visit[105][105];
+  memset(visit, -1, sizeof(visit));
+
+  for(int ss=0;ss<VS.size();ss++) {
+    function<void(int, int, int)> bfs;
+    bfs = [&](int x, int y, int d) {
+      if(!bound(x,y)) return;
+      if(visit[x][y] != -1) return;
+      visit[x][y] = d;
+      for(int i=0;i<4;i++) {
+        int xx = x, yy = y;
+        while(bound(xx, yy)) {
+          if(D[xx][yy] == '#') break;
+          if(D[xx][yy] == 'T') {
+            int tt = -ST[xx][yy];
+            if(!links[ss].count(tt)) links[ss][tt] = d;
+          }
+          xx += dx[i];
+          yy += dy[i];
+        }
+      }
+    };
   }
 }
 
