@@ -26,6 +26,10 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+struct edge {
+  int n, c, f;
+};
+
 const int dx[] = {-1, 0, 0, 1};
 const int dy[] = {0, -1, 1, 0};
 
@@ -33,13 +37,29 @@ int C, R, M;
 char D[105][105];
 int ST[105][105];
 vector<PII> VS, VT;
-unordered_map<int, int> links[105];
+vector<edge> net[205];
 
 bool bound(int x, int y) {
   return x >= 0 && y >= 0 && x < R && y < C;
 }
 
+bool mcmf(int s, int e) {
+  int dist[205];
+  int back[205];
+  memset(dist, -1, sizeof(dist));
+  memset(back, -1, sizeof(back));
+  dist[s] = 0;
+  priority_queue<PII> Q;
+  Q.push(mp(0, s));
+  while(!Q.empty()) {
+    int d, n;
+    tie(d, n) = Q.top();
+    Q.pop();
+  }
+}
+
 void process() {
+  for(int i=0;i<205;i++) net[i].clear();
   VS.clear(); VT.clear();
   scanf(" %d %d %d", &C, &R, &M);
   memset(ST, 0, sizeof(ST));
@@ -60,7 +80,10 @@ void process() {
   int visit[105][105];
 
   for(int ss=0;ss<VS.size();ss++) {
-    links[ss].clear();
+    net[203].pb(edge { ss+1, 0, 1 });
+
+    unordered_map<int, int> links {};
+
     memset(visit, -1, sizeof(visit));
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
@@ -75,7 +98,7 @@ void process() {
           if(D[xx][yy] == '#') break;
           if(D[xx][yy] == 'T') {
             int tt = -ST[xx][yy];
-            if (links[ss][tt] == 0 || links[ss][tt] > d) links[ss][tt] = d;
+            if (links[tt] == 0 || links[tt] > d) links[tt] = d;
           }
           xx += dx[i];
           yy += dy[i];
@@ -86,12 +109,16 @@ void process() {
 
     bfs(VS[ss].first, VS[ss].second, 0);
 
-    cerr << ss+1 << " : ";
-    for(auto jt: links[ss]) {
-      cerr << jt.first << "," << jt.second << " ";
+    for(auto jt: links) {
+      net[ss+1].pb(edge { jt.first + 100, jt.second, 1 });
     }
-    cerr << endl;
   }
+
+  for(int i=1;i<=VT.size();i++) {
+    net[i + 100].pb(edge { 204, 0, 1 });
+  }
+
+  while(mcmf(203, 204));
 }
 
 int main(void) {
