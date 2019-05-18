@@ -68,7 +68,7 @@ bool mcmf(int s, int e) {
     if(dist[n] != -d) continue;
     for(auto &it: net[n]) {
       if(it.f == 0) continue;
-      int dd = d + it.c;
+      int dd = -d + it.c;
       if(dist[it.n] == -1 || dist[it.n] > dd) {
         back[it.n] = n;
         dist[it.n] = dd;
