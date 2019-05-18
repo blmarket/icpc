@@ -48,6 +48,7 @@ void process() {
     }
   }
 
+  cerr << endl;
   for(auto it: VS) {
     cerr << it.first << "," << it.second << endl;
   }
