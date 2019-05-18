@@ -93,7 +93,7 @@ void process() {
         cerr << Q.size() << endl;
       }
 
-      cerr << j << endl;
+      cerr << j << " " << VS.size() << endl;
     }
   }
 }
