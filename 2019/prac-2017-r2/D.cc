@@ -64,6 +64,7 @@ void process() {
     function<void(int, int, int)> bfs;
     bfs = [&](int x, int y, int d) {
       if(!bound(x,y)) return;
+      if(D[x][y] == '#') return;
       if(visit[x][y] != -1) return;
       visit[x][y] = d;
       for(int i=0;i<4;i++) {
