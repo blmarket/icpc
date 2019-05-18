@@ -87,7 +87,6 @@ void process() {
       while(!Q.empty()) {
         state st = Q.front();
         Q.pop();
-        cerr << st.x << " " << st.y << endl;
         for(int i=0;i<4;i++) {
           int xx = st.x + dx[i], yy = st.y + dy[i];
           if(bound(xx, yy) == false || D[xx][yy] == '#') continue;
