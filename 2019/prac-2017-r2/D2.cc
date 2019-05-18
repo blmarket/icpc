@@ -41,17 +41,18 @@ int sight[1<<10][10];
 
 bool bound(int x, int y) { return x >= 0 && y >= 0 && x < R && y < C; }
 
-int go(int mask1, int mask2) {
-  int ret = 0;
+vector<PII> best;
+vector<PII> stack;
+
+void go(int mask1, int mask2) {
+  if(best.size() < stack.size()) best = stack;
   for(int i=0;i<VS.size();i++) if(mask1 & (1<<i)) {
     int m2 = sight[mask2][i];
     for(int j=0;j<VT.size();j++) if(m2 & (1<<j)) {
-      int tmp = go(mask1 ^ (1<<i), mask2 ^ (1<<j));
-      if(ret < tmp + 1) ret = tmp + 1;
+      stack.pb(i+1, j+1);
+      go(mask1 ^ (1<<i), mask2 ^ (1<<j));
     }
   }
-  // cerr << bitset<10>(mask1) << " " << bitset<10>(mask2) << " = " << ret << endl;
-  return ret;
 }
 
 void process() {
@@ -118,7 +119,11 @@ void process() {
     }
   }
 
-  cout << go((1<<VS.size())-1, (1<<VT.size())-1) << endl;
+  best.clear();
+  stack.clear();
+  go((1<<VS.size())-1, (1<<VT.size())-1);
+  cout << best.size() << endl;
+  for(auto it: best) cout << it.first << " " << it.second << endl;
 }
 
 int main(void) {
