@@ -87,12 +87,13 @@ void process() {
       je = (lam / upper.second);
     }
     if(js <= je) {
-      cerr << m << " " << js << endl;
+      last = mp(m, js);
       e = m;
     } else {
       s = m;
     }
   }
+  cout << last.first << " " << last.second << endl;
 }
 
 int main(void) {
