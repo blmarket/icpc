@@ -66,6 +66,7 @@ void process() {
       if(!bound(x,y)) return;
       if(D[x][y] == '#') return;
       if(visit[x][y] != -1) return;
+      if(d > M) return;
       visit[x][y] = d;
       for(int i=0;i<4;i++) {
         int xx = x, yy = y;
