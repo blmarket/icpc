@@ -21,19 +21,19 @@ using namespace std;
 
 typedef vector<int> VI;
 typedef vector<VI> VVI;
-typedef vector<string> VS;
-typedef pair<int,int> PII;
 typedef long long LL;
+typedef pair<int, int> PII;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-set<int> v;
+vector<PII> V;
 
 void process() {
   int d;
   int cur = 1;
   int mark = -1;
-  int marksize = -1;
+  int mark2 = -1;
+  V.clear();
   for(int i=1;i<=100;i++) {
     scanf(" %d", &d);
     if(d == -1) {
@@ -46,46 +46,31 @@ void process() {
       fflush(stdout);
       break;
     }
-    if(mark != -1 && v.size() < 8) {
-      auto put = [&]() {
-        for(int j=1;j<100;j++) {
-          if(v.count(j)) continue;
-          printf("%d %d\n", mark, j);
-          fflush(stdout);
-          v.insert(j);
-          return;
-        }
-      };
-      put();
-      continue;
-    }
-    
-    if(d >= 55 && cur <= 20) {
+
+    if(d > 60 && cur <= 20) {
       printf("%d 0\n", cur);
       fflush(stdout);
       int n;
       scanf(" %d", &n);
-      v.clear();
       for(int j=0;j<n;j++) {
         int tmp;
         scanf(" %d", &tmp);
-        v.insert(tmp);
       }
-
-      if(n < 7) {
-        cerr << cur << " " << n << endl;
-        fflush(stderr);
-      }
-
-      if(n < 8) {
-        mark = cur;
-        marksize = n;
-      }
+      V.pb(mp(n, cur));
       cur++;
       continue;
     }
-    int v = (d % 19) + 1;
-    printf("%d %d\n", v, 100 - ((d-1) / 19));
+
+    if(d > 60) {
+      sort(V.begin(), V.end());
+      printf("%d 100\n", V[1].second);
+      fflush(stdout);
+      V[1].first++;
+      continue;
+    }
+
+    int v = (d % 20) + 1;
+    printf("%d %d\n", v, 100 - ((d-1) / 20));
     fflush(stdout);
   }
 }
