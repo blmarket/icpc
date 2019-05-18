@@ -85,8 +85,7 @@ void process() {
         if(active[st.x][st.y]) continue;
         for(int i=0;i<4;i++) {
           int xx = st.x + dx[i], yy = st.y + dy[i];
-          if(bound(xx, yy) == false) continue;
-          if(visit[xx][yy]) continue;
+          if(bound(xx, yy) == false || visit[xx][yy] || D[xx][yy] == '#') continue;
           visit[xx][yy] = true;
           Q.push(state { xx, yy, st.d + 1 });
         }
