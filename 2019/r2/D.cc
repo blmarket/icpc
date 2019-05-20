@@ -77,11 +77,12 @@ void process() {
         int r = D[i][j];
         S[r] = (S[r] + S[i]) % MOD;
       }
+      change = true;
     }
     if(!change) break;
   }
 
-  printf("0\n");
+  printf("%lld\n", S[1]);
 }
 
 int main(void) {
