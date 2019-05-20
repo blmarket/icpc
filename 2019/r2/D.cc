@@ -62,7 +62,7 @@ void process() {
   }
 
   for(int i=1;i<=M;i++) {
-    if(D[i][i] && D[i][1] && S[i]) {
+    if(R[i][i] && R[i][1] && S[i]) {
       printf("UNBOUNDED\n");
       return;
     }
