@@ -46,10 +46,10 @@ void process() {
     bool change = false;
     for(int i=1;i<=M;i++) for(int j=0;j<2;j++) {
       int r = D[i][j];
-      for(int k=1;k<=M;k++) if(D[r][k]) {
-        if(!D[i][k]) {
+      for(int k=1;k<=M;k++) if(R[r][k]) {
+        if(!R[i][k]) {
           change = true;
-          D[i][k] = 1;
+          R[i][k] = 1;
         }
       }
     }
@@ -57,7 +57,7 @@ void process() {
   }
 
   for(int i=1;i<=M;i++) {
-    for(int j=1;j<=M;j++) cerr << D[i][j] << " ";
+    for(int j=1;j<=M;j++) cerr << R[i][j] << " ";
     cerr << endl;
   }
 
