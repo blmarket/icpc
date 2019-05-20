@@ -57,6 +57,11 @@ void process() {
   }
 
   for(int i=1;i<=M;i++) {
+    for(int j=1;j<=M;j++) cerr << D[i][j] << " ";
+    cerr << endl;
+  }
+
+  for(int i=1;i<=M;i++) {
     if(D[i][i] && D[i][1] && S[i]) {
       printf("UNBOUNDED\n");
       return;
