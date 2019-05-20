@@ -58,10 +58,10 @@ void process() {
     if(!change) break;
   }
 
-  // for(int i=1;i<=M;i++) {
-  //   for(int j=1;j<=M;j++) cerr << R[i][j] << " ";
-  //   cerr << endl;
-  // }
+  for(int i=1;i<=M;i++) {
+    for(int j=1;j<=M;j++) cerr << R[i][j] << " ";
+    cerr << endl;
+  }
 
   for(int i=1;i<=M;i++) {
     if(R[i][i] && R[i][1] && S[i]) {
