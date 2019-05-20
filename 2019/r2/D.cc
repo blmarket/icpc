@@ -103,6 +103,7 @@ void process() {
   LL r2 = S[1];
   if(r2 > r1) {
     printf("UNBOUNDED\n");
+    return;
   }
   printf("%lld\n", r1);
   // printf("%lld\n", S[1]);
