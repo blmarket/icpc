@@ -29,7 +29,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int M;
 int D[105][2];
-int S[105];
+LL S[105];
 int R[105][105];
 
 void process() {
@@ -65,6 +65,14 @@ void process() {
     if(R[i][i] && R[i][1] && S[i]) {
       printf("UNBOUNDED\n");
       return;
+    }
+  }
+
+  while(true) {
+    bool change = false;
+    for(int i=1;i<=M;i++) if(R[i][1] && S[i]) {
+      for(int j=0;j<2;j++) {
+      }
     }
   }
 
