@@ -85,8 +85,8 @@ void process() {
     if(!change) break;
   }
   LL r1 = S[1];
-  S[D[1][0]] = 1;
-  S[D[1][1]] = 1;
+  S[D[1][0]]++;
+  S[D[1][1]]++;
   S[1]--;
   while(true) {
     bool change = false;
