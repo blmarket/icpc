@@ -27,6 +27,8 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const LL MOD = 1e9 + 7;
+
 int M;
 int D[105][2];
 LL S[105];
@@ -71,8 +73,9 @@ void process() {
   while(true) {
     bool change = false;
     for(int i=1;i<=M;i++) if(R[i][1] && S[i]) {
-      cerr << i << endl;
       for(int j=0;j<2;j++) {
+        int r = D[i][j];
+        S[r] = (S[r] + S[i]) % MOD;
       }
     }
     if(!change) break;
