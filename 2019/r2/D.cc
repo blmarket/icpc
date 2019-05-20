@@ -40,7 +40,7 @@ void process() {
     R[i][D[i][0]] = 1;
     R[i][D[i][1]] = 1;
   }
-  for(int i=1;i<=M;i++) scanf(" %d", &S[i]);
+  for(int i=1;i<=M;i++) scanf(" %lld", &S[i]);
 
   while(true) {
     bool change = false;
