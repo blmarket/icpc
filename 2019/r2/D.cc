@@ -85,25 +85,27 @@ void process() {
     if(!change) break;
   }
   LL r1 = S[1];
-  S[D[1][0]]++;
-  S[D[1][1]]++;
-  S[1]--;
-  while(true) {
-    bool change = false;
-    for(int i=2;i<=M;i++) if(R[i][1] && S[i]) {
-      for(int j=0;j<2;j++) {
-        int r = D[i][j];
-        S[r] = (S[r] + S[i]) % MOD;
+  if (S[1]) {
+    S[D[1][0]]++;
+    S[D[1][1]]++;
+    S[1]--;
+    while(true) {
+      bool change = false;
+      for(int i=2;i<=M;i++) if(R[i][1] && S[i]) {
+        for(int j=0;j<2;j++) {
+          int r = D[i][j];
+          S[r] = (S[r] + S[i]) % MOD;
+        }
+        S[i] = 0;
+        change = true;
       }
-      S[i] = 0;
-      change = true;
+      if(!change) break;
     }
-    if(!change) break;
-  }
-  LL r2 = S[1];
-  if(r2 > r1) {
-    printf("UNBOUNDED\n");
-    return;
+    LL r2 = S[1];
+    if(r2 > r1) {
+      printf("UNBOUNDED\n");
+      return;
+    }
   }
   printf("%lld\n", r1);
   // printf("%lld\n", S[1]);
