@@ -102,7 +102,7 @@ void process() {
       if(!change) break;
     }
     LL r2 = S[1];
-    if(r2 > r1) {
+    if(r2 != r1 && r2 != ((r1 + MOD - 1) % MOD)) {
       printf("UNBOUNDED\n");
       return;
     }
