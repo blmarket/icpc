@@ -42,8 +42,6 @@ void process() {
   }
   for(int i=1;i<=M;i++) scanf(" %d", &S[i]);
 
-  cerr << "here" << endl;
-
   while(true) {
     bool change = false;
     for(int i=1;i<=M;i++) for(int j=0;j<2;j++) {
