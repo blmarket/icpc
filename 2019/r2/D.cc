@@ -46,7 +46,7 @@ void process() {
 
   while(true) {
     bool change = false;
-    for(int i=1;i<=M;i++) for(int j=0;j<2;j++) {
+    for(int i=2;i<=M;i++) for(int j=0;j<2;j++) {
       int r = D[i][j];
       for(int k=1;k<=M;k++) if(R[r][k]) {
         if(!R[i][k]) {
@@ -72,17 +72,38 @@ void process() {
 
   while(true) {
     bool change = false;
-    for(int i=1;i<=M;i++) if(R[i][1] && S[i]) {
+    for(int i=2;i<=M;i++) if(R[i][1] && S[i]) {
       for(int j=0;j<2;j++) {
         int r = D[i][j];
         S[r] = (S[r] + S[i]) % MOD;
       }
+      S[i] = 0;
       change = true;
     }
     if(!change) break;
   }
-
-  printf("%lld\n", S[1]);
+  LL r1 = S[1];
+  S[D[1][0]] = 1;
+  S[D[1][1]] = 1;
+  S[1]--;
+  while(true) {
+    bool change = false;
+    for(int i=2;i<=M;i++) if(R[i][1] && S[i]) {
+      for(int j=0;j<2;j++) {
+        int r = D[i][j];
+        S[r] = (S[r] + S[i]) % MOD;
+      }
+      S[i] = 0;
+      change = true;
+    }
+    if(!change) break;
+  }
+  LL r2 = S[1];
+  if(r2 > r1) {
+    printf("UNBOUNDED\n");
+  }
+  printf("%lld\n", r1);
+  // printf("%lld\n", S[1]);
 }
 
 int main(void) {
