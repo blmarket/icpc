@@ -71,9 +71,11 @@ void process() {
   while(true) {
     bool change = false;
     for(int i=1;i<=M;i++) if(R[i][1] && S[i]) {
+      cerr << i << endl;
       for(int j=0;j<2;j++) {
       }
     }
+    if(!change) break;
   }
 
   printf("0\n");
