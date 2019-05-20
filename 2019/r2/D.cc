@@ -42,6 +42,8 @@ void process() {
     R[i][D[i][0]] = 1;
     R[i][D[i][1]] = 1;
   }
+  R[1][D[1][0]] = 0;
+  R[1][D[1][1]] = 0;
   for(int i=1;i<=M;i++) scanf(" %lld", &S[i]);
 
   while(true) {
