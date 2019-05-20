@@ -36,7 +36,7 @@ void process() {
   scanf(" %d", &M);
   memset(R, 0, sizeof(R));
   for(int i=1;i<=M;i++) {
-    scanf(" %d %d", D[i][0], D[i][1]);
+    scanf(" %d %d", &D[i][0], &D[i][1]);
     R[i][D[i][0]] = 1;
     R[i][D[i][1]] = 1;
   }
