@@ -86,9 +86,9 @@ void process() {
   }
   LL r1 = S[1];
   if (S[1]) {
+    S[1] = 0;
     S[D[1][0]] += r1;
     S[D[1][1]] += r1;
-    S[1] = 0;
     while(true) {
       bool change = false;
       for(int i=2;i<=M;i++) if(R[i][1] && S[i]) {
@@ -102,7 +102,6 @@ void process() {
       if(!change) break;
     }
     LL r2 = S[1];
-    cerr << r2 << endl;
     if(r2 != r1 && r2 != 0) {
       printf("UNBOUNDED\n");
       return;
