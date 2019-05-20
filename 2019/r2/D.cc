@@ -102,6 +102,7 @@ void process() {
       if(!change) break;
     }
     LL r2 = S[1];
+    cerr << r2 << endl;
     if(r2 != r1 && r2 != 0) {
       printf("UNBOUNDED\n");
       return;
