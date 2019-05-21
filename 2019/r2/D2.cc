@@ -62,6 +62,7 @@ void tarjan() {
     }
 
     if(back[a] == index[a]) {
+      cerr << "a=" << a << endl;
       while(stack.size()) {
         int tmp = stack.back();
         cerr << tmp << " ";
