@@ -83,7 +83,9 @@ void process() {
     int a, b;
     scanf(" %d %d", &a, &b);
     tie(D[i][0], D[i][1]) = { a, b };
-    net[a].pb(i); net[b].pb(i);
+    if(i > 1) {
+      net[a].pb(i); net[b].pb(i);
+    }
   }
   tarjan();
 }
