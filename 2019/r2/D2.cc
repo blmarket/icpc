@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <functional>
 #include <unordered_set>
 #include <unordered_map>
 #include <cstdlib>
@@ -32,16 +33,58 @@ const LL MOD = 1e9 + 7;
 int M;
 int D[100005][2];
 LL S[100005];
-vector<int> back[100005];
+VVI net;
+
+void tarjan() {
+  VI stack;
+  VI index;
+  VI back;
+  vector<bool> active;
+  int label;
+
+  index = back = VI(M+1, 0);
+  active = vector<bool>(M+1, false);
+  label = 0;
+
+  function<void(int)> go;
+  go = [&](int a) {
+    stack.pb(a);
+    index[a] = back[a] = ++label;
+    active[a] = true;
+
+    for(auto it: net[a]) {
+      if(!index[it]) {
+        go(it);
+        back[a] = min(back[a], back[it]);
+      } else if(active[it]) {
+        back[a] = min(back[a], index[it]);
+      }
+    }
+
+    if(back[a] == index[a]) {
+      while(stack.size()) {
+        int tmp = stack.back();
+        cerr << tmp << " ";
+        stack.pop_back();
+        if(tmp == a) break;
+      }
+      cerr << endl;
+    }
+  };
+
+  go(1);
+}
 
 void process() {
   scanf(" %d", &M);
-  for(int i=1;i<=M;i++) back[i].clear();
+  net = VVI(M + 1);
   for(int i=1;i<=M;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
     tie(D[i][0], D[i][1]) = { a, b };
+    net[a].pb(i); net[b].pb(i);
   }
+  tarjan();
 }
 
 int main(void) {
