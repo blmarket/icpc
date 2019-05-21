@@ -48,7 +48,7 @@ void tarjan() {
 
   function<void(int)> go;
   go = [&](int a) {
-    cerr << a << " " << label << endl;
+    cerr << a << " " << label+1 << endl;
     stack.pb(a);
     index[a] = back[a] = ++label;
     active[a] = true;
