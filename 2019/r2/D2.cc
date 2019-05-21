@@ -48,12 +48,12 @@ void tarjan() {
 
   function<void(int)> go;
   go = [&](int a) {
-    cerr << a << endl;
     stack.pb(a);
     index[a] = back[a] = ++label;
     active[a] = true;
 
     for(auto it: net[a]) {
+      cerr << it << endl;
       if(!index[it]) {
         go(it);
         back[a] = min(back[a], back[it]);
