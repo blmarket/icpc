@@ -69,6 +69,7 @@ void tarjan() {
         int tmp = stack.back();
         cerr << tmp << " ";
         stack.pop_back();
+        active[tmp] = false;
         if(tmp == a) break;
       }
       cerr << endl;
