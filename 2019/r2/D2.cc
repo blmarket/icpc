@@ -89,6 +89,7 @@ void process() {
       net[a].pb(i); net[b].pb(i);
     }
   }
+  for(int i=1;i<=M;i++) scanf(" %lld", &S[i]);
   tarjan();
 }
 
