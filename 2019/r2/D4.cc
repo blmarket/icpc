@@ -95,7 +95,7 @@ void process() {
         if(group[edge[jt][k]] == i) cnt++;
       }
     }
-    cerr << cnt << endl;
+    cerr << "cnt=" << cnt << endl;
   }
 }
 
