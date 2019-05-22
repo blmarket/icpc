@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include <algorithm>
 #include <unordered_set>
 #include <unordered_map>
@@ -44,6 +45,19 @@ void process() {
     back[b].pb(i);
   }
   for(int i=1;i<=M;i++) scanf(" %lld", &init[i]);
+
+  vector<int> L;
+  vector<bool> visit(M+1, false);
+  function<void(int)> dfs = [&](int a) {
+    visit[a] = true;
+    L.pb(a);
+    for(auto &it: back[a]) {
+      if(!visit[it]) dfs(it);
+    }
+  };
+
+  for(auto &it: L) cerr << it << " ";
+  cerr << endl;
 }
 
 int main(void) {
