@@ -36,6 +36,7 @@ void process() {
   scanf(" %d", &M);
 
   back.assign(M+1, VI {});
+  cerr << M << endl;
   for(int i=1;i<=M;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
