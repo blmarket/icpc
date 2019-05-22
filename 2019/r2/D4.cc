@@ -80,6 +80,8 @@ void process() {
     }
   }
 
+  cerr << "Gsize=" << G.size() << endl;
+
   vector<LL> D(M+1, 0);
   {
     function<void(int)> assign = [&](int a) {
