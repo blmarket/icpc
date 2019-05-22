@@ -59,6 +59,9 @@ void process() {
     dfs(1);
   }
 
+  for(auto &it: L) cerr << it << " ";
+  cerr << endl;
+
   vector<int> group(M+1, 0);
   VVI G;
   {
@@ -71,7 +74,6 @@ void process() {
     for(int i=L.size()-1;i>=0;i--) {
       int it = L[i];
       if(!group[it]) {
-        cerr << "here" << endl;
         G.pb(VI {});
         assign(it);
       }
