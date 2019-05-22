@@ -59,12 +59,6 @@ void process() {
     for(int i=1;i<=M;i++) if(!reach[i]) dfs(i);
   }
 
-  for(auto &it: L) cerr << it << " ";
-  cerr << endl;
-
-  for(auto it: reach) cerr << it << " ";
-  cerr << endl;
-
   vector<int> group(M+1, 0);
   VVI G;
   {
