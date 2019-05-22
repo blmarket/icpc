@@ -66,7 +66,7 @@ void process() {
   VVI G(1);
   {
     function<void(int)> assign = [&](int a) {
-      group[a] = G.size();
+      group[a] = G.size() - 1;
       G.back().pb(a);
       for(auto &it: edge[a]) if(!group[it]) {
         assign(it);
