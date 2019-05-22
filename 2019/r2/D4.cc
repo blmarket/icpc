@@ -92,7 +92,7 @@ void process() {
     for(int j=0;j<it.size();j++) {
       int jt = it[j];
       for(int k=0;k<2;k++) {
-        cerr << "d " << edge[jt][k] << " " << group[edge[jt][k]] << endl;
+        cerr << "d " << edge[jt][k] << " " << group[edge[jt][k]] << " " << i << endl;
         if(group[edge[jt][k]] == i) cnt++;
       }
     }
