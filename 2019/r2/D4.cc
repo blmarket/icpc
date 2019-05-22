@@ -56,7 +56,7 @@ void process() {
       }
       L.pb(a);
     };
-    dfs(1);
+    for(int i=1;i<=M;i++) if(!reach[i]) dfs(i);
   }
 
   for(auto &it: L) cerr << it << " ";
