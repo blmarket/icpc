@@ -51,10 +51,10 @@ void process() {
     vector<bool> visit(M+1, false);
     function<void(int)> dfs = [&](int a) {
       visit[a] = true;
-      L.pb(a);
       for(auto &it: edge[a]) {
         if(!visit[it]) dfs(it);
       }
+      L.pb(a);
     };
     for(int i=1;i<=M;i++) if(!visit[i])
       dfs(i);
