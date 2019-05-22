@@ -81,6 +81,7 @@ void process() {
     }
   }
 
+  cerr << "g ";
   for(auto &it: group) cerr << it << " ";
   cerr << endl;
 
