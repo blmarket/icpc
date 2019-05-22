@@ -55,6 +55,7 @@ void process() {
       if(!visit[it]) dfs(it);
     }
   };
+  dfs(1);
 
   for(auto &it: L) cerr << it << " ";
   cerr << endl;
