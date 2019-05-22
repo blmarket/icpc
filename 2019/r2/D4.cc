@@ -35,7 +35,7 @@ LL init[100005];
 void process() {
   scanf(" %d", &M);
 
-  back.assign(M, VI {});
+  back.assign(M+1, VI {});
   for(int i=1;i<=M;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
