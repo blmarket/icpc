@@ -51,7 +51,7 @@ void process() {
   {
     function<void(int)> dfs = [&](int a) {
       reach[a] = true;
-      for(auto &it: edge[a]) {
+      for(auto &it: back[a]) {
         if(!reach[it]) dfs(it);
       }
       L.pb(a);
@@ -72,7 +72,7 @@ void process() {
     function<void(int)> assign = [&](int a) {
       visit[a] = true;
       G.back().pb(a);
-      for(auto &it: back[a]) if(!visit[it] && reach[it]) {
+      for(auto &it: edge[a]) if(!visit[it] && reach[it]) {
         assign(it);
       }
     };
