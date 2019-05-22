@@ -80,6 +80,11 @@ void process() {
       }
     }
   }
+
+  for(auto &it: G) {
+    for(auto &jt: it) cerr << jt << " ";
+    cerr << endl;
+  }
 }
 
 int main(void) {
