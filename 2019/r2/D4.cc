@@ -94,6 +94,7 @@ void process() {
         }
       }
       if(chk) {
+        cerr << cnt <<  " " << it.size() << endl;
         if(cnt > it.size()) {
           for(auto &jt: it) D[jt] = -1;
         } else if(cnt == it.size()) {
