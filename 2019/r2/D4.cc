@@ -65,15 +65,17 @@ void process() {
   vector<int> group(M+1, 0);
   VVI G;
   {
+    vector<bool> visit(M+1, false);
     function<void(int)> assign = [&](int a) {
-      group[a] = G.size();
+      visit[a] = true;
       G.back().pb(a);
-      for(auto &it: edge[a]) if(!group[it])
+      for(auto &it: edge[a]) if(!visit[it]) {
         assign(it);
+      }
     };
     for(int i=L.size()-1;i>=0;i--) {
       int it = L[i];
-      if(!group[it]) {
+      if(!visit[it]) {
         G.pb(VI {});
         assign(it);
       }
