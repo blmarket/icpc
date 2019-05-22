@@ -57,7 +57,7 @@ void process() {
       }
     };
     for(int i=1;i<=M;i++) if(!visit[i])
-      dfs(1);
+      dfs(i);
   }
 
   for(auto &it: L) cerr << it << " ";
