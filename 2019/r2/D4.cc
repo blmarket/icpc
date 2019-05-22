@@ -132,9 +132,6 @@ void process() {
     }
   }
 
-  for(auto it: D) cerr << it << " ";
-  cerr << endl;
-
   LL ret = 0;
   for(int i=1;i<=M;i++) {
     if(D[i] == -1 && init[i]) {
