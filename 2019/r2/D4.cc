@@ -28,6 +28,8 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const int MOD = 1e9+7;
+
 int M;
 int edge[100005][2];
 VVI back;
@@ -90,18 +92,66 @@ void process() {
     cerr << endl;
   }
 
-  for(int i=1;i<G.size();i++) {
-    auto &it = G[i];
-    int cnt = 0;
-    for(int j=0;j<it.size();j++) {
-      int jt = it[j];
-      for(int k=0;k<2;k++) {
-        cerr << "d " << edge[jt][k] << " " << group[edge[jt][k]] << " " << i << endl;
-        if(group[edge[jt][k]] == i) cnt++;
+  vector<LL> D(M+1, 0);
+  {
+    function<void(int)> assign = [&](int a) {
+      auto &it = G[a];
+      int cnt = 0;
+      bool chk = false;
+      for(int j=0;j<it.size();j++) {
+        int jt = it[j];
+        if(jt == 1) chk = true;
+        for(int k=0;k<2;k++) {
+          if(group[edge[jt][k]] == a) cnt++;
+        }
       }
+      cerr << "cnt=" << cnt << endl;
+      if(chk) {
+        if(cnt > it.size()) {
+          for(auto &jt: it) D[jt] = -1;
+        } else if(cnt == it.size()) {
+          for(auto &jt: it) D[jt] = 1;
+        } else {
+          D[1] = 1;
+        }
+        return;
+      }
+      if(cnt > 0) {
+        bool found = false;
+        for(auto &jt: it) {
+          for(auto kt: edge[jt]) {
+            if(D[kt]) { found = true; break; }
+          }
+          if(found) break;
+        }
+        if(found) {
+          for(auto &jt: it) D[jt] = -1;
+        }
+        return;
+      }
+      for(auto &jt: it) {
+        if(D[edge[jt][0]] == -1 || D[edge[jt][1]] == -1) {
+          D[jt] = -1;
+        } else {
+          D[jt] = (D[edge[jt][0]] + D[edge[jt][1]]) % MOD;
+        }
+      }
+    };
+    for(int i=1;i<G.size();i++) {
+      assign(1);
     }
-    cerr << "cnt=" << cnt << endl;
   }
+
+  LL ret = 0;
+  for(int i=1;i<=M;i++) {
+    if(D[i] == -1 && init[i]) {
+      printf("UNBOUNDED\n");
+      return;
+    }
+    ret += D[i] * init[i];
+    ret %= MOD;
+  }
+  printf("%lld\n", ret);
 }
 
 int main(void) {
