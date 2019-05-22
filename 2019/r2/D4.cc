@@ -71,6 +71,7 @@ void process() {
     for(int i=L.size()-1;i>=0;i--) {
       int it = L[i];
       if(!group[it]) {
+        cerr << "here" << endl;
         G.pb(VI {});
         assign(it);
       }
