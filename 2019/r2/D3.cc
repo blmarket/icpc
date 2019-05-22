@@ -55,13 +55,13 @@ void process() {
     int s = 0;
     while(s < bfs.size()) {
       s++;
+      cerr << bfs[s] << endl;
       for(auto it: net[bfs[s]]) if(!visit[it]) {
         visit[it] = true;
         bfs.pb(it);
       }
     }
   }
-  cerr << bfs.size() << endl;
 }
 
 int main(void) {
