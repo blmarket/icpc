@@ -47,8 +47,6 @@ void process() {
   }
   for(int i=0;i<M;i++) scanf(" %lld", &S[i]);
 
-  cerr << "here" << endl;
-
   vector<int> bfs;
   {
     vector<bool> visit(M, false);
@@ -63,6 +61,7 @@ void process() {
       }
     }
   }
+  cerr << bfs.size() << endl;
 }
 
 int main(void) {
