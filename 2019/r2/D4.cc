@@ -85,6 +85,18 @@ void process() {
     for(auto &jt: it) cerr << jt << " ";
     cerr << endl;
   }
+
+  for(int i=1;i<G.size();i++) {
+    auto &it = G[i];
+    int cnt = 0;
+    for(int j=0;j<it.size();j++) {
+      int jt = it[j];
+      for(int k=0;k<2;k++) {
+        if(group[edge[jt][k]] == i) cnt++;
+      }
+    }
+    cerr << cnt << endl;
+  }
 }
 
 int main(void) {
