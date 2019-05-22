@@ -128,7 +128,7 @@ void process() {
       }
     };
     for(int i=1;i<G.size();i++) {
-      assign(1);
+      assign(i);
     }
   }
 
