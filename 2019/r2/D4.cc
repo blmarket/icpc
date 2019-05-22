@@ -47,18 +47,44 @@ void process() {
   for(int i=1;i<=M;i++) scanf(" %lld", &init[i]);
 
   vector<int> L;
-  vector<bool> visit(M+1, false);
-  function<void(int)> dfs = [&](int a) {
-    visit[a] = true;
-    L.pb(a);
-    for(auto &it: back[a]) {
-      if(!visit[it]) dfs(it);
-    }
-  };
-  dfs(1);
-
+  {
+    vector<bool> visit(M+1, false);
+    function<void(int)> dfs = [&](int a) {
+      visit[a] = true;
+      L.pb(a);
+      for(auto &it: back[a]) {
+        if(!visit[it]) dfs(it);
+      }
+    };
+    dfs(1);
+  }
   for(auto &it: L) cerr << it << " ";
   cerr << endl;
+
+  vector<int> group(M+1, 0);
+  VVI G;
+  {
+    function<void(int)> assign = [&](int a) {
+      group[a] = G.size();
+      G.back().pb(a);
+      for(auto &it: edge[a]) if(!group[it])
+        assign(it);
+    };
+    for(int i=L.size()-1;i>=0;i--) {
+      int it = L[i];
+      if(!group[it]) {
+        G.pb(VI {});
+        assign(it);
+      }
+    }
+  }
+
+  for(auto &it: G) {
+    for(auto &jt: it) {
+      cerr << jt << " ";
+    }
+    cerr << endl;
+  }
 }
 
 int main(void) {
