@@ -61,9 +61,6 @@ void process() {
     for(int i=1;i<=M;i++) if(!reach[i]) dfs(i);
   }
 
-  for(auto &it: L) cerr << it << " ";
-  cerr << endl;
-
   vector<int> group(M+1, 0);
   VVI G(1);
   {
@@ -83,15 +80,6 @@ void process() {
     }
   }
 
-  cerr << "g ";
-  for(auto &it: group) cerr << it << " ";
-  cerr << endl;
-
-  for(auto &it: G) {
-    for(auto &jt: it) cerr << jt << " ";
-    cerr << endl;
-  }
-
   vector<LL> D(M+1, 0);
   {
     function<void(int)> assign = [&](int a) {
@@ -105,7 +93,6 @@ void process() {
           if(group[edge[jt][k]] == a) cnt++;
         }
       }
-      cerr << "cnt=" << cnt << endl;
       if(chk) {
         if(cnt > it.size()) {
           for(auto &jt: it) D[jt] = -1;
