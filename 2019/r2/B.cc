@@ -34,20 +34,15 @@ void process() {
   int mark = -1;
   int mark2 = -1;
   V.clear();
+  int N = 50;
   for(int i=1;i<=100;i++) {
     scanf(" %d", &d);
     if(d == -1) {
       cerr << "wrong" << endl;
       exit(0);
     }
-    if(d == 100) {
-      // cerr << cur << endl;
-      printf("20 100\n");
-      fflush(stdout);
-      break;
-    }
 
-    if(d > 60 && cur <= 20) {
+    if(d > N && cur <= 20) {
       printf("%d 0\n", cur);
       fflush(stdout);
       int n;
@@ -61,16 +56,22 @@ void process() {
       continue;
     }
 
-    if(d > 60) {
+    if(d > N) {
       sort(V.begin(), V.end());
-      printf("%d 100\n", V[1].second);
+      printf("%d %d\n", V[1].second, d == 100 ? 100 : (rand()%100)+1);
       fflush(stdout);
       V[1].first++;
       continue;
     }
 
-    int v = (d % 20) + 1;
-    printf("%d %d\n", v, 100 - ((d-1) / 20));
+    if(d <= 20) {
+      printf("%d %d\n", d, 100);
+      fflush(stdout);
+      continue;
+    }
+
+    int v = (rand() % 20) + 1;
+    printf("%d %d\n", v, (rand() % 99) + 1);
     fflush(stdout);
   }
 }

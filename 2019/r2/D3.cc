@@ -47,18 +47,37 @@ void process() {
   }
   for(int i=0;i<M;i++) scanf(" %lld", &S[i]);
 
-  vector<int> bfs;
+  vector<int> order;
   {
     vector<bool> visit(M, false);
-    visit[0] = true;
-    bfs.pb(0);
-    int s = 0;
-    while(s < bfs.size()) {
-      for(auto it: net[bfs[s]]) if(!visit[it]) {
-        visit[it] = true;
-        bfs.pb(it);
+    function<void(int)> go = [&](int a) {
+      visit[a] = true;
+      order.pb(a);
+      for(auto it: net[a]) if(!visit[it]) {
+        go(it);
       }
-      s++;
+    };
+    go(0);
+  }
+
+  vector<LL> multiplier(M, 0);
+
+  for(int i=order.size()-1;i>0;i--) {
+    int it = order[i];
+    LL tmp = S[it];
+    S[it] = 0;
+    for(int j=0;j<2;j++) {
+      int jt = D[it][j];
+      S[jt] = (S[jt] + tmp) % MOD;
+    }
+  }
+
+  LL r1 = S[0];
+  for(int i=order.size()-1;i>0;i--) {
+    int it = order[i];
+    if(S[it]) {
+      cout << "UNBOUNDED" << endl;
+      return;
     }
   }
 }
