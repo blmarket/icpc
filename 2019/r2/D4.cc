@@ -80,7 +80,7 @@ void process() {
     }
   }
 
-  cerr << "Gsize=" << G.size() << endl;
+  // cerr << "Gsize=" << G.size() << endl;
 
   vector<LL> D(M+1, 0);
   {
@@ -96,7 +96,7 @@ void process() {
         }
       }
       if(chk) {
-        cerr << cnt <<  " " << it.size() << endl;
+        // cerr << cnt <<  " " << it.size() << endl;
         if(cnt > it.size()) {
           for(auto &jt: it) D[jt] = -1;
         } else if(cnt == it.size()) {
