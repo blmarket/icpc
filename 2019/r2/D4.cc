@@ -52,7 +52,7 @@ void process() {
     function<void(int)> dfs = [&](int a) {
       visit[a] = true;
       L.pb(a);
-      for(auto &it: back[a]) {
+      for(auto &it: edge[a]) {
         if(!visit[it]) dfs(it);
       }
     };
@@ -67,7 +67,7 @@ void process() {
     function<void(int)> assign = [&](int a) {
       visit[a] = true;
       G.back().pb(a);
-      for(auto &it: edge[a]) if(!visit[it]) {
+      for(auto &it: back[a]) if(!visit[it]) {
         assign(it);
       }
     };
