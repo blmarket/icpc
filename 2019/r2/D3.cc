@@ -56,17 +56,11 @@ void process() {
     while(s < bfs.size()) {
       s++;
       for(auto it: net[bfs[s]]) if(!visit[it]) {
-        cerr << it << endl;
         visit[it] = true;
         bfs.pb(it);
       }
     }
   }
-
-  for(auto it: bfs) {
-    cerr << it << " ";
-  }
-  cerr << endl;
 }
 
 int main(void) {
