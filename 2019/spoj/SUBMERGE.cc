@@ -20,22 +20,22 @@
 
 using namespace std;
 
-typedef vector<int> VI;
-typedef vector<VI> VVI;
-typedef vector<string> VS;
-typedef pair<int,int> PII;
-typedef long long LL;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<string> vs;
+typedef pair<int,int> pii;
+typedef long long ll;
 
-template<typename T> int size(const T &a) { return a.size(); } 
+template<typename t> int size(const t &a) { return a.size(); } 
 
-VVI links;
+vvi links;
 
 bool process() {
-  int N, M;
-  scanf(" %d %d", &N, &M);
-  links.assign(N+1, VI {});
-  if(N == 0 && M == 0) return false;
-  for(int i=0;i<M;i++) {
+  int n, m;
+  scanf(" %d %d", &n, &m);
+  links.assign(n+1, vi {});
+  if(n == 0 && m == 0) return false;
+  for(int i=0;i<m;i++) {
     int a, b;
     scanf(" %d %d", &a, &b);
     links[a-1].pb(b-1);
@@ -44,28 +44,31 @@ bool process() {
 
   int ret = 0;
   {
-    VI visit(N, 0);
-    VI lowlink(N, 0);
+    vi visit(n, 0);
+    vi lowlink(n, 0);
     int cnt = 0;
-    function<void(int, bool)> dfs = [&](int a, bool root) {
+    function<void(int, bool)> dfs = [&](int a, int parent) {
       visit[a] = lowlink[a] = ++cnt;
       int c2 = 0;
       bool found = false;
       for(auto it: links[a]) {
+        if(it == parent) continue;
         if(!visit[it]) {
           c2++;
           dfs(it, false);
           if(lowlink[it] >= visit[a]) found = true;
+          lowlink[a] = min(lowlink[a], lowlink[it]);
+        } else {
+          lowlink[a] = min(lowlink[a], visit[it]);
         }
-        lowlink[a] = min(lowlink[a], visit[it]);
       }
-      if(root) {
+      if(parent == -1) {
         if(c2 > 1) ret++;
       } else {
         ret += found;
       }
     };
-    dfs(0, true);
+    dfs(0, -1);
   }
   printf("%d\n", ret);
   return true;
