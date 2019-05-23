@@ -47,7 +47,7 @@ bool process() {
     vi visit(n, 0);
     vi lowlink(n, 0);
     int cnt = 0;
-    function<void(int, bool)> dfs = [&](int a, int parent) {
+    function<void(int, int)> dfs = [&](int a, int parent) {
       visit[a] = lowlink[a] = ++cnt;
       int c2 = 0;
       bool found = false;
