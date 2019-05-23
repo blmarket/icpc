@@ -65,10 +65,12 @@ int main(void) {
     }
   }
 
-  for(auto &it: G) {
-    for(auto &jt: it)
-      cerr << jt << " ";
-    cerr << endl;
+  printf("%lu\n", G.back().size());
+  sort(G.back().begin(), G.back().end());
+  for(auto &it: G.back()) {
+    printf("%d ", it);
   }
+  printf("\n");
+
   return 0;
 }
