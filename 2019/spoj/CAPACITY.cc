@@ -53,7 +53,7 @@ int main(void) {
   vector<int> groups(N+1, 0);
   VVI G;
   function<void(int)> dfs2 = [&](int a) {
-    cerr << a << endl;
+    cerr << a << " " << groups[a] << endl;
     groups[a] = G.size();
     G.back().pb(a);
     for(auto it: F[a]) if(!groups[it]) dfs2(a);
