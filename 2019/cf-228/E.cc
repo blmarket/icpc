@@ -66,7 +66,7 @@ int main(void) {
   for(int i=1;i<=n;i++) if(mark[i] == 1) {
     res.pb(i);
   }
-  printf("%d\n", res.size());
+  printf("%lu\n", res.size());
   for(auto it: res) printf("%d ", it);
   printf("\n");
   return 0;
