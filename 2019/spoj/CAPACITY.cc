@@ -65,6 +65,24 @@ int main(void) {
     }
   }
 
+  {
+    vector<bool> visit(N+1, false);
+    vector<int> bfs;
+    bfs.pb(G.back()[0]);
+    int s = 0;
+    while(s < bfs.size()) {
+      for(auto it: F[bfs[s]]) if(!visit[it]) {
+        visit[it] = true;
+        bfs.pb(it);
+      }
+      s++;
+    }
+    if(s < N) {
+      printf("0\n");
+      return 0;
+    }
+  }
+
   printf("%lu\n", G.back().size());
   sort(G.back().begin(), G.back().end());
   for(auto &it: G.back()) {
