@@ -69,7 +69,7 @@ bool process() {
           ret++;
         }
       } else {
-        cerr << a+1 << " " << found << endl;
+        cerr << a+1 << " " << visit[a] << " " << lowlink[a] << " " << found << endl;
         ret += found;
       }
     };
