@@ -65,11 +65,11 @@ bool process() {
 
       if(parent == -1) {
         if(c2 > 1) {
-          cerr << a+1 << endl;
+          // cerr << a+1 << endl;
           ret++;
         }
       } else {
-        cerr << a+1 << " " << parent << " " << visit[a] << " " << lowlink[a] << " " << found << endl;
+        // cerr << a+1 << " " << parent << " " << visit[a] << " " << lowlink[a] << " " << found << endl;
         ret += found;
       }
     };
