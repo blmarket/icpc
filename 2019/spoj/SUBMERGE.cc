@@ -48,6 +48,7 @@ bool process() {
     VI lowlink(N, 0);
     int cnt = 0;
     function<void(int, bool)> dfs = [&](int a, bool root) {
+      cerr << a << " " << root << endl;
       visit[a] = lowlink[a] = ++cnt;
       int c2 = 0;
       for(auto it: links[a]) {
@@ -58,7 +59,6 @@ bool process() {
         lowlink[a] = min(lowlink[a], lowlink[it]);
       }
       if(root) {
-        cerr << "c2=" << c2 << endl;
         if(c2 > 1) ret++;
       } else {
         if(visit[a] == lowlink[a]) {
