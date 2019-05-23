@@ -50,21 +50,19 @@ bool process() {
     function<void(int, bool)> dfs = [&](int a, bool root) {
       visit[a] = lowlink[a] = ++cnt;
       int c2 = 0;
+      bool found = false;
       for(auto it: links[a]) {
         if(!visit[it]) {
           c2++;
           dfs(it, false);
+          if(lowlink[it] >= visit[a]) found = true;
         }
         lowlink[a] = min(lowlink[a], visit[it]);
       }
       if(root) {
         if(c2 > 1) ret++;
       } else {
-        cerr << a+1 << " " << visit[a] << " " << lowlink[a] << endl;
-        if(visit[a] == lowlink[a]) {
-          cerr << "cut=" << a+1 << endl;
-          ret++;
-        }
+        ret += found;
       }
     };
     dfs(0, true);
