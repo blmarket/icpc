@@ -62,9 +62,14 @@ bool process() {
           lowlink[a] = min(lowlink[a], visit[it]);
         }
       }
+
       if(parent == -1) {
-        if(c2 > 1) ret++;
+        if(c2 > 1) {
+          cerr << a+1 << endl;
+          ret++;
+        }
       } else {
+        cerr << a+1 << " " << found << endl;
         ret += found;
       }
     };
