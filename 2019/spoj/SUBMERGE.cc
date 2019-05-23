@@ -58,6 +58,7 @@ bool process() {
         lowlink[a] = min(lowlink[a], lowlink[it]);
       }
       if(root) {
+        cerr << c2 << endl;
         if(c2 > 0) ret++;
       } else {
         if(visit[a] == lowlink[a]) {
