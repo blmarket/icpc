@@ -55,7 +55,7 @@ bool process() {
           c2++;
           dfs(it, false);
         }
-        lowlink[a] = min(lowlink[a], lowlink[it]);
+        lowlink[a] = min(lowlink[a], visit[it]);
       }
       if(root) {
         if(c2 > 1) ret++;
