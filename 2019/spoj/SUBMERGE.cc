@@ -48,7 +48,7 @@ bool process() {
     VI lowlink(N, 0);
     int cnt = 0;
     function<void(int, bool)> dfs = [&](int a, bool root) {
-      cerr << a << " " << root << endl;
+      cerr << a+1 << " " << root << endl;
       visit[a] = lowlink[a] = ++cnt;
       int c2 = 0;
       for(auto it: links[a]) {
