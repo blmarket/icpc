@@ -50,10 +50,10 @@ int main(void) {
     };
     for(int i=1;i<=N;i++) if(!visit[i]) dfs(i);
   }
-  cerr << L.size() << endl;
   vector<int> groups(N+1, 0);
   VVI G;
   function<void(int)> dfs2 = [&](int a) {
+    cerr << a << endl;
     groups[a] = G.size();
     G.back().pb(a);
     for(auto it: F[a]) if(!groups[it]) dfs2(a);
