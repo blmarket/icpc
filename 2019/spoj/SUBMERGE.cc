@@ -62,6 +62,7 @@ bool process() {
         if(c2 > 0) ret++;
       } else {
         if(visit[a] == lowlink[a]) {
+          cerr << "cut=" << a+1 << endl;
           ret++;
         }
       }
