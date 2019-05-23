@@ -55,7 +55,7 @@ bool process() {
         if(it == parent) continue;
         if(!visit[it]) {
           c2++;
-          dfs(it, false);
+          dfs(it, a);
           if(lowlink[it] >= visit[a]) found = true;
           lowlink[a] = min(lowlink[a], lowlink[it]);
         } else {
