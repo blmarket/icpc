@@ -31,7 +31,7 @@ int M, N, K;
 
 int main(void) {
   while(!feof(stdin)) {
-    scanf(" %d %d %d", &M, &N, &K);
+    cerr << scanf(" %d %d %d", &M, &N, &K) << endl;
     if(feof(stdin)) break;
     cerr << M << " " << N << " " << K << endl;
   }
