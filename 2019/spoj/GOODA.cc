@@ -74,11 +74,11 @@ int main(void) {
     }
   }
 
-  vector<int> ret(groups.size(), 0);
+  vector<LL> ret(groups.size(), 0);
   for(int i=groups.size()-1;i>=0;i--) {
     auto &G = groups[i];
-    int maxx = 0;
-    int sum = 0;
+    LL maxx = 0;
+    LL sum = 0;
     for(auto it: G) {
       sum += fun[it];
       for(auto jt: E[it]) {
@@ -95,6 +95,6 @@ int main(void) {
   for(int i=0;i<groups.size();i++) cerr << ret[i] << " ";
   cerr << endl;
 
-  printf("%d\n", ret[0]);
+  printf("%lld\n", ret[0]);
   return 0;
 }
