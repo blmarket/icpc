@@ -62,6 +62,9 @@ void process() {
       lowlink[a] = min(lowlink[a], link[it]);
     }
   };
+
+  dfs(1, -1);
+
   sort(ret.begin(), ret.end());
   if(ret.size() == 0) {
     printf("Sin bloqueos\n");
