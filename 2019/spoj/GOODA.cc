@@ -92,6 +92,9 @@ int main(void) {
     ret[i] = sum + maxx;
   }
 
+  for(int i=0;i<groups.size();i++) cerr << ret[i] << " ";
+  cerr << endl;
+
   printf("%d\n", ret[0]);
   return 0;
 }
