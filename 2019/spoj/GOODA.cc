@@ -59,16 +59,16 @@ int main(void) {
   reverse(L.begin(), L.end());
 
   vector<set<int> > groups;
-  vector<bool> visit(N+1, false);
+  vector<int> visit(N+1, -1);
   function<void(int)> dfs2 = [&](int a) {
-    visit[a] = true;
+    visit[a] = groups.size() - 1;
     groups.back().insert(a);
     for(auto it: F[a]) {
-      if(!visit[it]) dfs2(it);
+      if(visit[it] == -1) dfs2(it);
     }
   };
   for(auto it : L) {
-    if(!visit[it]) {
+    if(visit[it] == -1) {
       groups.pb(set<int> {});
       dfs2(it);
     }
@@ -76,12 +76,22 @@ int main(void) {
 
   vector<int> ret(groups.size(), 0);
   for(int i=groups.size()-1;i>=0;i--) {
+    auto &G = groups[i];
+    int maxx = 0;
+    int sum = 0;
+    for(auto it: G) {
+      sum += fun[it];
+      for(auto jt: E[it]) {
+        maxx = max(maxx, ret[visit[jt]]);
+      }
+    }
+    if(G.count(EE)) {
+      ret[i] = sum;
+      continue;
+    }
+    ret[i] = sum + maxx;
   }
 
-  for(auto &it: groups) {
-    for(auto jt: it) cerr << jt << " ";
-    cerr << endl;
-  }
-
+  printf("%d\n", ret[0]);
   return 0;
 }
