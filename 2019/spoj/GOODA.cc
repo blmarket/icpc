@@ -56,6 +56,7 @@ int main(void) {
     };
     dfs(SS);
   }
+  reverse(L.begin(), L.end());
 
   VVI groups;
   vector<bool> visit(N+1, false);
