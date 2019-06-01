@@ -74,10 +74,10 @@ int main(void) {
     }
   }
 
-  vector<LL> ret(groups.size(), 0);
+  vector<LL> ret(groups.size(), -1);
   for(int i=groups.size()-1;i>=0;i--) {
     auto &G = groups[i];
-    LL maxx = 0;
+    LL maxx = -1;
     LL sum = 0;
     for(auto it: G) {
       sum += fun[it];
@@ -89,6 +89,7 @@ int main(void) {
       ret[i] = sum;
       continue;
     }
+    if(maxx == -1) continue;
     ret[i] = sum + maxx;
   }
 
