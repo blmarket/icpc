@@ -58,20 +58,24 @@ int main(void) {
   }
   reverse(L.begin(), L.end());
 
-  VVI groups;
+  vector<set<int> > groups;
   vector<bool> visit(N+1, false);
   function<void(int)> dfs2 = [&](int a) {
     visit[a] = true;
-    groups.back().pb(a);
+    groups.back().insert(a);
     for(auto it: F[a]) {
       if(!visit[it]) dfs2(it);
     }
   };
   for(auto it : L) {
     if(!visit[it]) {
-      groups.pb(VI {});
+      groups.pb(set<int> {});
       dfs2(it);
     }
+  }
+
+  vector<int> ret(groups.size(), 0);
+  for(int i=groups.size()-1;i>=0;i--) {
   }
 
   for(auto &it: groups) {
