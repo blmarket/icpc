@@ -74,10 +74,10 @@ int main(void) {
     }
   }
 
-  vector<LL> ret(groups.size(), -1);
+  vector<LL> ret(groups.size(), -1e18);
   for(int i=groups.size()-1;i>=0;i--) {
     auto &G = groups[i];
-    LL maxx = -1;
+    LL maxx = -1e18;
     LL sum = 0;
     for(auto it: G) {
       sum += fun[it];
@@ -85,11 +85,12 @@ int main(void) {
         maxx = max(maxx, ret[visit[jt]]);
       }
     }
+
     if(G.count(EE)) {
       ret[i] = sum;
       continue;
     }
-    if(maxx == -1) continue;
+    if(maxx < 0) continue;
     ret[i] = sum + maxx;
   }
 
