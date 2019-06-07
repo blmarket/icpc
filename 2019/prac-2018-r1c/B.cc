@@ -45,7 +45,7 @@ void process() {
       scanf(" %d", &a);
       occur[a]++;
       if(used[a]) continue;
-      if(occur[minn] > occur[a]) minn = a;
+      if(minn == -1 || occur[minn] > occur[a]) minn = a;
     }
     if(minn != -1) used[minn] = true;
     printf("%d\n", minn);
