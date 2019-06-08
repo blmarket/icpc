@@ -44,6 +44,7 @@ bool chk(char t) {
     found = true;
     vector<PII> bfs;
     visit[i][j] = true;
+    cerr << i << " " << j << endl;
     bfs.pb(i, j);
     auto moves = [&](int a, int b) {
       auto chk = [&](int na, int nb) {
@@ -66,6 +67,7 @@ bool chk(char t) {
       moves(a, b);
     }
   }
+  cerr << endl;
   for(int i=1;i<=R;i++) {
     for(int j=1;j<=C;j++) {
       cerr << visit[i][j] << " ";
