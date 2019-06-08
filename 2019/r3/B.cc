@@ -49,13 +49,12 @@ void process() {
     for(int j=i+1;j<S;j++) {
       if(data[j] > data[cp]) cp = j;
       if(data[j] > cl) cl = data[j];
+      if(i == 1) cerr << "j=" << j << ", cl=" << cl << endl;
       maxp[i][j+1] = cp;
       lhs[i][j+1] = lhs[i][j] + (cl - data[j]);
       if(lhs[i][j+1] > mod) lhs[i][j+1] -= mod;
     }
   }
-
-  cerr << lhs[1][5] << endl;
 
   for(int i=S-1;i>=0;i--) {
     int cl = -1;
