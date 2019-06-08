@@ -122,6 +122,7 @@ void process() {
 }
 
 void generate() {
+  R = C = 4;
   for(int i=0;i<(1<<16);i++) {
     data.clear();
     data.pb(string(C+1, '0'));
