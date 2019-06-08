@@ -71,6 +71,7 @@ bool chk(char t) {
 }
 
 bool go(int a, int b) {
+  cerr << a << " " << b << endl;
   if(a == R) {
     return chk('A') && chk('B');
   }
