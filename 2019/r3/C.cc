@@ -45,13 +45,11 @@ bool chk(char t) {
     vector<PII> bfs;
     bfs.clear();
     visit[i][j] = true;
-    cerr << i << " " << j << endl;
     bfs.pb(i, j);
     auto moves = [&](int a, int b) {
       auto chk = [&](int na, int nb) {
         if(data[na][nb] == t && !visit[na][nb]) {
           visit[na][nb] = true;
-          cerr << a << " " << b << " -> " << na << " " << nb << " " << flag[a][b] << endl;
           bfs.pb(na, nb);
         }
       };
@@ -68,13 +66,6 @@ bool chk(char t) {
       tie(a,b) = bfs[k];
       moves(a, b);
     }
-  }
-  cerr << endl;
-  for(int i=1;i<=R;i++) {
-    for(int j=1;j<=C;j++) {
-      cerr << visit[i][j] << " ";
-    }
-    cerr << endl;
   }
   return true;
 }
