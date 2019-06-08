@@ -48,6 +48,6 @@ int nimber(LL sz) {
 }
 
 int main(void) {
-  cout << nimber(1e11) << endl;
+  cout << nimber(1e12) << endl;
   return 0;
 }
