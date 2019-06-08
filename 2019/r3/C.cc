@@ -43,6 +43,7 @@ bool chk(char t) {
     if(found) return false;
     found = true;
     vector<PII> bfs;
+    bfs.clear();
     visit[i][j] = true;
     cerr << i << " " << j << endl;
     bfs.pb(i, j);
