@@ -32,47 +32,50 @@ const int mod = 1e9 + 7;
 
 int S;
 vector<int> data;
-
-LL go(int s, int e) {
-  int mx = -1;
-  int mi = s;
-  for(int i=s;i<e;i++) {
-    if(data[i] > mx) {
-      mx = data[i];
-      mi = i;
-    }
-  }
-
-  LL ret = 0;
-
-  int cl = -1;
-  for(int i=s;i<mi;i++) {
-    if(data[i] > cl) { cl = data[i]; }
-    ret += (cl - data[i]);
-    if(ret > mod) ret -= mod;
-  }
-  cl = -1;
-  for(int i=e-1;i>=mi;i--) {
-    if(data[i] > cl) { cl = data[i]; }
-    ret += (cl - data[i]);
-    if(ret > mod) ret -= mod;
-  }
-  return ret;
-}
+int maxp[3001][3001];
+int lhs[3001][3001];
+int rhs[3001][3001];
 
 void process() {
   scanf(" %d", &S);
   data.resize(S);
   for(int i=0;i<S;i++) scanf(" %d", &data[i]);
 
+  for(int i=0;i<S;i++) {
+    maxp[i][i+1] = i;
+    lhs[i][i+1] = 0;
+    int cp = i;
+    int cl = -1;
+    for(int j=i+1;j<S;j++) {
+      if(data[j] > data[cp]) cp = j;
+      if(data[j] > cl) cl = data[j];
+      maxp[i][j+1] = cp;
+      lhs[i][j+1] = lhs[i][j] + (cl - data[j]);
+      if(lhs[i][j+1] > mod) lhs[i][j+1] -= mod;
+    }
+  }
+
+  for(int i=S-1;i>=0;i--) {
+    int cl = -1;
+    rhs[i+1][i+1] = 0;
+    for(int j=i;j>=0;j--) {
+      if(data[j] > cl) cl = data[j];
+      rhs[j][i+1] = rhs[j+1][i+1] + (cl - data[j]);
+      if(rhs[j][i+1] > mod) rhs[j][i+1] -= mod;
+    }
+  }
+
   LL ret = 0;
   for(int i=0;i+3<=S;i++) {
     for(int j=i+3;j<=S;j++) {
-      ret += go(i, j);
+      int mp = maxp[i][j];
+      int lc = lhs[i][mp];
+      int rc = rhs[mp][j];
+      ret += lc + rc;
       if(ret > mod) ret -= mod;
     }
   }
-  printf("%lld\n", ret);
+  printf("%lld\n", (ret % mod));
 }
 
 int main(void) {
