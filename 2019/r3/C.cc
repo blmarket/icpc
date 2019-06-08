@@ -50,7 +50,7 @@ bool chk(char t) {
       auto chk = [&](int na, int nb) {
         if(data[na][nb] == t && !visit[na][nb]) {
           visit[na][nb] = true;
-          cerr << a << " " << b << " -> " << na << " " << nb << endl;
+          cerr << a << " " << b << " -> " << na << " " << nb << " " << flag[a][b] << endl;
           bfs.pb(na, nb);
         }
       };
