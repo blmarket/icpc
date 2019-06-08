@@ -94,15 +94,15 @@ string solve() {
   string ret;
   const char out[] = {'.', '\\', '/' };
   if(go(1, 1)) {
-    ret = "POSSIBLE\n";
+    ret = "POSSIBLE\\n";
     for(int i=1;i<R;i++) {
       for(int j=1;j<C;j++) {
         ret += out[flag[i][j]];
       }
-      ret += "\n";
+      ret += "\\n";
     }
   } else {
-    ret = "IMPOSSIBLE\n";
+    ret = "IMPOSSIBLE\\n";
   }
   return ret;
 }
@@ -142,7 +142,7 @@ void generate() {
         mask >>= 1;
       }
     }
-    cout << i << " " << solve() << endl;
+    cout << '"' << solve() << '"' << endl;
   }
 }
 
