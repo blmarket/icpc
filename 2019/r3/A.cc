@@ -40,6 +40,9 @@ int nimber(LL sz) {
   for(LL i=0;i+chunk<=sz;i+=chunk) {
     zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
+  for(LL i=(sz % chunk) + 1;i+chunk<=sz;i+=chunk) {
+    zz.insert(nimber(i) ^ nimber(sz - i - chunk));
+  }
   for(LL i=chunk-1;i+chunk<=sz;i+=chunk) {
     zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
@@ -53,10 +56,15 @@ LL find(LL sz, int target) {
     int tmp = (nimber(i) ^ nimber(sz - i - chunk));
     if(tmp == target) return i;
   }
+  for(LL i=(sz % chunk) + 1;i+chunk<=sz;i+=chunk) {
+    int tmp = (nimber(i) ^ nimber(sz - i - chunk));
+    if(tmp == target) return i;
+  }
   for(LL i=chunk-1;i+chunk<=sz;i+=chunk) {
     int tmp = (nimber(i) ^ nimber(sz - i - chunk));
     if(tmp == target) return i;
   }
+  cerr << "CANNOT HAPPEN " << sz << " " << nimber(sz) << " " << target << endl;
   return -1;
 }
 
@@ -67,40 +75,75 @@ void process() {
   groups.pb(mp(1, p));
   groups.pb(mp(p + chunk, total_size));
 
+  auto add_cut = [&](int idx, LL pos) {
+    groups.pb(pos + chunk, groups[idx].second);
+    groups[idx].second = pos;
+  };
+
   while(true) {
     int nim = 0;
-    int mi = 0, mg = 0;
     for(int i=0;i<groups.size();i++) {
       auto g2 = groups[i];
       int m2 = nimber(g2.second - g2.first);
       nim ^= m2;
-      if(m2 > mg) {
-        mi = i;
-        mg = m2;
-      }
     }
+    // cerr << "Current nim: " << nim << endl;
     if(nim) {
-      auto g = groups[mi];
-      LL cut = find(g.second - g.first, nim ^ mg);
-      printf("%lld\n", g.first + cut);
-      fflush(stdout);
-    } else {
+      bool found = false;
       for(int i=0;i<groups.size();i++) {
-        auto g = groups[i];
-        if(g.second - g.first >= chunk) {
-          printf("%lld\n", g.first);
+        auto &g = groups[i];
+        int m = nimber(g.second - g.first);
+        if((m ^ nim) < m) {
+          found = true;
+          // cerr << "HERE " << nim << " " << m << " " << (nim ^ m) << endl;
+          LL cut = find(g.second - g.first, nim ^ m);
+          printf("%lld\n", g.first + cut);
           fflush(stdout);
+          add_cut(i, g.first + cut);
           break;
         }
       }
+      if(!found) {
+        cerr << "CANNOT HAPPEN" << endl;
+        printf("-1\n");
+        fflush(stdout);
+      }
+    } else {
+      int mx = 0;
+      for(int i=1;i<groups.size();i++) {
+        if(groups[i].second - groups[i].first > groups[mx].second - groups[mx].first) {
+          mx = i;
+        }
+      }
+      auto g = groups[mx];
+
+      LL sz = g.second - g.first;
+      int cur = nimber(sz);
+      {
+        LL pos = 0;
+        for(LL i=0;i+chunk<=sz;i+=chunk) {
+          int tmp = (nimber(i) ^ nimber(sz - i - chunk));
+          if(cur != tmp) {
+            pos = i;
+            break;
+          }
+        }
+        printf("%lld\n", (g.first + pos));
+        fflush(stdout);
+        add_cut(mx, (g.first + pos));
+      }
     }
     scanf(" %lld", &p);
-    if(p < 0) return;
+    // cerr << "got " << p << endl;
+    if(p < 0) {
+      cerr << p << endl;
+      return;
+    }
     for(int i=0;i<groups.size();i++) {
-      auto &g = groups[i];
+      pair<LL, LL> &g = groups[i];
       if(g.first <= p && g.second > p) {
-        groups.pb(mp(p + chunk, g.second));
-        g.second = p;
+        // cerr << "found " << g.first << " " << g.second << endl;
+        add_cut(i, p);
         break;
       }
     }
