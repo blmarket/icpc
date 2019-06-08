@@ -102,6 +102,7 @@ void process() {
   data.pb(string(C+1, '0'));
   const char out[] = {'.', '\\', '/' };
   if(go(1, 1)) {
+    printf("POSSIBLE\n");
     for(int i=1;i<R;i++) {
       for(int j=1;j<C;j++) {
         printf("%c", out[flag[i][j]]);
