@@ -55,6 +55,8 @@ void process() {
     }
   }
 
+  cerr << lhs[1][5] << endl;
+
   for(int i=S-1;i>=0;i--) {
     int cl = -1;
     rhs[i+1][i+1] = 0;
