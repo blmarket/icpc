@@ -30,13 +30,13 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int R, C;
 vector<string> data;
-int flag[105][105];
+int flag[8][8];
 
 const int dx[] = {-1, 0, 0, 1};
 const int dy[] = {0, -1, 1, 0};
 
 bool chk(char t) {
-  bool visit[105][105];
+  bool visit[8][8];
   memset(visit, 0, sizeof(visit));
   bool found = false;
   for(int i=1;i<=R;i++) for(int j=1;j<=C;j++) if(!visit[i][j] && data[i][j] == t) {
