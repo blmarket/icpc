@@ -67,8 +67,8 @@ void process() {
   for(int i=0;i<S;i++) scanf(" %d", &data[i]);
 
   LL ret = 0;
-  for(int i=0;i+3<S;i++) {
-    for(int j=i+3;j<S;j++) {
+  for(int i=0;i+3<=S;i++) {
+    for(int j=i+3;j<=S;j++) {
       ret += go(i, j);
       if(ret > mod) ret -= mod;
     }
