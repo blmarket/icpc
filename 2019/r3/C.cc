@@ -36,6 +36,7 @@ const int dx[] = {-1, 0, 0, 1};
 const int dy[] = {0, -1, 1, 0};
 
 bool chk(char t) {
+  cerr << "chk " << t << endl;
   bool visit[105][105];
   memset(visit, 0, sizeof(visit));
   bool found = false;
@@ -71,7 +72,6 @@ bool chk(char t) {
 }
 
 bool go(int a, int b) {
-  cerr << a << " " << b << endl;
   if(a == R) {
     return chk('A') && chk('B');
   }
