@@ -33,10 +33,10 @@ const LL chunk = 1e10;
 int nimber(LL sz) {
   set<int> zz;
   if(sz < chunk) return 0;
-  for(int i=0;i+chunk<sz;i+=chunk) {
+  for(LL i=0;i+chunk<sz;i+=chunk) {
     zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
-  for(int i=chunk-1;i+chunk<sz;i+=chunk) {
+  for(LL i=chunk-1;i+chunk<sz;i+=chunk) {
     zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
   for(int i=0;;i++) {
