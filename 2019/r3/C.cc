@@ -42,7 +42,6 @@ bool chk(char t) {
   for(int i=1;i<=R;i++) for(int j=1;j<=C;j++) if(!visit[i][j] && data[i][j] == t) {
     if(found) return false;
     found = true;
-    cerr << i << " " << j << endl;
     vector<PII> bfs;
     visit[i][j] = true;
     bfs.pb(i, j);
