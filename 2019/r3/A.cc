@@ -30,10 +30,12 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 const LL chunk = 1e10;
 
+map<LL, int> memo;
+
 int nimber(LL sz) {
-  cerr << sz << endl;
   set<int> zz;
   if(sz < chunk) return 0;
+  if(memo.count(sz)) return memo[sz];
   for(LL i=0;i+chunk<sz;i+=chunk) {
     zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
@@ -41,7 +43,7 @@ int nimber(LL sz) {
     zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
   for(int i=0;;i++) {
-    if(zz.count(i) == 0) return i;
+    if(zz.count(i) == 0) return memo[sz] = i;
   }
 }
 
