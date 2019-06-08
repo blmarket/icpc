@@ -39,7 +39,6 @@ bool chk(char t) {
   bool visit[105][105];
   memset(visit, 0, sizeof(visit));
   bool found = false;
-  cerr << data[1] << endl;
   for(int i=1;i<=R;i++) for(int j=1;j<=C;j++) if(!visit[i][j] && data[i][j] == t) {
     if(found) return false;
     found = true;
@@ -99,9 +98,10 @@ void process() {
     char tmp[1024];
     tmp[0] = '0';
     scanf(" %s", tmp + 1);
-    data.pb(tmp + '0');
+    data.pb(string(tmp) + "0");
   }
   data.pb(string(C+1, '0'));
+  cerr << data[1] << endl;
   const char out[] = {'.', '\\', '/' };
   if(go(1, 1)) {
     for(int i=1;i<R;i++) {
