@@ -104,6 +104,7 @@ string solve() {
   } else {
     ret = "IMPOSSIBLE\n";
   }
+  return ret;
 }
 
 void process() {
