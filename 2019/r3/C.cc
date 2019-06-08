@@ -58,10 +58,7 @@ bool chk(char t) {
       for(int i=0;i<4;i++) {
         chk(a + dx[i], b + dy[i]);
       }
-      if(flag[a][b] == 1) {
-        cerr << "going " << a << " " << b << endl;
-        chk(a+1, b+1);
-      }
+      if(flag[a][b] == 1) chk(a+1, b+1);
       if(flag[a-1][b-1] == 1) chk(a-1, b-1);
       if(flag[a][b-1] == 2) chk(a+1, b-1);
       if(flag[a-1][b] == 2) chk(a-1, b+1);
