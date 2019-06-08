@@ -31,6 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const LL chunk = 1e10;
 
 int nimber(LL sz) {
+  cerr << sz << endl;
   set<int> zz;
   if(sz < chunk) return 0;
   for(LL i=0;i+chunk<sz;i+=chunk) {
