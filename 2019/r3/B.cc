@@ -42,11 +42,11 @@ void process() {
   for(int i=0;i<S;i++) scanf(" %d", &data[i]);
 
   for(int i=0;i<S;i++) {
-    maxp[i][i+1] = i;
-    lhs[i][i+1] = 0;
+    maxp[i][i] = i;
+    lhs[i][i] = 0;
     int cp = i;
     int cl = -1;
-    for(int j=i+1;j<S;j++) {
+    for(int j=i;j<S;j++) {
       if(data[j] > data[cp]) cp = j;
       if(data[j] > cl) cl = data[j];
       if(i == 1) cerr << "j=" << j << ", cl=" << cl << endl;
