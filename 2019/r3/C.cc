@@ -101,7 +101,6 @@ void process() {
     data.pb(string(tmp) + "0");
   }
   data.pb(string(C+1, '0'));
-  cerr << data[1] << endl;
   const char out[] = {'.', '\\', '/' };
   if(go(1, 1)) {
     for(int i=1;i<R;i++) {
