@@ -57,7 +57,6 @@ LL go(int s, int e) {
     ret += (cl - data[i]);
     if(ret > mod) ret -= mod;
   }
-  cerr << s << " " << e << " " << ret << endl;
   return ret;
 }
 
