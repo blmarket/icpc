@@ -76,15 +76,16 @@ bool go(int a, int b) {
     return go(a+1, 0);
   }
   flag[a][b] = 0;
-  go(a, b+1);
+  if(go(a, b+1)) return true;
   if(data[a][b] == data[a+1][b+1]) {
     flag[a][b] = 1;
-    go(a, b+1);
+    if(go(a, b+1)) return true;
   }
   if(data[a+1][b] == data[a][b+1]) {
     flag[a][b] = 2;
-    go(a, b+1);
+    if(go(a, b+1)) return true;
   }
+  return false;
 }
 
 void process() {
@@ -98,7 +99,17 @@ void process() {
     data.pb(tmp + '0');
   }
   data.pb(string(C+1, '0'));
-  go(1, 1);
+  const char out[] = {'.', '\\', '/' };
+  if(go(1, 1)) {
+    for(int i=1;i<R;i++) {
+      for(int j=1;j<C;j++) {
+        printf("%c", out[flag[i][j]]);
+      }
+      printf("\n");
+    }
+  } else {
+    printf("IMPOSSIBLE\n");
+  }
 }
 
 int main(void) {
