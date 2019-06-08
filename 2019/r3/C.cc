@@ -77,7 +77,6 @@ bool go(int a, int b) {
     return go(a+1, 0);
   }
   flag[a][b] = 0;
-  if(go(a, b+1)) return true;
   if(data[a][b] == data[a+1][b+1]) {
     flag[a][b] = 1;
     if(go(a, b+1)) return true;
@@ -86,6 +85,7 @@ bool go(int a, int b) {
     flag[a][b] = 2;
     if(go(a, b+1)) return true;
   }
+  if(go(a, b+1)) return true;
   return false;
 }
 
