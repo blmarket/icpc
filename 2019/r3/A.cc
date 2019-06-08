@@ -28,14 +28,16 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
+const LL chunk = 1e10;
+
 int nimber(LL sz) {
   set<int> zz;
-  if(sz < 1e10) return 0;
-  for(int i=0;i+1e10<sz;i+=1e10) {
-    zz.insert(nimber(i) ^ nimber(sz - i - 1e10));
+  if(sz < chunk) return 0;
+  for(int i=0;i+chunk<sz;i+=chunk) {
+    zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
-  for(int i=1e10-1;i+1e10<sz;i+=1e10) {
-    zz.insert(nimber(i) ^ nimber(sz - i - 1e10));
+  for(int i=chunk-1;i+chunk<sz;i+=chunk) {
+    zz.insert(nimber(i) ^ nimber(sz - i - chunk));
   }
   for(int i=0;;i++) {
     if(zz.count(i) == 0) return i;
