@@ -71,7 +71,7 @@ void process() {
       int mp = maxp[i][j];
       int lc = lhs[i][mp];
       int rc = rhs[mp][j];
-      cerr << i << " " << j << " " << mp << " " << lc << " " << rc << endl;
+      // cerr << i << " " << j << " " << mp << " " << lc << " " << rc << endl;
       ret += lc + rc;
       if(ret > mod) ret -= mod;
     }
