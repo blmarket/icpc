@@ -92,7 +92,7 @@ bool go(int a, int b) {
 
 string solve() {
   string ret;
-  const char out[] = {'.', '\\', '/' };
+  const string out[] = {".", "\\\\", "/" };
   if(go(1, 1)) {
     ret = "POSSIBLE\\n";
     for(int i=1;i<R;i++) {
