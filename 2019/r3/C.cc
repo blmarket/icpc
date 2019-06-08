@@ -66,6 +66,12 @@ bool chk(char t) {
       moves(a, b);
     }
   }
+  for(int i=1;i<=R;i++) {
+    for(int j=1;j<=C;j++) {
+      cerr << visit[i][j] << " ";
+    }
+    cerr << endl;
+  }
   return true;
 }
 
