@@ -63,6 +63,7 @@ bool chk(char t) {
     for(int k=0;k<bfs.size();k++) {
       int a, b;
       tie(a,b) = bfs[k];
+      cerr << a << " " << b << " ";
       moves(a, b);
     }
   }
