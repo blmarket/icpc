@@ -50,6 +50,7 @@ void process() {
     cout << ')';
     cur--;
   }
+  cout << endl;
 }
 
 int main(void) {
