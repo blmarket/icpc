@@ -29,10 +29,11 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int n, k;
-int b[55][55];
+VVI b;
 
 void process() {
   scanf(" %d %d", &n, &k);
+  b = VVI(n, VI(n, -1));
   for(int i=0;i<n;i++) {
     for(int j=0;j<n;j++) {
       b[i][j] = ((i+j) % n) + 1;
