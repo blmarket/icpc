@@ -51,7 +51,6 @@ void process() {
   char ret[1005];
   int ce = -1, je = -1;
   for(int i=0;i<n;i++) {
-    cerr << v[i].i << endl;
     if(v[i].a >= ce) {
       ce = v[i].b;
       ret[v[i].i] = 'C';
