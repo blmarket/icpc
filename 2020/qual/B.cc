@@ -40,6 +40,7 @@ int n;
 vector<tmp> v;
 
 void process() {
+  v.clear();
   scanf(" %d", &n);
   for(int i=0;i<n;i++) {
     int a, b;
