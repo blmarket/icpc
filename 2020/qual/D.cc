@@ -47,7 +47,7 @@ a:
     for(int i=0;i<n;i++) sum += b[i][i];
     if(sum == k) break;
 
-    for(int t=0;t<50000;t++) {
+    for(int t=0;t<500000;t++) {
       int n1 = rand() % n;
       int n2 = rand() % n;
       int tmp = sum - b[n1][n1] - b[n2][n2] + b[n1][n2] + b[n2][n1];
