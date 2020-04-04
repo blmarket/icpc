@@ -46,6 +46,25 @@ void process() {
     scanf(" %d %d", &a, &b);
     v.pb(tmp { i, a, b });
   }
+  sort(v.begin(), v.end());
+  char ret[1005];
+  int ce = -1, je = -1;
+  for(int i=0;i<n;i++) {
+    if(v[i].a >= ce) {
+      ce = v[i].b;
+      ret[v[i].i] = 'C';
+      continue;
+    }
+    if(v[i].a >= je) {
+      je = v[i].b;
+      ret[v[i].i] = 'J';
+      continue;
+    }
+    cout << "IMPOSSIBLE" << endl;
+    return;
+  }
+  ret[n] = 0;
+  cout << ret << endl;
 }
 
 int main(void) {
