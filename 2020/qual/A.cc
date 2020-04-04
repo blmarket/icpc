@@ -41,12 +41,19 @@ void process() {
     }
   }
 
+  VI tgt(n);
+  for(int i=0;i<n;i++) tgt[i] = i+1;
+
   int t = 0;
+  int c1 = 0, c2 = 0;
   for(int i=0;i<n;i++) t += board[i][i];
   for(int i=0;i<n;i++) {
     sort(board[i], board[i] + n);
-    VI(board[i], board[i] + n);
+    c1 += (VI(board[i], board[i] + n) != tgt);
+    sort(board2[i], board2[i] + n);
+    c2 += (VI(board2[i], board2[i] + n) != tgt);
   }
+  cout << t << " " << c1 << " " << c2 << endl;
 }
 
 int main(void) {
