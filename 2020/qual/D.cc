@@ -40,10 +40,32 @@ void process() {
     }
   }
 
-  for(int i=0;i<n;i++) {
-    for(int j=0;j<n;j++) {
-      cout << b[i][j] << " ";
+  int sum;
+  while(true) {
+a:  
+    sum = 0;
+    for(int i=0;i<n;i++) sum += b[i][i];
+    if(sum == k) break;
+
+    for(int t=0;t<50000;t++) {
+      int n1 = rand() % n;
+      int n2 = rand() % n;
+      int tmp = sum - b[n1][n1] - b[n2][n2] + b[n1][n2] + b[n2][n1];
+      if(abs(k - sum) > abs(k - tmp)) {
+        swap(b[n1], b[n2]);
+        goto a;
+      }
     }
+    break;
+  }
+  if(sum != k) {
+    cout << "IMPOSSIBLE" << endl;
+    return;
+  }
+  cout << "POSSIBLE" << endl;
+  for(int i=0;i<n;i++) {
+    for(int j=0;j<n;j++) 
+      cout << b[i][j] << " ";
     cout << endl;
   }
 }
