@@ -55,7 +55,7 @@ void process() {
     for(int j=1;j<=i;j++) {
       n2 -= cc[i][j];
       if(check(n2, i, false)) {
-        cout << "FOUND" << endl;
+        // cout << "FOUND" << endl;
         return;
       }
     }
