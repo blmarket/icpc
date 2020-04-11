@@ -89,6 +89,7 @@ void process() {
     for(int j=0;j<c;j++) scanf(" %d", &board[i][j]);
   }
 
+  cerr << "A" << endl;
   for(int i=0;i<r;i++) {
     rows[i].clear();
     for(int j=0;j<c;j++) {
