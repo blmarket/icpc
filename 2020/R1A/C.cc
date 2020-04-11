@@ -39,6 +39,7 @@ bool iter() {
   VVI b3(r, VI(c, 0));
   for(int i=0;i<r;i++) {
     if(rows[i].size() <= 1) continue;
+    cerr << i << endl;
     auto it = rows[i].begin();
     auto jt = it;
     ++it;
