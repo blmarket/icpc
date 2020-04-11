@@ -82,7 +82,7 @@ bool iter() {
       }
     }
   }
-  cerr << sum << " " << ret << endl;
+  // cerr << sum << " " << ret << endl;
   return ret;
 }
 
