@@ -37,10 +37,20 @@ bool check(LL n2, int row, bool right) {
   }
   if(n2 >= (1LL << row)) {
     if (check(n2 - (1LL << row), row - 1, !right)) {
+      if(right) {
+        for(int i=1;i<=row;i++) cout << row << " " << i << endl;
+      } else {
+        for(int i=row;i>=1;i--) cout << row << " " << i << endl;
+      }
       return true;
     }
   } else {
     if(check(n2 - 1, row - 1, right)) {
+      if(right) {
+        cout << row << " " << row << endl;
+      } else {
+        cout << row << " " << 1 << endl;
+      }
       return true;
     }
   }
@@ -48,13 +58,15 @@ bool check(LL n2, int row, bool right) {
 }
 
 void process() {
-  // scanf(" %lld", &n);
-  n += 1;
+  scanf(" %lld", &n);
   for(int i=1;i<=63;i++) {
     LL n2 = n;
     for(int j=1;j<=i;j++) {
       n2 -= cc[i][j];
       if(check(n2, i, false)) {
+        for(int k=1;k<=j;k++) {
+          cout << i << " " << k << endl;
+        }
         // cout << "FOUND" << endl;
         return;
       }
@@ -70,17 +82,12 @@ int main(void) {
       cc[i][j] = cc[i-1][j-1] + cc[i-1][j];
     }
   }
-  for(int i=0;i<100;i++) {
-    cout << cc[60][i] << " ";
-  }
-  cout << endl;
 
-  for(int i=0;i<100000000;i++) process();
-  // int T;
-  // scanf(" %d", &T);
-  // for(int i=1;i<=T;i++) {
-  //   printf("Case #%d:\n", i);
-  //   process();
-  // }
-  // return 0;
+  int T;
+  scanf(" %d", &T);
+  for(int i=1;i<=T;i++) {
+    printf("Case #%d:\n", i);
+    process();
+  }
+  return 0;
 }
