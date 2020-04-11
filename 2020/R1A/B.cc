@@ -32,6 +32,7 @@ long long cc[505][505];
 long long n;
 
 bool check(LL n2, int row, bool right) {
+  cerr << n2 << " " << row << " " << right << endl;
   if(row == 0) {
     return !n2;
   }
@@ -63,7 +64,7 @@ void process() {
     LL n2 = n;
     for(int j=1;j<=i;j++) {
       n2 -= cc[i][j];
-      cout << n2 << " " << i-1 << " " << check(n2, i-1, false) << endl;
+      // cout << n2 << " " << i-1 << " " << check(n2, i-1, false) << endl;
       if(check(n2, i-1, false)) {
         for(int k=1;k<=j;k++) {
           cout << i << " " << k << endl;
@@ -84,11 +85,13 @@ int main(void) {
     }
   }
 
-  int T;
-  scanf(" %d", &T);
-  for(int i=1;i<=T;i++) {
-    printf("Case #%d:\n", i);
-    process();
-  }
-  return 0;
+  check(9, 9, false);
+
+  // int T;
+  // scanf(" %d", &T);
+  // for(int i=1;i<=T;i++) {
+  //   printf("Case #%d:\n", i);
+  //   process();
+  // }
+  // return 0;
 }
