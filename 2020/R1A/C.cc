@@ -72,6 +72,7 @@ bool iter() {
       ++it;
     }
   }
+  cerr << sum << " " << ret << endl;
   return ret;
 }
 
