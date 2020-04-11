@@ -75,10 +75,11 @@ bool iter() {
       cerr << i << " " << *it << " " << board[i][*it] << " " << b3[i][*it] << " " << b2[i][*it] << endl;
       if(board[i][*it] * b3[i][*it] < b2[i][*it]) {
         cols[*it].erase(i);
-        rows[i].erase(it);
+        rows[i].erase(it++);
         ret = true;
+      } else {
+        ++it;
       }
-      ++it;
     }
   }
   cerr << sum << " " << ret << endl;
