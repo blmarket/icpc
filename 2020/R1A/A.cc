@@ -40,6 +40,7 @@ bool add1(char *s, char *e) {
     prefix[i] = *s;
     s++;
   }
+  return false;
 }
 
 bool add2(char *s, char *e) {
@@ -49,6 +50,7 @@ bool add2(char *s, char *e) {
     suffix[i] = *s;
     s--;
   }
+  return false;
 }
 
 void process() {
@@ -62,13 +64,19 @@ void process() {
     int l = strlen(pat[i]);
     for(int j=0;j<l;j++) {
       if(pat[i][j] == '*') {
-        add1(pat[i], pat[i] + j);
+        if(!add1(pat[i], pat[i] + j)) {
+          cout << "*" << endl;
+          return;
+        }
         break;
       }
     }
     for(int j=l-1;j>=0;j--) {
       if(pat[i][j] == '*') {
-        add2(pat[i] + l - 1, pat[i] + j);
+        if(!add2(pat[i] + l - 1, pat[i] + j)) {
+          cout << "*" << endl;
+          return;
+        }
         break;
       }
     }
