@@ -45,6 +45,8 @@ bool iter() {
     for(;it != rows[i].end();++it) {
       b3[i][*it]++;
       b2[i][*it] += board[i][*jt];
+      jt = it;
+      ++it;
     }
   }
 
@@ -56,6 +58,8 @@ bool iter() {
     for(;it != cols[i].end();++it) {
       b3[*it][i]++;
       b2[*it][i] += board[*jt][i];
+      jt = it;
+      ++it;
     }
   }
 
