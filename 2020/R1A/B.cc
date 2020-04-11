@@ -33,7 +33,7 @@ long long n;
 
 bool check(LL n2, int row, bool right) {
   if(row == 0) {
-    return !!n2;
+    return !n2;
   }
   if(n2 >= (1LL << row)) {
     if (check(n2 - (1LL << row), row - 1, !right)) {
