@@ -36,7 +36,7 @@ bool check(LL n2, int row, bool right) {
   if(row == 0) {
     return !n2;
   }
-  if(n2 >= (1LL << (row - 1))) {
+  if(n2 >= (1LL << (row - 1)) + (row - 1)) {
     if (check(n2 - (1LL << (row - 1)), row - 1, !right)) {
       if(right) {
         for(int i=1;i<=row;i++) cout << row << " " << i << endl;
