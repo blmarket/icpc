@@ -84,8 +84,6 @@ int main(void) {
     }
   }
 
-  check(9, 9, false);
-
   int T;
   scanf(" %d", &T);
   for(int i=1;i<=T;i++) {
