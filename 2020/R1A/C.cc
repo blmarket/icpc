@@ -72,12 +72,12 @@ bool iter() {
       sum += board[i][*it];
       // cerr << i << " " << *it << " " << board[i][*it] << " " << b3[i][*it] << " " << b2[i][*it];
       if(board[i][*it] * b3[i][*it] < b2[i][*it]) {
-        cerr << " X" << endl;
+        // cerr << " X" << endl;
         cols[*it].erase(i);
         rows[i].erase(it++);
         ret = true;
       } else {
-        cerr << endl;
+        // cerr << endl;
         ++it;
       }
     }
