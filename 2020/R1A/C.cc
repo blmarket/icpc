@@ -48,13 +48,11 @@ bool iter() {
       b3[i][*jt]++;
       b2[i][*jt] += board[i][*it];
       jt = it;
-      ++it;
     }
   }
 
   for(int i=0;i<c;i++) {
     if(cols[i].size() <= 1) continue;
-    cerr << i << " " << cols[i].size() << endl;
     auto it = cols[i].begin();
     auto jt = it;
     ++it;
@@ -64,7 +62,6 @@ bool iter() {
       b3[*jt][i]++;
       b2[*jt][i] += board[*it][i];
       jt = it;
-      ++it;
     }
   }
 
