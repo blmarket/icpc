@@ -38,7 +38,7 @@ int main(void) {
     }
   }
   for(int i=0;i<100;i++) {
-    cout << cc[200][i] << " ";
+    cout << cc[100][i] << " ";
   }
   cout << endl;
   // int T;
