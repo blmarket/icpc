@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int n;
 char pat[50][105];
-char prefix[105];
+char prefix[10005];
 char suffix[105];
 
 bool add1(char *s, char *e) {
