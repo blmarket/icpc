@@ -82,7 +82,16 @@ void process() {
     }
   }
   reverse(suffix, suffix + strlen(suffix));
-  cout << prefix << " " << suffix << endl;
+
+  string ret = prefix;
+
+  for(int i=0;i<n;i++) {
+    int l = strlen(pat[i]);
+    for(int j=0;j<l;j++) if(pat[i][j] != '*') ret += pat[i][j];
+  }
+
+  ret += suffix;
+  cout << ret << endl;
 }
 
 int main(void) {
