@@ -67,13 +67,15 @@ bool iter() {
   for(int i=0;i<r;i++) {
     auto it = rows[i].begin();
     while(it != rows[i].end()) {
-      cerr << i << " " << *it << endl;
       sum += board[i][*it];
+      bool x = false;
       if(board[i][*it] * b3[i][*it] < b2[i][*it]) {
+        x = true;
         cols[*it].erase(i);
         rows[i].erase(it);
         ret = true;
       }
+      cerr << i << " " << *it << " " << board[i][*it] << " " << x << endl;
       ++it;
     }
   }
