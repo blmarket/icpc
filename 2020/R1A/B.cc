@@ -75,7 +75,7 @@ int main(void) {
   }
   cout << endl;
 
-  for(int i=0;i<10000000;i++) process();
+  for(int i=0;i<100000000;i++) process();
   // int T;
   // scanf(" %d", &T);
   // for(int i=1;i<=T;i++) {
