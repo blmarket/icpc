@@ -70,7 +70,7 @@ bool iter() {
     auto it = rows[i].begin();
     while(it != rows[i].end()) {
       sum += board[i][*it];
-      cerr << i << " " << *it << " " << board[i][*it] << " " << b3[i][*it] << " " << b2[i][*it];
+      // cerr << i << " " << *it << " " << board[i][*it] << " " << b3[i][*it] << " " << b2[i][*it];
       if(board[i][*it] * b3[i][*it] < b2[i][*it]) {
         cerr << " X" << endl;
         cols[*it].erase(i);
