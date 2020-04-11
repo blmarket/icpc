@@ -37,7 +37,7 @@ int main(void) {
       cc[i][j] = cc[i-1][j-1] + cc[i-1][j];
     }
   }
-  for(int i=0;i<200;i++) {
+  for(int i=0;i<100;i++) {
     cout << cc[200][i] << " ";
   }
   cout << endl;
