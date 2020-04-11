@@ -64,7 +64,7 @@ void process() {
     LL n2 = n;
     for(int j=1;j<=i;j++) {
       n2 -= cc[i][j];
-      if(check(n2, i, false)) {
+      if(check(n2, i-1, false)) {
         for(int k=1;k<=j;k++) {
           cout << i << " " << k << endl;
         }
