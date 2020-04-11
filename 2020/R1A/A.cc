@@ -81,6 +81,7 @@ void process() {
       }
     }
   }
+  reverse(suffix, suffix + strlen(suffix));
   cout << prefix << " " << suffix << endl;
 }
 
