@@ -26,7 +26,7 @@ class SubprocessThread(threading.Thread):
                args,
                stdin_pipe=subprocess.PIPE,
                stdout_pipe=subprocess.PIPE,
-               stderr_pipe=subprocess.PIPE):
+               stderr_pipe=None):
     threading.Thread.__init__(self)
     self.p = subprocess.Popen(
         args,

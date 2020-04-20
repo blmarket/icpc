@@ -31,7 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const LL chunk = 1e10;
 const LL total_size = 1e12;
 
-map<LL, int> memo;
+unordered_map<LL, int> memo;
 
 int nimber(LL sz) {
   set<int> zz;
@@ -73,7 +73,7 @@ void process() {
   vector<pair<LL, LL> > groups;
   scanf(" %lld", &p);
   groups.pb(mp(1, p));
-  groups.pb(mp(p + chunk, total_size));
+  groups.pb(mp(p + chunk, total_size + 1));
 
   auto add_cut = [&](int idx, LL pos) {
     groups.pb(pos + chunk, groups[idx].second);
@@ -133,10 +133,20 @@ void process() {
         add_cut(mx, (g.first + pos));
       }
     }
+
     scanf(" %lld", &p);
     // cerr << "got " << p << endl;
     if(p < 0) {
-      cerr << p << endl;
+      nim = 0;
+      for(int i=0;i<groups.size();i++) {
+        auto g2 = groups[i];
+        if(g2.second - g2.first >= chunk) {
+          cerr << g2.first << "-" << g2.second << " ";
+        }
+        int m2 = nimber(g2.second - g2.first);
+        nim ^= m2;
+      }
+      cerr << nim << " = " << p << endl;
       return;
     }
     for(int i=0;i<groups.size();i++) {
