@@ -66,6 +66,7 @@ void process() {
   }
   for(auto it: v) cout << it.first << " "; cout << endl;
   cout << ret.size() << endl;
+  for(auto it : ret) cout << it.first << " " << it.second << endl;
 }
 
 // 123412341234
