@@ -46,7 +46,12 @@ void process() {
 
   while(v.size() > r) {
     if(v.size() == r+1) {
-      // r 1 2 3 ...
+      int c1 = v[0].second;
+      int c2 = 0;
+      for(int i=1;i<v.size();i++) {
+        c2 += v[i].second;
+      }
+      ret.pb(c1, c2);
       break;
     }
     for(auto it: v) cout << it.first << " "; cout << endl;
@@ -64,7 +69,7 @@ void process() {
       }
     }
   }
-  for(auto it: v) cout << it.first << " "; cout << endl;
+  // for(auto it: v) cout << it.first << " "; cout << endl;
   cout << ret.size() << endl;
   for(auto it : ret) cout << it.first << " " << it.second << endl;
 }
