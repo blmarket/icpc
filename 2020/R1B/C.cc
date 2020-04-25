@@ -62,6 +62,7 @@ void process() {
       }
     }
   }
+  for(auto it: v) cout << it.first << " "; cout << endl;
   cout << ret.size() << endl;
 }
 
