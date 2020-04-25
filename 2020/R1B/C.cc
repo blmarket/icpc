@@ -54,7 +54,7 @@ void process() {
       ret.pb(c1, c2);
       break;
     }
-    for(auto it: v) cout << it.first << " "; cout << endl;
+    // for(auto it: v) cout << it.first << " "; cout << endl;
     int c1 = v[0].second + v[1].second;
     int c2 = 0;
     for(int i=2;i+1<v.size();i++) {
