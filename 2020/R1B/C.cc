@@ -43,11 +43,11 @@ void process() {
   }
 
   while(v.size() > r) {
-    for(auto it: v) cout << it.first << " "; cout << endl;
     if(v.size() == r+1) {
       // r 1 2 3 ...
       break;
     }
+    for(auto it: v) cout << it.first << " "; cout << endl;
     int c1 = v[0].second + v[1].second;
     int c2 = 0;
     for(int i=2;i+1<v.size();i++) {
