@@ -29,36 +29,40 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int r, s;
-vector<int> v;
-vector<int> sorted;
+vector<PII> v;
+
+vector<PII> ret;
 
 void process() {
   scanf(" %d %d", &r, &s);
   v.clear();
   for(int i=0;i<s;i++) {
     for(int j=0;j<r;j++) {
-      v.pb(j);
+      v.pb(mp(j, 1));
     }
   }
-  sorted = v;
-  sort(sorted.begin(), sorted.end());
 
-  while(true) {
-    for(auto it: v) cout << it << " "; cout << endl;
-
-    if(v == sorted) break;
-    vector<int> v2;
-    int v1 = v[0];
-    int i;
-    for(i=1;v[i] == v1;i++);
-    for(;v[i] == v1+1;i++);
-    int j;
-    for(j=i;v[i] != v1 || v[i+1] == v1;j++) {
-      v2.pb(v[j]);
+  while(v.size() > r) {
+    for(auto it: v) cout << it.first << " "; cout << endl;
+    if(v.size() == r+1) {
+      // r 1 2 3 ...
+      break;
     }
-    for(int k=0;k<i;k++) v2.pb(v[k]);
-    for(int k=j;k<v.size();k++) v2.pb(v[k]);
+    int c1 = v[0].second + v[1].second;
+    int c2 = 0;
+    for(int i=2;i+1<v.size();i++) {
+      c2 += v[i].second;
+      if(v[i].first == v[0].first && v[i+1].first == v[1].first) {
+        ret.pb(mp(c1, c2));
+        v[i].second += v[0].second;
+        v[i+1].second += v[1].second;
+        rotate(v.begin(), v.begin() + 2, v.end());
+        v.resize(v.size() - 2);
+        break;
+      }
+    }
   }
+  cout << ret.size() << endl;
 }
 
 // 123412341234
