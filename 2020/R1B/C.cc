@@ -42,6 +42,8 @@ void process() {
     }
   }
 
+  ret.clear();
+
   while(v.size() > r) {
     if(v.size() == r+1) {
       // r 1 2 3 ...
