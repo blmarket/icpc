@@ -37,7 +37,7 @@ void process() {
 
 int main(void) {
   for(int i=0;i<100;i++) {
-    cout << rnd() << endl;
+    cout << (int)rnd() << endl;
   }
   scanf(" %d %d %d", &t, &a, &b);
   for(int i=0;i<t;i++) process();
