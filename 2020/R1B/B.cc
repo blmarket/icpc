@@ -60,7 +60,7 @@ tuple<int, int> stage1() {
   }
 }
 
-int bs(int v, const function<int(int)> &func) {
+int bs(int v, const function<char(int)> &func) {
 }
 
 void process() {
@@ -68,17 +68,14 @@ void process() {
   tie(x, y) = stage1();
   if(x == 2e9) return;
   int rx = bs(x, [y](int x) -> int {
-      return 0;
+      return chk(x, y);
       });
   int ry = bs(y, [x](int y) -> int {
-      return 0;
+      return chk(x, y);
       });
 }
 
 int main(void) {
-  for(int i=0;i<100;i++) {
-    cout << (int)rnd() << endl;
-  }
   scanf(" %d %d %d", &t, &a, &b);
   for(int i=0;i<t;i++) process();
 }
