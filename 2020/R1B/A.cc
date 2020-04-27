@@ -33,7 +33,7 @@ int x, y;
 void process() {
   scanf(" %d %d", &x, &y);
   int t1 = 1;
-  for(int i=0;i<31;i++) {
+  for(int i=0;i<32;i++) {
     cout << t1 << endl;
     t1 <<= 1;
   }
