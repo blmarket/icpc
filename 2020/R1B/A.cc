@@ -31,6 +31,9 @@ template<typename T> int size(const T &a) { return a.size(); }
 char output[32];
 
 bool chk(int s, int t, int x, int y) {
+  if(s == -1) {
+    return x == 0 && y == 0;
+  }
   if(abs(x) > abs(y)) {
     if(x < 0) {
       output[s] = 'S';
