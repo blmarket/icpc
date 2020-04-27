@@ -36,18 +36,18 @@ bool chk(int s, int t, int x, int y) {
   }
   if(abs(x) > abs(y)) {
     if(x < 0) {
-      output[s] = 'S';
+      output[s] = 'W';
       return chk(s-1, t>>1, x+t, y);
     } else {
-      output[s] = 'N';
+      output[s] = 'E';
       return chk(s-1, t>>1, x-t, y);
     }
   } else {
     if(y < 0) {
-      output[s] = 'W';
+      output[s] = 'S';
       return chk(s-1, t>>1, x, y+t);
     } else {
-      output[s] = 'E';
+      output[s] = 'N';
       return chk(s-1, t>>1, x, y-t);
     }
   }
