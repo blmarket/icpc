@@ -41,7 +41,6 @@ map<rat, vector<LL>> cand;
 int N, D;
 
 LL gcd(LL a, LL b) {
-  cerr << a << " " << b << endl;
   if(a<b) return gcd(b,a);
   if(b == 0) return a;
   return gcd(b, a % b);
