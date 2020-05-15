@@ -59,10 +59,29 @@ void process() {
     }
   }
 
+  int ret = D - 1;
+
   for(auto &it: cand) {
     cerr << it.first.a << "/" << it.first.b << " = ";
-    cerr << it.second.size() << endl;
+    auto &v = it.second;
+    sort(v.begin(), v.end());
+    int sum = 0;
+    int cut = 0;
+    for(int j=0;j<v.size();j++) {
+      if (sum + v[j] <= D) {
+        cut += v[j] - 1;
+        sum += v[j];
+      } else {
+        cut += D - sum;
+        sum = D;
+      }
+      if(sum == D) break;
+    }
+    if(sum == D && ret > cut) {
+      ret = cut;
+    }
   }
+  cout << ret << endl;
 }
 
 int main(void) {
