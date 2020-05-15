@@ -54,7 +54,7 @@ void process() {
     scanf(" %lld", &tmp);
     for(int j=1;j<=D;j++) {
       int gg = gcd(tmp, j);
-      cerr << tmp << " " << j << " " << gg << endl;
+      // cerr << tmp << " " << j << " " << gg << endl;
       rat rr = rat { tmp / gg, j / gg };
       cand[rr].pb(j);
     }
