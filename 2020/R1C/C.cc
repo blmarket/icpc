@@ -58,6 +58,10 @@ void process() {
       cand[rr].pb(j);
     }
   }
+
+  for(auto &it: cand) {
+    cerr << it.first.a << endl;
+  }
 }
 
 int main(void) {
