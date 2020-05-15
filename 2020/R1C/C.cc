@@ -68,7 +68,6 @@ void process() {
     int sum = 0;
     int cut = 0;
     for(int j=0;j<v.size();j++) {
-      cerr << sum << " " << v[j] << endl;
       if (sum + v[j] <= D) {
         cut += v[j] - 1;
         sum += v[j];
