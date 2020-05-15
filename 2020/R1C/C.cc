@@ -50,6 +50,7 @@ LL gcd(LL a, LL b) {
 void process() {
   cand.clear();
   scanf(" %d %d", N, D);
+  cerr << N << " " << D << endl;
   for(int i=0;i<N;i++) {
     LL tmp;
     scanf(" %lld", &tmp);
