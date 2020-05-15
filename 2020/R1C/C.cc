@@ -60,7 +60,8 @@ void process() {
   }
 
   for(auto &it: cand) {
-    cerr << it.first.a << endl;
+    cerr << it.first.a << "/" << it.first.b << " = ";
+    cerr << it.second.size() << endl;
   }
 }
 
