@@ -30,7 +30,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-mt19937 rnd;
+mt19937 rnd(time(NULL));
 int t, a, b;
 
 int safe_rnd() {
@@ -60,7 +60,24 @@ tuple<int, int> stage1() {
   }
 }
 
+int bs2(int s, int e, int d, const function<char(int)> &func) {
+  while(abs(e-s) > 1) {
+    int m = (s+e) / 2;
+    char tmp = func(m);
+    // cerr << s << " " << e << " " << d << " " << m << " " << tmp << endl;
+    if(tmp == 'C') return 2e9;
+    if(tmp == 'M') e = m;
+    else s = m;
+  }
+  return s;
+}
+
 int bs(int v, const function<char(int)> &func) {
+  int r1 = bs2(v, 1e9+1, 0, func);
+  if(r1 == 2e9) return 2e9;
+  int r2 = bs2(v, -1e9-1, -1, func);
+  if(r2 == 2e9) return 2e9;
+  return (r1+r2) / 2;
 }
 
 void process() {
@@ -70,9 +87,13 @@ void process() {
   int rx = bs(x, [y](int x) -> int {
       return chk(x, y);
       });
+  if(rx == 2e9) return;
   int ry = bs(y, [x](int y) -> int {
       return chk(x, y);
       });
+  if(ry == 2e9) return;
+  char tmp = chk(rx, ry);
+  cerr << tmp << endl;
 }
 
 int main(void) {
