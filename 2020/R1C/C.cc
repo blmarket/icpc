@@ -55,6 +55,7 @@ void process() {
     for(int j=1;j<=D;j++) {
       int gg = gcd(tmp, j);
       rat rr = rat { tmp / gg, j / gg };
+      cerr << tmp/gg << " " << j/gg << endl;
       cand[rr].pb(j);
     }
   }
