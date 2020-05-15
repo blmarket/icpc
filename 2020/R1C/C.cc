@@ -62,7 +62,7 @@ void process() {
   int ret = D - 1;
 
   for(auto &it: cand) {
-    cerr << it.first.a << "/" << it.first.b << " = ";
+    // cerr << it.first.a << "/" << it.first.b << " = ";
     auto &v = it.second;
     sort(v.begin(), v.end());
     int sum = 0;
