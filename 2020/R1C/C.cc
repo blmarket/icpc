@@ -52,10 +52,10 @@ void process() {
   for(int i=0;i<N;i++) {
     LL tmp;
     scanf(" %lld", &tmp);
+    cerr << tmp << endl;
     for(int j=1;j<=D;j++) {
       int gg = gcd(tmp, j);
       rat rr = rat { tmp / gg, j / gg };
-      cerr << tmp/gg << " " << j/gg << endl;
       cand[rr].pb(j);
     }
   }
