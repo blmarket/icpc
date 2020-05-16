@@ -71,8 +71,34 @@ void process() {
   for(int i=0;i<D;i++) {
     int t1, t2;
     scanf(" %d %d", &t1, &t2);
+    links[t1].pb(mp(t2, i));
+    links[t2].pb(mp(t1, i));
     values[i] = 1000000;
   }
+
+  VI ls(C+1, -1);
+  int latency = 0;
+  ls[1] = 0;
+  for(int i=1;i<order.size();i++) {
+    int cur = order[i];
+    if(cs[cur] > 0) {
+      latency = cs[cur];
+    } else if(-cs[cur] >= i) {
+      latency++;
+    }
+    ls[cur] = latency;
+    for(auto it: links[cur]) {
+      if(ls[it.first] >= 0) {
+        values[it.second] = latency - ls[it.first];
+        break;
+      }
+    }
+  }
+
+  for(auto it: values) {
+    cout << it << " ";
+  }
+  cout << endl;
 }
 
 int main(void) {
