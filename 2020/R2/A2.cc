@@ -53,13 +53,14 @@ void process() {
     swap(L, R);
     swapped = true;
   }
+  // cerr << t1 << " " << L << " " << R << " " << swapped << endl;
   LL s = 0, e = 1LL<<31;
   while(s+1 < e) {
     LL m = (s+e) / 2;
     LL m1 = (t1 + 1) * (m/2) + (m/2) * (m/2);
     LL m2 = (m+1)/2;
     LL m3 = (t1 ) * m2 + m2 * m2;
-    cerr << m << " " << L-m1 << " " << R-m3 << endl;
+    // cerr << m << " " << L-m1 << " " << R-m3 << endl;
     if(L-m1 < 0 || R-m3 < 0) {
       e = m;
     } else {
