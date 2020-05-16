@@ -72,6 +72,7 @@ void process() {
   for(auto &it: cand) {
     int sum = 0;
     int cut = 0;
+    cerr << it.a << "/" << it.b << " = " << endl;
     for(int i=0;i<V.size();i++) if(ok(V[i], it)) {
       if(sum == D) break;
       int cnt = V[i] * it.b / it.a;
@@ -84,6 +85,7 @@ void process() {
         sum = D;
       }
     }
+    cerr << sum << " " << cut << endl;
     for(int i=0;i<V.size();i++) if(!ok(V[i], it)) {
       if(sum == D) break;
       int cnt = V[i] * it.b / it.a;
@@ -96,8 +98,8 @@ void process() {
         sum = D;
       }
     }
+    cerr << sum << " " << cut << endl;
     if(sum == D) {
-      cerr << it.a << "/" << it.b << " = " << cut << endl;
       ret = min(ret, cut);
     }
   }
