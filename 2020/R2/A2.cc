@@ -30,7 +30,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 LL estimate1(LL sz) {
-  LL tmp = sqrt(sz * 2) - 1;
+  LL tmp = max(0LL, (LL)sqrt(sz * 2) - 1);
   while(1) {
     if ((tmp+1) * (tmp+2) / 2 > sz) return tmp;
     tmp++;
