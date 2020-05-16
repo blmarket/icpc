@@ -82,7 +82,7 @@ int chk(const vec2 &rr) {
   sort(G.rbegin(), G.rend());
 
   for(auto it: G) {
-    cout << it.second << " ";
+    cout << it.first << " ";
   }
   cout << endl;
   return 0;
