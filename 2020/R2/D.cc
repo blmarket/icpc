@@ -105,7 +105,7 @@ void process() {
         }
       }
     }
-    cerr << cost[e] << endl;
+    // cerr << cost[e] << endl;
     ret += cost[e];
   }
   cout << ret << endl;
