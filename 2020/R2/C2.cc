@@ -68,16 +68,18 @@ int chk(const vec2 &rr) {
   for(int i=0;i<V.size();i++) {
     bool found = false;
     for(int j=0;j<G.size();j++) {
-      vec2 tmp = V[i] - V[G[j].first];
+      vec2 tmp = V[i] - V[G[j].second];
       tmp = tmp.norm();
       if(tmp == rr) {
-        G[j].second++;
+        G[j].first++;
         found = true;
         break;
       }
     }
-    if(!found) G.pb(mp(i, 1));
+    if(!found) G.pb(mp(1, i));
   }
+
+  sort(G.rbegin(), G.rend());
 
   for(auto it: G) {
     cout << it.second << " ";
