@@ -65,7 +65,6 @@ void process() {
       s = m;
     }
   }
-  cerr << s << " " << e << endl;
   LL m = s;
   LL m1 = t1 * (m/2) + (m/2) * (m/2);
   LL m2 = (m+1)/2;
