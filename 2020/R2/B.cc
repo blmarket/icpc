@@ -58,6 +58,10 @@ void process() {
       order.pb(v1[i].second);
     }
   }
+  while(it < v2.size() && v2[it].first <= order.size()) {
+    order.pb(v2[it].second);
+    ++it;
+  }
 
   for(auto it: order) cerr << it << " ";
   cerr << endl;
