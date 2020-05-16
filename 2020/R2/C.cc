@@ -97,7 +97,10 @@ void process() {
       sum += jt.second;
     }
     cerr << endl;
-    while(sum < N) groups.pb(mp(-1, 1));
+    while(sum < N) {
+      groups.pb(mp(-1, 1));
+      sum++;
+    }
     sort(groups.rbegin(), groups.rend());
     VI tmp; for(auto &it: groups) tmp.pb(it.second);
     if(tmp == VI {}) {
