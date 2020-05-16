@@ -65,6 +65,9 @@ void process() {
     cost[s] = 0;
     priority_queue<PII> Q;
     Q.push(mp(0, s));
+    while(!Q.empty()) {
+      auto v = Q.top();
+    }
   }
 }
 
