@@ -82,19 +82,14 @@ int chk(const vec2 &rr) {
   sort(G.rbegin(), G.rend());
 
   int ret = 0;
-  int t1 = 0;
 
   for(auto it: G) {
-    if(it.first > 1) {
-      ret += it.first;
-      t1 ^= (it.first & 1);
-    } else {
-      ret += 1;
-      if(t1 == 1) return ret;
-      t1 = 1;
-    }
+    if(it.first == 1) break;
+    ret += it.first;
   }
-  return ret;
+  ret -= (ret & 1);
+  ret += 2;
+  return min(ret, size(V));
 }
 
 void process() {
