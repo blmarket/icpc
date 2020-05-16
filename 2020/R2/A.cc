@@ -38,7 +38,7 @@ void process() {
     } else if (R >= i) {
       R -= i;
     } else {
-      cout << i << " " << L << " " << R << endl;
+      cout << i-1 << " " << L << " " << R << endl;
       return;
     }
   }
