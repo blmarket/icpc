@@ -61,7 +61,6 @@ struct vec2 {
 };
 
 vector<vec2> V;
-set<vec2> rats;
 
 int chk(const vec2 &rr) {
   vector<PII> G;
@@ -69,8 +68,7 @@ int chk(const vec2 &rr) {
     bool found = false;
     for(int j=0;j<G.size();j++) {
       vec2 tmp = V[i] - V[G[j].second];
-      tmp = tmp.norm();
-      if(tmp == rr) {
+      if(tmp.xx * rr.yy == tmp.yy * rr.xx) {
         G[j].first++;
         found = true;
         break;
@@ -84,9 +82,11 @@ int chk(const vec2 &rr) {
   int ret = 0;
 
   for(auto it: G) {
+    cerr << it.first << " ";
     if(it.first == 1) break;
     ret += it.first;
   }
+  cerr << endl;
   ret -= (ret & 1);
   ret += 2;
   return min(ret, size(V));
@@ -96,21 +96,18 @@ void process() {
   int N;
   scanf(" %d", &N);
   V.clear();
-  rats.clear();
   for(int i=0;i<N;i++) {
     LL x, y;
     scanf(" %lld %lld", &x, &y);
     V.pb(vec2 { x, y });
-    for(int j=0;j<i;j++) {
-      vec2 tmp = V[i] - V[j];
-      rats.insert(tmp.norm());
-    }
   }
 
   int ret = 1;
-  for(auto &rr: rats) {
-    int tmp = chk(rr);
-    ret = max(ret, tmp);
+  for(int i=0;i<N;i++) {
+    for(int j=i+1;j<N;j++) {
+      int tmp = chk(V[j] - V[i]);
+      ret = max(ret, tmp);
+    }
   }
   cout << ret << endl;
 }
