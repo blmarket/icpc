@@ -61,6 +61,11 @@ void process() {
 
   for(auto it: order) cerr << it << " ";
   cerr << endl;
+
+  for(int i=0;i<D;i++) {
+    int t1, t2;
+    scanf(" %d %d", &t1, &t2);
+  }
 }
 
 int main(void) {
