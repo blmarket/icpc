@@ -109,6 +109,8 @@ void process() {
       if(tmp[i] & 1) {
         r1 += tmp[i] - 1;
         r2++;
+      } else {
+        r1 += tmp[i];
       }
     }
     cerr << r1 << " " << r2 << endl;
