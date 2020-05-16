@@ -103,6 +103,7 @@ void process() {
     if(tmp == VI {}) {
     }
   }
+  cout << ret << endl;
 }
 
 int main(void) {
