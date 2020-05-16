@@ -50,7 +50,7 @@ void process() {
   order.pb(1);
 
   for(int i=0;i<=v1.size();i++) {
-    while(it < v2.size() && v2[it].first >= order.size()) {
+    while(it < v2.size() && v2[it].first <= order.size()) {
       order.pb(v2[it].second);
       ++it;
     }
@@ -65,7 +65,6 @@ void process() {
   for(int i=0;i<D;i++) {
     int t1, t2;
     scanf(" %d %d", &t1, &t2);
-    cerr << t1 << " " << t2 << endl;
   }
 }
 
