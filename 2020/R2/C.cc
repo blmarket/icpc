@@ -113,7 +113,6 @@ void process() {
         r1 += tmp[i];
       }
     }
-    cerr << r1 << " " << r2 << endl;
     if(r2 > 2) r2 = 2;
     r1 += r2;
     ret = max(ret, r1);
