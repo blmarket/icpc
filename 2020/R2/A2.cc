@@ -45,13 +45,34 @@ void process() {
   if(L >= R) {
     t1 = estimate1(L-R);
     L -= t1 * (t1+1) / 2;
+    swap(L, R);
     swapped = true;
   } else {
     t1 = estimate1(R-L);
     R -= t1 * (t1+1) / 2;
     swapped = false;
   }
-  cout << t1 << " " << L << " " << R << " " << swapped << endl;
+  // cerr << t1 << " " << L << " " << R << " " << swapped << endl;
+  LL s = 0, e = 1LL<<31;
+  while(s+1 < e) {
+    LL m = (s+e) / 2;
+    LL m1 = t1 * (m/2) + (m/2) * (m/2);
+    LL m2 = (m+1)/2;
+    LL m3 = (t1 + 1) * m2 + m2 * m2;
+    if(L-m1 < 0 || R-m3 < 0) {
+      e = m;
+    } else {
+      s = m;
+    }
+  }
+  LL m = s;
+  LL m1 = t1 * (m/2) + (m/2) * (m/2);
+  LL m2 = (m+1)/2;
+  LL m3 = (t1 + 1) * m2 + m2 * m2;
+  L -= m1;
+  R -= m3;
+  if(swapped) swap(L, R);
+  cout << t1 + s << " " << L << " " << R << endl;
 }
 
 int main(void) {
