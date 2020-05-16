@@ -40,8 +40,6 @@ void process() {
     V.pb(tmp);
   }
   sort(V.begin(), V.end());
-  for(auto it: V) cout << it << " ";
-  cout << endl;
   int ret = D-1;
   for(int i=0;i+D<N;i++) {
     if(V[i] == V[i+D-1]) {
