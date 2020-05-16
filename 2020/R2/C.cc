@@ -36,7 +36,6 @@ struct rat {
 };
 
 int gcd(int a, int b) {
-  cerr << a << " " << b << endl;
   if(a < b) return gcd(b, a);
   if(b == 0) return a;
   return gcd(b, a%b);
@@ -54,7 +53,7 @@ void process() {
     for(int j=0;j<i;j++) {
       int xx = V[i].first - V[j].first;
       int yy = V[i].second - V[j].second;
-      int g = gcd(xx, yy);
+      int g = gcd(abs(xx), abs(yy));
       xx /= g; yy /= g;
       if(xx < 0) {
         xx *= -1;
