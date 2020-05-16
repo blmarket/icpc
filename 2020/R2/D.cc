@@ -32,6 +32,7 @@ int K, Q;
 char code[100005];
 int port[100005];
 int query[100005][2];
+int cost[100005];
 
 void process() {
   scanf(" %d %d", &K, &Q);
@@ -57,19 +58,56 @@ void process() {
     }
   }
 
+  int ret = 0;
   for(int i=0;i<Q;i++) {
     int s = query[i][0];
     int e = query[i][1];
-    int cost[100005];
     memset(cost, -1, sizeof(cost));
     cost[s] = 0;
     priority_queue<PII> Q;
     Q.push(mp(0, s));
-    while(!Q.empty()) {
+    while(!Q.empty() && cost[e] == -1) {
       auto v = Q.top();
+      int node = v.second;
       Q.pop();
+      if(v.first != cost[node]) continue;
+      int nn = port[node];
+      if(cost[nn] == -1 || cost[nn] > cost[node] + 1) {
+        cost[nn] = cost[node] + 1;
+        Q.push(mp(cost[nn], nn));
+      }
+      
+      if(node < e) {
+        int n2 = node + 1;
+        if(cost[n2] == -1 || cost[n2] > cost[node] + 1) {
+          cost[n2] = cost[node] + 1;
+          Q.push(mp(cost[n2], n2));
+        }
+        if(nn < e && node > 0) {
+          int n2 = node - 1;
+          if(cost[n2] == -1 || cost[n2] > cost[node] + 1) {
+            cost[n2] = cost[node] + 1;
+            Q.push(mp(cost[n2], n2));
+          }
+        }
+      } else {
+        int n2 = node - 1;
+        if(cost[n2] == -1 || cost[n2] > cost[node] + 1) {
+          cost[n2] = cost[node] + 1;
+          Q.push(mp(cost[n2], n2));
+        }
+        if(nn >= e && node + 1 < K) {
+          int n2 = node - 1;
+          if(cost[n2] == -1 || cost[n2] > cost[node] + 1) {
+            cost[n2] = cost[node] + 1;
+            Q.push(mp(cost[n2], n2));
+          }
+        }
+      }
     }
+    ret += cost[e];
   }
+  cout << ret << endl;
 }
 
 int main(void) {
