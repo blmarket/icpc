@@ -59,7 +59,7 @@ void process() {
     LL m1 = t1 * (m/2) + (m/2) * (m/2);
     LL m2 = (m+1)/2;
     LL m3 = (t1 + 1) * m2 + m2 * m2;
-    cerr << m << " " << L-m1 << " " << R-m3 << endl;
+    cerr << m << " " << L-m3 << " " << R-m1 << endl;
     if(L-m1 < 0 || R-m3 < 0) {
       e = m;
     } else {
