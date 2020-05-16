@@ -52,7 +52,7 @@ void process() {
     R -= t1 * (t1+1) / 2;
     swapped = false;
   }
-  // cerr << t1 << " " << L << " " << R << " " << swapped << endl;
+  cerr << t1 << " " << L << " " << R << " " << swapped << endl;
   LL s = 0, e = 1LL<<31;
   while(s+1 < e) {
     LL m = (s+e) / 2;
@@ -67,9 +67,9 @@ void process() {
     }
   }
   LL m = s;
-  LL m1 = (t1) * (m/2) + (m/2) * (m/2);
+  LL m1 = (t1 + 1) * (m/2) + (m/2) * (m/2);
   LL m2 = (m+1)/2;
-  LL m3 = (t1 + 1) * m2 + m2 * m2;
+  LL m3 = (t1 + 2) * m2 + m2 * m2;
   L -= m1;
   R -= m3;
   if(swapped) swap(L, R);
