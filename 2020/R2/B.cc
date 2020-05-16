@@ -63,8 +63,8 @@ void process() {
     ++it;
   }
 
-  for(auto it: order) cerr << it << " ";
-  cerr << endl;
+  // for(auto it: order) cerr << it << " ";
+  // cerr << endl;
 
   VI values(D);
   vector<vector<PII>> links(C+1);
