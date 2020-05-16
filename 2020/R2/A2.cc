@@ -53,7 +53,6 @@ void process() {
     swap(L, R);
     swapped = true;
   }
-  cerr << t1 << " " << L << " " << R << " " << swapped << endl;
   LL s = 0, e = 1LL<<31;
   while(s+1 < e) {
     LL m = (s+e) / 2;
