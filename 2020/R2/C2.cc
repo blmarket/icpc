@@ -81,11 +81,20 @@ int chk(const vec2 &rr) {
 
   sort(G.rbegin(), G.rend());
 
+  int ret = 0;
+  int t1 = 0;
+
   for(auto it: G) {
-    cout << it.first << " ";
+    if(it.first > 1) {
+      ret += it.first;
+      t1 ^= (it.first & 1);
+    } else {
+      ret += 1;
+      if(t1 == 1) return ret;
+      t1 = 1;
+    }
   }
-  cout << endl;
-  return 0;
+  return ret;
 }
 
 void process() {
