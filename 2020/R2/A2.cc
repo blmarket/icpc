@@ -40,17 +40,18 @@ LL estimate1(LL sz) {
 void process() {
   LL L, R;
   scanf(" %lld %lld", &L, &R);
-  bool swapped;
   LL t1;
   if(L >= R) {
     t1 = estimate1(L-R);
     L -= t1 * (t1+1) / 2;
-    swap(L, R);
-    swapped = true;
   } else {
     t1 = estimate1(R-L);
     R -= t1 * (t1+1) / 2;
-    swapped = false;
+  }
+  bool swapped = false;
+  if(L >= R) {
+    swap(L, R);
+    swapped = true;
   }
   cerr << t1 << " " << L << " " << R << " " << swapped << endl;
   LL s = 0, e = 1LL<<31;
