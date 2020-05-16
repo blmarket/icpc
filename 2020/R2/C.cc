@@ -93,10 +93,10 @@ void process() {
     int sum = 0;
 
     for(auto &jt: groups) {
-      cerr << jt.second << " ";
+      // cerr << jt.second << " ";
       sum += jt.second;
     }
-    cerr << endl;
+    // cerr << endl;
     while(sum < N) {
       groups.pb(mp(-1, 1));
       sum++;
