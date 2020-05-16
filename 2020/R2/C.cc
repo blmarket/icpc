@@ -90,10 +90,18 @@ void process() {
       if(!found) groups.pb(mp(jt, 1));
     }
 
+    int sum = 0;
+
     for(auto &jt: groups) {
-      cout << jt.second << " ";
+      cerr << jt.second << " ";
+      sum += jt.second;
     }
-    cout << endl;
+    cerr << endl;
+    while(sum < N) groups.pb(mp(-1, 1));
+    sort(groups.rbegin(), groups.rend());
+    VI tmp; for(auto &it: groups) tmp.pb(it.second);
+    if(tmp == VI {}) {
+    }
   }
 }
 
