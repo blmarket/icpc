@@ -103,8 +103,17 @@ void process() {
     }
     sort(groups.rbegin(), groups.rend());
     VI tmp; for(auto &it: groups) tmp.pb(it.second);
-    if(tmp == VI {}) {
+    int r1 = 0;
+    int r2 = 0;
+    for(int i=0;i<tmp.size();i++) {
+      if(tmp[i] & 1) {
+        r1 += tmp[i] - 1;
+        r2++;
+      }
     }
+    if(r2 > 2) r2 = 2;
+    r1 += r2;
+    ret = max(ret, r1);
   }
   cout << ret << endl;
 }
