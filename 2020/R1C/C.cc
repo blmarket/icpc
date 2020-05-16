@@ -53,6 +53,7 @@ bool ok(LL v1, const rat &d) {
 
 void process() {
   cand.clear();
+  V.clear();
   scanf(" %d %d", &N, &D);
   for(int i=0;i<N;i++) {
     LL tmp;
