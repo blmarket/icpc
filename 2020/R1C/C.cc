@@ -47,6 +47,10 @@ LL gcd(LL a, LL b) {
   return gcd(b, a % b);
 }
 
+bool ok(LL v1, const rat &d) {
+  return (v1 * d.b) % d.a == 0;
+}
+
 void process() {
   cand.clear();
   scanf(" %d %d", &N, &D);
@@ -66,7 +70,35 @@ void process() {
   int ret = D - 1;
 
   for(auto &it: cand) {
-    cout << it.a << endl;
+    int sum = 0;
+    int cut = 0;
+    for(int i=0;i<V.size();i++) if(ok(V[i], it)) {
+      if(sum == D) break;
+      int cnt = V[i] * it.b / it.a;
+      if(cnt == 0) continue;
+      if (sum + cnt <= D) {
+        sum += cnt;
+        cut += cnt - 1;
+      } else {
+        cut += D - sum;
+        sum = D;
+      }
+    }
+    for(int i=0;i<V.size();i++) if(!ok(V[i], it)) {
+      if(sum == D) break;
+      int cnt = V[i] * it.b / it.a;
+      if(cnt == 0) continue;
+      if (sum + cnt <= D) {
+        sum += cnt;
+        cut += cnt;
+      } else {
+        cut += D - sum;
+        sum = D;
+      }
+    }
+    if(sum == D) {
+      ret = min(ret, cut);
+    }
   }
 
   // for(auto &it: cand) {
