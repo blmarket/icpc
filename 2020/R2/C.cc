@@ -67,7 +67,13 @@ void process() {
   
   int ret = 1;
   for(auto &it: rats) {
-    int tmp = min(N, 2 + (int)it.second.size());
+    int sz = it.second.size();
+    if(sz & 1) {
+      sz++;
+    } else {
+      sz += 2;
+    }
+    int tmp = min(N, sz);
     ret = max(ret, tmp);
     // cout << it.first.xx << " " << it.first.yy << " : ";
     // for(auto &jt: it.second) {
