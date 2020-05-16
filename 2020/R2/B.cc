@@ -66,9 +66,12 @@ void process() {
   for(auto it: order) cerr << it << " ";
   cerr << endl;
 
+  VI values(D);
+  vector<vector<PII>> links(C+1);
   for(int i=0;i<D;i++) {
     int t1, t2;
     scanf(" %d %d", &t1, &t2);
+    values[i] = 1000000;
   }
 }
 
