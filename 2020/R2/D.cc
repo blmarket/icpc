@@ -67,6 +67,7 @@ void process() {
     Q.push(mp(0, s));
     while(!Q.empty()) {
       auto v = Q.top();
+      Q.pop();
     }
   }
 }
