@@ -60,8 +60,8 @@ void process() {
 
   int ret = 0;
   for(int i=0;i<Q;i++) {
-    int s = query[i][0];
-    int e = query[i][1];
+    int s = query[i][0] - 1;
+    int e = query[i][1] - 1;
     memset(cost, -1, sizeof(cost));
     cost[s] = 0;
     priority_queue<PII> Q;
