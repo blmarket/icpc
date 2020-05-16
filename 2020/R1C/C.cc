@@ -97,6 +97,7 @@ void process() {
       }
     }
     if(sum == D) {
+      cerr << it.a << "/" << it.b << " = " << cut << endl;
       ret = min(ret, cut);
     }
   }
