@@ -37,7 +37,8 @@ struct rat {
   }
 };
 
-map<rat, vector<LL>> cand;
+vector<LL> V;
+set<rat> cand;
 int N, D;
 
 LL gcd(LL a, LL b) {
@@ -52,36 +53,42 @@ void process() {
   for(int i=0;i<N;i++) {
     LL tmp;
     scanf(" %lld", &tmp);
+    V.pb(tmp);
     for(int j=1;j<=D;j++) {
       int gg = gcd(tmp, j);
       // cerr << tmp << " " << j << " " << gg << endl;
       rat rr = rat { tmp / gg, j / gg };
-      cand[rr].pb(j);
+      cand.insert(rr);
     }
   }
+  sort(V.begin(), V.end());
 
   int ret = D - 1;
 
   for(auto &it: cand) {
-    // cerr << it.first.a << "/" << it.first.b << " = ";
-    auto &v = it.second;
-    sort(v.begin(), v.end());
-    int sum = 0;
-    int cut = 0;
-    for(int j=0;j<v.size();j++) {
-      if (sum + v[j] <= D) {
-        cut += v[j] - 1;
-        sum += v[j];
-      } else {
-        cut += D - sum;
-        sum = D;
-      }
-      if(sum == D) break;
-    }
-    if(sum == D && ret > cut) {
-      ret = cut;
-    }
+    cout << it.a << endl;
   }
+
+  // for(auto &it: cand) {
+  //   // cerr << it.first.a << "/" << it.first.b << " = ";
+  //   auto &v = it.second;
+  //   sort(v.begin(), v.end());
+  //   int sum = 0;
+  //   int cut = 0;
+  //   for(int j=0;j<v.size();j++) {
+  //     if (sum + v[j] <= D) {
+  //       cut += v[j] - 1;
+  //       sum += v[j];
+  //     } else {
+  //       cut += D - sum;
+  //       sum = D;
+  //     }
+  //     if(sum == D) break;
+  //   }
+  //   if(sum == D && ret > cut) {
+  //     ret = cut;
+  //   }
+  // }
   cout << ret << endl;
 }
 
