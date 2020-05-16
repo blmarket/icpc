@@ -67,21 +67,34 @@ void process() {
   
   int ret = 1;
   for(auto &it: rats) {
-    int sz = it.second.size();
-    if(sz & 1) {
-      sz++;
-    } else {
-      sz += 2;
+    auto &v = it.second;
+    vector<PII> groups;
+
+    for(auto &jt: v) {
+      bool found = false;
+      for(auto &kt: groups) {
+        int xx = V[jt].first - V[kt.first].first;
+        int yy = V[jt].second - V[kt.first].second;
+        int g = gcd(abs(xx), abs(yy));
+        xx /= g; yy /= g;
+        if(xx < 0) {
+          xx *= -1;
+          yy *= -1;
+        }
+        if(xx == it.first.xx && yy == it.first.yy) {
+          found = true;
+          kt.second += 1;
+          break;
+        }
+      }
+      if(!found) groups.pb(mp(jt, 1));
     }
-    int tmp = min(N, sz);
-    ret = max(ret, tmp);
-    // cout << it.first.xx << " " << it.first.yy << " : ";
-    // for(auto &jt: it.second) {
-    //   cout << jt << " ";
-    // }
-    // cout << endl;
+
+    for(auto &jt: groups) {
+      cout << jt.second << " ";
+    }
+    cout << endl;
   }
-  cout << ret << endl;
 }
 
 int main(void) {
