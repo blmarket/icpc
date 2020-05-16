@@ -48,6 +48,10 @@ void process() {
     }
   }
   for(int i=0;i<N;i++) {
+    if(i+2 < N && V[i] == V[i+1]) {
+      cout << 1 << endl;
+      return;
+    }
     for(int j=i+1;j<N;j++) {
       if(V[j] == V[i]*2) {
         cout << 1 << endl;
