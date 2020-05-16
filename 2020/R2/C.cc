@@ -64,14 +64,18 @@ void process() {
       rats[r].insert(j);
     }
   }
-
+  
+  int ret = 1;
   for(auto &it: rats) {
-    cout << it.first.xx << " " << it.first.yy << " : ";
-    for(auto &jt: it.second) {
-      cout << jt << " ";
-    }
-    cout << endl;
+    int tmp = min(N, 2 + (int)it.second.size());
+    ret = max(ret, tmp);
+    // cout << it.first.xx << " " << it.first.yy << " : ";
+    // for(auto &jt: it.second) {
+    //   cout << jt << " ";
+    // }
+    // cout << endl;
   }
+  cout << ret << endl;
 }
 
 int main(void) {
