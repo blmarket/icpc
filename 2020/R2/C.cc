@@ -93,9 +93,10 @@ void process() {
     int sum = 0;
 
     for(auto &jt: groups) {
-      // cerr << jt.second << " ";
+      cerr << jt.second << " ";
       sum += jt.second;
     }
+    cerr << endl;
     int n1 = N - sum;
     int r1 = 0;
     int r2 = 0;
