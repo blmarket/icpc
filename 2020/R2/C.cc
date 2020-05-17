@@ -67,7 +67,7 @@ void process() {
   
   int ret = 1;
   for(auto &it: rats) {
-    cerr << it.first.xx << " " << it.first.yy << endl;
+    // cerr << it.first.xx << " " << it.first.yy << endl;
     auto &v = it.second;
     vector<PII> groups;
 
