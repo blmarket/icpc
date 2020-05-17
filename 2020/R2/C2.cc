@@ -82,8 +82,8 @@ int chk(const vec2 &rr) {
   int ret = 0;
 
   for(auto it: G) {
-    cerr << it.first << " ";
     if(it.first == 1) break;
+    cerr << it.first << " ";
     ret += it.first;
   }
   cerr << endl;
