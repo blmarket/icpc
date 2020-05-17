@@ -78,7 +78,7 @@ void process() {
         int yy = V[jt].second - V[kt.first].second;
         int g = gcd(abs(xx), abs(yy));
         xx /= g; yy /= g;
-        if(xx < 0) {
+        if(xx < 0 || (xx == 0 && yy < 0)) {
           xx *= -1;
           yy *= -1;
         }
