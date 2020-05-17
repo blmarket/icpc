@@ -67,6 +67,7 @@ void process() {
   
   int ret = 1;
   for(auto &it: rats) {
+    cerr << it.first.xx << " " << it.first.yy << endl;
     auto &v = it.second;
     vector<PII> groups;
 
@@ -93,10 +94,10 @@ void process() {
     int sum = 0;
 
     for(auto &jt: groups) {
-      cerr << jt.second << " ";
+      // cerr << jt.second << " ";
       sum += jt.second;
     }
-    cerr << endl;
+    // cerr << endl;
     int n1 = N - sum;
     int r1 = 0;
     int r2 = 0;
