@@ -55,8 +55,8 @@ void process() {
   }
   sort(cs.rbegin(), cs.rend());
   for(auto &it: C[1]) {
-    if(C[0].find(it.second) == C[0].end()) {
-      cout << it.second;
+    if(C[0].find(it.first) == C[0].end()) {
+      cout << it.first;
       break;
     }
   }
