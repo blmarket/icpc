@@ -49,8 +49,8 @@ void process() {
       // C[i][s[s.size()-1-i]] += 1;
       C[i][s[i]] += 1;
     }
-    for(auto &it: C[i]) cerr << it.first << " " << it.second << endl;
-    cerr << endl;
+    // for(auto &it: C[i]) cerr << it.first << " " << it.second << endl;
+    // cerr << endl;
   }
 
   vector<pair<int, char> > cs;
