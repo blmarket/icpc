@@ -44,7 +44,7 @@ void process() {
     map<char, int> C;
     for(int j=0;j<1e4;j++) {
       // cout << V[j].second << endl;
-      C[V[j].second[0]] += 1;
+      C[V[j].second[i]] += 1;
     }
     for(auto &it: C) {
       cout << it.first << " " << it.second << endl;
