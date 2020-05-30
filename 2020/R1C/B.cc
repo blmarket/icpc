@@ -47,6 +47,8 @@ void process() {
       if(V[j].second.size() <= i) continue;
       C[i][V[j].second.size() - 1 - V[j].second[i]] += 1;
     }
+    for(auto &it: C[i]) cout << it.first << " " << it.second << endl;
+    cout << endl;
   }
 
   vector<pair<int, char> > cs;
