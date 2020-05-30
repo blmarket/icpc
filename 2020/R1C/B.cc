@@ -45,7 +45,7 @@ void process() {
     for(int j=0;j<1e4;j++) {
       // cout << V[j].second << endl;
       if(V[j].second.size() <= i) continue;
-      C[i][V[j].second[i]] += 1;
+      C[i][V[j].second.size() - V[j].second[i]] += 1;
     }
   }
 
