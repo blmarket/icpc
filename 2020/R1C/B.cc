@@ -33,6 +33,7 @@ vector<pair<LL, string> > V;
 
 void process() {
   scanf(" %d", &U);
+  V.clear();
   for(int i=0;i<1e4;i++) {
     LL t1;
     char t2[100];
@@ -41,7 +42,7 @@ void process() {
   }
 
   map<char, int> C[20];
-  for(int i=0;i<U;i++) {
+  for(int i=0;i<2;i++) {
     for(int j=0;j<1e4;j++) {
       // cout << V[j].second << endl;
       const string &s = V[j].second;
