@@ -44,8 +44,9 @@ void process() {
   for(int i=0;i<U;i++) {
     for(int j=0;j<1e4;j++) {
       // cout << V[j].second << endl;
-      if(V[j].second.size() <= i) continue;
-      C[i][V[j].second.size() - 1 - V[j].second[i]] += 1;
+      const string &s = V[j].second;
+      if (s.size() <= i) continue;
+      C[i][s[s.size()-1-i]] += 1;
     }
     for(auto &it: C[i]) cout << it.first << " " << it.second << endl;
     cout << endl;
