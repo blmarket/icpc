@@ -29,28 +29,41 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int U;
-vector<pair<int, string> > V;
+vector<pair<LL, string> > V;
 
 void process() {
   scanf(" %d", &U);
   for(int i=0;i<1e4;i++) {
-    int t1;
+    LL t1;
     char t2[100];
-    scanf(" %d %s", &t1, t2);
+    scanf(" %lld %s", &t1, t2);
     V.pb(mp(t1, t2));
   }
 
+  map<char, int> C[20];
   for(int i=0;i<U;i++) {
-    map<char, int> C;
     for(int j=0;j<1e4;j++) {
       // cout << V[j].second << endl;
-      C[V[j].second[i]] += 1;
+      if(V[j].second.size() <= i) continue;
+      C[i][V[j].second[i]] += 1;
     }
-    for(auto &it: C) {
-      cout << it.first << " " << it.second << endl;
-    }
-    cout << endl;
   }
+
+  vector<pair<int, char> > cs;
+  for(auto &it: C[0]) {
+    cs.pb(mp(it.second, it.first));
+  }
+  sort(cs.rbegin(), cs.rend());
+  for(auto &it: C[1]) {
+    if(C[0].find(it.second) == C[0].end()) {
+      cout << it.second;
+      break;
+    }
+  }
+  for(auto &it: cs) {
+    cout << it.second;
+  }
+  cout << endl;
 }
 
 int main(void) {
