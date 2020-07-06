@@ -30,16 +30,19 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 string a, b;
 int dp[65][65];
+bool same[65][65];
 
 void process(void) {
   cin >> a >> b;
   memset(dp, 0, sizeof(dp));
+  memset(same, 0, sizeof(same));
   int aa = a.size(), bb = b.size();
   for(int i=0;i<=aa;i++) dp[i][0] = i;
   for(int i=0;i<=bb;i++) dp[0][i] = i;
   for(int i=1;i<=aa;i++) {
     for(int j=1;j<=bb;j++) {
-      dp[i][j] = dp[i-1][j-1] + (a[i-1] != b[j-1]);
+      same[i][j] = a[i-1] == b[j-1];
+      dp[i][j] = dp[i-1][j-1] + !same[i][j];
       dp[i][j] = min(dp[i][j], dp[i-1][j] + 1);
       dp[i][j] = min(dp[i][j], dp[i][j-1] + 1);
     }
@@ -51,6 +54,24 @@ void process(void) {
     }
     cout << endl;
   }
+
+  string ret;
+  bool flag = false;
+  while(aa || bb) {
+    if(aa && bb && same[aa][bb] && dp[aa][bb] == dp[aa-1][bb-1]) {
+      ret = a[aa-1] + ret;
+    } else if(aa && bb && dp[aa][bb] == dp[aa-1][bb-1] + 1) {
+      if(flag) ret = a[aa-1] + ret; else ret = b[bb-1] + ret;
+      aa--; bb--; flag = !flag;
+    } else if(bb && dp[aa][bb] == dp[aa][bb-1]) {
+      if(!flag) ret = b[bb-1] + ret;
+      bb--; flag = !flag;
+    } else if(aa && dp[aa][bb] == dp[aa-1][bb]) {
+      if(flag) ret = a[aa-1] + ret;
+      aa--; flag = !flag;
+    }
+  }
+  cout << ret << endl;
 }
 
 int main(void) {
