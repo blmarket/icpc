@@ -63,10 +63,10 @@ void process(void) {
     } else if(aa && bb && dp[aa][bb] == dp[aa-1][bb-1] + 1) {
       if(flag) ret = a[aa-1] + ret; else ret = b[bb-1] + ret;
       aa--; bb--; flag = !flag;
-    } else if(bb && dp[aa][bb] == dp[aa][bb-1]) {
+    } else if(bb && dp[aa][bb] == dp[aa][bb-1] + 1) {
       if(!flag) ret = b[bb-1] + ret;
       bb--; flag = !flag;
-    } else if(aa && dp[aa][bb] == dp[aa-1][bb]) {
+    } else if(aa && dp[aa][bb] == dp[aa-1][bb] + 1) {
       if(flag) ret = a[aa-1] + ret;
       aa--; flag = !flag;
     }
