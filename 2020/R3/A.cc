@@ -58,7 +58,6 @@ void process(void) {
   string ret;
   bool flag = false;
   while(aa || bb) {
-    cerr << aa << " " << bb << endl;
     if(aa && bb && same[aa][bb] && dp[aa][bb] == dp[aa-1][bb-1]) {
       ret = a[aa-1] + ret;
     } else if(aa && bb && dp[aa][bb] == dp[aa-1][bb-1] + 1) {
