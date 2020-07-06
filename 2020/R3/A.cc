@@ -68,6 +68,7 @@ void process(void) {
       if(!flag) ret = b[bb-1] + ret;
       bb--; flag = !flag;
     } else if(aa && dp[aa][bb] == dp[aa-1][bb] + 1) {
+      cerr << "HERE" << endl;
       if(flag) ret = a[aa-1] + ret;
       aa--; flag = !flag;
     }
