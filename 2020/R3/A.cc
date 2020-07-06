@@ -37,6 +37,7 @@ void process(void) {
   int aa = a.size(), bb = b.size();
   for(int i=0;i<=aa;i++) dp[i][0] = i;
   for(int i=0;i<=bb;i++) dp[0][i] = i;
+  cout << endl;
   for(int i=1;i<=aa;i++) {
     for(int j=1;j<=bb;j++) {
       dp[i][j] = dp[i-1][j-1] + (a[i-1] != b[j-1]);
