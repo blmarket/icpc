@@ -29,6 +29,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 const LL BIG = 1LL << 60;
+const int SP = 1<<20;
 
 int n,m;
 LL c[2100000];
@@ -48,9 +49,8 @@ void process() {
   for(int i=0;i<=(1<<21);i++) c[i] = BIG;
   scanf(" %d %d", &n, &m);
   for(int i=0;i<n;i++) {
-    scanf(" %d", &c[i]);
+    scanf(" %d", &c[SP+i]);
   }
-  int SP = 1<<20;
   c[SP] = 0;
   c[SP+n-1] = 0;
 
