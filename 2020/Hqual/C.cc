@@ -51,6 +51,7 @@ void process() {
   sort(V.begin(), V.end());
 
   for(auto it: V) {
+    cout << it.a << " " << it.b << endl;
     if(dp.count(it.a)) {
       dp[it.a+it.b] = it.b + dp[it.a];
     } else {
