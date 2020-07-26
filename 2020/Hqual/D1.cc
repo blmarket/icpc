@@ -37,7 +37,7 @@ LL c[2100000];
 LL findmin(int s, int e, int p=1,int ss=0, int ee=1<<20) {
   if(s >= e) return 0;
   if(s >= ee || e <= ss) return BIG;
-  cout << s << " " << e << " " << p << " " << ss << " " << ee << " " << c[p] << endl;
+  // cout << s << " " << e << " " << p << " " << ss << " " << ee << " " << c[p] << endl;
   if(s <= ss && e >= ee) return c[p];
   int m = (ss+ee) / 2;
   return min(
@@ -61,7 +61,7 @@ void process() {
     }
     LL tmp = findmin(i+1, min(i+m, n-1)+1);
     c[SP+i] += tmp;
-    cout << c[SP+i] << " " << tmp << endl;
+    // cout << c[SP+i] << " " << tmp << endl;
     for(int j=(SP+i)>>1;j;j>>=1) {
       c[i] = min(c[i*2], c[i*2+1]);
     }
