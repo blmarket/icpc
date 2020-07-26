@@ -31,7 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 const LL BIG = 1LL << 60;
 
 int n,m;
-LL c[2048588];
+LL c[2100000];
 
 LL findmin(int s, int e, int p=1,int ss=0, int ee=1<<20) {
   if(s > ee || e < ss) return BIG;
