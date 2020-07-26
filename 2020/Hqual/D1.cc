@@ -61,7 +61,7 @@ void process() {
     }
     LL tmp = findmin(i+1, min(i+m, n-1)+1);
     c[SP+i] += tmp;
-    // cout << c[SP+i] << " " << tmp << endl;
+    cout << c[SP+i] << " " << tmp << endl;
     for(int j=(SP+i)>>1;j;j>>=1) {
       c[i] = min(c[i*2], c[i*2+1]);
     }
