@@ -70,7 +70,7 @@ void process() {
 
   LL ret = 0;
   for(auto it: dp) {
-    cout << it.first << " " << it.second << endl;
+    // cout << it.first << " " << it.second << endl;
     ret = max(ret, it.second);
   }
   cout << ret << endl;
