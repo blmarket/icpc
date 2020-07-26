@@ -57,11 +57,11 @@ void process() {
   for(int i=n-1;i>=0;i--) {
     if(i && i<n-1 && c[SP+i] == 0) {
       c[SP+i] = BIG;
-      continue;
+    } else {
+      LL tmp = findmin(i+1, min(i+m, n-1)+1);
+      c[SP+i] += tmp;
     }
-    LL tmp = findmin(i+1, min(i+m, n-1)+1);
-    c[SP+i] += tmp;
-    cout << i << " " << c[SP+i] << " " << tmp << endl;
+    cout << i << " " << c[SP+i] << endl;
     for(int j=(SP+i)>>1;j;j>>=1) {
       c[j] = min(c[j*2], c[j*2+1]);
     }
