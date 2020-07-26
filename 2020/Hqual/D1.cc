@@ -63,7 +63,7 @@ void process() {
     c[SP+i] += tmp;
     cout << c[SP+i] << " " << tmp << endl;
     for(int j=(SP+i)>>1;j;j>>=1) {
-      c[i] = min(c[i*2], c[i*2+1]);
+      c[j] = min(c[j*2], c[j*2+1]);
     }
   }
   cout << ((c[SP]>=(1LL<<60))?-1LL:c[SP]) << endl;
