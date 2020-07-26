@@ -33,7 +33,7 @@ bool mm[55][55];
 
 void process() {
   scanf(" %d", &n);
-  memset(mm, 0, sizeof(n));
+  memset(mm, 0, sizeof(mm));
   for(int i=0;i<n;i++) {
     mm[i][i] = 1;
   }
