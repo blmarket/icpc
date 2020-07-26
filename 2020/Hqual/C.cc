@@ -41,6 +41,7 @@ vector<log> V;
 
 void process() {
   dp.clear();
+  V.clear();
   scanf(" %d", &N);
   for(int i=0;i<N;i++) {
     LL a, b;
@@ -50,7 +51,6 @@ void process() {
   sort(V.begin(), V.end());
 
   for(auto it: V) {
-    cout << it.a << " " << it.b << endl;
     if(dp.count(it.a)) {
       dp[it.a+it.b] = it.b + dp[it.a];
     } else {
