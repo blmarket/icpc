@@ -49,7 +49,7 @@ void process() {
   for(int i=0;i<=(1<<21);i++) c[i] = BIG;
   scanf(" %d %d", &n, &m);
   for(int i=0;i<n;i++) {
-    scanf(" %d", &c[SP+i]);
+    scanf(" %lld", &c[SP+i]);
   }
   c[SP] = 0;
   c[SP+n-1] = 0;
