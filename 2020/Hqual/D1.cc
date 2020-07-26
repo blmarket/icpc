@@ -35,7 +35,7 @@ LL c[2100000];
 
 LL findmin(int s, int e, int p=1,int ss=0, int ee=1<<20) {
   if(s >= e) return 0;
-  if(s > ee || e < ss) return BIG;
+  if(s >= ee || e <= ss) return BIG;
   cout << s << " " << e << " " << p << " " << ss << " " << ee << endl;
   if(s <= ss && e >= ee) return c[p];
   int m = (ss+ee) / 2;
