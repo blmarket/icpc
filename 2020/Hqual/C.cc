@@ -39,6 +39,10 @@ int N;
 unordered_map<LL, LL> dp;
 vector<log> V;
 
+void setmax(LL &a, LL b) {
+  if(a < b) a = b;
+}
+
 void process() {
   dp.clear();
   V.clear();
@@ -53,14 +57,14 @@ void process() {
   for(auto it: V) {
     // cout << it.a << " " << it.b << endl;
     if(dp.count(it.a)) {
-      dp[it.a+it.b] = it.b + dp[it.a];
+      setmax(dp[it.a+it.b], it.b + dp[it.a]);
     } else {
-      dp[it.a+it.b] = it.b;
+      setmax(dp[it.a+it.b], it.b);
     }
     if(dp.count(it.a - it.b)) {
-      dp[it.a] = it.b + dp[it.a-it.b];
+      setmax(dp[it.a], it.b + dp[it.a-it.b]);
     } else {
-      dp[it.a] = it.b;
+      setmax(dp[it.a], it.b);
     }
   }
 
