@@ -28,18 +28,19 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-static bool dp[100000][100000][2];
 int N;
 char str[100005];
-
-bool chk(int s, int e, int t) {
-  return false;
-}
 
 void process() {
   scanf(" %d", &N);
   scanf(" %s", str);
-  cout << ((chk(0,N,0) || chk(0,N,1))?'Y':'N') << endl;
+  int c[2] = {0,0};
+  for(int i=0;i<N;i++) c[str[i]-'A']++;
+  if(abs(c[0] - c[1]) == 1) {
+    cout << 'Y' << endl;
+  } else {
+    cout << 'N' << endl;
+  }
 }
 
 int main(void) {
