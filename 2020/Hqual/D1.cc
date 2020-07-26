@@ -55,7 +55,7 @@ void process() {
   c[SP+n-1] = 0;
 
   for(int i=n-1;i>=0;i--) {
-    c[SP+i] += findmin(i+1, min(i+m, n-1));
+    c[SP+i] += findmin(i+1, min(i+m, n-1)+1);
     cout << c[SP+i] << endl;
     for(int j=(SP+i)>>1;j;j>>=1) {
       c[i] = min(c[i*2], c[i*2+1]);
