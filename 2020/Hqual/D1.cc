@@ -55,6 +55,10 @@ void process() {
   c[SP+n-1] = 0;
 
   for(int i=n-1;i>=0;i--) {
+    if(i && i<n-1 && c[SP+i] == 0) {
+      c[SP+i] = BIG;
+      continue;
+    }
     LL tmp = findmin(i+1, min(i+m, n-1)+1);
     c[SP+i] += tmp;
     cout << c[SP+i] << " " << tmp << endl;
@@ -62,7 +66,7 @@ void process() {
       c[i] = min(c[i*2], c[i*2+1]);
     }
   }
-  cout << ((c[SP]==(1LL<<60))?-1LL:c[SP]) << endl;
+  cout << ((c[SP]>=(1LL<<60))?-1LL:c[SP]) << endl;
 }
 
 int main(void) {
