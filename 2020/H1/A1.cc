@@ -48,6 +48,10 @@ void process() {
   scanf(" %d %d %d", &N, &K, &W);
   read_data(L);
   read_data(H);
+  for(int i=1;i<=N;i++) {
+    cout << L[i] << " " << H[i] << endl;
+  }
+  cout << endl;
   LL ret = 1;
   LL p = 0;
   vector<pair<LL, LL> > stack;
