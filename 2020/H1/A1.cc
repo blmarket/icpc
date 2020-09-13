@@ -53,7 +53,7 @@ void process() {
   for(int i=1;i<=N;i++) {
     // cout << L[i] << " " << H[i] << endl;
     if(i == 1 || L[i] > L[i-1] + W) {
-      p += L[i] * 2 + H[i] * 2;
+      p += W * 2 + H[i] * 2;
     } else {
       p += (L[i] - L[i-1]) * 2;
     }
