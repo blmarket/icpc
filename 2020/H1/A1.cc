@@ -77,7 +77,7 @@ void process() {
 
     p %= mod;
     ret = (ret * p) % mod;
-    cerr << p << " " << ret << endl;
+    cerr << p << " " << ret << " " << pmax << endl;
   }
   cout << ret << endl;
 }
