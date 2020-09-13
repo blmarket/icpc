@@ -56,13 +56,20 @@ void process() {
   LL p = 0;
   vector<pair<LL, LL> > stack;
   for(int i=1;i<=N;i++) {
+    LL pmax = 0;
     while(stack.size()) {
-      if(stack.back().first < L[i] || stack.back().second < H[i]) stack.pop_back();
-      else break;
+      if (stack.back().first < L[i]) {
+        stack.pop_back();
+        continue;
+      }
+      pmax = max(pmax, stack.back().second);
+      if(stack.back().second < H[i]) {
+        stack.pop_back();
+      } else break;
     }
     
     if(stack.size() == 0) {
-      p += W * 2 + H[i] * 2;
+      p += W * 2 + H[i] + (H[i] - pmax);
     } else {
       p += (L[i] - L[i-1]) * 2;
     }
