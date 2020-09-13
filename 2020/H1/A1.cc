@@ -73,7 +73,9 @@ void process() {
     } else {
       p += W * 2;
     }
-    p += (H[i] - pmax) * 2;
+    if (H[i] > pmax) {
+      p += (H[i] - pmax) * 2;
+    }
     stack.pb(mp(L[i] + W, H[i]));
 
     p %= mod;
