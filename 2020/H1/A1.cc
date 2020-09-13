@@ -68,7 +68,11 @@ void process() {
       } else break;
     }
 
-    p += min(L[i] - L[i-1], (LL) W) * 2;
+    if(i > 1) {
+      p += min(L[i] - L[i-1], (LL) W) * 2;
+    } else {
+      p += W * 2;
+    }
     p += (H[i] - pmax) * 2;
     stack.pb(mp(L[i] + W, H[i]));
 
