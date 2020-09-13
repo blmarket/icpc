@@ -51,7 +51,7 @@ void process() {
   LL ret = 1;
   LL p = 0;
   for(int i=1;i<=N;i++) {
-    cout << L[i] << " " << H[i] << endl;
+    // cout << L[i] << " " << H[i] << endl;
     if(i == 1 || L[i] > L[i-1] + W) {
       p += L[i] * 2 + H[i] * 2;
     } else {
@@ -59,7 +59,9 @@ void process() {
     }
     p %= mod;
     ret = (ret * p) % mod;
+    cerr << p << " " << ret << endl;
   }
+  cout << ret << endl;
 }
 
 int main(void) {
