@@ -50,13 +50,19 @@ void process() {
   read_data(H);
   LL ret = 1;
   LL p = 0;
+  vector<pair<LL, LL> > stack;
   for(int i=1;i<=N;i++) {
-    // cout << L[i] << " " << H[i] << endl;
-    if(i == 1 || L[i] > L[i-1] + W) {
+    while(stack.size()) {
+      if(stack.back().first < L[i] || stack.back().second < H[i]) stack.pop_back();
+    }
+    
+    if(stack.size() == 0) {
       p += W * 2 + H[i] * 2;
     } else {
       p += (L[i] - L[i-1]) * 2;
     }
+    stack.pb(mp(L[i] + W, H[i]));
+
     p %= mod;
     ret = (ret * p) % mod;
     cerr << p << " " << ret << endl;
