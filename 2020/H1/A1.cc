@@ -67,12 +67,9 @@ void process() {
         stack.pop_back();
       } else break;
     }
-    
-    if(stack.size() == 0) {
-      p += W * 2 + (H[i] - pmax) * 2;
-    } else {
-      p += (L[i] - L[i-1]) * 2;
-    }
+
+    p += min(L[i] - L[i-1], (LL) W) * 2;
+    p += (H[i] - pmax) * 2;
     stack.pb(mp(L[i] + W, H[i]));
 
     p %= mod;
