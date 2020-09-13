@@ -47,6 +47,9 @@ void process() {
   scanf(" %d %d %d", &N, &K, &W);
   read_data(L);
   read_data(H);
+  for(int i=1;i<=N;i++) {
+    cout << L[i] << " " << H[i] << endl;
+  }
 }
 
 int main(void) {
