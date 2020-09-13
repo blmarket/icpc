@@ -54,6 +54,7 @@ void process() {
   for(int i=1;i<=N;i++) {
     while(stack.size()) {
       if(stack.back().first < L[i] || stack.back().second < H[i]) stack.pop_back();
+      else break;
     }
     
     if(stack.size() == 0) {
