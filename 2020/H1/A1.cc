@@ -29,11 +29,10 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, K, W;
-int L[1000005];
-int H[1000005];
+LL L[1000005];
+LL H[1000005];
 
-void process() {
-  scanf(" %d %d %d", &N, &K, &W);
+void read_data(LL L[]) {
   for(int i=1;i<=K;i++) {
     scanf(" %d", &L[i]);
   }
@@ -42,6 +41,12 @@ void process() {
   for(int i=K+1;i<=N;i++) {
     L[i] = (a * L[i-2] + b * L[i-1] + c) % d;
   }
+}
+
+void process() {
+  scanf(" %d %d %d", &N, &K, &W);
+  read_data(L);
+  read_data(H);
 }
 
 int main(void) {
