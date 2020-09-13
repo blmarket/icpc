@@ -69,7 +69,7 @@ void process() {
     }
     
     if(stack.size() == 0) {
-      p += W * 2 + H[i] + (H[i] - pmax);
+      p += W * 2 + (H[i] - pmax) * 2;
     } else {
       p += (L[i] - L[i-1]) * 2;
     }
