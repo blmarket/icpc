@@ -31,6 +31,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 int N, K, W;
 LL L[1000005];
 LL H[1000005];
+const LL mod = 1000000007LL;
 
 void read_data(LL L[]) {
   for(int i=1;i<=K;i++) {
@@ -47,8 +48,17 @@ void process() {
   scanf(" %d %d %d", &N, &K, &W);
   read_data(L);
   read_data(H);
+  LL ret = 1;
+  LL p = 0;
   for(int i=1;i<=N;i++) {
     cout << L[i] << " " << H[i] << endl;
+    if(i == 1 || L[i] > L[i-1] + W) {
+      p += L[i] * 2 + H[i] * 2;
+    } else {
+      p += (L[i] - L[i-1]) * 2;
+    }
+    p %= mod;
+    ret = (ret * p) % mod;
   }
 }
 
