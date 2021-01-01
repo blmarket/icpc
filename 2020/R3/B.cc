@@ -40,7 +40,7 @@ int chk() {
   int minn = 0;
   int maxx = R[0];
   for(int i=0;i+1<R.size();i++) {
-    cerr << R[i] << " " << minn << " " << maxx << endl;
+    cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
     if (minn >= maxx) {
       ret++;
       xc = -1;
