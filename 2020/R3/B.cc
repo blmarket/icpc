@@ -55,7 +55,7 @@ int chk() {
       minn = max(minn, -xd);
     }
   }
-  return ret;
+  return ret + (minn >= maxx);
 }
 
 void process() {
@@ -84,7 +84,7 @@ void process() {
     return;
   }
 
-  for(int i=0;i<R.size();i++) cerr << R[i] << " "; cerr << endl;
+  // for(int i=0;i<R.size();i++) cerr << R[i] << " "; cerr << endl;
 
   // Check all has 1
   // R[0]: x, R[0] - x;
@@ -94,7 +94,7 @@ void process() {
   int maxx = R[0];
   for(int i=1;i<R.size();i++) {
     // xd + xc * x
-    cerr << xd << " " << xc << "x" << endl;
+    // cerr << xd << " " << xc << "x" << endl;
     if (xc == -1) {
       maxx = min(maxx, xd);
     } else {
@@ -104,7 +104,7 @@ void process() {
     xd = R[i] - xd;
     xc = -xc;
   }
-  cerr << xd << " " << xc << "x" << endl;
+  // cerr << xd << " " << xc << "x" << endl;
   if (xc == -1) {
     maxx = min(maxx, xd);
   } else {
