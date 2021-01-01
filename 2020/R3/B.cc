@@ -48,6 +48,10 @@ void process() {
   }
   for(int i=0;i<R.size();i++) cout << R[i] << " ";
   cout << endl;
+
+  int mm = 0;
+  for(int i=1;i<R.size();i++) if(R[i] < R[mm]) mm = i;
+  cout << mm << endl;
 }
 
 int main(void) {
