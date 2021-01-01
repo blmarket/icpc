@@ -63,6 +63,13 @@ void process() {
   int mm = 0;
   for(int i=1;i<R.size();i++) if(R[i] < R[mm]) mm = i;
   cerr << mm << endl;
+  int i = mm + 1;
+  int j = -1;
+  while(i != mm) {
+    i %= R.size();
+    cerr << R[i] << j << "*x" << endl;
+    break;
+  }
 }
 
 int main(void) {
