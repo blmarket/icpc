@@ -67,7 +67,7 @@ void process() {
   int maxx = R[0];
   for(int i=1;i<R.size();i++) {
     // xd + xc * x
-    cout << xd << " " << xc << "x" << endl;
+    cerr << xd << " " << xc << "x" << endl;
     if (xc == -1) {
       maxx = min(maxx, xd);
     } else {
@@ -77,7 +77,7 @@ void process() {
     xd = R[i] - xd;
     xc = -xc;
   }
-  cout << xd << " " << xc << "x" << endl;
+  cerr << xd << " " << xc << "x" << endl;
   if (xc == -1) {
     maxx = min(maxx, xd);
   } else {
