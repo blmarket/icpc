@@ -57,23 +57,23 @@ void process() {
     return;
   }
 
-  for(int i=0;i<R.size();i++) R[i] *= 2;
+  // Check all has 1
+  // R[0]: x, R[0] - x;
+  int xc = -1;
+  int xd = R[0];
+  int minn = 0;
+  int maxx = R[0];
+  for(int i=1;i<R.size();i++) {
+    // xd + xc * x
+    cout << xd << " " << xc << "x" << endl;
+    if (xc == -1) {
+      maxx = min(maxx, xd);
+    } else {
+      minn = max(minn, -xd);
+    }
 
-
-  for(int i=0;i<R.size();i++) cerr << R[i] << " ";
-  cerr << endl;
-
-  int mm = 0;
-  for(int i=1;i<R.size();i++) if(R[i] < R[mm]) mm = i;
-  cerr << mm << endl;
-  int i = mm + 1;
-  int j = -1;
-  while(i != mm) {
-    i %= R.size();
-    cerr << R[i] << j << "*x" << endl;
-    int j = (i+1) % R.size();
-
-    i++;
+    xd = R[i] - xd;
+    xc = -xc;
   }
 }
 
