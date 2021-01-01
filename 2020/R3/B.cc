@@ -77,6 +77,7 @@ void process() {
     xd = R[i] - xd;
     xc = -xc;
   }
+  cout << xd << " " << xc << "x" << endl;
 }
 
 int main(void) {
