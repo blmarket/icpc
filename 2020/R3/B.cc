@@ -41,19 +41,21 @@ int chk() {
   int maxx = R[0];
   for(int i=0;i<R.size();i++) {
     cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
-    if (minn >= maxx) {
-      ret++;
-      xc = -1;
-      xd = R[i];
-      minn = 0;
-      maxx = R[i];
-    }
+
     xc = -xc;
     xd = R[i] - xd;
     if (xc == -1) {
       maxx = min(maxx, xd);
     } else {
       minn = max(minn, -xd);
+    }
+
+    if (minn >= maxx) {
+      ret++;
+      xc = -1;
+      xd = R[i];
+      minn = 0;
+      maxx = R[i];
     }
   }
   cerr << ret << endl;
