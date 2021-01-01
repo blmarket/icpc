@@ -46,12 +46,12 @@ void process() {
     int unused;
     scanf(" %d", &unused);
   }
-  for(int i=0;i<R.size();i++) cout << R[i] << " ";
-  cout << endl;
+  for(int i=0;i<R.size();i++) cerr << R[i] << " ";
+  cerr << endl;
 
   int mm = 0;
   for(int i=1;i<R.size();i++) if(R[i] < R[mm]) mm = i;
-  cout << mm << endl;
+  cerr << mm << endl;
 }
 
 int main(void) {
