@@ -57,6 +57,9 @@ void process() {
     return;
   }
 
+  for(int i=0;i<R.size();i++) R[i] *= 2;
+
+
   for(int i=0;i<R.size();i++) cerr << R[i] << " ";
   cerr << endl;
 
@@ -68,7 +71,9 @@ void process() {
   while(i != mm) {
     i %= R.size();
     cerr << R[i] << j << "*x" << endl;
-    break;
+    int j = (i+1) % R.size();
+
+    i++;
   }
 }
 
