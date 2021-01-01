@@ -78,6 +78,25 @@ void process() {
     xc = -xc;
   }
   cout << xd << " " << xc << "x" << endl;
+  if (xc == -1) {
+    maxx = min(maxx, xd);
+  } else {
+    minn = max(minn, -xd);
+  }
+
+  if (xc == 1) {
+    if(minn < maxx) {
+      cout << R.size() << endl;
+      return;
+    }
+  } else {
+    int sol = xd / 2;
+    if (minn < sol && sol < maxx) {
+      cout << R.size() << endl;
+      return;
+    }
+  }
+  // cannot do with all 1
 }
 
 int main(void) {
