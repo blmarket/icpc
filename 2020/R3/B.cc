@@ -46,6 +46,17 @@ void process() {
     int unused;
     scanf(" %d", &unused);
   }
+
+  if (R.size() < 2) {
+    cout << 1 << endl;
+    return;
+  }
+
+  if (R.size() == 2) {
+    cout << 2 + (R[0] != R[1]) << endl;
+    return;
+  }
+
   for(int i=0;i<R.size();i++) cerr << R[i] << " ";
   cerr << endl;
 
