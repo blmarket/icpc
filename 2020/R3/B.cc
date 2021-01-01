@@ -30,7 +30,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int K, N;
 int pts[105];
-vector<PII> R;
+vector<int> R;
 
 void process() {
   R.clear();
@@ -39,9 +39,9 @@ void process() {
     scanf(" %d", &pts[i]);
   }
   for(int i=0;i+1<N;i++) {
-    R.pb(mp(pts[i+1] - pts[i], 0));
+    R.pb(pts[i+1] - pts[i]);
   }
-  R.pb(mp(K - pts[N-1] + pts[0], 0));
+  R.pb(K - pts[N-1] + pts[0]);
   for(int i=0;i<N;i++) {
     int unused;
     scanf(" %d", &unused);
@@ -53,15 +53,15 @@ void process() {
   }
 
   if (R.size() == 2) {
-    cout << 2 + (R[0].first != R[1].first) << endl;
+    cout << 2 + (R[0] != R[1]) << endl;
     return;
   }
 
-  for(int i=0;i<R.size();i++) cerr << R[i].first << " ";
+  for(int i=0;i<R.size();i++) cerr << R[i] << " ";
   cerr << endl;
 
   int mm = 0;
-  for(int i=1;i<R.size();i++) if(R[i].first < R[mm].first) mm = i;
+  for(int i=1;i<R.size();i++) if(R[i] < R[mm]) mm = i;
   cerr << mm << endl;
 }
 
