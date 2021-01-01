@@ -45,6 +45,7 @@ void process() {
   for(int i=0;i<N;i++) {
     int unused;
     scanf(" %d", &unused);
+    R[i] *= 2;
   }
 
   if (R.size() < 2) {
