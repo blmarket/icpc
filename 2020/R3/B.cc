@@ -32,6 +32,32 @@ int K, N;
 int pts[105];
 vector<int> R;
 
+int chk() {
+  int ret = 0;
+
+  int xc = -1;
+  int xd = R[0];
+  int minn = 0;
+  int maxx = R[0];
+  for(int i=0;i+1<R.size();i++) {
+    if (minn >= maxx) {
+      ret++;
+      xc = -1;
+      xd = R[i];
+      minn = 0;
+      maxx = R[i];
+    }
+    xc = -xc;
+    xd = R[i+1] - xd;
+    if (xc == -1) {
+      maxx = min(maxx, xd);
+    } else {
+      minn = max(minn, -xd);
+    }
+  }
+  return ret;
+}
+
 void process() {
   R.clear();
   scanf(" %d %d", &K, &N);
@@ -98,10 +124,13 @@ void process() {
     }
   }
   // cannot do with all 1
+  minn = -1;
   for(int i=0;i<R.size();i++) {
     rotate(R.begin(), R.begin() + 1, R.end());
-    for(int i=0;i<R.size();i++) cerr << R[i] << " "; cerr << endl;
+    int tmp = 1 + chk();
+    if(minn == -1 || minn > tmp) minn = tmp;
   }
+  cout << minn + R.size() << endl;
 }
 
 int main(void) {
