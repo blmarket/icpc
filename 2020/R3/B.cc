@@ -56,6 +56,7 @@ int chk() {
       minn = max(minn, -xd);
     }
   }
+  cerr << ret << endl;
   return ret;
 }
 
