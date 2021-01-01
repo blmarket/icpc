@@ -97,6 +97,9 @@ void process() {
     }
   }
   // cannot do with all 1
+  for(int i=0;i<R.size();i++) {
+    rotate(R.begin(), R.begin() + 1, R.end());
+  }
 }
 
 int main(void) {
