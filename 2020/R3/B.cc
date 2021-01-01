@@ -35,13 +35,11 @@ vector<int> R;
 int chk() {
   int ret = 0;
 
-  int xc = -1;
-  int xd = R[0];
+  int xc = 1;
+  int xd = 0;
   int minn = 0;
   int maxx = R[0];
   for(int i=0;i<R.size();i++) {
-    cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
-
     xc = -xc;
     xd = R[i] - xd;
     if (xc == -1) {
@@ -49,6 +47,8 @@ int chk() {
     } else {
       minn = max(minn, -xd);
     }
+
+    cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
 
     if (minn >= maxx) {
       ret++;
