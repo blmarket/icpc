@@ -48,7 +48,7 @@ int chk() {
       minn = max(minn, -xd);
     }
 
-    cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
+    // cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
 
     if (minn >= maxx) {
       ret++;
