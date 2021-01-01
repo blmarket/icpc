@@ -33,6 +33,7 @@ int pts[105];
 vector<int> R;
 
 void process() {
+  R.clear();
   scanf(" %d %d", &K, &N);
   for(int i=0;i<N;i++) {
     scanf(" %d", &pts[i]);
