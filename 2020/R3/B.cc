@@ -57,6 +57,8 @@ void process() {
     return;
   }
 
+  for(int i=0;i<R.size();i++) cerr << R[i] << " "; cerr << endl;
+
   // Check all has 1
   // R[0]: x, R[0] - x;
   int xc = -1;
