@@ -58,7 +58,7 @@ int chk() {
       maxx = R[i];
     }
   }
-  cerr << ret << endl;
+  // cerr << ret << endl;
   return ret;
 }
 
