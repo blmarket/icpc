@@ -48,16 +48,22 @@ void process() {
       pts.pb(j);
     }
 
+    bool fail = false;
     int assign[20];
     int jj = 0;
     for(int j=0;j<size(pts);j++) {
-      while(jj < N && pts[j] >= T[jj] * 2) {
+      while(jj < N && pts[j] > T[jj] * 2) {
         jj++;
+      }
+      if(pts[j] == T[jj]) {
+        fail=true;
+        break;
       }
       assign[j] = (jj % N);
       cerr << pts[j] << ":" << assign[j] << " ";
     }
     cerr << endl;
+    if(fail) continue;
   }
 }
 
