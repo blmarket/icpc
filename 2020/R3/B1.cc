@@ -55,7 +55,7 @@ void process() {
         jj++;
       }
       assign[j] = (jj % N);
-      cerr << assign[j] << " ";
+      cerr << pts[j] << ":" << assign[j] << " ";
     }
     cerr << endl;
   }
