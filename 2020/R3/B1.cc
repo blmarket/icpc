@@ -43,9 +43,19 @@ void process() {
   int nn = (1 << (K*2));
   cout << nn << endl;
   for(int i=0;i<nn;i++) {
-    cerr << i << ": ";
-    for(int j=0;j<N*2;j++) if((1<<j) & i) {
-      cerr << j << " ";
+    vector<int> pts = VI();
+    for(int j=0;j<N*2;j++) if ((1<<j) & i) {
+      pts.pb(j);
+    }
+
+    int assign[20];
+    int jj = 0;
+    for(int j=0;j<size(pts);j++) {
+      while(jj < N && pts[j] >= T[jj]) {
+        jj++;
+      }
+      assign[j] = (jj % N);
+      cerr << assign[j] << " ";
     }
     cerr << endl;
   }
