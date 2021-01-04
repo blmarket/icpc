@@ -55,7 +55,7 @@ void process() {
       while(jj < N && pts[j] > T[jj] * 2) {
         jj++;
       }
-      if(pts[j] == T[jj]) {
+      if(pts[j] == T[jj] * 2) {
         fail=true;
         break;
       }
