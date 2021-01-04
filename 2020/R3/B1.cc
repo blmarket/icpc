@@ -50,6 +50,8 @@ void process() {
 
     bool fail = false;
     int assign[20];
+    int hh[20];
+    memset(hh, 0, sizeof(hh));
     int jj = 0;
     for(int j=0;j<size(pts);j++) {
       while(jj < N && pts[j] > T[jj] * 2) {
@@ -60,12 +62,14 @@ void process() {
         break;
       }
       assign[j] = (jj % N);
+      hh[(jj%N)]++;
     }
     if(fail) continue;
-    // for(int j=0;j<size(pts);j++) {
-    //   cerr << pts[j] << ":" << assign[j] << " ";
-    // }
-    // cerr << endl;
+    for(int j=0;j<N;j++) if(hh[j] == 0 || hh[j] > 2) { fail=true; break; }
+    for(int j=0;j<size(pts);j++) {
+      cerr << pts[j] << ":" << assign[j] << " ";
+    }
+    cerr << endl;
   }
 }
 
