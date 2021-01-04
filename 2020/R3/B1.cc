@@ -42,8 +42,8 @@ void process() {
 
   int nn = (1 << (K*2));
   cout << nn << endl;
-  return;
   for(int i=0;i<nn;i++) {
+    cerr << i << ":";
     for(int j=0;j<N;j++) if((1<<j) & i) {
       cerr << j << " ";
     }
