@@ -51,7 +51,7 @@ void process() {
     int assign[20];
     int jj = 0;
     for(int j=0;j<size(pts);j++) {
-      while(jj < N && pts[j] >= T[jj]) {
+      while(jj < N && pts[j] >= T[jj] * 2) {
         jj++;
       }
       assign[j] = (jj % N);
