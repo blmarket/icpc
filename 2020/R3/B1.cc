@@ -60,10 +60,12 @@ void process() {
         break;
       }
       assign[j] = (jj % N);
+    }
+    if(fail) continue;
+    for(int j=0;j<size(pts);j++) {
       cerr << pts[j] << ":" << assign[j] << " ";
     }
     cerr << endl;
-    if(fail) continue;
   }
 }
 
