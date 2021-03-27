@@ -29,6 +29,19 @@ void process() {
   }
   sort(diff, diff + 10000);
 
+  vector<pair<int, int>> solved;
+  for(int i=0;i<100;i++) {
+    int cnt = 0;
+    for(int j=0;j<10000;j++) {
+      if(ans[i][j] == '1') cnt++;
+    }
+    solved.push_back({-cnt, i});
+  }
+  sort(solved.begin(), solved.end());
+  for(int i=0;i<10;i++) {
+    cout << solved[i].first << " " << solved[i].second << endl;
+  }
+
   for(int i=0;i<10000;i++) {
     cout << ans[58][diff[i].second];
   }
