@@ -50,7 +50,7 @@ void process() {
     for(int j=0;j<10000;j++) {
       n[sc[cur][j] >= sc[nex][j]] += 1;
     }
-    cout << n[0] << " " << n[1] << endl;
+    cout << cur << " " << nex << " " << n[0] << " " << n[1] << endl;
   }
 }
 
