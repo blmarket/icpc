@@ -42,12 +42,16 @@ void process() {
     solved.push_back({-sc[i][10000], i});
   }
   sort(solved.begin(), solved.end());
-  for(int i=0;i<10;i++) {
+
+  for(int i=0;i<99;i++) {
+    for(int j=0;j<10000;j++) {
+      
+    }
     cout << solved[i].first << " " << solved[i].second << endl;
   }
 
   for(int i=0;i<10000;i++) {
-    cout << (sc[75][i] > sc[68][i]);
+    cout << (sc[75][i] >= sc[68][i]);
   }
   cout << endl;
 }
