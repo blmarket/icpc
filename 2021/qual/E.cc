@@ -13,6 +13,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 string ans[105];
+int sc[105][10005];
 
 void process() {
   for(int i=0;i<100;i++) {
@@ -29,13 +30,16 @@ void process() {
   }
   sort(diff, diff + 10000);
 
+  for(int i=0;i<10000;i++) {
+    int it = diff[i].second;
+    for(int j=0;j<100;j++) {
+      sc[j][i+1] = sc[j][i] + (ans[j][it] == '1');
+    }
+  }
+
   vector<pair<int, int>> solved;
   for(int i=0;i<100;i++) {
-    int cnt = 0;
-    for(int j=0;j<10000;j++) {
-      if(ans[i][j] == '1') cnt++;
-    }
-    solved.push_back({cnt, i});
+    solved.push_back({-sc[i][10000], i});
   }
   sort(solved.begin(), solved.end());
   for(int i=0;i<10;i++) {
