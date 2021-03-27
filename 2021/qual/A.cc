@@ -19,12 +19,14 @@ void process() {
   scanf(" %d %d", &N, &C);
   for(int i=0;i<N;i++) arr[i] = i+1;
 
+  C -= N-1;
+  if(C < 0) {
+    cout << "IMPOSSIBLE" << endl;
+    return;
+  }
+
   for(int i=N-2;i>=0;i--) {
-    int mx = min(N - i, C - i);
-    if(mx == 0) {
-      C = 1;
-      break;
-    }
+    int mx = min(N - 1 - i, C);
     reverse(arr+i, arr+i+mx);
     C -= mx;
   }
