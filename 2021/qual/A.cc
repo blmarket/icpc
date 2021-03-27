@@ -20,7 +20,11 @@ void process() {
   for(int i=0;i<N;i++) arr[i] = i+1;
 
   for(int i=N-2;i>=0;i--) {
-    int mx = min(N - i, C);
+    int mx = min(N - i, C - i);
+    if(mx == 0) {
+      C = 1;
+      break;
+    }
     reverse(arr+i, arr+i+mx);
     C -= mx;
   }
