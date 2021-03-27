@@ -25,15 +25,15 @@ void process() {
   pair<int, int> diff[10005];
   for(int i=0;i<10000;i++) {
     int cnt = 0;
-    for(int j=0;j<100;j++) if(ans[j][i] == '1') ++cnt;
-    diff[i] = {cnt, i};
+    for(int j=0;j<100;j++) if(ans[j][i] == '0') ++cnt;
+    diff[i] = {-cnt, i};
   }
   sort(diff, diff + 10000);
 
   for(int i=0;i<10000;i++) {
     int it = diff[i].second;
     for(int j=0;j<100;j++) {
-      sc[j][i+1] = sc[j][i] + (ans[j][it] == '1');
+      sc[j][i+1] = sc[j][i] + (ans[j][it] == '0');
     }
   }
 
