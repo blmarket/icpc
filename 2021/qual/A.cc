@@ -20,7 +20,7 @@ void process() {
   for(int i=0;i<N;i++) scanf(" %d", &arr[i]);
 
   int ret = 0;
-  for(int i=0;i<N;i++) {
+  for(int i=0;i+1<N;i++) {
     for(int j=i;j<N;j++) {
       if(arr[j] == i+1) {
         ret += j-i+1;
