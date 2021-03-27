@@ -29,7 +29,7 @@ void process() {
     int mx = min(N - 1 - i, C);
     reverse(arr+i, arr+i+mx);
     for(int j=0;j<N;j++) cerr << arr[j] << " ";
-    cerr << endl;
+    cerr << " = " << C << endl;
     C -= mx;
   }
 
