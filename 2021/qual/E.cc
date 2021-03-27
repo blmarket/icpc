@@ -43,7 +43,7 @@ void process() {
   }
 
   for(int i=0;i<10000;i++) {
-    cout << ans[75][diff[i].second];
+    cout << ans[68][diff[i].second];
   }
   cout << endl;
 }
