@@ -35,7 +35,7 @@ void process() {
     for(int j=0;j<10000;j++) {
       if(ans[i][j] == '1') cnt++;
     }
-    solved.push_back({-cnt, i});
+    solved.push_back({cnt, i});
   }
   sort(solved.begin(), solved.end());
   for(int i=0;i<10;i++) {
