@@ -44,16 +44,14 @@ void process() {
   sort(solved.begin(), solved.end());
 
   for(int i=0;i<99;i++) {
+    int cur = solved[i].second;
+    int nex = solved[i+1].second;
+    int n[2] = {0, 0};
     for(int j=0;j<10000;j++) {
-      
+      n[sc[cur][j] >= sc[nex][j]] += 1;
     }
-    cout << solved[i].first << " " << solved[i].second << endl;
+    cout << n[0] << " " << n[1] << endl;
   }
-
-  for(int i=0;i<10000;i++) {
-    cout << (sc[58][i] >= sc[75][i]);
-  }
-  cout << endl;
 }
 
 int main(void) {
