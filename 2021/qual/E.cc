@@ -30,7 +30,7 @@ void process() {
   sort(diff, diff + 10000);
 
   for(int i=0;i<10000;i++) {
-    cout << ans[99][diff[i].second];
+    cout << ans[57][diff[i].second];
   }
   cout << endl;
 }
