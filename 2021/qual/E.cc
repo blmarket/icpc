@@ -47,7 +47,7 @@ void process() {
   }
 
   for(int i=0;i<10000;i++) {
-    cout << (sc[75][i] > sc[68][i]);
+    cout << (sc[68][i] > sc[84][i]);
   }
   cout << endl;
 }
