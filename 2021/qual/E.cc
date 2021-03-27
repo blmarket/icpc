@@ -50,8 +50,12 @@ void process() {
     for(int j=0;j<10000;j++) {
       n[sc[cur][j] >= sc[nex][j]] += 1;
     }
-    cout << cur << " " << nex << " " << n[0] << " " << n[1] << endl;
+    if(n[0] > 1000) {
+      cout << cur+1 << endl;
+      return;
+    }
   }
+  cout << solved[99].second + 1 << endl;
 }
 
 int main(void) {
