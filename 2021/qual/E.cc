@@ -43,9 +43,9 @@ void process() {
   }
   sort(solved.begin(), solved.end());
 
-  for(int i=0;i<90;i++) {
+  for(int i=0;i<80;i++) {
     int cur = solved[i].second;
-    int nex = solved[i+10].second;
+    int nex = solved[i+20].second;
     int n[2] = {0, 0};
     for(int j=0;j<10000;j++) {
       n[sc[cur][j] >= sc[nex][j]] += 1;
