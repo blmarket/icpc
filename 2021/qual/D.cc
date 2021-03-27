@@ -16,15 +16,7 @@ int N;
 
 vector<int> go(vector<int> &arr) {
   int res;
-  if(arr.size() == 1) {
-    return arr;
-  }
-  if(arr.size() == 2) {
-    cout << arr[0] << " " << arr[1] << " " << left << endl;
-    scanf(" %d", &res);
-    if(res == arr[1]) {
-      swap(arr[0], arr[1]);
-    }
+  if(arr.size() <= 2) {
     return arr;
   }
 
