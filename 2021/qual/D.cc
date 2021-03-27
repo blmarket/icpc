@@ -29,7 +29,7 @@ vector<int> go(vector<int> &arr) {
   right.pb(res == arr[2] ? arr[1] : arr[2]);
   mid = res;
 
-  for(int i=4;i<arr.size();i++) {
+  for(int i=3;i<arr.size();i++) {
     cout << left[0] << " " << mid << " " << arr[i] << endl;
     scanf(" %d", &res);
     if(res == mid) {
