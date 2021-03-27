@@ -12,24 +12,26 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-int N;
+int N, C;
 int arr[105];
 
 void process() {
-  scanf(" %d", &N);
-  for(int i=0;i<N;i++) scanf(" %d", &arr[i]);
+  scanf(" %d %d", &N, &C);
+  for(int i=0;i<N;i++) arr[i] = i+1;
 
-  int ret = 0;
-  for(int i=0;i+1<N;i++) {
-    for(int j=i;j<N;j++) {
-      if(arr[j] == i+1) {
-        ret += j-i+1;
-        reverse(arr + i, arr+j+1);
-        break;
-      }
-    }
+  for(int i=N-2;i>=0;i--) {
+    int mx = min(N - i, C);
+    reverse(arr+i, arr+i+mx);
+    C -= mx;
   }
-  cout << ret << endl;
+
+  if(C) {
+    cout << "IMPOSSIBLE" << endl;
+    return;
+  }
+  
+  for(int i=0;i<N;i++) cout << arr[i] << " ";
+  cout << endl;
 }
 
 int main(void) {
