@@ -81,6 +81,7 @@ int main(void) {
       vector<int> arr;
       for(int j=1;j<=N;j++) arr.pb(j);
       arr = go(arr);
+      cerr << "GOT" << endl;
       for(auto &it: arr) cout << it << " ";
       cout << endl;
       int tmp;
