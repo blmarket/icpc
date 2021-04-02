@@ -42,6 +42,7 @@ void process() {
         cC = 1000000;
         break;
     }
+    cerr << cJ << " " << cC << " " << str[i] << " " << cC + X << " " << cJ + Y << endl;
   }
   cerr << cJ << " " << cC << endl;
 
