@@ -27,12 +27,13 @@ void process() {
     cC = 1000000;
   }
   for(int i=1;i<L;i++) {
+    int tmp;
     cerr << cJ << " " << cC << " " << str[i] << " " << cC + X << " " << cJ + Y << endl;
     switch(str[i]) {
       case '?':
-        cC = min(cC, cJ + Y);
+        tmp = min(cC, cJ + Y);
         cJ = min(cJ, cC + X);
-        cerr << cJ << " " << cC << endl;
+        cC = tmp;
         break;
       case 'C':
         cC = min(cC, cJ + Y);
