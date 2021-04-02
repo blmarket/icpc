@@ -27,7 +27,7 @@ void process() {
     cC = 1000000;
   }
   for(int i=1;i<L;i++) {
-    cerr << cJ << " " << cC << " " << str[i] << endl;
+    cerr << cJ << " " << cC << " " << str[i] << " " << cC + X << " " << cJ + Y << endl;
     switch(str[i]) {
       case '?':
         cC = min(cC, cJ + Y);
