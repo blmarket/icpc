@@ -28,7 +28,6 @@ void process() {
   }
   for(int i=1;i<L;i++) {
     int tmp;
-    cerr << cJ << " " << cC << " " << str[i] << " " << cC + X << " " << cJ + Y << endl;
     switch(str[i]) {
       case '?':
         tmp = min(cC, cJ + Y);
@@ -45,7 +44,6 @@ void process() {
         break;
     }
   }
-  cerr << cJ << " " << cC << endl;
 
   cout << min(cC, cJ) << endl;
 }
