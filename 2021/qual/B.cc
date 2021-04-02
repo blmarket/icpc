@@ -35,6 +35,7 @@ void process() {
         cC = 1000000;
         break;
     }
+    cerr << cJ << " " << cC << endl;
   }
 
   cout << min(cC, cJ) << endl;
