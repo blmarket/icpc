@@ -30,9 +30,9 @@ void process() {
     cerr << cJ << " " << cC << " " << str[i] << " " << cC + X << " " << cJ + Y << endl;
     switch(str[i]) {
       case '?':
-        cerr << "HERE" << endl;
         cC = min(cC, cJ + Y);
         cJ = min(cJ, cC + X);
+        cerr << cJ << " " << cC << endl;
         break;
       case 'C':
         cC = min(cC, cJ + Y);
