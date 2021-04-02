@@ -20,7 +20,13 @@ void process() {
   int L = strlen(str);
 
   int cC = 0, cJ = 0;
-  for(int i=0;i<L;i++) {
+  if (str[0] == 'C') {
+    cJ = 1000000;
+  }
+  if (str[0] == 'J') {
+    cC = 1000000;
+  }
+  for(int i=1;i<L;i++) {
     switch(str[i]) {
       case '?':
         cC = min(cC, cJ + Y);
