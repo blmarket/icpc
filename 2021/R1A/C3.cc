@@ -46,9 +46,9 @@ u128 count(const vector<int> &n, const vector<int> &tgt) {
     int cur = i%2;
     int nex = 1-cur;
     memset(D[nex], 0, sizeof(D[0]));
-    for(int a=0;a<Q;a++) {
-      for(int b=0;b<Q;b++) {
-        for(int c=0;c<Q;c++) {
+    for(int a=0;a<=Q-n[i];a++) {
+      for(int b=0;b<=Q-n[i];b++) {
+        for(int c=0;c<=Q-n[i];c++) {
           for(int k=0;k<=n[i];k++) {
             int na = a + k * at + (n[i]-k) * !at;
             int nb = b + k * bt + (n[i]-k) * !bt;
