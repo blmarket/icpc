@@ -27,6 +27,7 @@ string str(u128 v) {
 }
 
 void process() {
+  cout << "HERE" << endl;
   vector<pair<int, string>> V;
   scanf(" %d %d", &N, &Q);
   char buf[1024];
