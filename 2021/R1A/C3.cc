@@ -27,8 +27,12 @@ string str(u128 v) {
   return move(ret);
 }
 
+map<vector<int>, u128> memo;
+
+u128 count(const vector<int> &n) {
+}
+
 void process() {
-  cout << "HERE" << endl;
   vector<pair<int, string>> V;
   scanf(" %d %d", &N, &Q);
   char buf[1024];
@@ -50,8 +54,20 @@ void process() {
   if (N < 3) {
     sort(V.begin(), V.end());
     cout << V[N-1].second << " " << V[N-1].first << "/1" << endl;
+    return;
   }
-  cout << "HERE" << endl;
+
+  int n[8] = {0};
+  for(int i=0;i<Q;i++) {
+    int at = V[0].second[i] == 'T';
+    int bt = V[1].second[i] == 'T';
+    int ct = V[2].second[i] == 'T';
+    n[at * 4 + bt * 2 + ct] += 1;
+  }
+  for(int i=0;i<8;i++) {
+
+    
+  }
 
   memset(D, 0, sizeof(D));
   D[0][0][0][0] = 1;
