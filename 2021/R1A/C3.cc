@@ -101,7 +101,10 @@ void process() {
     int bt = V[1].second[i] == 'T';
     int ct = V[2].second[i] == 'T';
     n[at * 4 + bt * 2 + ct] -= 1;
-    cout << str(count(n, vector<int> { V[0].first, V[1].first, V[2].first })) << endl;
+    cout 
+      << str(count(n, vector<int> { V[0].first - at, V[1].first - bt, V[2].first - ct })) 
+      << str(count(n, vector<int> { V[0].first - !at, V[1].first - !bt, V[2].first - !ct })) 
+      << endl;
     n[at * 4 + bt * 2 + ct] += 1;
   }
 }
