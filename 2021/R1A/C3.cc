@@ -96,6 +96,14 @@ void process() {
 
   cout << str(count(n, vector<int> { V[0].first, V[1].first, V[2].first })) << endl;
 
+  for(int i=0;i<Q;i++) {
+    int at = V[0].second[i] == 'T';
+    int bt = V[1].second[i] == 'T';
+    int ct = V[2].second[i] == 'T';
+    n[at * 4 + bt * 2 + ct] -= 1;
+    cout << str(count(n, vector<int> { V[0].first, V[1].first, V[2].first })) << endl;
+    n[at * 4 + bt * 2 + ct] += 1;
+  }
 }
 
 int main(void) {
