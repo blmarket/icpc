@@ -49,6 +49,7 @@ void process() {
     sort(V.begin(), V.end());
     cout << V[N-1].second << " " << V[N-1].first << "/1" << endl;
   }
+  cout << "HERE" << endl;
 
   u128 D[2][128][128][128];
   memset(D, 0, sizeof(D));
