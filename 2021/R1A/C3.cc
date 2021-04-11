@@ -12,6 +12,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, Q;
+u128 D[2][128][128][128];
 
 string str(u128 v) {
   if(v == 0) {
@@ -52,7 +53,6 @@ void process() {
   }
   cout << "HERE" << endl;
 
-  u128 D[2][128][128][128];
   memset(D, 0, sizeof(D));
   D[0][0][0][0] = 1;
   for(int i=0;i<Q;i++) {
@@ -81,7 +81,6 @@ int main(void) {
     scanf(" %d", &T);
     for(int i=1;i<=T;i++) {
         printf("Case #%d: ", i);
-        cout << i << endl;
         process();
     }
     return 0;
