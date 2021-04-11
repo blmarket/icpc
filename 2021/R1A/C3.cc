@@ -54,6 +54,7 @@ void process() {
   memset(D, 0, sizeof(D));
   D[0][0][0][0] = 1;
   for(int i=0;i<Q;i++) {
+    cout << i << endl;
     int cur = i%2;
     int nex = 1-cur;
     memset(D[nex], 0, sizeof(D[0]));
