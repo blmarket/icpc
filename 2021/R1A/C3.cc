@@ -12,6 +12,7 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 int N, Q;
+u128 bin[128][128];
 u128 D[2][128][128][128];
 
 string str(u128 v) {
@@ -38,27 +39,28 @@ u128 count(const vector<int> &n, const vector<int> &tgt) {
   memset(D, 0, sizeof(D));
   D[0][0][0][0] = 1;
 
-  int cur = 0, nex = 1;
   for(int i=0;i<8;i++) {
     bool at = i & 4;
     bool bt = i & 2;
     bool ct = i & 1;
-    for(int j=0;j<n[i];j++) {
-      memset(D[nex], 0, sizeof(D[0]));
-      for(int a=0;a<Q;a++) {
-        for(int b=0;b<Q;b++) {
-          for(int c=0;c<Q;c++) {
-            D[nex][a+at][b+bt][c+ct] += D[cur][a][b][c];
-            D[nex][a+!at][b+!bt][c+!ct] += D[cur][a][b][c];
+    int cur = i%2;
+    int nex = 1-cur;
+    memset(D[nex], 0, sizeof(D[0]));
+    for(int a=0;a<Q;a++) {
+      for(int b=0;b<Q;b++) {
+        for(int c=0;c<Q;c++) {
+          for(int k=0;k<=n[i];k++) {
+            int na = a + k * at + (n[i]-k) * !at;
+            int nb = b + k * bt + (n[i]-k) * !bt;
+            int nc = c + k * ct + (n[i]-k) * !ct;
+            D[nex][na][nb][nc] += D[cur][a][b][c] * bin[n[i]][k];
           }
         }
       }
-      cur = !cur;
-      nex = 1-cur;
     }
   }
 
-  return memo[key] = D[cur][tgt[0]][tgt[1]][tgt[2]];
+  return memo[key] = D[0][tgt[0]][tgt[1]][tgt[2]];
 }
 
 void process() {
@@ -111,11 +113,19 @@ void process() {
 }
 
 int main(void) {
-    int T;
-    scanf(" %d", &T);
-    for(int i=1;i<=T;i++) {
-        printf("Case #%d: ", i);
-        process();
+  memset(bin, 0, sizeof(bin));
+  for(int i=0;i<=120;i++) {
+    bin[i][0] = bin[i][i] = 1;
+    for(int j=1;j<i;j++) {
+      bin[i][j] = bin[i-1][j-1] + bin[i-1][j];
     }
-    return 0;
+  }
+
+  int T;
+  scanf(" %d", &T);
+  for(int i=1;i<=T;i++) {
+    printf("Case #%d: ", i);
+    process();
+  }
+  return 0;
 }
