@@ -103,6 +103,7 @@ void process() {
     n[at * 4 + bt * 2 + ct] -= 1;
     cout 
       << str(count(n, vector<int> { V[0].first - at, V[1].first - bt, V[2].first - ct })) 
+      << " "
       << str(count(n, vector<int> { V[0].first - !at, V[1].first - !bt, V[2].first - !ct })) 
       << endl;
     n[at * 4 + bt * 2 + ct] += 1;
