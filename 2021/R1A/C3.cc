@@ -27,11 +27,14 @@ string str(u128 v) {
   return move(ret);
 }
 
-map<vector<int>, u128> memo;
+map<pair<vector<int>, vector<int>>, u128> memo;
 
 // 998407356219981937709017954393800
 
 u128 count(const vector<int> &n, const vector<int> &tgt) {
+  auto key = make_pair(n, tgt);
+  if(memo.count(key)) return memo[key];
+
   memset(D, 0, sizeof(D));
   D[0][0][0][0] = 1;
 
@@ -55,7 +58,7 @@ u128 count(const vector<int> &n, const vector<int> &tgt) {
     }
   }
 
-  return D[cur][tgt[0]][tgt[1]][tgt[2]];
+  return memo[key] = D[cur][tgt[0]][tgt[1]][tgt[2]];
 }
 
 void process() {
