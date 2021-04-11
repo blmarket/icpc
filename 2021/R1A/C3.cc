@@ -29,7 +29,33 @@ string str(u128 v) {
 
 map<vector<int>, u128> memo;
 
-u128 count(const vector<int> &n) {
+// 998407356219981937709017954393800
+
+u128 count(const vector<int> &n, const vector<int> &tgt) {
+  memset(D, 0, sizeof(D));
+  D[0][0][0][0] = 1;
+
+  int cur = 0, nex = 1;
+  for(int i=0;i<8;i++) {
+    bool at = i & 4;
+    bool bt = i & 2;
+    bool ct = i & 1;
+    for(int j=0;j<n[i];j++) {
+      memset(D[nex], 0, sizeof(D[0]));
+      for(int a=0;a<Q;a++) {
+        for(int b=0;b<Q;b++) {
+          for(int c=0;c<Q;c++) {
+            D[nex][a+at][b+bt][c+ct] += D[cur][a][b][c];
+            D[nex][a+!at][b+!bt][c+!ct] += D[cur][a][b][c];
+          }
+        }
+      }
+      cur = !cur;
+      nex = 1-cur;
+    }
+  }
+
+  return D[cur][tgt[0]][tgt[1]][tgt[2]];
 }
 
 void process() {
@@ -57,39 +83,16 @@ void process() {
     return;
   }
 
-  int n[8] = {0};
+  vector<int> n(8, 0);
   for(int i=0;i<Q;i++) {
     int at = V[0].second[i] == 'T';
     int bt = V[1].second[i] == 'T';
     int ct = V[2].second[i] == 'T';
     n[at * 4 + bt * 2 + ct] += 1;
   }
-  for(int i=0;i<8;i++) {
 
-    
-  }
+  cout << str(count(n, vector<int> { V[0].first, V[1].first, V[2].first })) << endl;
 
-  memset(D, 0, sizeof(D));
-  D[0][0][0][0] = 1;
-  for(int i=0;i<Q;i++) {
-    cout << i << endl;
-    int cur = i%2;
-    int nex = 1-cur;
-    memset(D[nex], 0, sizeof(D[0]));
-    for(int a=0;a<=i;a++) {
-      bool at = V[0].second[i] == 'T';
-      for(int b=0;b<=i;b++) {
-        bool bt = V[1].second[i] == 'T';
-        for(int c=0;c<=i;c++) {
-          bool ct = V[2].second[i] == 'T';
-          D[nex][a+at][b+bt][c+ct] += D[cur][a][b][c];
-          D[nex][a+!at][b+!bt][c+!ct] += D[cur][a][b][c];
-        }
-      }
-    }
-  }
-  int cur = Q%2;
-  cout << str(D[cur][V[0].first][V[1].first][V[2].first]) << endl;
 }
 
 int main(void) {
