@@ -13,7 +13,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 int N, Q;
 u128 bin[128][128];
-u128 D[2][128][128][128];
+unordered_map<int, unordered_map<int, unordered_map<int, u128>>> D[2];
 
 string str(u128 v) {
   if(v == 0) {
@@ -36,7 +36,7 @@ u128 count(const vector<int> &n, const vector<int> &tgt) {
   auto key = make_pair(n, tgt);
   if(memo.count(key)) return memo[key];
 
-  memset(D, 0, sizeof(D));
+  D[0].clear();
   D[0][0][0][0] = 1;
 
   for(int i=0;i<8;i++) {
@@ -45,7 +45,7 @@ u128 count(const vector<int> &n, const vector<int> &tgt) {
     bool ct = i & 1;
     int cur = i%2;
     int nex = 1-cur;
-    memset(D[nex], 0, sizeof(D[0]));
+    D[nex].clear();
     for(int a=0;a<=Q-n[i];a++) {
       for(int b=0;b<=Q-n[i];b++) {
         for(int c=0;c<=Q-n[i];c++) {
