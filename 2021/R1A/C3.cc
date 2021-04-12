@@ -40,20 +40,20 @@ u128 count(const vector<int> &n, const vector<int> &tgt) {
   D[0][0][0][0] = 1;
 
   for(int i=0;i<8;i++) {
-    bool at = i & 4;
-    bool bt = i & 2;
-    bool ct = i & 1;
+    bool af = i & 4;
+    bool bf = i & 2;
+    bool cf = i & 1;
     int cur = i%2;
     int nex = 1-cur;
     D[nex].clear();
-    for(int a=0;a<=Q-n[i];a++) {
-      for(int b=0;b<=Q-n[i];b++) {
-        for(int c=0;c<=Q-n[i];c++) {
+    for (const auto &at: D[cur]) {
+      for (const auto &bt: at.second) {
+        for (const auto &ct: bt.second) {
           for(int k=0;k<=n[i];k++) {
-            int na = a + k * at + (n[i]-k) * !at;
-            int nb = b + k * bt + (n[i]-k) * !bt;
-            int nc = c + k * ct + (n[i]-k) * !ct;
-            D[nex][na][nb][nc] += D[cur][a][b][c] * bin[n[i]][k];
+            int na = at.first + k * af + (n[i] - k) * !af;
+            int nb = bt.first + k * bf + (n[i] - k) * !bf;
+            int nc = ct.first + k * cf + (n[i] - k) * !cf;
+            D[nex][na][nb][nc] += ct.second * bin[n[i]][k];
           }
         }
       }
