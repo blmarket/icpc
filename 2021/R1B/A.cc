@@ -33,7 +33,7 @@ bool check(long long h, long long m, long long s) {
   long long m2 = ((m2-d) % ROUND) + ROUND;
   long long s2 = ((s2-d) % ROUND) + ROUND;
 
-  if(((h2*12) % ROUND) == m2 && ((h2*720) % ROUND) == (s2 % ROUND)) {
+  if(((h2*12) % ROUND) == (m2 % ROUND) && ((h2*720) % ROUND) == (s2 % ROUND)) {
     long long t1 = h2 % HOUR_TICK;
     long long t2 = t1 % (60 * NANO);
     long long t3 = t2 % NANO;
