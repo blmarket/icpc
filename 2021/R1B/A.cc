@@ -19,7 +19,6 @@ const long long ROUND = HOUR_TICK * 12;
 long long inp[3];
 
 long long check2(long long h, long long m, long long s) {
-  cout << h << " " << m << " " << s << endl;
   while(h < 0) {
     h += HOUR_TICK;
     m += HOUR_TICK;
