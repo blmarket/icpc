@@ -76,9 +76,9 @@ bool check(long long h, long long m, long long s) {
         }
       }
 
-      h2 = (((h2+d) % ROUND) + ROUND) % ROUND;
-      m2 = (((m2+d) % ROUND) + ROUND) % ROUND;
-      s2 = (((s2+d) % ROUND) + ROUND) % ROUND;
+      h2 = (((h2-d) % ROUND) + ROUND) % ROUND;
+      m2 = (((m2-d) % ROUND) + ROUND) % ROUND;
+      s2 = (((s2-d) % ROUND) + ROUND) % ROUND;
 
       if (j == 0 && i == 0) {
         cerr << h2 << " " << m2 << " " << s2 << " " << d << endl;
