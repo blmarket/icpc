@@ -29,6 +29,8 @@ bool check(long long h, long long m, long long s) {
     }
   }
 
+  d %= ROUND;
+
   long long h2 = (((h-d) % ROUND) + ROUND) % ROUND;
   long long m2 = ((m2-d) % ROUND) + ROUND;
   long long s2 = ((s2-d) % ROUND) + ROUND;
