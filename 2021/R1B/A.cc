@@ -20,6 +20,7 @@ bool check(long long h, long long m, long long s) {
   for(int i=0;i<12;i++) {
     cout << HOUR_TICK * i << endl;
   }
+  return true;
 }
 
 void process() {
