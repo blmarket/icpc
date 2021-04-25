@@ -12,11 +12,12 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-const long long HOUR_TICK = 60LL * 60 * 1e9;
+const long long NANO = 1e9;
+const long long HOUR_TICK = 60LL * 60 * NANO;
 
 long long inp[3];
 
-bool check2(long long h, long long m, long long s) {
+long long check2(long long h, long long m, long long s) {
   while(h < 0) {
     h += HOUR_TICK;
     m += HOUR_TICK;
@@ -28,14 +29,20 @@ bool check2(long long h, long long m, long long s) {
     s -= HOUR_TICK;
   }
 
-  if (h * 12 == m && h * 720 == s) return true;
-  return false;
+  if (h * 12 == m && h * 720 == s) {
+    return 0;
+  }
+  return -1;
 }
 
 bool check(long long h, long long m, long long s) {
   for(int i=0;i<12;i++) {
     long long ht = h - HOUR_TICK * i;
-    if (check2(ht, m, s)) return true;
+    long long tmp = check2(ht, m, s);
+    if (tmp != -1) {
+      cout << i << " " << (tmp / NANO / 60) << " " << (tmp / NANO) % 60 << " " << tmp % NANO;
+      return true;
+    }
   }
   return false;
 }
