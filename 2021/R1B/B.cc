@@ -43,10 +43,6 @@ void process() {
     }
     if(fail) continue;
     cout << i << endl;
-    for(int j=0;j<U.size();j++) {
-      cerr << S[j] << "/" << U[j] << " ";
-    }
-    cerr << endl;
     return;
   }
 }
