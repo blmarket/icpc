@@ -12,7 +12,7 @@ typedef long long LL;
 
 template<typename T> int size(const T &a) { return a.size(); } 
 
-const long long HOUR_TICK = 60LL * 1e9;
+const long long HOUR_TICK = 60LL * 60 * 1e9;
 
 long long inp[3];
 
