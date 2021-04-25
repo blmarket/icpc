@@ -32,8 +32,6 @@ long long check2(long long h, long long m, long long s) {
   m = ((m % ROUND) + ROUND) % ROUND;
   s = ((s % ROUND) + ROUND) % ROUND;
 
-  cerr << h << " " << m << " " << s << endl;
-
   long long d = h * 12 - m;
   for(int i=0;i<11;i++) {
     if ((d%11) == 0) {
@@ -43,6 +41,8 @@ long long check2(long long h, long long m, long long s) {
       d += ROUND;
     }
   }
+
+  cerr << h << " " << m << " " << s << " = " << d << endl;
 
   if (((h+d) * 12) % ROUND == (m+d) && ((h+d) * 720) % ROUND == (s+d)) {
     // cout << h+d << endl;
