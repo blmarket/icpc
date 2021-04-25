@@ -82,6 +82,7 @@ bool check(long long h, long long m, long long s) {
 
       if((h2*12) % ROUND == m2 && (h2*720) == s2 % ROUND) {
         cout << j << " " << mm << " " << ss << " " << ((-d % NANO) + NANO) % NANO << endl;
+        cerr << d << endl;
         return true;
       }
     }
