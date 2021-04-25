@@ -66,7 +66,7 @@ bool check(long long h, long long m, long long s) {
       long long s2 = s - i * NANO * 12;
 
       if (j == 0 && i == 1800) {
-        cout << h2 << " " << m2 << " " << s2 << endl;
+        cout << h << " " << h2 << " " << m2 << " " << s2 << endl;
       }
 
       long long d = h2 * 12 - m2;
