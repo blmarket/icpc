@@ -43,7 +43,7 @@ long long check2(long long h, long long m, long long s) {
   }
 
   if (((h+d) * 12) % ROUND == (m+d) && ((h+d) * 720) % ROUND == (s+d)) {
-    cout << h+d << endl;
+    // cout << h+d << endl;
     return h+d;
   }
   return -1;
