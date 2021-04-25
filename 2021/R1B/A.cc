@@ -30,6 +30,8 @@ long long check2(long long h, long long m, long long s) {
     m -= HOUR_TICK;
     s -= HOUR_TICK;
   }
+  m = ((m % ROUND) + ROUND) % ROUND;
+  s = ((s % ROUND) + ROUND) % ROUND;
 
   if ((h * 12) % ROUND == m && (h * 720) % ROUND == s) {
     return h;
