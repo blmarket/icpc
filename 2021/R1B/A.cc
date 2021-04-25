@@ -32,8 +32,8 @@ bool check(long long h, long long m, long long s) {
   d %= ROUND;
 
   long long h2 = (((h-d) % ROUND) + ROUND) % ROUND;
-  long long m2 = ((m2-d) % ROUND) + ROUND;
-  long long s2 = ((s2-d) % ROUND) + ROUND;
+  long long m2 = ((m-d) % ROUND) + ROUND;
+  long long s2 = ((s-d) % ROUND) + ROUND;
 
   if(((h2*12) % ROUND) == (m2 % ROUND) && ((h2*720) % ROUND) == (s2 % ROUND)) {
     cerr << d << " " << h2 << " " << m2 << " " << s2 << endl;
