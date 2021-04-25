@@ -61,12 +61,13 @@ bool check(long long h, long long m, long long s) {
     for(int i=0;i<3600;i++) {
       int mm = (i / 60);
       int ss = (i % 60);
+
       long long h2 = h - i * NANO - j * HOUR_TICK;
       long long m2 = m - i * NANO * 12;
       long long s2 = s - i * NANO * 12;
 
-      if (j == 0 && i == 1800) {
-        cout << h << " " << h2 << " " << m2 << " " << s2 << endl;
+      if (j == 6 && i == 1800) {
+        cout << h2 << " " << m2 << " " << s2 << endl;
       }
 
       long long d = h2 * 12 - m2;
