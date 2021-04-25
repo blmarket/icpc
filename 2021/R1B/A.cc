@@ -64,7 +64,7 @@ bool check(long long h, long long m, long long s) {
 
       long long h2 = h - i * NANO - j * HOUR_TICK;
       long long m2 = m - i * NANO * 12;
-      long long s2 = s - i * NANO * 12;
+      long long s2 = s - i * NANO * 720;
 
       if (j == 6 && i == 1800) {
         cout << h2 << " " << m2 << " " << s2 << endl;
