@@ -54,6 +54,7 @@ bool check(long long h, long long m, long long s) {
   for(int i=0;i<12;i++) {
     long long ht = h - HOUR_TICK * i;
     long long tmp = check2(ht, m, s);
+    if (tmp >= HOUR_TICK) continue;
     if (tmp != -1) {
       cout << i << " " << (tmp / NANO / 60) << " " << (tmp / NANO) % 60 << " " << tmp % NANO << endl;
       return true;
