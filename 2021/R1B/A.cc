@@ -18,44 +18,6 @@ const long long ROUND = HOUR_TICK * 12;
 
 long long inp[3];
 
-long long check2(long long h, long long m, long long s) {
-  for(int i=0;i<3600;i++) {
-  }
-
-  while(h < 0) {
-    h += HOUR_TICK;
-    m += HOUR_TICK;
-    s += HOUR_TICK;
-  }
-  while(h > HOUR_TICK) {
-    h -= HOUR_TICK;
-    m -= HOUR_TICK;
-    s -= HOUR_TICK;
-  }
-  m = ((m % ROUND) + ROUND) % ROUND;
-  s = ((s % ROUND) + ROUND) % ROUND;
-
-  long long d = h * 12 - m;
-  for(int i=0;i<11;i++) {
-    if ((d%11) == 0) {
-      d /= 11;
-      break;
-    } else {
-      d += ROUND;
-    }
-  }
-
-  // cerr << h << " " << m << " " << s << " = " << d << endl;
-
-  if (((h-d) * 12) % ROUND == (m-d)%ROUND && ((h-d) * 720) % ROUND == (s-d)%ROUND) {
-    return h-d;
-  }
-  if (((h+d) * 12) % ROUND == (m+d)%ROUND && ((h+d) * 720) % ROUND == (s+d)%ROUND) {
-    return h+d;
-  }
-  return -1;
-}
-
 bool check(long long h, long long m, long long s) {
   for(int j=0;j<12;j++) {
     for(int i=0;i<3600;i++) {
@@ -72,9 +34,10 @@ bool check(long long h, long long m, long long s) {
           d /= 11;
           break;
         } else {
-          d += NANO;
+          d += ROUND;
         }
       }
+      if (d < 0 || d >= NANO) continue;
 
       h2 = (((h2-d) % ROUND) + ROUND) % ROUND;
       m2 = (((m2-d) % ROUND) + ROUND) % ROUND;
