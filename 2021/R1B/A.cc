@@ -37,7 +37,8 @@ bool check(long long h, long long m, long long s) {
           d += ROUND;
         }
       }
-      if (d < 0 || d >= NANO) continue;
+
+      cerr << d << endl;
 
       h2 = (((h2-d) % ROUND) + ROUND) % ROUND;
       m2 = (((m2-d) % ROUND) + ROUND) % ROUND;
