@@ -66,10 +66,6 @@ bool check(long long h, long long m, long long s) {
       long long m2 = m - i * NANO * 12;
       long long s2 = s - i * NANO * 720;
 
-      if (j == 0 && i == 0) {
-        cerr << h2 << " " << m2 << " " << s2 << endl;
-      }
-
       long long d = h2 * 12 - m2;
       for(int i=0;i<11;i++) {
         if ((d%11) == 0) {
@@ -79,6 +75,11 @@ bool check(long long h, long long m, long long s) {
           d += ROUND;
         }
       }
+
+      if (j == 0 && i == 0) {
+        cerr << h2 << " " << m2 << " " << s2 << " " << d << endl;
+      }
+
 
       h2 = (((h2+d) % ROUND) + ROUND) % ROUND;
       m2 = (((m2+d) % ROUND) + ROUND) % ROUND;
