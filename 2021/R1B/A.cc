@@ -42,6 +42,11 @@ long long check2(long long h, long long m, long long s) {
     }
   }
 
+  cerr << h << " " << m << " " << s << " = " << d << endl;
+  cerr << ((h+d)*12)%ROUND << endl;
+  cerr << ((m+d)*1)%ROUND << endl;
+  cerr << ((h+d)*720)%ROUND << endl;
+
   if (((h+d) * 12) % ROUND == (m+d)%ROUND && ((h+d) * 720) % ROUND == (s+d)%ROUND) {
     return h+d;
   }
