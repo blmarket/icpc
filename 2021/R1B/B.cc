@@ -42,6 +42,10 @@ void process() {
     }
     if(!fail) {
       cout << i << endl;
+      for(int j=0;j<S.size();j++) {
+        cerr << S[j] << " ";
+      }
+      cerr << endl;
       return;
     }
   }
