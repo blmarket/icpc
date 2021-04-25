@@ -14,6 +14,7 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 const long long NANO = 1e9;
 const long long HOUR_TICK = 60LL * 60 * NANO;
+const long long ROUND = HOUR_TICK * 12;
 
 long long inp[3];
 
@@ -30,7 +31,7 @@ long long check2(long long h, long long m, long long s) {
     s -= HOUR_TICK;
   }
 
-  if (h * 12 == m && h * 720 == s) {
+  if ((h * 12) % ROUND == m && (h * 720) % ROUND == s) {
     return 0;
   }
   return -1;
