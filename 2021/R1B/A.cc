@@ -28,24 +28,22 @@ bool check(long long h, long long m, long long s) {
       long long m2 = m - i * NANO * 12;
       long long s2 = s - i * NANO * 720;
 
-      long long d = h2 * 12 - m2;
-      for(int i=0;i<11;i++) {
-        if ((d%11) == 0) {
-          d /= 11;
-          break;
-        } else {
-          d += ROUND;
-        }
-      }
+      // long long d = h2 * 12 - m2;
+      // for(int i=0;i<11;i++) {
+      //   if ((d%11) == 0) {
+      //     d /= 11;
+      //     break;
+      //   } else {
+      //     d += ROUND;
+      //   }
+      // }
+      long long d = 0;
 
       h2 = (((h2-d) % ROUND) + ROUND) % ROUND;
       m2 = (((m2-d) % ROUND) + ROUND) % ROUND;
       s2 = (((s2-d) % ROUND) + ROUND) % ROUND;
 
       if((h2*12) % ROUND == m2 && (h2*720) == s2 % ROUND) {
-        cerr << endl;
-        cerr << d % ROUND << endl;
-        cerr << ROUND << endl;
         cout << j << " " << mm << " " << ss << " " << ((-d % NANO) + NANO) % NANO << endl;
         return true;
       }
