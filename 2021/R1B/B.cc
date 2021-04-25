@@ -28,17 +28,18 @@ void process() {
     bool fail = false;
     for(int j=i;j>=0;j--) {
       if(U.size() <= j) {
-        if(i-A >= 0) S[i-A] += S[i];
-        if(i-B >= 0) S[i-B] += S[i];
-        S[i] = 0;
+        if(j-A >= 0) S[j-A] += S[j];
+        if(j-B >= 0) S[j-B] += S[j];
+        S[j] = 0;
+        continue;
       }
-      if(S[i] < U[i]) {
+      if(S[j] < U[j]) {
         fail=true;
         break;
       }
-      if(i-A >= 0) S[i-A] += S[i] - U[i];
-      if(i-B >= 0) S[i-B] += S[i] - U[i];
-      S[i] = U[i];
+      if(j-A >= 0) S[j-A] += S[j] - U[j];
+      if(j-B >= 0) S[j-B] += S[j] - U[j];
+      S[j] = U[j];
     }
     if(fail) continue;
     cout << i << endl;
