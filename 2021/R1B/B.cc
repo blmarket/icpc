@@ -28,16 +28,16 @@ void process() {
     bool fail = false;
     for(int j=i;j>=0;j--) {
       if(U.size() <= j) {
-        S[i-A] += S[i];
-        S[i-B] += S[i];
+        if(i-A >= 0) S[i-A] += S[i];
+        if(i-B >= 0) S[i-B] += S[i];
         S[i] = 0;
       }
       if(S[i] < U[i]) {
         fail=true;
         break;
       }
-      S[i-A] += S[i] - U[i];
-      S[i-B] += S[i] - U[i];
+      if(i-A >= 0) S[i-A] += S[i] - U[i];
+      if(i-B >= 0) S[i-B] += S[i] - U[i];
       S[i] = U[i];
     }
     if(!fail) {
