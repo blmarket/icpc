@@ -42,6 +42,8 @@ bool check(long long h, long long m, long long s) {
       m2 = (((m2-d) % ROUND) + ROUND) % ROUND;
       s2 = (((s2-d) % ROUND) + ROUND) % ROUND;
 
+      cerr << h2 << " " << m2 << " " << s2 << endl;
+
       if((h2*12) % ROUND == m2 && (h2*720) == s2 % ROUND) {
         cout << j << " " << mm << " " << ss << " " << ((-d % NANO) + NANO) % NANO << endl;
         return true;
