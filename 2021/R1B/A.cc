@@ -63,12 +63,12 @@ bool check(long long h, long long m, long long s) {
 
 void process() {
   scanf(" %lld %lld %lld", &inp[0], &inp[1], &inp[2]);
-  if (check(inp[2], inp[1], inp[0])) return;
   if (check(inp[0], inp[1], inp[2])) return;
   if (check(inp[0], inp[2], inp[1])) return;
   if (check(inp[1], inp[0], inp[2])) return;
   if (check(inp[1], inp[2], inp[0])) return;
   if (check(inp[2], inp[0], inp[1])) return;
+  if (check(inp[2], inp[1], inp[0])) return;
 }
 
 int main(void) {
