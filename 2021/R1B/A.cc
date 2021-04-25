@@ -18,7 +18,8 @@ long long inp[3];
 
 bool check(long long h, long long m, long long s) {
   for(int i=0;i<12;i++) {
-    cout << HOUR_TICK * i << endl;
+    long long ht = h - HOUR_TICK * i;
+    cout << ht << endl;
   }
   return true;
 }
