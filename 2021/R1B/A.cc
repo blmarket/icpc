@@ -32,7 +32,7 @@ long long check2(long long h, long long m, long long s) {
   }
 
   if ((h * 12) % ROUND == m && (h * 720) % ROUND == s) {
-    return 0;
+    return h;
   }
   return -1;
 }
