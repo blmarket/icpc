@@ -19,35 +19,26 @@ const long long ROUND = HOUR_TICK * 12;
 long long inp[3];
 
 bool check(long long h, long long m, long long s) {
-  for(int j=0;j<12;j++) {
-    for(int i=0;i<3600;i++) {
-      int mm = (i / 60);
-      int ss = (i % 60);
-
-      long long h2 = h - i * NANO - j * HOUR_TICK;
-      long long m2 = m - i * NANO * 12;
-      long long s2 = s - i * NANO * 720;
-
-      long long d = h2 * 12 - m2;
-      for(int i=0;i<11;i++) {
-        if ((d%11) == 0) {
-          d /= 11;
-          break;
-        } else {
-          d += ROUND;
-        }
-      }
-
-      h2 = (((h2-d) % ROUND) + ROUND) % ROUND;
-      m2 = (((m2-d) % ROUND) + ROUND) % ROUND;
-      s2 = (((s2-d) % ROUND) + ROUND) % ROUND;
-
-      if(((h2*12) % ROUND) == m2 && ((h2*720) % ROUND) == (s2 % ROUND)) {
-        cerr << h2 << " " << m2 << " " << s2 << endl;
-        cout << j << " " << mm << " " << ss << " " << ((-d % NANO) + NANO) % NANO << endl;
-        return true;
-      }
+  long long d = h * 12 - m;
+  for(int i=0;i<11;i++) {
+    if ((d%11) == 0) {
+      d /= 11;
+      break;
+    } else {
+      d += ROUND;
     }
+  }
+
+  long long h2 = (((h-d) % ROUND) + ROUND) % ROUND;
+  long long m2 = ((m2-d) % ROUND) + ROUND;
+  long long s2 = ((s2-d) % ROUND) + ROUND;
+
+  if(((h2*12) % ROUND) == m2 && ((h2*720) % ROUND) == (s2 % ROUND)) {
+    long long t1 = h2 % HOUR_TICK;
+    long long t2 = t1 % (60 * NANO);
+    long long t3 = t2 % NANO;
+    cout << h2 / HOUR_TICK << " " << t1 / (60 * NANO) << " " << t2 / NANO << " " << t3 << endl;
+    return true;
   }
   return false;
 }
