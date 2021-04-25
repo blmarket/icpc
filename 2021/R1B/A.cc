@@ -76,14 +76,13 @@ bool check(long long h, long long m, long long s) {
         }
       }
 
-      if (j == 0 && i == 0) {
-        cerr << h2 << " " << m2 << " " << s2 << " " << d << endl;
-      }
-
-
       h2 = (((h2+d) % ROUND) + ROUND) % ROUND;
       m2 = (((m2+d) % ROUND) + ROUND) % ROUND;
       s2 = (((s2+d) % ROUND) + ROUND) % ROUND;
+
+      if (j == 0 && i == 0) {
+        cerr << h2 << " " << m2 << " " << s2 << " " << d << endl;
+      }
 
       if(h2 == m2 && h2 == s2) {
         cout << j << " " << mm << " " << ss << " " << ((d % NANO) + NANO) % NANO << endl;
