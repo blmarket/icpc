@@ -40,14 +40,13 @@ void process() {
       if(i-B >= 0) S[i-B] += S[i] - U[i];
       S[i] = U[i];
     }
-    if(!fail) {
-      cout << i << endl;
-      for(int j=0;j<S.size();j++) {
-        cerr << S[j] << " ";
-      }
-      cerr << endl;
-      return;
+    if(fail) continue;
+    cout << i << endl;
+    for(int j=0;j<S.size();j++) {
+      cerr << S[j] << " ";
     }
+    cerr << endl;
+    return;
   }
 }
 
