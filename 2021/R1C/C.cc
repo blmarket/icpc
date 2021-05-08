@@ -58,6 +58,7 @@ void process() {
   if(v1.back() == 0) v1.pop_back();
   for(int nnot=1;nnot<v1.size();nnot++) {
     auto s1 = VI(v1.begin() + nnot, v1.end());
+    if(s1.size() + nnot < v2.size()) break;
 
     // for(auto &it: s1) cerr << it << " ";
     // cerr << " : ";
