@@ -67,6 +67,7 @@ void process() {
       if(j+1 == s1.size()) {
         if(s1[j] > v2[j]) { fail = true; break; }
         sum += v2[j] - s1[j];
+        continue;
       }
       sum += v2[j];
     }
