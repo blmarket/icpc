@@ -46,6 +46,9 @@ void process() {
           fail = true;
           break;
         }
+        if (i == 2) {
+          cerr << "here : " << v2[i+j] << " " << v1[j] << endl;
+        }
         tmp += v2[i+j] - v1[j];
       }
       if(i+j >= v2.size()) {
