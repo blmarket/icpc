@@ -51,16 +51,22 @@ void process() {
   if(v1.back() == 0) v1.pop_back();
   for(int nnot=1;nnot<v1.size();nnot++) {
     auto s1 = VI(v1.begin() + nnot, v1.end());
+
+    for(auto &it: s1) cerr << it << " ";
+    cerr << " : ";
+    for(auto &it: v2) cerr << it << " ";
+    cerr << endl;
+
     bool fail = false;
     int sum = nnot;
     for(int j=0;j<v2.size();j++) {
-      if(j+1 < v1.size()) {
-        if(v1[j] != v2[j]) { fail = true; break; }
+      if(j+1 < s1.size()) {
+        if(s1[j] != v2[j]) { fail = true; break; }
         continue;
       }
-      if(j+1 == v1.size()) {
-        if(v1[j] > v2[j]) { fail = true; break; }
-        sum += v2[j] - v1[j];
+      if(j+1 == s1.size()) {
+        if(s1[j] > v2[j]) { fail = true; break; }
+        sum += v2[j] - s1[j];
       }
       sum += v2[j];
     }
