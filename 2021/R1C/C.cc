@@ -37,7 +37,7 @@ void process() {
   scanf(" %s", tmp);
   v2 = encode(tmp);
 
-  for(int i=0;i<=v2.size()-v1.size();i++) {
+  for(int i=0;i<=v2.size();i++) {
     int tmp = i;
     bool fail = false;
     for(int j=0;j+1<v1.size();j++) {
