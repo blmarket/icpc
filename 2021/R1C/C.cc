@@ -57,6 +57,7 @@ void process() {
       }
     }
     if(!fail) {
+      cerr << i << " " << tmp << endl;
       cout << tmp << endl;
       return;
     }
