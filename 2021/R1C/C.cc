@@ -37,6 +37,7 @@ void process() {
   v1 = encode(tmp);
 
   for(int i=0;i<=v2.size();i++) {
+    if (i + v1.size() < v2.size()) continue;
     int tmp = i;
     bool fail = false;
     for(int j=0;j+1<v1.size();j++) {
