@@ -26,16 +26,15 @@ vector<int> encode(string s) {
     }
   }
   ret.push_back(cnt);
-  if(ret.size() % 2) ret.push_back(0);
   return ret;
 }
 
 void process() {
   char tmp[105];
   scanf(" %s", tmp);
-  v1 = encode(tmp);
-  scanf(" %s", tmp);
   v2 = encode(tmp);
+  scanf(" %s", tmp);
+  v1 = encode(tmp);
 
   for(int i=0;i<=v2.size();i++) {
     int tmp = i;
