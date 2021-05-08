@@ -32,40 +32,45 @@ vector<int> encode(string s) {
 void process() {
   char tmp[105];
   scanf(" %s", tmp);
-  v2 = encode(tmp);
-  scanf(" %s", tmp);
   v1 = encode(tmp);
+  scanf(" %s", tmp);
+  v2 = encode(tmp);
 
-  for(int i=0;i<=v2.size();i++) {
-    if (i + v1.size() < v2.size()) continue;
-    int tmp = i;
-    bool fail = false;
-    for(int j=0;j<v1.size();j++) {
-      if(i+j == v2.size() - 1) {
-        if (v2[i+j] < v1[j]) {
-          fail = true;
-          break;
-        }
-        if (i == 2) {
-          cerr << "here : " << v2[i+j] << " " << v1[j] << endl;
-        }
-        tmp += v2[i+j] - v1[j];
-      }
-      if(i+j >= v2.size()) {
-        tmp += v1[j];
-      }
-      if(v2[i+j] != v1[j]) {
-        fail = true;
-        break;
-      }
-    }
-    if(!fail) {
-      cerr << i << " " << tmp << endl;
-      cout << tmp << endl;
+  if (v1.size()%2) v1.pb(0);
+  if (v2.size()%2) v2.pb(0);
+
+  if(v1.size() == v2.size()) {
+    auto s1 = VI(v1.begin(), v1.end() - 1);
+    auto s2 = VI(v2.begin(), v2.end() - 1);
+    if(s1 == s2 && v1.back() <= v2.back()) {
+      cout << v2.back() - v1.back() << endl;
       return;
     }
   }
+
+  if(v1.back() == 0) v1.pop_back();
+  for(int nnot=1;nnot<v1.size();nnot++) {
+    auto s1 = VI(v1.begin() + nnot, v1.end());
+    bool fail = false;
+    int sum = nnot;
+    for(int j=0;j<v2.size();j++) {
+      if(j+1 < v1.size()) {
+        if(v1[j] != v2[j]) { fail = true; break; }
+        continue;
+      }
+      if(j+1 == v1.size()) {
+        if(v1[j] > v2[j]) { fail = true; break; }
+        sum += v2[j] - v1[j];
+      }
+      sum += v2[j];
+    }
+    if (fail) continue;
+    cout << sum << endl;
+    return;
+  }
+
   cout << "IMPOSSIBLE" << endl;
+  return;
 }
 
 int main(void) {
