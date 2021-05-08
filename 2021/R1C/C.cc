@@ -59,10 +59,10 @@ void process() {
   for(int nnot=1;nnot<v1.size();nnot++) {
     auto s1 = VI(v1.begin() + nnot, v1.end());
 
-    for(auto &it: s1) cerr << it << " ";
-    cerr << " : ";
-    for(auto &it: v2) cerr << it << " ";
-    cerr << endl;
+    // for(auto &it: s1) cerr << it << " ";
+    // cerr << " : ";
+    // for(auto &it: v2) cerr << it << " ";
+    // cerr << endl;
 
     bool fail = false;
     int sum = nnot;
