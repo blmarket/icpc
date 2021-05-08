@@ -40,7 +40,7 @@ void process() {
     if (i + v1.size() < v2.size()) continue;
     int tmp = i;
     bool fail = false;
-    for(int j=0;j+1<v1.size();j++) {
+    for(int j=0;j<v1.size();j++) {
       if(i+j == v2.size() - 1) {
         if (v2[i+j] < v1[j]) {
           fail = true;
