@@ -30,8 +30,10 @@ vector<int> encode(string s) {
 }
 
 void process() {
+  bool lead0 = false;
   char tmp[105];
   scanf(" %s", tmp);
+  if(tmp[0] == '0') lead0 = true;
   v1 = encode(tmp);
   scanf(" %s", tmp);
   v2 = encode(tmp);
@@ -43,9 +45,14 @@ void process() {
     auto s1 = VI(v1.begin(), v1.end() - 1);
     auto s2 = VI(v2.begin(), v2.end() - 1);
     if(s1 == s2 && v1.back() <= v2.back()) {
-      cout << v2.back() - v1.back() << endl;
+      cout << v2.back() - v1.back() + lead0 << endl;
       return;
     }
+  }
+
+  if(lead0) {
+    cout << "IMPOSSIBLE" << endl;
+    return;
   }
 
   if(v1.back() == 0) v1.pop_back();
