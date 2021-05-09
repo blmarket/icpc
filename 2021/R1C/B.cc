@@ -18,9 +18,9 @@ string s;
 long long cur;
 
 void process() {
-  long long ret = cur * 2;
   cin >> s;
   sscanf(s.c_str(), "%lld", &cur);
+  long long ret = cur * 2;
   for(int i=1;i<100000;i++) {
     long long buf = 0;
     for(int j=i;;j++) {
