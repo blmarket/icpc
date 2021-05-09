@@ -35,7 +35,6 @@ void process() {
         break;
       }
     }
-    cerr << " " << i << " " << ret << endl;
   }
   cout << ret << endl;
 }
