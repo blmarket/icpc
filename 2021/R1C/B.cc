@@ -14,7 +14,28 @@ template<typename T> int size(const T &a) { return a.size(); }
 
 const long long MAX = 2000000000000000000LL;
 
+string s;
+long long cur;
+
 void process() {
+  long long ret = cur * 2;
+  cin >> s;
+  sscanf(s.c_str(), "%lld", &cur);
+  for(int i=1;i<100000;i++) {
+    long long buf;
+    for(int j=i;;j++) {
+      int k = j;
+      while(k) {
+        buf *= 10;
+        k /= 10;
+      }
+      buf += j;
+      if (buf > cur) {
+        if(ret > buf) ret = buf;
+      }
+    }
+  }
+  cout << ret << endl;
 }
 
 int main(void) {
