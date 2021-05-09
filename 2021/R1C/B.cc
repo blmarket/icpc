@@ -22,7 +22,7 @@ void process() {
   cin >> s;
   sscanf(s.c_str(), "%lld", &cur);
   for(int i=1;i<100000;i++) {
-    long long buf;
+    long long buf = 0;
     for(int j=i;;j++) {
       int k = j;
       while(k) {
