@@ -20,7 +20,7 @@ long long cur;
 void process() {
   cin >> s;
   sscanf(s.c_str(), "%lld", &cur);
-  long long ret = cur * 2;
+  long long ret = max(12LL, cur * 2);
   for(int i=1;i<cur;i++) {
     long long buf = 0;
     for(int j=i;;j++) {
