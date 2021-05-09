@@ -27,8 +27,10 @@ void process() {
       int k = j;
       while(k) {
         buf *= 10;
+        if (buf > MAX) break;
         k /= 10;
       }
+      if (buf > MAX) break;
       buf += j;
       if (buf > cur) {
         if(ret > buf) ret = buf;
