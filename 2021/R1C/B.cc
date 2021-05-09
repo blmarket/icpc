@@ -32,6 +32,7 @@ void process() {
       buf += j;
       if (buf > cur) {
         if(ret > buf) ret = buf;
+        break;
       }
     }
     cerr << " " << i << " " << ret << endl;
