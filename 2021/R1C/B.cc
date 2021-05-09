@@ -31,6 +31,7 @@ void process() {
       }
       buf += j;
       if (buf > cur) {
+        cout << i << " " << buf << endl;
         if(ret > buf) ret = buf;
         break;
       }
