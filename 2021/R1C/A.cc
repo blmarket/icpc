@@ -24,18 +24,27 @@ void process() {
   }
   sort(V.begin(), V.end());
   R.clear();
-  int cur = 1;
+  int now = 1;
   for(auto &it: V) {
-    if (cur > it) continue;
-    R.push_back(it - cur);
-    cur = it + 1;
+    if (now > it) continue;
+    R.push_back(it - now);
+    now = it + 1;
   }
-  R.push_back(K + 1 - cur);
+  R.push_back(K + 1 - now);
 
-  for(auto &it: R) {
-    cout << it << " ";
+  int cur = R[0] + R.back();
+  for(int i=1;i+1<R.size();i++) {
+    int tmp = max(R[0], R.back()) + (R[i]+1)/2;
+    if(cur < tmp) cur = tmp;
+    tmp = R[i];
+    if(cur < tmp) cur = tmp;
+    for(int j=i+1;j+1<R.size();j++) {
+      tmp = (R[i]+1)/2 + (R[j]+1)/2;
+      if(cur < tmp) cur = tmp;
+    }
   }
-  cout << endl;
+
+  printf("%.12lf\n", (double)cur / K);
 }
 
 int main(void) {
