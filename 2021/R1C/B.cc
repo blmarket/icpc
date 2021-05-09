@@ -34,6 +34,7 @@ void process() {
         if(ret > buf) ret = buf;
       }
     }
+    cerr << " " << i << " " << ret << endl;
   }
   cout << ret << endl;
 }
