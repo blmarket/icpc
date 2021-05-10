@@ -55,11 +55,6 @@ void process() {
     v1.pop_back();
   }
 
-  for(auto it: v1) cout << it << " ";
-  cout << " : ";
-  for(auto it: v2) cout << it << " ";
-  cout << endl;
-
   // v1.size() >= v2.size()
   int ret = -1;
   for(int sp=0;sp<=(int)v1.size();sp++) {
@@ -87,7 +82,7 @@ void process() {
     if (fail) {
       continue;
     }
-    cerr << sp << " " << tmp << endl;
+    // cerr << sp << " " << tmp << endl;
     if (ret == -1 || ret > tmp) ret = tmp;
   }
   cout << lead0 + ret << endl;
