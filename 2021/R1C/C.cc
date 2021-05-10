@@ -36,6 +36,14 @@ void process() {
   if(tmp[0] == '0') lead0 = true;
   v1 = encode(tmp);
   scanf(" %s", tmp);
+  if(tmp[0] == '0') {
+    if(lead0) {
+      cout << 0 << endl;
+    } else {
+      cout << v1.size() << endl;
+    }
+    return;
+  }
   v2 = encode(tmp);
 
   if (v1.size()%2) v1.pb(0);
@@ -87,7 +95,7 @@ void process() {
     }
     if (ret == -1 || ret > tmp) ret = tmp;
   }
-  cout << ret << endl;
+  cout << lead0 + ret << endl;
 }
 
 int main(void) {
