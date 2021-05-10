@@ -54,6 +54,10 @@ void process() {
     return;
   }
 
+  if (v1.back() == 0) {
+    v1.pop_back();
+  }
+
   // v1.size() >= v2.size()
   int ret = -1;
   for(int sp=v1.size() - v2.size();sp<v1.size();sp++) {
@@ -62,23 +66,10 @@ void process() {
     for(int j=0;j<v2.size();j++) {
       // cerr << sp << " " << j << " " << tmp << endl;
       int p1 = sp+j;
-      if(p1+2 < v1.size()) {
+      if(p1+1 < v1.size()) {
         if(v1[p1] != v2[j]) {
           fail=true;
           break;
-        }
-      } else if (p1+2 == v1.size()) {
-        if (sp && v1.back() == 0) {
-          if (v1[p1] > v2[j]) {
-            fail = true;
-            break;
-          }
-          tmp += v2[j] - v1[p1];
-        } else {
-          if (v1[p1] != v2[j]) {
-            fail = true;
-            break;
-          }
         }
       } else if (p1+1 == v1.size()) {
         if(v1[p1] > v2[j]) {
