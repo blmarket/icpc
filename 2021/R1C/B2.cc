@@ -60,6 +60,7 @@ void process() {
   scanf(" %lld", &tgt);
   long long t1 = n2();
   long long t2 = n3();
+  cerr << t1 << " " << t2 << endl;
   cout << min(t1, t2) << endl;
 }
 
