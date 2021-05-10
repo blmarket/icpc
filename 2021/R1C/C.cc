@@ -62,10 +62,10 @@ void process() {
     if(s1.size() % 2) s1.push_back(0);
     if(s1.size() + nnot < v2.size()) break;
 
-    for(auto &it: s1) cerr << it << " ";
-    cerr << " : ";
-    for(auto &it: v2) cerr << it << " ";
-    cerr << endl;
+    // for(auto &it: s1) cerr << it << " ";
+    // cerr << " : ";
+    // for(auto &it: v2) cerr << it << " ";
+    // cerr << endl;
 
     bool fail = false;
     int sum = nnot;
