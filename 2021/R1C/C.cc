@@ -41,51 +41,39 @@ void process() {
   if (v1.size()%2) v1.pb(0);
   if (v2.size()%2) v2.pb(0);
 
-  if(v1.size() == v2.size()) {
-    auto s1 = VI(v1.begin(), v1.end() - 1);
-    auto s2 = VI(v2.begin(), v2.end() - 1);
-    if(s1 == s2 && v1.back() <= v2.back()) {
-      cout << v2.back() - v1.back() + lead0 << endl;
-      return;
-    }
-  }
-
-  if(lead0) {
+  if (v2.size() > v1.size()) {
     cout << "IMPOSSIBLE" << endl;
     return;
   }
 
-  if(v1.back() == 0) v1.pop_back();
-  for(int nnot=1;nnot<v1.size();nnot++) {
-    auto s1 = VI(v1.begin() + nnot, v1.end());
-    if(s1.size() + nnot < v2.size()) break;
-
-    // for(auto &it: s1) cerr << it << " ";
-    // cerr << " : ";
-    // for(auto &it: v2) cerr << it << " ";
-    // cerr << endl;
-
+  // v1.size() >= v2.size()
+  int ret = -1;
+  for(int sp=v1.size() - v2.size();sp<v1.size();sp++) {
     bool fail = false;
-    int sum = nnot;
+    int tmp = sp;
     for(int j=0;j<v2.size();j++) {
-      if(j+1 < s1.size()) {
-        if(s1[j] != v2[j]) { fail = true; break; }
-        continue;
+      int p1 = sp+j;
+      if(p1+1 < v1.size()) {
+        if(v1[p1] != v2[j]) {
+          fail=true;
+          break;
+        }
+      } else if (p1+1 == v1.size()) {
+        if(v1[p1] > v2[j]) {
+          fail = true;
+          break;
+        }
+        tmp += v2[j] - v1[p1];
+      } else {
+        tmp += v2[j];
       }
-      if(j+1 == s1.size()) {
-        if(s1[j] > v2[j]) { fail = true; break; }
-        sum += v2[j] - s1[j];
-        continue;
-      }
-      sum += v2[j];
     }
-    if (fail) continue;
-    cout << sum << endl;
-    return;
+    if (fail) {
+      continue;
+    }
+    if (ret == -1 || ret > tmp) ret = tmp;
   }
-
-  cout << "IMPOSSIBLE" << endl;
-  return;
+  cout << ret << endl;
 }
 
 int main(void) {
