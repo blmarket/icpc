@@ -58,8 +58,8 @@ void process() {
 
   // v1.size() >= v2.size()
   int ret = -1;
-  cout << (int)size(v1) - (int)size(v2) << endl;
   for(int sp=(int)size(v1) - (int)size(v2);sp<=v1.size();sp++) {
+    cout << sp << endl;
     if (sp < 0) continue;
     bool fail = false;
     int tmp = sp;
