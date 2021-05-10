@@ -65,7 +65,7 @@ void process() {
     bool fail = false;
     int tmp = sp;
     for(int j=0;j<v2.size();j++) {
-      // cerr << sp << " " << j << " " << tmp << endl;
+      cerr << sp << " " << j << " " << tmp << endl;
       int p1 = sp+j;
       if(p1+1 < v1.size()) {
         if(v1[p1] != v2[j]) {
