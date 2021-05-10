@@ -45,14 +45,13 @@ void process() {
   v2 = encode(tmp);
 
   if (v1.size()%2) v1.pb(0);
-  if (v2.size()%2) v2.pb(0);
 
   if (v2.size() > v1.size()) {
     cout << "IMPOSSIBLE" << endl;
     return;
   }
 
-  if (v1.back() == 0) {
+  if (v1.back() == 0 && v1.size() >= v2.size() + 2) {
     v1.pop_back();
   }
 
