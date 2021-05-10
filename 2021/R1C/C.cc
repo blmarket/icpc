@@ -58,13 +58,14 @@ void process() {
     v1.pop_back();
   }
 
+  cout << "HERE" << endl;
+
   // v1.size() >= v2.size()
   int ret = -1;
   for(int sp=v1.size() - v2.size();sp<=v1.size();sp++) {
     if (sp < 0) continue;
     bool fail = false;
     int tmp = sp;
-    cerr << sp << endl;
     for(int j=0;j<v2.size();j++) {
       // cerr << sp << " " << j << " " << tmp << endl;
       int p1 = sp+j;
