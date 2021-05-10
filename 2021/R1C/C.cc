@@ -61,6 +61,7 @@ void process() {
   // v1.size() >= v2.size()
   int ret = -1;
   for(int sp=v1.size() - v2.size();sp<=v1.size();sp++) {
+    if (sp < 0) continue;
     bool fail = false;
     int tmp = sp;
     for(int j=0;j<v2.size();j++) {
