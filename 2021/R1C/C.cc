@@ -55,6 +55,11 @@ void process() {
     v1.pop_back();
   }
 
+  for(auto it: v1) cout << it << " ";
+  cout << " : ";
+  for(auto it: v2) cout << it << " ";
+  cout << endl;
+
   // v1.size() >= v2.size()
   int ret = -1;
   int ss = (int)size(v1) - (int)size(v2);
