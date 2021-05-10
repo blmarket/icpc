@@ -43,10 +43,9 @@ long long n2() {
 
 long long n3() {
   long long ret = MAX;
-  int ee = min(1000000LL, tgt);
-  for(int i=1;i<ee;i++) {
-    long long tmp = 0;
-    for(int j=i;;j++) {
+  for(int i=1;i<1000000;i++) {
+    long long tmp = i;
+    for(int j=i+1;;j++) {
       tmp = conc(tmp, j);
       if(tmp > tgt) {
         if(ret > tmp) ret = tmp;
