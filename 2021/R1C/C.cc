@@ -59,12 +59,19 @@ void process() {
           fail=true;
           break;
         }
-      } else if (p1+2 == v1.size() && v1.back() == 0 && sp) {
-        if (v1[p1] > v2[j]) {
-          fail = true;
-          break;
+      } else if (p1+2 == v1.size()) {
+        if (sp && v1.back() == 0) {
+          if (v1[p1] > v2[j]) {
+            fail = true;
+            break;
+          }
+          tmp += v2[j] - v1[p1];
+        } else {
+          if (v1[p1] != v2[j]) {
+            fail = true;
+            break;
+          }
         }
-        tmp += v2[j] - v1[p1];
       } else if (p1+1 == v1.size()) {
         if(v1[p1] > v2[j]) {
           fail = true;
