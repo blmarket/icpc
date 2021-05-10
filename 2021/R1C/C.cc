@@ -62,9 +62,7 @@ void process() {
 
   // v1.size() >= v2.size()
   int ret = -1;
-  int ss = (int)size(v1) - (int)size(v2);
-  for(int sp=ss;sp<=(int)v1.size();sp++) {
-    if (sp < 0) continue;
+  for(int sp=0;sp<=(int)v1.size();sp++) {
     bool fail = false;
     int tmp = sp;
     for(int j=0;j<v2.size();j++) {
@@ -85,6 +83,7 @@ void process() {
         tmp += v2[j];
       }
     }
+    if (sp + v2.size() < v1.size() && v1[sp+v2.size()]) fail = true;
     if (fail) {
       continue;
     }
