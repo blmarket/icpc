@@ -13,12 +13,14 @@ typedef long long LL;
 template<typename T> int size(const T &a) { return a.size(); } 
 
 const long long MAX = 2000000000000000000LL;
+const long long MAX10 = MAX / 10;
 
 long long tgt;
 
 long long conc(long long cur, long long v) {
   long long tmp = v;
   while(tmp) {
+    if (cur >= MAX10) return MAX;
     cur *= 10;
     tmp /= 10;
   }
