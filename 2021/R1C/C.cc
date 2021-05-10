@@ -10,8 +10,6 @@ typedef vector<string> VS;
 typedef pair<int,int> PII;
 typedef long long LL;
 
-template<typename T> int size(const T &a) { return a.size(); } 
-
 vector<int> v1, v2;
 
 vector<int> encode(string s) {
@@ -60,7 +58,7 @@ void process() {
 
   // v1.size() >= v2.size()
   int ret = -1;
-  for(int sp=v1.size() - (int)v2.size();sp<=v1.size();sp++) {
+  for(int sp=size(v1) - size(v2);sp<=v1.size();sp++) {
     if (sp < 0) continue;
     bool fail = false;
     int tmp = sp;
