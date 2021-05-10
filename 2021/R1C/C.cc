@@ -93,6 +93,7 @@ void process() {
     if (fail) {
       continue;
     }
+    cerr << sp << " " << tmp << endl;
     if (ret == -1 || ret > tmp) ret = tmp;
   }
   cout << lead0 + ret << endl;
