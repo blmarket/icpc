@@ -43,7 +43,8 @@ long long n2() {
 
 long long n3() {
   long long ret = MAX;
-  for(int i=1;i<1000000;i++) {
+  int ee = min(1000000LL, tgt);
+  for(int i=1;i<ee;i++) {
     long long tmp = 0;
     for(int j=i;;j++) {
       tmp = conc(tmp, j);
@@ -60,7 +61,6 @@ void process() {
   scanf(" %lld", &tgt);
   long long t1 = n2();
   long long t2 = n3();
-  cerr << t1 << " " << t2 << endl;
   cout << min(t1, t2) << endl;
 }
 
