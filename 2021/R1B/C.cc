@@ -20,7 +20,7 @@ void process() {
   for(int i=0;i<N*B;i++) {
     int tmp;
     scanf(" %d", &tmp);
-    if(tmp == 9) {
+    if(tmp >= 9) {
       for(int j=B-1;j>=0;j--) {
         if(pts[j]) {
           printf("%d\n", accumulate(pts.begin(), pts.begin() + j + 1, 0));
@@ -31,14 +31,42 @@ void process() {
         }
       }
     } else {
-      for(int j=B-2;j>=0;j--) {
-        if(pts[j]) {
-          printf("%d\n", accumulate(pts.begin(), pts.begin() + j + 1, 0));
-          fflush(stdout);
-          pts[j+1]++;
-          pts[j]--;
-          break;
+      bool found = false;
+      if (pts[B-2] && tmp < 7) {
+        for(int j=B-3;j>=0;j--) {
+          if(pts[j]) {
+            printf("%d\n", accumulate(pts.begin(), pts.begin() + j + 1, 0));
+            fflush(stdout);
+            pts[j+1]++;
+            pts[j]--;
+            found = true;
+            break;
+          }
         }
+        if(!found && pts[B-2]) {
+          printf("%d\n", accumulate(pts.begin(), pts.begin() + B - 1, 0));
+          fflush(stdout);
+          pts[B-1]++;
+          pts[B-2]--;
+          found = true;
+        }
+      } else {
+        for(int j=B-2;j>=0;j--) {
+          if(pts[j]) {
+            printf("%d\n", accumulate(pts.begin(), pts.begin() + j + 1, 0));
+            fflush(stdout);
+            pts[j+1]++;
+            pts[j]--;
+            found = true;
+            break;
+          }
+        }
+      }
+      if(!found) {
+        printf("%d\n", accumulate(pts.begin(), pts.begin() + B, 0));
+        pts[B]++;
+        pts[B-1]--;
+        fflush(stdout);
       }
     }
   }

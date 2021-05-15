@@ -50,7 +50,7 @@ int chk() {
 
     // cerr << R[i] << " " << xd << " " << xc << " " << minn << " " << maxx << endl;
 
-    if (minn >= maxx) {
+    if (minn > maxx) {
       ret++;
       xc = -1;
       xd = R[i];
@@ -115,14 +115,23 @@ void process() {
     minn = max(minn, -xd);
   }
 
+  xd = R[0] - xd;
+  xc = -xc;
+
+  if (xc == -1) {
+    maxx = min(maxx, xd);
+  } else {
+    minn = max(minn, -xd);
+  }
+
   if (xc == 1) {
-    if(minn < maxx) {
+    if(minn <= maxx) {
       cout << R.size() << endl;
       return;
     }
   } else {
     int sol = xd / 2;
-    if (minn < sol && sol < maxx) {
+    if (minn <= sol && sol <= maxx) {
       cout << R.size() << endl;
       return;
     }

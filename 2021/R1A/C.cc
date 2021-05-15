@@ -32,8 +32,11 @@ void process() {
       }
     }
   }
-  sort(V.begin(), V.end());
-  cout << V[N-1].second << " " << V[N-1].first << "/1" << endl;
+
+  if (N < 3) {
+    sort(V.begin(), V.end());
+    cout << V[N-1].second << " " << V[N-1].first << "/1" << endl;
+  }
 }
 
 int main(void) {

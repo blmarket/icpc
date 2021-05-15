@@ -21,24 +21,11 @@ void process() {
   cin >> s;
   sscanf(s.c_str(), "%lld", &cur);
   long long ret = max(12LL, cur * 2);
-  for(int i=1;i<cur;i++) {
-    long long buf = 0;
-    for(int j=i;;j++) {
-      int k = j;
-      while(k) {
-        buf *= 10;
-        if (buf > MAX) break;
-        k /= 10;
-      }
-      if (buf > MAX) break;
-      buf += j;
-      if (buf > cur) {
-        if(ret > buf) ret = buf;
-        break;
-      }
+  for(long long i = 10;i<cur;i*=10) {
+    for(int j=1;j<10;j--) {
+      go(i-j);
     }
   }
-  cout << ret << endl;
 }
 
 int main(void) {

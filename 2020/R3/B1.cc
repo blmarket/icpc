@@ -66,6 +66,22 @@ void process() {
     }
     if(fail) continue;
     for(int j=0;j<N;j++) if(hh[j] == 0 || hh[j] > 2) { fail=true; break; }
+    if(fail) continue;
+
+
+    pts.pb(pts[0] + N*2);
+    for(int j=0;j+1<size(pts);j++) {
+      int ss = pts[j] + pts[j+1];
+      if(ss & 1) {
+        fail=true;
+        break;
+      }
+      ss /= 2;
+    }
+
+    if(fail) continue;
+
+
     for(int j=0;j<size(pts);j++) {
       cerr << pts[j] << ":" << assign[j] << " ";
     }
